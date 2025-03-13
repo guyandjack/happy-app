@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Page Title | My Web Development Company</title>
+  <meta name="description" content="Description of the page content">
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Page Title | My Web Development Company">
+  <meta property="og:description" content="Description of the page content">
+  <meta property="og:image" content="/images/og-image.jpg">
+  <meta property="og:url" content="https://mywebdevcompany.com/page-url">
+  <meta property="og:type" content="website">
+  
+  <!-- Canonical and Alternate Links -->
+  <link rel="canonical" href="https://mywebdevcompany.com/page-url">
+  <link rel="alternate" hreflang="en" href="https://mywebdevcompany.com/page-url">
+  <link rel="alternate" hreflang="fr" href="https://mywebdevcompany.com/fr/page-url">
+  
+  <!-- Geolocation Tags -->
+  <meta name="geo.region" content="US">
+  <meta name="geo.placename" content="City Name">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/src/styles/main.css">
+  
+  <!-- Scripts in head (as requested) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "My Web Development Company",
+    "url": "https://mywebdevcompany.com",
+    "logo": "https://mywebdevcompany.com/images/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-123-456-7890",
+      "contactType": "customer service"
+    }
+  }
+  </script>
+  
+  <!-- Scripts moved to head as requested -->
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+  <!-- Navbar will be mounted here by React -->
+  <div id="RC-navbar"></div>
+  
+  <!-- Main content placeholder -->
+  <main class="container">
+    <!-- Page-specific content will go here -->
+  </main>
+  
+  <!-- Footer will be mounted here by React -->
+  <div id="RC-footer"></div>
+</body>
+</html> 

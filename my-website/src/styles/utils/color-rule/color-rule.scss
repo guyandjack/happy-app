@@ -1,0 +1,30 @@
+//Charte de couleur de l' "App"
+
+$colors-rule: (
+    first-color: #001747,
+    second-color: #1ba4e3,
+    third-color: #ff6e00,
+    fourth-color: #9cd008,
+    fifth-color: #171717,
+    sixth-color: #fbfffe,
+    disabled-color: #9ca3af,
+
+);
+
+$colors-rule-darked-5: (
+    first-color: darken(#001447, 5%),
+    second-color: darken(#1ba4e3, 5%),
+    third-color: darken(#ff6e00, 5%),
+    fourth-color:darken(#9cd008, 5%),
+    sixth-color:darken(#fbfffe, 5%),
+    disabled-color: darken(#9ca3af, 5%),
+);
+
+$colors-rule-darked-10: (
+    first-color: darken(#001447, 10%),
+    second-color: darken(#1ba4e3, 10%),
+    third-color: darken(#ff6e00, 10%),
+    fourth-color:darken(#9cd008, 10%),
+    sixth-color:darken(#fbfffe, 10%),
+    disabled-color: darken(#9ca3af, 10%),
+);

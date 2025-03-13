@@ -1,0 +1,17 @@
+// Definition des breakpoints pour le responsive
+
+$break-points: (
+    small-min: 575px,
+    small-max: 576px,
+
+    medium-min: 768px,
+    medium-max: 769px,
+
+    large-min: 992px,
+    large-max: 993px,
+
+    x-large-min: 1500px,
+    x-large-max: 1501px,
+
+    xx-large-min: 1800px,
+);

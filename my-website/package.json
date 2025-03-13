@@ -1,0 +1,24 @@
+{
+  "name": "my-website",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "sass": "^1.85.1",
+    "vite": "^6.2.0"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-google-recaptcha": "^3.1.0",
+    "react-hook-form": "^7.43.9",
+    "react-loader-spinner": "^5.4.5",
+    "react-svg": "^16.3.0"
+  }
+}

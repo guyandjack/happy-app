@@ -1,0 +1,81 @@
+// mixin qui gere le responsive design
+
+//Import des breakpoints
+@import "../breakpoint/breakpoint.scss";
+
+//mixin pour les ecrans "small"
+@mixin small-screen {
+    @media screen and (max-width: map-get($break-points, small-min)) {
+        @content;
+    }
+}
+
+//mixin pour les ecrans superieurs à "small"
+@mixin upper-small-screen {
+    @media screen and (min-width: map-get($break-points, small-max)) {
+        @content;
+    }
+}
+
+//mixin pour les ecrans inferieur à "medium"
+@mixin under-medium-screen {
+    @media screen and (max-width: map-get($break-points, medium-min)) {
+        @content;
+    }
+}
+
+//mixin pour les ecrans "medium"
+@mixin medium-screen {
+    @media screen and (min-width: map-get($break-points, small-max)) and (max-width: map-get($break-points, medium-min)) {
+        @content;
+    }
+}
+
+//mixin pour les ecrans supérieur à "medium"
+@mixin upper-medium-screen {
+    @media screen and (min-width: map-get($break-points, medium-max)) {
+        @content;
+    }
+}
+
+//mixin pour les ecrans inferieur à "large"
+@mixin under-large-screen {
+    @media screen and (max-width: map-get($break-points, large-min)) {
+        @content;
+    }
+}
+
+//mixin pour les ecrans "large"
+@mixin large-screen {
+    @media screen and (min-width: map-get($break-points, medium-max)) and (max-width: map-get($break-points, large-min)) {
+        @content;
+    }
+}
+
+//mixin pour les ecrans superieur à "large"
+@mixin upper-large-screen {
+    @media screen and (min-width: map-get($break-points, large-max)) {
+        @content;
+    }
+}
+
+//mixin pour les ecrans "x-large"
+@mixin x-large-screen {
+    @media screen and (min-width: map-get($break-points, large-max)) and (max-width: map-get($break-points, x-large-min)) {
+        @content;
+    }
+}
+
+//mixin pour les ecrans superieur à "x-large"
+@mixin upper-x-large-screen {
+    @media screen and (min-width: map-get($break-points, x-large-max)) {
+        @content;
+    }
+}
+
+//mixin pour les ecrans "xx-large"
+@mixin xx-large-screen {
+    @media screen and (min-width: map-get($break-points, x-large-max)) {
+        @content;
+    }
+}

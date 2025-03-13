@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Articles | My Web Dev Company</title>
+  <meta name="description" content="Découvrez nos articles sur le développement web, les tendances technologiques et les meilleures pratiques.">
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Articles | My Web Dev Company">
+  <meta property="og:description" content="Découvrez nos articles sur le développement web, les tendances technologiques et les meilleures pratiques.">
+  <meta property="og:image" content="/images/og-articles.jpg">
+  <meta property="og:url" content="https://mywebdevcompany.com/fr/articles.html">
+  <meta property="og:type" content="website">
+  
+  <!-- Canonical and Alternate Links -->
+  <link rel="canonical" href="https://mywebdevcompany.com/fr/articles.html">
+  <link rel="alternate" hreflang="fr" href="https://mywebdevcompany.com/fr/articles.html">
+  <link rel="alternate" hreflang="en" href="https://mywebdevcompany.com/en/articles.html">
+  
+  <!-- Geolocation Tags -->
+  <meta name="geo.region" content="FR">
+  <meta name="geo.placename" content="Paris">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/src/styles/main.css">
+  
+  <!-- Schema.org Script -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Articles",
+    "description": "Découvrez nos articles sur le développement web, les tendances technologiques et les meilleures pratiques."
+  }
+  </script>
+  
+  <!-- Scripts in head -->
+  <script type="module" src="../../src/main.jsx"></script>
+</head>
+<body>
+  <!-- Navbar will be mounted here by React -->
+  <div id="RC-navbar"></div>
+  
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Articles</h1>
+        <p>Découvrez nos dernières publications sur le développement web</p>
+      </div>
+    </section>
+    
+    <section class="articles-content">
+      <div class="container">
+        <div class="articles-grid">
+          <article class="article-card">
+            <div class="article-image">
+              <img src="/images/article1.jpg" alt="Tendances du développement web en 2023">
+            </div>
+            <div class="article-content">
+              <h2>Tendances du développement web en 2023</h2>
+              <p class="article-meta">Publié le 15 juin 2023 | Catégorie: Tendances</p>
+              <p class="article-excerpt">Découvrez les tendances émergentes qui façonnent le développement web cette année, des technologies aux pratiques de conception.</p>
+              <a href="#" class="btn btn-secondary">Lire l'article</a>
+            </div>
+          </article>
+          
+          <article class="article-card">
+            <div class="article-image">
+              <img src="/images/article2.jpg" alt="Optimiser les performances de votre site web">
+            </div>
+            <div class="article-content">
+              <h2>Optimiser les performances de votre site web</h2>
+              <p class="article-meta">Publié le 28 mai 2023 | Catégorie: Performance</p>
+              <p class="article-excerpt">Guide complet pour améliorer la vitesse et les performances de votre site web, de l'optimisation des images à la mise en cache.</p>
+              <a href="#" class="btn btn-secondary">Lire l'article</a>
+            </div>
+          </article>
+          
+          <article class="article-card">
+            <div class="article-image">
+              <img src="/images/article3.jpg" alt="L'importance du design responsive">
+            </div>
+            <div class="article-content">
+              <h2>L'importance du design responsive</h2>
+              <p class="article-meta">Publié le 10 mai 2023 | Catégorie: Design</p>
+              <p class="article-excerpt">Pourquoi le design responsive est essentiel pour votre site web et comment l'implémenter efficacement pour tous les appareils.</p>
+              <a href="#" class="btn btn-secondary">Lire l'article</a>
+            </div>
+          </article>
+        </div>
+        
+        <div class="pagination">
+          <a href="#" class="active">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <a href="#">Suivant &raquo;</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer will be mounted here by React -->
+  <div id="RC-footer"></div>
+</body>
+</html> 

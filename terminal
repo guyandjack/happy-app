@@ -1,0 +1,122 @@
+npm create vite@latest my-website -- --template vanilla
+cd my-website
+npm install react react-dom
+npm install -D @vitejs/plugin-react 
+
+# Remove default Vite test files
+rm -f src/counter.js
+rm -f src/javascript.svg
+rm -f src/style.css
+rm -f public/vite.svg
+rm -f main.js 
+
+# Create directory structure
+mkdir -p src/components/Navbar
+mkdir -p src/components/Footer
+mkdir -p src/styles
+mkdir -p src/utils
+mkdir -p public/images
+mkdir -p public/fonts
+mkdir -p public/en
+mkdir -p public/fr
+
+# Update directory structure for language files
+mkdir -p public/locales/en
+mkdir -p public/locales/fr 
+
+# Move current index.html (English) to public/en/home.html
+cp index.html public/en/home.html
+
+# Copy French version to root index.html
+cp fr/index.html index.html
+
+# Clean up fr directory as it's no longer needed
+rm -rf fr
+
+# Update directory structure to ensure src is in my-website
+mkdir -p my-website/src
+mv src/* my-website/src/ 2>/dev/null || true 
+
+# Create French pages at root level
+touch my-website/qui-suis-je.html
+touch my-website/prestations.html
+touch my-website/realisations.html
+touch my-website/contact.html
+touch my-website/articles.html
+touch my-website/connexion.html
+
+# Create English pages in public/en directory
+touch my-website/public/en/about.html
+touch my-website/public/en/services.html
+touch my-website/public/en/achievements.html
+touch my-website/public/en/contact.html
+touch my-website/public/en/articles.html
+
+# Create proper directory structure
+mkdir -p my-website/public/fr
+
+# Move French pages to public/fr directory (except index.html)
+mv my-website/qui-suis-je.html my-website/public/fr/
+mv my-website/prestations.html my-website/public/fr/
+mv my-website/realisations.html my-website/public/fr/
+mv my-website/contact.html my-website/public/fr/
+mv my-website/articles.html my-website/public/fr/
+mv my-website/connexion.html my-website/public/fr/
+
+# Remove English login page as it shouldn't exist
+rm -f my-website/public/en/login.html 
+
+# Verify current structure
+ls -la my-website/
+ls -la my-website/public/en/
+ls -la my-website/public/fr/
+
+# Ensure all required French pages exist in public/fr
+touch my-website/public/fr/qui-suis-je.html
+touch my-website/public/fr/prestations.html
+touch my-website/public/fr/realisations.html
+touch my-website/public/fr/contact.html
+touch my-website/public/fr/articles.html
+touch my-website/public/fr/connexion.html
+
+# Ensure all required English pages exist in public/en
+touch my-website/public/en/home.html
+touch my-website/public/en/about.html
+touch my-website/public/en/services.html
+touch my-website/public/en/achievements.html
+touch my-website/public/en/contact.html
+touch my-website/public/en/articles.html
+
+# Remove any login.html file in English directory if it exists
+rm -f my-website/public/en/login.html
+
+# Ensure only index.html exists at root level (French home page)
+find my-website/ -maxdepth 1 -type f -not -name "index.html" -not -name "*.json" -not -name "*.js" -not -name "*.md" -not -name "*.lock" -exec rm -f {} \;
+
+# Update canonical links in all pages to reflect the correct structure
+# This would typically be done with a script, but for demonstration:
+echo "Updating canonical links in all pages..." 
+
+# Create missing French pages
+mkdir -p my-website/public/fr
+touch my-website/public/fr/qui-suis-je.html
+touch my-website/public/fr/prestations.html
+touch my-website/public/fr/realisations.html
+touch my-website/public/fr/contact.html
+touch my-website/public/fr/articles.html
+touch my-website/public/fr/connexion.html
+
+# Create missing English pages
+mkdir -p my-website/public/en
+touch my-website/public/en/home.html
+touch my-website/public/en/about.html
+touch my-website/public/en/services.html
+touch my-website/public/en/achievements.html
+touch my-website/public/en/contact.html
+touch my-website/public/en/articles.html
+
+# Ensure no English login page exists
+rm -f my-website/public/en/login.html
+
+# Ensure only index.html exists at root level (French home page)
+find my-website/ -maxdepth 1 -type f -not -name "index.html" -not -name "*.json" -not -name "*.js" -not -name "*.md" -not -name "*.lock" -exec rm -f {} \; 

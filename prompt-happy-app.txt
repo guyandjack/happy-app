@@ -1,0 +1,449 @@
+
+********* cursor intruction to use file prompt *****************
+***start***
+
+important!!
+
+hello Cursor, use this file prompt by prompt.
+i will give you validation to execute the next prompt.
+
+each time i valide your code or fix a error modify this prompt for a best understanding for the next time.
+this file will be use for many next project.
+
+********* cursor intruction *****************
+***end***
+
+
+
+******* prompt 1 **************
+title: context and work environment.
+****start*********
+
+You're a senior full-stack web developer with a perfect command of ReactJS for the front end.
+On the backend, you have a perfect command of REST API, Adonis Framework and ExpressJS.
+
+I want to create a front end development server for a traditional multi-page website using the 'vite' development server.
+I need to create the folder and file architecture for this to work correctly.
+
+The Vite server should be configured with React in vanilla mode.
+This is NOT a single-page React application, but rather a traditional website that uses React only for mounting common components like navbar, footer, buttons, etc.
+
+The project should support:
+- Multiple HTML pages
+- React components mounted within these pages
+- A clean folder structure separating components, styles, and utilities
+- Support for multilingual content (English and French)
+
+Important folder structure notes:
+- All source files should be inside the 'my-website' folder created by Vite
+- React components should be in 'my-website/src/components'
+- Styles should be in 'my-website/src/styles'
+- Utility functions should be in 'my-website/src/utils'
+- Static assets should be in 'my-website/public'
+- HTML pages should be at the root of 'my-website'
+
+Language structure:
+- French version is the default and should be at the root of the project
+- English version should be in the 'my-website/public/en/' directory
+- The home page for English should be 'my-website/public/en/home.html'
+- All React components that handle navigation must respect this structure
+- All HTML files must include proper language attributes and alternate links
+
+******* prompt 1**************
+***end*********
+
+
+
+******* prompt 2 **************
+title: set vite architecture
+****start*********
+
+the server is working correctly my indexed page is displayed in the browser
+Deletes existing files used to test the operation of the development server.
+for example: app.jsx, app.css etc...
+
+After setting up the Vite server with React, we need to:
+
+1. Remove default Vite test files (counter.js, javascript.svg, style.css, etc.)
+2. Create a proper directory structure:
+   - src/components/ - For React components (Navbar, Footer, etc.)
+   - src/styles/ - For CSS files
+   - src/utils/ - For utility functions
+   - public/ - For static assets
+3. Create basic component files for Navbar and Footer
+4. Set up a main CSS file with mobile-first approach
+
+This will provide a clean starting point for our multi-page website.
+
+******* prompt 2**************
+***end*********
+
+
+
+
+******* prompt 3**************
+title: general structure
+***start*********
+
+
+I want to create a website for my future web development company.
+It will be a multilingual site in French and English.
+It will be totally responsive and created in 'mobile first'.
+
+This website will contain the following pages:
+
+french version:
+-1- Accueil
+-2- Qui suis je
+-3- Prestations
+-4- Réalisations
+-4- Contact
+-5- Articles
+-6- Connexion
+
+english version:
+-1- Home
+-2- Who i am
+-3- Services
+-4- Achievements
+-4- Contact
+-5- Articles
+
+***SEO***
+Each page must comply scrupulously with 'white hat' SEO techniques.
+Each html page must contain (non-exhaustive list):
+-title and meta description tags
+-Open Graph tags 
+-canonical and alternate link tags
+-geolocation tags
+-shema.org srcript tags
+-clean, descriptive urls
+
+
+***positioning tags***
+-tag script in last line of the head
+
+***Language Structure***
+- French version is the default and should be at the root of the project
+- English version should be in the public/en/ directory
+- The home page for English should be public/en/home.html
+- All navigation should reflect this structure
+
+For this prompt, we need to:
+
+1. Create a base HTML template with all required SEO elements:
+   - Meta tags (title, description)
+   - Open Graph tags for social sharing
+   - Canonical and alternate language links
+   - Geolocation metadata
+   - Schema.org structured data
+   - Proper script positioning
+
+2. Implement multilingual support:
+   - French as default at root level
+   - English version in public/en/ directory
+   - Ensure proper language attributes in HTML tags
+   - Add language switcher in the navigation
+   - Use descriptive URLs for each language version
+
+3. Ensure mobile-first responsive design:
+   - Use responsive meta viewport tag
+   - Implement mobile-first CSS
+   - Test on various screen sizes
+
+4. Create the basic structure for all required pages in both languages
+
+Required pages to create:
+
+French pages (in public/fr/):
+- qui-suis-je.html
+- prestations.html
+- realisations.html
+- contact.html
+- articles.html
+- connexion.html (French only, no English equivalent)
+
+English pages (in public/en/):
+- home.html
+- about.html
+- services.html
+- achievements.html
+- contact.html
+- articles.html
+
+French index.html should be at the root of the project.
+Each page must include proper SEO elements, language attributes, and canonical/alternate links.
+
+******* prompt 3**************
+***end*********
+
+
+******* prompt 4**************
+title: build "connexion.html" page
+***start*********
+
+The 'connection' page will contain a form managed by the 'react-hook-form' library.
+
+Structure of the form:
+1- a password input type
+2- an email input type
+3- a button to submit the form
+
+error handling:
+- inputs will be checked using appropriate regEx.
+-error messages will be displayed under the relevant input.
+-two types of message will be available
+ a) 'password/email required' if insufficient characters.
+ b) 'password / email inavalid' if regEx not respected.
+-http error management with the message 'an hhtp error has occurred'.
+-error message 'invalid password or username'.
+
+Additional features:
+1. Password visibility toggle:
+   - Add an eye icon button next to the password field
+   - Clicking the icon toggles between showing and hiding the password
+   - The eye icon should change appearance to indicate the current state
+
+2. Form submission handling:
+   - Disable the submit button when:
+     a) There are validation errors in the form
+     b) The form is currently being submitted
+     c) The form is not valid
+   - Show a loading state in the button during submission
+   - Handle HTTP errors with appropriate messages
+
+3. Toast notifications:
+   - Display toast notifications for form submission results
+   - Show success toast when login is successful
+   - Show error toast for authentication failures
+   - Show error toast for connection/HTTP errors
+   - Toast should appear in the top-right corner with animation
+   - Toast should automatically disappear after 5 seconds
+   - Toast should have different styles based on message type (success/error)
+   - Allow manual dismissal with a close button
+
+4. Loading indicator:
+   - Use react-loader-spinner library to show a loading overlay during form submission
+   - Display a full-screen overlay with blur effect
+   - Show a spinner animation in the center with loading text
+
+style:
+The form will be styled using SASS/SCSS:
+   - Create a dedicated SCSS file for the login form
+   - Use SCSS features like nesting, variables, and mixins
+   - Organize styles in a modular way
+   - Ensure responsive design for all screen sizes
+
+After implementation:
+- Check package.json to ensure all required dependencies are installed
+- Verify that the SASS preprocessor is properly configured
+- Ensure the form works correctly with the styling applied
+
+******* prompt 4**************
+***end*********
+
+
+******* prompt 5**************
+title: build the contact.html page
+***start*********
+
+The 'contact' page will contain a form managed by the 'react-hook-form' library.
+
+Structure of the form:
+1- a name input type
+2- a first name input type
+3- an email input type
+4- a message input type
+5- a button to submit the form
+6- include a recaptcha
+
+and the same features as the connexion.html page, the prompt number 4.
+
+after submited the form, clean the form inputs.
+
+
+******* prompt 5**************
+***end*********
+
+
+******* prompt 6**************
+title: build a react navbar menu component responsive
+***start********
+
+-1- The navigation menu must be responsive.
+-2- For screens less than 1000px wide, a burger-type menu icon will appear. When clicked, a vertical menu will appear on the left edge of the screen.
+-3- above 1000px wide a horizontal menu will be visible, it will be placed on the right of the screen.
+-4- The menu links will be underlined with a coloured line when hovered over.
+-5- The link corresponding to the page consulted will change colour.
+-6- The menu will be styled using SASS/SCSS.
+-7- The menu will be in the src/components/Navbar/Navbar.jsx file.
+-8- The menu will be in the src/styles/navbar.scss file.
+-9- modify the existing Navbar.jsx file.
+-10- use the link list in prompt 3.
+-11- use the language list in prompt 3.
+******* prompt 6**************
+***end*********
+
+
+******* prompt 7**************
+title: create text for the home page
+***start*********
+
+******** start promtpt: 7.1 ********
+   
+
+
+-1- The first part will begin with an introduction that briefly explains the services I offer, the values I embody and the eco responsible way I code.
+services offered: 
+-custom website design
+-mobile application design
+-SEO optimisation
+my values: 
+-customer satisfaction
+-eco design
+
+Here is an example of an introduction, take inspiration from this text and modify it accordingly:
+Welcome to CodyWeb
+CodyWeb, the web agency that makes the difference
+At Codyweb, we specialise in creating custom websites. Whether you need a showcase site, an e-commerce site or a complete overhaul, our team of experts is there to support you at every stage of your project.
+
+We combine technical expertise with a passion for innovation to create websites, custom SaaS solutions and mobile applications that not only meet your needs, but set you apart in the marketplace.
+
+
+******** end promtpt: 7.1 ********
+
+
+
+******* prompt 7**************
+***end*********
+
+******* prompt 8 **************
+title: create text for the "who i am" page
+***start*********
+
+the ‘who i am’ page should allow me to showcase myself, by explaining my passion for development, my values of commitment, respect for customers and their expectations.
+
+A second part will describe the process of working with the client, i.e. gathering information, carrying out research, validating with the client, etc.....
+
+a link to my linkedin profile should be included.
+
+my logo and a photo of me will also be included.
+
+
+******* prompt 8 **************
+***end*********
+
+
+
+******* prompt 9 **************
+title: create text for the differents "services" page
+***start*********
+
+
+***start **** prompt 9.1 **************
+page: "service Site-web"
+********************************
+
+the ‘website service’ page should develop the proposed activity in depth.
+
+part A: nav bar
+part B:
+1-title: Tailor-made website
+2- an introduction
+3- a cta button leading to the contact form
+
+part C:
+1-presentation in the form of maps of the different websites I create: showcase site, ecommerce site, custom site.
+2-each card will contain an image corresponding to the activity.
+the card will contain a text that explains the purpose of the type of site concerned
+3-at the bottom of the card, a button that leads to the contact form
+example of boton text: ‘need a showcase site, contact me’.
+
+part D
+a reminder of the eco-design and SEO optimisation that I carry out.
+
+part E: Frequently asked questions FAQ
+This part provides information to visitors on common questions they may have.
+Example of questions: 
+How much does it cost to create a website?
+
+How long does it take to develop a website?
+
+
+What types of site can you create?
+
+Do you offer maintenance services once the site is online?
+
+Will the site be optimised for search engine optimisation (SEO)?
+
+Will the site be mobile and tablet friendly?
+
+Will I be able to update the content myself?
+
+What are the advantages of a bespoke site over a standard model?
+
+Do you have any examples of sites you have created?
+
+How is the site's performance measured once it's online?
+
+What do I do if I need new features later on?
+
+Insert an answer under each question
+
+partF: footer
+
+The whole page must be responsive and respect the templates we have defined.
+
+
+
+*****end** prompt 9.1**************
+
+
+
+****start *** prompt 9.2**************
+page: "service application mobile"
+********************************
+
+realise the same page as on the prompt 9.1, but this time on ‘mobile applications’.
+
+
+******* prompt 9.2**************
+***end*********
+
+****start *** prompt 9.3**************
+page: "service SEO"
+********************************
+
+realise the same page as on the prompt 9.1, but this time on ‘SEO optimisation’.
+
+****end** prompt 9.3**************
+
+
+
+
+******* prompt 10 **************
+title: create text and functionnalities for "articles" page
+***start*********
+
+
+
+
+
+***end*********
+
+******* prompt n**************
+title: build a react footer component responsive
+***start********
+
+here are the options required to create the footer:
+1- the links in the header navigation menu must be integrated into the footer.
+2- another list of links must be integrated:
+ a) legal information
+b) privacy policy
+3- a third list of links will allow direct access to page content.
+4- the logo must be integrated
+ 
+******* prompt n**************
+***end*********
+
+
