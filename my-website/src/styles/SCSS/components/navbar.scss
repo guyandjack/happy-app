@@ -1,6 +1,6 @@
 /* Login Form Styles */
-@import "../../utils/breakpoint/breakpoint.scss";
-@import "../../utils/color-rule/color-rule.scss";
+@use "../../utils/breakpoint/breakpoint.scss";
+@use "../../utils/color-rule/color-rule.scss";
 
 // Variables
 $breakpoint-mobile: 1000px;

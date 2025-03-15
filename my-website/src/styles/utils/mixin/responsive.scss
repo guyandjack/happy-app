@@ -1,7 +1,7 @@
 // mixin qui gere le responsive design
 
 //Import des breakpoints
-@import "../breakpoint/breakpoint.scss";
+@use "../breakpoint/breakpoint.scss";
 
 //mixin pour les ecrans "small"
 @mixin small-screen {

@@ -321,7 +321,7 @@ We combine technical expertise with a passion for innovation to create websites,
 title: create text for the "who i am" page
 ***start*********
 
-the ‘who i am’ page should allow me to showcase myself, by explaining my passion for development, my values of commitment, respect for customers and their expectations.
+the 'who i am' page should allow me to showcase myself, by explaining my passion for development, my values of commitment, respect for customers and their expectations.
 
 A second part will describe the process of working with the client, i.e. gathering information, carrying out research, validating with the client, etc.....
 
@@ -344,7 +344,7 @@ title: create text for the differents "services" page
 page: "service Site-web"
 ********************************
 
-the ‘website service’ page should develop the proposed activity in depth.
+the 'website service' page should develop the proposed activity in depth.
 
 part A: nav bar
 part B:
@@ -357,7 +357,7 @@ part C:
 2-each card will contain an image corresponding to the activity.
 the card will contain a text that explains the purpose of the type of site concerned
 3-at the bottom of the card, a button that leads to the contact form
-example of boton text: ‘need a showcase site, contact me’.
+example of boton text: 'need a showcase site, contact me'.
 
 part D
 a reminder of the eco-design and SEO optimisation that I carry out.
@@ -404,7 +404,7 @@ The whole page must be responsive and respect the templates we have defined.
 page: "service application mobile"
 ********************************
 
-realise the same page as on the prompt 9.1, but this time on ‘mobile applications’.
+realise the same page as on the prompt 9.1, but this time on 'mobile applications'.
 
 
 ******* prompt 9.2**************
@@ -414,7 +414,7 @@ realise the same page as on the prompt 9.1, but this time on ‘mobile applicati
 page: "service SEO"
 ********************************
 
-realise the same page as on the prompt 9.1, but this time on ‘SEO optimisation’.
+realise the same page as on the prompt 9.1, but this time on 'SEO optimisation'.
 
 ****end** prompt 9.3**************
 
@@ -424,26 +424,196 @@ realise the same page as on the prompt 9.1, but this time on ‘SEO optimisation
 ******* prompt 10 **************
 title: create text and functionnalities for "articles" page
 ***start*********
+the item page will display a list of items from the database.
+1) each item in the list will be displayed in a card containing the following points:
+ a) title
+b) an image
+c) a text extracted from the content of the article
+d) category (mobile application or website, or seo...)
 
+2) by default, a maximum of three articles per category will be retrieved when the page is loaded.
+
+3) you can filter the articles by category (a fetch call will be made accordingly) and the new list will be displayed, including a select input to make the choice.
+
+3) to avoid fetch calls to the api, the old list of articles must be stored somewhere. Maybe the 'localstorage' or a simple table, or something else.
+It's up to you to use the simplest solution.
+
+4) Maps should be focusable, either by using the tab key (accessibility), or by hovering over the mouse.
+When you click on the card, you'll be redirected to the relevant article page.
+
+
+5) The focus of the card must make it stand out from the others in terms of style. 
 
 
 
 
 ***end*********
 
-******* prompt n**************
-title: build a react footer component responsive
+******* prompt 11**************
+title: build the "article" page
 ***start********
 
-here are the options required to create the footer:
-1- the links in the header navigation menu must be integrated into the footer.
-2- another list of links must be integrated:
- a) legal information
-b) privacy policy
-3- a third list of links will allow direct access to page content.
-4- the logo must be integrated
+the 'article' page will display the complete article from the database.
+As the articles may differ in terms of number of paragraphs and images, subtitle.....etc
+It will be necessary to create the content dynamically according to the elements received from the database.
+functionalities:
+1) a menu must be integrated on the side of the article to allow navigation between the page's sub-headings (only for screens larger than 1000px)
+2) buttons or arrows are required for:
+-next article
+-previous article
+-back to article list
+
+insert dynamically created content into a 'template' page
+
+
  
-******* prompt n**************
+******* prompt 11**************
+***end*********
+
+
+******* prompt 12**************
+title: build the api
+***start********
+
+for the api we're going to use the micro frameWork 'expressJS' that you're going to install in the existing 'backend' folder
+
+1) create a robust http server.
+
+2) create the different routes with 'expressRouter' that correspond to the front end. (page connexion, page contact, page articles, page article, recaptcha, ....)
+
+3) you will create middlewere for :
+-authentication with token
+-validation of data from the front end
+
+4) You will create controllers for:
+ -send an email following 
+-stoker in database articles and associated images
+
+
+ 
+******* prompt 12**************
+***end*********
+
+******* prompt 12.1**************
+title: Create a robust Express server setup
+***start********
+
+Create a robust server.js file for an Express application with the following features:
+
+1) Proper separation of concerns:
+   - Keep server configuration (port, HTTP server creation, error handling) in server.js
+   - Move all Express app configuration (middleware, routes, etc.) to app.js
+
+2) Implement comprehensive error handling:
+   - Handle server startup errors (EACCES, EADDRINUSE)
+   - Capture unhandled promise rejections
+   - Capture uncaught exceptions
+   - Ensure graceful server shutdown on errors
+
+3) Use the Node.js http module to create the server:
+   - Create a proper HTTP server using http.createServer()
+   - Set up event listeners for 'error' and 'listening' events
+   - Implement port normalization to handle different input formats
+
+4) Add clear code organization with comments:
+   - Group related functionality
+   - Add descriptive comments for each section
+   - Explain the purpose of utility functions
+
+The server.js file should load environment variables first, then import the Express app from app.js, create and configure the HTTP server, set up error handlers, and finally start the server.
+
+******* prompt 12.1**************
+***end*********
+
+******* prompt 12.2**************
+title: Create a comprehensive Express app configuration with MariaDB
+***start********
+
+Create a well-structured app.js file for an Express application with the following features:
+
+1) Implement essential security and performance middleware:
+   - Use helmet for setting security HTTP headers
+   - Configure CORS with a whitelist of allowed origins
+   - Set up JSON and URL-encoded body parsing with size limits
+   - Add request logging with Morgan
+   - Implement HTTP response compression
+   - Add rate limiting to prevent abuse
+
+2) Configure proper CORS settings:
+   - Create a whitelist of allowed origins (development and production)
+   - Implement a function-based origin validator
+   - Allow credentials for authenticated requests
+   - Handle requests with no origin (like mobile apps, curl)
+
+3) Set up file upload handling:
+   - Create an uploads directory if it doesn't exist
+   - Implement proper error handling for file operations
+
+4) Configure MariaDB database connection:
+   - Use mysql2 package for better performance and promise support
+   - Create a connection pool for efficient database access
+   - Implement proper error handling for database operations
+   - Create SQL models instead of MongoDB schemas
+
+5) Organize API routes:
+   - Mount all routes under the /api prefix
+   - Set up separate route files for different resources:
+     * Authentication routes
+     * Article routes
+     * Contact form routes
+     * reCAPTCHA verification routes
+
+6) Implement comprehensive error handling:
+   - Create a central error handling middleware
+   - Format error responses consistently
+   - Include stack traces only in development mode
+   - Handle different types of errors with appropriate status codes
+
+7) Add a health check endpoint:
+   - Create a simple endpoint to verify the API is running
+
+The app.js file should be modular, well-commented, and follow Express best practices for organization and error handling. It should export the configured Express app for use in server.js.
+
+******* prompt 12.2**************
+***end*********
+
+******* prompt 12.3**************
+title: Configure MariaDB for Express application
+***start********
+
+Create a robust database configuration for an Express application using MariaDB with the following features:
+
+1) Set up the database connection:
+   - Use mysql2/promise for async/await support
+   - Create a connection pool for better performance
+   - Implement proper error handling for connection failures
+   - Configure connection parameters from environment variables
+
+2) Create SQL initialization scripts:
+   - Define table schemas with appropriate data types and constraints
+   - Set up foreign key relationships between tables
+   - Create indexes for frequently queried columns
+   - Add default values and validation where appropriate
+
+3) Implement model classes:
+   - Create class-based models for each entity (User, Article, etc.)
+   - Implement static methods for CRUD operations
+   - Add validation and data transformation methods
+   - Use prepared statements to prevent SQL injection
+
+4) Handle relationships between entities:
+   - Implement JOIN queries for related data
+   - Create methods to fetch related entities
+   - Maintain referential integrity with foreign keys
+
+5) Implement transaction support:
+   - Add methods for operations that require transactions
+   - Ensure proper error handling and rollback on failure
+   - Maintain data consistency across related tables
+
+The database configuration should be modular, secure, and follow best practices for SQL database design and access patterns.
+
+******* prompt 12.3**************
 ***end*********
 
 

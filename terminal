@@ -2,6 +2,7 @@ npm create vite@latest my-website -- --template vanilla
 cd my-website
 npm install react react-dom
 npm install -D @vitejs/plugin-react 
+npm install dompurify
 
 # Remove default Vite test files
 rm -f src/counter.js

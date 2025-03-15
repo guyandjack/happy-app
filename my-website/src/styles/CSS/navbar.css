@@ -1,4 +1,6 @@
 /* Login Form Styles */
+@use "../../utils/breakpoint/breakpoint.scss";
+@use "../../utils/color-rule/color-rule.scss";
 .navbar {
   position: -webkit-sticky;
   position: sticky;

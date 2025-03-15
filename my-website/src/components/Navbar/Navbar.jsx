@@ -6,14 +6,14 @@ import React, { useEffect, useState } from 'react';
 
 //import des icons
 //import burgerIcon from '../../../public/images/icons/menu-burger.svg';
-import flagEN from "../../../public/images/icons/flag-en.png";
-import flagFR from "../../../public/images/icons/flag-fr.png";
+import flagEN from "../../assets/images/icons/flag-en.png";
+import flagFR from "../../assets/images/icons/flag-fr.png";
 
 //import des images
-import logo from '../../../public/images/logo-happy-app.webp';
+import logo from "../../assets/images/logo-happy-app.webp";
 
 //import du fichier scss
-import '../../styles/SCSS/components/navbar.scss';
+import '../../styles/CSS/navbar.css';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

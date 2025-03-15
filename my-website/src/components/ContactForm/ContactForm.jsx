@@ -9,7 +9,7 @@ const siteKey = import.meta.env.VITE_SITE_KEY_RECAPTCHA;
 console.log("sitekey: ", siteKey);
 
 // Import same SCSS file as LoginForm
-import "../../styles/SCSS/components/loginform.scss";
+import "../../styles/CSS/loginform.css";
 
 function ContactForm() {
   const { url, urlApi, mode } = localOrProd();

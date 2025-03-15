@@ -1,5 +1,3 @@
-
-
 //import des hook
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -11,12 +9,12 @@ import { ThreeDots } from 'react-loader-spinner';
 import { localOrProd } from '../../utils/fonction/testEnvironement';
 
 //import des icons
-import  eyeClosed   from "../../../public/images/icons/eye-closed.png";
-import  eyeOpened   from "../../../public/images/icons/eye-opened.png";
+import eyeClosed from "../../assets/images/icons/eye-closed.png";
+import eyeOpened from "../../assets/images/icons/eye-opened.png";
 
 
 //import des feuilles de style
-import "../../styles/SCSS/components/loginform.scss";
+import "../../styles/CSS/loginform.css";
 
 
 
@@ -68,7 +66,7 @@ function LoginForm() {
       // Simulate API call
       //const response = await mockApiCall(data);
 
-      const response = await fetch(`${urlApi}/login`, {
+      const response = await fetch(`${urlApi}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -90,23 +88,25 @@ function LoginForm() {
 
       if (response.ok) {
         let responseData = await response.json();
-        // eslint-disable-next-line no-unused-vars
+        console.log("Login response:", responseData); // Debug the response
         
-        if (responseData.message === "succes") {
+        if (responseData.status === "success") {
           // Show success toast
           showToast('Connexion réussie', 'success');
           
-          // Clean localStorage
-          localStorage.clear();
-
-          // Store API data
-          localStorage.setItem("admin", responseData.name);
+          // Store token - make sure you're accessing the right property
           localStorage.setItem("token", responseData.token);
-          localStorage.setItem("time", responseData.time);
-          localStorage.setItem("expire", responseData.expire);
+          
+          // Other localStorage items - adjust based on your actual response structure
+          if (responseData.data && responseData.data.user) {
+            localStorage.setItem("admin", responseData.data.user.name);
+          }
+          
+          localStorage.setItem("time", new Date().getTime());
+          localStorage.setItem("expire", new Date().getTime() + (24 * 60 * 60 * 1000));
           
           setTimeout(() => {
-            window.location.href = "./dashboard.html";
+            window.location.href = "/fr/dashboard.html";
           }, 1000);
         } else {
           // Handle other success responses that aren't actually successful logins
@@ -124,7 +124,7 @@ function LoginForm() {
     }
   };
   
-  // Mock API call function (simulates backend)
+  /* // Mock API call function (simulates backend)
   const mockApiCall = (data) => {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -136,7 +136,7 @@ function LoginForm() {
         }
       }, 1000);
     });
-  };
+  }; */
 
   // Determine if button should be disabled
   const isButtonDisabled = !isValid || isSubmitting || Object.keys(errors).length > 0;

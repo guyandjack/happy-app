@@ -13,7 +13,7 @@ const apiProdUrl = import.meta.env.VITE_API_PROD_URL;
 
 const mode = import.meta.env.MODE;
 
-const result = {};
+
 
 // Fonction pour vérifier que les variables d'environnement sont bien chargées
 function validateEnvVariables() {
@@ -25,33 +25,28 @@ function validateEnvVariables() {
   }
 }
 
-// Vérifier le mode actuel et configurer les URLs en conséquence
-function localOrProd() {
-  try {
-    // Valider les variables d'environnement avant de continuer
-    validateEnvVariables();
-
-    if (mode !== "development") {
-      
-      result.url = baseProdUrl;
-      result.urlApi = apiProdUrl;
-      result.mode = "prod"
-      
-    } else {
-      
-      result.url = baseDevUrl;
-      result.urlApi = apiDevUrl;
-      result.mode = "dev"
-     
-    } 
-    
-    return result;
-  } catch (error) {
-    console.error(
-      "Impossible de detecter le mode de l'environnement: ",
-      error
-    );
-    return "undefined";
+/**
+ * Determines if the application is running in a local or production environment
+ * and returns the appropriate URLs
+ * @returns {Object} Object containing url, urlApi, and mode
+ */
+ function localOrProd() {
+  const isLocalhost = 
+    window.location.hostname === 'localhost' || 
+    window.location.hostname === '127.0.0.1';
+  
+  if (isLocalhost) {
+    return {
+      url: baseDevUrl,
+      urlApi: apiDevUrl,
+      mode: mode
+    };
+  } else {
+    return {
+      url: baseProdUrl,
+      urlApi: apiProdUrl,
+      mode: mode
+    };
   }
 }
 
