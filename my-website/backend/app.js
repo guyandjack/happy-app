@@ -12,31 +12,40 @@ const authRoutes = require('./routes/auth.routes');
 const articleRoutes = require('./routes/article.routes');
 const contactRoutes = require('./routes/contact.routes');
 const recaptchaRoutes = require('./routes/recaptcha.routes');
+//const contentRoutes = require('./routes/content.routes');
 
 // Create Express app
 const app = express();
 
-// Set security HTTP headers
-app.use(helmet());
-
-// Configure CORS
-const allowedOrigins = [
-  'http://localhost:5173',  // Development server
-  'https://www.my-website.ch' // Production site
-];
-
-app.use(cors({
+// Configure CORS options
+const corsOptions = {
   origin: function(origin, callback) {
-    // Allow requests with no origin (like mobile apps, curl requests)
-    if (!origin) return callback(null, true);
+    const allowedOrigins = [
+      'http://localhost:5173',  // Development server
+      'https://www.my-website.ch', // Production site
+      undefined // Allow requests with no origin (like mobile apps, curl requests)
+      
+    ];
     
-    if (allowedOrigins.indexOf(origin) === -1) {
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
       const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-      return callback(new Error(msg), false);
+      callback(new Error(msg), false);
     }
-    return callback(null, true);
   },
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+// Apply CORS middleware
+app.use(cors(corsOptions));
+
+// Set security HTTP headers
+app.use(helmet({
+  contentSecurityPolicy: false, // Disable CSP for development
+  crossOriginEmbedderPolicy: false // Allow loading resources from different origins
 }));
 
 // Parse JSON request body
@@ -65,16 +74,31 @@ if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
 
+// Serve static files from the uploads directory with CORS enabled
+app.use('/api/uploads', (req, res, next) => {
+  // Set CORS headers specifically for static files
+  res.header('Access-Control-Allow-Origin', '*'); // Allow all origins for static files
+  res.header('Access-Control-Allow-Methods', 'GET');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header("cross-origin-resource-policy", "cross-origin");
+  next();
+}, express.static(path.join(__dirname, 'uploads')));
+
+
+// Serve static files from the public directory
+//app.use(express.static(path.join(__dirname, 'public')));
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/articles', articleRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/recaptcha', recaptchaRoutes);
 
-// Health check endpoint
+
+/* // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'ok', message: 'Server is running' });
-});
+}); */
 
 // Error handling middleware
 app.use((err, req, res, next) => {

@@ -2,16 +2,24 @@ import React, { useState } from 'react';
 import { localOrProd } from '../../utils/fonction/testEnvironement';
 
 function ArticleCard({ article }) {
-  const{urlApi} = localOrProd();
+  const { urlApi } = localOrProd();
   const [isFocused, setIsFocused] = useState(false);
   
   // Extract a short excerpt from the content
-  const excerpt = article.content.length > 150 
+  const excerpt = article.excerpt || (article.content && article.content.length > 150 
     ? article.content.substring(0, 150) + '...' 
-    : article.content;
+    : article.content || 'No excerpt available');
   
   // Format the date
-  const formattedDate = new Date(article.publishedAt).toLocaleDateString();
+  const formattedDate = new Date(article.publishedAt || article.createdAt).toLocaleDateString();
+  
+  // Get the correct image URL
+  const imageUrl = article.mainImage 
+    ? `${urlApi}/${article.mainImage}` 
+    : '/images/article-placeholder.jpg';
+  
+  // Get the article URL
+  const articleUrl = `/article/${article.id}`;
   
   return (
     <article 
@@ -21,11 +29,11 @@ function ArticleCard({ article }) {
       onBlur={() => setIsFocused(false)}
       onMouseEnter={() => setIsFocused(true)}
       onMouseLeave={() => setIsFocused(false)}
-      onClick={() => window.location.href = `/article/${article.id}`}
+      onClick={() => window.location.href = articleUrl}
     >
       <div className="article-image">
         <img 
-          src={urlApi+article.mainImage || '/images/article-placeholder.jpg'} 
+          src={imageUrl} 
           alt={article.title} 
           loading="lazy"
         />
@@ -36,7 +44,7 @@ function ArticleCard({ article }) {
           Published on {formattedDate} | Category: {article.category}
         </p>
         <p className="article-excerpt">{excerpt}</p>
-        <a href={`/article/${article.id}`} className="read-more-link">
+        <a href={articleUrl} className="read-more-link">
           Read more
         </a>
       </div>
@@ -44,4 +52,4 @@ function ArticleCard({ article }) {
   );
 }
 
-export { ArticleCard }; 
+export { ArticleCard };
