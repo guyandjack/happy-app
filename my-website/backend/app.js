@@ -84,9 +84,20 @@ app.use('/api/uploads', (req, res, next) => {
   next();
 }, express.static(path.join(__dirname, 'uploads')));
 
-
 // Serve static files from the public directory
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve frontend build files in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '..', 'dist')));
+  
+  // For any route not handled by the API, serve the index.html
+  app.get('*', (req, res) => {
+    if (!req.path.startsWith('/api')) {
+      res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
+    }
+  });
+}
 
 // Routes
 app.use('/api/auth', authRoutes);

@@ -2,10 +2,10 @@
 @use 'sass:color';
 
 $colors-rule: (
-    first-color: #001747,
+    first-color: #057ee6,
     second-color: #1ba4e3,
-    third-color: #ff6e00,
-    fourth-color: #9cd008,
+    third-color: #209966,
+    fourth-color: #ff2768,
     fifth-color: #171717,
     sixth-color: #fbfffe,
     disabled-color: #9ca3af,
@@ -13,19 +13,19 @@ $colors-rule: (
 );
 
 $colors-rule-darked-5: (
-    first-color: color.adjust(#001447, $lightness: 5%),
-    second-color: color.adjust(#1ba4e3, $lightness: 5%),
-    third-color: color.adjust(#ff6e00, $lightness: 5%),
-    fourth-color:color.adjust(#9cd008, $lightness: 5%),
-    sixth-color:color.adjust(#fbfffe, $lightness: 5%),
-    disabled-color: color.adjust(#9ca3af, $lightness: 5%),
+    first-color: darken(#057ee6, 5%),
+    second-color: darken(#1ba4e3, 5%),
+    third-color: darken(#209966, 5%),
+    fourth-color: darken(#ff2768, 5%),
+    sixth-color: darken(#fbfffe, 5%),
+    disabled-color: darken(#9ca3af, 5%),
 );
 
 $colors-rule-darked-10: (
-    first-color: color.adjust(#001447, $lightness: 10%),
-    second-color: color.adjust(#1ba4e3, $lightness: 10%),
-    third-color: color.adjust(#ff6e00, $lightness: 10%),
-    fourth-color:color.adjust(#9cd008, $lightness: 10%),
-    sixth-color:color.adjust(#fbfffe, $lightness: 10%),
-    disabled-color: color.adjust(#9ca3af, $lightness: 10%),
+    first-color: darken(#057ee6, 10%),
+    second-color: darken(#1ba4e3, 10%),
+    third-color: darken(#209966, 10%),
+    fourth-color: darken(#ff2768, 10%),
+    sixth-color: darken(#fbfffe, 10%),
+    disabled-color: darken(#9ca3af, 10%),
 );

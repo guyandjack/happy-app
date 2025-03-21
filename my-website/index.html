@@ -25,7 +25,7 @@
   <meta name="geo.placename" content="Paris">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="/src/styles/main.css">
+  <link rel="stylesheet" href="/src/styles/CSS/index.css">
   
   <!-- Schema.org Script -->
   <script type="application/ld+json">
@@ -40,6 +40,8 @@
   
   <!-- Scripts in head -->
   <script type="module" src="./src/main.jsx"></script>
+
+  <link rel="stylesheet" href="./src/styles/CSS/index.css">
 </head>
 <body>
   <!-- Navbar will be mounted here by React -->
@@ -63,20 +65,7 @@
           
           <h3>Nos services</h3>
           <div class="services-grid">
-            <div class="service-card">
-              <h4><strong>Conception de sites web sur mesure</strong></h4>
-              <p>Des sites web uniques et performants, conçus pour répondre exactement à vos <strong>objectifs commerciaux</strong> et à <strong>l'expérience utilisateur</strong> que vous souhaitez offrir.</p>
-            </div>
-            
-            <div class="service-card">
-              <h4><strong>Développement d'applications mobiles</strong></h4>
-              <p>Des applications mobiles <strong>intuitives</strong> et <strong>réactives</strong> pour iOS et Android, qui permettent à vos clients d'interagir avec votre entreprise où qu'ils soient.</p>
-            </div>
-            
-            <div class="service-card">
-              <h4><strong>Optimisation SEO</strong></h4>
-              <p>Améliorez votre <strong>visibilité en ligne</strong> grâce à nos stratégies d'optimisation pour les moteurs de recherche, conçues pour attirer un <strong>trafic qualifié</strong> vers votre site.</p>
-            </div>
+            <div id="RC-card-services"></div>
           </div>
           
           <h3>Nos valeurs</h3>
@@ -111,6 +100,13 @@
           </div>
         </div>
       </div>
+    </section>
+    
+    <!-- Service cards will be mounted here by React -->
+    <div id="RC-services"></div>
+    
+    <section class="about">
+      <!-- ... about content ... -->
     </section>
   </main>
   

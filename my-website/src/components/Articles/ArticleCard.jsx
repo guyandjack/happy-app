@@ -18,8 +18,27 @@ function ArticleCard({ article }) {
     ? `${urlApi}/${article.mainImage}` 
     : '/images/article-placeholder.jpg';
   
-  // Get the article URL
-  const articleUrl = `/article/${article.id}`;
+  // Create slug from title
+  const createSlug = (title) => {
+    return title
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .trim();
+  };
+  
+  // Get the article URL (server-rendered page)
+  const articleUrl = `${urlApi}/articles/page/${article.id}/${createSlug(article.title)}`;
+  
+  // Determine language from URL
+  const language = window.location.pathname.includes('/fr/') ? 'fr' : 'en';
+  const fullArticleUrl = `${articleUrl}?lang=${language}`;
+  
+  // Handle click on the entire card
+  const handleCardClick = () => {
+    window.location.href = fullArticleUrl;
+  };
   
   return (
     <article 
@@ -29,7 +48,8 @@ function ArticleCard({ article }) {
       onBlur={() => setIsFocused(false)}
       onMouseEnter={() => setIsFocused(true)}
       onMouseLeave={() => setIsFocused(false)}
-      onClick={() => window.location.href = articleUrl}
+      onClick={handleCardClick}
+      style={{ cursor: 'pointer' }}
     >
       <div className="article-image">
         <img 
@@ -44,12 +64,13 @@ function ArticleCard({ article }) {
           Published on {formattedDate} | Category: {article.category}
         </p>
         <p className="article-excerpt">{excerpt}</p>
-        <a href={articleUrl} className="read-more-link">
+        <span className="read-more-link">
           Read more
-        </a>
+        </span>
       </div>
     </article>
   );
 }
 
 export { ArticleCard };
+

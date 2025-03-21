@@ -1,0 +1,140 @@
+@import '../../utils/color-rule/color-rule.scss';
+
+.card-container {
+  margin-bottom: 60px;
+  
+  .container-header {
+    text-align: center;
+    margin-bottom: 40px;
+    
+    .container-title {
+      font-size: 2.2rem;
+      color: map-get($colors-rule, fifth-color);
+      margin-bottom: 16px;
+      position: relative;
+      display: inline-block;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background-color: map-get($colors-rule, first-color);
+        border-radius: 3px;
+      }
+    }
+    
+    .container-description {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+  }
+  
+  .cards-grid {
+    display: grid;
+    width: 100%;
+  }
+}
+
+// Container variants
+.card-container-dark {
+  background-color: map-get($colors-rule, fifth-color);
+  padding: 60px 0;
+  
+  .container-header {
+    .container-title {
+      color: map-get($colors-rule, sixth-color);
+      
+      &::after {
+        background-color: map-get($colors-rule, fourth-color);
+      }
+    }
+    
+    .container-description {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+.card-container-primary {
+  background-color: map-get($colors-rule, first-color);
+  padding: 60px 0;
+  
+  .container-header {
+    .container-title {
+      color: map-get($colors-rule, sixth-color);
+      
+      &::after {
+        background-color: map-get($colors-rule, sixth-color);
+      }
+    }
+    
+    .container-description {
+      color: rgba(255, 255, 255, 0.9);
+    }
+  }
+}
+
+.card-container-compact {
+  .container-header {
+    margin-bottom: 25px;
+    
+    .container-title {
+      font-size: 1.8rem;
+    }
+    
+    .container-description {
+      font-size: 1rem;
+    }
+  }
+  
+  .cards-grid {
+    gap: 15px !important;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 992px) {
+  .card-container {
+    .cards-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    margin-bottom: 40px;
+    
+    .container-header {
+      margin-bottom: 30px;
+      
+      .container-title {
+        font-size: 1.8rem;
+      }
+      
+      .container-description {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .card-container {
+    .cards-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+  
+  .card-container-dark,
+  .card-container-primary {
+    padding: 40px 0;
+  }
+}

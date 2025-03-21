@@ -10,7 +10,8 @@ router.get('/:id', articleController.getArticle);
 router.get('/:id/previous', articleController.getPreviousArticle);
 router.get('/:id/next', articleController.getNextArticle);
 
-
+// New SSR route for article pages
+router.get('/page/:id/:slug?', articleController.serveArticlePage);
 
 // Create article - no upload middleware here, it's in the controller
 router.post('/', authMiddleware.protect, articleController.createArticle);

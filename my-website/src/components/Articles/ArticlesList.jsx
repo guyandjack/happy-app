@@ -1,182 +1,187 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { ArticleCard } from './ArticleCard';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { FaFilter, FaSearch } from 'react-icons/fa';
 import { localOrProd } from '../../utils/fonction/testEnvironement';
+import { ArticleCard } from './ArticleCard';
 import '../../styles/CSS/articles.css';
+import '../../styles/SCSS/components/ArticleList.scss';
 
 function ArticlesList() {
   const { urlApi } = localOrProd();
   const [articles, setArticles] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  // Function to fetch articles from API
-  const fetchArticles = useCallback(async (category = 'all') => {
-    setIsLoading(true);
-    setError(null);
-    
-    try {
-      // Check if we have cached articles in localStorage
-      const cachedArticles = localStorage.getItem('cachedArticles');
-      const cachedTimestamp = localStorage.getItem('cachedArticlesTimestamp');
-      const cacheExpiry = 60 * 60 * 1000; // 1 hour in milliseconds
-      
-      // If we have a valid cache, use it
-      if (cachedArticles && cachedTimestamp && (Date.now() - parseInt(cachedTimestamp)) < cacheExpiry) {
-        const parsedArticles = JSON.parse(cachedArticles);
-        setArticles(parsedArticles);
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        setIsLoading(true);
+        const params = { 
+          page: currentPage,
+          limit: 12
+        };
         
-        // Filter articles if a category is selected
-        if (category !== 'all') {
-          setFilteredArticles(parsedArticles.filter(article => article.category === category));
-        } else {
-          setFilteredArticles(parsedArticles);
-        }
+        if (selectedCategory) params.category = selectedCategory;
+        
+        const response = await axios.get(`${urlApi}/articles`, { params });
+        
+        setArticles(response.data.data.articles);
+        setFilteredArticles(response.data.data.articles);
+        setTotalPages(response.data.totalPages || 1);
         
         // Extract unique categories
-        const uniqueCategories = [...new Set(parsedArticles.map(article => article.category))];
+        const uniqueCategories = [...new Set(response.data.data.articles.map(article => article.category))];
         setCategories(uniqueCategories);
         
         setIsLoading(false);
-        return;
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+        setError('Failed to load articles. Please try again later.');
+        setIsLoading(false);
       }
-      
-      // If no valid cache, fetch from API
-      const endpoint = category === 'all' 
-        ? `${urlApi}/articles?limit=9` 
-        : `${urlApi}/articles?category=${category}&limit=9`;
-        
-      const response = await fetch(endpoint);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      
-      // Cache the fetched articles
-      localStorage.setItem('cachedArticles', JSON.stringify(data));
-      localStorage.setItem('cachedArticlesTimestamp', Date.now().toString());
-      
-      setArticles(data);
-      
-      if (category !== 'all') {
-        setFilteredArticles(data.filter(article => article.category === category));
-      } else {
-        setFilteredArticles(data);
-      }
-      
-      // Extract unique categories
-      const uniqueCategories = [...new Set(data.map(article => article.category))];
-      setCategories(uniqueCategories);
-      
-    } catch (err) {
-      console.error('Error fetching articles:', err);
-      setError('Failed to load articles. Please try again later.');
-    } finally {
-      setIsLoading(false);
-    }
-  }, [urlApi]);
+    };
 
-  // Initial fetch on component mount
-  useEffect(() => {
     fetchArticles();
-  }, [fetchArticles]);
+  }, [currentPage, selectedCategory, urlApi]);
 
-  // Handle category change
-  const handleCategoryChange = (e) => {
-    const category = e.target.value;
-    setSelectedCategory(category);
-    
-    if (category === 'all') {
+  useEffect(() => {
+    // Filter articles based on search term
+    if (searchTerm.trim() === '') {
       setFilteredArticles(articles);
     } else {
-      setFilteredArticles(articles.filter(article => article.category === category));
+      const filtered = articles.filter(article => 
+        article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (article.excerpt && article.excerpt.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (article.tags && article.tags.some(tag => 
+          typeof tag === 'string' && tag.toLowerCase().includes(searchTerm.toLowerCase())
+        ))
+      );
+      setFilteredArticles(filtered);
     }
+  }, [searchTerm, articles]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    // Scroll to top when changing page
+    window.scrollTo(0, 0);
   };
 
-  // Group articles by category for display
-  const groupedArticles = {};
-  
-  if (selectedCategory === 'all') {
-    // Group by category and limit to 3 per category
-    filteredArticles.forEach(article => {
-      if (!groupedArticles[article.category]) {
-        groupedArticles[article.category] = [];
-      }
-      
-      if (groupedArticles[article.category].length < 3) {
-        groupedArticles[article.category].push(article);
-      }
-    });
-  } else {
-    // Just use the filtered articles
-    groupedArticles[selectedCategory] = filteredArticles;
-  }
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
-  return (
-    <div className="articles-container">
-      <div className="filter-container">
-        <label htmlFor="category-filter">Filter by category:</label>
-        <select 
-          id="category-filter" 
-          value={selectedCategory} 
-          onChange={handleCategoryChange}
-          className="category-select"
-        >
-          <option value="all">All Categories</option>
-          {categories.map(category => (
-            <option key={category} value={category}>
-              {category.charAt(0).toUpperCase() + category.slice(1)}
-            </option>
-          ))}
-        </select>
-      </div>
-      
-      {isLoading && (
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+    setCurrentPage(1); // Reset to first page when changing category
+  };
+
+  if (isLoading && articles.length === 0) {
+    return (
+      <div className="articles-container">
         <div className="loading-container">
           <div className="loader"></div>
           <p>Loading articles...</p>
         </div>
-      )}
-      
-      {error && (
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="articles-container">
         <div className="error-container">
           <p className="error-message">{error}</p>
           <button 
             className="retry-button"
-            onClick={() => fetchArticles(selectedCategory)}
+            onClick={() => window.location.reload()}
           >
             Try Again
           </button>
         </div>
-      )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="articles-container">
+      <div className="articles-header">
+        <h2>Our Latest Articles</h2>
+        <p>Discover insights, tutorials, and news about web development and digital solutions</p>
+      </div>
       
-      {!isLoading && !error && Object.keys(groupedArticles).length === 0 && (
+      <div className="filters">
+        <div className="search-box">
+          <FaSearch className="search-icon" />
+          <input
+            type="text"
+            placeholder="Search articles..."
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+        </div>
+        <div className="category-filter">
+          <FaFilter className="filter-icon" />
+          <select value={selectedCategory} onChange={handleCategoryChange}>
+            <option value="">All Categories</option>
+            {categories.map(category => (
+              <option key={category} value={category}>
+                {category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ')}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {filteredArticles.length === 0 ? (
         <div className="no-articles">
-          <p>No articles found for this category.</p>
+          {searchTerm ? 'No articles match your search.' : 'No articles found.'}
+        </div>
+      ) : (
+        <div className="articles-grid">
+          {filteredArticles.map(article => (
+            <ArticleCard key={article.id} article={article} />
+          ))}
         </div>
       )}
-      
-      {!isLoading && !error && Object.keys(groupedArticles).map(category => (
-        <div key={category} className="category-section">
-          <h2 className="category-title">
-            {category.charAt(0).toUpperCase() + category.slice(1)}
-          </h2>
-          <div className="articles-grid">
-            {groupedArticles[category].map(article => (
-              <ArticleCard 
-                key={article.id} 
-                article={article} 
-              />
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="pagination">
+          <button
+            className="prev-page"
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <div className="page-numbers">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                className={`page-number ${page === currentPage ? 'active' : ''}`}
+                onClick={() => handlePageChange(page)}
+              >
+                {page}
+              </button>
             ))}
           </div>
+          <button
+            className="next-page"
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
         </div>
-      ))}
+      )}
     </div>
   );
 }
 
-export { ArticlesList }; 
+export { ArticlesList };

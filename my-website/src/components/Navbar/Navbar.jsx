@@ -3,19 +3,24 @@ import React, { useEffect, useState } from 'react';
 
 //imports des composants enfants
 //import { ReactSVG } from 'react-svg';
-
+//import des fonctions
+import { localOrProd } from '../../utils/fonction/testEnvironement.js';
+ const { url, url_api,mode } = localOrProd();
 //import des icons
 //import burgerIcon from '../../../public/images/icons/menu-burger.svg';
-import flagEN from "../../assets/images/icons/flag-en.png";
-import flagFR from "../../assets/images/icons/flag-fr.png";
+const flagEN = `${url}/src/assets/images/icons/flag-en.png`;
+const flagFR = `${url}/src/assets/images/icons/flag-fr.png`;
 
 //import des images
-import logo from "../../assets/images/logo-happy-app.webp";
+const logo = `${url}/src/assets/images/logo-happy-app.webp`;
+
 
 //import du fichier scss
 import '../../styles/CSS/navbar.css';
 
+
 function Navbar() {
+ 
   const [isOpen, setIsOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState('');
   const [currentLang, setCurrentLang] = useState('fr');
@@ -40,32 +45,32 @@ function Navbar() {
   // Updated menu items with services submenu
   const menuItems = {
     fr: [
-      { path: '/index.html', text: 'Accueil' },
-      { path: '/fr/qui-suis-je.html', text: 'Qui suis je' },
+      { path: `${url}/index.html`, text: 'Accueil' },
+      { path: `${url}/public/fr/qui-suis-je.html`, text: 'Qui suis je' },
       { 
         text: 'Prestations',
         submenu: [
-          { path: '/fr/prestations/site-web.html', text: 'Site Web' },
-          { path: '/fr/prestations/seo.html', text: 'Référencement' },
-          { path: '/fr/prestations/application-mobile.html', text: 'Application Mobile' }
+          { path: `${url}/fr/prestations/site-web.html`, text: 'Site Web' },
+          { path: `${url}/fr/prestations/seo.html`, text: 'Référencement' },
+          { path: `${url}/fr/prestations/application-mobile.html`, text: 'Application Mobile' }
         ]
       },
-      { path: '/fr/realisations.html', text: 'Réalisations' },
-      { path: '/fr/contact.html', text: 'Contact' }
+      { path: `${url}/fr/realisations.html`, text: 'Réalisations' },
+      { path: `${url}/fr/contact.html`, text: 'Contact' }
     ],
     en: [
-      { path: '/en/home.html', text: 'Home' },
-      { path: '/en/about.html', text: 'Who I am' },
+      { path: `${url}/en/home.html`, text: 'Home' },
+      { path: `${url}/en/about.html`, text: 'Who I am' },
       { 
         text: 'Services',
         submenu: [
-          { path: '/en/services/website.html', text: 'Website' },
-          { path: '/en/services/seo.html', text: 'SEO' },
-          { path: '/en/services/mobile-application.html', text: 'Mobile App' }
+          { path: `${url}/en/services/website.html`, text: 'Website' },
+          { path: `${url}/en/services/seo.html`, text: 'SEO' },
+          { path: `${url}/en/services/mobile-application.html`, text: 'Mobile App' }
         ]
       },
-      { path: '/en/achievements.html', text: 'Achievements' },
-      { path: '/en/contact.html', text: 'Contact' }
+      { path: `${url}/en/achievements.html`, text: 'Achievements' },
+      { path: `${url}/en/contact.html`, text: 'Contact' }
     ]
   };
 
