@@ -1,0 +1,105 @@
+/****************************************
+******** personal reset 
+****************************************/
+@font-face {
+    font-family: 'nunito';
+    src: url(../../font/Nunito-VariableFont_wght.ttf) format('ttf');
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    text-decoration: none;
+    //list-style-type: none;
+
+    font-size: 1em;
+    font-weight: 500;
+    font-family: 'nunito', Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+
+/********************************************************
+**********page size ******
+********************************************************/
+body, header {
+
+    width: 100%;
+    margin: 0 auto;
+
+}
+
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height:90px;
+}
+
+
+
+.page-container {
+   
+
+    width: 100%;
+    max-width: 2000px;
+    margin: 0 auto;
+    //border: 2px solid red;
+   //padding: 0px 100px;
+}
+
+/********************************************************
+**********page ******
+********************************************************/
+/********************************************************
+**********pagination ******
+********************************************************/
+
+.h4-title{
+    font-size: 1.1em;
+    //font-weight: 500;
+    //color: #000;
+    margin-bottom: 10px;
+}
+/********************************************************
+**********paginatio ******
+********************************************************/
+
+
+
+/********************************************************
+**********Flexbox utilities for responsive design ******
+********************************************************/
+
+// Flexbox column
+.flex-column-start-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.flex-column-center-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+// Flexbox row
+.flex-row-start-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.flex-row-space-between-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

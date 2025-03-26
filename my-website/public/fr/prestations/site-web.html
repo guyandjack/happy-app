@@ -25,7 +25,9 @@
   <meta name="geo.placename" content="Paris">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="/src/styles/main.css">
+  <link rel="stylesheet" href="../../../src/styles/CSS/normalize.css">
+  <link rel="stylesheet" href="../../../src/styles/CSS/shared-style.css">
+  <link rel="stylesheet" href="../../../src/styles/CSS/site-web.css">
   
   <!-- Schema.org Script -->
   <script type="application/ld+json">
@@ -47,11 +49,16 @@
   </script>
   
   <!-- Scripts in head -->
-  <script type="module" src="../../../src/main.jsx"></script>
+  <script type="module" src="../../src/main.jsx"></script>
+  
+  <!-- Scripts js -->
+  <script type="module" src="../../src/javascript/main.js"></script>
 </head>
 <body>
-  <!-- Navbar will be mounted here by React -->
-  <div id="RC-navbar"></div>
+  <header>
+    <!-- Navbar will be mounted here by React -->
+    <div id="RC-navbar"></div>
+  </header>
   
   <main>
     <!-- Part B: Hero Section -->
@@ -214,7 +221,7 @@
       <div class="container">
         <h2>Prêt à <strong>lancer votre projet web</strong> ?</h2>
         <p>Contactez-moi dès aujourd'hui pour discuter de vos besoins et obtenir un devis personnalisé pour votre site web.</p>
-        <a href="/fr/contact.html" class="btn btn-primary">Demander un devis gratuit</a>
+        <button type="button" id="btn-contact" class="btn btn-primary">Demander un devis gratuit</button>
       </div>
     </section>
   </main>

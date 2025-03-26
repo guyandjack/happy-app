@@ -340,17 +340,3 @@ template {
 [hidden] {
   display: none;
 }
-
-/****************************************
-******** personal reset 
-****************************************/
-* {
-  margin: 0px;
-  padding: 0px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  text-decoration: none;
-  list-style-type: none;
-  font-size: 1em;
-  font-weight: 500;
-}

@@ -11,6 +11,7 @@ import { ArticlesList } from './components/Articles/ArticlesList';
 import { Dashboard } from './components/Dashboard/Dashboard.jsx';
 import { ArticleMenuSide } from './components/Navbar/ArticleMenuSide.jsx';
 import { IndexCards } from './components/Card/IndexCards.jsx';
+import { Hero } from './components/Hero/Hero.jsx';
 
 /******* concerne toutes les pages********************
  * ***start
@@ -26,6 +27,15 @@ if (navbarContainer) {
   );
 }
 
+//mount hero
+const heroContainer = document.getElementById('RC-hero');
+if (heroContainer) {
+  ReactDOM.createRoot(heroContainer).render(
+    <React.StrictMode>
+      <Hero />
+    </React.StrictMode>
+  );
+} 
 /* // Mount Footer
 const footerContainer = document.getElementById('RC-footer');
 if (footerContainer) {

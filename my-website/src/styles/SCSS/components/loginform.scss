@@ -1,15 +1,17 @@
 
 /* Login Form Styles */
-@use "../../utils/breakpoint/breakpoint.scss";
-@use "../../utils/color-rule/color-rule.scss";
+@import "../../utils/breakpoint/breakpoint.scss";
+@import "../../utils/color-rule/color-rule.scss";
 
 .login-form-container {
     width: 100%;
-    max-width: 28rem;
+    //max-width: 28rem;
     margin: 0 auto;
 }
 
 .login-form {
+    width: 100%;
+    //max-width: 800px;
     padding: 1.5rem;
     background-color: white;
     border-radius: 0.5rem;

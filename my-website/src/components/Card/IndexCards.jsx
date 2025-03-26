@@ -9,13 +9,23 @@ const IndexCards = () => {
     const uriPrestaWeb = lang ? "fr/prestations/site-web.html" : "en/services/website.html";
     const uriPrestaApp = lang ? "fr/prestations/application-mobile.html" : "en/services/mobile-application.html";
     const uriPrestaSeo = lang ? "fr/prestations/seo.html" : "en/services/seo.html";
+
+    const descriptionPrestaWeb = lang ? "Des sites web uniques et performants, conçus pour répondre exactement à vos objectifs commerciaux et à l'expérience utilisateur que vous souhaitez offrir." : "Unique and performant websites, designed to meet your business goals and user experience you want to offer.";
+
+    const descriptionPrestaSeo = lang ? "Améliorez votre visibilité en ligne grâce à nos stratégies d'optimisation pour les moteurs de recherche, conçues pour attirer un trafic qualifié vers votre site." : "Improve your online visibility thanks to our optimization strategies for search engines, designed to attract qualified traffic to your site.";
+
+    const descriptionPrestaApp = lang ? "Des applications mobiles intuitives et réactives pour iOS et Android, qui permettent à vos clients d'interagir avec votre entreprise où qu'ils soient." : "Intuitive and responsive mobile applications for iOS and Android, which allow your clients to interact with your business wherever they are.";
+
+    const titlePrestaWeb = lang ? "Conception de sites web sur mesure" : "Custom website design";
+    const titlePrestaSeo = lang ? "Optimisation SEO" : "SEO Optimization";
+    const titlePrestaApp = lang ? "Développement d'applications mobiles" : "Mobile application development";
     
   const indexCards = [
     {
         width:"300px",
         height: "500px",
-      title: 'Conception de sites web sur mesure',
-      description: 'Des sites web uniques et performants, conçus pour répondre exactement à vos objectifs commerciaux et à l\'expérience utilisateur que vous souhaitez offrir.',
+      title: `${titlePrestaWeb}`,
+      description: `${descriptionPrestaWeb}`,
       linkUrl: `${url}/${uriPrestaWeb}`,
       accentColor: '#057ee6',
       imageUrl: `${url}/src/assets/images/img-card-web-v2.webp`,
@@ -23,8 +33,8 @@ const IndexCards = () => {
     {
         width:"300px",
         height: "500px",
-      title: 'Optimisation SEO',
-      description: 'Améliorez votre visibilité en ligne grâce à nos stratégies d\'optimisation pour les moteurs de recherche, conçues pour attirer un trafic qualifié vers votre site.',
+      title: `${titlePrestaSeo}`,
+      description: `${descriptionPrestaSeo}`,
       linkUrl: `${url}/${uriPrestaSeo}`,
       accentColor: '#209966',
       imageUrl: `${url}/src/assets/images/img-card-seo.webp`,
@@ -32,8 +42,8 @@ const IndexCards = () => {
     {
         width:"300px",
         height: "500px",
-      title: 'Développement d\'applications mobiles',
-      description: 'Des applications mobiles intuitives et réactives pour iOS et Android, qui permettent à vos clients d\'interagir avec votre entreprise où qu\'ils soient.',
+      title: `${titlePrestaApp}`,
+      description: `${descriptionPrestaApp}`,
       linkUrl: `${url}/${uriPrestaApp}`,
       accentColor: '#1ba4e3',
       imageUrl: `${url}/src/assets/images/img-card-app.webp`,

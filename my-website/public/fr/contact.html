@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <!-- SEO Meta Tags -->
   <title>Contact | My Web Dev Company</title>
-  <meta name="description" content="Contactez-nous pour discuter de votre projet de développement web ou pour obtenir un devis gratuit.">
-  
+  <meta name="description"
+    content="Contactez-nous pour discuter de votre projet de développement web ou pour obtenir un devis gratuit.">
+
   <!-- Open Graph Tags -->
   <meta property="og:title" content="Contact | My Web Dev Company">
-  <meta property="og:description" content="Contactez-nous pour discuter de votre projet de développement web ou pour obtenir un devis gratuit.">
+  <meta property="og:description"
+    content="Contactez-nous pour discuter de votre projet de développement web ou pour obtenir un devis gratuit.">
   <meta property="og:image" content="/images/og-contact.jpg">
   <meta property="og:url" content="https://mywebdevcompany.com/fr/contact.html">
   <meta property="og:type" content="website">
-  
+
   <!-- Canonical and Alternate Links -->
   <link rel="canonical" href="https://mywebdevcompany.com/fr/contact.html">
   <link rel="alternate" hreflang="fr" href="https://mywebdevcompany.com/fr/contact.html">
   <link rel="alternate" hreflang="en" href="https://mywebdevcompany.com/en/contact.html">
-  
+
   <!-- Geolocation Tags -->
   <meta name="geo.region" content="FR">
   <meta name="geo.placename" content="Paris">
-  
+
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="/src/styles/main.css">
-  
+  <link rel="stylesheet" href="../../src/styles/CSS/normalise.css">
+  <link rel="stylesheet" href="../../src/styles/CSS/shared-style.css">
+  <link rel="stylesheet" href="../../src/styles/CSS/contact.css">
+
   <!-- Schema.org Script -->
   <script type="application/ld+json">
   {
@@ -36,65 +41,86 @@
     "description": "Contactez-nous pour discuter de votre projet de développement web ou pour obtenir un devis gratuit."
   }
   </script>
-  
+
   <!-- Scripts in head -->
   <script type="module" src="../../src/main.jsx"></script>
 </head>
+
 <body>
-  <!-- Navbar will be mounted here by React -->
-  <div id="RC-navbar"></div>
-  
-  <main>
-    <section class="hero">
-      <div class="container">
-        <h1>Contact</h1>
-        <p>Discutons de votre projet ensemble</p>
-      </div>
-    </section>
-    
-    <section class="contact-content">
-      <div class="container">
-        <div class="contact-grid">
-          <div id="RC-contact-form" class="contact-form">
-            
+  <div class="page-container">
+
+
+    <header>
+      <!-- Navbar will be mounted here by React -->
+      <div id="RC-navbar"></div>
+    </header>
+
+    <main>
+      <section id = "RC-hero">
+
+      </section>
+      
+      <section class="introduction">
+        <p class="text-intro">Donnez un nouvel élan à votre présence en ligne.
+          Site web éco-conçu, référencement optimisé, solutions digitales sur mesure :  transformons vos idées en résultats concrets. Parlons de votre projet, et créons ensemble une expérience digitale à votre image.</p>
+      </section>
+
+      <section class="contact-content">
+        <img 
+        id="img-contact-1"
+        class="img-contact"
+        src="../../src/assets/images/page-contact/img-anim-contact.webp" alt="Contact">
+         
+
+        <div class="flex-column-start-center contact-grid">
+          <div class="flex-column-start-center contact-form-container">
+            <p class="">Prêt à concrétiser votre projet digital ?
+              Que ce soit pour un devis, un audit d’éco-conception ou une analyse SEO, il vous suffit de remplir le
+              formulaire
+              ci-dessous. Nous prenons le relais et donnons vie à vos idées.</p>
+            <div id="RC-contact-form" class="">
+
+            </div>
           </div>
-          
-          <div class="contact-info">
+
+          <div class="flex-column-start-center contact-info">
             <h2>Informations de contact</h2>
             <div class="info-item">
               <h3>Adresse</h3>
-              <p>123 Rue de Paris, 75001 Paris, France</p>
+              <p>3963 Montana VS</p>
             </div>
-            
+
             <div class="info-item">
               <h3>Email</h3>
-              <p><a href="mailto:contact@mywebdevcompany.com">contact@mywebdevcompany.com</a></p>
+              <p><a href="mailto:info@mywebdevcompany.com">
+                contact@mywebdevcompany.com
+              </a></p>
             </div>
-            
+
             <div class="info-item">
               <h3>Téléphone</h3>
-              <p><a href="tel:+33123456789">+33 1 23 45 67 89</a></p>
+              <p><a href="tel:+41788940987">+41 78 894 0987 </a></p>
             </div>
-            
+
             <div class="info-item">
               <h3>Horaires</h3>
               <p>Lundi - Vendredi: 9h00 - 18h00</p>
             </div>
+
+            <img id="img-contact-2" class="img-contact" src="../../src/assets/images/page-contact/img-head-contact-2.webp"
+              alt="Contact">
           </div>
         </div>
-        
-        <div class="map-container">
-          <h2>Nous trouver</h2>
-          <div class="map">
-            <!-- Map will be embedded here -->
-            <img src="/images/map-placeholder.jpg" alt="Carte de localisation" class="map-placeholder">
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-  
-  <!-- Footer will be mounted here by React -->
-  <div id="RC-footer"></div>
+
+      </section>
+
+    </main>
+
+    <footer>
+      <!-- Footer will be mounted here by React -->
+      <div id="RC-footer"></div>
+    </footer>
+  </div>
 </body>
-</html> 
+
+</html>

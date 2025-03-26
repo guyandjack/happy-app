@@ -55,7 +55,6 @@ function Navbar() {
           { path: `${url}/fr/prestations/application-mobile.html`, text: 'Application Mobile' }
         ]
       },
-      { path: `${url}/fr/realisations.html`, text: 'Réalisations' },
       { path: `${url}/fr/contact.html`, text: 'Contact' }
     ],
     en: [
@@ -69,7 +68,6 @@ function Navbar() {
           { path: `${url}/en/services/mobile-application.html`, text: 'Mobile App' }
         ]
       },
-      { path: `${url}/en/achievements.html`, text: 'Achievements' },
       { path: `${url}/en/contact.html`, text: 'Contact' }
     ]
   };

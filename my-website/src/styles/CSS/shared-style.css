@@ -1,0 +1,124 @@
+/****************************************
+******** personal reset 
+****************************************/
+@font-face {
+  font-family: 'nunito';
+  src: url(../../font/Nunito-VariableFont_wght.ttf) format("ttf");
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: 'nunito', Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+/********************************************************
+**********page size ******
+********************************************************/
+body, header {
+  width: 100%;
+  margin: 0 auto;
+}
+
+header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 90px;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
+}
+
+/********************************************************
+**********page ******
+********************************************************/
+/********************************************************
+**********pagination ******
+********************************************************/
+.h4-title {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+/********************************************************
+**********paginatio ******
+********************************************************/
+/********************************************************
+**********Flexbox utilities for responsive design ******
+********************************************************/
+.flex-column-start-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flex-column-center-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flex-row-start-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flex-row-space-between-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
