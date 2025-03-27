@@ -1,0 +1,45 @@
+@import '../../utils/color-rule/color-rule.scss';
+
+// CTA section
+.cta-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, map-get($colors-rule, first-color) 0%, map-get($colors-rule, second-color) 100%);
+    color: map-get($colors-rule, sixth-color);
+    text-align: center;
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    h2 {
+        font-size: 2.8rem;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+        opacity: 0.9;
+    }
+
+    .btn-primary {
+        display: inline-block;
+        background-color: map-get($colors-rule, sixth-color);
+        color: map-get($colors-rule, first-color);
+        padding: 15px 40px;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 2px solid map-get($colors-rule, sixth-color);
+
+        &:hover {
+            background-color: transparent;
+            color: map-get($colors-rule, sixth-color);
+            transform: translateY(-5px);
+        }
+    }
+}

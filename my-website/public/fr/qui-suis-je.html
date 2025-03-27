@@ -53,8 +53,7 @@
   <!-- Scripts in head -->
   <script type="module" src="../../src/main.jsx"></script>
 
-  <!-- Scripts js -->
-  <script type="module" src="../../src/javascript/main.js"></script>
+  
 </head>
 
 <body>
@@ -65,13 +64,8 @@
     </header>
 
     <main>
-      <section class="hero">
-        <img src="../../src/assets/images/page-qui-suis-je/img-header-about-me.webp" alt="Contact">
-        <img src="../../src/assets/images/page-qui-suis-je/img-header-about-me-2.webp" alt="Contact">
-        <div class="container">
-          <h1>Qui suis-je</h1>
-          <p class="hero-subtitle"><strong>Développeur web passionné</strong> et <strong>engagé</strong></p>
-        </div>
+      <section id="RC-hero">
+
       </section>
 
       <section class="about-section">
@@ -81,18 +75,7 @@
               <img src="../../src/assets/images/page-qui-suis-je/img-id-ok.jpg" alt="Photo de profil"
                 class="profile-photo">
 
-              <!-- <div class="social-links">
-              <a href="https://linkedin.com/in/votre-profil" target="_blank" rel="noopener noreferrer" class="linkedin-link">
-                <img 
-                src="../../src/assets/images/icons/linkedin-v2.png" 
-                alt="LinkedIn" 
-                class="social-icon"
-                width="24"
-                height="24"
-                >
-                <span>Retrouvez-moi sur LinkedIn</span>
-              </a>
-            </div> -->
+
             </div>
 
             <div class="about-content">
@@ -113,7 +96,8 @@
                   <h4><strong>Engagement</strong></h4>
                   <p>Je m'engage pleinement dans chaque projet que j'entreprends. Votre réussite est ma
                     <strong>priorité</strong>, et je mets tout en œuvre pour livrer un <strong>travail de
-                      qualité</strong> qui dépasse vos attentes.</p>
+                      qualité</strong> qui dépasse vos attentes.
+                  </p>
                 </div>
 
                 <div class="value-item">
@@ -127,16 +111,19 @@
                   <h4><strong>Excellence technique</strong></h4>
                   <p>Je m'efforce constamment d'améliorer mes compétences et de rester à jour avec les <strong>dernières
                       technologies</strong>. Cela me permet de vous offrir des solutions <strong>modernes</strong>,
-                    <strong>performantes</strong> et <strong>évolutives</strong>.</p>
+                    <strong>performantes</strong> et <strong>évolutives</strong>.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="process-section">
-            <h2>Mon <strong>processus de travail</strong></h2>
-            <p>Je crois qu'un processus de travail structuré est essentiel pour la réussite d'un projet. Voici comment
-              je collabore avec mes clients :</p>
+            <div class="container">
+              <h2>Mon <strong>processus de travail</strong></h2>
+              <p>Je crois qu'un processus de travail structuré est essentiel pour la réussite d'un projet. Voici comment
+                je collabore avec mes clients :</p>
+            </div>
 
             <div class="process-steps">
               <div class="process-step">
@@ -201,12 +188,11 @@
             </div>
           </div>
 
-          <div class="cta-section">
-            <h2>Prêt à <strong>travailler ensemble</strong> ?</h2>
-            <p>Si vous cherchez un <strong>développeur web passionné et engagé</strong> pour votre prochain projet, je
-              serais ravi d'en discuter avec vous.</p>
-            <button type="button" id="btn-contact" class="btn btn-primary">Contactez-moi</button>
+          <div id="RC-cta-section">
+
+
           </div>
+          
         </div>
       </section>
     </main>

@@ -1,7 +1,8 @@
-import { localOrProd } from "../utils/fonction/testEnvironement.js";
+//import des fonctions
+import { localOrProd } from "./testEnvironement.js";
 
-
-function locationToContact() {
+//redirige vers la page de contact en fonction de la langue
+function locationToPageContact() {
     const { url } = localOrProd();
     if (window.location.pathname.includes("index") ||
         window.location.pathname.includes("fr")) {
@@ -11,8 +12,5 @@ function locationToContact() {
     window.location.href = `${url}/en/contact.html`;
 }
 
-let buttonContact = document.getElementById("btn-contact");
-if(buttonContact) { 
-    buttonContact.addEventListener("click", () => { locationToContact() });
-}   
 
+export { locationToPageContact };

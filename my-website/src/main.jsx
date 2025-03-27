@@ -12,6 +12,7 @@ import { Dashboard } from './components/Dashboard/Dashboard.jsx';
 import { ArticleMenuSide } from './components/Navbar/ArticleMenuSide.jsx';
 import { IndexCards } from './components/Card/IndexCards.jsx';
 import { Hero } from './components/Hero/Hero.jsx';
+import { CtaSection } from './components/CtaSection/CtaSection.jsx';
 
 /******* concerne toutes les pages********************
  * ***start
@@ -36,6 +37,17 @@ if (heroContainer) {
     </React.StrictMode>
   );
 } 
+
+//mount cta section
+const ctaSectionContainer = document.getElementById('RC-cta-section');
+if (ctaSectionContainer) {
+  ReactDOM.createRoot(ctaSectionContainer).render(
+    <React.StrictMode>
+      <CtaSection />
+    </React.StrictMode>
+  );
+}
+
 /* // Mount Footer
 const footerContainer = document.getElementById('RC-footer');
 if (footerContainer) {

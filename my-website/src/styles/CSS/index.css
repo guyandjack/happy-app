@@ -1,110 +1,4 @@
 @charset "UTF-8";
-/*body {
-  //font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  //line-height: 1.6;
-  color: map-get($colors-rule, fifth-color);
-  background-color: map-get($colors-rule, sixth-color);
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}*/
-#RC-navbar {
-  width: 100%;
-}
-
-/*.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}*/
-.hero {
-  background: -webkit-linear-gradient(315deg, #057ee6 0%, #1ba4e3 100%);
-  background: -o-linear-gradient(315deg, #057ee6 0%, #1ba4e3 100%);
-  background: linear-gradient(135deg, #057ee6 0%, #1ba4e3 100%);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: #fbfffe;
-  padding: 120px 0 80px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 60px;
-}
-
-.hero > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 500px;
-  height: 400px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -webkit-clip-path: polygon(0% 0%, 100% 0%, 60% 100%, 0% 100%);
-          clip-path: polygon(0% 0%, 100% 0%, 60% 100%, 0% 100%);
-}
-
-.hero > img:nth-child(2) {
-  top: -5%;
-  height: 500px;
-  left: calc(100% - 350px);
-  border-radius: 50%;
-  -webkit-clip-path: none;
-          clip-path: none;
-  opacity: 0.8;
-}
-
-.hero::after {
-  z-index: 10;
-  content: '';
-  position: absolute;
-  bottom: -50px;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background-color: #fbfffe;
-  -webkit-clip-path: polygon(0 50%, 100% 0, 100% 100%, 0% 100%);
-          clip-path: polygon(0 50%, 100% 0, 100% 100%, 0% 100%);
-}
-
-.hero .container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.hero .container h1 {
-  font-size: 3.5rem;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
-  position: relative;
-  display: inline-block;
-}
-
-.hero .container h1::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background-color: #ff2768;
-  border-radius: 2px;
-}
-
-.hero .container .hero-intro {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  max-width: 800px;
-  margin: 0 auto;
-  opacity: 0.9;
-}
-
 .intro {
   padding: 80px 0;
 }
@@ -122,7 +16,7 @@
 }
 
 .intro .intro-content h2 strong {
-  color: #057ee6;
+  color: #861657;
 }
 
 .intro .intro-content p {
@@ -131,7 +25,7 @@
 }
 
 .intro .intro-content p strong {
-  color: #057ee6;
+  color: #861657;
 }
 
 .services {
@@ -199,7 +93,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: #057ee6;
+  background-color: #861657;
   color: white;
   font-size: 2rem;
 }
@@ -221,7 +115,7 @@
 
 .services .services-grid .service-card .service-content .service-link {
   display: inline-block;
-  color: #057ee6;
+  color: #861657;
   font-weight: 600;
   text-decoration: none;
   position: relative;
@@ -320,9 +214,9 @@
 .cta {
   width: 80%;
   margin: 0 auto;
-  background: -webkit-linear-gradient(315deg, #209966 0%, #1ba4e3 100%);
-  background: -o-linear-gradient(315deg, #209966 0%, #1ba4e3 100%);
-  background: linear-gradient(135deg, #209966 0%, #1ba4e3 100%);
+  background: -webkit-linear-gradient(315deg, #008751 0%, #028CF3 100%);
+  background: -o-linear-gradient(315deg, #008751 0%, #028CF3 100%);
+  background: linear-gradient(135deg, #008751 0%, #028CF3 100%);
   color: white;
   padding: 80px 0;
   text-align: center;
@@ -378,7 +272,7 @@
 
 .cta .cta-buttons .btn.btn-primary {
   background-color: white;
-  color: #209966;
+  color: #008751;
 }
 
 .cta .cta-buttons .btn.btn-primary:hover {
@@ -454,7 +348,7 @@
   top: 0;
   font-size: 3rem;
   line-height: 1;
-  color: #057ee6;
+  color: #861657;
   opacity: 0.3;
 }
 
@@ -535,8 +429,8 @@
 }
 
 .contact .contact-grid .contact-info .contact-methods .contact-method .method-icon {
-  background-color: rgba(5, 126, 230, 0.1);
-  color: #057ee6;
+  background-color: rgba(134, 22, 87, 0.1);
+  color: #861657;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -571,7 +465,7 @@
 
 .contact .contact-grid .contact-info .contact-methods .contact-method .method-content p:hover,
 .contact .contact-grid .contact-info .contact-methods .contact-method .method-content a:hover {
-  color: #057ee6;
+  color: #861657;
 }
 
 .contact .contact-grid .contact-form-container {

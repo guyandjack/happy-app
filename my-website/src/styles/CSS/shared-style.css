@@ -33,7 +33,19 @@ header {
   left: 0;
   right: 0;
   z-index: 1000;
+}
+
+/**** corrige le cls avec une hauteur fixe, pour le contenu dynamique ***/
+#RC-navbar {
   height: 90px;
+}
+
+#RC-hero {
+  height: 400px;
+}
+
+#RC-cta-section {
+  height: 400px;
 }
 
 .page-container {
