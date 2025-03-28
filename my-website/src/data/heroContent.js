@@ -41,10 +41,10 @@ let heroContent = {
             subtitle: "je suis un développeur web",
         },
         seo: {
-            img_1: "",
-            img_2: "",
-            title: "Bienvenue sur mon site",
-            subtitle: "je suis un développeur web",
+            img_1: "/src/assets/images/page-seo/img-hero-2.webp",
+            img_2: "/src/assets/images/page-seo/img-hero-3.webp",
+            title: "SEO ou Référencement naturel",
+            subtitle: "Améliorez votre visibilité en ligne et attirez plus de clients qualifiés",
         },
         site: {
             img_1: "/src/assets/images/page-site-web/img-hero.webp",

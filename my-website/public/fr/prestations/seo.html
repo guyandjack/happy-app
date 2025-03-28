@@ -25,9 +25,9 @@
   <meta name="geo.placename" content="Paris">
   
   <!-- Stylesheets -->  
-  <link rel="stylesheet" href="../../../src/styles/CSS/normalise.css">
+  <link rel="stylesheet" href="../../../src/styles/CSS/normalize.css">
   <link rel="stylesheet" href="../../../src/styles/CSS/shared-style.css">
-  <link rel="stylesheet" href="../../../src/styles/CSS/seo.css">
+  <link rel="stylesheet" href="../../../src/styles/CSS/prestations.css">
   
   <!-- Schema.org Script -->
   <script type="application/ld+json">
@@ -48,35 +48,38 @@
   }
   </script>
   
+  <!-- Add FAQ collapse script -->
+  <script src="../../src/scripts/collapse-faq.js" defer></script>
+  
   <!-- Scripts in head -->
-  <script type="module" src="../../../src/main.jsx"></script>
+  <script type="module" src="../../src/main.jsx"></script>
 </head>
 <body>
-  <!-- Navbar will be mounted here by React -->
-  <div id="RC-navbar"></div>
+  
+  <header>
+    <!-- Navbar will be mounted here by React -->
+    <div id="RC-navbar"></div>
+  </header>
   
   <main>
-    <!-- Part B: Hero Section -->
-    <section class="hero">
-      <div class="container">
-        <h1><strong>Optimisation SEO</strong></h1>
-        <p class="hero-subtitle">Améliorez votre <strong>visibilité en ligne</strong> et attirez plus de <strong>clients qualifiés</strong></p>
-        <div class="hero-content">
-          <p>Dans un monde numérique saturé, être simplement présent sur le web ne suffit plus. Pour réussir, votre site doit être <strong>visible</strong> par les personnes qui recherchent vos produits ou services. L'<strong>optimisation pour les moteurs de recherche (SEO)</strong> est la clé pour améliorer votre classement dans les résultats de recherche, augmenter votre trafic organique et générer plus de conversions.</p>
-          <p>Chez My Web Dev Company, je propose des <strong>services SEO complets</strong> et sur mesure qui s'adaptent à vos objectifs spécifiques, à votre secteur d'activité et à votre budget. Grâce à une approche méthodique et des techniques éprouvées, j'aide votre entreprise à se démarquer dans les résultats de recherche et à attirer un trafic qualifié.</p>
-          <a href="/fr/contact.html" class="btn btn-primary">Booster votre visibilité en ligne</a>
-        </div>
-      </div>
+    <!-- Hero Section -->
+    <div id="RC-hero">
+      
+    </div>
+
+    <!-- Introduction Section -->
+    <section class="introduction">
+      <p class="text-intro">Dans un monde numérique saturé, être simplement présent sur le web ne suffit plus. Pour réussir, votre site doit être <strong>visible</strong> par les personnes qui recherchent vos produits ou services. L'<strong>optimisation pour les moteurs de recherche (SEO)</strong> est la clé pour améliorer votre classement dans les résultats de recherche, augmenter votre trafic organique et générer plus de conversions.</p>
     </section>
     
-    <!-- Part C: SEO Services Cards -->
-    <section class="seo-services">
+    <!-- Services Section - using website-types class structure -->
+    <section class="website-types">
       <div class="container">
         <h2>Mes services <strong>d'optimisation SEO</strong></h2>
-        <div class="service-cards">
-          <div class="service-card">
+        <div class="website-cards">
+          <div class="website-card">
             <div class="card-image">
-              <img src="/images/audit-seo.jpg" alt="Audit SEO" loading="lazy">
+              <img src="/src/assets/images/page-seo/img-audit.webp" alt="Audit SEO" loading="lazy">
             </div>
             <div class="card-content">
               <h3><strong>Audit SEO</strong></h3>
@@ -86,9 +89,9 @@
             </div>
           </div>
           
-          <div class="service-card">
+          <div class="website-card">
             <div class="card-image">
-              <img src="/images/seo-technique.jpg" alt="SEO Technique" loading="lazy">
+              <img src="/src/assets/images/page-seo/img-technique.webp" alt="SEO Technique" loading="lazy">
             </div>
             <div class="card-content">
               <h3><strong>SEO Technique</strong></h3>
@@ -98,9 +101,9 @@
             </div>
           </div>
           
-          <div class="service-card">
+          <div class="website-card">
             <div class="card-image">
-              <img src="/images/content-seo.jpg" alt="SEO de contenu" loading="lazy">
+              <img src="/src/assets/images/page-seo/img-contenu.webp" alt="SEO de contenu" loading="lazy">
             </div>
             <div class="card-content">
               <h3><strong>SEO de Contenu</strong></h3>
@@ -110,9 +113,9 @@
             </div>
           </div>
           
-          <div class="service-card">
+          <div class="website-card">
             <div class="card-image">
-              <img src="/images/off-page-seo.jpg" alt="SEO Off-page" loading="lazy">
+              <img src="/src/assets/images/page-seo/img-offpage.webp" alt="SEO Off-page" loading="lazy">
             </div>
             <div class="card-content">
               <h3><strong>SEO Off-page</strong></h3>
@@ -122,9 +125,9 @@
             </div>
           </div>
           
-          <div class="service-card">
+          <div class="website-card">
             <div class="card-image">
-              <img src="/images/local-seo.jpg" alt="SEO Local" loading="lazy">
+              <img src="/src/assets/images/page-seo/img-local.webp" alt="SEO Local" loading="lazy">
             </div>
             <div class="card-content">
               <h3><strong>SEO Local</strong></h3>
@@ -137,10 +140,10 @@
       </div>
     </section>
     
-    <!-- Part D: Eco-design and Performance -->
-    <section class="eco-performance">
+    <!-- Eco-design Section -->
+    <section class="eco-seo">
       <div class="container">
-        <div class="eco-performance-grid">
+        <div class="eco-seo-grid">
           <div class="eco-design-section">
             <h2>SEO et <strong>Éco-conception</strong></h2>
             <p>Saviez-vous que l'<strong>éco-conception</strong> et le SEO sont étroitement liés ? Un site web éco-conçu présente de nombreux avantages pour votre référencement :</p>
@@ -154,7 +157,7 @@
             <p>Tous mes services SEO intègrent des principes d'éco-conception pour un <strong>double bénéfice</strong> : améliorer votre classement tout en réduisant l'impact environnemental de votre site.</p>
           </div>
           
-          <div class="performance-section">
+          <div class="seo-section">
             <h2><strong>Suivi et Analyse</strong> des Performances</h2>
             <p>L'optimisation SEO est un processus continu qui nécessite un suivi régulier :</p>
             <ul>
@@ -171,11 +174,10 @@
       </div>
     </section>
     
-    <!-- Part E: FAQ -->
+    <!-- FAQ Section -->
     <section class="faq-section">
       <div class="container">
-        <h2>Questions <strong>fréquemment posées</strong> sur le SEO</h2>
-        
+        <h2>Questions <strong>fréquemment posées</strong></h2>
         <div class="faq-grid">
           <div class="faq-item">
             <h3>Combien coûtent les services d'optimisation SEO ?</h3>

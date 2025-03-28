@@ -93,6 +93,18 @@
   }
 }
 
+.website-types .website-cards .website-card:nth-child(5) {
+  background: rgba(134, 22, 87, 0.01);
+}
+
+@media screen and (min-width: 1200px) {
+  .website-types .website-cards .website-card:nth-child(5) {
+    -webkit-transform: translateX(10%);
+        -ms-transform: translateX(10%);
+            transform: translateX(10%);
+  }
+}
+
 .website-types .website-cards .website-card .card-image {
   position: absolute;
   top: -150px;

@@ -69,6 +69,12 @@
             transform: translateX(-10%)
           }
       }
+      &:nth-child(5) {
+        background: rgba(map-get($colors-rule, first-color), 0.01);
+        @media screen and (min-width: 1200px) {
+            transform: translateX(10%)
+          }
+      }
 
       .card-image {
         position: absolute;
