@@ -1,14 +1,58 @@
 .cta-section {
-  padding: 100px 0;
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 100px 20px;
+  border-radius: 10px;
   background: -webkit-linear-gradient(315deg, #861657 0%, #028CF3 100%);
   background: -o-linear-gradient(315deg, #861657 0%, #028CF3 100%);
   background: linear-gradient(135deg, #861657 0%, #028CF3 100%);
   color: #fbfffe;
+  overflow: visible;
   text-align: center;
 }
 
+.cta-section::before {
+  content: '';
+  position: absolute;
+  -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+          transform-origin: center;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: #028CF3;
+  opacity: 0.2;
+  border-radius: 10px;
+  z-index: -1;
+  -webkit-transform: rotate(-4deg);
+      -ms-transform: rotate(-4deg);
+          transform: rotate(-4deg);
+}
+
+.cta-section::after {
+  content: '';
+  position: absolute;
+  -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+          transform-origin: center;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: #ff2768;
+  opacity: 0.2;
+  border-radius: 10px;
+  z-index: -2;
+  -webkit-transform: rotate(4deg);
+      -ms-transform: rotate(4deg);
+          transform: rotate(4deg);
+}
+
 .cta-section .container {
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -25,9 +69,11 @@
 }
 
 .cta-section .btn-primary {
-  display: inline-block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
   background-color: #fbfffe;
-  color: #861657;
+  color: rgba(23, 23, 23, 0.8);
   padding: 15px 40px;
   border-radius: 30px;
   font-size: 1.1rem;

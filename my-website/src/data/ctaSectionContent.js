@@ -2,8 +2,8 @@
 let ctaSectionContent = {
     fr: {
         index: {
-            title: "Prêt à <strong>travailler ensemble</strong> ?",
-            text: "Si vous cherchez un <strong>développeur web passionné et engagé</strong> pour votre prochain projet, je serais ravi d'en discuter avec vous.",
+            title: "Des solutions web complètes pour répondre à tous vos besoins",
+            text: "Que vous ayez besoin d’un site web performant, d’une application sur mesure, ou d'un référencement optimisé, nous avons la solution.",
             btn_text: "Contactez-moi",
      
         },
@@ -29,18 +29,18 @@ let ctaSectionContent = {
             btn_text: "Contactez-moi",
         },
         mobile: {
-            title: "Prêt à <strong>travailler ensemble</strong> ?",
-            text: "Si vous cherchez un <strong>développeur web passionné et engagé</strong> pour votre prochain projet, je serais ravi d'en discuter avec vous.",
+            title: "Boostez votre entreprise avec une application sur mesure",
+            text: "Discutons ensemble de la solution parfaite pour vos utilisateurs !",
             btn_text: "Contactez-moi",
         },
         seo: {
-            title: "Prêt à <strong>travailler ensemble</strong> ?",
-            text: "Si vous cherchez un <strong>développeur web passionné et engagé</strong> pour votre prochain projet, je serais ravi d'en discuter avec vous.",
+            title: "Optimisez votre référencement et gagnez en visibilité",
+            text: "Attirez plus de visiteurs grâce à un SEO performant. Contactez-moi pour un audit !",
             btn_text: "Contactez-moi",
         },
         site: {
-            title: "Prêt à <strong>travailler ensemble</strong> ?",
-            text: "Si vous cherchez un <strong>développeur web passionné et engagé</strong> pour votre prochain projet, je serais ravi d'en discuter avec vous.",
+            title: "Créez un site web qui convertit dès aujourd'hui",
+            text: "Envie d’un site performant qui booste vos ventes ? Contactez-moi pour en discuter !.",
             btn_text: "Contactez-moi",
         }
     },

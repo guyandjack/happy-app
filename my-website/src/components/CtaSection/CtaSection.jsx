@@ -1,13 +1,13 @@
-import React from "react"
+import React from "react";
 
 //import des fonctions
-import {getLanguage} from "../../utils/fonction/getLanguage.js";
+import { getLanguage } from "../../utils/fonction/getLanguage.js";
 import { getPageName } from "../../utils/fonction/getPageName.js";
 import { locationToPageContact } from "../../utils/fonction/locationToPageContact.js";
 
 
 //import des données
-import {ctaSectionContent} from "../../data/ctaSectionContent.js";
+import { ctaSectionContent } from "../../data/ctaSectionContent.js";
 
 
 //feuille de style
@@ -34,5 +34,5 @@ function CtaSection() {
     );
 }
 
-export {CtaSection};
+export { CtaSection };
 

@@ -47,6 +47,8 @@
     }
   }
   </script>
+  <!-- script pour le collapse de la faq -->
+  <script src="../../src/scripts/collapse-faq.js" defer></script>
   
   <!-- Scripts in head -->
   <script type="module" src="../../src/main.jsx"></script>
@@ -61,50 +63,54 @@
   
   <main>
     <!-- Part B: Hero Section -->
-    <section class="hero">
-      <div class="container">
-        <h1><strong>Sites Web Sur Mesure</strong></h1>
-        <p class="hero-subtitle">Des <strong>solutions web personnalisées</strong> pour répondre à vos besoins spécifiques</p>
-        <div class="hero-content">
-          <p>Chez My Web Dev Company, je crée des <strong>sites web sur mesure</strong> qui reflètent parfaitement l'identité de votre entreprise tout en offrant une <strong>expérience utilisateur exceptionnelle</strong>. Chaque projet est développé avec soin, en utilisant les <strong>technologies les plus adaptées</strong> à vos besoins et en respectant les <strong>meilleures pratiques</strong> du web.</p>
-          <p>Que vous soyez une petite entreprise, un indépendant ou une grande organisation, je vous propose des <strong>solutions web personnalisées</strong> qui vous aideront à atteindre vos objectifs commerciaux et à vous démarquer de la concurrence.</p>
-          <a href="/fr/contact.html" class="btn btn-primary">Discuter de votre projet</a>
-        </div>
-      </div>
+    <div id="RC-hero">
+      
+    </div>
+    <section class="introduction">
+      <p class="text-intro">Chez My Web Dev Company, je crée des <strong>sites web sur mesure</strong> qui reflètent parfaitement l'identité de
+        votre entreprise tout en offrant une <strong>expérience utilisateur exceptionnelle</strong>. Chaque projet est
+        développé avec soin, en utilisant les <strong>technologies les plus adaptées</strong> à vos besoins et en respectant
+        les <strong>meilleures pratiques</strong> du web.
+      </br>
+        Que vous soyez une petite entreprise, un indépendant ou une grande organisation, je vous propose des
+        <strong>solutions web personnalisées</strong> qui vous aideront à atteindre vos objectifs commerciaux et à vous
+        démarquer de la concurrence.</p>
     </section>
-    
+     
+    </section>    
     <!-- Part C: Website Types Cards -->
     <section class="website-types">
       <div class="container">
         <h2>Types de <strong>sites web</strong> que je crée</h2>
         <div class="website-cards">
           <div class="website-card">
+            
             <div class="card-image">
-              <img src="/images/showcase-website.jpg" alt="Site vitrine" loading="lazy">
+              <img src="../../../src/assets/images/page-site-web/img-vitrine-3.webp" alt="Site vitrine" loading="lazy">
             </div>
             <div class="card-content">
               <h3><strong>Site Vitrine</strong></h3>
               <p>Un <strong>site vitrine</strong> est la solution idéale pour présenter votre entreprise, vos services ou vos produits sur internet. Il s'agit d'une <strong>carte de visite digitale</strong> professionnelle qui met en valeur votre activité et vous permet d'établir une <strong>présence en ligne</strong> crédible.</p>
               <p>Ces sites sont conçus pour être <strong>élégants</strong>, <strong>informatifs</strong> et <strong>faciles à naviguer</strong>, offrant à vos visiteurs toutes les informations dont ils ont besoin pour vous contacter ou en savoir plus sur votre entreprise.</p>
-              <a href="/fr/contact.html" class="btn btn-secondary">Besoin d'un site vitrine ? Contactez-moi</a>
+              <a href="../contact.html" class="btn btn-secondary">Besoin d'un site vitrine ? Contactez-moi</a>
             </div>
           </div>
           
           <div class="website-card">
             <div class="card-image">
-              <img src="/images/ecommerce-website.jpg" alt="Site e-commerce" loading="lazy">
+              <img src="../../../src/assets/images/page-site-web/img-e-sale-2.webp" alt="Site e-commerce" loading="lazy">
             </div>
             <div class="card-content">
               <h3><strong>Site E-commerce</strong></h3>
               <p>Un <strong>site e-commerce</strong> vous permet de vendre vos produits ou services directement en ligne. Je développe des <strong>boutiques en ligne</strong> complètes, intuitives et sécurisées qui offrent une <strong>expérience d'achat fluide</strong> à vos clients.</p>
               <p>Ces sites incluent toutes les fonctionnalités essentielles : <strong>catalogue de produits</strong>, <strong>panier d'achat</strong>, <strong>paiement sécurisé</strong>, <strong>gestion des stocks</strong>, et bien plus encore. Ils sont également optimisés pour les <strong>appareils mobiles</strong>, permettant à vos clients d'acheter où qu'ils soient.</p>
-              <a href="/fr/contact.html" class="btn btn-secondary">Besoin d'un site e-commerce ? Contactez-moi</a>
+              <a href="../contact.html" class="btn btn-secondary">Besoin d'un site e-commerce ? Contactez-moi</a>
             </div>
           </div>
           
           <div class="website-card">
             <div class="card-image">
-              <img src="/images/custom-website.jpg" alt="Site sur mesure" loading="lazy">
+              <img src="../../../src/assets/images/page-site-web/img-sur-mesure-3.webp" alt="Site sur mesure" loading="lazy">
             </div>
             <div class="card-content">
               <h3><strong>Site Sur Mesure</strong></h3>
@@ -155,7 +161,6 @@
     <section class="faq-section">
       <div class="container">
         <h2>Questions <strong>fréquemment posées</strong></h2>
-        
         <div class="faq-grid">
           <div class="faq-item">
             <h3>Combien coûte la création d'un site web ?</h3>
@@ -224,5 +229,8 @@
   
   <!-- Footer will be mounted here by React -->
   <div id="RC-footer"></div>
+  
+ 
+  
 </body>
 </html> 

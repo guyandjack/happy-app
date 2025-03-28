@@ -47,10 +47,10 @@ let heroContent = {
             subtitle: "je suis un développeur web",
         },
         site: {
-            img_1: "",
-            img_2: "",
-            title: "Bienvenue sur mon site",
-            subtitle: "je suis un développeur web",
+            img_1: "/src/assets/images/page-site-web/img-hero.webp",
+            img_2: "/src/assets/images/page-site-web/img-hero-2.webp",
+            title: "Eco-conception de sites web",
+            subtitle: "Votre identité numérique, votre visibilité, votre succès",
         }
     },
     en: {
@@ -101,8 +101,8 @@ let heroContent = {
         site: {
             img_1: "",
             img_2: "",
-            title: "Bienvenue sur mon site",
-            subtitle: "je suis un développeur web",
+            title: "Sites Web Sur Mesure",
+            subtitle: "Des solutions web personnalisées pour répondre à vos besoins spécifiques",
         }
     },
 
