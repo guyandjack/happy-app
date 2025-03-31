@@ -1,0 +1,126 @@
+@import "../../utils/color-rule/color-rule.scss";
+
+.footer {
+  background: map-get($colors-rule, footer-color);
+  color: map-get($colors-rule, sixth-color);
+  padding: 60px 20px 20px;
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+
+      .footer-logo {
+        img {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+
+      .footer-tagline {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        margin: 0;
+      }
+
+      .footer-cta {
+        display: inline-block;
+        padding: 12px 25px;
+        background: map-get($colors-rule, second-color);
+        color: map-get($colors-rule, sixth-color);
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: lighten(map-get($colors-rule, second-color), 5%);
+          transform: translateY(-2px);
+        }
+      }
+    }
+
+    .footer-nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+
+      @media (max-width: 576px) {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-nav-section {
+        h3 {
+          color: map-get($colors-rule, second-color);
+          font-size: 1.2rem;
+          margin-bottom: 20px;
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          li {
+            margin-bottom: 12px;
+
+            a {
+              color: map-get($colors-rule, sixth-color);
+              text-decoration: none;
+              opacity: 0.8;
+              transition: all 0.3s ease;
+              position: relative;
+
+              &::after {
+                content: '';
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                width: 0;
+                height: 1px;
+                background: map-get($colors-rule, second-color);
+                transition: width 0.3s ease;
+              }
+
+              &:hover {
+                opacity: 1;
+                
+                &::after {
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(map-get($colors-rule, sixth-color), 0.1);
+    text-align: center;
+
+    p {
+      margin: 0;
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+  }
+}

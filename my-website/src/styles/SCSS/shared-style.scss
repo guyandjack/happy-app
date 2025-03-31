@@ -66,8 +66,8 @@ header {
     width: 100%;
     max-width: 2000px;
     margin: 0 auto;
-    //border: 2px solid red;
-   //padding: 0px 100px;
+    background-color: map-get($colors-rule, background-page-color);
+    //background-color: black
 }
 
 /********************************************************
@@ -121,7 +121,7 @@ header {
                     width: 40px;
                     height: 40px;
                     border-radius: 50%;
-                    background: rgba(map-get($colors-rule, first-color), 0.05);
+                    background: rgba(map-get($colors-rule, fourth-color), 0.05);
                     z-index: 10;
                 }
     
@@ -133,7 +133,7 @@ header {
                     width: 300px;
                     height: 300px;
                     border-radius: 50%;
-                    background: rgba(map-get($colors-rule, first-color), 0.05);
+                    background: rgba(map-get($colors-rule, fourth-color), 0.05);
                     z-index: 10;
                 }
     

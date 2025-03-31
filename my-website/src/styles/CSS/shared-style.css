@@ -52,6 +52,7 @@ header {
   width: 100%;
   max-width: 2000px;
   margin: 0 auto;
+  background-color: #fbfbfc;
 }
 
 /********************************************************
@@ -108,7 +109,7 @@ header {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(134, 22, 87, 0.05);
+  background: rgba(195, 6, 107, 0.05);
   z-index: 10;
 }
 
@@ -120,12 +121,12 @@ header {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: rgba(134, 22, 87, 0.05);
+  background: rgba(195, 6, 107, 0.05);
   z-index: 10;
 }
 
 .introduction .text-intro strong {
-  color: rgba(2, 140, 243, 0.9);
+  color: rgba(0, 190, 184, 0.9);
   font-weight: 600;
 }
 

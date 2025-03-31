@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom/client';
 import { ContactForm } from './components/ContactForm/ContactForm.jsx';
 import { LoginForm } from './components/LoginForm/LoginForm.jsx';
 import { Navbar } from './components/Navbar/Navbar';
-//import { Footer } from './components/Footer/Footer';
+import { Footer } from './components/Footer/Footer.jsx';
 import { ArticlesList } from './components/Articles/ArticlesList';
 import { Dashboard } from './components/Dashboard/Dashboard.jsx';
 import { ArticleMenuSide } from './components/Navbar/ArticleMenuSide.jsx';
@@ -48,7 +48,7 @@ if (ctaSectionContainer) {
   );
 }
 
-/* // Mount Footer
+ // Mount Footer
 const footerContainer = document.getElementById('RC-footer');
 if (footerContainer) {
   ReactDOM.createRoot(footerContainer).render(
@@ -56,7 +56,7 @@ if (footerContainer) {
       <Footer />
     </React.StrictMode>
   );
-} */
+} 
 
   /******* concerne toutes les pages********************
  * ***end

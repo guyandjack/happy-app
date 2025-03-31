@@ -1,10 +1,9 @@
 @import '../../utils/color-rule/color-rule.scss';
 
 .website-types {
+  position: relative;
   padding: 80px 20px;
-  background: linear-gradient(135deg,
-      rgba(map-get($colors-rule, sixth-color), 0.95) 0%,
-      rgba(map-get($colors-rule, sixth-color), 0.98) 100%);
+  background: map-get($colors-rule, background-page-color);
 
   h2 {
     text-align: center;
@@ -30,105 +29,105 @@
   }
 
   .website-cards {
-
+    position: relative;
     display: flex;
     flex-flow: column;
     justify-content: space-between;
     align-items: center;
-    //max-width: 1200px;
     margin: 0 auto;
 
-    .website-card {
-
+    .website-card-container {
       position: relative;
+      &>h3 {
+          position: absolute;
+          top: 105px;
+          left: 20px;
+          z-index: 1;
+          font-size: 1.5rem;
+          color: map-get($colors-rule, sixth-color);
+          border-radius: 15px;
+          width: 20%;
+          text-align: center;
+          padding:10px;
+      
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            background: map-get($colors-rule, fourth-color);
+            z-index: -1;
+            opacity: 0.7;
+          }
+      
+          /* strong {
+            color: map-get($colors-rule, fifth-color);
+          } */
+        }
+    }
+
+    .website-card {
+      position: relative;
+      z-index: 1;
       max-width: 1000px;
       border-radius: 15px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
       margin-top: 200px;
+      background: map-get($colors-rule, sixth-color);
+      transform-style: preserve-3d;
+      overflow: hidden;
 
       @media screen and (min-width: 992px) {
-        overflow: hidden;
         height: 500px;
-        margin-top: 100px;
+        margin-top: 150px;
       }
 
-      &:nth-child(1) {
-        background: rgba(map-get($colors-rule, first-color), 0.01);
-        @media  screen and (min-width: 1200px) {
-          transform: translateX(10%)
-        }
-      }
-
-      &:nth-child(2) {
-        background: rgba(map-get($colors-rule, first-color), 0.01);
-      }
-
-      &:nth-child(3) {
-        background: rgba(map-get($colors-rule, first-color), 0.01);
-        @media screen and (min-width: 1200px) {
-            transform: translateX(-10%)
-          }
-      }
-      &:nth-child(5) {
-        background: rgba(map-get($colors-rule, first-color), 0.01);
-        @media screen and (min-width: 1200px) {
-            transform: translateX(10%)
-          }
-      }
-
-      .card-image {
-        position: absolute;
-        top: -150px;
-        left: 60%;
-        transform: translateX(-50%);
-        width: 200px;
-        height: 200px;
-
-        //overflow: hidden;
-        @media screen and (min-width: 992px) {
-          top: -10%;
-          right: -10%;
-          left: auto;
-          transform: translateX(0);
-          width: 500px;
-          height: 500px;
-          opacity: 0.8;
-        }
-
-        img {
+      @media screen and (min-width: 1500px) {
+        &::before {
+          content: '';
+          position: absolute;
+          top: 5px;
+          right: -5px;
           width: 100%;
           height: 100%;
-          object-fit: cover;
-          border-radius: 50%;
+          background: map-get($colors-rule, fourth-color);
+          border-radius: 15px;
+          transform: translateZ(-1px);
+          opacity: 0.6;
         }
+
+        /* &::after {
+          content: '';
+          position: absolute;
+          top: -15px;
+          left: 50px;
+          width: 10%;
+          height: 100%;
+          background: map-get($colors-rule, fourth-color);
+          border-radius: 15px;
+          transform: translateZ(-2px);
+        } */
       }
 
-
-
       .card-content {
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
-
         max-width: 100%;
-        position: relative;
-        z-index: 10;
         padding: 30px;
         height: 100%;
+        transform: translateZ(1px);
+
         @media screen and (min-width: 992px) {
           max-width: 60%;
         }
 
-        h3 {
-          font-size: 1.5rem;
-          margin-bottom: 20px;
-          color: map-get($colors-rule, fifth-color);
-
-          strong {
-            color: map-get($colors-rule, fifth-color);
-          }
-        }
+        
 
         p {
           color: rgba(map-get($colors-rule, fifth-color), 0.8);
@@ -148,31 +147,88 @@
           padding: 12px 25px;
           border-radius: 8px;
           font-weight: 600;
-          color: rgba(map-get($colors-rule, fifth-color), 0.8);
-
-          &:hover::after {
-            opacity: 1;
-          }
+          color: rgba(map-get($colors-rule, sixth-color), 0.9);
+          background: map-get($colors-rule, first-color);
+          transition: background 0.3s ease, color 0.3s ease;
 
           &:hover {
-            color: map-get($colors-rule, sixth-color);
-          }
-
-          &::after {
-            content: '';
-            position: absolute;
-            z-index: -1;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            color: rgba(map-get($colors-rule, fifth-color), 0.8);
             background: map-get($colors-rule, second-color);
-            border-radius: 8px;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
+            transition: background 0.3s ease, color 0.3s ease;
           }
+        }
+      }
+
+      .card-image {
+        position: absolute;
+        top: -150px;
+        left: 60%;
+        transform: translateX(-50%) translateZ(0);
+        width: 200px;
+        height: 200px;
+
+        @media screen and (min-width: 992px) {
+          top: -10%;
+          right: -10%;
+          left: auto;
+          transform: translateX(0) translateZ(0);
+          width: 450px;
+          height: 450px;
+          //opacity: 0.8;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+      }
 
 
+    }
+
+    @media screen and (min-width: 1500px) {
+
+
+      #website-card-2 {
+        transform: translateX(-5%);
+        /*.card-image { z-index: 1; }
+        &::before { z-index: -1; }
+        &::after { z-index: -2; }*/
+      }
+
+      #website-card-3 {
+        transform: translateX(-10%);
+
+        .card-image {
+          z-index: 1;
+        }
+
+        &::before {
+          z-index: -1;
+        }
+
+        &::after {
+          z-index: -2;
+        }
+      }
+
+
+
+      #website-card-5 {
+        transform: translateX(5%);
+
+        .card-image {
+          z-index: 1;
+        }
+
+        &::before {
+          z-index: -1;
+        }
+
+        &::after {
+          z-index: -2;
         }
       }
     }
@@ -184,8 +240,6 @@
     h2 {
       font-size: 2.2rem;
     }
-
-    
   }
 
   @media (max-width: 768px) {
@@ -211,11 +265,8 @@
     width: 100%;
     gap: 100px;
 
-
-
     .eco-design-section,
     .seo-section {
-      
       width: 80%;
       padding: 60px 40px;
 
@@ -247,7 +298,6 @@
         font-size: 1.1rem;
         line-height: 1.6;
         margin-bottom: 25px;
-        //opacity: 0.9;
 
         strong {
           font-weight: 600;
@@ -281,10 +331,9 @@
     }
 
     .eco-design-section {
-      //clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
       background: linear-gradient(135deg,
-          rgba(map-get($colors-rule, third-color), 0.01) 0%,
-          rgba(map-get($colors-rule, third-color), 0.05) 100%);
+          rgba(map-get($colors-rule, third-color), 0.5) 0%,
+          rgba(map-get($colors-rule, third-color), 0.3) 100%);
       color: map-get($colors-rule, fifth-color);
 
       h2 {
@@ -301,15 +350,14 @@
     }
 
     .seo-section {
-      
       background: linear-gradient(135deg,
-          rgba(map-get($colors-rule, first-color), 0.01) 0%,
-          rgba(map-get($colors-rule, first-color), 0.05) 100%);
+          rgba(map-get($colors-rule, fourth-color), 0.08) 0%,
+          rgba(map-get($colors-rule, fourth-color), 0.03) 100%);
       color: map-get($colors-rule, fifth-color);
 
-       @media  screen and (min-width: 992px) {
+      @media screen and (min-width: 992px) {
         align-self: flex-end;
-      } 
+      }
 
       h2 {
         color: map-get($colors-rule, fifth-color);
@@ -386,8 +434,6 @@
           user-select: none;
           transition: color 0.3s ease;
 
-
-
           &::after {
             content: '▼';
             position: absolute;
@@ -415,17 +461,6 @@
           margin-top: 20px;
           display: none;
           animation: fadeIn 0.3s ease;
-
-          /* &::before {
-            content: "R";
-            position: absolute;
-            left: 0;
-            top: -2px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: map-get($colors-rule, first-color);
-            opacity: 0.5;
-          } */
 
           strong {
             color: map-get($colors-rule, first-color);

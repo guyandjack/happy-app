@@ -5,10 +5,10 @@
   margin: 50px auto;
   padding: 100px 20px;
   border-radius: 10px;
-  background: -webkit-linear-gradient(315deg, #861657 0%, #028CF3 100%);
-  background: -o-linear-gradient(315deg, #861657 0%, #028CF3 100%);
-  background: linear-gradient(135deg, #861657 0%, #028CF3 100%);
-  color: #fbfffe;
+  background: -webkit-linear-gradient(315deg, #024d4a 0%, #00beb8 100%);
+  background: -o-linear-gradient(315deg, #024d4a 0%, #00beb8 100%);
+  background: linear-gradient(135deg, #024d4a 0%, #00beb8 100%);
+  color: #ffffff;
   overflow: visible;
   text-align: center;
 }
@@ -23,7 +23,7 @@
   left: 0%;
   width: 100%;
   height: 100%;
-  background-color: #028CF3;
+  background-color: #00beb8;
   opacity: 0.2;
   border-radius: 10px;
   z-index: -1;
@@ -42,7 +42,7 @@
   left: 0%;
   width: 100%;
   height: 100%;
-  background-color: #ff2768;
+  background-color: #c3066b;
   opacity: 0.2;
   border-radius: 10px;
   z-index: -2;
@@ -72,7 +72,7 @@
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
-  background-color: #fbfffe;
+  background-color: #ffffff;
   color: rgba(23, 23, 23, 0.8);
   padding: 15px 40px;
   border-radius: 30px;
@@ -82,12 +82,12 @@
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  border: 2px solid #fbfffe;
+  border: 2px solid #ffffff;
 }
 
 .cta-section .btn-primary:hover {
   background-color: transparent;
-  color: #fbfffe;
+  color: #ffffff;
   -webkit-transform: translateY(-5px);
       -ms-transform: translateY(-5px);
           transform: translateY(-5px);

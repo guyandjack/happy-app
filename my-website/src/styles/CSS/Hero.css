@@ -1,10 +1,10 @@
 .hero {
-  color: #861657;
+  color: #024d4a;
   height: 300px;
   text-align: center;
   position: relative;
   overflow: hidden;
-  background-color: #fbfffe;
+  background-color: #fbfbfc;
 }
 
 .hero > img {
@@ -47,7 +47,7 @@
   z-index: 5;
   margin: 0 auto;
   padding: 20px;
-  background: rgba(251, 255, 254, 0.9);
+  background: #fbfbfc;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -75,7 +75,7 @@
           transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background-color: #028CF3;
+  background-color: #00beb8;
   border-radius: 2px;
 }
 

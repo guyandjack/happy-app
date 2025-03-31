@@ -108,15 +108,16 @@ function Navbar() {
   };
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" aria-label="Main navigation">
       <div className="navbar-brand">
         <a href={currentLang === 'fr' ? '/' : '/en/home.html'} className="logo">
-          <img src={logo} alt="Logo" className="logo-image" />
+          <img src={logo} alt="Logo My Web Dev Company" className="logo-image" />
         </a>
         <button 
           className={`burger-menu ${isOpen ? 'open' : ''}`} 
           onClick={toggleMenu}
           aria-label="Toggle menu"
+          aria-expanded={isOpen}
         >
           <span id="burger-menu-1"></span>
           <span id="burger-menu-2"></span>
@@ -124,60 +125,75 @@ function Navbar() {
         </button>
       </div>
 
-      <div className={`navbar-menu ${isOpen ? 'open' : ''}`}>
+      <ul className={`navbar-menu ${isOpen ? 'open' : ''}`} role="menubar">
         {menuItems[currentLang].map((item, index) => (
           item.submenu ? (
-            <div
+            <li 
               key={index}
               className="menu-item-with-submenu"
               onMouseOver={()=>{setIsServicesOpen(true)}}
               onMouseLeave={()=>{setIsServicesOpen(false)}}
+              role="menuitem"
+              aria-haspopup="true"
+              aria-expanded={isServicesOpen}
             >
               <a 
                 href="#"
-                                
                 className={`has-submenu ${isServicesOpen ? 'open' : ''}`}
+                aria-label={`${item.text} menu`}
               >
                 {item.text}
-                <span className={`submenu-arrow ${isServicesOpen ? 'rotate' : ''}`}>▼</span>
+                <span className={`submenu-arrow ${isServicesOpen ? 'rotate' : ''}`} aria-hidden="true">▼</span>
               </a>
-              <div className={`submenu ${isServicesOpen ? 'open' : ''}`}>
+              <ul className={`submenu ${isServicesOpen ? 'open' : ''}`} role="menu">
                 {item.submenu.map((subItem, subIndex) => (
-                  <a 
-                    key={subIndex}
-                    href={subItem.path}
-                    className={isActive(subItem.path)}
-                  >
-                    {subItem.text}
-                  </a>
+                  <li key={subIndex} role="none">
+                    <a 
+                      href={subItem.path}
+                      className={isActive(subItem.path)}
+                      role="menuitem"
+                    >
+                      {subItem.text}
+                    </a>
+                  </li>
                 ))}
-              </div>
-            </div>
+              </ul>
+            </li>
           ) : (
-            <a 
-              key={index}
-              href={item.path}
-              className={isActive(item.path)}
-            >
-              {item.text}
-            </a>
+            <li key={index} role="none">
+              <a 
+                href={item.path}
+                className={isActive(item.path)}
+                role="menuitem"
+              >
+                {item.text}
+              </a>
+            </li>
           )
         ))}
-        <div className="language-switcher">
-          <img
-            className="flag-image"
-            src={flagFR}
-            alt="FR"
+        <li className="language-switcher" role="none">
+          <button
             onClick={() => switchLanguage('fr')}
-          />
-          <img
-            className="flag-image"
-            src={flagEN}
-            alt="EN"
+            aria-label="Switch to French"
+          >
+            <img
+              className="flag-image"
+              src={flagFR}
+              alt="Français"
+            />
+          </button>
+          <button
             onClick={() => switchLanguage('en')}
-          />
-        </div>
-      </div>
+            aria-label="Switch to English"
+          >
+            <img
+              className="flag-image"
+              src={flagEN}
+              alt="English"
+            />
+          </button>
+        </li>
+      </ul>
     </nav>
   );
 }
