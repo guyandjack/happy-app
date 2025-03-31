@@ -8,7 +8,7 @@
   h2 {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 60px;
+    margin-bottom: 160px;
     position: relative;
 
     &::after {
@@ -34,204 +34,191 @@
     flex-flow: column;
     justify-content: space-between;
     align-items: center;
+    gap: 120px;
     margin: 0 auto;
+    
 
     .website-card-container {
       position: relative;
-      &>h3 {
-          position: absolute;
-          top: 105px;
-          left: 20px;
-          z-index: 1;
-          font-size: 1.5rem;
-          color: map-get($colors-rule, sixth-color);
-          border-radius: 15px;
-          width: 20%;
-          text-align: center;
-          padding:10px;
+      width: 100%;
+      max-width: 1200px;
       
-          &::before {
-            content: '';
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            width: 100%;
-            height: 100%;
-            border-radius: 15px;
-            background: map-get($colors-rule, fourth-color);
-            z-index: -1;
-            opacity: 0.7;
-          }
-      
-          /* strong {
-            color: map-get($colors-rule, fifth-color);
-          } */
-        }
-    }
+      & > h3 {
+        position: absolute;
+        top: -25px;
+        left: 0;
+        z-index: 2;
+        font-size: 2.2rem;
+        color: rgba(map-get($colors-rule, fourth-color), 0.8);
+        font-weight: bolder;
+        padding: 0 40px;
+        margin: 0;
 
-    .website-card {
-      position: relative;
-      z-index: 1;
-      max-width: 1000px;
-      border-radius: 15px;
-      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-      margin-top: 200px;
-      background: map-get($colors-rule, sixth-color);
-      transform-style: preserve-3d;
-      overflow: hidden;
-
-      @media screen and (min-width: 992px) {
-        height: 500px;
-        margin-top: 150px;
-      }
-
-      @media screen and (min-width: 1500px) {
-        &::before {
-          content: '';
-          position: absolute;
-          top: 5px;
-          right: -5px;
-          width: 100%;
-          height: 100%;
-          background: map-get($colors-rule, fourth-color);
-          border-radius: 15px;
-          transform: translateZ(-1px);
-          opacity: 0.6;
-        }
-
-        /* &::after {
-          content: '';
-          position: absolute;
-          top: -15px;
-          left: 50px;
-          width: 10%;
-          height: 100%;
-          background: map-get($colors-rule, fourth-color);
-          border-radius: 15px;
-          transform: translateZ(-2px);
+        /* strong {
+          background: linear-gradient(135deg, 
+            map-get($colors-rule, third-color) 0%,
+            map-get($colors-rule, second-color) 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          font-weight: 700;
         } */
       }
 
-      .card-content {
+      .website-card {
         position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: flex-start;
-        max-width: 100%;
-        padding: 30px;
-        height: 100%;
-        transform: translateZ(1px);
+        width: 100%;
+        min-height: 400px;
+        border-radius: 20px;
+        background: map-get($colors-rule, sixth-color);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        // Enhanced elevation effect
+        box-shadow: 
+          0 4px 6px rgba(0, 0, 0, 0.05),
+          0 10px 15px rgba(0, 0, 0, 0.1),
+          0 20px 30px rgba(map-get($colors-rule, first-color), 0.05);
 
         @media screen and (min-width: 992px) {
-          max-width: 60%;
+          height: 500px;
+          display: flex;
+          align-items: center;
         }
 
-        
+        // Subtle gradient overlay
+        /*&::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg,
+            rgba(map-get($colors-rule, sixth-color), 1) 0%,
+            rgba(map-get($colors-rule, sixth-color), 0.95) 100%);
+          z-index: 0;
+        }*/
 
-        p {
-          color: rgba(map-get($colors-rule, fifth-color), 0.8);
-          line-height: 1.6;
-          margin-bottom: 20px;
+        // Bottom shadow line for extra depth
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 4px;
+          background: linear-gradient(90deg,
+            rgba(map-get($colors-rule, second-color), 0.1),
+            rgba(map-get($colors-rule, third-color), 0.1));
+        }
 
-          strong {
-            color: map-get($colors-rule, second-color);
-            font-weight: 600;
+        .card-image {
+          position: relative;
+          width: 100%;
+          height: 250px;
+          overflow: hidden;
+          
+          @media screen and (min-width: 992px) {
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            //transform: translateY(-50%);
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+           
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            //filter: saturate(0.95); // Slightly reduce saturation for eco-design
+            transition: transform 0.3s ease;
+            opacity: 0.8;
           }
         }
 
-        .btn {
+        .card-content {
           position: relative;
           z-index: 1;
-          display: inline-block;
-          padding: 12px 25px;
-          border-radius: 8px;
-          font-weight: 600;
-          color: rgba(map-get($colors-rule, sixth-color), 0.9);
-          background: map-get($colors-rule, first-color);
-          transition: background 0.3s ease, color 0.3s ease;
+          padding: 30px;
+          background: transparent;
 
-          &:hover {
-            color: rgba(map-get($colors-rule, fifth-color), 0.8);
-            background: map-get($colors-rule, second-color);
-            transition: background 0.3s ease, color 0.3s ease;
+          @media screen and (min-width: 992px) {
+            width: 60%;
+            padding: 60px;
+          }
+
+          p {
+            color: rgba(map-get($colors-rule, fifth-color), 0.85);
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+
+            strong {
+              color: map-get($colors-rule, second-color);
+              font-weight: 600;
+            }
+          }
+
+          .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            background: linear-gradient(135deg,
+              map-get($colors-rule, third-color) 0%,
+              map-get($colors-rule, second-color) 100%);
+            color: map-get($colors-rule, sixth-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            
+            &:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 5px 15px rgba(map-get($colors-rule, second-color), 0.2);
+            }
           }
         }
       }
 
-      .card-image {
-        position: absolute;
-        top: -150px;
-        left: 60%;
-        transform: translateX(-50%) translateZ(0);
-        width: 200px;
-        height: 200px;
-
-        @media screen and (min-width: 992px) {
-          top: -10%;
-          right: -10%;
-          left: auto;
-          transform: translateX(0) translateZ(0);
-          width: 450px;
-          height: 450px;
-          //opacity: 0.8;
-        }
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          border-radius: 50%;
-        }
+      // Enhance elevation effect on hover
+      &:hover .website-card {
+        transform: translateY(-2px);
+        box-shadow: 
+          0 6px 8px rgba(0, 0, 0, 0.05),
+          0 12px 18px rgba(0, 0, 0, 0.1),
+          0 25px 35px rgba(map-get($colors-rule, first-color), 0.07);
       }
 
-
+      // Alternate card layout
+      &:nth-child(even) {
+        .website-card {
+          @media screen and (min-width: 992px) {
+            .card-image {
+              right: auto;
+              left: -5%;
+            }
+            
+            .card-content {
+              margin-left: auto;
+            }
+          }
+        }
+      }
     }
 
-    @media screen and (min-width: 1500px) {
-
-
+    /* @media screen and (min-width: 1500px) {
       #website-card-2 {
         transform: translateX(-5%);
-        /*.card-image { z-index: 1; }
-        &::before { z-index: -1; }
-        &::after { z-index: -2; }*/
       }
 
       #website-card-3 {
         transform: translateX(-10%);
-
-        .card-image {
-          z-index: 1;
-        }
-
-        &::before {
-          z-index: -1;
-        }
-
-        &::after {
-          z-index: -2;
-        }
       }
-
-
 
       #website-card-5 {
         transform: translateX(5%);
-
-        .card-image {
-          z-index: 1;
-        }
-
-        &::before {
-          z-index: -1;
-        }
-
-        &::after {
-          z-index: -2;
-        }
       }
-    }
+    } */
   }
 
   @media (max-width: 992px) {
@@ -251,7 +238,9 @@
 
 .eco-seo {
   width: 100%;
-  margin-top: 80px;
+  margin-top: 120px;
+  position: relative;
+  overflow: hidden;
 
   .container {
     width: 100%;
@@ -263,112 +252,212 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 100px;
+    gap: 120px;
 
+    // Shared styles for both sections
     .eco-design-section,
     .seo-section {
-      width: 80%;
-      padding: 60px 40px;
+      position: relative;
+      width: 100%;
+      padding: 120px 50px;
+      color: map-get($colors-rule, fifth-color);
 
-      @media (max-width: 992px) {
-        padding: 40px 20px;
+      &::before {
+        content: '';
+        position: absolute;
+        top: -80px;
+        left: 0;
+        width: 100%;
+        height: 160px;
+        background: map-get($colors-rule, background-page-color);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 70%);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -80px;
+        left: 0;
+        width: 100%;
+        height: 160px;
+        background: map-get($colors-rule, background-page-color);
+        clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
+      }
+
+      .content-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 80px; // Increased horizontal padding
+        position: relative;
+        z-index: 1;
       }
 
       h2 {
-        font-size: 2.2rem;
-        margin-bottom: 30px;
+        font-size: 2.8rem;
+        margin-bottom: 40px;
         position: relative;
+        color: map-get($colors-rule, fifth-color);
 
         strong {
-          color: inherit;
-        }
-
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: -10px;
-          left: 0;
-          width: 60px;
-          height: 4px;
-          border-radius: 2px;
-        }
-      }
-
-      p {
-        font-size: 1.1rem;
-        line-height: 1.6;
-        margin-bottom: 25px;
-
-        strong {
-          font-weight: 600;
+          position: relative;
+          
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            opacity: 0.3;
+          }
         }
       }
 
       ul {
         list-style: none;
         padding: 0;
-        margin: 0 0 25px 0;
+        margin: 40px 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
 
         li {
           position: relative;
-          padding-left: 25px;
-          margin-bottom: 15px;
-          font-size: 1.1rem;
-          line-height: 1.5;
+          padding: 20px 30px;
+          background: rgba(map-get($colors-rule, sixth-color), 1);
+          border-radius: 15px;
+          //backdrop-filter: blur(10px);
+          transition: transform 0.3s ease;
 
           &::before {
             content: '→';
             position: absolute;
-            left: 0;
-            color: inherit;
+            left: 10px;
+            font-weight: bold;
+          }
+
+          &:hover {
+            transform: translateY(-3px);
           }
 
           strong {
-            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
           }
         }
       }
-    }
 
-    .eco-design-section {
-      background: linear-gradient(135deg,
-          rgba(map-get($colors-rule, third-color), 0.5) 0%,
-          rgba(map-get($colors-rule, third-color), 0.3) 100%);
-      color: map-get($colors-rule, fifth-color);
+      p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        opacity: 0.9;
+        max-width: 800px;
 
-      h2 {
-        color: map-get($colors-rule, fifth-color);
-
-        &::after {
-          background: map-get($colors-rule, third-color);
+        strong {
+          font-weight: 600;
         }
       }
-
-      strong {
-        color: rgba(map-get($colors-rule, third-color), 0.9);
-      }
     }
 
-    .seo-section {
+    // Specific styles for eco-design section
+    .eco-design-section {
       background: linear-gradient(135deg,
-          rgba(map-get($colors-rule, fourth-color), 0.08) 0%,
-          rgba(map-get($colors-rule, fourth-color), 0.03) 100%);
-      color: map-get($colors-rule, fifth-color);
+        rgba(map-get($colors-rule, third-color), 0.2),
+        rgba(map-get($colors-rule, second-color), 0.1));
 
-      @media screen and (min-width: 992px) {
-        align-self: flex-end;
+      .content-wrapper::before {
+        content: '🌱';
+        position: absolute;
+        top: -60px;
+        left: 80px; // Adjusted to match new padding
+        font-size: 3rem;
+        opacity: 0.2;
+        transform: rotate(-15deg);
       }
 
-      h2 {
-        color: map-get($colors-rule, fifth-color);
-
+      h2 strong {
+        color: map-get($colors-rule, first-color);
         &::after {
           background: map-get($colors-rule, first-color);
         }
       }
 
-      strong {
+      ul li {
+        border: 1px solid rgba(map-get($colors-rule, third-color), 0.1);
+        &::before {
+          color: map-get($colors-rule, first-color);
+        }
+        strong {
+          color: map-get($colors-rule, first-color);
+        }
+      }
+
+      p strong {
         color: map-get($colors-rule, first-color);
+      }
+    }
+
+    // Specific styles for seo section
+    .seo-section {
+      background: linear-gradient(135deg,
+        rgba(map-get($colors-rule, fourth-color), 0.2),
+        rgba(map-get($colors-rule, fourth-color), 0.1));
+
+      .content-wrapper::before {
+        content: '🎯';
+        position: absolute;
+        //z-index: 10;
+        top: -60px;
+        left: 80px;
+        font-size: 3rem;
+        opacity: 0.2;
+        transform: rotate(-15deg);
+      }
+
+      h2 strong {
+        color: map-get($colors-rule, fourth-color);
+        &::after {
+          background: map-get($colors-rule, fourth-color);
+        }
+      }
+
+      ul li {
+        border: 1px solid rgba(map-get($colors-rule, fourth-color), 0.1);
+        &::before {
+          color: map-get($colors-rule, fourth-color);
+        }
+        strong {
+          color: map-get($colors-rule, fourth-color);
+        }
+      }
+
+      p strong {
+        color: map-get($colors-rule, fourth-color);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .eco-design-section,
+      .seo-section {
+        padding: 80px 20px;
+
+        .content-wrapper {
+          padding: 0 30px;
+        }
+
+        &::before,
+        &::after {
+          height: 80px;
+        }
+
+        h2 {
+          font-size: 2.2rem;
+        }
+
+        ul {
+          grid-template-columns: 1fr;
+        }
       }
     }
   }
@@ -525,4 +614,17 @@
       }
     }
   }
+}
+
+.bottom-sections {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 100px;
+  margin-top: 100px;
+  margin-bottom: 0;
+  width: 100%;
 }

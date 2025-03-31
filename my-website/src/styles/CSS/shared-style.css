@@ -35,17 +35,23 @@ header {
   z-index: 1000;
 }
 
-/**** corrige le cls avec une hauteur fixe, pour le contenu dynamique ***/
+/**** mise en forme des conteneur pour le contenu dynamique ***/
 #RC-navbar {
+  width: 100%;
   height: 90px;
 }
 
 #RC-hero {
+  width: 100%;
   height: 300px;
 }
 
 #RC-cta-section {
-  height: 400px;
+  width: 100%;
+}
+
+#RC-footer {
+  width: 100%;
 }
 
 .page-container {

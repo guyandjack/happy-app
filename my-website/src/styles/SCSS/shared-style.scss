@@ -43,19 +43,28 @@ header {
     
 }
 
-/**** corrige le cls avec une hauteur fixe, pour le contenu dynamique ***/
+/**** mise en forme des conteneur pour le contenu dynamique ***/
 // nav bar section
 #RC-navbar {
-    height: 90px; 
+    width: 100%;
+    height: 90px; //correction du cls avec hauteur fixe
 }
 
 // Hero section
 #RC-hero {
-    height: 300px; 
+    width: 100%;
+    height: 300px; //correction du cls avec hauteur fixe
 }
 
+// CTA section
 #RC-cta-section {
-    height: 400px;
+    width: 100%;
+    //height: 400px;
+}
+
+#RC-footer {
+    width: 100%;
+    //height: 400px;
 }
 
 

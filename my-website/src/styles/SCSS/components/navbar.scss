@@ -15,7 +15,8 @@ $menu-active: red; */
     width: 100%;
     margin: 0 auto;
     //background: lighten(map-get($colors-rule, first-color), 0%);
-    background: linear-gradient(45deg, map-get($colors-rule, second-color), map-get($colors-rule, first-color));
+    //background: linear-gradient(45deg, rgba(map-get($colors-rule, second-color), 0.8), rgba(map-get($colors-rule, first-color), 0.8));
+    background: linear-gradient(45deg, rgba(map-get($colors-rule, second-color), 1), rgba(map-get($colors-rule, footer-color), 1));
     padding: 1rem;
     //box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
