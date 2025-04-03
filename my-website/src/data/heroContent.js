@@ -6,14 +6,14 @@ let heroContent = {
             img_1: "",
             img_2: "",
             title: "Bienvenue sur mon site",
-            subtitle: "solutions web innovantes et éco-responsables",
+            subtitle: "Solutions web innovantes et éco-responsables",
      
         },
         contact: {
             img_1: "/src/assets/images/page-contact/img-anim-contact.webp",
             img_2: "/src/assets/images/page-contact/img-head-contact-2.webp",
             title: "Contact",
-            subtitle: "Développeur web passioné.",
+            subtitle: "Decouvrons de nouvelles opportunités ensemble.",
         },
     
         qui: {
@@ -26,19 +26,19 @@ let heroContent = {
             img_1: "",
             img_2: "",
             title: "Réalisations",
-            subtitle: "Découvrez mes réalisations",
+            subtitle: "Découvrez mes réalisations.",
         },
         articles: {
             img_1: "",
             img_2: "",
             title: "Articles",
-            subtitle: "Découvrez mes articles sur le développement web",
+            subtitle: "Découvrez mes articles sur le développement web.",
         },
         mobile: {
-            img_1: "",
-             img_2: "",
-            title: "Bienvenue sur mon site",
-            subtitle: "je suis un développeur web",
+            img_1: "/src/assets/images/page-app/img-hero.webp",
+             img_2: "/src/assets/images/page-app/img-card-1.webp",
+            title: "Application mobile",
+            subtitle: "Développons votre application mobile sur mesure",
         },
         seo: {
             img_1: "/src/assets/images/page-seo/img-hero-2.webp",

@@ -52,7 +52,7 @@
   </script>
 
   <!-- Add FAQ collapse script -->
-  <script src="../../src/scripts/collapse-faq.js" defer></script>
+  <script src="../../src/scripts/page-services.js" defer></script>
 
   <!-- Scripts in head -->
   <script type="module" src="../../src/main.jsx"></script>
@@ -84,50 +84,57 @@
         <div class="container">
           <h2>Types <strong>d'applications mobiles</strong> que je développe</h2>
           <div class="website-cards">
-            <div class="website-card" id="website-card-1">
-              <div class="card-image">
-                <img src="/images/native-app.jpg" alt="Application native" loading="lazy">
-              </div>
-              <div class="card-content">
-                <h3><strong>Applications Natives</strong></h3>
-                <p>Les <strong>applications natives</strong> sont développées spécifiquement pour iOS (Swift) ou Android
-                  (Kotlin/Java). Elles offrent les <strong>meilleures performances</strong> et une <strong>expérience
-                    utilisateur optimale</strong> en tirant pleinement parti des fonctionnalités de l'appareil.</p>
-                <p>Idéales pour les applications complexes nécessitant des performances élevées, l'accès aux capteurs de
-                  l'appareil (caméra, GPS, accéléromètre) ou une expérience utilisateur parfaitement fluide.</p>
-                <a href="/fr/contact.html" class="btn btn-secondary">Besoin d'une application native ? Contactez-moi</a>
-              </div>
-            </div>
-
-            <div class="website-card" id="website-card-2">
-              <div class="card-image">
-                <img src="/images/hybrid-app.jpg" alt="Application hybride" loading="lazy">
-              </div>
-              <div class="card-content">
-                <h3><strong>Applications Hybrides</strong></h3>
-                <p>Les <strong>applications hybrides</strong> combinent technologies web et natives pour fonctionner sur
-                  plusieurs plateformes avec un seul code base. Développées avec des frameworks comme React Native ou
-                  Flutter, elles offrent un excellent <strong>compromis entre coût et performance</strong>.</p>
-                <p>Parfaites pour les startups et PME souhaitant lancer rapidement une application sur iOS et Android
-                  avec un budget maîtrisé, tout en conservant une expérience utilisateur de qualité.</p>
-                <a href="/fr/contact.html" class="btn btn-secondary">Besoin d'une application hybride ?
-                  Contactez-moi</a>
+            <!-- First card with container -->
+            <div class="website-card-container" id="website-card-container-1">
+              <h3><strong>Applications Natives</strong></h3>
+              <div class="website-card">
+                <div class="card-image">
+                  <img src="../../../src/assets/images/page-app/img-hero-2.webp" alt="Application native" loading="lazy">
+                </div>
+                <div class="card-content">
+                  <p>Les <strong>applications natives</strong> sont développées spécifiquement pour iOS (Swift) ou Android
+                    (Kotlin/Java). Elles offrent les <strong>meilleures performances</strong> et une <strong>expérience
+                      utilisateur optimale</strong> en tirant pleinement parti des fonctionnalités de l'appareil.</p>
+                  <p>Idéales pour les applications complexes nécessitant des performances élevées, l'accès aux capteurs de
+                    l'appareil (caméra, GPS, accéléromètre) ou une expérience utilisateur parfaitement fluide.</p>
+                  <a href="/fr/contact.html" class="btn btn-secondary">Besoin d'une application native ? Contactez-moi</a>
+                </div>
               </div>
             </div>
 
-            <div class="website-card" id="website-card-3">
-              <div class="card-image">
-                <img src="/images/pwa-app.jpg" alt="Progressive Web App" loading="lazy">
+            <div class="website-card-container" id="website-card-container-2">
+              <h3><strong>Applications Hybrides</strong></h3>
+              <div class="website-card">
+                <div class="card-image">
+                  <img src="../../../src/assets/images/page-app/img-card-3.webp" alt="Application hybride" loading="lazy">
+                </div>
+                <div class="card-content">
+                  <p>Les <strong>applications hybrides</strong> combinent technologies web et natives pour fonctionner sur
+                    plusieurs plateformes avec un seul code base. Développées avec des frameworks comme React Native ou
+                    Flutter, elles offrent un excellent <strong>compromis entre coût et performance</strong>.</p>
+                  <p>Parfaites pour les startups et PME souhaitant lancer rapidement une application sur iOS et Android
+                    avec un budget maîtrisé, tout en conservant une expérience utilisateur de qualité.</p>
+                  <a href="/fr/contact.html" class="btn btn-secondary">Besoin d'une application hybride ?
+                    Contactez-moi</a>
+                </div>
               </div>
-              <div class="card-content">
-                <h3><strong>Progressive Web Apps (PWA)</strong></h3>
-                <p>Les <strong>PWA</strong> sont des applications web qui offrent une expérience similaire aux
-                  applications natives : installation sur l'écran d'accueil, fonctionnement hors ligne, et notifications
-                  push. Elles combinent les <strong>avantages du web</strong> (accessibilité, SEO) et des
-                  <strong>applications mobiles</strong>.</p>
-                <p>Idéales pour les entreprises souhaitant une solution économique et universelle, accessible sur tous
-                  les appareils sans passer par les stores d'applications.</p>
-                <a href="/fr/contact.html" class="btn btn-secondary">Besoin d'une PWA ? Contactez-moi</a>
+            </div>
+
+            <div class="website-card-container" id="website-card-container-3">
+              <h3><strong>Progressive Web Apps (PWA)</strong></h3>
+              <div class="website-card">
+                <div class="card-image">
+                  <img src="../../../src/assets/images/page-app/img-card-2.webp" alt="Progressive Web App" loading="lazy">
+                </div>
+                <div class="card-content">
+                  <p>Les <strong>PWA</strong> sont des applications web qui offrent une expérience similaire aux
+                    applications natives : installation sur l'écran d'accueil, fonctionnement hors ligne, et notifications
+                    push. Elles combinent les <strong>avantages du web</strong> (accessibilité, SEO) et des
+                    <strong>applications mobiles</strong>.</p>
+                  <p>Idéales pour les entreprises souhaitant une solution économique et universelle, accessible sur tous
+                    les appareils sans passer par les stores d'applications.</p>
+                  <a href="/fr/contact.html" class="btn btn-secondary">Besoin d'une PWA ? Contactez-moi</a>
+                </div>
               </div>
             </div>
           </div>
@@ -139,36 +146,43 @@
         <div class="container">
           <div class="eco-seo-grid">
             <div class="eco-design-section">
-              <h2>Applications <strong>éco-responsables</strong></h2>
-              <p>Je développe des applications mobiles en suivant les principes de <strong>l'éco-conception</strong>,
-                visant à réduire leur impact environnemental tout en améliorant leurs performances :</p>
-              <ul>
-                <li><strong>Optimisation des ressources</strong> pour réduire la consommation de batterie</li>
-                <li><strong>Gestion efficace des données</strong> pour limiter les transferts réseau</li>
-                <li><strong>Compression des médias</strong> pour réduire le poids de l'application</li>
-                <li><strong>Code optimisé</strong> pour des performances maximales avec un minimum de ressources</li>
-                <li><strong>Fonctionnement hors ligne</strong> quand c'est possible pour réduire la consommation de
-                  données</li>
-              </ul>
-              <p>Une application éco-conçue est non seulement meilleure pour l'environnement, mais elle offre aussi une
-                <strong>meilleure expérience utilisateur</strong> et une <strong>durée de vie de batterie
-                  prolongée</strong>.</p>
+              <div class="content-wrapper">
+                <h2>Applications <strong>éco-responsables</strong></h2>
+                <p>Je développe des applications mobiles en suivant les principes de <strong>l'éco-conception</strong>,
+                  visant à réduire leur impact environnemental tout en améliorant leurs performances :</p>
+                <ul>
+                  <li><strong>Optimisation des ressources</strong> pour réduire la consommation de batterie</li>
+                  <li><strong>Gestion efficace des données</strong> pour limiter les transferts réseau</li>
+                  <li><strong>Compression des médias</strong> pour réduire le poids de l'application</li>
+                  <li><strong>Code optimisé</strong> pour des performances maximales avec un minimum de ressources</li>
+                  <li><strong>Fonctionnement hors ligne</strong> quand c'est possible pour réduire la consommation de
+                    données</li>
+                </ul>
+                <p>Une application éco-conçue est non seulement meilleure pour l'environnement, mais elle offre aussi une
+                  <strong>meilleure expérience utilisateur</strong> et une <strong>durée de vie de batterie
+                    prolongée</strong>.</p>
+              </div>
             </div>
 
             <div class="seo-section">
-              <h2><strong>Performance</strong> et Expérience Utilisateur</h2>
-              <p>La performance est au cœur de mes développements mobiles :</p>
-              <ul>
-                <li><strong>Temps de démarrage rapide</strong> pour captiver l'utilisateur dès le lancement</li>
-                <li><strong>Interfaces fluides</strong> sans latence ni saccades</li>
-                <li><strong>Design intuitif</strong> suivant les guidelines de chaque plateforme</li>
-                <li><strong>Optimisation des animations</strong> pour une expérience visuelle agréable</li>
-                <li><strong>Tests rigoureux</strong> sur différents appareils et versions d'OS</li>
-                <li><strong>Analyse des comportements utilisateurs</strong> pour améliorer continuellement l'expérience
-                </li>
-              </ul>
-              <p>Une application performante fidélise vos utilisateurs et <strong>améliore votre taux de
-                  conversion</strong>.</p>
+              <div class="content-wrapper">
+                <div class="title-container">
+                  <img class="icon-seo" src="../../../src/assets/images/icons/setting.png" alt="Performance" loading="lazy">
+                  <h2><strong>Performance</strong> et Expérience Utilisateur</h2>
+                </div>
+                <p>La performance est au cœur de mes développements mobiles :</p>
+                <ul>
+                  <li><strong>Temps de démarrage rapide</strong> pour captiver l'utilisateur dès le lancement</li>
+                  <li><strong>Interfaces fluides</strong> sans latence ni saccades</li>
+                  <li><strong>Design intuitif</strong> suivant les guidelines de chaque plateforme</li>
+                  <li><strong>Optimisation des animations</strong> pour une expérience visuelle agréable</li>
+                  <li><strong>Tests rigoureux</strong> sur différents appareils et versions d'OS</li>
+                  <li><strong>Analyse des comportements utilisateurs</strong> pour améliorer continuellement l'expérience
+                  </li>
+                </ul>
+                <p>Une application performante fidélise vos utilisateurs et <strong>améliore votre taux de
+                    conversion</strong>.</p>
+              </div>
             </div>
           </div>
         </div>

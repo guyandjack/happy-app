@@ -51,7 +51,7 @@
   }
   </script>
   <!-- script pour le collapse de la faq -->
-  <script src="../../src/scripts/collapse-faq.js" defer></script>
+  <script src="../../src/scripts/page-services.js" defer></script>
 
   <!-- Scripts in head -->
   <script type="module" src="../../src/main.jsx"></script>
@@ -86,16 +86,16 @@
         </p>
       </div>
 
-      
+
       <!-- Part C: Website Types Cards -->
       <section class="website-types">
         <div class="container">
           <h2>Types de <strong>sites web</strong> que je crée</h2>
           <div class="website-cards">
             <!-- First card with container -->
-            <div class="website-card-container">
+            <div class="website-card-container" id="website-card-container-1">
               <h3><strong>Site Vitrine</strong></h3>
-              <div class="website-card" id="website-card-1">
+              <div class="website-card">
                 <div class="card-image">
                   <img src="../../../src/assets/images/page-site-web/img-vitrine-3.webp" alt="Site vitrine"
                     loading="lazy">
@@ -115,9 +115,9 @@
             </div>
 
             <!-- Second card with container -->
-            <div class="website-card-container">
+            <div class="website-card-container" id="website-card-container-2">
               <h3><strong>Site E-commerce</strong></h3>
-              <div class="website-card" id="website-card-2">
+              <div class="website-card">
                 <div class="card-image">
                   <img src="../../../src/assets/images/page-site-web/img-e-sale-2.webp" alt="Site e-commerce"
                     loading="lazy">
@@ -126,7 +126,8 @@
                   <p>Un <strong>site e-commerce</strong> vous permet de vendre vos produits ou services directement en
                     ligne. Je développe des <strong>boutiques en ligne</strong> complètes, intuitives et sécurisées qui
                     offrent une <strong>expérience d'achat fluide</strong> à vos clients.</p>
-                  <p>Ces sites incluent toutes les fonctionnalités essentielles : <strong>catalogue de produits</strong>,
+                  <p>Ces sites incluent toutes les fonctionnalités essentielles : <strong>catalogue de
+                      produits</strong>,
                     <strong>panier d'achat</strong>, <strong>paiement sécurisé</strong>, <strong>gestion des
                       stocks</strong>, et bien plus encore. Ils sont également optimisés pour les <strong>appareils
                       mobiles</strong>, permettant à vos clients d'acheter où qu'ils soient.
@@ -137,22 +138,25 @@
             </div>
 
             <!-- Third card with container -->
-            <div class="website-card-container">
+            <div class="website-card-container" id="website-card-container-3">
               <h3><strong>Site Sur Mesure</strong></h3>
-              <div class="website-card" id="website-card-3">
+              <div class="website-card">
                 <div class="card-image">
                   <img src="../../../src/assets/images/page-site-web/img-sur-mesure-3.webp" alt="Site sur mesure"
                     loading="lazy">
                 </div>
                 <div class="card-content">
-                  <p>Un <strong>site sur mesure</strong> est développé spécifiquement pour répondre à vos besoins uniques.
+                  <p>Un <strong>site sur mesure</strong> est développé spécifiquement pour répondre à vos besoins
+                    uniques.
                     Si vous avez besoin de <strong>fonctionnalités spécifiques</strong> ou d'une <strong>solution web
-                      personnalisée</strong> qui ne correspond pas aux modèles standards, c'est l'option idéale pour vous.
+                      personnalisée</strong> qui ne correspond pas aux modèles standards, c'est l'option idéale pour
+                    vous.
                   </p>
                   <p>Je travaille en étroite collaboration avec vous pour comprendre vos exigences et créer une
                     <strong>solution web sur mesure</strong> qui répond parfaitement à vos objectifs. Ces sites peuvent
                     inclure des <strong>systèmes de gestion de contenu personnalisés</strong>, des <strong>intégrations
-                      avec d'autres systèmes</strong>, des <strong>fonctionnalités avancées</strong>, et bien plus encore.
+                      avec d'autres systèmes</strong>, des <strong>fonctionnalités avancées</strong>, et bien plus
+                    encore.
                   </p>
                   <a href="/fr/contact.html" class="btn btn-secondary">Besoin d'un site sur mesure ? Contactez-moi</a>
                 </div>
@@ -186,20 +190,28 @@
             </div>
 
             <div class="seo-section">
-              <h2>Optimisation <strong>SEO</strong></h2>
-              <p>Tous mes sites sont <strong>optimisés pour les moteurs de recherche</strong> dès leur conception :</p>
-              <ul>
-                <li><strong>Structure technique</strong> optimisée pour le référencement</li>
-                <li><strong>Vitesse de chargement</strong> optimale, un facteur clé pour Google</li>
-                <li><strong>Balisage sémantique</strong> pour une meilleure compréhension par les moteurs de recherche
-                </li>
-                <li><strong>Responsive design</strong> pour une expérience optimale sur tous les appareils</li>
-                <li><strong>Métadonnées</strong> et <strong>balises</strong> optimisées pour chaque page</li>
-                <li>Conseils sur la <strong>stratégie de contenu</strong> pour améliorer votre visibilité</li>
-              </ul>
-              <p>Un site bien optimisé vous aide à <strong>attirer plus de visiteurs qualifiés</strong> et à
-                <strong>convertir plus de clients</strong>.
-              </p>
+              <div class="content-wrapper">
+                
+                <div class="title-container">
+                  <img class="icon-seo" src="../../../src/assets/images/icons/setting.png" alt="Optimisation SEO"
+                    loading="lazy">
+                  <h2>Optimisation <strong>SEO</strong></h2>
+                </div>
+                <p>Tous mes sites sont <strong>optimisés pour les moteurs de recherche</strong> dès leur conception :
+                </p>
+                <ul>
+                  <li><strong>Structure technique</strong> optimisée pour le référencement</li>
+                  <li><strong>Vitesse de chargement</strong> optimale, un facteur clé pour Google</li>
+                  <li><strong>Balisage sémantique</strong> pour une meilleure compréhension par les moteurs de recherche
+                  </li>
+                  <li><strong>Responsive design</strong> pour une expérience optimale sur tous les appareils</li>
+                  <li><strong>Métadonnées</strong> et <strong>balises</strong> optimisées pour chaque page</li>
+                  <li>Conseils sur la <strong>stratégie de contenu</strong> pour améliorer votre visibilité</li>
+                </ul>
+                <p>Un site bien optimisé vous aide à <strong>attirer plus de visiteurs qualifiés</strong> et à
+                  <strong>convertir plus de clients</strong>.
+                </p>
+              </div>
             </div>
           </div>
         </div>

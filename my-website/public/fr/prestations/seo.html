@@ -52,7 +52,7 @@
   </script>
 
   <!-- Add FAQ collapse script -->
-  <script src="../../src/scripts/collapse-faq.js" defer></script>
+  <script src="../../src/scripts/page-services.js" defer></script>
 
   <!-- Scripts in head -->
   <script type="module" src="../../src/main.jsx"></script>
@@ -84,85 +84,96 @@
       <div class="container">
         <h2>Mes services <strong>d'optimisation SEO</strong></h2>
         <div class="website-cards">
-          <div class="website-card" id="website-card-1">
-            <div class="card-image">
-              <img src="/src/assets/images/page-seo/img-audit.webp" alt="Audit SEO" loading="lazy">
-            </div>
-            <div class="card-content">
-              <h3><strong>Audit SEO</strong></h3>
-              <p>Un <strong>audit SEO complet</strong> est la première étape pour comprendre la situation actuelle de
-                votre site. J'analyse en profondeur votre présence en ligne, identifie les problèmes techniques, évalue
-                votre contenu et examine votre profil de backlinks pour déterminer les opportunités d'amélioration.</p>
-              <p>L'audit comprend une analyse de la structure du site, de la vitesse de chargement, de l'optimisation
-                mobile, des balises méta, de la qualité du contenu, et bien plus encore. Vous recevez un rapport
-                détaillé avec des recommandations concrètes et priorisées.</p>
-              <a href="/fr/contact.html" class="btn btn-secondary">Besoin d'un audit SEO ? Contactez-moi</a>
-            </div>
-          </div>
-
-          <div class="website-card" id="website-card-2">
-            <div class="card-image">
-              <img src="/src/assets/images/page-seo/img-technique.webp" alt="SEO Technique" loading="lazy">
-            </div>
-            <div class="card-content">
-              <h3><strong>SEO Technique</strong></h3>
-              <p>Le <strong>SEO technique</strong> concerne l'optimisation de l'infrastructure de votre site pour
-                faciliter le crawl et l'indexation par les moteurs de recherche. J'améliore les aspects techniques qui
-                impactent directement votre classement : vitesse du site, structure des URL, balisage schema.org,
-                sitemap XML, fichier robots.txt, etc.</p>
-              <p>Je résous également les problèmes techniques comme les erreurs 404, les redirections incorrectes, les
-                problèmes de canonicalisation, et j'optimise votre site pour les appareils mobiles et la Core Web Vitals
-                de Google.</p>
-              <a href="/fr/contact.html" class="btn btn-secondary">Améliorer le SEO technique de votre site</a>
+          <!-- First card with container -->
+          <div class="website-card-container" id="website-card-container-1">
+            <h3><strong>Audit SEO</strong></h3>
+            <div class="website-card">
+              <div class="card-image">
+                <img src="/src/assets/images/page-seo/img-audit.webp" alt="Audit SEO" loading="lazy">
+              </div>
+              <div class="card-content">
+                <p>Un <strong>audit SEO complet</strong> est la première étape pour comprendre la situation actuelle de
+                  votre site. J'analyse en profondeur votre présence en ligne, identifie les problèmes techniques, évalue
+                  votre contenu et examine votre profil de backlinks pour déterminer les opportunités d'amélioration.</p>
+                <p>L'audit comprend une analyse de la structure du site, de la vitesse de chargement, de l'optimisation
+                  mobile, des balises méta, de la qualité du contenu, et bien plus encore. Vous recevez un rapport
+                  détaillé avec des recommandations concrètes et priorisées.</p>
+                <a href="/fr/contact.html" class="btn btn-secondary">Besoin d'un audit SEO ? Contactez-moi</a>
+              </div>
             </div>
           </div>
 
-          <div class="website-card" id="website-card-3">
-            <div class="card-image">
-              <img src="/src/assets/images/page-seo/img-contenu.webp" alt="SEO de contenu" loading="lazy">
-            </div>
-            <div class="card-content">
-              <h3><strong>SEO de Contenu</strong></h3>
-              <p>Le <strong>contenu de qualité</strong> est au cœur d'une stratégie SEO efficace. Je développe une
-                stratégie de contenu basée sur une recherche approfondie de mots-clés pertinents pour votre activité et
-                votre audience cible.</p>
-              <p>Mes services incluent l'optimisation des pages existantes, la création de nouveaux contenus optimisés
-                (articles de blog, pages de service, études de cas), l'amélioration de la structure des titres et
-                sous-titres, et l'optimisation des balises méta pour maximiser votre visibilité dans les résultats de
-                recherche.</p>
-              <a href="/fr/contact.html" class="btn btn-secondary">Optimiser votre contenu pour le SEO</a>
-            </div>
-          </div>
-
-          <div class="website-card" id="website-card-4">
-            <div class="card-image">
-              <img src="/src/assets/images/page-seo/img-offpage.webp" alt="SEO Off-page" loading="lazy">
-            </div>
-            <div class="card-content">
-              <h3><strong>SEO Off-page</strong></h3>
-              <p>Le <strong>SEO off-page</strong> concerne toutes les actions réalisées en dehors de votre site pour
-                améliorer votre autorité et votre réputation en ligne. Je développe des stratégies pour obtenir des
-                backlinks de qualité provenant de sites pertinents et autoritaires dans votre secteur.</p>
-              <p>Mes services incluent la création de contenu attractif pour générer des liens naturels, l'outreach
-                auprès d'influenceurs et de sites partenaires potentiels, l'optimisation de vos profils sur les réseaux
-                sociaux, et la gestion de votre réputation en ligne.</p>
-              <a href="/fr/contact.html" class="btn btn-secondary">Renforcer votre SEO off-page</a>
+          <div class="website-card-container" id="website-card-container-2">
+            <h3><strong>SEO Technique</strong></h3>
+            <div class="website-card">
+              <div class="card-image">
+                <img src="/src/assets/images/page-seo/img-technique.webp" alt="SEO Technique" loading="lazy">
+              </div>
+              <div class="card-content">
+                <p>Le <strong>SEO technique</strong> concerne l'optimisation de l'infrastructure de votre site pour
+                  faciliter le crawl et l'indexation par les moteurs de recherche. J'améliore les aspects techniques qui
+                  impactent directement votre classement : vitesse du site, structure des URL, balisage schema.org,
+                  sitemap XML, fichier robots.txt, etc.</p>
+                <p>Je résous également les problèmes techniques comme les erreurs 404, les redirections incorrectes, les
+                  problèmes de canonicalisation, et j'optimise votre site pour les appareils mobiles et la Core Web Vitals
+                  de Google.</p>
+                <a href="/fr/contact.html" class="btn btn-secondary">Améliorer le SEO technique de votre site</a>
+              </div>
             </div>
           </div>
 
-          <div class="website-card" id="website-card-5">
-            <div class="card-image">
-              <img src="/src/assets/images/page-seo/img-local.webp" alt="SEO Local" loading="lazy">
+          <div class="website-card-container" id="website-card-container-3">
+            <h3><strong>SEO de Contenu</strong></h3>
+            <div class="website-card">
+              <div class="card-image">
+                <img src="/src/assets/images/page-seo/img-contenu.webp" alt="SEO de contenu" loading="lazy">
+              </div>
+              <div class="card-content">
+                <p>Le <strong>contenu de qualité</strong> est au cœur d'une stratégie SEO efficace. Je développe une
+                  stratégie de contenu basée sur une recherche approfondie de mots-clés pertinents pour votre activité et
+                  votre audience cible.</p>
+                <p>Mes services incluent l'optimisation des pages existantes, la création de nouveaux contenus optimisés
+                  (articles de blog, pages de service, études de cas), l'amélioration de la structure des titres et
+                  sous-titres, et l'optimisation des balises méta pour maximiser votre visibilité dans les résultats de
+                  recherche.</p>
+                <a href="/fr/contact.html" class="btn btn-secondary">Optimiser votre contenu pour le SEO</a>
+              </div>
             </div>
-            <div class="card-content">
-              <h3><strong>SEO Local</strong></h3>
-              <p>Pour les entreprises qui ciblent une clientèle locale, le <strong>SEO local</strong> est essentiel.
-                J'optimise votre présence dans les recherches locales pour attirer des clients dans votre zone
-                géographique.</p>
-              <p>Mes services comprennent la création et l'optimisation de votre fiche Google My Business,
-                l'amélioration de votre visibilité dans les résultats de recherche locaux, la gestion des avis clients,
-                et l'optimisation de votre site pour les requêtes locales spécifiques.</p>
-              <a href="/fr/contact.html" class="btn btn-secondary">Développer votre visibilité locale</a>
+          </div>
+
+          <div class="website-card-container" id="website-card-container-4">
+            <h3><strong>SEO Off-page</strong></h3>
+            <div class="website-card">
+              <div class="card-image">
+                <img src="/src/assets/images/page-seo/img-offpage.webp" alt="SEO Off-page" loading="lazy">
+              </div>
+              <div class="card-content">
+                <p>Le <strong>SEO off-page</strong> concerne toutes les actions réalisées en dehors de votre site pour
+                  améliorer votre autorité et votre réputation en ligne. Je développe des stratégies pour obtenir des
+                  backlinks de qualité provenant de sites pertinents et autoritaires dans votre secteur.</p>
+                <p>Mes services incluent la création de contenu attractif pour générer des liens naturels, l'outreach
+                  auprès d'influenceurs et de sites partenaires potentiels, l'optimisation de vos profils sur les réseaux
+                  sociaux, et la gestion de votre réputation en ligne.</p>
+                <a href="/fr/contact.html" class="btn btn-secondary">Renforcer votre SEO off-page</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="website-card-container" id="website-card-container-5">
+            <h3><strong>SEO Local</strong></h3>
+            <div class="website-card">
+              <div class="card-image">
+                <img src="/src/assets/images/page-seo/img-local.webp" alt="SEO Local" loading="lazy">
+              </div>
+              <div class="card-content">
+                <p>Pour les entreprises qui ciblent une clientèle locale, le <strong>SEO local</strong> est essentiel.
+                  J'optimise votre présence dans les recherches locales pour attirer des clients dans votre zone
+                  géographique.</p>
+                <p>Mes services comprennent la création et l'optimisation de votre fiche Google My Business,
+                  l'amélioration de votre visibilité dans les résultats de recherche locaux, la gestion des avis clients,
+                  et l'optimisation de votre site pour les requêtes locales spécifiques.</p>
+                <a href="/fr/contact.html" class="btn btn-secondary">Développer votre visibilité locale</a>
+              </div>
             </div>
           </div>
         </div>
@@ -174,33 +185,40 @@
       <div class="container">
         <div class="eco-seo-grid">
           <div class="eco-design-section">
-            <h2>SEO et <strong>Éco-conception</strong></h2>
-            <p>Saviez-vous que l'<strong>éco-conception</strong> et le SEO sont étroitement liés ? Un site web éco-conçu
-              présente de nombreux avantages pour votre référencement :</p>
-            <ul>
-              <li><strong>Vitesse de chargement améliorée</strong>, un facteur de classement important pour Google</li>
-              <li><strong>Expérience utilisateur optimisée</strong>, réduisant le taux de rebond</li>
-              <li><strong>Code propre et léger</strong>, facilitant le crawl par les moteurs de recherche</li>
-              <li><strong>Meilleure compatibilité mobile</strong>, essentielle pour le SEO moderne</li>
-              <li><strong>Réduction de la consommation de ressources</strong>, améliorant les performances globales</li>
-            </ul>
-            <p>Tous mes services SEO intègrent des principes d'éco-conception pour un <strong>double bénéfice</strong> :
-              améliorer votre classement tout en réduisant l'impact environnemental de votre site.</p>
+            <div class="content-wrapper">
+              <h2>SEO et <strong>Éco-conception</strong></h2>
+              <p>Saviez-vous que l'<strong>éco-conception</strong> et le SEO sont étroitement liés ? Un site web éco-conçu
+                présente de nombreux avantages pour votre référencement :</p>
+              <ul>
+                <li><strong>Vitesse de chargement améliorée</strong>, un facteur de classement important pour Google</li>
+                <li><strong>Expérience utilisateur optimisée</strong>, réduisant le taux de rebond</li>
+                <li><strong>Code propre et léger</strong>, facilitant le crawl par les moteurs de recherche</li>
+                <li><strong>Meilleure compatibilité mobile</strong>, essentielle pour le SEO moderne</li>
+                <li><strong>Réduction de la consommation de ressources</strong>, améliorant les performances globales</li>
+              </ul>
+              <p>Tous mes services SEO intègrent des principes d'éco-conception pour un <strong>double bénéfice</strong> :
+                améliorer votre classement tout en réduisant l'impact environnemental de votre site.</p>
+            </div>
           </div>
 
           <div class="seo-section">
-            <h2><strong>Suivi et Analyse</strong> des Performances</h2>
-            <p>L'optimisation SEO est un processus continu qui nécessite un suivi régulier :</p>
-            <ul>
-              <li>Mise en place d'<strong>outils d'analyse</strong> (Google Analytics, Search Console)</li>
-              <li><strong>Suivi des positions</strong> pour vos mots-clés cibles</li>
-              <li>Analyse de l'<strong>évolution du trafic organique</strong></li>
-              <li>Mesure des <strong>taux de conversion</strong> et du ROI</li>
-              <li><strong>Rapports mensuels</strong> détaillant les progrès et les actions à venir</li>
-              <li><strong>Ajustements stratégiques</strong> basés sur les données recueillies</li>
-            </ul>
-            <p>Je vous fournis des <strong>rapports clairs et transparents</strong> pour que vous puissiez constater
-              l'impact concret de mes services sur votre visibilité en ligne.</p>
+            <div class="content-wrapper">
+              <div class="title-container">
+                <img class="icon-seo" src="../../../src/assets/images/icons/setting.png" alt="Suivi et Analyse" loading="lazy">
+                <h2><strong>Suivi et Analyse</strong> des Performances</h2>
+              </div>
+              <p>L'optimisation SEO est un processus continu qui nécessite un suivi régulier :</p>
+              <ul>
+                <li>Mise en place d'<strong>outils d'analyse</strong> (Google Analytics, Search Console)</li>
+                <li><strong>Suivi des positions</strong> pour vos mots-clés cibles</li>
+                <li>Analyse de l'<strong>évolution du trafic organique</strong></li>
+                <li>Mesure des <strong>taux de conversion</strong> et du ROI</li>
+                <li><strong>Rapports mensuels</strong> détaillant les progrès et les actions à venir</li>
+                <li><strong>Ajustements stratégiques</strong> basés sur les données recueillies</li>
+              </ul>
+              <p>Je vous fournis des <strong>rapports clairs et transparents</strong> pour que vous puissiez constater
+                l'impact concret de mes services sur votre visibilité en ligne.</p>
+            </div>
           </div>
         </div>
       </div>

@@ -36,34 +36,77 @@
     align-items: center;
     gap: 120px;
     margin: 0 auto;
-    
+
 
     .website-card-container {
       position: relative;
       width: 100%;
       max-width: 1200px;
-      
-      & > h3 {
+
+      &>h3 {
         position: absolute;
-        top: -25px;
+        top: -45px;
         left: 0;
         z-index: 2;
         font-size: 2.2rem;
-        color: rgba(map-get($colors-rule, fourth-color), 0.8);
-        font-weight: bolder;
-        padding: 0 40px;
+        padding: 15px 40px;
         margin: 0;
+        background: map-get($colors-rule, sixth-color);
+        border-radius: 15px;
+        color: rgba(map-get($colors-rule, fourth-color), 0.8);
+        font-weight: 800;
+        box-shadow: 0 0px 20px rgba(map-get($colors-rule, second-color), 0.2);
 
-        /* strong {
-          background: linear-gradient(135deg, 
-            map-get($colors-rule, third-color) 0%,
-            map-get($colors-rule, second-color) 100%);
+        /*strong {
+          background: linear-gradient(135deg,
+            map-get($colors-rule, second-color),
+            map-get($colors-rule, third-color));
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
-          font-weight: 700;
-        } */
+        }*/
       }
+
+      @media screen and (min-width: 992px) {
+        &:nth-child(even) h3 {
+          right: 0;
+          left: auto;
+        }
+
+        & h3 {
+          padding: 20px 40px;
+          transition: transform 0.3s ease;
+        }
+
+        &:hover h3 {
+          transform: translateY(-3px);
+        }
+      }
+
+      @media screen and (min-width: 1500px) {
+
+        &:nth-child(2) {
+
+          transform: translateX(-5%);
+        }
+
+        &:nth-child(3) {
+
+          transform: translateX(-10%);
+        }
+
+        &:nth-child(5) {
+
+          transform: translateX(5%);
+        }
+
+        &:nth-child(7) {
+
+          transform: translateX(10%);
+
+        }
+      }
+
 
       .website-card {
         position: relative;
@@ -74,7 +117,7 @@
         overflow: hidden;
         transition: transform 0.3s ease;
         // Enhanced elevation effect
-        box-shadow: 
+        box-shadow:
           0 4px 6px rgba(0, 0, 0, 0.05),
           0 10px 15px rgba(0, 0, 0, 0.1),
           0 20px 30px rgba(map-get($colors-rule, first-color), 0.05);
@@ -105,8 +148,8 @@
           width: 100%;
           height: 4px;
           background: linear-gradient(90deg,
-            rgba(map-get($colors-rule, second-color), 0.1),
-            rgba(map-get($colors-rule, third-color), 0.1));
+              rgba(map-get($colors-rule, second-color), 0.1),
+              rgba(map-get($colors-rule, third-color), 0.1));
         }
 
         .card-image {
@@ -114,7 +157,7 @@
           width: 100%;
           height: 250px;
           overflow: hidden;
-          
+
           @media screen and (min-width: 992px) {
             position: absolute;
             top: -10%;
@@ -123,7 +166,7 @@
             width: 450px;
             height: 450px;
             border-radius: 50%;
-           
+
           }
 
           img {
@@ -160,21 +203,24 @@
           }
 
           .btn {
+            position: relative;
             display: inline-block;
             padding: 12px 30px;
             border-radius: 30px;
-            background: linear-gradient(135deg,
-              map-get($colors-rule, third-color) 0%,
-              map-get($colors-rule, second-color) 100%);
-            color: map-get($colors-rule, sixth-color);
+            background: rgba(map-get($colors-rule, first-color), 0.8);
+            border: 2px solid transparent;
+            color: rgba(map-get($colors-rule, sixth-color), 0.9);
             text-decoration: none;
             font-weight: 500;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: none;
-            
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+
+
             &:hover {
-              transform: translateY(-2px);
-              box-shadow: 0 5px 15px rgba(map-get($colors-rule, second-color), 0.2);
+              background-color: transparent;
+              border-color: rgba(map-get($colors-rule, first-color), 0.9);
+              color: rgba(map-get($colors-rule, first-color), 0.9);
+              transform: translateY(-5px);
+              transition: all 0.3s ease;
             }
           }
         }
@@ -183,7 +229,7 @@
       // Enhance elevation effect on hover
       &:hover .website-card {
         transform: translateY(-2px);
-        box-shadow: 
+        box-shadow:
           0 6px 8px rgba(0, 0, 0, 0.05),
           0 12px 18px rgba(0, 0, 0, 0.1),
           0 25px 35px rgba(map-get($colors-rule, first-color), 0.07);
@@ -191,13 +237,16 @@
 
       // Alternate card layout
       &:nth-child(even) {
+
         .website-card {
           @media screen and (min-width: 992px) {
             .card-image {
               right: auto;
               left: -5%;
             }
-            
+
+
+
             .card-content {
               margin-left: auto;
             }
@@ -206,19 +255,8 @@
       }
     }
 
-    /* @media screen and (min-width: 1500px) {
-      #website-card-2 {
-        transform: translateX(-5%);
-      }
 
-      #website-card-3 {
-        transform: translateX(-10%);
-      }
 
-      #website-card-5 {
-        transform: translateX(5%);
-      }
-    } */
   }
 
   @media (max-width: 992px) {
@@ -300,7 +338,7 @@
 
         strong {
           position: relative;
-          
+
           &::after {
             content: '';
             position: absolute;
@@ -363,8 +401,8 @@
     // Specific styles for eco-design section
     .eco-design-section {
       background: linear-gradient(135deg,
-        rgba(map-get($colors-rule, third-color), 0.2),
-        rgba(map-get($colors-rule, second-color), 0.1));
+          rgba(map-get($colors-rule, third-color), 0.2),
+          rgba(map-get($colors-rule, second-color), 0.1));
 
       .content-wrapper::before {
         content: '🌱';
@@ -378,6 +416,7 @@
 
       h2 strong {
         color: map-get($colors-rule, first-color);
+
         &::after {
           background: map-get($colors-rule, first-color);
         }
@@ -385,9 +424,11 @@
 
       ul li {
         border: 1px solid rgba(map-get($colors-rule, third-color), 0.1);
+
         &::before {
           color: map-get($colors-rule, first-color);
         }
+
         strong {
           color: map-get($colors-rule, first-color);
         }
@@ -400,23 +441,100 @@
 
     // Specific styles for seo section
     .seo-section {
+
+
+      @keyframes rotate-right {
+        0% {
+          transform: rotate(0deg);
+
+        }
+
+        25% {
+          opacity: 0.5;
+        }
+
+        50% {
+          opacity: 0.9;
+        }
+
+        75% {
+          opacity: 0.5;
+        }
+
+
+        100% {
+          transform: rotate(360deg);
+          opacity: 0.1;
+        }
+      }
+
+      @keyframes rotate-left {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        25% {
+          opacity: 0.5;
+        }
+
+        50% {
+          opacity: 0.9;
+        }
+
+        75% {
+          opacity: 0.5;
+        }
+
+        100% {
+          transform: rotate(-360deg);
+          opacity: 0.1;
+        }
+      }
+
+
+
+
+
       background: linear-gradient(135deg,
         rgba(map-get($colors-rule, fourth-color), 0.2),
         rgba(map-get($colors-rule, fourth-color), 0.1));
 
-      .content-wrapper::before {
-        content: '🎯';
+
+
+      .title-container {
+        position: relative;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 10px;
+        //border: 1px solid red;
+        width: fit-content;
+      }
+
+      .icon-seo {
         position: absolute;
-        //z-index: 10;
-        top: -60px;
-        left: 80px;
-        font-size: 3rem;
-        opacity: 0.2;
-        transform: rotate(-15deg);
+        top: 0px;
+        right: -50px;
+        //font-size: 3rem;
+        opacity: 0.1;
+        width: 40px;
+        height: 40px;
+      }
+
+      .rotate-right {
+        animation: rotate-right 1s ease-out 0s 1 normal forwards;
+      }
+
+      .rotate-left {
+        animation: rotate-left 1s ease-out 0s 1 normal forwards;
       }
 
       h2 strong {
+
         color: map-get($colors-rule, fourth-color);
+
+
         &::after {
           background: map-get($colors-rule, fourth-color);
         }
@@ -424,9 +542,11 @@
 
       ul li {
         border: 1px solid rgba(map-get($colors-rule, fourth-color), 0.1);
+
         &::before {
           color: map-get($colors-rule, fourth-color);
         }
+
         strong {
           color: map-get($colors-rule, fourth-color);
         }
@@ -438,6 +558,7 @@
     }
 
     @media (max-width: 768px) {
+
       .eco-design-section,
       .seo-section {
         padding: 80px 20px;

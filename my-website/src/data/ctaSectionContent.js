@@ -2,30 +2,21 @@
 let ctaSectionContent = {
     fr: {
         index: {
-            title: "Des solutions web complètes pour répondre à tous vos besoins",
+            title: "Des solutions web complètes pour répondre à tous vos besoins.",
             text: "Que vous ayez besoin d’un site web performant, d’une application sur mesure, ou d'un référencement optimisé, nous avons la solution.",
             btn_text: "Contactez-moi",
      
         },
-        contact: {
-           title: "Prêt à <strong>travailler ensemble</strong> ?",
-            text: "Si vous cherchez un <strong>développeur web passionné et engagé</strong> pour votre prochain projet, je serais ravi d'en discuter avec vous.",
-            btn_text: "Contactez-moi",
-        },
-    
+            
         qui: {
-            title: "Prêt à <strong>travailler ensemble</strong> ?",
-            text: "Si vous cherchez un <strong>développeur web passionné et engagé</strong> pour votre prochain projet, je serais ravi d'en discuter avec vous.",
+            title: "Développeur web passionné et engagé",
+            text: "Si vous cherchez un développeur web passionné et engagé pour votre prochain projet, je serais ravi d'en discuter avec vous.",
             btn_text: "Contactez-moi",
         },
-        realisation: {
-            title: "Prêt à <strong>travailler ensemble</strong> ?",
-            text: "Si vous cherchez un <strong>développeur web passionné et engagé</strong> pour votre prochain projet, je serais ravi d'en discuter avec vous.",
-            btn_text: "Contactez-moi",
-        },
+        
         articles: {
-            title: "Prêt à <strong>travailler ensemble</strong> ?",
-            text: "Si vous cherchez un <strong>développeur web passionné et engagé</strong> pour votre prochain projet, je serais ravi d'en discuter avec vous.",
+            title: "Vous avez d'autres questions ?",
+            text: "Contacter moi pour plus d'informations.",
             btn_text: "Contactez-moi",
         },
         mobile: {

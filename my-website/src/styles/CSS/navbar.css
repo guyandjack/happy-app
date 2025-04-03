@@ -8,6 +8,7 @@ $menu-active: red; */
   position: relative;
   top: 0px;
   width: 100%;
+  height: 100%;
   margin: 0 auto;
   background: -webkit-linear-gradient(45deg, #00beb8, #7090b0);
   background: -o-linear-gradient(45deg, #00beb8, #7090b0);
@@ -243,6 +244,7 @@ $menu-active: red; */
   -webkit-transform: translateY(-10px);
       -ms-transform: translateY(-10px);
           transform: translateY(-10px);
+  border-radius: 10px;
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -250,7 +252,9 @@ $menu-active: red; */
 
 @media (min-width: 992px) {
   .navbar .navbar-menu .menu-item-with-submenu .submenu {
-    background: #036662;
+    background: -webkit-linear-gradient(45deg, #00a59f, #6083a7);
+    background: -o-linear-gradient(45deg, #00a59f, #6083a7);
+    background: linear-gradient(45deg, #00a59f, #6083a7);
     -webkit-transition: background-color 0.2s ease;
     -o-transition: background-color 0.2s ease;
     transition: background-color 0.2s ease;
@@ -263,6 +267,9 @@ $menu-active: red; */
   -webkit-transform: translateY(0);
       -ms-transform: translateY(0);
           transform: translateY(0);
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .navbar .navbar-menu .menu-item-with-submenu .submenu li {
@@ -279,19 +286,21 @@ $menu-active: red; */
   text-decoration: none;
   white-space: nowrap;
   color: #ffffff;
-  -webkit-transition: color 0.2s ease, border-left 0.2s ease, font-weight 0.2s ease;
-  -o-transition: color 0.2s ease, border-left 0.2s ease, font-weight 0.2s ease;
-  transition: color 0.2s ease, border-left 0.2s ease, font-weight 0.2s ease;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  -o-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 
 @media (min-width: 992px) {
   .navbar .navbar-menu .menu-item-with-submenu .submenu a:hover {
-    border-left: 8px solid #00beb8;
-    color: #00beb8;
-    font-weight: bolder;
-    -webkit-transition: color 0.3s ease, border-left 0.3s ease, font-weight 0.3s ease;
-    -o-transition: color 0.3s ease, border-left 0.3s ease, font-weight 0.3s ease;
-    transition: color 0.3s ease, border-left 0.3s ease, font-weight 0.3s ease;
+    -webkit-transform: translateX(10px) scale(1.05);
+        -ms-transform: translateX(10px) scale(1.05);
+            transform: translateX(10px) scale(1.05);
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
   }
 }
 
@@ -378,6 +387,10 @@ $menu-active: red; */
     -webkit-box-shadow: none;
             box-shadow: none;
     background: none;
+  }
+  .navbar .navbar-menu .language-switcher {
+    border-left: 1px solid #eee;
+    padding-left: 1rem;
   }
   .navbar .navbar-menu a {
     border-bottom: none;

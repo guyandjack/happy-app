@@ -5,22 +5,25 @@
   height: 300px;
   text-align: center;
   position: relative;
-  overflow: hidden;
+  //overflow: hidden;
   background-color: map-get($colors-rule, background-page-color);
+  border: none;
 
   &>img {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 500px;
-    height: 400px;
+    z-index: 1;
+    top: 0px;
+    left: -80px;
+    width: 600px;
+    height: 500px;
     object-fit: cover;
-    clip-path: polygon(0% 0%, 100% 0%, 60% 100%, 0% 100%);
-    opacity: 0.9;
+    clip-path: polygon(0% 0%, 100% 0%, 0% 100%, 0% 100%);
+    opacity: 0.8;
   }
 
   &>img:nth-child(2) {
     top: -15%;
+    width: 500px;
     height: 500px;
     left: calc(100% - 350px);
     border-radius: 50%;

@@ -12,6 +12,7 @@ function Footer() {
       main: [
         { path: `${url}/index.html`, text: 'Accueil' },
         { path: `${url}/public/fr/qui-suis-je.html`, text: 'Qui suis je' },
+        { path: `${url}/public/fr/contact.html`, text: 'Contact' },
       ],
       services: [
         { path: `${url}/fr/prestations/site-web.html`, text: 'Site Web' },
