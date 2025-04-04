@@ -3,12 +3,8 @@ import React from 'react';
 import '../../styles/SCSS/components/CardContainer.scss';
 import { Card } from './Card';
 
-
 const CardContainer = ({ 
-  card, 
-  containerTitle, 
-  containerDescription, 
-  containerClassName,
+  card,
   idPrefix = 'card',
   columns = 3,
   gap = '30px'
@@ -23,21 +19,13 @@ const CardContainer = ({
   };
 
   return (
-    <div className={`card-container ${containerClassName || ''}`}>
-      {(containerTitle || containerDescription) && (
-        <div className="container-header">
-          {containerTitle && <h2 className="container-title">{containerTitle}</h2>}
-          {containerDescription && <p className="container-description">{containerDescription}</p>}
-        </div>
-      )}
-      
+    <div className="card-container">
       <div className="cards-grid" style={gridStyle}>
-        {card.map((content,index) => (
+        {card.map((content, index) => (
           <Card
             key={generateCardId(index)}
             id={generateCardId(index)}
             card={content}
-            
           />
         ))}
       </div>
@@ -52,23 +40,16 @@ CardContainer.propTypes = {
       description: PropTypes.string,
       imageUrl: PropTypes.string,
       linkUrl: PropTypes.string,
-      accentColor: PropTypes.string,
       backgroundColor: PropTypes.string,
-      textColor: PropTypes.string,
       width: PropTypes.string,
       height: PropTypes.string,
-      className: PropTypes.string,
-      onClick: PropTypes.func,
-      renderFooter: PropTypes.func,
-      children: PropTypes.node
+      className: PropTypes.string
     })
   ).isRequired,
-  containerTitle: PropTypes.string,
-  containerDescription: PropTypes.string,
-  containerClassName: PropTypes.string,
   idPrefix: PropTypes.string,
   columns: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   gap: PropTypes.string
 };
 
 export { CardContainer };
+

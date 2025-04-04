@@ -16,36 +16,36 @@ const IndexCards = () => {
 
     const descriptionPrestaApp = lang ? "Des applications mobiles intuitives et réactives pour iOS et Android, qui permettent à vos clients d'interagir avec votre entreprise où qu'ils soient." : "Intuitive and responsive mobile applications for iOS and Android, which allow your clients to interact with your business wherever they are.";
 
-    const titlePrestaWeb = lang ? "Conception de sites web sur mesure" : "Custom website design";
+    const titlePrestaWeb = lang ? "Conception de sites web" : "Custom website design";
     const titlePrestaSeo = lang ? "Optimisation SEO" : "SEO Optimization";
     const titlePrestaApp = lang ? "Développement d'applications mobiles" : "Mobile application development";
     
   const indexCards = [
     {
-        width:"300px",
+        width:"350px",
         height: "500px",
       title: `${titlePrestaWeb}`,
       description: `${descriptionPrestaWeb}`,
       linkUrl: `${url}/${uriPrestaWeb}`,
-      accentColor: '#057ee6',
+      className: 'card-web',
       imageUrl: `${url}/src/assets/images/img-card-web-v2.webp`,
     },
     {
-        width:"300px",
+        width:"350px",
         height: "500px",
       title: `${titlePrestaSeo}`,
       description: `${descriptionPrestaSeo}`,
       linkUrl: `${url}/${uriPrestaSeo}`,
-      accentColor: '#209966',
+      className: 'card-seo',
       imageUrl: `${url}/src/assets/images/img-card-seo.webp`,
     },
     {
-        width:"300px",
+        width:"350px",
         height: "500px",
       title: `${titlePrestaApp}`,
       description: `${descriptionPrestaApp}`,
       linkUrl: `${url}/${uriPrestaApp}`,
-      accentColor: '#1ba4e3',
+      className: 'card-app',
       imageUrl: `${url}/src/assets/images/img-card-app.webp`,
     },
   ];
@@ -56,7 +56,7 @@ const IndexCards = () => {
         card={indexCards}
         idPrefix="index-card"
         columns={3}
-        gap="20px"
+        gap="50px"
       />
     </div>
   );

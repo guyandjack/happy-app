@@ -15,20 +15,3 @@ $colors-rule: (
 
 );
 
-$colors-rule-darked-5: (
-    first-color: darken(#057ee6, 5%),
-    second-color: darken(#1ba4e3, 5%),
-    third-color: darken(#209966, 5%),
-    fourth-color: darken(#ff2768, 5%),
-    sixth-color: darken(#fbfffe, 5%),
-    disabled-color: darken(#9ca3af, 5%),
-);
-
-$colors-rule-darked-10: (
-    first-color: darken(#057ee6, 10%),
-    second-color: darken(#1ba4e3, 10%),
-    third-color: darken(#209966, 10%),
-    fourth-color: darken(#ff2768, 10%),
-    sixth-color: darken(#fbfffe, 10%),
-    disabled-color: darken(#9ca3af, 10%),
-);

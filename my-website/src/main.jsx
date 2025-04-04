@@ -65,7 +65,7 @@ if (footerContainer) {
 
 
 
-  /******* concerne toutes la page index********************
+  /******* concerne la page index   ********************
  * ***start
  */
 try {
@@ -86,7 +86,9 @@ catch (error){
     console.error('Error mounting Card Services:', error);
 } 
 
-
+/******* concerne la page index   ********************
+ * ***end
+ */
 
 
 

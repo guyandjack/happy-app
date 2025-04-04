@@ -2,26 +2,32 @@
 @import "../../utils/breakpoint/breakpoint.scss";
 @import "../../utils/color-rule/color-rule.scss";
 
-// Variables
-/* $breakpoint-mobile: 1000px;
-$menu-bg: #ffffff;
-$menu-text: #333333;
-$menu-hover: #3b82f6;
-$menu-active: red; */
+
 
 .navbar {
     position: relative;
+    z-index: 1;
     top: 0px;
     width: 100%;
     height: 100%;
     margin: 0 auto;
     //background: lighten(map-get($colors-rule, first-color), 0%);
     //background: linear-gradient(45deg, rgba(map-get($colors-rule, second-color), 0.8), rgba(map-get($colors-rule, first-color), 0.8));
-    background: linear-gradient(45deg, rgba(map-get($colors-rule, second-color), 1), rgba(map-get($colors-rule, footer-color), 1));
+    /* background: linear-gradient(45deg, rgba(map-get($colors-rule, second-color), 0.9), rgba(map-get($colors-rule, first-color), 0.5),rgba(map-get($colors-rule, third-color), 0.5)); */
     padding: 1rem;
     //box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     //border:2px solid red;
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: 100%;    
+        height: 100%;
+        background-color: map-get($colors-rule, first-color);
+    }
 
     .navbar-brand {
         display: flex;
@@ -98,6 +104,7 @@ $menu-active: red; */
     }
 
     .navbar-menu {
+       
         display: flex;
         justify-content: flex-end;
         align-items: center;
@@ -126,7 +133,7 @@ $menu-active: red; */
                 left: 0;
                 width: 0;
                 height: 2px;
-                background: map-get($colors-rule, second-color);
+                background: map-get($colors-rule, sixth-color);
                 transition: width 0.3s ease;
             }
 
@@ -135,7 +142,7 @@ $menu-active: red; */
             }
 
             &.active {
-                color: map-get($colors-rule, second-color);
+                color: map-get($colors-rule, sixth-color);
 
                 &::after {
                     width: 100%;
