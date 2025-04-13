@@ -21,7 +21,16 @@
 /********************************************************
 **********page size ******
 ********************************************************/
-body, header {
+.page-container {
+  width: 100%;
+  max-width: 2000px;
+  min-width: 400px;
+  margin: 0 auto;
+  background-color: #fbfbfc;
+}
+
+body,
+header {
   width: 100%;
   margin: 0 auto;
 }
@@ -52,13 +61,6 @@ header {
 
 #RC-footer {
   width: 100%;
-}
-
-.page-container {
-  width: 100%;
-  max-width: 2000px;
-  margin: 0 auto;
-  background-color: #fbfbfc;
 }
 
 /********************************************************

@@ -27,7 +27,20 @@
 /********************************************************
 **********page size ******
 ********************************************************/
-body, header {
+
+.page-container {
+
+
+    width: 100%;
+    max-width: 2000px;
+    min-width: 400px;
+    margin: 0 auto;
+    background-color: map-get($colors-rule, background-page-color);
+    //background-color: black
+}
+
+body,
+header {
 
     width: 100%;
     margin: 0 auto;
@@ -40,9 +53,9 @@ header {
     left: 0;
     right: 0;
     z-index: 1000;
-    
 
-    
+
+
 }
 
 /**** mise en forme des conteneur pour le contenu dynamique ***/
@@ -71,15 +84,7 @@ header {
 
 
 
-.page-container {
-   
 
-    width: 100%;
-    max-width: 2000px;
-    margin: 0 auto;
-    background-color: map-get($colors-rule, background-page-color);
-    //background-color: black
-}
 
 /********************************************************
 **********page ******
@@ -88,12 +93,13 @@ header {
 **********pagination ******
 ********************************************************/
 
-.h4-title{
+.h4-title {
     font-size: 1.1em;
     //font-weight: 500;
     //color: #000;
     margin-bottom: 10px;
 }
+
 /********************************************************
 **********paginatio ******
 ********************************************************/
@@ -101,75 +107,75 @@ header {
 
 
 .introduction {
-            width: 100%;
-            padding: 50px 0px ;
-            position: relative;
-            overflow: hidden;
-            background-color: map-get($colors-rule, background-page-color);
-     
-    
-            .text-intro {
-                position: relative;
-                z-index: 1;
-                font-size: 1.2rem;
-                line-height: 1.8;
-                max-width: 800px;
-                width: 80%;
-                margin: 0 auto;
-                text-align: center;
-                color: rgba(map-get($colors-rule, fifth-color), 0.9);
-                position: relative;
-                padding: 20px;
-                border-radius: 10px;
-                background: map-get($colors-rule, sixth-color);
-                backdrop-filter: blur(10px);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-                transform: translateY(-20px);
-                overflow: hidden;
-    
-                &::before {
-                    content: '';
-                    position: absolute;
-                    top: -10px;
-                    left: -10px;
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 50%;
-                    background: rgba(map-get($colors-rule, fourth-color), 0.05);
-                    z-index: 10;
-                }
-    
-                &::after {
-                    content: '';
-                    position: absolute;
-                    bottom: -10px;
-                    right: -10px;
-                    width: 300px;
-                    height: 300px;
-                    border-radius: 50%;
-                    background: rgba(map-get($colors-rule, fourth-color), 0.05);
-                    z-index: 10;
-                }
-    
-                strong {
-                    color: rgba(map-get($colors-rule, second-color), 0.9);
-                    font-weight: 600;
-                }
-    
-                @media screen and (max-width: 992px) {
-                    width: 90%;
-                    font-size: 1.1rem;
-                }
-    
-                @media screen and (max-width: 576px) {
-                    width: 95%;
-                    font-size: 1rem;
-                    padding: 15px;
-                }
-            }
-    
-    
+    width: 100%;
+    padding: 50px 0px;
+    position: relative;
+    overflow: hidden;
+    background-color: map-get($colors-rule, background-page-color);
+
+
+    .text-intro {
+        position: relative;
+        z-index: 1;
+        font-size: 1.2rem;
+        line-height: 1.8;
+        max-width: 800px;
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        color: rgba(map-get($colors-rule, fifth-color), 0.9);
+        position: relative;
+        padding: 20px;
+        border-radius: 10px;
+        background: map-get($colors-rule, sixth-color);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transform: translateY(-20px);
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(map-get($colors-rule, fourth-color), 0.05);
+            z-index: 10;
         }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(map-get($colors-rule, fourth-color), 0.05);
+            z-index: 10;
+        }
+
+        strong {
+            color: rgba(map-get($colors-rule, second-color), 0.9);
+            font-weight: 600;
+        }
+
+        @media screen and (max-width: 992px) {
+            width: 90%;
+            font-size: 1.1rem;
+        }
+
+        @media screen and (max-width: 576px) {
+            width: 95%;
+            font-size: 1rem;
+            padding: 15px;
+        }
+    }
+
+
+}
 
 
 
