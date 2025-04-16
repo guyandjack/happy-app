@@ -1,32 +1,36 @@
 .cta-section {
   position: relative;
-  z-index: 1;
   width: 90%;
   max-width: 800px;
   margin: 80px auto;
   padding: 60px 20px;
   border-radius: 10px;
-  background: -webkit-linear-gradient(315deg, #00beb8 0%, #c7e3cd 100%);
-  background: -o-linear-gradient(315deg, #00beb8 0%, #c7e3cd 100%);
-  background: linear-gradient(135deg, #00beb8 0%, #c7e3cd 100%);
-  color: #024d4a;
-  overflow: visible;
+  background: -webkit-linear-gradient(315deg, #00beb8 40%, #c7e3cd 70%, #00beb8 90%, #c7e3cd 100%);
+  background: -o-linear-gradient(315deg, #00beb8 40%, #c7e3cd 70%, #00beb8 90%, #c7e3cd 100%);
+  background: linear-gradient(135deg, #00beb8 40%, #c7e3cd 70%, #00beb8 90%, #c7e3cd 100%);
+  color: #013432;
   text-align: center;
 }
 
 .cta-section:hover::before {
-  -webkit-transform: rotate(2deg);
+  -webkit-transform-origin: right 50%;
+      -ms-transform-origin: right 50%;
+          transform-origin: right 50%;
+  -webkit-transform: rotateZ(2deg);
       -ms-transform: rotate(2deg);
-          transform: rotate(2deg);
+          transform: rotateZ(2deg);
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
 
 .cta-section:hover::after {
-  -webkit-transform: rotate(-2deg);
-      -ms-transform: rotate(-2deg);
-          transform: rotate(-2deg);
+  -webkit-transform-origin: right 50%;
+      -ms-transform-origin: right 50%;
+          transform-origin: right 50%;
+  -webkit-transform: rotateZ(-3deg);
+      -ms-transform: rotate(-3deg);
+          transform: rotateZ(-3deg);
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
@@ -34,10 +38,8 @@
 
 .cta-section::before {
   content: '';
+  z-index: -2;
   position: absolute;
-  -webkit-transform-origin: center;
-      -ms-transform-origin: center;
-          transform-origin: center;
   top: 0%;
   left: 0%;
   width: 100%;
@@ -45,10 +47,9 @@
   background-color: #00beb8;
   opacity: 0.2;
   border-radius: 10px;
-  z-index: -1;
-  -webkit-transform: rotate(-2deg);
-      -ms-transform: rotate(-2deg);
-          transform: rotate(-2deg);
+  -webkit-transform: rotate(-4deg);
+      -ms-transform: rotate(-4deg);
+          transform: rotate(-4deg);
   -webkit-transition: -webkit-transform 0.3s ease;
   transition: -webkit-transform 0.3s ease;
   -o-transition: transform 0.3s ease;
@@ -58,10 +59,8 @@
 
 .cta-section::after {
   content: '';
+  z-index: -1;
   position: absolute;
-  -webkit-transform-origin: center;
-      -ms-transform-origin: center;
-          transform-origin: center;
   top: 0%;
   left: 0%;
   width: 100%;
@@ -69,7 +68,6 @@
   background-color: #c3066b;
   opacity: 0.1;
   border-radius: 10px;
-  z-index: -2;
   -webkit-transform: rotate(2deg);
       -ms-transform: rotate(2deg);
           transform: rotate(2deg);
@@ -94,7 +92,7 @@
 .cta-section p {
   font-size: 1.2rem;
   margin-bottom: 40px;
-  opacity: 0.9;
+  color: rgba(23, 23, 23, 0.8);
 }
 
 .cta-section .btn-primary {

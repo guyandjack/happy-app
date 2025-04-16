@@ -122,10 +122,10 @@
 
 .services {
   width: 100%;
-  padding: 60px 15px;
-  background: -webkit-linear-gradient(305deg, rgba(0, 190, 184, 0.4) 0%, #fbfbfc 20%, rgba(0, 190, 184, 0.4) 100%);
-  background: -o-linear-gradient(305deg, rgba(0, 190, 184, 0.4) 0%, #fbfbfc 20%, rgba(0, 190, 184, 0.4) 100%);
-  background: linear-gradient(145deg, rgba(0, 190, 184, 0.4) 0%, #fbfbfc 20%, rgba(0, 190, 184, 0.4) 100%);
+  padding: 100px 15px;
+  background: -webkit-linear-gradient(315deg, rgba(0, 190, 184, 0.03) 5%, rgba(96, 128, 160, 0.05) 20%, rgba(0, 190, 184, 0.05) 80%, rgba(0, 190, 184, 0.05) 100%);
+  background: -o-linear-gradient(315deg, rgba(0, 190, 184, 0.03) 5%, rgba(96, 128, 160, 0.05) 20%, rgba(0, 190, 184, 0.05) 80%, rgba(0, 190, 184, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(0, 190, 184, 0.03) 5%, rgba(96, 128, 160, 0.05) 20%, rgba(0, 190, 184, 0.05) 80%, rgba(0, 190, 184, 0.05) 100%);
   position: relative;
   overflow: hidden;
   display: -webkit-box;
@@ -143,7 +143,7 @@
 .services h3 {
   font-size: 2rem;
   color: rgba(23, 23, 23, 0.9);
-  margin-bottom: 40px;
+  margin-bottom: 100px;
   text-align: center;
   position: relative;
 }
@@ -155,37 +155,26 @@
 .services h3::after {
   content: '';
   position: absolute;
-  bottom: -15px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
+  z-index: 10;
+  top: 0px;
+  left: -10%;
+  width: 1px;
+  height: 100%;
+  background: #c3066b;
   border-radius: 2px;
 }
 
 .values {
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
-  padding: 60px 15px;
+  padding: 100px 15px;
   background-color: #fbfbfc;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .values h3 {
   font-size: 2rem;
   color: #171717;
-  margin-bottom: 40px;
+  margin-bottom: 100px;
   text-align: center;
   position: relative;
 }
@@ -197,14 +186,12 @@
 .values h3::after {
   content: '';
   position: absolute;
-  bottom: -15px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: rgba(0, 190, 184, 0.9);
+  z-index: 10;
+  top: 0px;
+  left: -10%;
+  width: 1px;
+  height: 100%;
+  background: #c3066b;
   border-radius: 2px;
 }
 
@@ -259,18 +246,19 @@
 .commitments {
   width: 100%;
   margin: 0 auto;
-  padding: 60px 15px;
-  background: -webkit-linear-gradient(315deg, #c7e3cd 10%, #fbfbfc 20%, #c7e3cd 100%);
-  background: -o-linear-gradient(315deg, #c7e3cd 10%, #fbfbfc 20%, #c7e3cd 100%);
-  background: linear-gradient(135deg, #c7e3cd 10%, #fbfbfc 20%, #c7e3cd 100%);
+  padding: 100px 15px;
+  background: -webkit-linear-gradient(315deg, rgba(195, 6, 107, 0.03) 5%, rgba(0, 190, 184, 0.05) 20%, rgba(195, 6, 107, 0.05) 80%, rgba(195, 6, 107, 0.05) 100%);
+  background: -o-linear-gradient(315deg, rgba(195, 6, 107, 0.03) 5%, rgba(0, 190, 184, 0.05) 20%, rgba(195, 6, 107, 0.05) 80%, rgba(195, 6, 107, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(195, 6, 107, 0.03) 5%, rgba(0, 190, 184, 0.05) 20%, rgba(195, 6, 107, 0.05) 80%, rgba(195, 6, 107, 0.05) 100%);
 }
 
 .commitments h3 {
   font-size: 2rem;
   color: #171717;
-  margin-bottom: 40px;
+  margin-bottom: 100px;
   text-align: center;
   position: relative;
+  padding: 0px;
 }
 
 .commitments h3 strong {
@@ -280,14 +268,11 @@
 .commitments h3::after {
   content: '';
   position: absolute;
-  bottom: -15px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: rgba(0, 190, 184, 0.9);
+  top: 0px;
+  left: -10%;
+  width: 1px;
+  height: 100%;
+  background: #c3066b;
   border-radius: 2px;
 }
 
@@ -321,7 +306,7 @@
 .commitments .commitments-card .img-text-container .title-container .h4-title {
   font-size: 1.2rem;
   margin-bottom: 15px;
-  color: #024d4a;
+  color: #00a59f;
 }
 
 .commitments .commitments-card .img-text-container .title-container .img-text {
@@ -373,20 +358,9 @@
   .hero-index::before {
     background-attachment: fixed;
   }
-  .services,
-  .commitments {
-    padding: 60px 20px;
-  }
   .services h3,
+  .values h3,
   .commitments h3 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: 60px;
-  }
-  .values {
-    width: 80%;
-    padding: 100px 20px;
-  }
-  .values h3 {
     font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: 60px;
   }
@@ -451,6 +425,16 @@
   }
   .hero .hero-subtitle {
     font-size: 1.3rem;
+  }
+  .services,
+  .values,
+  .commitments {
+    padding: 120px 15px;
+  }
+  .services h3,
+  .values h3,
+  .commitments h3 {
+    margin-bottom: 120px;
   }
   .intro .intro-content h2,
   .services .section-title h2,

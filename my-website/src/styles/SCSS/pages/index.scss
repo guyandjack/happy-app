@@ -119,11 +119,12 @@
 // Services section - Mobile first
 .services {
   width: 100%;
-  padding: 60px 15px;
-  background: linear-gradient(145deg,
-      rgba(map-get($colors-rule, second-color), 0.4) 0%,
-      map-get($colors-rule, background-page-color) 20%,
-      rgba(map-get($colors-rule, second-color), 0.4) 100%);
+  padding: 100px 15px;
+  background: linear-gradient(135deg,
+      rgba(map-get($colors-rule, second-color), 0.03) 5%,
+      rgba(map-get($colors-rule, footer-color), 0.05) 20%,
+      rgba(map-get($colors-rule, second-color), 0.05) 80%,
+      rgba(map-get($colors-rule, second-color), 0.05) 100%);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -133,7 +134,7 @@
   h3 {
     font-size: 2rem;
     color: rgba(map-get($colors-rule, fifth-color), 0.9);
-    margin-bottom: 40px;
+    margin-bottom: 100px;
     text-align: center;
     position: relative;
 
@@ -144,30 +145,29 @@
     &::after {
       content: '';
       position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 4px;
+      z-index: 10;
+      top: 0px;
+      left: -10%;
+      width: 1px;
+      height: 100%;
+      background: map-get($colors-rule, fourth-color);
       border-radius: 2px;
+
     }
   }
 }
 
 // Values section - Mobile first
 .values {
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
-  padding: 60px 15px;
+  padding: 100px 15px;
   background-color: map-get($colors-rule, background-page-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
   h3 {
     font-size: 2rem;
     color: map-get($colors-rule, fifth-color);
-    margin-bottom: 40px;
+    margin-bottom: 100px;
     text-align: center;
     position: relative;
 
@@ -178,13 +178,14 @@
     &::after {
       content: '';
       position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 4px;
-      background: rgba(map-get($colors-rule, second-color), 0.9);
+      z-index: 10;
+      top: 0px;
+      left: -10%;
+      width: 1px;
+      height: 100%;
+      background: map-get($colors-rule, fourth-color);
       border-radius: 2px;
+
     }
   }
 
@@ -233,19 +234,21 @@
 .commitments {
   width: 100%;
   margin: 0 auto;
-  padding: 60px 15px;
+  padding: 100px 15px;
   background: linear-gradient(135deg,
-      map-get($colors-rule, third-color) 10%,
-      map-get($colors-rule, background-page-color) 20%,
-      rgba(map-get($colors-rule, third-color), 1) 100%);
+      rgba(map-get($colors-rule, fourth-color), 0.03) 5%,
+      rgba(map-get($colors-rule, second-color), 0.05) 20%,
+      rgba(map-get($colors-rule, fourth-color), 0.05) 80%,
+      rgba(map-get($colors-rule, fourth-color), 0.05) 100%);
 
 
   h3 {
     font-size: 2rem;
     color: map-get($colors-rule, fifth-color);
-    margin-bottom: 40px;
+    margin-bottom: 100px;
     text-align: center;
     position: relative;
+    padding: 0px;
 
     strong {
       color: map-get($colors-rule, fourth-color);
@@ -254,13 +257,13 @@
     &::after {
       content: '';
       position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 4px;
-      background: rgba(map-get($colors-rule, second-color), 0.9);
+      top: 0px;
+      left: -10%;
+      width: 1px;
+      height: 100%;
+      background: map-get($colors-rule, fourth-color);
       border-radius: 2px;
+
     }
   }
 
@@ -290,7 +293,7 @@
         .h4-title {
           font-size: 1.2rem;
           margin-bottom: 15px;
-          color: map-get($colors-rule, first-color);
+          color: darken(map-get($colors-rule, second-color), 5%);
         }
 
         .img-text {
@@ -354,8 +357,9 @@
   }
 
   .services,
+  .values,
   .commitments {
-    padding: 60px 20px;
+
 
     h3 {
       font-size: clamp(2rem, 4vw, 3rem);
@@ -364,13 +368,7 @@
   }
 
   .values {
-    width: 80%;
-    padding: 100px 20px;
 
-    h3 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin-bottom: 60px;
-    }
 
     .value-card {
       margin: 60px 0;
@@ -457,6 +455,18 @@
 
   .hero .hero-subtitle {
     font-size: 1.3rem;
+  }
+
+  .services,
+  .values,
+  .commitments {
+    padding: 120px 15px;
+  }
+
+  .services h3,
+  .values h3,
+  .commitments h3 {
+    margin-bottom: 120px;
   }
 
   .intro .intro-content h2,
