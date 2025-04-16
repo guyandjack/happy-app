@@ -1,8 +1,9 @@
 .cta-section {
   position: relative;
-  width: 100%;
+  z-index: 1;
+  width: 90%;
   max-width: 800px;
-  margin: 0px auto;
+  margin: 80px auto;
   padding: 60px 20px;
   border-radius: 10px;
   background: -webkit-linear-gradient(315deg, #00beb8 0%, #c7e3cd 100%);
@@ -11,10 +12,24 @@
   color: #024d4a;
   overflow: visible;
   text-align: center;
-  /* // Add bottom margin to ensure space before footer
-    & + #RC-footer {
-        margin-top: 100px;
-    } */
+}
+
+.cta-section:hover::before {
+  -webkit-transform: rotate(2deg);
+      -ms-transform: rotate(2deg);
+          transform: rotate(2deg);
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.cta-section:hover::after {
+  -webkit-transform: rotate(-2deg);
+      -ms-transform: rotate(-2deg);
+          transform: rotate(-2deg);
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
 }
 
 .cta-section::before {
@@ -31,9 +46,14 @@
   opacity: 0.2;
   border-radius: 10px;
   z-index: -1;
-  -webkit-transform: rotate(-4deg);
-      -ms-transform: rotate(-4deg);
-          transform: rotate(-4deg);
+  -webkit-transform: rotate(-2deg);
+      -ms-transform: rotate(-2deg);
+          transform: rotate(-2deg);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  -o-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 
 .cta-section::after {
@@ -50,9 +70,14 @@
   opacity: 0.1;
   border-radius: 10px;
   z-index: -2;
-  -webkit-transform: rotate(4deg);
-      -ms-transform: rotate(4deg);
-          transform: rotate(4deg);
+  -webkit-transform: rotate(2deg);
+      -ms-transform: rotate(2deg);
+          transform: rotate(2deg);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  -o-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 
 .cta-section .container {
@@ -74,24 +99,24 @@
 
 .cta-section .btn-primary {
   width: 100%;
-  max-width: 400px;
+  max-width: 200px;
   margin: 0 auto;
-  background-color: rgba(251, 251, 252, 0.8);
-  color: rgba(2, 77, 74, 0.8);
-  padding: 15px 40px;
-  border-radius: 30px;
+  background-color: #c3066b;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 6px;
   font-size: 1.1rem;
   font-weight: 600;
   text-decoration: none;
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  border: 2px solid transparent;
+  border: 2px solid #c3066b;
 }
 
 .cta-section .btn-primary:hover {
-  background-color: transparent;
-  border: 2px solid rgba(2, 77, 74, 0.8);
+  background-color: #ffffff;
+  color: #c3066b;
   -webkit-transform: translateY(-5px);
       -ms-transform: translateY(-5px);
           transform: translateY(-5px);

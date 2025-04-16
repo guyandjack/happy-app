@@ -1,35 +1,36 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import '../../styles/SCSS/components/CardContainer.scss';
-import { Card } from './Card';
+import PropTypes from "prop-types";
+import React from "react";
+import "../../styles/SCSS/components/CardContainer.scss";
+import { Card } from "./Card";
 
-const CardContainer = ({ 
+const CardContainer = ({
   card,
-  idPrefix = 'card',
+  idPrefix = "card",
   columns = 3,
-  gap = '30px'
+  gap = "30px",
 }) => {
   // Generate a unique ID for each card based on its index and the provided prefix
   const generateCardId = (index) => `${idPrefix}-${index + 1}`;
-  
-  // Style for the grid layout
-  const gridStyle = {
-    gridTemplateColumns: `repeat(${columns}, 1fr)`,
-    gap: gap
+
+  // Style for the flex layout
+  const flexStyle = {
+    gap: gap,
   };
 
   return (
-    <div className="card-container">
-      <div className="cards-grid" style={gridStyle}>
+    <section className="flex-column-start-center card-container">
+      <ul
+        className="flex-row-center-center cards-list"
+        style={flexStyle}
+        role="list"
+      >
         {card.map((content, index) => (
-          <Card
-            key={generateCardId(index)}
-            id={generateCardId(index)}
-            card={content}
-          />
+          <li key={generateCardId(index)} className="card-item">
+            <Card id={generateCardId(index)} card={content} />
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 };
 
@@ -43,13 +44,12 @@ CardContainer.propTypes = {
       backgroundColor: PropTypes.string,
       width: PropTypes.string,
       height: PropTypes.string,
-      className: PropTypes.string
+      className: PropTypes.string,
     })
   ).isRequired,
   idPrefix: PropTypes.string,
-  columns: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  gap: PropTypes.string
+  columns: PropTypes.number,
+  gap: PropTypes.string,
 };
 
 export { CardContainer };
-

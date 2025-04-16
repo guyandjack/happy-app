@@ -1,5 +1,5 @@
 .footer {
-  background: #7090b0;
+  background: #3a4d60;
   color: #ffffff;
   padding: 60px 20px 20px;
   width: 100%;
@@ -52,11 +52,12 @@
 
 .footer .footer-content .footer-brand .footer-cta {
   display: inline-block;
-  padding: 12px 25px;
-  background: #00beb8;
+  padding: 12px 24px;
+  background: #c3066b;
   color: #ffffff;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 6px;
+  border: 2px solid rgba(195, 6, 107, 0.9);
   font-weight: 600;
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -64,7 +65,8 @@
 }
 
 .footer .footer-content .footer-brand .footer-cta:hover {
-  background: #00d8d1;
+  background: #fbfbfc;
+  color: #c3066b;
   -webkit-transform: translateY(-2px);
       -ms-transform: translateY(-2px);
           transform: translateY(-2px);
@@ -104,7 +106,6 @@
 .footer .footer-content .footer-nav .footer-nav-section ul li a {
   color: #ffffff;
   text-decoration: none;
-  opacity: 0.8;
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -124,10 +125,6 @@
   transition: width 0.3s ease;
 }
 
-.footer .footer-content .footer-nav .footer-nav-section ul li a:hover {
-  opacity: 1;
-}
-
 .footer .footer-content .footer-nav .footer-nav-section ul li a:hover::after {
   width: 100%;
 }
@@ -136,12 +133,12 @@
   max-width: 1200px;
   margin: 40px auto 0;
   padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
   text-align: center;
 }
 
 .footer .footer-bottom p {
   margin: 0;
-  opacity: 0.7;
+  opacity: 0.9;
   font-size: 0.9rem;
 }

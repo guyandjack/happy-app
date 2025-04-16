@@ -1,7 +1,7 @@
 @import "../../utils/color-rule/color-rule.scss";
 
 .footer {
-  background: map-get($colors-rule, footer-color);
+  background: darken(map-get($colors-rule, footer-color), 20%);
   color: map-get($colors-rule, sixth-color);
   padding: 60px 20px 20px;
   width: 100%;
@@ -40,16 +40,19 @@
 
       .footer-cta {
         display: inline-block;
-        padding: 12px 25px;
-        background: map-get($colors-rule, second-color);
+        padding: 12px 24px;
+        background: map-get($colors-rule, fourth-color);
         color: map-get($colors-rule, sixth-color);
         text-decoration: none;
-        border-radius: 8px;
+        border-radius: 6px;
+        border: 2px solid rgba(map-get($colors-rule, fourth-color), 0.9);
         font-weight: 600;
         transition: all 0.3s ease;
 
         &:hover {
-          background: lighten(map-get($colors-rule, second-color), 5%);
+          background: map-get($colors-rule, background-page-color);
+          color: map-get($colors-rule, fourth-color);
+          //border: 2px solid map-get($colors-rule, fourth-color);
           transform: translateY(-2px);
         }
       }
@@ -82,7 +85,7 @@
             a {
               color: map-get($colors-rule, sixth-color);
               text-decoration: none;
-              opacity: 0.8;
+              //opacity: 0.8;
               transition: all 0.3s ease;
               position: relative;
 
@@ -98,8 +101,7 @@
               }
 
               &:hover {
-                opacity: 1;
-                
+
                 &::after {
                   width: 100%;
                 }
@@ -115,12 +117,12 @@
     max-width: 1200px;
     margin: 40px auto 0;
     padding-top: 20px;
-    border-top: 1px solid rgba(map-get($colors-rule, sixth-color), 0.1);
+    border-top: 1px solid rgba(map-get($colors-rule, sixth-color), 0.3);
     text-align: center;
 
     p {
       margin: 0;
-      opacity: 0.7;
+      opacity: 0.9;
       font-size: 0.9rem;
     }
   }

@@ -71,9 +71,16 @@ header {
     height: 300px; //correction du cls avec hauteur fixe
 }
 
+// Services section
+#RC-card-services {
+    width: 100%;
+    min-height: 400px; //correction du cls avec hauteur fixe
+}
+
 // CTA section
 #RC-cta-section {
     width: 100%;
+    //margin: 80px 0;
     //height: 400px;
 }
 
@@ -188,29 +195,43 @@ header {
 // Flexbox column
 .flex-column-start-center {
     display: flex;
-    flex-direction: column;
+    flex-flow: column;
     justify-content: flex-start;
     align-items: center;
 }
 
 .flex-column-center-center {
     display: flex;
-    flex-direction: column;
+    flex-flow: column;
     justify-content: center;
+    align-items: center;
+}
+
+.flex-column-space_evenly-center {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
     align-items: center;
 }
 
 // Flexbox row
 .flex-row-start-center {
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: flex-start;
     align-items: center;
 }
 
 .flex-row-space-between-center {
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: space-between;
+    align-items: center;
+}
+
+.flex-row-center-center {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
     align-items: center;
 }

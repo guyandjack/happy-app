@@ -1,16 +1,15 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import '../../styles/SCSS/components/Card.scss';
+import PropTypes from "prop-types";
+import React from "react";
+import "../../styles/SCSS/components/Card.scss";
 
 const Card = ({ card }) => {
   const cardStyle = {
-    width: card.width || '100%',
-    height: card.height || 'auto',
-    
+    width: card.width || "100%",
+    height: card.height || "auto",
   };
 
   return (
-    <div className={card.className || ''}>
+    <div className={card.className || ""}>
       <a
         className="flex-column-start-center card-link"
         style={cardStyle}
@@ -23,12 +22,17 @@ const Card = ({ card }) => {
           </div>
         )}
         <div className="flex-column-start-center card-content">
-          {card.title && <h3 className="card-title">{card.title}</h3>}
-          {card.description && <p className="card-description">{card.description}</p>}
-          <button className="card-button">
+          {card.title && <h4 className="card-title">{card.title}</h4>}
+          {card.description && (
+            <p className="card-description">{card.description}</p>
+          )}
+          <button type="button" className="card-button">
             Découvrir
           </button>
         </div>
+      </a>
+      <a href={"/fr/contact.html"} className="card-button-contact">
+        Contactez-moi
       </a>
     </div>
   );
@@ -42,9 +46,8 @@ Card.propTypes = {
     linkUrl: PropTypes.string,
     width: PropTypes.string,
     height: PropTypes.string,
-    className: PropTypes.string
-  }).isRequired
+    className: PropTypes.string,
+  }).isRequired,
 };
 
 export { Card };
-
