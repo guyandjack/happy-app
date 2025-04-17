@@ -3,18 +3,18 @@
 .footer {
   background: darken(map-get($colors-rule, footer-color), 20%);
   color: map-get($colors-rule, sixth-color);
-  padding: 60px 20px 20px;
+  padding: 60px 20px 20px 20px;
   width: 100%;
 
   .footer-content {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr;
     gap: 40px;
 
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 2fr;
     }
 
     .footer-brand {
@@ -60,12 +60,16 @@
 
     .footer-nav {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       gap: 30px;
+      align-items: center;
 
-      @media (max-width: 576px) {
-        grid-template-columns: 1fr;
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+
       }
+
+
 
       .footer-nav-section {
         h3 {
@@ -124,6 +128,57 @@
       margin: 0;
       opacity: 0.9;
       font-size: 0.9rem;
+    }
+  }
+
+  .footer-page-notation {
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    background: darken(map-get($colors-rule, first-color), 5%);
+    /*background: linear-gradient(to bottom,
+        darken(map-get($colors-rule, footer-color), 20%) 10%,
+        map-get($colors-rule, first-color),
+        map-get($colors-rule, first-color),
+        darken(map-get($colors-rule, footer-color), 20%) 90%);*/
+    padding: 12px;
+    margin: 20px auto 0 auto;
+    border-radius: 6px;
+
+    &>img {
+      border: 1px solid map-get($colors-rule, sixth-color);
+
+    }
+
+    &>p {
+      margin: 0;
+      //opacity: 1;
+      font-size: 1.1rem;
+      word-break: keep-all;
+      hyphens: none;
+    }
+
+    &>p span:nth-child(2) {
+      display: inline-block;
+      transform: translateY(15px);
+    }
+
+    .footer-quote-icon {
+      font-size: 1.6rem;
+      color: map-get($colors-rule, second-color);
+
+
+    }
+
+    &>a {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      color: map-get($colors-rule, sixth-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+
     }
   }
 }
