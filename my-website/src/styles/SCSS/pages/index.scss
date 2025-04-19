@@ -190,9 +190,13 @@
   }
 
   .value-card {
+    position: relative;
+    z-index: 1;
     margin: 40px 0;
     width: 90%;
     max-width: 500px;
+
+
 
     .img-text-container {
       display: flex;
@@ -269,14 +273,58 @@
 
   .container-cards {
     width: 100%;
-    gap: 50px;
+    gap: 70px;
   }
 
   .commitments-card {
+    position: relative;
+    z-index: 1;
     margin: 0;
     width: 100%;
     max-width: 350px;
     height: 350px;
+
+    &::before {
+      position: absolute;
+      z-index: -1;
+      content: '';
+      top: -10px;
+      left: -10px;
+      width: 105%;
+      height: 105%;
+      background: map-get($colors-rule, footer-color);
+      transform: rotate(2deg);
+      border-radius: 15px;
+      opacity: 0.3;
+    }
+
+    &:nth-child(2) {
+      &::before {
+        background: map-get($colors-rule, second-color);
+        transform: rotate(-2deg);
+      }
+    }
+
+    &:nth-child(3) {
+      &::before {
+        background: map-get($colors-rule, fourth-color);
+        transform: rotate(-4deg);
+      }
+    }
+
+    /*&::after {
+      position: absolute;
+      z-index: -2;
+      content: '';
+      top: -10px;
+      left: -10px;
+      width: 106%;
+      height: 106%;
+      background: map-get($colors-rule, fourth-color);
+      transform: rotate(10deg);
+      border-radius: 15px;
+      opacity: 0.05;
+    }*/
 
     .img-text-container {
       height: 100%;
@@ -316,7 +364,21 @@
 }
 
 .list-eco-conception {
-  list-style-image: url('../../../src/assets/images/icons/feuille-verte.png');
+  margin-top: 20px;
+  gap: 20px;
+
+  &>li {
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: map-get($colors-rule, third-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
 }
 
 // Desktop Responsive Adjustments

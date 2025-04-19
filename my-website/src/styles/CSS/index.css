@@ -196,6 +196,8 @@
 }
 
 .values .value-card {
+  position: relative;
+  z-index: 1;
   margin: 40px 0;
   width: 90%;
   max-width: 500px;
@@ -278,14 +280,59 @@
 
 .commitments .container-cards {
   width: 100%;
-  gap: 50px;
+  gap: 70px;
 }
 
 .commitments .commitments-card {
+  position: relative;
+  z-index: 1;
   margin: 0;
   width: 100%;
   max-width: 350px;
   height: 350px;
+  /*&::after {
+      position: absolute;
+      z-index: -2;
+      content: '';
+      top: -10px;
+      left: -10px;
+      width: 106%;
+      height: 106%;
+      background: map-get($colors-rule, fourth-color);
+      transform: rotate(10deg);
+      border-radius: 15px;
+      opacity: 0.05;
+    }*/
+}
+
+.commitments .commitments-card::before {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  top: -10px;
+  left: -10px;
+  width: 105%;
+  height: 105%;
+  background: #6080a0;
+  -webkit-transform: rotate(2deg);
+      -ms-transform: rotate(2deg);
+          transform: rotate(2deg);
+  border-radius: 15px;
+  opacity: 0.3;
+}
+
+.commitments .commitments-card:nth-child(2)::before {
+  background: #00beb8;
+  -webkit-transform: rotate(-2deg);
+      -ms-transform: rotate(-2deg);
+          transform: rotate(-2deg);
+}
+
+.commitments .commitments-card:nth-child(3)::before {
+  background: #c3066b;
+  -webkit-transform: rotate(-4deg);
+      -ms-transform: rotate(-4deg);
+          transform: rotate(-4deg);
 }
 
 .commitments .commitments-card .img-text-container {
@@ -326,7 +373,30 @@
 }
 
 .list-eco-conception {
-  list-style-image: url("../../../src/assets/images/icons/feuille-verte.png");
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.list-eco-conception > li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #c7e3cd;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 @media (min-width: 768px) {

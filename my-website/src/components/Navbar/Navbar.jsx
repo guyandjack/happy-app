@@ -1,5 +1,5 @@
 //import des hook
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 //imports des composants enfants
 //import { ReactSVG } from 'react-svg';
@@ -23,10 +23,29 @@ function Navbar() {
   const [currentLang, setCurrentLang] = useState("fr");
   const [isServicesOpen, setIsServicesOpen] = useState(false);
 
+  const navbarRef = useRef(null);
+
+  const handleScroll = () => {
+    if (navbarRef.current) {
+      navbarRef.current.classList.add("scrolled");
+      setTimeout(() => {
+        navbarRef.current.classList.remove("scrolled");
+      }, 1000);
+    }
+  };
+
   useEffect(() => {
     setCurrentPath(window.location.pathname);
     // Detect language from URL
     setCurrentLang(window.location.pathname.includes("/en/") ? "en" : "fr");
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const toggleMenu = () => {
@@ -115,7 +134,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="navbar" aria-label="Main navigation">
+    <nav ref={navbarRef} className="navbar" aria-label="Main navigation">
       <div className="navbar-brand">
         <a href={currentLang === "fr" ? "/" : "/en/home.html"} className="logo">
           <img
