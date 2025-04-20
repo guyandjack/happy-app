@@ -274,27 +274,59 @@
     width: auto;
   }
   .navbar .navbar-menu > li > a {
+    position: relative;
+    z-index: 10;
     padding: 0.3rem 0;
     border-bottom: none;
     position: relative;
   }
+  .navbar .navbar-menu > li > a::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    bottom: 60%;
+    left: 0;
+    width: 100%;
+    max-height: 8px;
+    height: 0px;
+    -webkit-transition: height 0.3s ease;
+    -o-transition: height 0.3s ease;
+    transition: height 0.3s ease;
+  }
   .navbar .navbar-menu > li > a::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    z-index: -1;
+    bottom: 60%;
     left: 0;
-    width: 0;
-    height: 2px;
-    background: #ffffff;
-    -webkit-transition: width 0.3s ease;
-    -o-transition: width 0.3s ease;
-    transition: width 0.3s ease;
-  }
-  .navbar .navbar-menu > li > a:hover::after, .navbar .navbar-menu > li > a.active::after {
     width: 100%;
+    max-height: 8px;
+    height: 0px;
+    -webkit-transition: height 0.3s ease;
+    -o-transition: height 0.3s ease;
+    transition: height 0.3s ease;
+  }
+  .navbar .navbar-menu > li > a:hover::after {
+    background: #c3066b;
+    height: 100%;
+    -webkit-transition: height 0.5s ease;
+    -o-transition: height 0.5s ease;
+    transition: height 0.5s ease;
+  }
+  .navbar .navbar-menu > li > a.active::before {
+    background: #00beb8;
+    height: 100%;
   }
   .navbar .navbar-menu .menu-item-with-submenu {
     position: relative;
+  }
+  .navbar .navbar-menu .menu-item-with-submenu:hover a::after {
+    background: #c3066b;
+    height: 100%;
+  }
+  .navbar .navbar-menu .menu-item-with-submenu.active a::after {
+    background: #c3066b;
+    height: 100%;
   }
   .navbar .navbar-menu .menu-item-with-submenu .submenu {
     position: absolute;
@@ -329,7 +361,12 @@
     transition: transform 0.3s ease;
     transition: transform 0.3s ease, -webkit-transform 0.3s ease;
   }
+  .navbar .navbar-menu .menu-item-with-submenu .submenu a.active {
+    color: #00beb8;
+    font-weight: bolder;
+  }
   .navbar .navbar-menu .menu-item-with-submenu .submenu a:hover {
+    font-weight: bolder;
     -webkit-transform: translateX(10px);
         -ms-transform: translateX(10px);
             transform: translateX(10px);

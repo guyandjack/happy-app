@@ -24,6 +24,7 @@ function Navbar() {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
 
   const navbarRef = useRef(null);
+  const menuItemCollapseRef = useRef(null);
 
   const handleScroll = () => {
     if (navbarRef.current) {
@@ -40,6 +41,7 @@ function Navbar() {
     setCurrentLang(window.location.pathname.includes("/en/") ? "en" : "fr");
   }, []);
 
+  // Gestion du scroll pour effet de style sur la navbar
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
@@ -48,12 +50,27 @@ function Navbar() {
     };
   }, []);
 
+  // Detection des liens actifs du sous menu
+  // pour effet de style sur lien collapse
+  useEffect(() => {
+    let submenuLinkActive =
+      menuItemCollapseRef.current.querySelector(".submenu a.active");
+    if (submenuLinkActive) {
+      menuItemCollapseRef.current.classList.add("active");
+    } else {
+      menuItemCollapseRef.current.classList.remove("active");
+    }
+  }, []);
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const isActive = (path) => {
-    return currentPath === path ? "active" : "";
+  const isActive = (itemPath) => {
+    if (window.location.href === itemPath) {
+      return "active";
+    }
+    return "";
   };
 
   // Updated menu items with services submenu
@@ -161,6 +178,7 @@ function Navbar() {
             <li
               key={index}
               className="menu-item-with-submenu"
+              ref={menuItemCollapseRef}
               onMouseOver={() => {
                 setIsServicesOpen(true);
               }}
@@ -176,7 +194,9 @@ function Navbar() {
             >
               <a
                 href="#"
-                className={`has-submenu ${isServicesOpen ? "open" : ""}`}
+                className={`has-submenu ${isActive(item.path)} ${
+                  isServicesOpen ? "open" : ""
+                }`}
                 aria-label={`${item.text} menu`}
               >
                 {item.text}
@@ -195,7 +215,7 @@ function Navbar() {
                   <li key={subIndex} role="none">
                     <a
                       href={subItem.path}
-                      className={isActive(subItem.path)}
+                      className={`subMenuLink ${isActive(subItem.path)}`}
                       role="menuitem"
                     >
                       {subItem.text}

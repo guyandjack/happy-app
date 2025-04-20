@@ -223,35 +223,76 @@
             padding: 0;
             gap: 2rem;
 
+
+
             li {
                 width: auto;
             }
 
             &>li>a {
+                position: relative;
+                z-index: 10;
                 padding: 0.3rem 0;
                 border-bottom: none;
+                //border-top: 2px solid transparent;
                 position: relative;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    z-index: -2;
+                    //bottom: 0;
+                    bottom: 60%;
+                    left: 0;
+                    width: 100%;
+                    max-height: 8px;
+                    height: 0px;
+                    transition: height 0.3s ease;
+                    //opacity: 0.6;
+                }
 
                 &::after {
                     content: '';
                     position: absolute;
-                    bottom: 0;
+                    z-index: -1;
+                    //bottom: 0;
+                    bottom: 60%;
                     left: 0;
-                    width: 0;
-                    height: 2px;
-                    background: map-get($colors-rule, sixth-color);
-                    transition: width 0.3s ease;
+                    width: 100%;
+                    max-height: 8px;
+                    height: 0px;
+                    transition: height 0.3s ease;
+                    //opacity: 0.6;
                 }
 
-                &:hover::after,
-                &.active::after {
-                    width: 100%;
+                &:hover::after {
+                    background: map-get($colors-rule, fourth-color);
+                    height: 100%;
+                    transition: height 0.5s ease;
+                }
+
+                &.active::before {
+                    background: map-get($colors-rule, second-color);
+                    height: 100%;
                 }
             }
 
             // Submenu styles for desktop
             .menu-item-with-submenu {
+
                 position: relative;
+
+                &:hover {
+                    a::after {
+                        background: map-get($colors-rule, fourth-color);
+                        height: 100%;
+                    }
+                }
+
+                &.active a::after {
+                    background: map-get($colors-rule, fourth-color);
+                    height: 100%;
+                }
 
                 .submenu {
                     position: absolute;
@@ -277,14 +318,28 @@
                         padding: 0.8rem 1rem;
                         transition: transform 0.3s ease;
 
+
+                        &.active {
+                            color: map-get($colors-rule, second-color);
+                            font-weight: bolder;
+                        }
+
                         &:hover {
+
+                            font-weight: bolder;
+                            //color: map-get($colors-rule, fourth-color);
                             transform: translateX(10px);
                         }
                     }
+
                 }
+
+
             }
 
-            // Language switcher for desktop
+
+
+
             .language-switcher {
                 margin-top: 0;
                 margin-left: 2rem;
