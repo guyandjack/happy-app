@@ -7,13 +7,17 @@
   margin: 0 auto;
   padding: 0 2rem;
   background-color: #024d4a;
-  -webkit-transition: background-color 1s ease;
-  -o-transition: background-color 1s ease;
-  transition: background-color 1s ease;
+  -webkit-transition: opacity 1s ease;
+  -o-transition: opacity 1s ease;
+  transition: opacity 1s ease;
+  opacity: 1;
 }
 
 .navbar.scrolled {
-  background-color: transparent;
+  opacity: 0.1;
+  -webkit-transition: opacity 1s ease;
+  -o-transition: opacity 1s ease;
+  transition: opacity 1s ease;
 }
 
 .navbar .navbar-brand {
@@ -324,8 +328,8 @@
     background: #c3066b;
     height: 100%;
   }
-  .navbar .navbar-menu .menu-item-with-submenu.active a::after {
-    background: #c3066b;
+  .navbar .navbar-menu .menu-item-with-submenu.active a::before {
+    background: #00beb8;
     height: 100%;
   }
   .navbar .navbar-menu .menu-item-with-submenu .submenu {

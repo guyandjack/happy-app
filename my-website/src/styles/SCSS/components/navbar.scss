@@ -13,10 +13,12 @@
     margin: 0 auto;
     padding: 0 2rem;
     background-color: map-get($colors-rule, first-color);
-    transition: background-color 1s ease;
+    transition: opacity 1s ease;
+    opacity: 1;
 
     &.scrolled {
-        background-color: transparent;
+        opacity: 0.1;
+        transition: opacity 1s ease;
     }
 
     // Brand section
@@ -289,8 +291,8 @@
                     }
                 }
 
-                &.active a::after {
-                    background: map-get($colors-rule, fourth-color);
+                &.active a::before {
+                    background: map-get($colors-rule, second-color);
                     height: 100%;
                 }
 
