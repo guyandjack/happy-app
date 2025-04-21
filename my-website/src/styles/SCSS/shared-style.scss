@@ -223,8 +223,8 @@ header {
 .faq-section {
     padding: 100px 20px;
     background: linear-gradient(135deg,
-            rgba(map-get($colors-rule, fourth-color), 0.1),
-            rgba(map-get($colors-rule, second-color), 0.5));
+            rgba(map-get($colors-rule, second-color), 0.1) 20%,
+            darken(map-get($colors-rule, footer-color), 10%));
 
     .container {
         max-width: 1200px;

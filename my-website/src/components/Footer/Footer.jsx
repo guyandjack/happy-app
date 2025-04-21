@@ -17,39 +17,53 @@ function Footer() {
         { path: `${url}/public/fr/contact.html`, text: "Contact" },
       ],
       services: [
-        { path: `${url}/fr/prestations/site-web.html`, text: "Site Web" },
-        { path: `${url}/fr/prestations/seo.html`, text: "Référencement" },
         {
-          path: `${url}/fr/prestations/application-mobile.html`,
+          path: `${url}/public/fr/prestations/site-web.html`,
+          text: "Site Web",
+        },
+        {
+          path: `${url}/public/fr/prestations/seo.html`,
+          text: "Référencement",
+        },
+        {
+          path: `${url}/public/fr/prestations/application-mobile.html`,
           text: "Application Mobile",
         },
       ],
       legal: [
-        { path: `${url}/fr/mentions-legales.html`, text: "Mentions légales" },
         {
-          path: `${url}/fr/politique-confidentialite.html`,
+          path: `${url}/public/fr/legal/mentions-legales.html`,
+          text: "Mentions légales",
+        },
+        {
+          path: `${url}/public/fr/legal/politique-de-confidentialite.html`,
           text: "Politique de confidentialité",
         },
-        { path: `${url}/fr/login.html`, text: "Connexion" },
+        { path: `${url}/public/fr/connexion.html`, text: "Connexion" },
       ],
     },
     en: {
       main: [
-        { path: `${url}/en/home.html`, text: "Home" },
-        { path: `${url}/en/about.html`, text: "Who I am" },
+        { path: `${url}/public/en/home.html`, text: "Home" },
+        { path: `${url}/public/en/about.html`, text: "Who I am" },
       ],
       services: [
-        { path: `${url}/en/services/website.html`, text: "Website" },
-        { path: `${url}/en/services/seo.html`, text: "SEO" },
+        { path: `${url}/public/en/services/website.html`, text: "Website" },
+        { path: `${url}/public/en/services/seo.html`, text: "SEO" },
         {
-          path: `${url}/en/services/mobile-application.html`,
+          path: `${url}/public/en/services/mobile-application.html`,
           text: "Mobile App",
         },
       ],
       legal: [
-        { path: `${url}/en/legal-notice.html`, text: "Legal Notice" },
-        { path: `${url}/en/privacy-policy.html`, text: "Privacy Policy" },
-        { path: `${url}/en/login.html`, text: "Login" },
+        {
+          path: `${url}/public/en/legal/legal-notice.html`,
+          text: "Legal Notice",
+        },
+        {
+          path: `${url}/public/en/legal/privacy-policy.html`,
+          text: "Privacy Policy",
+        },
       ],
     },
   };

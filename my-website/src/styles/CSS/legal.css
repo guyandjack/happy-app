@@ -1,0 +1,156 @@
+@charset "UTF-8";
+.legal-section {
+  width: 100%;
+  padding: 80px 20px;
+  min-height: 80vh;
+  background: -webkit-linear-gradient(315deg, rgba(2, 77, 74, 0.02) 0%, rgba(251, 251, 252, 0.05) 50%, rgba(0, 190, 184, 0.02) 100%);
+  background: -o-linear-gradient(315deg, rgba(2, 77, 74, 0.02) 0%, rgba(251, 251, 252, 0.05) 50%, rgba(0, 190, 184, 0.02) 100%);
+  background: linear-gradient(135deg, rgba(2, 77, 74, 0.02) 0%, rgba(251, 251, 252, 0.05) 50%, rgba(0, 190, 184, 0.02) 100%);
+}
+
+.legal-section h1 {
+  font-size: 2rem;
+  color: #171717;
+  text-align: center;
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto 40px;
+  padding-bottom: 15px;
+}
+
+.legal-section h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: #00beb8;
+  border-radius: 2px;
+}
+
+.legal-section .legal-content {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  background: #ffffff;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.legal-section .legal-content h2 {
+  font-size: 1.4rem;
+  color: #024d4a;
+  margin-bottom: 25px;
+  padding-left: 15px;
+  border-left: 3px solid #00beb8;
+}
+
+.legal-section .legal-content p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(23, 23, 23, 0.9);
+  margin-bottom: 15px;
+  padding: 0 15px;
+}
+
+.legal-section .legal-content p:last-child {
+  margin-bottom: 0;
+}
+
+.legal-section .legal-content ul {
+  list-style: none;
+  padding: 0 15px;
+}
+
+.legal-section .legal-content ul li {
+  position: relative;
+  padding: 10px 0 10px 20px;
+  color: rgba(23, 23, 23, 0.9);
+}
+
+.legal-section .legal-content ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #00beb8;
+}
+
+@media (min-width: 768px) {
+  .legal-section {
+    padding: 100px 30px;
+  }
+  .legal-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+  }
+  .legal-section .legal-content {
+    padding: 40px;
+  }
+  .legal-section .legal-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+    padding-left: 20px;
+    border-left-width: 4px;
+  }
+  .legal-section .legal-content p {
+    font-size: 1.1rem;
+    padding: 0 20px;
+  }
+  .legal-section .legal-content section {
+    margin-top: 50px;
+  }
+  .legal-section .legal-content section h3 {
+    font-size: 1.3rem;
+    padding-left: 20px;
+  }
+  .legal-section .legal-content section ul li {
+    padding: 12px 0 12px 25px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .legal-section {
+    padding: 120px 50px;
+  }
+  .legal-section h1 {
+    font-size: 3rem;
+  }
+  .legal-section .legal-content {
+    padding: 50px;
+    -webkit-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.05), 0 12px 18px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.05), 0 12px 18px rgba(0, 0, 0, 0.1);
+    -webkit-transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
+    transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
+    -o-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
+  }
+  .legal-section .legal-content:hover {
+    -webkit-transform: translateY(-5px);
+        -ms-transform: translateY(-5px);
+            transform: translateY(-5px);
+    -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.05), 0 15px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.05), 0 15px 25px rgba(0, 0, 0, 0.1);
+  }
+  .legal-section .legal-content h2 {
+    font-size: 1.8rem;
+  }
+  .legal-section .legal-content p {
+    font-size: 1.15rem;
+  }
+  .legal-section .legal-content section h3 {
+    font-size: 1.4rem;
+  }
+  .legal-section .legal-content section ul li {
+    font-size: 1.15rem;
+  }
+}
