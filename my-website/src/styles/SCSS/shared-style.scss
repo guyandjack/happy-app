@@ -113,8 +113,41 @@ header {
 **********paginatio ******
 ********************************************************/
 
+//element commun à toutes les pages
+
+//lien contact
+.contact-button-link {
+    display: block;
+    position: relative;
+    z-index: 1;
+    width: 80%;
+    max-width: 200px;
+    padding: 12px 24px;
+    margin-top: 10px;
+    background-color: map-get($colors-rule, fourth-color);
+    color: map-get($colors-rule, sixth-color);
+    border: 2px solid transparent;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
 
 
+
+    &:hover {
+        color: map-get($colors-rule, fourth-color);
+        border: 2px solid map-get($colors-rule, fourth-color);
+        background-color: map-get($colors-rule, background-page-color);
+    }
+
+
+
+}
+
+// hero introduction
 .introduction {
     width: 100%;
     padding: 50px 0px;
@@ -186,6 +219,189 @@ header {
 
 }
 
+//FAQ section
+.faq-section {
+    padding: 100px 20px;
+    background: linear-gradient(135deg,
+            rgba(map-get($colors-rule, fourth-color), 0.1),
+            rgba(map-get($colors-rule, second-color), 0.5));
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+
+        h2 {
+            position: relative;
+            width: fit-content;
+            margin: 0 auto;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: map-get($colors-rule, fifth-color);
+            margin-bottom: 100px;
+            text-align: center;
+            padding: 0px;
+
+            strong {
+                color: map-get($colors-rule, fourth-color);
+                font-weight: bolder;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0px;
+                left: -30px;
+                width: 1px;
+                height: 100%;
+                background: map-get($colors-rule, fourth-color);
+                border-radius: 2px;
+
+            }
+        }
+
+        .faq-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+
+            .faq-intro {
+                display: block;
+                margin: 0 auto;
+                width: 80%;
+                max-width: 800px;
+                font-size: 1.2rem;
+                line-height: 1.8;
+                text-align: center;
+                color: rgba(map-get($colors-rule, fifth-color), 0.9);
+                background: map-get($colors-rule, sixth-color);
+                border-radius: 15px;
+                padding: 20px 30px;
+                box-shadow: 0 4px 20px rgba(map-get($colors-rule, fifth-color), 0.05);
+                border: 1px solid rgba(map-get($colors-rule, second-color), 0.1);
+                margin-bottom: 30px;
+
+                strong {
+                    color: rgba(map-get($colors-rule, first-color), 0.9);
+                    font-weight: 600;
+                }
+            }
+
+            .faq-item {
+                width: 100%;
+                background: map-get($colors-rule, sixth-color);
+                border-radius: 15px;
+                padding: 20px 30px;
+                box-shadow: 0 4px 20px rgba(map-get($colors-rule, fifth-color), 0.05);
+                border: 1px solid rgba(map-get($colors-rule, second-color), 0.1);
+
+                h3 {
+                    display: block;
+                    width: 90%;
+                    font-size: 1.3rem;
+                    margin-bottom: 0;
+                    color: map-get($colors-rule, fifth-color);
+                    position: relative;
+                    padding-left: 35px;
+                    cursor: pointer;
+                    user-select: none;
+                    transition: color 0.3s ease;
+
+                    &::after {
+                        content: '▼';
+                        position: absolute;
+                        right: 0;
+                        top: 50%;
+                        transform: translateY(-50%) translateX(50px);
+                        transition: transform 0.3s ease;
+                    }
+
+                    &.expanded::after {
+                        transform: translateY(-50%) translateX(50px) rotate(180deg);
+                    }
+
+                    &:hover {
+                        color: map-get($colors-rule, fourth-color);
+                    }
+                }
+
+                p,
+                ul {
+                    color: rgba(map-get($colors-rule, fifth-color), 0.8);
+                    line-height: 1.6;
+                    font-size: 1.1rem;
+                    padding-left: 35px;
+                    position: relative;
+                    margin-top: 20px;
+                    display: none;
+                    animation: fadeIn 0.3s ease;
+
+                    strong {
+                        color: map-get($colors-rule, first-color);
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 992px) {
+        padding: 60px 20px;
+
+        .container {
+            h2 {
+                font-size: 2rem;
+            }
+
+            .faq-grid {
+                flex-direction: column;
+
+                .faq-item {
+                    flex: 1 1 100%;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .faq-grid {
+                .faq-item {
+                    padding: 25px;
+
+                    h3 {
+                        font-size: 1.2rem;
+                        padding-left: 30px;
+                    }
+
+                    p {
+                        font-size: 1rem;
+                        padding-left: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 
 
@@ -200,6 +416,13 @@ header {
     flex-flow: column;
     justify-content: flex-start;
     align-items: center;
+}
+
+.flex-column-start-start {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .flex-column-center-center {

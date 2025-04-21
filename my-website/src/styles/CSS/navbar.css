@@ -14,7 +14,7 @@
 }
 
 .navbar.scrolled {
-  opacity: 0.1;
+  opacity: 0.05;
   -webkit-transition: opacity 1s ease;
   -o-transition: opacity 1s ease;
   transition: opacity 1s ease;

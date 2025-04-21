@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /****************************************
 ******** personal reset 
 ****************************************/
@@ -84,6 +85,34 @@ header {
 /********************************************************
 **********paginatio ******
 ********************************************************/
+.contact-button-link {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 80%;
+  max-width: 200px;
+  padding: 12px 24px;
+  margin-top: 10px;
+  background-color: #c3066b;
+  color: #ffffff;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.contact-button-link:hover {
+  color: #c3066b;
+  border: 2px solid #c3066b;
+  background-color: #fbfbfc;
+}
+
 .introduction {
   width: 100%;
   padding: 50px 0px;
@@ -160,6 +189,220 @@ header {
   }
 }
 
+.faq-section {
+  padding: 100px 20px;
+  background: -webkit-linear-gradient(315deg, rgba(195, 6, 107, 0.1), rgba(0, 190, 184, 0.5));
+  background: -o-linear-gradient(315deg, rgba(195, 6, 107, 0.1), rgba(0, 190, 184, 0.5));
+  background: linear-gradient(135deg, rgba(195, 6, 107, 0.1), rgba(0, 190, 184, 0.5));
+}
+
+.faq-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.faq-section .container h2 {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #171717;
+  margin-bottom: 100px;
+  text-align: center;
+  padding: 0px;
+}
+
+.faq-section .container h2 strong {
+  color: #c3066b;
+  font-weight: bolder;
+}
+
+.faq-section .container h2::after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: -30px;
+  width: 1px;
+  height: 100%;
+  background: #c3066b;
+  border-radius: 2px;
+}
+
+.faq-section .container .faq-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.faq-section .container .faq-grid .faq-intro {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 800px;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-align: center;
+  color: rgba(23, 23, 23, 0.9);
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 20px 30px;
+  -webkit-box-shadow: 0 4px 20px rgba(23, 23, 23, 0.05);
+          box-shadow: 0 4px 20px rgba(23, 23, 23, 0.05);
+  border: 1px solid rgba(0, 190, 184, 0.1);
+  margin-bottom: 30px;
+}
+
+.faq-section .container .faq-grid .faq-intro strong {
+  color: rgba(2, 77, 74, 0.9);
+  font-weight: 600;
+}
+
+.faq-section .container .faq-grid .faq-item {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 20px 30px;
+  -webkit-box-shadow: 0 4px 20px rgba(23, 23, 23, 0.05);
+          box-shadow: 0 4px 20px rgba(23, 23, 23, 0.05);
+  border: 1px solid rgba(0, 190, 184, 0.1);
+}
+
+.faq-section .container .faq-grid .faq-item h3 {
+  display: block;
+  width: 90%;
+  font-size: 1.3rem;
+  margin-bottom: 0;
+  color: #171717;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: color 0.3s ease;
+  -o-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+
+.faq-section .container .faq-grid .faq-item h3::after {
+  content: '▼';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%) translateX(50px);
+      -ms-transform: translateY(-50%) translateX(50px);
+          transform: translateY(-50%) translateX(50px);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  -o-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+}
+
+.faq-section .container .faq-grid .faq-item h3.expanded::after {
+  -webkit-transform: translateY(-50%) translateX(50px) rotate(180deg);
+      -ms-transform: translateY(-50%) translateX(50px) rotate(180deg);
+          transform: translateY(-50%) translateX(50px) rotate(180deg);
+}
+
+.faq-section .container .faq-grid .faq-item h3:hover {
+  color: #c3066b;
+}
+
+.faq-section .container .faq-grid .faq-item p,
+.faq-section .container .faq-grid .faq-item ul {
+  color: rgba(23, 23, 23, 0.8);
+  line-height: 1.6;
+  font-size: 1.1rem;
+  padding-left: 35px;
+  position: relative;
+  margin-top: 20px;
+  display: none;
+  -webkit-animation: fadeIn 0.3s ease;
+          animation: fadeIn 0.3s ease;
+}
+
+.faq-section .container .faq-grid .faq-item p strong,
+.faq-section .container .faq-grid .faq-item ul strong {
+  color: #024d4a;
+  font-weight: 600;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@media (max-width: 992px) {
+  .faq-section {
+    padding: 60px 20px;
+  }
+  .faq-section .container h2 {
+    font-size: 2rem;
+  }
+  .faq-section .container .faq-grid {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .faq-section .container .faq-grid .faq-item {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-section .container h2 {
+    font-size: 1.5rem;
+  }
+  .faq-section .container .faq-grid .faq-item {
+    padding: 25px;
+  }
+  .faq-section .container .faq-grid .faq-item h3 {
+    font-size: 1.2rem;
+    padding-left: 30px;
+  }
+  .faq-section .container .faq-grid .faq-item p {
+    font-size: 1rem;
+    padding-left: 30px;
+  }
+}
+
 /********************************************************
 **********Flexbox utilities for responsive design ******
 ********************************************************/
@@ -177,6 +420,22 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.flex-column-start-start {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .flex-column-center-center {
