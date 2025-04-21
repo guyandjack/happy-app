@@ -52,7 +52,13 @@
 .website-types .website-cards .website-card-container {
   position: relative;
   width: 100%;
-  max-width: 1200px;
+  max-width: 600px;
+}
+
+@media screen and (min-width: 992px) {
+  .website-types .website-cards .website-card-container {
+    max-width: 1000px;
+  }
 }
 
 .website-types .website-cards .website-card-container > h3 {
@@ -65,18 +71,10 @@
   margin: 0;
   background: #ffffff;
   border-radius: 15px;
-  color: rgba(195, 6, 107, 0.8);
+  color: rgba(2, 77, 74, 0.9);
   font-weight: 800;
   -webkit-box-shadow: 0 0px 20px rgba(0, 190, 184, 0.2);
           box-shadow: 0 0px 20px rgba(0, 190, 184, 0.2);
-  /*strong {
-          background: linear-gradient(135deg,
-            map-get($colors-rule, second-color),
-            map-get($colors-rule, third-color));
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }*/
 }
 
 @media screen and (min-width: 992px) {
@@ -136,15 +134,6 @@
   transition: transform 0.3s ease, -webkit-transform 0.3s ease;
   -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1), 0 20px 30px rgba(2, 77, 74, 0.05);
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1), 0 20px 30px rgba(2, 77, 74, 0.05);
-  /*&::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(135deg,
-            rgba(map-get($colors-rule, sixth-color), 1) 0%,
-            rgba(map-get($colors-rule, sixth-color), 0.95) 100%);
-          z-index: 0;
-        }*/
 }
 
 @media screen and (min-width: 992px) {
@@ -183,10 +172,16 @@
   .website-types .website-cards .website-card-container .website-card .card-image {
     position: absolute;
     top: -10%;
-    right: -10%;
-    width: 450px;
-    height: 450px;
+    right: -15%;
+    width: 400px;
+    height: 400px;
     border-radius: 50%;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .website-types .website-cards .website-card-container .website-card .card-image {
+    right: -10%;
   }
 }
 
@@ -208,12 +203,14 @@
   z-index: 1;
   padding: 30px;
   background: transparent;
+  width: 100%;
+  max-width: 600px;
 }
 
 @media screen and (min-width: 992px) {
   .website-types .website-cards .website-card-container .website-card .card-content {
-    width: 60%;
-    padding: 60px;
+    padding: 40px;
+    max-width: 700px;
   }
 }
 
@@ -232,13 +229,16 @@
 .website-types .website-cards .website-card-container .website-card .card-content .btn {
   position: relative;
   display: inline-block;
+  width: 50%;
+  margin: 0 auto;
+  max-width: 400px;
   padding: 12px 30px;
   border-radius: 30px;
-  background: rgba(2, 77, 74, 0.8);
+  background: #c3066b;
   border: 2px solid transparent;
-  color: rgba(255, 255, 255, 0.9);
+  color: #ffffff;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   -webkit-transition: background-color 0.3s ease, -webkit-box-shadow 0.3s ease;
   transition: background-color 0.3s ease, -webkit-box-shadow 0.3s ease;
   -o-transition: box-shadow 0.3s ease, background-color 0.3s ease;
@@ -248,8 +248,8 @@
 
 .website-types .website-cards .website-card-container .website-card .card-content .btn:hover {
   background-color: transparent;
-  border-color: rgba(2, 77, 74, 0.9);
-  color: rgba(2, 77, 74, 0.9);
+  border: 2px solid #c3066b;
+  color: #c3066b;
   -webkit-transform: translateY(-5px);
       -ms-transform: translateY(-5px);
           transform: translateY(-5px);
@@ -269,7 +269,17 @@
 @media screen and (min-width: 992px) {
   .website-types .website-cards .website-card-container:nth-child(even) .website-card .card-image {
     right: auto;
-    left: -5%;
+    left: -15%;
+  }
+  .website-types .website-cards .website-card-container:nth-child(even) .website-card .card-content {
+    margin-left: auto;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .website-types .website-cards .website-card-container:nth-child(even) .website-card .card-image {
+    right: auto;
+    left: -10%;
   }
   .website-types .website-cards .website-card-container:nth-child(even) .website-card .card-content {
     margin-left: auto;
