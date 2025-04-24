@@ -1,49 +1,60 @@
-import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { FaTrash, FaUpload } from 'react-icons/fa';
-import { ThreeDots } from 'react-loader-spinner';
-import '../../styles/CSS/dashboard.css';
-import { localOrProd } from '../../utils/fonction/testEnvironement';
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { FaTrash, FaUpload } from "react-icons/fa";
+import { ThreeDots } from "react-loader-spinner";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import "../../styles/CSS/dashboard.css";
+import { localOrProd } from "../../utils/fonction/testEnvironement";
 
 const ArticleForm = ({ onSuccess, onCancel }) => {
   const { urlApi } = localOrProd();
   const [httpError, setHttpError] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [toast, setToast] = useState({ show: false, message: '', type: '' });
-  
+  const [toast, setToast] = useState({ show: false, message: "", type: "" });
+
   // File states
   const [mainImage, setMainImage] = useState(null);
-  const [mainImagePreview, setMainImagePreview] = useState('');
+  const [mainImagePreview, setMainImagePreview] = useState("");
   const [additionalImages, setAdditionalImages] = useState([]);
   const [additionalImagePreviews, setAdditionalImagePreviews] = useState([]);
-  const [contentFile, setContentFile] = useState(null);
-  const [contentFileName, setContentFileName] = useState('');
-  
+
   // Refs for file inputs
   const mainImageInputRef = useRef(null);
   const additionalImagesInputRef = useRef(null);
-  const contentFileInputRef = useRef(null);
-  
-  const { 
-    register, 
-    handleSubmit, 
-    formState: { errors, isValid } 
-  } = useForm({ 
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+    watch,
+    setValue,
+  } = useForm({
     mode: "onTouched",
     defaultValues: {
-      category: 'web-development',
-      tags: ''
-    }
+      category: "web-development",
+      tags: "",
+    },
   });
+
+  // Watch title
+  const watchTitle = watch("title", "");
+  const watchContent = watch("content", "");
 
   // Categories for dropdown
   const categories = [
-    { value: 'web-development', label: 'Développement Web' },
-    { value: 'mobile-apps', label: 'Applications Mobiles' },
-    { value: 'seo', label: 'Référencement SEO' },
-    { value: 'design', label: 'Design' },
-    { value: 'tutorials', label: 'Tutoriels' },
+    { value: "web-development", label: "Développement Web" },
+    { value: "mobile-apps", label: "Applications Mobiles" },
+    { value: "seo", label: "Référencement SEO" },
+    { value: "design", label: "Design" },
+    { value: "tutorials", label: "Tutoriels" },
+  ];
+
+  // language for dropdown
+  const languages = [
+    { value: "fr", label: "Français" },
+    { value: "en", label: "Anglais" },
   ];
 
   // Hide toast after 5 seconds
@@ -57,9 +68,15 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
     return () => clearTimeout(toastTimer);
   }, [toast]);
 
-  const showToast = (message, type = 'info') => {
+  const showToast = (message, type = "info") => {
     setToast({ show: true, message, type });
   };
+
+  // Handle slug change
+  useEffect(() => {
+    const slug = slugify(watchTitle);
+    setValue("slug", slug);
+  }, [watchTitle, setValue]);
 
   // Handle main image selection
   const handleMainImageChange = (e) => {
@@ -79,49 +96,52 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
     const files = Array.from(e.target.files);
     if (files.length > 0) {
       setAdditionalImages([...additionalImages, ...files]);
-      
+
       // Create previews for new images
-      files.forEach(file => {
+      files.forEach((file) => {
         const reader = new FileReader();
         reader.onloadend = () => {
-          setAdditionalImagePreviews(prev => [...prev, reader.result]);
+          setAdditionalImagePreviews((prev) => [...prev, reader.result]);
         };
         reader.readAsDataURL(file);
       });
     }
   };
 
-  // Handle content file selection
-  const handleContentFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setContentFile(file);
-      setContentFileName(file.name);
-    }
-  };
-
   // Remove main image
   const removeMainImage = () => {
     setMainImage(null);
-    setMainImagePreview('');
+    setMainImagePreview("");
     if (mainImageInputRef.current) {
-      mainImageInputRef.current.value = '';
+      mainImageInputRef.current.value = "";
     }
   };
 
   // Remove additional image
   const removeAdditionalImage = (index) => {
-    setAdditionalImages(prev => prev.filter((_, i) => i !== index));
-    setAdditionalImagePreviews(prev => prev.filter((_, i) => i !== index));
+    setAdditionalImages((prev) => prev.filter((_, i) => i !== index));
+    setAdditionalImagePreviews((prev) => prev.filter((_, i) => i !== index));
   };
 
-  // Remove content file
-  const removeContentFile = () => {
-    setContentFile(null);
-    setContentFileName('');
-    if (contentFileInputRef.current) {
-      contentFileInputRef.current.value = '';
+  // slugify
+  function slugify(text) {
+    return text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9\s-]/g, "")
+      .trim()
+      .replace(/\s+/g, "-");
+  }
+
+  // Custom validation function for image files
+  const validateImage = (file) => {
+    if (!file) return "Image is required";
+    const validTypes = ["image/jpeg", "image/webp"];
+    if (!validTypes.includes(file.type)) {
+      return "Only JPEG and WebP images are allowed";
     }
+    return true;
   };
 
   // Form submission
@@ -129,75 +149,121 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
     try {
       setIsSubmitting(true);
       setHttpError(null);
-      
-      // Validate required files
-      if (!contentFile) {
-        setHttpError("Le fichier HTML de contenu est requis");
-        showToast("Le fichier HTML de contenu est requis", "error");
+
+      // Validate required content article
+      if (!watchContent.trim()) {
+        setHttpError("Le contenu de l'article est requis");
+        showToast("Le contenu de l'article est requis", "error");
         setIsSubmitting(false);
         return;
       }
-      
+
+      // Validate required main image
       if (!mainImage) {
         setHttpError("L'image principale est requise");
         showToast("L'image principale est requise", "error");
         setIsSubmitting(false);
         return;
       }
-      
+
+      // Validate main image format
+      const mainImageError = validateImage(mainImage);
+      if (mainImageError !== true) {
+        setHttpError(mainImageError);
+        showToast(mainImageError, "error");
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Validate additional images format
+      for (const image of additionalImages) {
+        const additionalImageError = validateImage(image);
+        if (additionalImageError !== true) {
+          setHttpError(additionalImageError);
+          showToast(additionalImageError, "error");
+          setIsSubmitting(false);
+          return;
+        }
+      }
+
+      // Validate required language
+      if (!data.language) {
+        setHttpError("La langue est requise");
+        showToast("La langue est requise", "error");
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Validate required category
+      if (!data.category) {
+        setHttpError("La catégorie est requise");
+        showToast("La catégorie est requise", "error");
+        setIsSubmitting(false);
+        return;
+      }
+
       // Create FormData object for file uploads
       const formData = new FormData();
-      formData.append('category', data.category);
-      
+      formData.append("language", data.language);
+      formData.append("category", data.category);
+      formData.append("title", data.title);
+      formData.append("slug", data.slug);
+      formData.append("contentArticle", data.contentArticle);
       // Process tags (convert comma-separated string to array)
       if (data.tags) {
-        const tagsArray = data.tags.split(',').map(tag => tag.trim()).filter(tag => tag);
-        formData.append('tags', JSON.stringify(tagsArray));
+        const tagsArray = data.tags
+          .split(",")
+          .map((tag) => tag.trim())
+          .filter((tag) => tag);
+        formData.append("tags", JSON.stringify(tagsArray));
       }
-      
+
       // Add files with the EXACT same field names as expected by multer
       if (mainImage) {
-        formData.append('mainImage', mainImage);
+        formData.append("mainImage", mainImage);
       }
-      
-      if (contentFile) {
-        formData.append('contentFile', contentFile);
+
+      if (watchContent) {
+        formData.append("contentArticle", watchContent);
       }
-      
+
       if (additionalImages.length > 0) {
-        additionalImages.forEach(image => {
-          formData.append('additionalImages', image);
+        additionalImages.forEach((image) => {
+          formData.append("additionalImages", image);
         });
       }
-      
+
       // Add token to headers
-      const token = localStorage.getItem('token');
-      
+      const token = localStorage.getItem("token");
+
       // Send request to API
       const response = await axios.post(`${urlApi}/articles`, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
-          'Authorization': `Bearer ${token}`
-        }
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
       });
-      
-      if (response.data.status === 'success') {
-        showToast('Article créé avec succès', 'success');
-        
+
+      if (response.data.status === "success") {
+        showToast("Article créé avec succès", "success");
+
         // Reset form
         if (onSuccess) {
           onSuccess(response.data.data.article);
         }
       }
     } catch (error) {
-      console.error('Error creating article:', error);
-      
+      console.error("Error creating article:", error);
+
       if (error.response) {
-        setHttpError(error.response.data.message || 'Une erreur est survenue');
-        showToast(error.response.data.message || 'Une erreur est survenue', 'error');
+        setHttpError(error.response.data.message || "Une erreur est survenue");
+        showToast(
+          error.response.data.message || "Une erreur est survenue",
+          "error"
+        );
       } else {
-        setHttpError('Erreur de connexion au serveur');
-        showToast('Erreur de connexion au serveur', 'error');
+        setHttpError("Erreur de connexion au serveur");
+        showToast("Erreur de connexion au serveur", "error");
       }
     } finally {
       setIsSubmitting(false);
@@ -213,9 +279,9 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
         <div className={`toast-notification ${toast.type}`}>
           <div className="toast-content">
             <span className="toast-message">{toast.message}</span>
-            <button 
-              className="toast-close" 
-              onClick={() => setToast({...toast, show: false})}
+            <button
+              className="toast-close"
+              onClick={() => setToast({ ...toast, show: false })}
               aria-label="Fermer"
             >
               ×
@@ -223,7 +289,7 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
           </div>
         </div>
       )}
-      
+
       {isSubmitting && (
         <div className="loader-overlay">
           <div className="loader-container">
@@ -239,46 +305,48 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
           </div>
         </div>
       )}
-      
+
       <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
         {httpError && (
-          <div className="error-message http-error">
-            {httpError}
-          </div>
+          <div className="error-message http-error">{httpError}</div>
         )}
-        
-        <div className="form-info-message">
-          <p>Le titre et le résumé de l'article seront extraits automatiquement du fichier HTML.</p>
-          <p>Assurez-vous que votre fichier HTML contient:</p>
-          <ul>
-            <li>Un titre dans une balise &lt;h1&gt;</li>
-            <li>Un résumé dans un paragraphe avec la classe "introduction"</li>
-          </ul>
+
+        {/* Language */}
+        <div className="form-group">
+          <label htmlFor="language">Langue *</label>
+          <select
+            id="language"
+            {...register("language", { required: "La langue est requise" })}
+          >
+            {languages.map((language) => (
+              <option key={language.value} value={language.value}>
+                {language.label}
+              </option>
+            ))}
+          </select>
         </div>
-        
+
         {/* Category */}
         <div className="form-group">
           <label htmlFor="category">Catégorie *</label>
           <select
             id="category"
-            {...register("category", { 
-              required: "La catégorie est requise" 
+            {...register("category", {
+              required: "La catégorie est requise",
             })}
             className={errors.category ? "error" : ""}
           >
-            {categories.map(category => (
+            {categories.map((category) => (
               <option key={category.value} value={category.value}>
                 {category.label}
               </option>
             ))}
           </select>
           {errors.category && (
-            <div className="error-message">
-              {errors.category.message}
-            </div>
+            <div className="error-message">{errors.category.message}</div>
           )}
         </div>
-        
+
         {/* Tags */}
         <div className="form-group">
           <label htmlFor="tags">Tags (séparés par des virgules)</label>
@@ -289,46 +357,44 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
             placeholder="ex: javascript, react, web"
           />
         </div>
-        
-        {/* Content File Upload */}
+
+        {/* title */}
         <div className="form-group">
-          <label htmlFor="contentFile">Fichier de contenu (HTML) *</label>
-          <div className="file-upload-container">
-            <input
-              type="file"
-              id="contentFile"
-              accept=".html"
-              onChange={handleContentFileChange}
-              ref={contentFileInputRef}
-              style={{ display: 'none' }}
-            />
-            <button
-              type="button"
-              className="file-upload-btn"
-              onClick={() => contentFileInputRef.current.click()}
-            >
-              <FaUpload /> Choisir un fichier HTML
-            </button>
-            {contentFileName && (
-              <div className="file-name">
-                <span>{contentFileName}</span>
-                <button
-                  type="button"
-                  className="file-remove-btn"
-                  onClick={removeContentFile}
-                >
-                  <FaTrash />
-                </button>
-              </div>
-            )}
-          </div>
-          {!contentFile && isSubmitting && (
-            <div className="error-message">
-              Un fichier HTML est requis
-            </div>
+          <label htmlFor="title">Titre de l'article *</label>
+          <input
+            type="text"
+            placeholder="Titre de l'article"
+            {...register("title", { required: "Le titre est requis" })}
+            className="border p-2 rounded"
+          />
+          {errors.title && (
+            <span className="text-red-500">{errors.title.message}</span>
           )}
         </div>
-        
+
+        {/* slug */}
+        <input
+          type="text"
+          placeholder="Slug Title"
+          {...register("slug")}
+          className=""
+          readOnly
+        />
+
+        {/* champ markdown */}
+        <div className="form-group">
+          <label htmlFor="content">Contenu (en markdown) *</label>
+          <textarea
+            placeholder="Contenu (en markdown)"
+            {...register("content", { required: "Le contenu est requis" })}
+            rows={10}
+            className="border p-2 rounded font-mono text-sm"
+          />
+          {errors.content && (
+            <span className="text-red-500">{errors.content.message}</span>
+          )}
+        </div>
+
         {/* Main Image Upload */}
         <div className="form-group">
           <label htmlFor="mainImage">Image principale *</label>
@@ -339,7 +405,7 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
               accept="image/*"
               onChange={handleMainImageChange}
               ref={mainImageInputRef}
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
             />
             <button
               type="button"
@@ -367,7 +433,7 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
             </div>
           )}
         </div>
-        
+
         {/* Additional Images Upload */}
         <div className="form-group">
           <label htmlFor="additionalImages">Images supplémentaires</label>
@@ -379,7 +445,7 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
               multiple
               onChange={handleAdditionalImagesChange}
               ref={additionalImagesInputRef}
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
             />
             <button
               type="button"
@@ -406,28 +472,44 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
             </div>
           )}
         </div>
-        
+
         {/* Form Actions */}
         <div className="form-actions">
-          <button 
-            type="button" 
-            className="cancel-btn" 
+          <button
+            type="button"
+            className="cancel-btn"
             onClick={onCancel}
             disabled={isSubmitting}
           >
             Annuler
           </button>
-          <button 
-            type="submit" 
-            className="submit-btn" 
-            disabled={isButtonDisabled || !mainImage || !contentFile}
+          <button
+            type="submit"
+            className="submit-btn"
+            disabled={isButtonDisabled || !mainImage || !watchContent}
           >
-            {isSubmitting ? 'Création en cours...' : 'Créer l\'article'}
+            {isSubmitting ? "Création en cours..." : "Créer l'article"}
           </button>
         </div>
       </form>
+      {/* PRÉVISUALISATION MARKDOWN */}
+      <div className="bg-white border p-4 rounded shadow-sm">
+        <h3 className="text-lg font-semibold mb-2">🖼️ Aperçu de l'article</h3>
+        {watchContent.trim() === "" ? (
+          <p className="text-gray-400 italic">
+            Commence à écrire du contenu...
+          </p>
+        ) : (
+          <div className="markdown-preview">
+            <ReactMarkdown
+              children={watchContent}
+              rehypePlugins={[rehypeRaw]}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
 
-export default ArticleForm; 
+export default ArticleForm;

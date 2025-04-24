@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS articles (
   views INT DEFAULT 0,
   createdAt DATETIME NOT NULL,
   updatedAt DATETIME NOT NULL,
-  contentType ENUM('text', 'html_file') DEFAULT 'text',
+  contentType ENUM('text') DEFAULT 'text',
   images JSON DEFAULT NULL,
   FOREIGN KEY (author) REFERENCES users(id)
 );
