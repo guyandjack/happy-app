@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>un example de titre</title>
+  <meta name="description" content="un petit resume de l' article" />
+  
+ <!-- Stylesheets -->
+  <link rel="stylesheet" href="../../../src/styles/CSS/normalize.css">
+  <link rel="stylesheet" href="../../../src/styles/CSS/shared-style.css">
+  <link rel="stylesheet" href="../../../src/styles/CSS/article.css">
+  
+  <!-- Script jsx -->
+  <script src="../../src/main.jsx"></script>
+</head>
+<body>
+<div class="page-container">
+  <header>
+      <!-- Navbar will be mounted here by React -->
+      <div id="RC-navbar"></div>
+    </header>
+
+  <main class="prose" style="max-width: 800px; margin: auto; padding: 2rem;">
+    <h1>un example de titre</h1>
+    <p>undefined,# Titre Principal</p>
+<p>Ceci est un paragraphe qui décrit un sujet intéressant.</p>
+<h2>Liste des éléments</h2>
+<ul>
+<li>Élément 1</li>
+<li>Élément 2</li>
+<li>Élément 3</li>
+</ul>
+<div style="background: #f0f0f0; padding: 10px; margin-top: 15px;">
+  Ceci est une div HTML insérée dans le contenu markdown.
+</div>
+
+<p>Un autre paragraphe pour conclure.</p>
+
+  </main>
+
+  <!-- Footer will be mounted here by React -->
+      <div id="RC-footer"></div>
+</div>
+</body>
+</html>

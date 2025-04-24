@@ -1,11 +1,12 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { FaEdit, FaFilter, FaSearch, FaTrash } from 'react-icons/fa';
-import { toast } from 'react-toastify';
-import '../../styles/CSS/articles.css';
-import { localOrProd } from '../../utils/fonction/testEnvironement';
-import { ArticleCard } from '../Articles/ArticleCard';
-import '../../styles/SCSS/components/AdminArticleList.scss';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { FaEdit, FaFilter, FaSearch, FaTrash } from "react-icons/fa";
+import { toast } from "react-toastify";
+
+import "../../styles/CSS/articles.css";
+import { localOrProd } from "../../utils/fonction/testEnvironement";
+import { ArticleCard } from "../Articles/ArticleCard";
+import "../../styles/SCSS/components/AdminArticleList.scss";
 
 const AdminArticleList = () => {
   const { urlApi } = localOrProd();
@@ -14,8 +15,8 @@ const AdminArticleList = () => {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
 
@@ -23,27 +24,31 @@ const AdminArticleList = () => {
     const fetchArticles = async () => {
       try {
         setLoading(true);
-        const params = { 
+        const params = {
           page: currentPage,
-          limit: 10
+          limit: 10,
         };
-        
+
         if (selectedCategory) params.category = selectedCategory;
-        
+
         const response = await axios.get(`${urlApi}/articles`, { params });
-        
+
         setArticles(response.data.data.articles);
         setFilteredArticles(response.data.data.articles);
         setTotalPages(response.data.totalPages || 1);
-        
+
         // Extract unique categories
-        const uniqueCategories = [...new Set(response.data.data.articles.map(article => article.category))];
+        const uniqueCategories = [
+          ...new Set(
+            response.data.data.articles.map((article) => article.category)
+          ),
+        ];
         setCategories(uniqueCategories);
-        
+
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching articles:', error);
-        setError('Failed to load articles. Please try again later.');
+        console.error("Error fetching articles:", error);
+        setError("Failed to load articles. Please try again later.");
         setLoading(false);
       }
     };
@@ -53,15 +58,20 @@ const AdminArticleList = () => {
 
   useEffect(() => {
     // Filter articles based on search term
-    if (searchTerm.trim() === '') {
+    if (searchTerm.trim() === "") {
       setFilteredArticles(articles);
     } else {
-      const filtered = articles.filter(article => 
-        article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (article.excerpt && article.excerpt.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (article.tags && article.tags.some(tag => 
-          typeof tag === 'string' && tag.toLowerCase().includes(searchTerm.toLowerCase())
-        ))
+      const filtered = articles.filter(
+        (article) =>
+          article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          (article.excerpt &&
+            article.excerpt.toLowerCase().includes(searchTerm.toLowerCase())) ||
+          (article.tags &&
+            article.tags.some(
+              (tag) =>
+                typeof tag === "string" &&
+                tag.toLowerCase().includes(searchTerm.toLowerCase())
+            ))
       );
       setFilteredArticles(filtered);
     }
@@ -72,18 +82,20 @@ const AdminArticleList = () => {
       try {
         await axios.delete(`${urlApi}/articles/${id}`, {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          }
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         });
-        
-        toast.success('Article supprimé avec succès');
-        
+
+        toast.success("Article supprimé avec succès");
+
         // Refresh the article list
-        setArticles(articles.filter(article => article.id !== id));
-        setFilteredArticles(filteredArticles.filter(article => article.id !== id));
+        setArticles(articles.filter((article) => article.id !== id));
+        setFilteredArticles(
+          filteredArticles.filter((article) => article.id !== id)
+        );
       } catch (error) {
-        console.error('Error deleting article:', error);
-        toast.error('Échec de la suppression de l\'article');
+        console.error("Error deleting article:", error);
+        toast.error("Échec de la suppression de l'article");
       }
     }
   };
@@ -125,9 +137,10 @@ const AdminArticleList = () => {
           <FaFilter className="filter-icon" />
           <select value={selectedCategory} onChange={handleCategoryChange}>
             <option value="">Toutes les catégories</option>
-            {categories.map(category => (
+            {categories.map((category) => (
               <option key={category} value={category}>
-                {category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ')}
+                {category.charAt(0).toUpperCase() +
+                  category.slice(1).replace("-", " ")}
               </option>
             ))}
           </select>
@@ -136,23 +149,27 @@ const AdminArticleList = () => {
 
       {filteredArticles.length === 0 ? (
         <div className="no-articles">
-          {searchTerm ? 'Aucun article ne correspond à votre recherche.' : 'Aucun article trouvé.'}
+          {searchTerm
+            ? "Aucun article ne correspond à votre recherche."
+            : "Aucun article trouvé."}
         </div>
       ) : (
         <div className="admin-articles-grid">
-          {filteredArticles.map(article => (
+          {filteredArticles.map((article) => (
             <div key={article.id} className="admin-article-card-wrapper">
               <ArticleCard article={article} />
               <div className="admin-article-actions">
-                <button 
-                  className="edit-btn" 
-                  onClick={() => window.location.href = `/admin/articles/edit/${article.id}`}
+                <button
+                  className="edit-btn"
+                  onClick={() =>
+                    (window.location.href = `/admin/articles/edit/${article.id}`)
+                  }
                   title="Modifier l'article"
                 >
                   <FaEdit /> Modifier
                 </button>
-                <button 
-                  className="delete-btn" 
+                <button
+                  className="delete-btn"
                   onClick={() => handleDelete(article.id, article.title)}
                   title="Supprimer l'article"
                 >
@@ -178,7 +195,9 @@ const AdminArticleList = () => {
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <button
                 key={page}
-                className={`page-number ${page === currentPage ? 'active' : ''}`}
+                className={`page-number ${
+                  page === currentPage ? "active" : ""
+                }`}
                 onClick={() => handlePageChange(page)}
               >
                 {page}
@@ -198,4 +217,4 @@ const AdminArticleList = () => {
   );
 };
 
-export default AdminArticleList; 
+export default AdminArticleList;

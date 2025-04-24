@@ -57,6 +57,7 @@ exports.contactValidation = [
  * Validation rules for article creation
  */
 exports.articleValidation = [
+  body("author").notEmpty().withMessage("Author is required"),
   body("title").notEmpty().withMessage("Title is required"),
 
   body("slug").notEmpty().withMessage("Slug is required"),

@@ -150,6 +150,14 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
       setIsSubmitting(true);
       setHttpError(null);
 
+      // Validate required author
+      if (!data.author) {
+        setHttpError("L'auteur est requis");
+        showToast("L'auteur est requis", "error");
+        setIsSubmitting(false);
+        return;
+      }
+
       // Validate required content article
       if (!watchContent.trim()) {
         setHttpError("Le contenu de l'article est requis");
@@ -202,6 +210,14 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
         return;
       }
 
+      // Validate required excerpt
+      if (!data.excerpt) {
+        setHttpError("L'extrait est requis");
+        showToast("L'extrait est requis", "error");
+        setIsSubmitting(false);
+        return;
+      }
+
       // Create FormData object for file uploads
       const formData = new FormData();
       formData.append("language", data.language);
@@ -209,6 +225,8 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
       formData.append("title", data.title);
       formData.append("slug", data.slug);
       formData.append("contentArticle", data.contentArticle);
+      formData.append("excerpt", data.excerpt);
+      formData.append("author", data.author);
       // Process tags (convert comma-separated string to array)
       if (data.tags) {
         const tagsArray = data.tags
@@ -311,6 +329,12 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
           <div className="error-message http-error">{httpError}</div>
         )}
 
+        {/* Author */}
+        <div className="form-group">
+          <label htmlFor="author">Auteur *</label>
+          <input type="text" id="author" {...register("author")} />
+        </div>
+
         {/* Language */}
         <div className="form-group">
           <label htmlFor="language">Langue *</label>
@@ -372,14 +396,26 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
           )}
         </div>
 
-        {/* slug */}
-        <input
-          type="text"
-          placeholder="Slug Title"
-          {...register("slug")}
-          className=""
-          readOnly
-        />
+        {/* slug title */}
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Slug Title"
+            {...register("slug")}
+            className=""
+            readOnly
+          />
+        </div>
+
+        {/* excerpt */}
+        <div className="form-group">
+          <label htmlFor="excerpt">Résumé de l'article</label>
+          <textarea
+            placeholder="Résumé de l'article"
+            {...register("excerpt")}
+            className=""
+          />
+        </div>
 
         {/* champ markdown */}
         <div className="form-group">

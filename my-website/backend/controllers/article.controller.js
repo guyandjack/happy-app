@@ -7,6 +7,11 @@ const { getConnection, releaseConnection } = require("../config/database");
 const multer = require("multer");
 const { v4: uuidv4 } = require("uuid");
 const localOrProd = require("../utils/function/localOrProd");
+const createArticle = require("../utils/function/generateArticle");
+
+// recuperer les composants react du frontend
+//const Navbar = require("../../src/components/Navbar/Navbar.jsx");
+//const Footer = require("../../src/components/Footer/Footer.jsx");
 
 /**
  * Get all articles
@@ -342,6 +347,7 @@ exports.createArticle = async (req, res) => {
       try {
         // Extract data from request
         const {
+          author,
           language,
           category,
           title,
@@ -352,7 +358,14 @@ exports.createArticle = async (req, res) => {
         } = req.body;
 
         // Validate required fields
-        if (!language || !category || !title || !slug || !contentArticle) {
+        if (
+          !language ||
+          !category ||
+          !title ||
+          !slug ||
+          !contentArticle ||
+          !author
+        ) {
           return res.status(400).json({
             status: "error",
             message: "language, category, title, slug and content are required",
@@ -370,21 +383,12 @@ exports.createArticle = async (req, res) => {
           }
         }
 
-        // Create slug from title
-        const createSlug = (title) => {
-          return title
-            .toLowerCase()
-            .replace(/[^\w\s-]/g, "")
-            .replace(/\s+/g, "-")
-            .replace(/-+/g, "-")
-            .trim();
-        };
-
-        const titleSlug = createSlug(title);
-
         // Process uploaded files and create relative paths
         let mainImagePath = "";
         let additionalImagePaths = [];
+
+        // Create article URL
+        let articleUrl = `${url}/public/${language}/article/${slug}.html`;
 
         if (req.files.mainImage && req.files.mainImage.length > 0) {
           // Create relative path for main image
@@ -403,21 +407,33 @@ exports.createArticle = async (req, res) => {
           );
         }
 
+        // Generate article page
+        await createArticle({
+          title: title,
+          slug: slug,
+          content: contentArticle,
+          language: language,
+          excerpt: excerpt,
+        });
+
         // Save article data to database
         const [result] = await connection.execute(
           `INSERT INTO articles (
-            title, excerpt, content, category, tags, mainImage, 
-            additionalImages, createdAt, updatedAt, language
-          ) VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), ?)`,
+            title, slug, content, excerpt, mainImage, category, tags, author, createdAt,updatedAt, 
+            additionalImages, language, articleUrl
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(),?,?,?)`,
           [
             title,
-            excerpt || "",
+            slug,
             contentArticle,
-            category,
-            JSON.stringify(processedTags),
+            excerpt,
             mainImagePath,
-            JSON.stringify(additionalImagePaths),
-            language || "en",
+            category,
+            JSON.stringify(processedTags) || "",
+            author || "",
+            JSON.stringify(additionalImagePaths) || "",
+            language,
+            articleUrl,
           ]
         );
 

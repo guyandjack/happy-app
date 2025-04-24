@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS articles (
   updatedAt DATETIME NOT NULL,
   contentType ENUM('text') DEFAULT 'text',
   images JSON DEFAULT NULL,
-  FOREIGN KEY (author) REFERENCES users(id)
+  
 );
 
 -- Create index for faster queries

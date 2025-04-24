@@ -1,8 +1,6 @@
 //import des hook
 import React, { useEffect, useState, useRef } from "react";
 
-//imports des composants enfants
-//import { ReactSVG } from 'react-svg';
 //import des fonctions
 import { localOrProd } from "../../utils/fonction/testEnvironement.js";
 const { url, url_api, mode } = localOrProd();
