@@ -5,7 +5,7 @@ import { FaTrash, FaUpload } from "react-icons/fa";
 import { ThreeDots } from "react-loader-spinner";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import "../../styles/CSS/dashboard.css";
+import "../../styles/CSS/articleFormDashboard.css";
 import { localOrProd } from "../../utils/fonction/testEnvironement";
 
 const ArticleForm = ({ onSuccess, onCancel }) => {
@@ -292,7 +292,7 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
   const isButtonDisabled = !isValid || isSubmitting;
 
   return (
-    <div className="article-form-wrapper">
+    <div className="article-form-dashboard">
       {toast.show && (
         <div className={`toast-notification ${toast.type}`}>
           <div className="toast-content">

@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tableau de bord - Administration</title>
-  <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="../../src/styles/CSS/normalize.css">
+  <link rel="stylesheet" href="../../src/styles/CSS/shared-style.css">
+  <link rel="stylesheet" href="../../src/styles/CSS/dashboard.css">
   <!-- Main React Bundle -->
   <script type="module" src="../../src/main.jsx"></script>
   <!-- Authentication Check -->
   <script>
     // Debug script to check token
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const token = localStorage.getItem('token');
       console.log("Dashboard HTML - Token exists:", !!token);
     });
   </script>
 </head>
+
 <body>
   <header>
     <!-- Navbar will be mounted here by React -->
     <div id="RC-navbar"></div>
     <!-- Your header content -->
-     <h1>Tableau de bord</h1>
+
   </header>
 
   <main>
@@ -33,8 +36,9 @@
     <!-- Your footer content -->
   </footer>
 
- 
-  
-  
+
+
+
 </body>
+
 </html>

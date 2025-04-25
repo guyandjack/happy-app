@@ -1,72 +1,52 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+  <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <!-- SEO Meta Tags -->
   <title>Connexion | My Web Dev Company</title>
-  <meta name="description" content="Connectez-vous à votre compte pour accéder à nos services exclusifs de développement web.">
-  
-  <!-- Open Graph Tags -->
-  <meta property="og:title" content="Connexion | My Web Dev Company">
-  <meta property="og:description" content="Connectez-vous à votre compte pour accéder à nos services exclusifs de développement web.">
-  <meta property="og:image" content="/images/og-login.jpg">
-  <meta property="og:url" content="https://mywebdevcompany.com/fr/connexion.html">
-  <meta property="og:type" content="website">
-  
-  <!-- Canonical Link -->
-  <link rel="canonical" href="https://mywebdevcompany.com/fr/connexion.html">
-  
-  <!-- Geolocation Tags -->
-  <meta name="geo.region" content="FR">
-  <meta name="geo.placename" content="Paris">
-  
+  <meta name="description" content="page de connexion">
+
+
   <!-- Stylesheets -->
-   <link rel="stylesheet" href="../../src/styles/CSS/normalise.css">
-   
-  
-  <!-- Schema.org Script -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Connexion",
-    "description": "Connectez-vous à votre compte pour accéder à nos services exclusifs de développement web."
-  }
-  </script>
-  
+  <link rel="stylesheet" href="../../src/styles/CSS/normalise.css">
+  <link rel="stylesheet" href="../../src/styles/CSS/shared-style.css">
+  <link rel="stylesheet" href="../../src/styles/CSS/connexion.css">
+
+
+
   <!-- Scripts in head -->
   <script type="module" src="../../src/main.jsx"></script>
 </head>
+
 <body>
-  <!-- Navbar will be mounted here by React -->
-  <div id="RC-navbar"></div>
-  
-  <main>
-    <section class="hero">
-      <div class="container">
+  <div class="page-container">
+    <header>
+      <!-- Navbar will be mounted here by React -->
+      <div id="RC-navbar"></div>
+    </header>
+
+    <main>
+      <section>
+
         <h1>Connexion</h1>
-        <p>Accédez à votre espace client</p>
-      </div>
-    </section>
-    
-    <section class="login-section">
-      <div class="container">
-        <div class="max-w-md mx-auto">
+
+        <div class="container-login">
           <!-- Login form will be mounted here by React -->
           <div id="RC-login-form"></div>
-          
-          <div class="mt-8 text-center">
-            <p>Vous n'avez pas de compte ? <a href="#" class="text-blue-600 hover:underline">Inscrivez-vous</a></p>
-            <p class="mt-2"><a href="#" class="text-blue-600 hover:underline">Mot de passe oublié ?</a></p>
-          </div>
+
+
         </div>
-      </div>
-    </section>
-  </main>
-  
-  <!-- Footer will be mounted here by React -->
-  <div id="RC-footer"></div>
+
+      </section>
+    </main>
+
+    <!-- Footer will be mounted here by React -->
+    <div id="RC-footer"></div>
+  </div>
 </body>
-</html> 
+
+</html>
