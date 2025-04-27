@@ -6,6 +6,9 @@ const router = express.Router();
 
 // Public routes
 router.get("/", articleController.getAllArticles);
+router.get("/filter", articleController.getArticleByCategory);
+router.get("/categories", articleController.getCategories);
+router.get("/search", articleController.searchArticles);
 router.get("/:id", articleController.getArticle);
 router.get("/:id/previous", articleController.getPreviousArticle);
 router.get("/:id/next", articleController.getNextArticle);

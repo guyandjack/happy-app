@@ -18,10 +18,27 @@ const AdminArticleList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
 
+  //recupere les categories des articles de la bdd
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(`${urlApi}/articles/categories`);
+        console.log("response.data.data: ", response.data.data);
+        setCategories(response.data.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  //recupere les articles de la bdd
+  // tous les articles ou par categorie
   useEffect(() => {
     const fetchArticles = async () => {
       try {
@@ -31,21 +48,17 @@ const AdminArticleList = () => {
           limit: 10,
         };
 
+        let response = null;
+
         if (selectedCategory) params.category = selectedCategory;
 
-        const response = await axios.get(`${urlApi}/articles`, { params });
+        if (selectedCategory) {
+          response = await axios.get(`${urlApi}/articles/filter`, { params });
+        } else response = await axios.get(`${urlApi}/articles`, { params });
 
         setArticles(response.data.data.articles);
         setFilteredArticles(response.data.data.articles);
         setTotalPages(response.data.totalPages || 1);
-
-        // Extract unique categories
-        const uniqueCategories = [
-          ...new Set(
-            response.data.data.articles.map((article) => article.category)
-          ),
-        ];
-        setCategories(uniqueCategories);
 
         setLoading(false);
       } catch (error) {
@@ -58,26 +71,31 @@ const AdminArticleList = () => {
     fetchArticles();
   }, [currentPage, selectedCategory, urlApi]);
 
+  //recherche par titre, resume ou tags
   useEffect(() => {
-    // Filter articles based on search term
-    if (searchTerm.trim() === "") {
-      setFilteredArticles(articles);
-    } else {
-      const filtered = articles.filter(
-        (article) =>
-          article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          (article.excerpt &&
-            article.excerpt.toLowerCase().includes(searchTerm.toLowerCase())) ||
-          (article.tags &&
-            article.tags.some(
-              (tag) =>
-                typeof tag === "string" &&
-                tag.toLowerCase().includes(searchTerm.toLowerCase())
-            ))
-      );
-      setFilteredArticles(filtered);
-    }
-  }, [searchTerm, articles]);
+    const fetchArticlesSearch = async () => {
+      if (searchTerm.trim() === "") {
+        return;
+      }
+      try {
+        setLoading(true);
+        const params = {
+          page: currentPage,
+          limit: 10,
+        };
+        params.search = searchTerm;
+        const response = await axios.get(`${urlApi}/articles/search`, {
+          params,
+        });
+        setFilteredArticles(response.data.data.articles);
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchArticlesSearch();
+  }, [searchTerm]);
 
   const handleDelete = async (id, title) => {
     if (window.confirm(`Êtes-vous sûr de vouloir supprimer "${title}" ?`)) {
@@ -107,7 +125,11 @@ const AdminArticleList = () => {
   };
 
   const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
+    setSearchValue(e.target.value);
+    if (e.target.value.length > 2) {
+      setSearchTerm(e.target.value);
+      setCurrentPage(1);
+    }
   };
 
   const handleCategoryChange = (e) => {
@@ -131,8 +153,10 @@ const AdminArticleList = () => {
           <input
             type="text"
             placeholder="Rechercher des articles..."
-            value={searchTerm}
-            onChange={handleSearch}
+            value={searchValue}
+            onChange={(e) => {
+              handleSearch(e);
+            }}
           />
         </div>
         <div className="category-filter">

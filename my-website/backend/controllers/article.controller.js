@@ -9,9 +9,36 @@ const { v4: uuidv4 } = require("uuid");
 const localOrProd = require("../utils/function/localOrProd");
 const createArticle = require("../utils/function/generateArticle");
 
-// recuperer les composants react du frontend
-//const Navbar = require("../../src/components/Navbar/Navbar.jsx");
-//const Footer = require("../../src/components/Footer/Footer.jsx");
+/**
+ * Get all categories
+ */
+exports.getCategories = async (req, res) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+    const [categories] = await connection.execute(
+      "SELECT DISTINCT category FROM articles"
+    );
+
+    let result = categories.map((category) => category.category);
+
+    return res.status(200).json({
+      status: "success",
+      data: result,
+    });
+  } catch (error) {
+    console.error("Error getting categories:", error);
+    return res.status(500).json({
+      status: "error",
+      message: "An error occurred while fetching the categories",
+    });
+  } finally {
+    if (connection) {
+      releaseConnection(connection);
+    }
+  }
+};
 
 /**
  * Get all articles
@@ -38,6 +65,96 @@ exports.getAllArticles = async (req, res) => {
     return res.status(500).json({
       status: "error",
       message: "An error occurred while fetching articles",
+    });
+  } finally {
+    if (connection) {
+      releaseConnection(connection);
+    }
+  }
+};
+
+/**
+ * get article by category
+ */
+exports.getArticleByCategory = async (req, res) => {
+  console.log("req.query:", req.query);
+
+  if (!req.query.category) {
+    return res.status(400).json({
+      status: "error",
+      message: "Category is required",
+    });
+  }
+  let connection;
+
+  try {
+    connection = await getConnection();
+    let categoryValue = req.query.category.toLowerCase().trim();
+
+    const [articles] = await connection.execute(
+      "SELECT * FROM articles WHERE category = ?",
+      [categoryValue]
+    );
+    if (articles.length === 0) {
+      console.log("req.query.category: ", req.query.category);
+      return res.status(404).json({
+        status: "error",
+        message: "Article not found",
+      });
+    }
+
+    console.log("articles par categorie: ", articles);
+
+    return res.status(200).json({
+      status: "success",
+      data: {
+        articles,
+      },
+    });
+  } catch (error) {
+    console.error("Error getting article by category:", error);
+    return res.status(500).json({
+      status: "error",
+      message: "An error occurred while fetching the article by category",
+    });
+  } finally {
+    if (connection) {
+      releaseConnection(connection);
+    }
+  }
+};
+
+/**
+ * get articles by search term
+ */
+exports.searchArticles = async (req, res) => {
+  if (!req.query.search) {
+    return res.status(400).json({
+      status: "error",
+      message: "Search term is required",
+    });
+  }
+  const { search } = req.query;
+  console.log("search:", search);
+  let connection;
+  try {
+    connection = await getConnection();
+    const [articles] = await connection.execute(
+      "SELECT * FROM articles WHERE title LIKE ? OR excerpt LIKE ?",
+      [`%${search}%`, `%${search}%`]
+    );
+    return res.status(200).json({
+      status: "success",
+      results: articles.length,
+      data: {
+        articles,
+      },
+    });
+  } catch (error) {
+    console.error("Error getting articles by search term:", error);
+    return res.status(500).json({
+      status: "error",
+      message: "An error occurred while fetching the articles by search term",
     });
   } finally {
     if (connection) {
