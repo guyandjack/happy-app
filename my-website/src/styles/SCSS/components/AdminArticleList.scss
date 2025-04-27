@@ -38,11 +38,16 @@
 
   .filters {
     display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     gap: 1rem;
     margin-bottom: 1.5rem;
 
     .search-box {
-      flex: 1;
+      //flex: 1;
+      width: 100%;
+      max-width: 500px;
       position: relative;
 
       .search-icon {
@@ -68,7 +73,8 @@
     }
 
     .category-filter {
-      width: 200px;
+      width: 100%;
+      max-width: 300px;
       position: relative;
 
       .filter-icon {
@@ -107,8 +113,9 @@
   .article-table {
     width: 100%;
     border-collapse: collapse;
-    
-    th, td {
+
+    th,
+    td {
       padding: 1rem;
       text-align: left;
       border-bottom: 1px solid #eee;
@@ -185,7 +192,8 @@
       }
     }
 
-    .date-cell, .views-cell {
+    .date-cell,
+    .views-cell {
       white-space: nowrap;
       color: #666;
     }
@@ -195,7 +203,9 @@
       gap: 0.5rem;
       white-space: nowrap;
 
-      .view-btn, .edit-btn, .delete-btn {
+      .view-btn,
+      .edit-btn,
+      .delete-btn {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -209,7 +219,7 @@
 
       .view-btn {
         background-color: #52c41a;
-        
+
         &:hover {
           background-color: #389e0d;
         }
@@ -217,7 +227,7 @@
 
       .edit-btn {
         background-color: #4a90e2;
-        
+
         &:hover {
           background-color: #2a6fc9;
         }
@@ -226,7 +236,7 @@
       .delete-btn {
         background-color: #ff4d4f;
         border: none;
-        
+
         &:hover {
           background-color: #ff1f1f;
         }
@@ -276,12 +286,14 @@
       gap: 0.3rem;
     }
 
-    .prev-page, .next-page {
+    .prev-page,
+    .next-page {
       font-weight: 600;
     }
   }
 
-  .loading, .error {
+  .loading,
+  .error {
     text-align: center;
     padding: 3rem;
     font-size: 1.2rem;
@@ -303,6 +315,7 @@
 .admin-article-card-wrapper {
   position: relative;
   transition: transform 0.2s ease;
+  max-width: 300px;
 }
 
 .admin-article-card-wrapper:hover {
@@ -372,7 +385,9 @@
     }
 
     .article-table {
-      th, td {
+
+      th,
+      td {
         padding: 0.75rem 0.5rem;
       }
 
@@ -391,10 +406,11 @@
         margin-top: 0.5rem;
       }
 
-      .prev-page, .next-page {
+      .prev-page,
+      .next-page {
         width: 45%;
         text-align: center;
       }
     }
   }
-} 
+}

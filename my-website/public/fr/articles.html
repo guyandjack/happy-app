@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <!-- SEO Meta Tags -->
   <title>Articles | My Web Dev Company</title>
-  <meta name="description" content="Découvrez nos articles sur le développement web, les tendances technologiques et les meilleures pratiques.">
-  
+  <meta name="description"
+    content="Découvrez nos articles sur le développement web, les tendances technologiques et les meilleures pratiques.">
+
   <!-- Open Graph Tags -->
   <meta property="og:title" content="Articles | My Web Dev Company">
-  <meta property="og:description" content="Découvrez nos articles sur le développement web, les tendances technologiques et les meilleures pratiques.">
+  <meta property="og:description"
+    content="Découvrez nos articles sur le développement web, les tendances technologiques et les meilleures pratiques.">
   <meta property="og:image" content="/images/og-articles.jpg">
   <meta property="og:url" content="https://mywebdevcompany.com/fr/articles.html">
   <meta property="og:type" content="website">
-  
+
   <!-- Canonical and Alternate Links -->
   <link rel="canonical" href="https://mywebdevcompany.com/fr/articles.html">
   <link rel="alternate" hreflang="fr" href="https://mywebdevcompany.com/fr/articles.html">
   <link rel="alternate" hreflang="en" href="https://mywebdevcompany.com/en/articles.html">
-  
+
   <!-- Geolocation Tags -->
   <meta name="geo.region" content="FR">
   <meta name="geo.placename" content="Paris">
-  
+
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="/src/styles/main.css">
-  
+  <link rel="stylesheet" href="../../src/styles/CSS/normalise.css">
+  <link rel="stylesheet" href="../../src/styles/CSS/shared-style.css">
+  <link rel="stylesheet" href="../../src/styles/CSS/articles.css">
+
+
   <!-- Schema.org Script -->
   <script type="application/ld+json">
   {
@@ -36,32 +42,39 @@
     "description": "Découvrez nos articles sur le développement web, les tendances technologiques et les meilleures pratiques."
   }
   </script>
-  
+
   <!-- Scripts in head -->
   <script type="module" src="../../src/main.jsx"></script>
 </head>
+
 <body>
-  <!-- Navbar will be mounted here by React -->
-  <div id="RC-navbar"></div>
-  
-  <main>
-    <section id="RC-hero">
-      
-    </section>
-    
-    <section class="articles-content">
-      <div class="container">
-        <!-- ArticlesList component will be mounted here -->
-        <div id="RC-articles-list"></div>
+  <div class="page-container">
+    <header>
+      <!-- Navbar will be mounted here by React -->
+      <div id="RC-navbar"></div>
+    </header>
+
+    <main>
+      <section id="RC-hero">
+
+      </section>
+
+      <section class="articles-content">
+        <div class="container">
+          <!-- ArticlesList component will be mounted here -->
+          <div id="RC-articles-list"></div>
+        </div>
+      </section>
+      <div id="RC-cta-section">
+
+
       </div>
-    </section>
-    <div id="RC-cta-section">
-    
-    
-    </div>
-  </main>
-  
-  <!-- Footer will be mounted here by React -->
-  <div id="RC-footer"></div>
+    </main>
+
+    <!-- Footer will be mounted here by React -->
+    <div id="RC-footer"></div>
+  </div>
 </body>
-</html> 
+
+
+</html>

@@ -1,12 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaEdit, FaFilter, FaSearch, FaTrash } from "react-icons/fa";
+import { IoFilterSharp } from "react-icons/io5";
 import { toast } from "react-toastify";
 
-import "../../styles/CSS/articles.css";
 import { localOrProd } from "../../utils/fonction/testEnvironement";
 import { ArticleCard } from "../Articles/ArticleCard";
-import "../../styles/SCSS/components/AdminArticleList.scss";
+
+//import "../../styles/CSS/articles.css";
+import "../../styles/CSS/AdminArticleList.css";
 
 const AdminArticleList = () => {
   const { urlApi } = localOrProd();
@@ -122,7 +124,7 @@ const AdminArticleList = () => {
   }
 
   return (
-    <div className="admin-article-list">
+    <div className="admin-article-list-container">
       <div className="filters">
         <div className="search-box">
           <FaSearch className="search-icon" />
@@ -134,7 +136,7 @@ const AdminArticleList = () => {
           />
         </div>
         <div className="category-filter">
-          <FaFilter className="filter-icon" />
+          <IoFilterSharp className="filter-icon" />
           <select value={selectedCategory} onChange={handleCategoryChange}>
             <option value="">Toutes les catégories</option>
             {categories.map((category) => (

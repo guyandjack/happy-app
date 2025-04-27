@@ -1,48 +1,65 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { FaFilter, FaSearch } from 'react-icons/fa';
-import { localOrProd } from '../../utils/fonction/testEnvironement';
-import { ArticleCard } from './ArticleCard';
-import '../../styles/CSS/articles.css';
-import '../../styles/SCSS/components/ArticleList.scss';
+//import des librairie
+import axios from "axios";
+
+//import des hooks
+import React, { useEffect, useState } from "react";
+
+//import des icones
+import { FaFilter, FaSearch } from "react-icons/fa";
+
+//import des feuilles de styles
+import "../../styles/CSS/ArticleList.css";
+
+//import des composants enfants
+import { ArticleCard } from "./ArticleCard";
+
+//import des fonctions
+import { localOrProd } from "../../utils/fonction/testEnvironement";
+import { getLanguage } from "../../utils/fonction/getLanguage.js";
 
 function ArticlesList() {
   const { urlApi } = localOrProd();
   const [articles, setArticles] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
+  const lang = getLanguage();
+
   useEffect(() => {
     const fetchArticles = async () => {
       try {
         setIsLoading(true);
-        const params = { 
+        const params = {
           page: currentPage,
-          limit: 12
+          limit: 12,
         };
-        
+
         if (selectedCategory) params.category = selectedCategory;
-        
+
         const response = await axios.get(`${urlApi}/articles`, { params });
-        
+
         setArticles(response.data.data.articles);
         setFilteredArticles(response.data.data.articles);
         setTotalPages(response.data.totalPages || 1);
-        
+
         // Extract unique categories
-        const uniqueCategories = [...new Set(response.data.data.articles.map(article => article.category))];
+        const uniqueCategories = [
+          ...new Set(
+            response.data.data.articles.map((article) => article.category)
+          ),
+        ];
         setCategories(uniqueCategories);
-        
+
         setIsLoading(false);
       } catch (error) {
-        console.error('Error fetching articles:', error);
-        setError('Failed to load articles. Please try again later.');
+        console.error("Error fetching articles:", error);
+        setError("Failed to load articles. Please try again later.");
         setIsLoading(false);
       }
     };
@@ -52,15 +69,20 @@ function ArticlesList() {
 
   useEffect(() => {
     // Filter articles based on search term
-    if (searchTerm.trim() === '') {
+    if (searchTerm.trim() === "") {
       setFilteredArticles(articles);
     } else {
-      const filtered = articles.filter(article => 
-        article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (article.excerpt && article.excerpt.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (article.tags && article.tags.some(tag => 
-          typeof tag === 'string' && tag.toLowerCase().includes(searchTerm.toLowerCase())
-        ))
+      const filtered = articles.filter(
+        (article) =>
+          article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          (article.excerpt &&
+            article.excerpt.toLowerCase().includes(searchTerm.toLowerCase())) ||
+          (article.tags &&
+            article.tags.some(
+              (tag) =>
+                typeof tag === "string" &&
+                tag.toLowerCase().includes(searchTerm.toLowerCase())
+            ))
       );
       setFilteredArticles(filtered);
     }
@@ -86,7 +108,11 @@ function ArticlesList() {
       <div className="articles-container">
         <div className="loading-container">
           <div className="loader"></div>
-          <p>Loading articles...</p>
+          <p>
+            {lang == "fr"
+              ? "Chargement des articles..."
+              : "Loading articles..."}
+          </p>
         </div>
       </div>
     );
@@ -97,11 +123,11 @@ function ArticlesList() {
       <div className="articles-container">
         <div className="error-container">
           <p className="error-message">{error}</p>
-          <button 
+          <button
             className="retry-button"
             onClick={() => window.location.reload()}
           >
-            Try Again
+            {lang == "fr" ? "Recharger les articles" : "Try Again"}
           </button>
         </div>
       </div>
@@ -109,18 +135,24 @@ function ArticlesList() {
   }
 
   return (
-    <div className="articles-container">
+    <div className="flex-column-start-center  articles-container">
       <div className="articles-header">
-        <h2>Our Latest Articles</h2>
-        <p>Discover insights, tutorials, and news about web development and digital solutions</p>
+        <h2>{lang == "fr" ? "Mes derniers articles" : "Ours last articles"}</h2>
+        <p>
+          {lang == "fr"
+            ? "Découvrez, un ensemble d' informations de sur le developpement web, le reférencement seo, les derniereres technologies et les bonne pratiques pour developper votre application."
+            : "Discover a wealth of information about web development, SEO optimization, latest technologies, and best practices to develop your application."}
+        </p>
       </div>
-      
+
       <div className="filters">
         <div className="search-box">
           <FaSearch className="search-icon" />
           <input
             type="text"
-            placeholder="Search articles..."
+            placeholder={
+              lang == "fr" ? "Recherche des articles" : "Search articles..."
+            }
             value={searchTerm}
             onChange={handleSearch}
           />
@@ -128,10 +160,13 @@ function ArticlesList() {
         <div className="category-filter">
           <FaFilter className="filter-icon" />
           <select value={selectedCategory} onChange={handleCategoryChange}>
-            <option value="">All Categories</option>
-            {categories.map(category => (
+            <option value="">
+              {lang == "fr" ? "Toutes les catégories" : "All Categories"}
+            </option>
+            {categories.map((category) => (
               <option key={category} value={category}>
-                {category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ')}
+                {category.charAt(0).toUpperCase() +
+                  category.slice(1).replace("-", " ")}
               </option>
             ))}
           </select>
@@ -140,11 +175,11 @@ function ArticlesList() {
 
       {filteredArticles.length === 0 ? (
         <div className="no-articles">
-          {searchTerm ? 'No articles match your search.' : 'No articles found.'}
+          {searchTerm ? "No articles match your search." : "No articles found."}
         </div>
       ) : (
         <div className="articles-grid">
-          {filteredArticles.map(article => (
+          {filteredArticles.map((article) => (
             <ArticleCard key={article.id} article={article} />
           ))}
         </div>
@@ -164,7 +199,9 @@ function ArticlesList() {
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <button
                 key={page}
-                className={`page-number ${page === currentPage ? 'active' : ''}`}
+                className={`page-number ${
+                  page === currentPage ? "active" : ""
+                }`}
                 onClick={() => handlePageChange(page)}
               >
                 {page}

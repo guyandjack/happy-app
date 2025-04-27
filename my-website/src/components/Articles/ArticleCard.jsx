@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { localOrProd } from "../../utils/fonction/testEnvironement";
-
+import { getLanguage } from "../../utils/fonction/getLanguage.js";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 
+import "../../styles/CSS/ArticleCard.css";
+
 function ArticleCard({ article }) {
   const { urlApi, url } = localOrProd();
+  const lang = getLanguage();
   const [isFocused, setIsFocused] = useState(false);
 
   // Extract a short excerpt from the content
@@ -46,18 +49,20 @@ function ArticleCard({ article }) {
       onClick={handleCardClick}
       style={{ cursor: "pointer" }}
     >
-      <div className="article-image">
+      <div className="article-card-image">
         <img src={imageUrl} alt={article.title} loading="lazy" />
       </div>
-      <div className="article-content">
+      <div className="article-card-content">
         <h3 className="article-title">{article.title}</h3>
         <p className="article-meta">
           Published on {formattedDate} | Category: {article.category}
         </p>
-        <p className="article-excerpt">
+        <p className="article-card-excerpt">
           <ReactMarkdown children={excerpt} rehypePlugins={[rehypeRaw]} />
         </p>
-        <span className="read-more-link">Read more</span>
+        <span className="article-card-read-more-link">
+          {lang == "fr" ? "Lire la suite" : "Read more"}
+        </span>
       </div>
     </article>
   );
