@@ -1,101 +1,135 @@
-//import des librairie
 import axios from "axios";
-
-//import des hooks
 import React, { useEffect, useState } from "react";
+import { FaEdit, FaFilter, FaSearch, FaTrash } from "react-icons/fa";
+import { IoFilterSharp } from "react-icons/io5";
+import { toast } from "react-toastify";
 
-//import des icones
-import { FaFilter, FaSearch } from "react-icons/fa";
+import { localOrProd } from "../../utils/fonction/testEnvironement";
+import { ArticleCard } from "../Articles/ArticleCard";
 
-//import des feuilles de styles
+//import "../../styles/CSS/articles.css";
 import "../../styles/CSS/ArticleList.css";
 
-//import des composants enfants
-import { ArticleCard } from "./ArticleCard";
-
-//import des fonctions
-import { localOrProd } from "../../utils/fonction/testEnvironement";
-import { getLanguage } from "../../utils/fonction/getLanguage.js";
-
-function ArticlesList() {
+const ArticlesList = () => {
   const { urlApi } = localOrProd();
   const [articles, setArticles] = useState([]);
-  const [filteredArticles, setFilteredArticles] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchValue, setSearchValue] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [filteredArticles, setFilteredArticles] = useState([]);
 
-  const lang = getLanguage();
+  //recupere les categories des articles de la bdd
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(`${urlApi}/articles/categories`);
+        console.log("response.data.data: ", response.data.data);
+        setCategories(response.data.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+    fetchCategories();
+  }, []);
 
+  //recupere les articles de la bdd
+  // tous les articles ou par categorie
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        setIsLoading(true);
+        setLoading(true);
         const params = {
           page: currentPage,
-          limit: 12,
+          limit: 10,
         };
+
+        let response = null;
 
         if (selectedCategory) params.category = selectedCategory;
 
-        const response = await axios.get(`${urlApi}/articles`, { params });
+        if (selectedCategory) {
+          response = await axios.get(`${urlApi}/articles/filter`, { params });
+        } else response = await axios.get(`${urlApi}/articles`, { params });
 
         setArticles(response.data.data.articles);
         setFilteredArticles(response.data.data.articles);
         setTotalPages(response.data.totalPages || 1);
 
-        // Extract unique categories
-        const uniqueCategories = [
-          ...new Set(
-            response.data.data.articles.map((article) => article.category)
-          ),
-        ];
-        setCategories(uniqueCategories);
-
-        setIsLoading(false);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching articles:", error);
         setError("Failed to load articles. Please try again later.");
-        setIsLoading(false);
+        setLoading(false);
       }
     };
 
     fetchArticles();
   }, [currentPage, selectedCategory, urlApi]);
 
+  //recherche par titre, resume ou tags
   useEffect(() => {
-    // Filter articles based on search term
-    if (searchTerm.trim() === "") {
-      setFilteredArticles(articles);
-    } else {
-      const filtered = articles.filter(
-        (article) =>
-          article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          (article.excerpt &&
-            article.excerpt.toLowerCase().includes(searchTerm.toLowerCase())) ||
-          (article.tags &&
-            article.tags.some(
-              (tag) =>
-                typeof tag === "string" &&
-                tag.toLowerCase().includes(searchTerm.toLowerCase())
-            ))
-      );
-      setFilteredArticles(filtered);
+    const fetchArticlesSearch = async () => {
+      if (searchTerm.trim() === "") {
+        return;
+      }
+      try {
+        setLoading(true);
+        const params = {
+          page: currentPage,
+          limit: 10,
+        };
+        params.search = searchTerm;
+        const response = await axios.get(`${urlApi}/articles/search`, {
+          params,
+        });
+        setFilteredArticles(response.data.data.articles);
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchArticlesSearch();
+  }, [searchTerm]);
+
+  const handleDelete = async (id, title) => {
+    if (window.confirm(`Êtes-vous sûr de vouloir supprimer "${title}" ?`)) {
+      try {
+        await axios.delete(`${urlApi}/articles/${id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        toast.success("Article supprimé avec succès");
+
+        // Refresh the article list
+        setArticles(articles.filter((article) => article.id !== id));
+        setFilteredArticles(
+          filteredArticles.filter((article) => article.id !== id)
+        );
+      } catch (error) {
+        console.error("Error deleting article:", error);
+        toast.error("Échec de la suppression de l'article");
+      }
     }
-  }, [searchTerm, articles]);
+  };
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    // Scroll to top when changing page
-    window.scrollTo(0, 0);
   };
 
   const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
+    setSearchValue(e.target.value);
+    if (e.target.value.length > 2) {
+      setSearchTerm(e.target.value);
+      setCurrentPage(1);
+    }
   };
 
   const handleCategoryChange = (e) => {
@@ -103,66 +137,32 @@ function ArticlesList() {
     setCurrentPage(1); // Reset to first page when changing category
   };
 
-  if (isLoading && articles.length === 0) {
-    return (
-      <div className="articles-container">
-        <div className="loading-container">
-          <div className="loader"></div>
-          <p>
-            {lang == "fr"
-              ? "Chargement des articles..."
-              : "Loading articles..."}
-          </p>
-        </div>
-      </div>
-    );
+  if (loading && articles.length === 0) {
+    return <div className="loading">Chargement des articles...</div>;
   }
 
   if (error) {
-    return (
-      <div className="articles-container">
-        <div className="error-container">
-          <p className="error-message">{error}</p>
-          <button
-            className="retry-button"
-            onClick={() => window.location.reload()}
-          >
-            {lang == "fr" ? "Recharger les articles" : "Try Again"}
-          </button>
-        </div>
-      </div>
-    );
+    return <div className="error">{error}</div>;
   }
 
   return (
-    <div className="flex-column-start-center  articles-container">
-      <div className="articles-header">
-        <h2>{lang == "fr" ? "Mes derniers articles" : "Ours last articles"}</h2>
-        <p>
-          {lang == "fr"
-            ? "Découvrez, un ensemble d' informations de sur le developpement web, le reférencement seo, les derniereres technologies et les bonne pratiques pour developper votre application."
-            : "Discover a wealth of information about web development, SEO optimization, latest technologies, and best practices to develop your application."}
-        </p>
-      </div>
-
+    <div className="admin-article-list-container">
       <div className="filters">
         <div className="search-box">
           <FaSearch className="search-icon" />
           <input
             type="text"
-            placeholder={
-              lang == "fr" ? "Recherche des articles" : "Search articles..."
-            }
-            value={searchTerm}
-            onChange={handleSearch}
+            placeholder="Rechercher des articles..."
+            value={searchValue}
+            onChange={(e) => {
+              handleSearch(e);
+            }}
           />
         </div>
         <div className="category-filter">
-          <FaFilter className="filter-icon" />
+          <IoFilterSharp className="filter-icon" />
           <select value={selectedCategory} onChange={handleCategoryChange}>
-            <option value="">
-              {lang == "fr" ? "Toutes les catégories" : "All Categories"}
-            </option>
+            <option value="">Toutes les catégories</option>
             {categories.map((category) => (
               <option key={category} value={category}>
                 {category.charAt(0).toUpperCase() +
@@ -175,12 +175,16 @@ function ArticlesList() {
 
       {filteredArticles.length === 0 ? (
         <div className="no-articles">
-          {searchTerm ? "No articles match your search." : "No articles found."}
+          {searchTerm
+            ? "Aucun article ne correspond à votre recherche."
+            : "Aucun article trouvé."}
         </div>
       ) : (
-        <div className="articles-grid">
+        <div className="admin-articles-grid">
           {filteredArticles.map((article) => (
-            <ArticleCard key={article.id} article={article} />
+            <div key={article.id} className="admin-article-card-wrapper">
+              <ArticleCard article={article} />
+            </div>
           ))}
         </div>
       )}
@@ -193,7 +197,7 @@ function ArticlesList() {
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
           >
-            Previous
+            Précédent
           </button>
           <div className="page-numbers">
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
@@ -213,12 +217,12 @@ function ArticlesList() {
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
           >
-            Next
+            Suivant
           </button>
         </div>
       )}
     </div>
   );
-}
+};
 
 export { ArticlesList };

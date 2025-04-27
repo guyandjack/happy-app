@@ -1,3 +1,13 @@
+.page-container {
+    position: relative;
+    z-index: 5;
+}
+
+
+
 .articles-content {
-    margin: 100px auto;
+
+    width: 100%;
+    margin: 50px auto;
+    //border: 1px solid red;
 }
