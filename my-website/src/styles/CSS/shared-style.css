@@ -56,6 +56,11 @@ header {
   height: 300px;
 }
 
+#RC-articles-list {
+  width: 100%;
+  min-height: 800px;
+}
+
 #RC-card-services {
   width: 100%;
   min-height: 400px;
