@@ -438,6 +438,10 @@
   text-align: center;
 }
 
+.commitments .commitments-card .img-text-container .text-container strong {
+  color: #024d4a;
+}
+
 .list-eco-conception {
   margin-top: 20px;
   gap: 20px;

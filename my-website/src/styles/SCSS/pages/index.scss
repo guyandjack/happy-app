@@ -411,11 +411,17 @@
         }
       }
 
-      .text-container p {
-        font-size: 1rem;
-        line-height: 1.6;
-        color: map-get($colors-rule, fifth-color);
-        text-align: center;
+      .text-container {
+        p {
+          font-size: 1rem;
+          line-height: 1.6;
+          color: map-get($colors-rule, fifth-color);
+          text-align: center;
+        }
+
+        strong {
+          color: map-get($colors-rule, first-color);
+        }
       }
     }
   }
