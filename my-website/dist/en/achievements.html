@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Achievements | My Web Dev Company</title>
+  <meta name="description" content="Discover our recent projects and the solutions we've developed for our clients.">
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Achievements | My Web Dev Company">
+  <meta property="og:description" content="Discover our recent projects and the solutions we've developed for our clients.">
+  <meta property="og:image" content="/images/og-achievements.jpg">
+  <meta property="og:url" content="https://mywebdevcompany.com/en/achievements.html">
+  <meta property="og:type" content="website">
+  
+  <!-- Canonical and Alternate Links -->
+  <link rel="canonical" href="https://mywebdevcompany.com/en/achievements.html">
+  <link rel="alternate" hreflang="en" href="https://mywebdevcompany.com/en/achievements.html">
+  <link rel="alternate" hreflang="fr" href="https://mywebdevcompany.com/fr/realisations.html">
+  
+  <!-- Geolocation Tags -->
+  <meta name="geo.region" content="US">
+  <meta name="geo.placename" content="New York">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/src/styles/main.css">
+  
+  <!-- Schema.org Script -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Achievements",
+    "description": "Discover our recent projects and the solutions we've developed for our clients."
+  }
+  </script>
+  
+  <!-- Scripts in head -->
+  <script type="module" src="../../src/main.jsx"></script>
+</head>
+<body>
+  <!-- Navbar will be mounted here by React -->
+  <div id="RC-navbar"></div>
+  
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Our Achievements</h1>
+        <p>Discover our recent projects and the solutions we've developed</p>
+      </div>
+    </section>
+    
+    <section class="projects">
+      <div class="container">
+        <div class="project-grid">
+          <div class="project-card">
+            <img src="/images/project1.jpg" alt="E-commerce Project">
+            <h2>E-commerce Website</h2>
+            <p>A complete online store with custom product filtering and secure payment.</p>
+            <a href="#" class="btn btn-secondary">View project</a>
+          </div>
+          
+          <div class="project-card">
+            <img src="/images/project2.jpg" alt="Corporate Website">
+            <h2>Corporate Website</h2>
+            <p>A modern showcase website with content management system for a service company.</p>
+            <a href="#" class="btn btn-secondary">View project</a>
+          </div>
+          
+          <div class="project-card">
+            <img src="/images/project3.jpg" alt="Web Application">
+            <h2>Web Application</h2>
+            <p>A complex web application for project management and team collaboration.</p>
+            <a href="#" class="btn btn-secondary">View project</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer will be mounted here by React -->
+  <div id="RC-footer"></div>
+</body>
+</html> 
