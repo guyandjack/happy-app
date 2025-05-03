@@ -10,7 +10,7 @@ import flagEN from "../../assets/images/icons/flag-en.png";
 import flagFR from "../../assets/images/icons/flag-fr.png";
 
 //import des images
-import logo from "../../assets/images/logo-happy-app.webp";
+import logos from "../../assets/images/logo-happy-app.webp";
 
 //import du fichier scss
 import "../../styles/CSS/navbar.css";
@@ -159,7 +159,7 @@ function Navbar() {
       <div className="navbar-brand">
         <a href={currentLang === "fr" ? "/" : "/en/home.html"} className="logo">
           <img
-            src={logo}
+            src={logos}
             alt="Logo My Web Dev Company"
             className="logo-image"
           />
