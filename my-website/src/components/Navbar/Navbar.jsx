@@ -2,15 +2,15 @@
 import React, { useEffect, useState, useRef } from "react";
 
 //import des fonctions
-import { localOrProd } from "../../utils/fonction/testEnvironement.js";
-const { url, url_api, mode } = localOrProd();
+//import { localOrProd } from "../../utils/fonction/testEnvironement.js";
+//const { url, url_api, mode } = localOrProd();
 //import des icons
 //import burgerIcon from '../../../public/images/icons/menu-burger.svg';
-const flagEN = `${url}/src/assets/images/icons/flag-en.png`;
-const flagFR = `${url}/src/assets/images/icons/flag-fr.png`;
+const flagEN = `/src/assets/images/icons/flag-en.png`;
+const flagFR = `/src/assets/images/icons/flag-fr.png`;
 
 //import des images
-const logo = `${url}/src/assets/images/logo-happy-app.webp`;
+const logo = `/src/assets/images/logo-happy-app.webp`;
 
 //import du fichier scss
 import "../../styles/CSS/navbar.css";
@@ -74,36 +74,36 @@ function Navbar() {
   // Updated menu items with services submenu
   const menuItems = {
     fr: [
-      { path: `${url}/index.html`, text: "Accueil" },
-      { path: `${url}/public/fr/qui-suis-je.html`, text: "Qui suis je" },
+      { path: `/index.html`, text: "Accueil" },
+      { path: `/public/fr/qui-suis-je.html`, text: "Qui suis je" },
       {
         text: "Prestations",
         submenu: [
-          { path: `${url}/fr/prestations/site-web.html`, text: "Site Web" },
-          { path: `${url}/fr/prestations/seo.html`, text: "Référencement" },
+          { path: `/fr/prestations/site-web.html`, text: "Site Web" },
+          { path: `/fr/prestations/seo.html`, text: "Référencement" },
           {
-            path: `${url}/fr/prestations/application-mobile.html`,
+            path: `/fr/prestations/application-mobile.html`,
             text: "Application Mobile",
           },
         ],
       },
-      { path: `${url}/fr/contact.html`, text: "Contact" },
+      { path: `/fr/contact.html`, text: "Contact" },
     ],
     en: [
-      { path: `${url}/en/home.html`, text: "Home" },
-      { path: `${url}/en/about.html`, text: "Who I am" },
+      { path: `/en/home.html`, text: "Home" },
+      { path: `/en/about.html`, text: "Who I am" },
       {
         text: "Services",
         submenu: [
-          { path: `${url}/en/services/website.html`, text: "Website" },
-          { path: `${url}/en/services/seo.html`, text: "SEO" },
+          { path: `/en/services/website.html`, text: "Website" },
+          { path: `/en/services/seo.html`, text: "SEO" },
           {
-            path: `${url}/en/services/mobile-application.html`,
+            path: `/en/services/mobile-application.html`,
             text: "Mobile App",
           },
         ],
       },
-      { path: `${url}/en/contact.html`, text: "Contact" },
+      { path: `/en/contact.html`, text: "Contact" },
     ],
   };
 
