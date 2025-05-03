@@ -6,11 +6,11 @@ import React, { useEffect, useState, useRef } from "react";
 //const { url, url_api, mode } = localOrProd();
 //import des icons
 //import burgerIcon from '../../../public/images/icons/menu-burger.svg';
-const flagEN = `/src/assets/images/icons/flag-en.png`;
-const flagFR = `/src/assets/images/icons/flag-fr.png`;
+import flagEN from "../../assets/images/icons/flag-en.png";
+import flagFR from "../../assets/images/icons/flag-fr.png";
 
 //import des images
-const logo = `/src/assets/images/logo-happy-app.webp`;
+import logo from "../../assets/images/logo-happy-app.webp";
 
 //import du fichier scss
 import "../../styles/CSS/navbar.css";
@@ -74,36 +74,42 @@ function Navbar() {
   // Updated menu items with services submenu
   const menuItems = {
     fr: [
-      { path: `/index.html`, text: "Accueil" },
-      { path: `/public/fr/qui-suis-je.html`, text: "Qui suis je" },
+      { path: "../../index.html", text: "Accueil" },
+      { path: "../../public/fr/qui-suis-je.html", text: "Qui suis je" },
       {
         text: "Prestations",
         submenu: [
-          { path: `/fr/prestations/site-web.html`, text: "Site Web" },
-          { path: `/fr/prestations/seo.html`, text: "Référencement" },
           {
-            path: `/fr/prestations/application-mobile.html`,
+            path: "../../public/fr/prestations/site-web.html",
+            text: "Site Web",
+          },
+          {
+            path: "../../public/fr/prestations/seo.html",
+            text: "Référencement",
+          },
+          {
+            path: "../../public/fr/prestations/application-mobile.html",
             text: "Application Mobile",
           },
         ],
       },
-      { path: `/fr/contact.html`, text: "Contact" },
+      { path: "../../public/fr/ contact.html", text: "Contact" },
     ],
     en: [
-      { path: `/en/home.html`, text: "Home" },
-      { path: `/en/about.html`, text: "Who I am" },
+      { path: "../../public/en/home.html", text: "Home" },
+      { path: "../../public/en/about.html", text: "Who I am" },
       {
         text: "Services",
         submenu: [
-          { path: `/en/services/website.html`, text: "Website" },
-          { path: `/en/services/seo.html`, text: "SEO" },
+          { path: "../../public/en/services/website.html", text: "Website" },
+          { path: "../../public/en/services/seo.html", text: "SEO" },
           {
-            path: `/en/services/mobile-application.html`,
+            path: "../../public/en/services/mobile-application.html",
             text: "Mobile App",
           },
         ],
       },
-      { path: `/en/contact.html`, text: "Contact" },
+      { path: "../../public/en/contact.html", text: "Contact" },
     ],
   };
 
