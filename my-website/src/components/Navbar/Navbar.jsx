@@ -24,6 +24,8 @@ function Navbar() {
   const navbarRef = useRef(null);
   const menuItemCollapseRef = useRef(null);
 
+  const origin = window.location.origin;
+
   const handleScroll = () => {
     if (navbarRef.current) {
       navbarRef.current.classList.add("scrolled");
@@ -74,42 +76,45 @@ function Navbar() {
   // Updated menu items with services submenu
   const menuItems = {
     fr: [
-      { path: "../../index.html", text: "Accueil" },
-      { path: "../../public/fr/qui-suis-je.html", text: "Qui suis je" },
+      { path: `${origin}/index.html`, text: "Accueil" },
+      { path: `${origin}/public/fr/qui-suis-je.html`, text: "Qui suis je" },
       {
         text: "Prestations",
         submenu: [
           {
-            path: "../../public/fr/prestations/site-web.html",
+            path: `${origin}/public/fr/prestations/site-web.html`,
             text: "Site Web",
           },
           {
-            path: "../../public/fr/prestations/seo.html",
+            path: `${origin}/public/fr/prestations/seo.html`,
             text: "Référencement",
           },
           {
-            path: "../../public/fr/prestations/application-mobile.html",
+            path: `${origin}/public/fr/prestations/application-mobile.html`,
             text: "Application Mobile",
           },
         ],
       },
-      { path: "../../public/fr/ contact.html", text: "Contact" },
+      { path: `${origin}/public/fr/contact.html`, text: "Contact" },
     ],
     en: [
-      { path: "../../public/en/home.html", text: "Home" },
-      { path: "../../public/en/about.html", text: "Who I am" },
+      { path: `${origin}/public/en/home.html`, text: "Home" },
+      { path: `${origin}/public/en/about.html`, text: "Who I am" },
       {
         text: "Services",
         submenu: [
-          { path: "../../public/en/services/website.html", text: "Website" },
-          { path: "../../public/en/services/seo.html", text: "SEO" },
           {
-            path: "../../public/en/services/mobile-application.html",
+            path: `${origin}/public/en/services/website.html`,
+            text: "Website",
+          },
+          { path: `${origin}/public/en/services/seo.html`, text: "SEO" },
+          {
+            path: `${origin}/public/en/services/mobile-application.html`,
             text: "Mobile App",
           },
         ],
       },
-      { path: "../../public/en/contact.html", text: "Contact" },
+      { path: `${origin}/public/en/contact.html`, text: "Contact" },
     ],
   };
 
