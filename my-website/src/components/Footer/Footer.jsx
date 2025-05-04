@@ -1,10 +1,16 @@
 import React from "react";
-import { localOrProd } from "@utils/fonction/testEnvironement.js";
-import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
+//import { localOrProd } from "@utils/fonction/testEnvironement.js";
+
+//import des images
+import logo from "@assets/images/logo-happy-app.webp";
+
+//import des feuilles de style
 import "@styles/CSS/Footer.css";
 
-const { url } = localOrProd();
-const logo = `${url}/src/assets/images/logo-happy-app.webp`;
+//import des icones
+import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
+
+//constante
 const theme = "light";
 const urlFull = window.location.href;
 
@@ -12,56 +18,56 @@ function Footer() {
   const menuItems = {
     fr: {
       main: [
-        { path: `${url}/index.html`, text: "Accueil" },
-        { path: `${url}/public/fr/qui-suis-je.html`, text: "Qui suis je" },
-        { path: `${url}/public/fr/contact.html`, text: "Contact" },
+        { path: `/index.html`, text: "Accueil" },
+        { path: `/public/fr/qui-suis-je.html`, text: "Qui suis je" },
+        { path: `/public/fr/contact.html`, text: "Contact" },
       ],
       services: [
         {
-          path: `${url}/public/fr/prestations/site-web.html`,
+          path: `/public/fr/prestations/site-web.html`,
           text: "Site Web",
         },
         {
-          path: `${url}/public/fr/prestations/seo.html`,
+          path: `/public/fr/prestations/seo.html`,
           text: "Référencement",
         },
         {
-          path: `${url}/public/fr/prestations/application-mobile.html`,
+          path: `/public/fr/prestations/application-mobile.html`,
           text: "Application Mobile",
         },
       ],
       legal: [
         {
-          path: `${url}/public/fr/legal/mentions-legales.html`,
+          path: `/public/fr/legal/mentions-legales.html`,
           text: "Mentions légales",
         },
         {
-          path: `${url}/public/fr/legal/politique-de-confidentialite.html`,
+          path: `/public/fr/legal/politique-de-confidentialite.html`,
           text: "Politique de confidentialité",
         },
-        { path: `${url}/public/fr/connexion.html`, text: "Connexion" },
+        { path: `/public/fr/connexion.html`, text: "Connexion" },
       ],
     },
     en: {
       main: [
-        { path: `${url}/public/en/home.html`, text: "Home" },
-        { path: `${url}/public/en/about.html`, text: "Who I am" },
+        { path: `/public/en/home.html`, text: "Home" },
+        { path: `/public/en/about.html`, text: "Who I am" },
       ],
       services: [
-        { path: `${url}/public/en/services/website.html`, text: "Website" },
-        { path: `${url}/public/en/services/seo.html`, text: "SEO" },
+        { path: `/public/en/services/website.html`, text: "Website" },
+        { path: `/public/en/services/seo.html`, text: "SEO" },
         {
-          path: `${url}/public/en/services/mobile-application.html`,
+          path: `/public/en/services/mobile-application.html`,
           text: "Mobile App",
         },
       ],
       legal: [
         {
-          path: `${url}/public/en/legal/legal-notice.html`,
+          path: `/public/en/legal/legal-notice.html`,
           text: "Legal Notice",
         },
         {
-          path: `${url}/public/en/legal/privacy-policy.html`,
+          path: `/public/en/legal/privacy-policy.html`,
           text: "Privacy Policy",
         },
       ],
@@ -75,7 +81,7 @@ function Footer() {
       <div className="footer-content">
         <div className="footer-brand">
           <a
-            href={currentLang === "fr" ? "/" : "/en/home.html"}
+            href={currentLang === "fr" ? "/index.html" : "/public/en/home.html"}
             className="footer-logo"
           >
             <img src={logo} alt="Logo My Web Dev Company" />
@@ -86,7 +92,11 @@ function Footer() {
               : "Custom web & mobile solutions"}
           </p>
           <a
-            href={`${url}/${currentLang === "fr" ? "fr" : "en"}/contact.html`}
+            href={
+              currentLang === "fr"
+                ? "/public/fr/contact.html"
+                : "/public/en/contact.html"
+            }
             className="footer-cta"
           >
             {currentLang === "fr" ? "Me contacter" : "Contact me"}
@@ -160,6 +170,3 @@ function Footer() {
 }
 
 export { Footer };
-
-
-
