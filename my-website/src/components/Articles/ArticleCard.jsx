@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { localOrProd } from "../../utils/fonction/testEnvironement";
-import { getLanguage } from "../../utils/fonction/getLanguage.js";
+import { localOrProd } from "@utils/fonction/testEnvironement";
+import { getLanguage } from "@utils/fonction/getLanguage.js";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 
-import "../../styles/CSS/ArticleCard.css";
+import "@styles/CSS/ArticleCard.css";
 
 function ArticleCard({ article }) {
   const { urlApi, url } = localOrProd();
@@ -69,3 +69,6 @@ function ArticleCard({ article }) {
 }
 
 export { ArticleCard };
+
+
+

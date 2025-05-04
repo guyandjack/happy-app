@@ -5,8 +5,8 @@ import { FaTrash, FaUpload } from "react-icons/fa";
 import { ThreeDots } from "react-loader-spinner";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import "../../styles/CSS/articleFormDashboard.css";
-import { localOrProd } from "../../utils/fonction/testEnvironement";
+import "@styles/CSS/articleFormDashboard.css";
+import { localOrProd } from "@utils/fonction/testEnvironement";
 
 const ArticleForm = ({ onSuccess, onCancel }) => {
   const { urlApi } = localOrProd();
@@ -549,3 +549,6 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
 };
 
 export default ArticleForm;
+
+
+

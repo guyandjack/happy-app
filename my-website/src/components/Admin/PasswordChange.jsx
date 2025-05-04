@@ -3,12 +3,12 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { ThreeDots } from 'react-loader-spinner';
-import '../../styles/CSS/dashboard.css';
-import { localOrProd } from '../../utils/fonction/testEnvironement';
+import "@styles/CSS/dashboard.css";
+import { localOrProd } from '@utils/fonction/testEnvironement';
 
 // Import icons for password visibility
-import eyeClosed from "../../assets/images/icons/eye-closed.png";
-import eyeOpened from "../../assets/images/icons/eye-opened.png";
+import eyeClosed from "@assets/images/icons/eye-closed.png";
+import eyeOpened from "@assets/images/icons/eye-opened.png";
 
 const PasswordChange = ({ user }) => {
   const { urlApi } = localOrProd();
@@ -292,3 +292,5 @@ const PasswordChange = ({ user }) => {
 };
 
 export default PasswordChange; 
+
+

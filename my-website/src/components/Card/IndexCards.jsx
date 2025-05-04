@@ -1,7 +1,7 @@
 import React from "react";
 import { CardContainer } from "./CardContainer";
-import "../../styles/SCSS/components/IndexCards.scss";
-import { localOrProd } from "../../utils/fonction/testEnvironement";
+import "@styles/SCSS/components/IndexCards.scss";
+import { localOrProd } from "@utils/fonction/testEnvironement";
 
 //import des images
 import cardImage_1 from "@assets/images/img-card-web-v2.webp";
@@ -84,3 +84,6 @@ const IndexCards = () => {
 };
 
 export { IndexCards };
+
+
+

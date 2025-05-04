@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../../styles/CSS/ArticleMenuSide.css';
+import "@styles/CSS/ArticleMenuSide.css";
 
 const ArticleMenuSide = () => {
   const [headings, setHeadings] = useState([]);
@@ -91,3 +91,4 @@ const ArticleMenuSide = () => {
 };
 
 export { ArticleMenuSide };
+

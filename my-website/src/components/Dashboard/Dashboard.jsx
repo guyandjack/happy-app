@@ -8,12 +8,12 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import { toast } from "react-toastify";
-import "../../styles/CSS/dashboard.css";
-import AdminArticleList from "../Admin/AdminArticleList";
-import PasswordChange from "../Admin/PasswordChange";
-import ArticleForm from "../Articles/ArticleForm";
+import "@styles/CSS/dashboard.css";
+import AdminArticleList from "@components/Admin/AdminArticleList";
+import PasswordChange from "@components/Admin/PasswordChange";
+import ArticleForm from "@components/Articles/ArticleForm";
 
-import { localOrProd } from "../../utils/fonction/testEnvironement";
+import { localOrProd } from "@utils/fonction/testEnvironement";
 
 const Dashboard = () => {
   const { urlApi, url, mode } = localOrProd();
@@ -153,3 +153,6 @@ const Dashboard = () => {
 };
 
 export { Dashboard };
+
+
+

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import "../../styles/SCSS/components/CardContainer.scss";
+import "@styles/SCSS/components/CardContainer.scss";
 import { Card } from "./Card";
 
 const CardContainer = ({
@@ -53,3 +53,4 @@ CardContainer.propTypes = {
 };
 
 export { CardContainer };
+

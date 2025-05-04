@@ -9,17 +9,17 @@ import { toast } from 'react-toastify';
 import { ThreeDots } from 'react-loader-spinner';
 
 //import des feuilles de style
-import "../../styles/CSS/loginform.css";
+import "@styles/CSS/loginform.css";
 
-import { localOrProd } from '../../utils/fonction/testEnvironement';
+import { localOrProd } from '@utils/fonction/testEnvironement';
 
 
 
 // Import icons for password visibility
 
-import eyeClosed from "../../assets/images/icons/eye-closed.png";
+import eyeClosed from "@assets/images/icons/eye-closed.png";
 
-import eyeOpened from "../../assets/images/icons/eye-opened.png";
+import eyeOpened from "@assets/images/icons/eye-opened.png";
 
 
 
@@ -586,3 +586,6 @@ const PasswordChange = ({ user }) => {
 
 
 export default PasswordChange; 
+
+
+

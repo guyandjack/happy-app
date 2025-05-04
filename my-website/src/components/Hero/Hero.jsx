@@ -1,15 +1,15 @@
 import React from "react"
 
 //import des fonctions
-import {getLanguage} from "../../utils/fonction/getLanguage.js";
-import {getPageName} from "../../utils/fonction/getPageName.js";
+import {getLanguage} from "@utils/fonction/getLanguage.js";
+import {getPageName} from "@utils/fonction/getPageName.js";
 
 //import des données
 import {heroContent} from "../../data/heroContent.js";
 
 
 //feuille de style
-import '../../styles/CSS/hero.css';
+import "@styles/CSS/hero.css";
 
 
 
@@ -40,3 +40,5 @@ function Hero() {
 }
 
 export { Hero };
+
+

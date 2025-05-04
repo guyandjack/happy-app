@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ThreeDots } from 'react-loader-spinner';
 import ReCAPTCHA from "react-google-recaptcha";
-import { localOrProd } from '../../utils/fonction/testEnvironement';
+import { localOrProd } from '@utils/fonction/testEnvironement';
 
 const siteKey = import.meta.env.VITE_SITE_KEY_RECAPTCHA;
 console.log("sitekey: ", siteKey);
 
 // Import same SCSS file as LoginForm
-import "../../styles/CSS/loginform.css";
+import "@styles/CSS/loginform.css";
 
 function ContactForm() {
   const { url, urlApi, mode } = localOrProd();
@@ -317,3 +317,4 @@ function ContactForm() {
 }
 
 export { ContactForm };
+

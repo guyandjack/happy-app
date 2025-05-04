@@ -6,15 +6,15 @@ import { useForm } from 'react-hook-form';
 import { ThreeDots } from 'react-loader-spinner';
 
 //import dse fonctions
-import { localOrProd } from '../../utils/fonction/testEnvironement';
+import { localOrProd } from '@utils/fonction/testEnvironement';
 
 //import des icons
-import eyeClosed from "../../assets/images/icons/eye-closed.png";
-import eyeOpened from "../../assets/images/icons/eye-opened.png";
+import eyeClosed from "@assets/images/icons/eye-closed.png";
+import eyeOpened from "@assets/images/icons/eye-opened.png";
 
 
 //import des feuilles de style
-import "../../styles/CSS/loginform.css";
+import "@styles/CSS/loginform.css";
 
 
 
@@ -269,4 +269,7 @@ function LoginForm() {
 }
 
 export { LoginForm };
+
+
+
 

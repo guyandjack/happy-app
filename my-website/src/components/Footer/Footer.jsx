@@ -1,7 +1,7 @@
 import React from "react";
-import { localOrProd } from "../../utils/fonction/testEnvironement.js";
+import { localOrProd } from "@utils/fonction/testEnvironement.js";
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
-import "../../styles/CSS/Footer.css";
+import "@styles/CSS/Footer.css";
 
 const { url } = localOrProd();
 const logo = `${url}/src/assets/images/logo-happy-app.webp`;
@@ -160,3 +160,6 @@ function Footer() {
 }
 
 export { Footer };
+
+
+

@@ -1,14 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { FaEdit, FaFilter, FaSearch, FaTrash } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
 import { toast } from "react-toastify";
 
-import { localOrProd } from "../../utils/fonction/testEnvironement";
-import { ArticleCard } from "../Articles/ArticleCard";
+import { ArticleCard } from "@components/Articles/ArticleCard";
+import { localOrProd } from "@utils/fonction/testEnvironement";
 
-//import "../../styles/CSS/articles.css";
-import "../../styles/CSS/ArticleList.css";
+//import "@styles/CSS/articles.css";
+import "@styles/CSS/ArticleList.css";
 
 const ArticlesList = () => {
   const { urlApi } = localOrProd();
@@ -226,3 +226,4 @@ const ArticlesList = () => {
 };
 
 export { ArticlesList };
+

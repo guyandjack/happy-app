@@ -2,8 +2,9 @@
 import React, { useEffect, useRef, useState } from "react";
 
 //import des fonctions
-//import { localOrProd } from "../../utils/fonction/testEnvironement.js";
+//import { localOrProd } from "@utils/fonction/testEnvironement.js";
 //const { url, url_api, mode } = localOrProd();
+
 //import des icons
 //import burgerIcon from '../../../public/images/icons/menu-burger.svg';
 import flagEN from "@assets/images/icons/flag-en.png";
