@@ -65,7 +65,7 @@ function Navbar() {
   };
 
   const isActive = (itemPath) => {
-    if (window.location.href === itemPath) {
+    if (window.location.pathname === itemPath) {
       return "active";
     }
     return "";
