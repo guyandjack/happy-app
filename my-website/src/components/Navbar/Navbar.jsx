@@ -1,19 +1,19 @@
 //import des hook
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 //import des fonctions
 //import { localOrProd } from "../../utils/fonction/testEnvironement.js";
 //const { url, url_api, mode } = localOrProd();
 //import des icons
 //import burgerIcon from '../../../public/images/icons/menu-burger.svg';
-import flagEN from "../../assets/images/icons/flag-en.png";
-import flagFR from "../../assets/images/icons/flag-fr.png";
+import flagEN from "@assets/images/icons/flag-en.png";
+import flagFR from "@assets/images/icons/flag-fr.png";
 
 //import des images
-import logos from "../../assets/images/logo-happy-app.webp";
+import logos from "@assets/images/logo-happy-app.webp";
 
 //import du fichier scss
-import "../../styles/CSS/navbar.css";
+import "@styles/CSS/navbar.css";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,8 +23,6 @@ function Navbar() {
 
   const navbarRef = useRef(null);
   const menuItemCollapseRef = useRef(null);
-
-  const origin = window.location.origin;
 
   const handleScroll = () => {
     if (navbarRef.current) {
@@ -76,45 +74,45 @@ function Navbar() {
   // Updated menu items with services submenu
   const menuItems = {
     fr: [
-      { path: `${origin}/index.html`, text: "Accueil" },
-      { path: `${origin}/public/fr/qui-suis-je.html`, text: "Qui suis je" },
+      { path: `/index.html`, text: "Accueil" },
+      { path: `/public/fr/qui-suis-je.html`, text: "Qui suis je" },
       {
         text: "Prestations",
         submenu: [
           {
-            path: `${origin}/public/fr/prestations/site-web.html`,
+            path: `/public/fr/prestations/site-web.html`,
             text: "Site Web",
           },
           {
-            path: `${origin}/public/fr/prestations/seo.html`,
+            path: `/public/fr/prestations/seo.html`,
             text: "Référencement",
           },
           {
-            path: `${origin}/public/fr/prestations/application-mobile.html`,
+            path: `/public/fr/prestations/application-mobile.html`,
             text: "Application Mobile",
           },
         ],
       },
-      { path: `${origin}/public/fr/contact.html`, text: "Contact" },
+      { path: `/public/fr/contact.html`, text: "Contact" },
     ],
     en: [
-      { path: `${origin}/public/en/home.html`, text: "Home" },
-      { path: `${origin}/public/en/about.html`, text: "Who I am" },
+      { path: `/public/en/home.html`, text: "Home" },
+      { path: `/public/en/about.html`, text: "Who I am" },
       {
         text: "Services",
         submenu: [
           {
-            path: `${origin}/public/en/services/website.html`,
+            path: `/public/en/services/website.html`,
             text: "Website",
           },
-          { path: `${origin}/public/en/services/seo.html`, text: "SEO" },
+          { path: `/public/en/services/seo.html`, text: "SEO" },
           {
-            path: `${origin}/public/en/services/mobile-application.html`,
+            path: `/public/en/services/mobile-application.html`,
             text: "Mobile App",
           },
         ],
       },
-      { path: `${origin}/public/en/contact.html`, text: "Contact" },
+      { path: `/public/en/contact.html`, text: "Contact" },
     ],
   };
 
