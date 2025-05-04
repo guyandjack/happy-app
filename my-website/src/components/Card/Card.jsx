@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import "../../styles/SCSS/components/Card.scss";
+import "@styles/CSS/Card.css";
 
 const Card = ({ card }) => {
   const cardStyle = {
@@ -31,7 +31,7 @@ const Card = ({ card }) => {
           </button>
         </div>
       </a>
-      <a href={"/fr/contact.html"} className="card-button-contact">
+      <a href={"/public/fr/contact.html"} className="card-button-contact">
         Contactez-moi
       </a>
     </div>
