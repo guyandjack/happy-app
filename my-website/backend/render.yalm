@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: happy-api
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 3000 # Render choisit automatiquement un port mais tu peux le fixer ici
