@@ -1,5 +1,5 @@
 //concerne l' animation des collapse
-document.addEventListener("DOMContentLoaded", () => {
+function initFaq() {
   const faqItems = document.querySelectorAll(".faq-item");
 
   faqItems.forEach((item) => {
@@ -38,11 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
-});
+}
 
 //Concerne l' animation de l' icon setting
-
-document.addEventListener("DOMContentLoaded", () => {
+function initIconSetting() {
   const icon = document.querySelector(".icon-seo");
   if (icon) {
     icon.addEventListener("animationend", () => {
@@ -63,4 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
       lastScrollY = currentScrollY;
     });
   }
-});
+}
+
+export { initFaq, initIconSetting };

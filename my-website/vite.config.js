@@ -12,6 +12,7 @@ export default defineConfig({
       "@components": path.resolve(__dirname, "./src/components"),
       "@utils": path.resolve(__dirname, "./src/utils"),
       "@data": path.resolve(__dirname, "./src/data"),
+      "@scripts": path.resolve(__dirname, "./src/scripts"),
     },
   },
   build: {

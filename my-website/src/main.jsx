@@ -14,6 +14,15 @@ import { IndexCards } from "@components/Card/IndexCards.jsx";
 import { Hero } from "@components/Hero/Hero.jsx";
 import { CtaSection } from "@components/CtaSection/CtaSection.jsx";
 
+//import des scripts
+import { initFaq, initIconSetting } from "@scripts/page-services.js";
+
+//initialisation des scripts
+//effet collapse faq
+initFaq();
+//effet rotation icon
+initIconSetting();
+
 /******* concerne toutes les pages********************
  * ***start
  */
