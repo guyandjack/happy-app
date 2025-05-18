@@ -32,23 +32,36 @@ exports.loginValidation = [
  */
 exports.contactValidation = [
   body("name")
+    .escape()
     .notEmpty()
     .withMessage("Name is required")
+    .isString()
+    .withMessage("Name must be a string")
     .isLength({ min: 2, max: 100 })
     .withMessage("Name must be between 2 and 100 characters"),
+
+  body("firstName")
+    .notEmpty()
+    .withMessage("First name is required")
+    .isString()
+    .withMessage("First name must be a string")
+    .isLength({ min: 2, max: 100 })
+    .withMessage("First name must be between 2 and 100 characters"),
   body("email")
     .notEmpty()
     .withMessage("Email is required")
     .isEmail()
+    .normalizeEmail()
     .withMessage("Please provide a valid email"),
-  body("subject")
-    .notEmpty()
+  /* body("subject")
+    //.notEmpty()
     .withMessage("Subject is required")
-    .isLength({ min: 3, max: 100 })
-    .withMessage("Subject must be between 3 and 100 characters"),
+    //.isLength({ min: 3, max: 100 })
+    .withMessage("Subject must be between 3 and 100 characters"), */
   body("message")
     .notEmpty()
     .withMessage("Message is required")
+
     .isLength({ min: 10 })
     .withMessage("Message must be at least 10 characters long"),
 ];
