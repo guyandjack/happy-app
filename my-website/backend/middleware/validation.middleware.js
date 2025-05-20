@@ -32,38 +32,40 @@ exports.loginValidation = [
  */
 exports.contactValidation = [
   body("name")
-    .escape()
     .notEmpty()
+    .escape()
     .withMessage("Name is required")
     .isString()
     .withMessage("Name must be a string")
-    .isLength({ min: 2, max: 100 })
-    .withMessage("Name must be between 2 and 100 characters"),
+    .isLength({ min: 2, max: 50 })
+    .withMessage("Name must be between 2 and 50 characters"),
 
   body("firstName")
     .notEmpty()
+    .escape()
     .withMessage("First name is required")
     .isString()
     .withMessage("First name must be a string")
-    .isLength({ min: 2, max: 100 })
-    .withMessage("First name must be between 2 and 100 characters"),
+    .isLength({ min: 2, max: 50 })
+    .withMessage("First name must be between 2 and 50 characters"),
+
   body("email")
     .notEmpty()
     .withMessage("Email is required")
     .isEmail()
     .normalizeEmail()
-    .withMessage("Please provide a valid email"),
-  /* body("subject")
-    //.notEmpty()
-    .withMessage("Subject is required")
-    //.isLength({ min: 3, max: 100 })
-    .withMessage("Subject must be between 3 and 100 characters"), */
+    .withMessage("Please provide a valid email")
+    .isLength({ min: 8, max: 100 })
+    .withMessage("Email must be between 8 and 100 characters"),
+
   body("message")
     .notEmpty()
     .withMessage("Message is required")
+    .isString()
+    .withMessage("Message must be a string")
 
-    .isLength({ min: 10 })
-    .withMessage("Message must be at least 10 characters long"),
+    .isLength({ min: 10, max: 1000 })
+    .withMessage("Message must be between 10 and 1000 characters"),
 ];
 
 /**

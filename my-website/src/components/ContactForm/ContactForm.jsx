@@ -96,14 +96,14 @@ function ContactForm() {
       if (response.ok) {
         let responseData = await response.json();
 
-        if (responseData.message === "success") {
+        if (responseData.status === "success") {
           // Show success toast
           showToast("Message envoyé avec succès", "success");
 
           // Reset form
           reset();
           // Reset reCAPTCHA
-          setRecaptchaValue(null);
+          //setRecaptchaValue(null);
         } else {
           // Handle error response
           setHttpError("Erreur lors de l'envoi du message");
@@ -173,10 +173,13 @@ function ContactForm() {
               type="text"
               className={`form-input ${errors.name ? "input-error" : ""}`}
               {...register("name", {
-                required: "Le nom est requis",
-                minLength: {
-                  value: 2,
-                  message: "Le nom doit contenir au moins 2 caractères",
+                required: "Ce champ est requis",
+                minLength: { value: 2, message: "Min 2 caractères" },
+                maxLength: { value: 50, message: "Max 50 caractères" },
+                pattern: {
+                  value: /^[\w\-'. ]{1,49}$/u,
+                  message:
+                    "Lettres uniquement, sans chiffres. Espaces, tirets, apostrophes autorisés.",
                 },
               })}
             />
@@ -197,10 +200,13 @@ function ContactForm() {
               type="text"
               className={`form-input ${errors.firstName ? "input-error" : ""}`}
               {...register("firstName", {
-                required: "Le prénom est requis",
-                minLength: {
-                  value: 2,
-                  message: "Le prénom doit contenir au moins 2 caractères",
+                required: "Ce champ est requis",
+                minLength: { value: 2, message: "Min 2 caractères" },
+                maxLength: { value: 50, message: "Max 50 caractères" },
+                pattern: {
+                  value: /^[\w\-'. ]{1,49}$/u,
+                  message:
+                    "Lettres uniquement, sans chiffres. Espaces, tirets, apostrophes autorisés.",
                 },
               })}
             />
@@ -223,9 +229,11 @@ function ContactForm() {
               type="email"
               className={`form-input ${errors.email ? "input-error" : ""}`}
               {...register("email", {
-                required: "L'email est requis",
+                required: "Ce champ est requis",
+                minLength: { value: 2, message: "Min 2 caractères" },
+                maxLength: { value: 100, message: "Max 100 caractères" },
                 pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,100}$/,
                   message: "Format d'email invalide",
                 },
               })}
@@ -246,12 +254,16 @@ function ContactForm() {
           <div className="input-container">
             <textarea
               id="message"
+              rows={10}
               className={`form-input ${errors.message ? "input-error" : ""}`}
               {...register("message", {
-                required: "Le message est requis",
-                minLength: {
-                  value: 10,
-                  message: "Le message doit contenir au moins 10 caractères",
+                required: "Ce champ est requis",
+                minLength: { value: 10, message: "Min 10 caractères" },
+                maxLength: { value: 1000, message: "Max 1000 caractères" },
+                pattern: {
+                  value: /^[\w\-'.,!?:; ]{10,1000}$/,
+                  message:
+                    "Lettres et chiffres.Espaces, tirets, apostrophes, virgules, points, points- virgules, signes de ponctuation autorisés.",
                 },
               })}
             />
