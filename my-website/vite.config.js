@@ -30,6 +30,8 @@ export default defineConfig({
         contact_fr: "public/fr/contact.html",
         articles_fr: "public/fr/articles.html",
         connexion_fr: "public/fr/connexion.html",
+        legal_fr: "public/fr/legal/mentions-legales.html",
+        politique_fr: "public/fr/legal/politique-de-confidentialite.html",
 
         // EN pages
         about_en: "public/en/about.html",
@@ -39,6 +41,8 @@ export default defineConfig({
         achievements_en: "public/en/achievements.html",
         contact_en: "public/en/contact.html",
         articles_en: "public/en/articles.html",
+        //legal_en: "public/en/legal/legal-notice.html",
+        //privacy_en: "public/en/legal/privacy-policy.html",
       },
     },
   },
