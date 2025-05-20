@@ -45,7 +45,44 @@
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
-.legal-section .legal-content h2 {
+.legal-section .legal-content .intro {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(23, 23, 23, 0.9);
+  margin-bottom: 30px;
+  padding: 0 15px;
+}
+
+.legal-section .legal-content .info-list {
+  list-style: none;
+  padding: 0 15px;
+  margin-bottom: 30px;
+}
+
+.legal-section .legal-content .info-list li {
+  padding: 8px 0;
+  color: rgba(23, 23, 23, 0.9);
+}
+
+.legal-section .legal-content .legal-list,
+.legal-section .legal-content .policy-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.legal-section .legal-content .legal-list > li,
+.legal-section .legal-content .policy-list > li {
+  margin-bottom: 40px;
+}
+
+.legal-section .legal-content .legal-list > li:last-child,
+.legal-section .legal-content .policy-list > li:last-child {
+  margin-bottom: 0;
+}
+
+.legal-section .legal-content .legal-list h2,
+.legal-section .legal-content .policy-list h2 {
   font-size: 1.4rem;
   color: #024d4a;
   margin-bottom: 25px;
@@ -53,7 +90,15 @@
   border-left: 3px solid #00beb8;
 }
 
-.legal-section .legal-content p {
+.legal-section .legal-content .legal-list h3,
+.legal-section .legal-content .policy-list h3 {
+  font-size: 1.2rem;
+  color: #024d4a;
+  margin-bottom: 15px;
+}
+
+.legal-section .legal-content .legal-list p,
+.legal-section .legal-content .policy-list p {
   font-size: 1rem;
   line-height: 1.8;
   color: rgba(23, 23, 23, 0.9);
@@ -61,26 +106,38 @@
   padding: 0 15px;
 }
 
-.legal-section .legal-content p:last-child {
-  margin-bottom: 0;
-}
-
-.legal-section .legal-content ul {
+.legal-section .legal-content .rights-list {
   list-style: none;
-  padding: 0 15px;
+  padding: 15px 30px;
+  margin: 20px 0;
+  background: rgba(199, 227, 205, 0.1);
+  border-radius: 10px;
 }
 
-.legal-section .legal-content ul li {
+.legal-section .legal-content .rights-list li {
   position: relative;
   padding: 10px 0 10px 20px;
   color: rgba(23, 23, 23, 0.9);
 }
 
-.legal-section .legal-content ul li::before {
+.legal-section .legal-content .rights-list li::before {
   content: '•';
   position: absolute;
   left: 0;
   color: #00beb8;
+}
+
+.legal-section .legal-content .rights-list li strong {
+  color: #024d4a;
+}
+
+.legal-section .conclusion {
+  margin: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
 @media (min-width: 768px) {
@@ -94,24 +151,29 @@
   .legal-section .legal-content {
     padding: 40px;
   }
-  .legal-section .legal-content h2 {
+  .legal-section .legal-content .intro {
+    font-size: 1.2rem;
+    padding: 0 20px;
+  }
+  .legal-section .legal-content .legal-list h2,
+  .legal-section .legal-content .policy-list h2 {
     font-size: 1.6rem;
-    margin-bottom: 30px;
     padding-left: 20px;
     border-left-width: 4px;
   }
-  .legal-section .legal-content p {
+  .legal-section .legal-content .legal-list h3,
+  .legal-section .legal-content .policy-list h3 {
+    font-size: 1.4rem;
+  }
+  .legal-section .legal-content .legal-list p,
+  .legal-section .legal-content .policy-list p {
     font-size: 1.1rem;
     padding: 0 20px;
   }
-  .legal-section .legal-content section {
-    margin-top: 50px;
+  .legal-section .legal-content .rights-list {
+    padding: 20px 40px;
   }
-  .legal-section .legal-content section h3 {
-    font-size: 1.3rem;
-    padding-left: 20px;
-  }
-  .legal-section .legal-content section ul li {
+  .legal-section .legal-content .rights-list li {
     padding: 12px 0 12px 25px;
     font-size: 1.1rem;
   }
@@ -126,8 +188,6 @@
   }
   .legal-section .legal-content {
     padding: 50px;
-    -webkit-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.05), 0 12px 18px rgba(0, 0, 0, 0.1);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.05), 0 12px 18px rgba(0, 0, 0, 0.1);
     -webkit-transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
     transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
     -o-transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -141,16 +201,19 @@
     -webkit-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.05), 0 15px 25px rgba(0, 0, 0, 0.1);
             box-shadow: 0 8px 12px rgba(0, 0, 0, 0.05), 0 15px 25px rgba(0, 0, 0, 0.1);
   }
-  .legal-section .legal-content h2 {
+  .legal-section .legal-content .intro {
+    font-size: 1.25rem;
+  }
+  .legal-section .legal-content .legal-list h2,
+  .legal-section .legal-content .policy-list h2 {
     font-size: 1.8rem;
   }
-  .legal-section .legal-content p {
-    font-size: 1.15rem;
+  .legal-section .legal-content .legal-list h3,
+  .legal-section .legal-content .policy-list h3 {
+    font-size: 1.5rem;
   }
-  .legal-section .legal-content section h3 {
-    font-size: 1.4rem;
-  }
-  .legal-section .legal-content section ul li {
+  .legal-section .legal-content .legal-list p,
+  .legal-section .legal-content .policy-list p {
     font-size: 1.15rem;
   }
 }

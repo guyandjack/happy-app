@@ -64,7 +64,7 @@
         }
 
         // Terms and Policy list styles
-        .terms-list,
+        .legal-list,
         .policy-list {
             list-style: none;
             padding: 0;
@@ -127,6 +127,14 @@
             }
         }
     }
+
+    .conclusion {
+        margin: 20px;
+        padding: 20px;
+        background-color: map-get($colors-rule, sixth-color);
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
 }
 
 // Tablet styles (768px and up)
@@ -147,7 +155,7 @@
                 padding: 0 20px;
             }
 
-            .terms-list,
+            .legal-list,
             .policy-list {
                 h2 {
                     font-size: 1.6rem;
@@ -201,7 +209,7 @@
                 font-size: 1.25rem;
             }
 
-            .terms-list,
+            .legal-list,
             .policy-list {
                 h2 {
                     font-size: 1.8rem;
