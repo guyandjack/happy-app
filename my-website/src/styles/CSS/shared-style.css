@@ -199,6 +199,15 @@ header {
   }
 }
 
+.page-container.dark-mode .introduction .text-intro {
+  background: #575757;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.page-container.dark-mode .introduction .text-intro strong {
+  color: #00d8d1;
+}
+
 .faq-section {
   padding: 100px 20px;
   background: -webkit-linear-gradient(315deg, rgba(0, 190, 184, 0.1) 20%, #4d6780);
@@ -411,6 +420,49 @@ header {
     font-size: 1rem;
     padding-left: 30px;
   }
+}
+
+.page-container.dark-mode .faq-section .container h2 {
+  color: #ffffff;
+}
+
+.page-container.dark-mode .faq-section .container h2 strong {
+  color: #dc0779;
+}
+
+.page-container.dark-mode .faq-section .container h2::after {
+  background: #dc0779;
+}
+
+.page-container.dark-mode .faq-section .container .faq-grid .faq-intro {
+  color: rgba(255, 255, 255, 0.9);
+  background: #575757;
+}
+
+.page-container.dark-mode .faq-section .container .faq-grid .faq-intro strong {
+  color: #00d8d1;
+}
+
+.page-container.dark-mode .faq-section .container .faq-grid .faq-item {
+  background: #575757;
+}
+
+.page-container.dark-mode .faq-section .container .faq-grid .faq-item h3 {
+  color: #00d8d1;
+}
+
+.page-container.dark-mode .faq-section .container .faq-grid .faq-item h3:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.page-container.dark-mode .faq-section .container .faq-grid .faq-item p,
+.page-container.dark-mode .faq-section .container .faq-grid .faq-item ul {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.page-container.dark-mode .faq-section .container .faq-grid .faq-item p strong,
+.page-container.dark-mode .faq-section .container .faq-grid .faq-item ul strong {
+  color: #00d8d1;
 }
 
 /********************************************************

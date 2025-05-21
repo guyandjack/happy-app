@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 //import des fonctions
 import { getLanguage } from "@utils/fonction/getLanguage.js";
@@ -10,7 +10,26 @@ import { heroContent } from "@data/heroContent.js";
 //feuille de style
 import "@styles/CSS/hero.css";
 
+//fonction pour obtenir le mode
+import { getMode } from "@utils/fonction/getMode.js";
+
 function Hero() {
+  const heroRef = useRef(null);
+  //const [isDarkMode, setIsDarkMode] = useState(false);
+
+  /*useEffect(() => {
+    getMode(".page-container", "dark-mode", (result) => {
+      console.log("result: ", result);
+      setIsDarkMode(result);
+      console.log("isDarkMode: ", isDarkMode);
+      if (result) {
+        heroRef.current.classList.add("dark-mode-hero");
+      } else {
+        heroRef.current.classList.remove("dark-mode-hero");
+      }
+    });
+  }, [isDarkMode]);*/
+
   let language = getLanguage();
   let pageName = getPageName(language);
   console.log("lang et page: ", [language, pageName]);
@@ -20,7 +39,7 @@ function Hero() {
   }
 
   return (
-    <div className="flex-column-center-center hero">
+    <div className="flex-column-center-center hero" ref={heroRef}>
       {
         <img
           src={heroContent[`${language}`][`${pageName}`].img_1}

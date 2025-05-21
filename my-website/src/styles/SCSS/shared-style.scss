@@ -230,6 +230,19 @@ header {
 
 }
 
+//dark mode hero introduction
+.page-container.dark-mode .introduction {
+    .text-intro {
+        background: lighten(map-get($colors-rule, fifth-color), 25%);
+        color: rgba(map-get($colors-rule, sixth-color), 0.9);
+
+        strong {
+            color: lighten(map-get($colors-rule, second-color), 5%);
+        }
+    }
+}
+
+
 //FAQ section
 .faq-section {
     padding: 100px 20px;
@@ -411,6 +424,61 @@ header {
             }
         }
     }
+}
+
+//dark mode faq section
+.page-container.dark-mode .faq-section {
+    .container {
+        h2 {
+            color: map-get($colors-rule, sixth-color);
+
+            strong {
+                color: lighten(map-get($colors-rule, fourth-color), 5%);
+            }
+
+            &::after {
+                background: lighten(map-get($colors-rule, fourth-color), 5%);
+            }
+        }
+
+
+        .faq-grid {
+
+            .faq-intro {
+                color: rgba(map-get($colors-rule, sixth-color), 0.9);
+                background: lighten(map-get($colors-rule, fifth-color), 25%);
+
+                strong {
+                    color: lighten(map-get($colors-rule, second-color), 5%);
+                }
+            }
+
+            .faq-item {
+                background: lighten(map-get($colors-rule, fifth-color), 25%);
+
+                h3 {
+                    color: lighten(map-get($colors-rule, second-color), 5%);
+
+                    &:hover {
+                        color: rgba(map-get($colors-rule, sixth-color), 0.9);
+
+                    }
+                }
+
+                p,
+                ul {
+                    color: rgba(map-get($colors-rule, sixth-color), 0.9);
+
+                    strong {
+                        color: lighten(map-get($colors-rule, second-color), 5%);
+                    }
+                }
+
+
+            }
+        }
+    }
+
 }
 
 
