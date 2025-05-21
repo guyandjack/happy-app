@@ -39,6 +39,11 @@
     //background-color: black
 }
 
+.dark-mode {
+    background-color: map-get($colors-rule, dark-mode-color);
+    color: map-get($colors-rule, sixth-color);
+}
+
 body,
 header {
 

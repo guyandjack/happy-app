@@ -5,9 +5,13 @@
   height: 300px;
   text-align: center;
   position: relative;
-  //overflow: hidden;
+  overflow: hidden;
   background-color: map-get($colors-rule, background-page-color);
   border: none;
+
+  @media screen and (min-width: 1500px) {
+    overflow: visible;
+  }
 
   &>img {
     position: absolute;

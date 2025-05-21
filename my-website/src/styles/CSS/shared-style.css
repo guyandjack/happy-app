@@ -30,6 +30,11 @@
   background-color: #fbfbfc;
 }
 
+.dark-mode {
+  background-color: #373737;
+  color: #ffffff;
+}
+
 body,
 header {
   width: 100%;

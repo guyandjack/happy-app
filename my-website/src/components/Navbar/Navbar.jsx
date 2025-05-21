@@ -5,6 +5,9 @@ import React, { useEffect, useRef, useState } from "react";
 //import { localOrProd } from "@utils/fonction/testEnvironement.js";
 //const { url, url_api, mode } = localOrProd();
 
+//import des composants enfants
+import { ToggleSwitch } from "@components/ToggleSwitch/ToggleSwitch.jsx";
+
 //import des icons
 //import burgerIcon from '../../../public/images/icons/menu-burger.svg';
 import flagEN from "@assets/images/icons/flag-en.png";
@@ -21,6 +24,7 @@ function Navbar() {
   const [currentPath, setCurrentPath] = useState("");
   const [currentLang, setCurrentLang] = useState("fr");
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const navbarRef = useRef(null);
   const menuItemCollapseRef = useRef(null);
@@ -48,6 +52,26 @@ function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // Gestion du dark mode
+
+  useEffect(() => {
+    if (!localStorage.getItem("darkMode")) {
+      localStorage.setItem("darkMode", isDarkMode.toString());
+    }
+    const pageContainer = document.querySelector(".page-container");
+    const mode = localStorage.getItem("darkMode");
+    if (pageContainer && mode === "true") {
+      pageContainer.classList.add("dark-mode");
+    } else {
+      pageContainer.classList.remove("dark-mode");
+    }
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+    localStorage.setItem("darkMode", isDarkMode.toString());
+  };
 
   // Detection des liens actifs du sous menu
   // pour effet de style sur lien collapse
@@ -257,6 +281,9 @@ function Navbar() {
           >
             <img className="flag-image" src={flagEN} alt="English" />
           </button>
+        </li>
+        <li className="dark-mode-switch" role="none">
+          <ToggleSwitch toggleMode={toggleDarkMode} />
         </li>
       </ul>
     </nav>
