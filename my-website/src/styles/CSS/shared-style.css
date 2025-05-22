@@ -208,6 +208,10 @@ header {
   }
 }
 
+.page-container.dark-mode .introduction {
+  background-color: #024d4a;
+}
+
 .page-container.dark-mode .introduction .text-intro {
   background: #575757;
   color: rgba(255, 255, 255, 0.9);

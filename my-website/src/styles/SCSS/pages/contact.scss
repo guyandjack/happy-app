@@ -1,9 +1,6 @@
 @import '../../utils/color-rule/color-rule.scss';
 
 
-
-
-
 // Contact content section
 .contact-content {
     @keyframes img-contact-1 {
@@ -91,7 +88,7 @@
 
     // Contact form container
     .contact-form-container {
-        background-color: white;
+        background-color: map-get($colors-rule, background-page-color);
         border-radius: 12px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         padding: 40px;
@@ -102,31 +99,9 @@
             width: 60%;
         }
 
-        &::before {
-            content: '';
-            position: absolute;
-            top: -15px;
-            left: -15px;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background-color: rgba(map-get($colors-rule, third-color), 0.1);
-            z-index: -1;
-        }
 
-        &::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(map-get($colors-rule, first-color), 0.1);
-            z-index: -1;
-        }
 
-        p {
+        &>p {
 
             margin-bottom: 30px;
             line-height: 1.6;
@@ -138,91 +113,13 @@
             }
         }
 
-        .contact-form {
-            width: 100%;
 
-            .form-group {
-                margin-bottom: 20px;
-
-                label {
-                    display: block;
-                    margin-bottom: 8px;
-                    font-weight: 600;
-                    color: map-get($colors-rule, fifth-color);
-                }
-
-                input,
-                textarea,
-                select {
-                    width: 100%;
-                    padding: 12px 15px;
-                    border: 1px solid #e1e1e1;
-                    border-radius: 8px;
-                    font-size: 1rem;
-                    transition: all 0.3s ease;
-
-                    &:focus {
-                        outline: none;
-                        border-color: map-get($colors-rule, first-color);
-                        box-shadow: 0 0 0 3px rgba(map-get($colors-rule, first-color), 0.1);
-                    }
-                }
-
-                textarea {
-                    min-height: 120px;
-                    resize: vertical;
-                }
-            }
-
-            .checkbox-container {
-                display: flex;
-                align-items: flex-start;
-
-                input[type="checkbox"] {
-                    width: auto;
-                    margin-right: 10px;
-                    margin-top: 5px;
-                }
-
-                label {
-                    font-weight: normal;
-                    font-size: 0.9rem;
-
-                    a {
-                        color: map-get($colors-rule, first-color);
-                        text-decoration: none;
-
-                        &:hover {
-                            text-decoration: underline;
-                        }
-                    }
-                }
-            }
-
-            .btn-primary {
-                background: linear-gradient(135deg, map-get($colors-rule, first-color) 0%, map-get($colors-rule, second-color) 100%);
-                color: white;
-                border: none;
-                padding: 14px 30px;
-                border-radius: 30px;
-                font-size: 1rem;
-                font-weight: 600;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                display: inline-block;
-
-                &:hover {
-                    transform: translateY(-3px);
-                    box-shadow: 0 10px 20px rgba(map-get($colors-rule, first-color), 0.2);
-                }
-            }
-        }
     }
 
     // Contact info
     .contact-info {
         position: relative;
-        background-color: white;
+        background-color: map-get($colors-rule, background-page-color);
         border-radius: 12px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         padding: 40px;
@@ -276,17 +173,17 @@
 
             &:nth-child(3)::before {
                 background-image: url("../../../src/assets/images/icons/mail-icon.svg");
-                fill: map-get($colors-rule, first-color);
+                //fill: map-get($colors-rule, first-color);
             }
 
             &:nth-child(4)::before {
                 background-image: url("../../../src/assets/images/icons/phone-icon.svg");
-                fill: map-get($colors-rule, first-color);
+                //fill: map-get($colors-rule, first-color);
             }
 
             &:nth-child(5)::before {
                 background-image: url("../../../src/assets/images/icons/time-icon.svg");
-                fill: map-get($colors-rule, first-color);
+                //fill: map-get($colors-rule, first-color);
             }
 
             h3 {
@@ -362,4 +259,53 @@
             padding: 25px;
         }
     }
+}
+
+//gestion du dark mode
+
+.page-container.dark-mode {
+
+
+    .contact-content {
+
+        .contact-form-container,
+        .contact-info {
+            background-color: lighten(map-get($colors-rule, first-color), 5%);
+
+            .h2 {
+                color: map-get($colors-rule, sixth-color);
+            }
+
+            .info-item {
+
+                &:nth-child(2)::before,
+                &:nth-child(3)::before,
+                &:nth-child(4)::before,
+                &:nth-child(5)::before {
+                    fill: map-get($colors-rule, fourth-color);
+                }
+
+                h3,
+                p {
+                    color: map-get($colors-rule, sixth-color);
+
+                }
+
+                a {
+                    color: map-get($colors-rule, second-color);
+                }
+
+            }
+
+            .icon-contact {
+                fill: map-get($colors-rule, sixth-color);
+            }
+
+            .btn-primary {
+                background-color: map-get($colors-rule, sixth-color);
+            }
+        }
+    }
+
+
 }

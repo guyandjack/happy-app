@@ -234,6 +234,9 @@ header {
 
 //dark mode hero introduction
 .page-container.dark-mode .introduction {
+
+    background-color: map-get($colors-rule, first-color);
+
     .text-intro {
         background: lighten(map-get($colors-rule, fifth-color), 25%);
         color: rgba(map-get($colors-rule, sixth-color), 0.9);
