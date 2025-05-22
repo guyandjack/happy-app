@@ -93,3 +93,19 @@
   z-index: 10;
   color: rgba(23, 23, 23, 0.7);
 }
+
+.page-container.dark-mode .hero {
+  background-color: #036662;
+}
+
+.page-container.dark-mode .hero .container {
+  background-color: #037f7a;
+}
+
+.page-container.dark-mode .hero .container h1 {
+  color: #ffffff;
+}
+
+.page-container.dark-mode .hero .container .hero-subtitle {
+  color: #ffffff;
+}

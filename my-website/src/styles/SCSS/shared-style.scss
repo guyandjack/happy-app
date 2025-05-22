@@ -40,7 +40,7 @@
 }
 
 .dark-mode {
-    background-color: map-get($colors-rule, dark-mode-color);
+    background-color: map-get($colors-rule, first-color);
     color: map-get($colors-rule, sixth-color);
 }
 
@@ -165,7 +165,7 @@ header {
     position: relative;
     overflow: hidden;
     background-color: map-get($colors-rule, background-page-color);
-
+    transition: background-color 0.4s ease;
 
     .text-intro {
         position: relative;
@@ -185,6 +185,7 @@ header {
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         transform: translateY(-20px);
         overflow: hidden;
+        transition: background-color 0.4s ease, color 0.4s ease;
 
         &::before {
             content: '';
@@ -213,6 +214,7 @@ header {
         strong {
             color: rgba(map-get($colors-rule, second-color), 0.9);
             font-weight: 600;
+            transition: color 0.3s ease;
         }
 
         @media screen and (max-width: 992px) {
@@ -235,9 +237,11 @@ header {
     .text-intro {
         background: lighten(map-get($colors-rule, fifth-color), 25%);
         color: rgba(map-get($colors-rule, sixth-color), 0.9);
+        transition: background-color 0.4s ease, color 0.4s ease;
 
         strong {
             color: lighten(map-get($colors-rule, second-color), 5%);
+            transition: color 0.4s ease;
         }
     }
 }

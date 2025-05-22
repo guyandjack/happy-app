@@ -31,7 +31,7 @@
 }
 
 .dark-mode {
-  background-color: #373737;
+  background-color: #024d4a;
   color: #ffffff;
 }
 
@@ -129,6 +129,9 @@ header {
   position: relative;
   overflow: hidden;
   background-color: #fbfbfc;
+  -webkit-transition: background-color 0.4s ease;
+  -o-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
 }
 
 .introduction .text-intro {
@@ -153,6 +156,9 @@ header {
       -ms-transform: translateY(-20px);
           transform: translateY(-20px);
   overflow: hidden;
+  -webkit-transition: background-color 0.4s ease, color 0.4s ease;
+  -o-transition: background-color 0.4s ease, color 0.4s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .introduction .text-intro::before {
@@ -182,6 +188,9 @@ header {
 .introduction .text-intro strong {
   color: rgba(0, 190, 184, 0.9);
   font-weight: 600;
+  -webkit-transition: color 0.3s ease;
+  -o-transition: color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 @media screen and (max-width: 992px) {
@@ -202,10 +211,16 @@ header {
 .page-container.dark-mode .introduction .text-intro {
   background: #575757;
   color: rgba(255, 255, 255, 0.9);
+  -webkit-transition: background-color 0.4s ease, color 0.4s ease;
+  -o-transition: background-color 0.4s ease, color 0.4s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .page-container.dark-mode .introduction .text-intro strong {
   color: #00d8d1;
+  -webkit-transition: color 0.4s ease;
+  -o-transition: color 0.4s ease;
+  transition: color 0.4s ease;
 }
 
 .faq-section {

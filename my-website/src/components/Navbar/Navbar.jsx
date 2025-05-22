@@ -24,7 +24,7 @@ function Navbar() {
   const [currentPath, setCurrentPath] = useState("");
   const [currentLang, setCurrentLang] = useState("fr");
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  //const [isDarkMode, setIsDarkMode] = useState(false);
 
   const navbarRef = useRef(null);
   const menuItemCollapseRef = useRef(null);
@@ -38,6 +38,7 @@ function Navbar() {
     }
   };
 
+  // Gestion du path et du langage
   useEffect(() => {
     setCurrentPath(window.location.pathname);
     // Detect language from URL
@@ -52,26 +53,6 @@ function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  // Gestion du dark mode
-
-  useEffect(() => {
-    if (!localStorage.getItem("darkMode")) {
-      localStorage.setItem("darkMode", isDarkMode.toString());
-    }
-    const pageContainer = document.querySelector(".page-container");
-    const mode = localStorage.getItem("darkMode");
-    if (pageContainer && mode === "true") {
-      pageContainer.classList.add("dark-mode");
-    } else {
-      pageContainer.classList.remove("dark-mode");
-    }
-  }, [isDarkMode]);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    localStorage.setItem("darkMode", isDarkMode.toString());
-  };
 
   // Detection des liens actifs du sous menu
   // pour effet de style sur lien collapse
@@ -283,7 +264,7 @@ function Navbar() {
           </button>
         </li>
         <li className="dark-mode-switch" role="none">
-          <ToggleSwitch toggleMode={toggleDarkMode} />
+          <ToggleSwitch />
         </li>
       </ul>
     </nav>

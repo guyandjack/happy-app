@@ -95,3 +95,25 @@
 
   }
 }
+
+.page-container.dark-mode .hero {
+
+  background-color: lighten(map-get($colors-rule, first-color), 5%);
+
+  .container {
+    background-color: lighten(map-get($colors-rule, first-color), 10%);
+
+    h1 {
+      color: map-get($colors-rule, sixth-color);
+    }
+
+
+    .hero-subtitle {
+      color: map-get($colors-rule, sixth-color);
+    }
+
+  }
+
+
+
+}
