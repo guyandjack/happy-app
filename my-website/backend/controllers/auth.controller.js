@@ -12,7 +12,9 @@ const User = require("../models/user.model");
 
 //import des fonctions pour la connexion et la déconnexion à la base de données
 const { getConnection, releaseConnection } = require("../config/database");
-const { localOrProd } = require("../utils/function/localOrProd");
+
+//import des fonctions pour les cookies
+const setCookieOptionsObject = require("../utils/function/setCookieOptionsObject");
 
 /**
  * Sign JWT accesstoken
@@ -69,7 +71,7 @@ exports.login = async (req, res, next) => {
     const accessToken = signAccessToken(user.id);
     const refreshToken = signRefreshToken(user.id);
     const options = setCookieOptionsObject();
-    res.cookie("token", refreshToken, options);
+    res.cookie("tokenRefresh", refreshToken, options);
     res.status(200).json({
       status: "success",
       accessToken,
@@ -84,7 +86,7 @@ exports.login = async (req, res, next) => {
  * Refresh token
  */
 exports.refreshToken = async (req, res, next) => {
-  const refreshToken = req.cookies.token;
+  const refreshToken = req.cookies.tokenRefresh;
   if (!refreshToken) {
     return res.status(401).json({
       status: "error",
@@ -116,7 +118,12 @@ exports.refreshToken = async (req, res, next) => {
   }
 
   // Create and send new access token
-  createAccessToken(user, 200, res);
+  const accessToken = signAccessToken(user.id);
+  res.status(200).json({
+    status: "success",
+    accessToken,
+    data: user.name,
+  });
 };
 
 /**

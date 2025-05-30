@@ -122,7 +122,9 @@ function TimerSession() {
   //fetch to refresh token
   const refreshToken = async () => {
     try {
-      const response = await axios.post(`${urlApi}/auth/refresh-token`);
+      const response = await axios.post(`${urlApi}/auth/refresh-token`, {
+        withCredentials: true,
+      });
       const isTokenRefreshed = storeToken(response, jwtDecode);
       if (!isTokenRefreshed) {
         clearLocalStorage();

@@ -16,11 +16,11 @@ const setCookieOptionsObject = () => {
 
     case "dev":
       return {
-        domain: "undefined",
+        //domain: "undefined",
         httpOnly: true,
         secure: false,
         maxAge: 60 * 60 * 1000,
-        samesite: "none",
+        //samesite: "none",
       };
 
     case "render":

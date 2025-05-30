@@ -7,11 +7,11 @@
  */
 function storeToken(responseData, jwtDecode) {
   // Store token and user
-  localStorage.setItem("token", responseData.token.toString());
+  localStorage.setItem("token", responseData.accessToken.toString());
   localStorage.setItem("user", responseData.data.toString());
 
   //decoded token
-  const decodedToken = jwtDecode(responseData.token);
+  const decodedToken = jwtDecode(responseData.accessToken);
   const expirationTime = decodedToken.exp;
   const currentTime = Math.floor(Date.now() / 1000);
   console.log("expirationTime:", expirationTime);

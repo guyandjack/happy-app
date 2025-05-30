@@ -22,17 +22,15 @@ const app = express();
 const corsOptions = {
   origin: function (origin, callback) {
     const allowedOrigins = [
-      "http://localhost:5173", // Development server
-      "https://www.my-website.ch", // Production site
-      undefined, // Allow requests with no origin (like mobile apps, curl requests)
+      "http://localhost:5173",
+      "https://www.my-website.ch",
+      "https://happy-api-hd3g.onrender.com",
     ];
 
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true); // ✅ autorise les requêtes sans origin (ex: mobile, curl)
     } else {
-      const msg =
-        "The CORS policy for this site does not allow access from the specified Origin.";
-      callback(new Error(msg), false);
+      callback(new Error("Not allowed by CORS"), false);
     }
   },
   credentials: true,

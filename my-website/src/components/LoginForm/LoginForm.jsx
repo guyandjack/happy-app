@@ -65,7 +65,12 @@ function LoginForm() {
       // Simulate API call
       //const response = await mockApiCall(data);
 
-      const response = await axios.post(`${urlApi}/auth/login`, data);
+      const response = await axios.post(`${urlApi}/auth/login`, data, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       // Check if server returned a valid HTTP status
       if (!response) {
