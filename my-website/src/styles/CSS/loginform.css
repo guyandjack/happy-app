@@ -7,7 +7,7 @@
 .login-form {
   width: 100%;
   padding: 1.5rem;
-  background-color: white;
+  background-color: #fbfbfc;
   border-radius: 0.5rem;
   -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -22,7 +22,7 @@
   margin-bottom: 0.5rem;
   font-weight: 700;
   font-size: 0.875rem;
-  color: #374151;
+  color: #024d4a;
 }
 
 .form-input {
@@ -115,23 +115,22 @@
 
 .btn-primary {
   width: 100%;
-  background-color: #057ee6;
-  color: white;
+  background-color: #024d4a;
+  color: #ffffff;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: #1ba4e3;
+  background-color: #00beb8;
 }
 
 .btn-primary:focus:not(:disabled) {
   border: mone;
-  background-color: #1ba4e3;
+  background-color: #00beb8;
 }
 
 .btn-primary:disabled {
   background-color: #9ca3af;
   cursor: not-allowed;
-  opacity: 0.7;
 }
 
 /* Toast Notification Styles */
@@ -272,4 +271,30 @@
   margin-top: 1rem;
   font-size: 1rem;
   color: #4b5563;
+}
+
+.page-container.dark-mode .login-form {
+  background-color: #013432;
+}
+
+.page-container.dark-mode .form-label {
+  color: #ffffff;
+}
+
+.page-container.dark-mode .form-input {
+  background-color: #024d4a;
+  color: #ffffff;
+}
+
+.page-container.dark-mode .btn-primary {
+  background-color: #036662;
+  color: #ffffff;
+}
+
+.page-container.dark-mode .btn-primary:hover:not(:disabled) {
+  background-color: #00beb8;
+}
+
+.page-container.dark-mode .btn-primary:disabled {
+  background-color: #9ca3af;
 }

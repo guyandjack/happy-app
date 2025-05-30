@@ -28,6 +28,7 @@ database-client-config.json
 backend/uploads/*
 backend/.env
 .env
-
+backend/private.key
+backend/public.key
 #gitignore
 .gitignore

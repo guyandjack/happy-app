@@ -294,7 +294,7 @@ function ContactForm() {
           <button
             type="button"
             onClick={handleSubmit(onSubmit)}
-            className="btn btn-primary login-btn"
+            className="btn btn-primary"
             disabled={!isSubmitting && isValid && isCaptchaValid ? false : true}
           >
             Envoyer

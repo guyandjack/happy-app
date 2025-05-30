@@ -16,12 +16,15 @@ import { CtaSection } from "@components/CtaSection/CtaSection.jsx";
 
 //import des scripts
 import { initFaq, initIconSetting } from "@scripts/page-services.js";
+import { checkToken } from "@scripts/page-dashboard.js";
 
 //initialisation des scripts
 //effet collapse faq
 initFaq();
 //effet rotation icon
 initIconSetting();
+//check token page dashboard
+//checkToken();
 
 /******* concerne toutes les pages********************
  * ***start
@@ -184,13 +187,17 @@ if (articlesListContainer) {
  */
 
 // Mount Dashboard component
-const dashboardContainer = document.getElementById("RC-dashboard-root");
-if (dashboardContainer) {
-  ReactDOM.createRoot(dashboardContainer).render(
-    <React.StrictMode>
-      <Dashboard />
-    </React.StrictMode>
-  );
+try {
+  const dashboardContainer = document.getElementById("RC-dashboard-root");
+  if (dashboardContainer) {
+    ReactDOM.createRoot(dashboardContainer).render(
+      <React.StrictMode>
+        <Dashboard />
+      </React.StrictMode>
+    );
+  }
+} catch (error) {
+  console.error("Error mounting Dashboard:", error);
 }
 /******* concerne la page dashboard********************
  * ***end

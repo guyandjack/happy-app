@@ -53,7 +53,7 @@
     }
 
     #img-contact-2 {
-        bottom: -400px;
+        bottom: -425px;
         right: 50%;
         transform: translateX(50%);
         width: 400px;
@@ -301,9 +301,7 @@
                 fill: map-get($colors-rule, sixth-color);
             }
 
-            .btn-primary {
-                background-color: map-get($colors-rule, sixth-color);
-            }
+
         }
     }
 

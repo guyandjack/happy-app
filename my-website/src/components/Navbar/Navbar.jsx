@@ -7,6 +7,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 //import des composants enfants
 import { ToggleSwitch } from "@components/ToggleSwitch/ToggleSwitch.jsx";
+import { TimerSession } from "@components/TimerSession/timerSession.jsx";
 
 //import des icons
 //import burgerIcon from '../../../public/images/icons/menu-burger.svg';
@@ -173,6 +174,7 @@ function Navbar() {
             className="logo-image"
           />
         </a>
+
         <button
           className={`burger-menu ${isOpen ? "open" : ""}`}
           onClick={toggleMenu}
@@ -262,6 +264,9 @@ function Navbar() {
           >
             <img className="flag-image" src={flagEN} alt="English" />
           </button>
+        </li>
+        <li className="timer-session-container" role="none">
+          <TimerSession />
         </li>
         <li className="dark-mode-switch" role="none">
           <ToggleSwitch />

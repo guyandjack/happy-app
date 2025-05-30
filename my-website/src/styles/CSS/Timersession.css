@@ -1,0 +1,128 @@
+@charset "UTF-8";
+.timer-session {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0px;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  overflow: hidden;
+}
+
+@media (min-width: 992px) {
+  .timer-session {
+    width: 130px;
+    margin: 0px;
+    overflow: visible;
+  }
+}
+
+@media (min-width: 1500px) {
+  .timer-session {
+    width: 200px;
+    margin: 0px;
+  }
+}
+
+.timer-session .timer-user-session {
+  position: relative;
+  cursor: pointer;
+  padding: 0.75rem;
+  background-color: #00beb8;
+  color: #ffffff;
+  -webkit-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.timer-session .timer-user-session:hover {
+  background-color: #024d4a;
+}
+
+.timer-session .timer-user-session p {
+  margin: 0;
+  font-weight: 500;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.timer-session .timer-user-session p::after {
+  content: '▼';
+  font-size: 0.8rem;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  -o-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+}
+
+.timer-session .timer-user-session.active p::after {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.timer-session .collapsible-content {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 0.3s ease-out;
+  -o-transition: max-height 0.3s ease-out;
+  transition: max-height 0.3s ease-out;
+  background-color: #ffffff;
+}
+
+@media (min-width: 992px) {
+  .timer-session .collapsible-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    max-width: 150px;
+    z-index: 1000;
+  }
+}
+
+.timer-session .collapsible-content.active {
+  width: 100%;
+  max-height: 300px;
+}
+
+.timer-session .timer-session-counter {
+  width: 100%;
+  text-align: center;
+  color: #024d4a;
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: #c7e3cd;
+}
+
+.timer-session .timer-session-button {
+  width: 100%;
+}
+
+.timer-session .timer-session-button button {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  background-color: #00beb8;
+  color: #ffffff;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.timer-session .timer-session-button button:hover {
+  background-color: #024d4a;
+}

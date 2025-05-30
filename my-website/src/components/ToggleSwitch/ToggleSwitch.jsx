@@ -19,7 +19,7 @@ function ToggleSwitch() {
     const mode = localStorage.getItem("darkMode");
     if (pageContainer && mode === "true") {
       pageContainer.classList.add("dark-mode");
-    } else {
+    } else if (pageContainer && mode === "false") {
       pageContainer.classList.remove("dark-mode");
     }
   }, [isDarkMode]);

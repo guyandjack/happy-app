@@ -32,7 +32,6 @@
 
 .dark-mode {
   background-color: #024d4a;
-  color: #ffffff;
 }
 
 body,
@@ -463,7 +462,7 @@ header {
 }
 
 .page-container.dark-mode .faq-section .container .faq-grid .faq-item {
-  background: #575757;
+  background: #313131;
 }
 
 .page-container.dark-mode .faq-section .container .faq-grid .faq-item h3 {

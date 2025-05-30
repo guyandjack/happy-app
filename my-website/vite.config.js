@@ -32,6 +32,7 @@ export default defineConfig({
         connexion_fr: "public/fr/connexion.html",
         legal_fr: "public/fr/legal/mentions-legales.html",
         politique_fr: "public/fr/legal/politique-de-confidentialite.html",
+        dashboard_fr: "public/fr/dashboard.html",
 
         // EN pages
         about_en: "public/en/about.html",

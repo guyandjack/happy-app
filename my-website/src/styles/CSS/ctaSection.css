@@ -95,12 +95,14 @@
   color: rgba(23, 23, 23, 0.8);
 }
 
-.cta-section .btn-primary {
+.cta-section > .btn-primary {
+  display: inline-block;
   width: 100%;
   max-width: 200px;
   margin: 0 auto;
   background-color: #c3066b;
   color: #ffffff;
+  border: 2px solid #c3066b;
   padding: 12px 24px;
   border-radius: 6px;
   font-size: 1.1rem;
@@ -109,13 +111,23 @@
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  border: 2px solid #c3066b;
 }
 
-.cta-section .btn-primary:hover {
+.cta-section > .btn-primary:hover {
   background-color: #ffffff;
   color: #c3066b;
   -webkit-transform: translateY(-5px);
       -ms-transform: translateY(-5px);
           transform: translateY(-5px);
+}
+
+.page-container.dark-mode .cta-section .btn-primary {
+  background-color: #c3066b;
+  color: #ffffff;
+  border: 2px solid #c3066b;
+}
+
+.page-container.dark-mode .cta-section .btn-primary:hover {
+  background-color: #00beb8;
+  border: 2px solid #024d4a;
 }

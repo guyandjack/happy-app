@@ -41,7 +41,7 @@
 
 .dark-mode {
     background-color: map-get($colors-rule, first-color);
-    color: map-get($colors-rule, sixth-color);
+    //color: map-get($colors-rule, sixth-color);
 }
 
 body,
@@ -461,7 +461,7 @@ header {
             }
 
             .faq-item {
-                background: lighten(map-get($colors-rule, fifth-color), 25%);
+                background: lighten(map-get($colors-rule, fifth-color), 10%);
 
                 h3 {
                     color: lighten(map-get($colors-rule, second-color), 5%);

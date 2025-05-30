@@ -1,36 +1,35 @@
 //import des hook
-import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { jwtDecode } from "jwt-decode";
+import axios from "axios";
 
 //import des composants enfants
-import { ThreeDots } from 'react-loader-spinner';
+import { ThreeDots } from "react-loader-spinner";
 
 //import dse fonctions
-import { localOrProd } from '@utils/fonction/testEnvironement';
+import { localOrProd } from "@utils/fonction/testEnvironement";
+import { storeToken } from "@utils/fonction/storeToken";
 
 //import des icons
 import eyeClosed from "@assets/images/icons/eye-closed.png";
 import eyeOpened from "@assets/images/icons/eye-opened.png";
 
-
 //import des feuilles de style
 import "@styles/CSS/loginform.css";
 
-
-
 function LoginForm() {
-
   const { url, urlApi, mode } = localOrProd();
   const [httpError, setHttpError] = useState(null);
   const [authError, setAuthError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [toast, setToast] = useState({ show: false, message: '', type: '' });
-  
-  const { 
-    register, 
-    handleSubmit, 
-    formState: { errors, isValid } 
+  const [toast, setToast] = useState({ show: false, message: "", type: "" });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
   } = useForm({ mode: "onTouched" });
 
   // Hide toast after 5 seconds
@@ -44,7 +43,7 @@ function LoginForm() {
     return () => clearTimeout(toastTimer);
   }, [toast]);
 
-  const showToast = (message, type = 'info') => {
+  const showToast = (message, type = "info") => {
     setToast({ show: true, message, type });
   };
 
@@ -52,33 +51,27 @@ function LoginForm() {
     setShowPassword(!showPassword);
   };
 
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
     try {
       // Set submitting state
       setIsSubmitting(true);
-      
+
       // Reset errors
       setHttpError(null);
       setAuthError(null);
-      
+
       //console.log('Form data submitted:', data);
-      
+
       // Simulate API call
       //const response = await mockApiCall(data);
 
-      const response = await fetch(`${urlApi}/auth/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
+      const response = await axios.post(`${urlApi}/auth/login`, data);
 
       // Check if server returned a valid HTTP status
-      if (!response.ok) {
+      if (!response) {
         if (response.status === 401) {
-          setAuthError('Identifiant ou mot de passe invalide');
-          showToast('Identifiant ou mot de passe invalide', 'error');
+          setAuthError("Identifiant ou mot de passe invalide");
+          showToast("Identifiant ou mot de passe invalide", "error");
           return;
         }
         throw new Error(
@@ -86,44 +79,44 @@ function LoginForm() {
         );
       }
 
-      if (response.ok) {
-        let responseData = await response.json();
-        console.log("Login response:", responseData); // Debug the response
-        
-        if (responseData.status === "success") {
+      if (response) {
+        console.log("Login response:", response); // Debug the response
+        console.log("Login response data:", response.data); // Debug the response
+
+        if (response.data.status === "success") {
           // Show success toast
-          showToast('Connexion réussie', 'success');
-          
-          // Store token - make sure you're accessing the right property
-          localStorage.setItem("token", responseData.token);
-          
-          // Other localStorage items - adjust based on your actual response structure
-          if (responseData.data && responseData.data.user) {
-            localStorage.setItem("admin", responseData.data.user.name);
+          showToast("Connexion réussie", "success");
+
+          // Store token
+          let isTokenRefreshed = storeToken(response.data, jwtDecode);
+          if (!isTokenRefreshed) {
+            clearLocalStorageInfoSession("fr/connexion.html");
+          } else {
+            //redirection vers le dashboard
+            alert("Connexion réussie, redirection vers le dashboard");
+            return;
           }
-          
-          localStorage.setItem("time", new Date().getTime());
-          localStorage.setItem("expire", new Date().getTime() + (24 * 60 * 60 * 1000));
-          
-          setTimeout(() => {
-            window.location.href = "/fr/dashboard.html";
-          }, 1000);
+
+          //redirection vers le dashboard
+          //window.location.href = "/fr/dashboard.html";
         } else {
           // Handle other success responses that aren't actually successful logins
-          setAuthError('Erreur de connexion, veuillez réessayer');
-          showToast('Erreur de connexion, veuillez réessayer', 'error');
+          setAuthError("Erreur de connexion, veuillez réessayer");
+          showToast("Erreur de connexion, veuillez réessayer", "error");
         }
       }
     } catch (error) {
       // Show HTTP error
-      setHttpError('Une erreur HTTP est survenue. Veuillez réessayer plus tard.');
-      showToast('Erreur de connexion, veuillez réessayer plus tard', 'error');
-      console.error('Login error:', error);
+      setHttpError(
+        "Une erreur HTTP est survenue. Veuillez réessayer plus tard."
+      );
+      showToast("Erreur de connexion, veuillez réessayer plus tard", "error");
+      console.error("Login error:", error);
     } finally {
       setIsSubmitting(false);
     }
   };
-  
+
   /* // Mock API call function (simulates backend)
   const mockApiCall = (data) => {
     return new Promise((resolve) => {
@@ -139,7 +132,8 @@ function LoginForm() {
   }; */
 
   // Determine if button should be disabled
-  const isButtonDisabled = !isValid || isSubmitting || Object.keys(errors).length > 0;
+  const isButtonDisabled =
+    !isValid || isSubmitting || Object.keys(errors).length > 0;
 
   return (
     <div className="login-form-container">
@@ -147,9 +141,9 @@ function LoginForm() {
         <div className={`toast-notification ${toast.type}`}>
           <div className="toast-content">
             <span className="toast-message">{toast.message}</span>
-            <button 
-              className="toast-close" 
-              onClick={() => setToast({...toast, show: false})}
+            <button
+              className="toast-close"
+              onClick={() => setToast({ ...toast, show: false })}
               aria-label="Fermer"
             >
               ×
@@ -157,15 +151,15 @@ function LoginForm() {
           </div>
         </div>
       )}
-      
+
       {isSubmitting && (
         <div className="loader-overlay">
           <div className="loader-container">
-            <ThreeDots 
-              height="80" 
-              width="80" 
+            <ThreeDots
+              height="80"
+              width="80"
               radius="9"
-              color="#3b82f6" 
+              color="#3b82f6"
               ariaLabel="three-dots-loading"
               visible={true}
             />
@@ -173,70 +167,69 @@ function LoginForm() {
           </div>
         </div>
       )}
-      
+
       <form className="login-form">
         {httpError && (
-          <div className="error-message http-error">
-            {httpError}
-          </div>
+          <div className="error-message http-error">{httpError}</div>
         )}
-        
+
         {authError && (
-          <div className="error-message auth-error">
-            {authError}
-          </div>
+          <div className="error-message auth-error">{authError}</div>
         )}
-        
+
         <div className="form-group">
           <label htmlFor="email" className="form-label">
             {"Identifiant"}
           </label>
           <div className="input-container">
-          <input
-            id="email"
-            type="email"
-            className={`form-input ${errors.email ? 'input-error' : ''}`}
-            {...register("email", { 
-              required: "L'email est requis", 
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: "Format d'email invalide"
-              }
-            })}
-          />
+            <input
+              id="email"
+              type="email"
+              className={`form-input ${errors.email ? "input-error" : ""}`}
+              {...register("email", {
+                required: "L'email est requis",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Format d'email invalide",
+                },
+              })}
+            />
           </div>
           <div className="error-message">
-          {errors.email && (
-            <p className="error-text">
-              {errors.email.message}
-            </p>
-          )}
+            {errors.email && (
+              <p className="error-text">{errors.email.message}</p>
+            )}
           </div>
         </div>
-        
+
         <div className="form-group">
           <label htmlFor="password" className="form-label">
-           {"Mot de passe"}
+            {"Mot de passe"}
           </label>
           <div className="input-container">
             <input
               id="password"
               type={showPassword ? "text" : "password"}
-              className={`form-input ${errors.password ? 'input-error' : ''}`}
-              {...register("password", { 
+              className={`form-input ${errors.password ? "input-error" : ""}`}
+              {...register("password", {
                 required: "Le mot de passe est requis",
                 pattern: {
-                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                  message: "Mot de passe invalide"
-                }
+                  value:
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                  message: "Mot de passe invalide",
+                },
               })}
             />
-            
-            <button 
+
+            <button
               type="button"
               className="password-toggle-btn"
               onClick={togglePasswordVisibility}
-              aria-label={showPassword ? "Masquer le mot de passe" : "Afficher le mot de passe"}
+              aria-label={
+                showPassword
+                  ? "Masquer le mot de passe"
+                  : "Afficher le mot de passe"
+              }
             >
               {showPassword ? (
                 <img className="eye-icon eye-closed" src={eyeClosed}></img>
@@ -246,21 +239,19 @@ function LoginForm() {
             </button>
           </div>
           <div className="error-message">
-          {errors.password && (
-            <p className="error-text">
-              {errors.password.message}
-            </p>
-          )}
+            {errors.password && (
+              <p className="error-text">{errors.password.message}</p>
+            )}
           </div>
         </div>
-        <div className='input-container'>
-        <button 
-          type="button" 
-          onClick={handleSubmit(onSubmit)}
-          className="btn btn-primary login-btn"
-          disabled={isButtonDisabled}
-        >
-          Se connecter
+        <div className="input-container">
+          <button
+            type="button"
+            onClick={handleSubmit(onSubmit)}
+            className="btn btn-primary login-btn"
+            disabled={isButtonDisabled}
+          >
+            Se connecter
           </button>
         </div>
       </form>
@@ -269,7 +260,3 @@ function LoginForm() {
 }
 
 export { LoginForm };
-
-
-
-

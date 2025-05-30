@@ -43,13 +43,13 @@
             0 4px 6px rgba(0, 0, 0, 0.05),
             0 10px 15px rgba(0, 0, 0, 0.1);
 
-        .intro {
+        /* .intro {
             font-size: 1.1rem;
             line-height: 1.8;
             color: rgba(map-get($colors-rule, fifth-color), 0.9);
             margin-bottom: 30px;
             padding: 0 15px;
-        }
+        } */
 
         // Company info styles
         .info-list {
@@ -224,5 +224,39 @@
                 }
             }
         }
+    }
+}
+
+//gestion du dark mode
+.page-container.dark-mode {
+    .legal-section {
+        h1 {
+            color: rgba(map-get($colors-rule, sixth-color), 0.9);
+        }
+
+        .legal-content {
+            background-color: lighten(map-get($colors-rule, first-color), 10%);
+            color: rgba(map-get($colors-rule, sixth-color), 0.9);
+        }
+    }
+
+    .info-list {
+        li {
+            color: rgba(map-get($colors-rule, sixth-color), 0.9);
+        }
+    }
+
+    .legal-list,
+    .policy-list {
+        h2 {
+            color: rgba(map-get($colors-rule, sixth-color), 0.6);
+        }
+
+
+
+        p {
+            color: rgba(map-get($colors-rule, sixth-color), 0.9);
+        }
+
     }
 }

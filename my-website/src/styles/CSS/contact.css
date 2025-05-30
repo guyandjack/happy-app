@@ -80,7 +80,7 @@
 }
 
 .contact-content #img-contact-2 {
-  bottom: -400px;
+  bottom: -425px;
   right: 50%;
   -webkit-transform: translateX(50%);
       -ms-transform: translateX(50%);
@@ -319,9 +319,4 @@
 .page-container.dark-mode .contact-content .contact-form-container .icon-contact,
 .page-container.dark-mode .contact-content .contact-info .icon-contact {
   fill: #ffffff;
-}
-
-.page-container.dark-mode .contact-content .contact-form-container .btn-primary,
-.page-container.dark-mode .contact-content .contact-info .btn-primary {
-  background-color: #ffffff;
 }
