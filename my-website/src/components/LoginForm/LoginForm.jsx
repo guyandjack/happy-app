@@ -192,10 +192,10 @@ function LoginForm() {
               type="email"
               className={`form-input ${errors.email ? "input-error" : ""}`}
               {...register("email", {
-                required: "L'email est requis",
+                required: "L'identifiant est requis",
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Format d'email invalide",
+                  message: "Format de l'identifiant invalide",
                 },
               })}
             />

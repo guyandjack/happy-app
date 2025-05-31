@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 //import des librairies
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 //import des composants enfants
 import { DisplayCounterDown } from "@components/TimerSession/DisplayCounterDown.jsx";
@@ -122,12 +123,32 @@ function TimerSession() {
   //fetch to refresh token
   const refreshToken = async () => {
     try {
-      const response = await axios.post(`${urlApi}/auth/refresh-token`, {
-        withCredentials: true,
-      });
-      const isTokenRefreshed = storeToken(response, jwtDecode);
-      if (!isTokenRefreshed) {
-        clearLocalStorage();
+      const response = await axios.post(
+        `${urlApi}/auth/refresh-token`,
+        {},
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data.status === "success") {
+        //stop le count down actuel
+        clearInterval(counter.current);
+
+        //store the new accesstoken
+        const isTokenRefreshed = storeToken(response.data, jwtDecode);
+        if (!isTokenRefreshed) {
+          throw new Error("Impossible de stoker le token dans le localStorage");
+        }
+
+        //reinitialise le compteur
+        setTimeRemaining(initCounterDown());
+
+        //relance le count down
+        setStartCounterDown(!startCounterDown);
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
