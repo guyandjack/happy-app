@@ -33,6 +33,11 @@ let ctaSectionContent = {
       text: "Envie d’un site performant qui booste vos ventes ? Contactez-moi pour en discuter !.",
       btn_text: "Contactez-moi",
     },
+    realisations: {
+      title: "Découvrez les entreprises que j'ai pu accompagner.",
+      text: "Contactez-moi pour en savoir plus.",
+      btn_text: "Contactez-moi",
+    },
   },
   en: {
     home: {

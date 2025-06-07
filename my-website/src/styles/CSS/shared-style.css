@@ -76,6 +76,11 @@ header {
   width: 100%;
 }
 
+#RC-slider {
+  width: 100%;
+  min-height: 300px;
+}
+
 #RC-footer {
   width: 100%;
 }

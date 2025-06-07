@@ -34,12 +34,12 @@ let heroContent = {
       title: "A propos",
       subtitle: "Développeur web passionné et engagé.",
     },
-    /* realisation: {
-      img_1: "",
-      img_2: "",
+    realisations: {
+      img_1: imgSite_1,
+      img_2: imgSite_2,
       title: "Réalisations",
-      subtitle: "Découvrez mes réalisations.",
-    }, */
+      subtitle: "Découvrez les entreprises que j'ai pu accompagner.",
+    },
     articles: {
       img_1: imgArticles_1,
       img_2: imgArticles_2,

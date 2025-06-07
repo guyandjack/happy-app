@@ -2,6 +2,11 @@
 @import "../../utils/breakpoint/breakpoint.scss";
 @import "../../utils/color-rule/color-rule.scss";
 
+
+
+
+
+
 .login-form-container {
     width: 100%;
     //max-width: 28rem;
@@ -135,8 +140,8 @@
 /* Toast Notification Styles */
 .toast-notification {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 100px;
+    right: 50px;
     z-index: 1000;
     min-width: 250px;
     max-width: 350px;
@@ -175,11 +180,17 @@
     color: #0c5460;
 }
 
+.toast-notification.offline {
+    background-color: orangered;
+    border-left: 4px solid orange;
+    color: white;
+}
+
+
+
 .toast-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 16px;
+    position: relative;
+    padding: 12px 35px 12px 12px;
 }
 
 .toast-message {
@@ -188,18 +199,17 @@
 }
 
 .toast-close {
-    background: none;
-    border: none;
-    font-size: 20px;
-    line-height: 1;
+    position: absolute;
+    top: 5px;
+    right: 5px;
     cursor: pointer;
-    padding: 0 0 0 10px;
-    color: inherit;
-    opacity: 0.7;
+    width: 1.2em;
+    height: 1.2em;
 }
 
 .toast-close:hover {
-    opacity: 1;
+    transform: scale(1.1);
+    opacity: 0.8;
 }
 
 /* Loader Styles */

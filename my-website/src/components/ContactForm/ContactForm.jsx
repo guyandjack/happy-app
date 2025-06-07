@@ -6,8 +6,10 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { localOrProd } from "@utils/fonction/testEnvironement";
 import axios from "axios";
 
+//import des icons
+import { IoMdCloseCircleOutline } from "react-icons/io";
+
 const siteKey = import.meta.env.VITE_SITE_KEY_RECAPTCHA;
-console.log("sitekey: ", siteKey);
 
 // Import same SCSS file as LoginForm
 import "@styles/CSS/loginform.css";
@@ -27,18 +29,47 @@ function ContactForm() {
 
   // Hide toast after 5 seconds
   useEffect(() => {
+    if (!toast.show) {
+      return;
+    }
     let toastTimer;
-    if (toast.show) {
+    if (toast.show && toast.type !== "offline") {
       toastTimer = setTimeout(() => {
         setToast({ ...toast, show: false });
       }, 5000);
     }
+    if (toast.show && toast.type === "offline") {
+      setToast({ ...toast, show: true });
+    }
     return () => clearTimeout(toastTimer);
-  }, [toast]);
+  }, [toast.show, toast.type]);
 
   const showToast = (message, type = "info") => {
     setToast({ show: true, message, type });
   };
+
+  //detecte si la connexion internet est rompue
+  useEffect(() => {
+    window.addEventListener("offline", () => {
+      setHttpError("Veuillez vérifier votre connexion internet");
+      showToast("Veuillez vérifier votre connexion internet", "offline");
+    });
+    window.addEventListener("online", () => {
+      setHttpError(null);
+      showToast("Connexion rétablie", "success");
+    });
+
+    return () => {
+      window.removeEventListener("offline", () => {
+        setHttpError("Veuillez vérifier votre connexion internet");
+        showToast("Veuillez vérifier votre connexion internet", "error");
+      });
+      window.removeEventListener("online", () => {
+        setHttpError(null);
+        showToast("Connexion rétablie", "success");
+      });
+    };
+  }, []);
 
   //fetch api recaptcha
   async function handleSubmitCaptcha(recaptchaToken) {
@@ -73,8 +104,15 @@ function ContactForm() {
     }
   }
 
+  //submit form
   const onSubmit = async (data) => {
     try {
+      if (!window.navigator.onLine) {
+        setHttpError("Veuillez vérifier votre connexion internet");
+        showToast("Veuillez vérifier votre connexion internet", "offline");
+        return;
+      }
+      // Set submitting state
       // Set submitting state
       setIsSubmitting(true);
 
@@ -128,14 +166,15 @@ function ContactForm() {
       {/* Toast - same structure as LoginForm */}
       {toast.show && (
         <div className={`toast-notification ${toast.type}`}>
-          <div className="toast-content">
+          <div className="flex-row-start-center toast-content">
             <span className="toast-message">{toast.message}</span>
-            <button
-              className="toast-close"
-              onClick={() => setToast({ ...toast, show: false })}
-            >
-              ×
-            </button>
+            {toast.type !== "offline" ? (
+              <button
+                onClick={() => setToast({ ...toast, show: false, type: "" })}
+              >
+                <IoMdCloseCircleOutline className="toast-close" />
+              </button>
+            ) : null}
           </div>
         </div>
       )}

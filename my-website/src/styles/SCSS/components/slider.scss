@@ -1,0 +1,68 @@
+@import "../../utils/color-rule/color-rule.scss";
+
+
+.slider-wrapper {
+    width: 100%;
+    height: 100%;
+
+    .arrow-prev,
+    .arrow-next {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        z-index: 10;
+        width: 50px;
+        height: 50px;
+        background-color: rgba(map-get($colors-rule, second-color), 0.4);
+        border-radius: 50%;
+
+        &:hover {
+            background-color: rgba(map-get($colors-rule, second-color), 0.9);
+        }
+    }
+
+    .arrow-next {
+        right: -60px;
+    }
+
+    .arrow-prev {
+        left: -60px;
+    }
+
+    .wrapper-list {
+        position: relative;
+        height: 100%;
+
+    }
+
+    .slider {
+
+        display: flex;
+
+        position: relative;
+        height: 100%;
+        list-style-type: none;
+
+        scroll-snap-type: x mandatory;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+
+
+        padding: 10px;
+
+    }
+
+    .slider-item {
+        scroll-snap-align: start;
+        height: 300px;
+        background-color: map-get($colors-rule, fourth-color);
+        padding: 10px;
+        text-align: center;
+    }
+
+}

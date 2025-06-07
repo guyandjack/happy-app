@@ -13,6 +13,7 @@ import { ArticleMenuSide } from "@components/Navbar/ArticleMenuSide.jsx";
 import { IndexCards } from "@components/Card/IndexCards.jsx";
 import { Hero } from "@components/Hero/Hero.jsx";
 import { CtaSection } from "@components/CtaSection/CtaSection.jsx";
+import { Slider } from "@components/Slider/slider.jsx";
 
 //import des scripts
 import { initFaq, initIconSetting } from "@scripts/page-services.js";
@@ -200,5 +201,27 @@ try {
   console.error("Error mounting Dashboard:", error);
 }
 /******* concerne la page dashboard********************
+ * ***end
+ */
+
+/******* concerne la page realisations********************
+ * ***start
+ */
+
+try {
+  const sliderContainer = document.getElementById("RC-slider");
+  if (sliderContainer) {
+    ReactDOM.createRoot(sliderContainer).render(
+      <React.StrictMode>
+        <Slider width={0.5} height={300} nbrItems={4} gap={20} />
+      </React.StrictMode>
+    );
+  } else {
+    console.log("no slider container found");
+  }
+} catch (error) {
+  console.error("Error mounting Slider:", error);
+}
+/******* concerne la page realisations********************
  * ***end
  */
