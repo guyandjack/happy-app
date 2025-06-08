@@ -21,6 +21,27 @@
         transition: opacity 1s ease;
     }
 
+    // Toast
+    .toast {
+        position: absolute;
+        bottom: -50px;
+        right: 50px;
+        padding: 10px 20px;
+        color: map-get($colors-rule, sixth-color);
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: bottom 0.3s ease;
+
+        &.offline {
+            background-color: rgba(map-get($colors-rule, fourth-color), 0.8);
+
+        }
+
+        &.online {
+            background-color: rgba(map-get($colors-rule, second-color), 0.8);
+        }
+    }
+
     // Brand section
     .navbar-brand {
         display: flex;

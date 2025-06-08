@@ -25,7 +25,7 @@ function Navbar() {
   const [currentPath, setCurrentPath] = useState("");
   const [currentLang, setCurrentLang] = useState("fr");
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-  //const [isDarkMode, setIsDarkMode] = useState(false);
+  const [toast, setToast] = useState({ show: false, message: "", type: "" });
 
   const navbarRef = useRef(null);
   const menuItemCollapseRef = useRef(null);
@@ -38,6 +38,42 @@ function Navbar() {
       }, 1000);
     }
   };
+
+  const showToast = (message, type) => {
+    setToast({ show: true, message, type });
+  };
+
+  //detecte si la connexion internet est rompue
+  useEffect(() => {
+    window.addEventListener("offline", () => {
+      showToast("Veuillez vérifier votre connexion internet", "offline");
+    });
+    window.addEventListener("online", () => {
+      showToast("Connexion rétablie", "online");
+    });
+
+    return () => {
+      window.removeEventListener("offline", () => {
+        showToast("Veuillez vérifier votre connexion internet", "offline");
+      });
+      window.removeEventListener("online", () => {
+        showToast("Connexion rétablie", "online");
+      });
+    };
+  }, []);
+
+  //affiche le toast
+  useEffect(() => {
+    if (!toast.show) {
+      return;
+    }
+    let toastTimer;
+    if (toast.type === "online") {
+      toastTimer = setTimeout(() => setToast({ ...toast, show: false }), 5000);
+    }
+
+    return () => clearTimeout(toastTimer);
+  }, [toast.show, toast.type]);
 
   // Gestion du path et du langage
   useEffect(() => {
@@ -166,6 +202,11 @@ function Navbar() {
 
   return (
     <nav ref={navbarRef} className="navbar" aria-label="Main navigation">
+      {toast.show ? (
+        <div className={`toast ${toast.type}`}>
+          <p>{toast.message}</p>
+        </div>
+      ) : null}
       <div className="navbar-brand">
         <a href={currentLang === "fr" ? "/" : "/en/home.html"} className="logo">
           <img
