@@ -1,5 +1,5 @@
 // Use same imports as LoginForm
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { ThreeDots } from "react-loader-spinner";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -21,11 +21,25 @@ function ContactForm() {
   const [toast, setToast] = useState({ show: false, message: "", type: "" });
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
 
+  const formValueRef = useRef({});
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isValid },
   } = useForm({ mode: "onTouched" });
+
+  //initialise les valeurs des inputs utilisateur
+
+  if (localStorage.getItem("contactFormData")) {
+    let data = JSON.parse(localStorage.getItem("contactFormData"));
+    console.log("data: ", data);
+    formValueRef.current["name"] = data["name"];
+    formValueRef.current["firstName"] = data["firstName"];
+    formValueRef.current["email"] = data["email"];
+    formValueRef.current["message"] = data["message"];
+  }
 
   // Hide toast after 5 seconds
   useEffect(() => {
@@ -33,43 +47,17 @@ function ContactForm() {
       return;
     }
     let toastTimer;
-    if (toast.show && toast.type !== "offline") {
-      toastTimer = setTimeout(() => {
-        setToast({ ...toast, show: false });
-      }, 5000);
-    }
-    if (toast.show && toast.type === "offline") {
-      setToast({ ...toast, show: true });
-    }
+
+    toastTimer = setTimeout(() => {
+      setToast({ ...toast, show: false });
+    }, 5000);
+
     return () => clearTimeout(toastTimer);
   }, [toast.show, toast.type]);
 
   const showToast = (message, type = "info") => {
     setToast({ show: true, message, type });
   };
-
-  //detecte si la connexion internet est rompue
-  useEffect(() => {
-    window.addEventListener("offline", () => {
-      setHttpError("Veuillez vérifier votre connexion internet");
-      showToast("Veuillez vérifier votre connexion internet", "offline");
-    });
-    window.addEventListener("online", () => {
-      setHttpError(null);
-      showToast("Connexion rétablie", "success");
-    });
-
-    return () => {
-      window.removeEventListener("offline", () => {
-        setHttpError("Veuillez vérifier votre connexion internet");
-        showToast("Veuillez vérifier votre connexion internet", "error");
-      });
-      window.removeEventListener("online", () => {
-        setHttpError(null);
-        showToast("Connexion rétablie", "success");
-      });
-    };
-  }, []);
 
   //fetch api recaptcha
   async function handleSubmitCaptcha(recaptchaToken) {
@@ -110,6 +98,10 @@ function ContactForm() {
       if (!window.navigator.onLine) {
         setHttpError("Veuillez vérifier votre connexion internet");
         showToast("Veuillez vérifier votre connexion internet", "offline");
+        console.log("data formulaire: ", data);
+        //sauvegade des entrees utilisateur
+        localStorage.setItem("contactFormData", JSON.stringify(data));
+
         return;
       }
       // Set submitting state
@@ -124,31 +116,39 @@ function ContactForm() {
         //recaptchaToken: recaptchaValue,
       });
 
+      console.log("response du serveur: ", response);
+
       // Check if server returned a valid HTTP status
-      if (!response.ok) {
+      if (!response) {
+        //save data in localStorage
+        localStorage.setItem("contactFormData", JSON.stringify(data));
         throw new Error(
           `Erreur HTTP : ${response.status} ${response.statusText}`
         );
       }
 
-      if (response.ok) {
-        let responseData = await response.json();
+      if (response.data.status === "success") {
+        // Show success toast
+        showToast("Message envoyé avec succès", "success");
 
-        if (responseData.status === "success") {
-          // Show success toast
-          showToast("Message envoyé avec succès", "success");
+        // Reset form
+        formValueRef.current = {};
+        reset();
+        //reset localStorage
+        localStorage.removeItem("contactFormData");
 
-          // Reset form
-          reset();
-          // Reset reCAPTCHA
-          //setRecaptchaValue(null);
-        } else {
-          // Handle error response
-          setHttpError("Erreur lors de l'envoi du message");
-          showToast("Erreur lors de l'envoi du message", "error");
-        }
+        // Reset reCAPTCHA
+        //setRecaptchaValue(null);
+      } else {
+        //sauvegade des entrees utilisateur
+        localStorage.setItem("contactFormData", JSON.stringify(data));
+        // Handle error response
+        setHttpError("Erreur lors de l'envoi du message");
+        showToast("Erreur lors de l'envoi du message", "error");
       }
     } catch (error) {
+      //sauvegade des entrees utilisateur
+      localStorage.setItem("contactFormData", JSON.stringify(data));
       // Show HTTP error
       setHttpError("Une erreur est survenue. Veuillez réessayer plus tard.");
       showToast("Erreur de connexion, veuillez réessayer plus tard", "error");
@@ -215,6 +215,8 @@ function ContactForm() {
                 required: "Ce champ est requis",
                 minLength: { value: 2, message: "Min 2 caractères" },
                 maxLength: { value: 50, message: "Max 50 caractères" },
+                value: formValueRef?.current?.name,
+
                 pattern: {
                   value: /^[\w\-'. ]{1,49}$/u,
                   message:
@@ -242,6 +244,7 @@ function ContactForm() {
                 required: "Ce champ est requis",
                 minLength: { value: 2, message: "Min 2 caractères" },
                 maxLength: { value: 50, message: "Max 50 caractères" },
+                value: formValueRef?.current?.firstName,
                 pattern: {
                   value: /^[\w\-'. ]{1,49}$/u,
                   message:
@@ -271,6 +274,7 @@ function ContactForm() {
                 required: "Ce champ est requis",
                 minLength: { value: 2, message: "Min 2 caractères" },
                 maxLength: { value: 100, message: "Max 100 caractères" },
+                value: formValueRef?.current?.email,
                 pattern: {
                   value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,100}$/,
                   message: "Format d'email invalide",
@@ -299,6 +303,7 @@ function ContactForm() {
                 required: "Ce champ est requis",
                 minLength: { value: 10, message: "Min 10 caractères" },
                 maxLength: { value: 1000, message: "Max 1000 caractères" },
+                value: formValueRef?.current?.message,
                 pattern: {
                   value: /^[\w\-'.,!?:; ]{10,1000}$/,
                   message:
