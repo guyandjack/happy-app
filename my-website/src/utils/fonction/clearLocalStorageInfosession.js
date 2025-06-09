@@ -6,6 +6,7 @@ function clearLocalStorageInfoSession(url) {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
   localStorage.removeItem("lastTime");
+  localStorage.removeItem("tokenExpiration");
   if (url) {
     window.location.href = `/${url}`;
   }
