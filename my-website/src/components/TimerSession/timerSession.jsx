@@ -13,6 +13,7 @@ import { clearLocalStorageInfoSession } from "@utils/fonction/clearLocalStorageI
 import { initCounterDown } from "@utils/fonction/initCounterDown";
 import { storeToken } from "@utils/fonction/storeToken";
 import { localOrProd } from "@utils/fonction/testEnvironement.js";
+import { handleAxiosError } from "@utils/fonction/handleAxiosError";
 
 //feuilles de style
 import "@styles/CSS/Timersession.css";
@@ -71,39 +72,55 @@ function TimerSession() {
     }, 1000);
   };
 
-  //simule une session active
-  /*useEffect(() => {
-    //supprime les données du localStorage
-    //clearLocalStorageInfoSession("");
-    //simule une session active
-    if (!localStorage.getItem("timeRemaining")) {
-      setTimeout(() => {
-        localStorage.setItem("timeRemaining", "20");
-        localStorage.setItem("user", "John Doe");
-      }, 3000);
+  //fonction qui vérifie si la session est active et valide
+  const checkSession = () => {
+    let tokenExpiration =
+      parseInt(localStorage.getItem("tokenExpiration")) || 0;
+    let currentTime = Math.floor(Date.now() / 1000);
+    if (currentTime >= tokenExpiration) {
+      return false;
     }
-  }, []);*/
+    return true;
+  };
+
+  //fonction qui supprime la session
+  const deleteSession = () => {
+    clearLocalStorageInfoSession();
+    setTimeRemaining(initCounterDown());
+    setIsSessionActive(false);
+  };
+
+  //fonction qui lance la session
+  const startSession = () => {
+    setIsSessionActive(true);
+    setTimeRemaining(initCounterDown());
+    setStartCounterDown(!startCounterDown);
+  };
 
   //detect if a session is active all 1s
   useEffect(() => {
-    if (localStorage.getItem("timeRemaining")) {
-      setIsSessionActive(true);
-      setStartCounterDown(!startCounterDown);
+    let intervalSearchSession = null;
+    //test si la session est active au montage de la page
+    if (!checkSession()) {
+      deleteSession();
+      intervalSearchSession = setInterval(() => {
+        console.log("pas de session active");
+        if (checkSession()) {
+          console.log("session active");
+          startSession();
+          //clearInterval(intervalSearchSession);//stop la recherche d'une session
+        }
+      }, 1000);
       return;
+    } else {
+      startSession();
     }
 
-    const intervalSearchSession = setInterval(() => {
-      console.log("pas de session active");
-      if (localStorage.getItem("timeRemaining")) {
-        console.log("session active");
-        setIsSessionActive(true);
-        //setTimeRemaining(parseInt(localStorage.getItem("timeRemaining")));
-        setTimeRemaining(initCounterDown());
+    return () => {
+      if (intervalSearchSession > 0) {
         clearInterval(intervalSearchSession);
-        setStartCounterDown(!startCounterDown);
       }
-    }, 1000);
-    return () => clearInterval(intervalSearchSession);
+    };
   }, []);
 
   //lance le compte à rebours
@@ -131,6 +148,7 @@ function TimerSession() {
           headers: {
             "Content-Type": "application/json",
           },
+          timeout: 10000,
         }
       );
 
@@ -151,25 +169,7 @@ function TimerSession() {
         setStartCounterDown(!startCounterDown);
       }
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        if (error.response) {
-          // Erreur côté serveur (ex: 401, 403, 500)
-          console.error(
-            "Erreur HTTP :",
-            error.response.status,
-            error.response.data
-          );
-        } else if (error.request) {
-          // Aucune réponse (timeout, offline)
-          console.error("Pas de réponse du serveur :", error.request);
-        } else {
-          // Erreur autre (mauvaise URL, etc.)
-          console.error("Erreur Axios :", error.message);
-        }
-      } else {
-        // Erreur non Axios (ex: bug JS)
-        console.error("Erreur inconnue :", error);
-      }
+      handleAxiosError(error);
     }
   };
 
@@ -206,7 +206,7 @@ function TimerSession() {
         <li className="flex-column-center-center timer-session-button">
           <button
             onClick={() => {
-              clearLocalStorageInfoSession("index.html");
+              deleteSession();
             }}
           >
             Déconnexion

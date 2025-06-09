@@ -10,6 +10,7 @@ import { ThreeDots } from "react-loader-spinner";
 //import dse fonctions
 import { localOrProd } from "@utils/fonction/testEnvironement";
 import { storeToken } from "@utils/fonction/storeToken";
+import { handleAxiosError } from "@utils/fonction/handleAxiosError";
 
 //import des icons
 import eyeClosed from "@assets/images/icons/eye-closed.png";
@@ -60,81 +61,35 @@ function LoginForm() {
       setHttpError(null);
       setAuthError(null);
 
-      //console.log('Form data submitted:', data);
-
-      // Simulate API call
-      //const response = await mockApiCall(data);
-
       const response = await axios.post(`${urlApi}/auth/login`, data, {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
         },
+        timeout: 5000,
       });
 
-      // Check if server returned a valid HTTP status
-      if (!response) {
-        if (response.status === 401) {
-          setAuthError("Identifiant ou mot de passe invalide");
-          showToast("Identifiant ou mot de passe invalide", "error");
-          return;
-        }
-        throw new Error(
-          `Erreur HTTP : ${response.status} ${response.statusText}`
-        );
-      }
+      if (response.data.status === "success") {
+        // Show success toast
+        showToast("Connexion réussie", "success");
 
-      if (response) {
-        console.log("Login response:", response); // Debug the response
-        console.log("Login response data:", response.data); // Debug the response
-
-        if (response.data.status === "success") {
-          // Show success toast
-          showToast("Connexion réussie", "success");
-
-          // Store token
-          let isTokenRefreshed = storeToken(response.data, jwtDecode);
-          if (!isTokenRefreshed) {
-            clearLocalStorageInfoSession("fr/connexion.html");
-          } else {
-            //redirection vers le dashboard
-            alert("Connexion réussie, redirection vers le dashboard");
-            return;
-          }
-
-          //redirection vers le dashboard
-          //window.location.href = "/fr/dashboard.html";
+        // Store token
+        let isTokenRefreshed = storeToken(response.data, jwtDecode);
+        if (!isTokenRefreshed) {
+          clearLocalStorageInfoSession("fr/connexion.html");
         } else {
-          // Handle other success responses that aren't actually successful logins
-          setAuthError("Erreur de connexion, veuillez réessayer");
-          showToast("Erreur de connexion, veuillez réessayer", "error");
+          //redirection vers le dashboard
+          window.location.href = "/public/fr/dashboard.html";
+          return;
         }
       }
     } catch (error) {
-      // Show HTTP error
-      setHttpError(
-        "Une erreur HTTP est survenue. Veuillez réessayer plus tard."
-      );
-      showToast("Erreur de connexion, veuillez réessayer plus tard", "error");
-      console.error("Login error:", error);
+      const message = handleAxiosError(error);
+      showToast(message, "error");
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  /* // Mock API call function (simulates backend)
-  const mockApiCall = (data) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        // Simulate successful login with specific credentials
-        if (data.email === 'test@example.com' && data.password === 'Test1234!') {
-          resolve({ success: true });
-        } else {
-          resolve({ success: false });
-        }
-      }, 1000);
-    });
-  }; */
 
   // Determine if button should be disabled
   const isButtonDisabled =
