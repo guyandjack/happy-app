@@ -1,5 +1,11 @@
-import axios from "axios";
+//import de hooks
 import React, { useEffect, useState } from "react";
+
+//import des librairies
+import axios from "axios";
+import { toast } from "react-toastify";
+
+//import des icones
 import {
   FaKey,
   FaNewspaper,
@@ -7,13 +13,19 @@ import {
   FaSignOutAlt,
   FaTimes,
 } from "react-icons/fa";
-import { toast } from "react-toastify";
-import "@styles/CSS/dashboard.css";
+
+//import des composants enfants
 import AdminArticleList from "@components/Admin/AdminArticleList";
 import PasswordChange from "@components/Admin/PasswordChange";
 import ArticleForm from "@components/Articles/ArticleForm";
 
+//import des fonctions
 import { localOrProd } from "@utils/fonction/testEnvironement";
+import { handleAxiosError } from "@utils/fonction/handleAxiosError";
+import { clearLocalStorageInfoSession } from "@utils/fonction/clearLocalStorageInfosession";
+
+//feuilles de style
+import "@styles/CSS/dashboard.css";
 
 const Dashboard = () => {
   const { urlApi, url, mode } = localOrProd();
@@ -28,7 +40,7 @@ const Dashboard = () => {
       console.log("Dashboard - Token found:", !!token);
 
       if (!token) {
-        window.location.href = "/fr/connexion.html";
+        clearLocalStorageInfoSession("public/fr/connexion.html");
         return;
       }
 
@@ -37,15 +49,16 @@ const Dashboard = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
+          timeout: 10000,
         });
         setUser(response.data.data.user);
         setLoading(false);
       } catch (error) {
-        console.error("Authentication error:", error);
-        if (error.response && error.response.status === 401) {
-          localStorage.removeItem("token");
-          window.location.href = "/fr/connexion.html";
-        }
+        const message = handleAxiosError(error);
+        toast.error(message);
+        setTimeout(() => {
+          clearLocalStorageInfoSession("public/fr/connexion.html");
+        }, 3000);
       }
     };
 
@@ -53,9 +66,10 @@ const Dashboard = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
     toast.success("Déconnexion réussie");
-    window.location.href = "/index.html";
+    setTimeout(() => {
+      clearLocalStorageInfoSession("index.html");
+    }, 3000);
   };
 
   const toggleArticleForm = () => {
@@ -81,7 +95,6 @@ const Dashboard = () => {
           <div className="user-avatar">{user.name.charAt(0).toUpperCase()}</div>
           <div className="user-details">
             <h3>{user.name}</h3>
-            <p>{user.email}</p>
           </div>
         </div>
 
@@ -153,6 +166,3 @@ const Dashboard = () => {
 };
 
 export { Dashboard };
-
-
-

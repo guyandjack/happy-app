@@ -1,27 +1,20 @@
-@use 'sass:color';
 .index-cards-wrapper {
   width: 100%;
   margin-bottom: 40px;
 }
-
 .index-cards-wrapper .card-container .cards-grid {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
-
 .index-cards-wrapper .card-container .card {
   background-color: #fff;
   -webkit-transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
   transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
-  -o-transition: transform 0.3s ease, box-shadow 0.3s ease;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   transition: transform 0.3s ease, box-shadow 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
   height: 100%;
 }
-
 .index-cards-wrapper .card-container .card:hover {
   -webkit-transform: translateY(-5px);
       -ms-transform: translateY(-5px);
@@ -29,25 +22,21 @@
   -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
-
 .index-cards-wrapper .card-container .card .card-content {
   padding: 20px;
 }
-
 .index-cards-wrapper .card-container .card .card-content .card-title {
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 10px;
   color: #171717;
 }
-
 .index-cards-wrapper .card-container .card .card-content .card-description {
   font-size: 0.95rem;
   line-height: 1.5;
   color: #666;
   margin-bottom: 15px;
 }
-
 .index-cards-wrapper .card-container .card .card-content .card-arrow {
   margin-top: auto;
   display: -webkit-box;
@@ -60,54 +49,44 @@
       -ms-flex-align: center;
           align-items: center;
 }
-
 .index-cards-wrapper .card-container .card .card-content .card-arrow span {
   font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #057ee6;
+  color: #024d4a;
 }
-
 .index-cards-wrapper .card-container .card .card-content .card-arrow svg {
   -webkit-transition: -webkit-transform 0.3s ease;
   transition: -webkit-transform 0.3s ease;
-  -o-transition: transform 0.3s ease;
   transition: transform 0.3s ease;
   transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
-
 .index-cards-wrapper .card-container .card:hover .card-arrow svg {
   -webkit-transform: translateX(5px);
       -ms-transform: translateX(5px);
           transform: translateX(5px);
 }
-
 .index-cards-wrapper .card-container .card:nth-child(1) .card-accent {
-  background-color: #057ee6;
+  background-color: #024d4a;
 }
-
 .index-cards-wrapper .card-container .card:nth-child(2) .card-accent {
-  background-color: #1ba4e3;
+  background-color: #00beb8;
 }
-
 .index-cards-wrapper .card-container .card:nth-child(3) .card-accent {
-  background-color: #209966;
+  background-color: #c7e3cd;
 }
 
 @media (max-width: 992px) {
   .index-cards-wrapper .card-container .cards-grid {
-    -ms-grid-columns: (1fr)[2];
-        grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-
 @media (max-width: 576px) {
   .index-cards-wrapper .card-container .cards-grid {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
   .index-cards-wrapper .card-container .card .card-content .card-title {
     font-size: 1.2rem;
   }
-}
+}/*# sourceMappingURL=IndexCards.css.map */

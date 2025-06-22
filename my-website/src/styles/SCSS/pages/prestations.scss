@@ -8,7 +8,7 @@
   h2 {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 160px;
+    margin-bottom: 100px;
     position: relative;
 
     &::after {
@@ -34,8 +34,10 @@
     flex-flow: column;
     justify-content: space-between;
     align-items: center;
-    gap: 120px;
-    margin: 0 auto;
+    gap: 150px;
+    margin: 0px auto;
+    padding: 50px 20px;
+    //border: 2px solid red;
 
 
     .website-card-container {
@@ -59,8 +61,7 @@
         border-radius: 15px;
         color: rgba(map-get($colors-rule, first-color), 0.9);
         font-weight: 800;
-        box-shadow: 0 0px 20px rgba(map-get($colors-rule, second-color), 0.2);
-
+        box-shadow: 0 0px 20px rgba(map-get($colors-rule, fifth-color), 0.2);
 
       }
 
@@ -113,11 +114,7 @@
         background: map-get($colors-rule, sixth-color);
         overflow: hidden;
         transition: transform 0.3s ease;
-        // Enhanced elevation effect
-        box-shadow:
-          0 4px 6px rgba(0, 0, 0, 0.05),
-          0 10px 15px rgba(0, 0, 0, 0.1),
-          0 20px 30px rgba(map-get($colors-rule, first-color), 0.05);
+        box-shadow: 0 0px 20px rgba(map-get($colors-rule, fifth-color), 0.3);
 
         @media screen and (min-width: 992px) {
           height: 500px;
@@ -127,7 +124,7 @@
 
 
 
-        // Bottom shadow line for extra depth
+        /* // Bottom shadow line for extra depth
         &::after {
           content: '';
           position: absolute;
@@ -138,7 +135,7 @@
           background: linear-gradient(90deg,
               rgba(map-get($colors-rule, second-color), 0.1),
               rgba(map-get($colors-rule, third-color), 0.1));
-        }
+        } */
 
         .card-image {
           position: relative;
@@ -204,7 +201,7 @@
           .btn {
             position: relative;
             display: inline-block;
-            width: 50%;
+            //width: 50%;
             margin: 0 auto;
             max-width: 400px;
             padding: 12px 30px;
@@ -226,15 +223,6 @@
             }
           }
         }
-      }
-
-      // Enhance elevation effect on hover
-      &:hover .website-card {
-        transform: translateY(-2px);
-        box-shadow:
-          0 6px 8px rgba(0, 0, 0, 0.05),
-          0 12px 18px rgba(0, 0, 0, 0.1),
-          0 25px 35px rgba(map-get($colors-rule, first-color), 0.07);
       }
 
       // Alternate card layout
@@ -285,315 +273,342 @@
   }
 }
 
-.eco-seo {
-  width: 100%;
-  margin-top: 120px;
-  position: relative;
-  overflow: hidden;
+/*******************************************************************
+************* section eco et seo ****************************************
+***** start***************************************************************/
 
-  .container {
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
+
+// Shared styles for both sections
+.eco-section,
+.seo-section {
+  position: relative;
+  width: 100%;
+  padding: 80px 20px;
+  color: map-get($colors-rule, fifth-color);
+
+
+
+  .content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px; // Increased horizontal padding
+    position: relative;
+    z-index: 1;
   }
 
-  .eco-seo-grid {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 120px;
+  .eco-title-container,
+  .seo-title-container {
+    position: relative;
+    margin-bottom: 40px;
+    width: fit-content
+  }
 
-    // Shared styles for both sections
-    .eco-design-section,
-    .seo-section {
+
+
+
+  h2 {
+    width: fit-content;
+    //border: 2px solid blue;
+    font-size: 1.8rem;
+    position: relative;
+    color: map-get($colors-rule, fifth-color);
+
+    strong {
       position: relative;
-      width: 100%;
-      padding: 120px 50px;
-      color: map-get($colors-rule, fifth-color);
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: -80px;
-        left: 0;
-        width: 100%;
-        height: 160px;
-        background: map-get($colors-rule, background-page-color);
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 70%);
-      }
 
       &::after {
         content: '';
         position: absolute;
-        bottom: -80px;
+        bottom: -8px;
         left: 0;
         width: 100%;
-        height: 160px;
-        background: map-get($colors-rule, background-page-color);
-        clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
-      }
-
-      .content-wrapper {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 80px; // Increased horizontal padding
-        position: relative;
-        z-index: 1;
-      }
-
-      h2 {
-        font-size: 2.8rem;
-        margin-bottom: 40px;
-        position: relative;
-        color: map-get($colors-rule, fifth-color);
-
-        strong {
-          position: relative;
-
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            opacity: 0.3;
-          }
-        }
-      }
-
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 40px 0;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-
-        li {
-          position: relative;
-          padding: 20px 30px;
-          background: rgba(map-get($colors-rule, sixth-color), 1);
-          border-radius: 15px;
-          //backdrop-filter: blur(10px);
-          transition: transform 0.3s ease;
-
-          &::before {
-            content: '→';
-            position: absolute;
-            left: 10px;
-            font-weight: bold;
-          }
-
-          &:hover {
-            transform: translateY(-3px);
-          }
-
-          strong {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-          }
-        }
-      }
-
-      p {
-        font-size: 1.2rem;
-        line-height: 1.8;
-        opacity: 0.9;
-        max-width: 800px;
-
-        strong {
-          font-weight: 600;
-        }
-      }
-    }
-
-    // Specific styles for eco-design section
-    .eco-design-section {
-      background: linear-gradient(135deg,
-          rgba(map-get($colors-rule, third-color), 0.2),
-          rgba(map-get($colors-rule, second-color), 0.1));
-
-      .content-wrapper::before {
-        content: '🌱';
-        position: absolute;
-        top: -60px;
-        left: 80px; // Adjusted to match new padding
-        font-size: 3rem;
-        opacity: 0.2;
-        transform: rotate(-15deg);
-      }
-
-      h2 strong {
-        color: map-get($colors-rule, first-color);
-
-        &::after {
-          background: map-get($colors-rule, first-color);
-        }
-      }
-
-      ul li {
-        border: 1px solid rgba(map-get($colors-rule, third-color), 0.1);
-
-        &::before {
-          color: map-get($colors-rule, first-color);
-        }
-
-        strong {
-          color: map-get($colors-rule, first-color);
-        }
-      }
-
-      p strong {
-        color: map-get($colors-rule, first-color);
-      }
-    }
-
-    // Specific styles for seo section
-    .seo-section {
-
-
-      @keyframes rotate-right {
-        0% {
-          transform: rotate(0deg);
-
-        }
-
-        25% {
-          opacity: 0.5;
-        }
-
-        50% {
-          opacity: 0.9;
-        }
-
-        75% {
-          opacity: 0.5;
-        }
-
-
-        100% {
-          transform: rotate(360deg);
-          opacity: 0.1;
-        }
-      }
-
-      @keyframes rotate-left {
-        0% {
-          transform: rotate(0deg);
-        }
-
-        25% {
-          opacity: 0.5;
-        }
-
-        50% {
-          opacity: 0.9;
-        }
-
-        75% {
-          opacity: 0.5;
-        }
-
-        100% {
-          transform: rotate(-360deg);
-          opacity: 0.1;
-        }
-      }
-
-
-
-
-
-      background: linear-gradient(135deg,
-        rgba(map-get($colors-rule, fourth-color), 0.2),
-        rgba(map-get($colors-rule, fourth-color), 0.1));
-
-
-
-      .title-container {
-        position: relative;
-        display: flex;
-        flex-flow: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        gap: 10px;
-        //border: 1px solid red;
-        width: fit-content;
-      }
-
-      .icon-seo {
-        position: absolute;
-        top: 0px;
-        right: -50px;
-        //font-size: 3rem;
-        opacity: 0.1;
-        width: 40px;
-        height: 40px;
-      }
-
-      .rotate-right {
-        animation: rotate-right 1s ease-out 0s 1 normal forwards;
-      }
-
-      .rotate-left {
-        animation: rotate-left 1s ease-out 0s 1 normal forwards;
-      }
-
-      h2 strong {
-
-        color: map-get($colors-rule, fourth-color);
-
-
-        &::after {
-          background: map-get($colors-rule, fourth-color);
-        }
-      }
-
-      ul li {
-        border: 1px solid rgba(map-get($colors-rule, fourth-color), 0.1);
-
-        &::before {
-          color: map-get($colors-rule, fourth-color);
-        }
-
-        strong {
-          color: map-get($colors-rule, fourth-color);
-        }
-      }
-
-      p strong {
-        color: map-get($colors-rule, fourth-color);
-      }
-    }
-
-    @media (max-width: 768px) {
-
-      .eco-design-section,
-      .seo-section {
-        padding: 80px 20px;
-
-        .content-wrapper {
-          padding: 0 30px;
-        }
-
-        &::before,
-        &::after {
-          height: 80px;
-        }
-
-        h2 {
-          font-size: 2.2rem;
-        }
-
-        ul {
-          grid-template-columns: 1fr;
-        }
+        height: 2px;
+        opacity: 0.3;
       }
     }
   }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 40px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    color: map-get($colors-rule, fifth-color);
+
+    li {
+      position: relative;
+      padding: 20px 30px;
+      background: rgba(map-get($colors-rule, sixth-color), 0.9);
+      border-radius: 15px;
+      //backdrop-filter: blur(10px);
+      transition: transform 0.3s ease;
+      box-shadow: 0 0px 10px rgba(map-get($colors-rule, fifth-color), 0.3);
+
+      &::before {
+        content: '→';
+        position: absolute;
+        left: 10px;
+        font-weight: bold;
+      }
+
+
+
+      strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    opacity: 0.9;
+    max-width: 800px;
+
+    strong {
+      font-weight: 600;
+    }
+  }
 }
+
+
+
+// Specific styles for eco-design section
+.eco-section {
+  background: linear-gradient(135deg,
+      rgba(map-get($colors-rule, second-color), 0.03),
+      rgba(map-get($colors-rule, third-color), 0.02));
+
+  .eco-title-container {
+
+
+    .eco-image {
+      display: none;
+      width: 100px;
+      height: 100px;
+
+    }
+
+  }
+
+
+
+
+  h2 strong {
+    color: map-get($colors-rule, first-color);
+
+    &::after {
+      background: map-get($colors-rule, first-color);
+    }
+  }
+
+  ul li {
+    border: 1px solid rgba(map-get($colors-rule, third-color), 0.1);
+
+    &::before {
+      color: map-get($colors-rule, first-color);
+    }
+
+    strong {
+      color: map-get($colors-rule, first-color);
+    }
+  }
+
+  p strong {
+    color: map-get($colors-rule, first-color);
+  }
+}
+
+// Specific styles for seo section
+.seo-section {
+
+
+  @keyframes rotate-right {
+    0% {
+      transform: rotate(0deg);
+
+    }
+
+    25% {
+      opacity: 0.5;
+    }
+
+    50% {
+      opacity: 0.9;
+    }
+
+    75% {
+      opacity: 0.5;
+    }
+
+
+    100% {
+      transform: rotate(360deg);
+      opacity: 0.1;
+    }
+  }
+
+  @keyframes rotate-left {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    25% {
+      opacity: 0.5;
+    }
+
+    50% {
+      opacity: 0.9;
+    }
+
+    75% {
+      opacity: 0.5;
+    }
+
+    100% {
+      transform: rotate(-360deg);
+      opacity: 0.1;
+    }
+  }
+
+  background: linear-gradient(135deg,
+    rgba(map-get($colors-rule, fourth-color), 0.03),
+    rgba(map-get($colors-rule, third-color), 0.02));
+
+
+
+  .seo-title-container {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: fit-content;
+  }
+
+  .icon-seo {
+    position: absolute;
+    top: 0px;
+    right: -50px;
+    //font-size: 3rem;
+    opacity: 0.1;
+    width: 40px;
+    height: 40px;
+  }
+
+  .rotate-right {
+    animation: rotate-right 1s ease-out 0s 1 normal forwards;
+  }
+
+  .rotate-left {
+    animation: rotate-left 1s ease-out 0s 1 normal forwards;
+  }
+
+  h2 strong {
+
+    color: map-get($colors-rule, fourth-color);
+
+
+    &::after {
+      background: map-get($colors-rule, fourth-color);
+    }
+  }
+
+  ul li {
+    border: 1px solid rgba(map-get($colors-rule, fourth-color), 0.1);
+
+    &::before {
+      color: map-get($colors-rule, fourth-color);
+    }
+
+    strong {
+      color: map-get($colors-rule, fourth-color);
+    }
+  }
+
+  p strong {
+    color: map-get($colors-rule, fourth-color);
+  }
+}
+
+
+
+@media (min-width: 768px) {
+
+  .eco-section,
+  .seo-section {
+    padding: 120px 50px;
+
+    .content-wrapper {
+      padding: 0 80px;
+    }
+
+    .eco-title-container {
+
+
+      .eco-image {
+        position: absolute;
+        bottom: 0%;
+        right: -40%;
+        //transform: translateY(50%);
+        display: block;
+      }
+
+    }
+
+
+    h2 {
+      font-size: 2rem;
+
+    }
+
+    ul {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+
+  .eco-section,
+  .seo-section {
+    h2 {
+      font-size: 2.8rem;
+    }
+  }
+
+  .eco-section::before,
+  .seo-section::before {
+
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 100%;
+    height: 160px;
+    background: map-get($colors-rule, background-page-color);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 70%);
+  }
+
+  .eco-section::after,
+  .seo-section::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: 0;
+    width: 100%;
+    height: 160px;
+    background: map-get($colors-rule, background-page-color);
+    clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
+  }
+}
+
+
+
 
 //gestion du dark mode
 .page-container.dark-mode {

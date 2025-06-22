@@ -1,7 +1,7 @@
 @import "../../utils/color-rule/color-rule.scss";
 
 .footer {
-  background: darken(map-get($colors-rule, footer-color), 20%);
+  background: darken(map-get($colors-rule, footer-color), 30%);
   color: map-get($colors-rule, sixth-color);
   padding: 60px 20px 20px 20px;
   width: 100%;

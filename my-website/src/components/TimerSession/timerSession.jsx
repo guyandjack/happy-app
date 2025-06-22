@@ -63,8 +63,8 @@ function TimerSession() {
           //alert("Session expirée!, redirection vers page de connexion");
           console.log("Session expirée!, redirection vers page de connexion");
           clearInterval(counter.current);
-          clearLocalStorageInfoSession("");
           setIsSessionActive(false);
+          clearLocalStorageInfoSession();
           //setTestSession(!testSession);
           return 0;
         }
@@ -85,9 +85,9 @@ function TimerSession() {
 
   //fonction qui supprime la session
   const deleteSession = () => {
-    clearLocalStorageInfoSession();
     setTimeRemaining(initCounterDown());
     setIsSessionActive(false);
+    clearLocalStorageInfoSession();
   };
 
   //fonction qui lance la session

@@ -5,36 +5,22 @@ function initFaq() {
   faqItems.forEach((item) => {
     const question = item.querySelector("h3");
     const answer = item.querySelector("p");
-    const answerList = item.querySelector("ul");
+    //const answer = item.querySelector("ul");
 
     // Initially hide all answers
     if (answer) {
-      answer.style.display = "none";
-    }
-    if (answerList) {
-      answerList.style.display = "none";
+      answer.classList.remove("expanded");
+      question.classList.remove("expanded");
+      item.classList.remove("expanded");
     }
 
     // Add click event listener to questions
     if (question) {
       question.addEventListener("click", () => {
-        // Toggle the answer visibility
-        const isExpanded = answer.style.display === "block";
-        let isExpandedList;
-        if (answerList) {
-          isExpandedList = answerList.style.display === "block";
-        }
-
-        // Toggle the answer
-        if (answer) {
-          answer.style.display = isExpanded ? "none" : "block";
-        }
-        if (answerList) {
-          answerList.style.display = isExpandedList ? "none" : "block";
-        }
-
         // Toggle the arrow icon
         question.classList.toggle("expanded");
+        answer.classList.toggle("expanded");
+        item.classList.toggle("expanded");
       });
     }
   });

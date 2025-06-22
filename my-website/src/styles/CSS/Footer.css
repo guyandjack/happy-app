@@ -1,27 +1,21 @@
 .footer {
-  background: #3a4d60;
+  background: #273440;
   color: #ffffff;
   padding: 60px 20px 20px 20px;
   width: 100%;
 }
-
 .footer .footer-content {
   max-width: 1200px;
   margin: 0 auto;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
+  grid-template-columns: 1fr;
   gap: 40px;
 }
-
 @media (min-width: 768px) {
   .footer .footer-content {
-    -ms-grid-columns: 1fr 2fr;
-        grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 2fr;
   }
 }
-
 .footer .footer-content .footer-brand {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -35,7 +29,6 @@
           align-items: flex-start;
   gap: 20px;
 }
-
 .footer .footer-content .footer-brand .footer-logo img {
   width: 80px;
   height: 80px;
@@ -43,13 +36,11 @@
   -o-object-fit: cover;
      object-fit: cover;
 }
-
 .footer .footer-content .footer-brand .footer-tagline {
   font-size: 1.1rem;
   opacity: 0.9;
   margin: 0;
 }
-
 .footer .footer-content .footer-brand .footer-cta {
   display: inline-block;
   padding: 12px 24px;
@@ -60,10 +51,8 @@
   border: 2px solid rgba(195, 6, 107, 0.9);
   font-weight: 600;
   -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-
 .footer .footer-content .footer-brand .footer-cta:hover {
   background: #fbfbfc;
   color: #c3066b;
@@ -71,52 +60,41 @@
       -ms-transform: translateY(-2px);
           transform: translateY(-2px);
 }
-
 .footer .footer-content .footer-nav {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
+  grid-template-columns: 1fr;
   gap: 30px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
-
 @media (min-width: 768px) {
   .footer .footer-content .footer-nav {
-    -ms-grid-columns: (1fr)[3];
-        grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
-
 .footer .footer-content .footer-nav .footer-nav-section h3 {
   color: #00beb8;
   font-size: 1.2rem;
   margin-bottom: 20px;
 }
-
 .footer .footer-content .footer-nav .footer-nav-section ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
 .footer .footer-content .footer-nav .footer-nav-section ul li {
   margin-bottom: 12px;
 }
-
 .footer .footer-content .footer-nav .footer-nav-section ul li a {
   color: #ffffff;
   text-decoration: none;
   -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
   position: relative;
 }
-
 .footer .footer-content .footer-nav .footer-nav-section ul li a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -124,14 +102,11 @@
   height: 1px;
   background: #00beb8;
   -webkit-transition: width 0.3s ease;
-  -o-transition: width 0.3s ease;
   transition: width 0.3s ease;
 }
-
 .footer .footer-content .footer-nav .footer-nav-section ul li a:hover::after {
   width: 100%;
 }
-
 .footer .footer-bottom {
   max-width: 1200px;
   margin: 40px auto 0;
@@ -139,32 +114,28 @@
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   text-align: center;
 }
-
 .footer .footer-bottom p {
   margin: 0;
   opacity: 0.9;
   font-size: 0.9rem;
 }
-
 .footer .footer-page-notation {
   gap: 30px;
   width: 100%;
   max-width: 1200px;
   background: #013432;
   /*background: linear-gradient(to bottom,
-        darken(map-get($colors-rule, footer-color), 20%) 10%,
-        map-get($colors-rule, first-color),
-        map-get($colors-rule, first-color),
-        darken(map-get($colors-rule, footer-color), 20%) 90%);*/
+      darken(map-get($colors-rule, footer-color), 20%) 10%,
+      map-get($colors-rule, first-color),
+      map-get($colors-rule, first-color),
+      darken(map-get($colors-rule, footer-color), 20%) 90%);*/
   padding: 12px;
   margin: 20px auto 0 auto;
   border-radius: 6px;
 }
-
 .footer .footer-page-notation > img {
   border: 1px solid #ffffff;
 }
-
 .footer .footer-page-notation > p {
   margin: 0;
   font-size: 1.1rem;
@@ -173,19 +144,16 @@
       -ms-hyphens: none;
           hyphens: none;
 }
-
 .footer .footer-page-notation > p span:nth-child(2) {
   display: inline-block;
   -webkit-transform: translateY(15px);
       -ms-transform: translateY(15px);
           transform: translateY(15px);
 }
-
 .footer .footer-page-notation .footer-quote-icon {
   font-size: 1.6rem;
   color: #00beb8;
 }
-
 .footer .footer-page-notation > a {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -203,6 +171,5 @@
   color: #ffffff;
   text-decoration: none;
   -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
-}
+}/*# sourceMappingURL=Footer.css.map */

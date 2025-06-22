@@ -6,14 +6,10 @@
   overflow: hidden;
   background-color: #fbfbfc;
   border: none;
-}
-
-@media screen and (min-width: 1500px) {
-  .hero {
+  /*  @media screen and (min-width: 1500px) {
     overflow: visible;
-  }
+  } */
 }
-
 .hero > img {
   position: absolute;
   z-index: 1;
@@ -27,7 +23,6 @@
           clip-path: polygon(0% 0%, 100% 0%, 0% 100%, 0% 100%);
   opacity: 0.8;
 }
-
 .hero > img:nth-child(2) {
   top: -15%;
   width: 500px;
@@ -38,10 +33,9 @@
           clip-path: none;
   opacity: 0.8;
 }
-
 .hero::after {
   z-index: 10;
-  content: '';
+  content: "";
   position: absolute;
   bottom: -50px;
   left: 0;
@@ -50,7 +44,6 @@
   -webkit-clip-path: polygon(0 50%, 100% 0, 100% 100%, 0% 100%);
           clip-path: polygon(0 50%, 100% 0, 100% 100%, 0% 100%);
 }
-
 .hero .container {
   position: relative;
   z-index: 5;
@@ -62,9 +55,8 @@
   width: fit-content;
   border-radius: 10px;
   /*border-top-right-radius: 20%;
-        border-bottom-left-radius: 20%;*/
+      border-bottom-left-radius: 20%;*/
 }
-
 .hero .container h1 {
   font-size: 3.5rem;
   font-weight: 800;
@@ -73,9 +65,8 @@
   position: relative;
   display: inline-block;
 }
-
 .hero .container h1::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -87,7 +78,6 @@
   background-color: #00beb8;
   border-radius: 2px;
 }
-
 .hero .container .hero-subtitle {
   position: relative;
   z-index: 10;
@@ -97,15 +87,12 @@
 .page-container.dark-mode .hero {
   background-color: #036662;
 }
-
 .page-container.dark-mode .hero .container {
   background-color: #037f7a;
 }
-
 .page-container.dark-mode .hero .container h1 {
   color: #ffffff;
 }
-
 .page-container.dark-mode .hero .container .hero-subtitle {
   color: #ffffff;
-}
+}/*# sourceMappingURL=Hero.css.map */

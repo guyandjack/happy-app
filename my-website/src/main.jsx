@@ -14,6 +14,7 @@ import { IndexCards } from "@components/Card/IndexCards.jsx";
 import { Hero } from "@components/Hero/Hero.jsx";
 import { CtaSection } from "@components/CtaSection/CtaSection.jsx";
 import { Slider } from "@components/Slider/slider.jsx";
+import { LinkTopPage } from "@components/linkTopPage/linkTopPage.jsx";
 
 //import des scripts
 import { initFaq, initIconSetting } from "@scripts/page-services.js";
@@ -57,6 +58,16 @@ if (ctaSectionContainer) {
   ReactDOM.createRoot(ctaSectionContainer).render(
     <React.StrictMode>
       <CtaSection />
+    </React.StrictMode>
+  );
+}
+
+//mount link top page
+const linkTopPageContainer = document.getElementById("RC-link-top-page");
+if (linkTopPageContainer) {
+  ReactDOM.createRoot(linkTopPageContainer).render(
+    <React.StrictMode>
+      <LinkTopPage />
     </React.StrictMode>
   );
 }

@@ -7,20 +7,17 @@
   max-width: 800px;
   margin: 0 auto;
 }
-
 .article-form-dashboard .form-group {
   margin-bottom: 20px;
 }
-
 .article-form-dashboard .form-group label {
   display: block;
   font-weight: bold;
   color: #024d4a;
   margin-bottom: 5px;
 }
-
-.article-form-dashboard .form-group input[type="text"],
-.article-form-dashboard .form-group input[type="file"],
+.article-form-dashboard .form-group input[type=text],
+.article-form-dashboard .form-group input[type=file],
 .article-form-dashboard .form-group select,
 .article-form-dashboard .form-group textarea {
   width: 100%;
@@ -30,24 +27,20 @@
   background-color: #ffffff;
   color: #171717;
   -webkit-transition: border-color 0.3s;
-  -o-transition: border-color 0.3s;
   transition: border-color 0.3s;
 }
-
-.article-form-dashboard .form-group input[type="text"]:focus,
-.article-form-dashboard .form-group input[type="file"]:focus,
+.article-form-dashboard .form-group input[type=text]:focus,
+.article-form-dashboard .form-group input[type=file]:focus,
 .article-form-dashboard .form-group select:focus,
 .article-form-dashboard .form-group textarea:focus {
   border-color: #00beb8;
   outline: none;
 }
-
 .article-form-dashboard .form-group .error-message {
   color: #c3066b;
   font-size: 0.9em;
   margin-top: 5px;
 }
-
 .article-form-dashboard .file-upload-btn {
   background-color: #00beb8;
   color: #ffffff;
@@ -56,14 +49,11 @@
   border-radius: 4px;
   cursor: pointer;
   -webkit-transition: background-color 0.3s;
-  -o-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
-
 .article-form-dashboard .file-upload-btn:hover {
   background-color: #024d4a;
 }
-
 .article-form-dashboard .submit-btn {
   background-color: #024d4a;
   color: #ffffff;
@@ -72,19 +62,15 @@
   border-radius: 4px;
   cursor: pointer;
   -webkit-transition: background-color 0.3s;
-  -o-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
-
 .article-form-dashboard .submit-btn:hover {
   background-color: #00beb8;
 }
-
 .article-form-dashboard .submit-btn:disabled {
   background-color: #9ca3af;
   cursor: not-allowed;
 }
-
 .article-form-dashboard .cancel-btn {
   background-color: #6080a0;
   color: #ffffff;
@@ -93,15 +79,12 @@
   border-radius: 4px;
   cursor: pointer;
   -webkit-transition: background-color 0.3s;
-  -o-transition: background-color 0.3s;
   transition: background-color 0.3s;
   margin-right: 10px;
 }
-
 .article-form-dashboard .cancel-btn:hover {
   background-color: #c7e3cd;
 }
-
 .article-form-dashboard .toast-notification {
   background-color: #c3066b;
   color: #ffffff;
@@ -118,11 +101,10 @@
       -ms-flex-align: center;
           align-items: center;
 }
-
 .article-form-dashboard .toast-notification .toast-close {
   background: none;
   border: none;
   color: #ffffff;
   cursor: pointer;
   font-size: 1.2em;
-}
+}/*# sourceMappingURL=ArticleFormDashboard.css.map */

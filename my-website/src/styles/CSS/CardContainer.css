@@ -3,7 +3,6 @@
   padding: 15px;
   margin-bottom: 30px;
 }
-
 .card-container .cards-list {
   width: 100%;
   list-style: none;
@@ -15,10 +14,9 @@
     margin-bottom: 40px;
   }
 }
-
 @media (min-width: 1024px) {
   .card-container {
     padding: 25px;
     margin-bottom: 50px;
   }
-}
+}/*# sourceMappingURL=CardContainer.css.map */

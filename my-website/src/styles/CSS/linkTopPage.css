@@ -1,0 +1,30 @@
+.link-top-page {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 1000;
+}
+.link-top-page a {
+  background-color: #024d4a;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.link-top-page a:hover {
+  background-color: rgba(2, 77, 74, 0.8);
+}/*# sourceMappingURL=linkTopPage.css.map */

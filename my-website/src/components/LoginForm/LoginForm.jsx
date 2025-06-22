@@ -66,7 +66,7 @@ function LoginForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        timeout: 5000,
+        timeout: 10000,
       });
 
       if (response.data.status === "success") {

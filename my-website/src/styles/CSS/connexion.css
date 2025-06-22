@@ -1,25 +1,21 @@
 .page-container {
   min-height: 100vh;
 }
-
 .page-container h1 {
   padding-left: 20px;
   margin-top: 50px;
 }
-
 @media screen and (min-width: 992px) {
   .page-container h1 {
     padding-left: 50px;
   }
 }
-
 .page-container .container-login {
   margin: 50px auto;
   width: 80%;
 }
-
 @media screen and (min-width: 992px) {
   .page-container .container-login {
     width: 50%;
   }
-}
+}/*# sourceMappingURL=connexion.css.map */

@@ -16,7 +16,6 @@
     width: 250px;
   }
 }
-
 .menu-side-container {
   padding: 15px;
 }
@@ -42,7 +41,6 @@
   padding-left: 10px;
   border-left: 2px solid transparent;
   -webkit-transition: border-color 0.3s ease;
-  -o-transition: border-color 0.3s ease;
   transition: border-color 0.3s ease;
 }
 
@@ -63,7 +61,6 @@
   text-align: left;
   width: 100%;
   -webkit-transition: color 0.3s ease;
-  -o-transition: color 0.3s ease;
   transition: color 0.3s ease;
 }
 
@@ -93,4 +90,4 @@
 
 .article-menu-side::-webkit-scrollbar-thumb:hover {
   background: #999;
-}
+}/*# sourceMappingURL=ArticleMenuSide.css.map */
