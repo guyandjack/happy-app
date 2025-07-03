@@ -4,7 +4,10 @@ import "@styles/CSS/linkTopPage.css";
 
 const LinkTopPage = () => {
   let topPage = () => {
-    let elementTopPage = document.querySelector(".introduction");
+    let elementTopPage = document.querySelector(".intro-nav");
+    if (!elementTopPage) {
+      return;
+    }
     window.scrollTo({
       top: elementTopPage.offsetTop,
       left: elementTopPage.offsetLeft,

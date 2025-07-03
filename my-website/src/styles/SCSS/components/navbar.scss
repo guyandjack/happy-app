@@ -3,6 +3,10 @@
 @import "../../utils/color-rule/color-rule.scss";
 
 // Mobile first base styles
+.navbar-wrapper {
+    background-color: map-get($colors-rule, second-color);
+}
+
 .navbar {
 
 

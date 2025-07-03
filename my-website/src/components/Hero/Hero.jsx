@@ -15,20 +15,36 @@ import { getMode } from "@utils/fonction/getMode.js";
 
 function Hero() {
   const heroRef = useRef(null);
-  //const [isDarkMode, setIsDarkMode] = useState(false);
+  let arrayLinkHero = [];
+  const [linkHero, setLinkHero] = useState([]);
 
-  /*useEffect(() => {
-    getMode(".page-container", "dark-mode", (result) => {
-      console.log("result: ", result);
-      setIsDarkMode(result);
-      console.log("isDarkMode: ", isDarkMode);
-      if (result) {
-        heroRef.current.classList.add("dark-mode-hero");
-      } else {
-        heroRef.current.classList.remove("dark-mode-hero");
-      }
+  useEffect(() => {
+    let arrayElements = document.querySelectorAll("[data-hero]");
+    arrayLinkHero = Array.from(arrayElements).map((element) => {
+      return {
+        id: element.id,
+        dataset: element.dataset.hero,
+      };
     });
-  }, [isDarkMode]);*/
+    setLinkHero(arrayLinkHero);
+    console.log("arrayLinkHero: ", arrayLinkHero);
+  }, []);
+
+  const handleScroll = (dataset, e) => {
+    e.preventDefault();
+    const element = document.querySelector(`[data-hero="${dataset}"]`);
+
+    if (!element) {
+      return;
+    }
+    const rect = element.getBoundingClientRect();
+
+    window.scrollTo({
+      top: parseInt(rect.top + window.scrollY - 120),
+      left: parseInt(rect.left),
+      behavior: "smooth",
+    });
+  };
 
   let language = getLanguage();
   let pageName = getPageName(language);
@@ -39,25 +55,29 @@ function Hero() {
   }
 
   return (
-    <div className="flex-column-center-center hero" ref={heroRef}>
-      {
-        <img
-          src={heroContent[`${language}`][`${pageName}`].img_1}
-          alt=" background"
-        />
-      }
-      {
-        <img
-          src={heroContent[`${language}`][`${pageName}`].img_2}
-          alt=" background"
-        />
-      }
-      <div className="container">
-        <h1>{heroContent[`${language}`][`${pageName}`].title}</h1>
+    <div className="flex-column-start-center hero-container">
+      <div className="flex-column-center-center hero" ref={heroRef}>
+        {
+          <img
+            src={heroContent[`${language}`][`${pageName}`].img_1}
+            alt=" background"
+          />
+        }
+        {
+          <img
+            src={heroContent[`${language}`][`${pageName}`].img_2}
+            alt=" background"
+          />
+        }
+        <div className="container">
+          <h1>{heroContent[`${language}`][`${pageName}`].title}</h1>
 
-        <p className="hero-subtitle">
-          <strong>{heroContent[`${language}`][`${pageName}`].subtitle}</strong>
-        </p>
+          <p className="hero-subtitle">
+            <strong>
+              {heroContent[`${language}`][`${pageName}`].subtitle}
+            </strong>
+          </p>
+        </div>
       </div>
     </div>
   );

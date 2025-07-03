@@ -277,7 +277,7 @@ function ContactForm() {
                 value: formValueRef?.current?.email,
                 pattern: {
                   value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,100}$/,
-                  message: "Format d'email invalide",
+                  message: "Adresse email invalide",
                 },
               })}
             />
@@ -339,9 +339,9 @@ function ContactForm() {
             type="button"
             onClick={handleSubmit(onSubmit)}
             className="btn btn-primary"
-            disabled={!isSubmitting && isValid && isCaptchaValid ? false : true}
+            disabled={isSubmitting || !isValid || !isCaptchaValid}
           >
-            Envoyer
+            {isSubmitting ? "Envoi en cours..." : "Envoyer"}
           </button>
         </div>
       </form>

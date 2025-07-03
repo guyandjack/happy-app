@@ -17,7 +17,7 @@ function CtaSection() {
 
   return (
     <div className="cta-section">
-      <h2>{ctaSectionContent[lang][pageName].title}</h2>
+      <h3>{ctaSectionContent[lang][pageName].title}</h3>
       <p>{ctaSectionContent[lang][pageName].text}</p>
       <a
         className="btn btn-primary"

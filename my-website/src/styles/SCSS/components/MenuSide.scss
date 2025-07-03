@@ -1,0 +1,112 @@
+@import "../../utils/color-rule/color-rule.scss";
+
+
+.menu-side {
+  display: none;
+  width: 100%;
+  background-color: rgba(map-get($colors-rule, fifth-color), 0.9);
+  z-index: 100;
+  //overflow: hidden;
+
+  @media screen and (min-width: 992px) {
+    display: block;
+  }
+
+  @media screen and (min-width: 1600px) {
+    background-color: none;
+  }
+
+
+
+}
+
+.menu-side-container {
+  padding: 5px;
+  width: 100%;
+
+
+}
+
+
+.menu-side-list {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+
+  /* @media screen and (min-width: 1600px) {
+
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    position: fixed;
+    top: 120px;
+    left: 50px;
+    width: 250px;
+    height: fit-content;
+
+  } */
+}
+
+.menu-side-list li {
+  //margin-bottom: 10px;
+  padding: 5px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-bottom-color: map-get($colors-rule, sixth-color);
+  }
+
+}
+
+
+
+.menu-side-list li.active {
+  border-bottom-color: map-get($colors-rule, second-color);
+
+
+}
+
+.menu-side-link {
+  display: block;
+  padding: 5px 0;
+  color: map-get($colors-rule, sixth-color);
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.4;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: color 0.3s ease;
+}
+
+.menu-side-list li.active .menu-side-link {
+  color: map-get($colors-rule, second-color);
+  font-weight: 500;
+}
+
+/* .menu-side-link:hover {
+  color: map-get($colors-rule, fourth-color);
+} */
+
+/* Scrollbar styling */
+.article-menu-side::-webkit-scrollbar {
+  width: 6px;
+}
+
+.article-menu-side::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.article-menu-side::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.article-menu-side::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}

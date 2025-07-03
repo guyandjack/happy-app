@@ -5,11 +5,16 @@ function initFaq() {
   faqItems.forEach((item) => {
     const question = item.querySelector("h3");
     const answer = item.querySelector("p");
-    //const answer = item.querySelector("ul");
+    const answerList = item.querySelector("ul");
 
     // Initially hide all answers
     if (answer) {
       answer.classList.remove("expanded");
+      question.classList.remove("expanded");
+      item.classList.remove("expanded");
+    }
+    if (answerList) {
+      answerList.classList.remove("expanded");
       question.classList.remove("expanded");
       item.classList.remove("expanded");
     }
@@ -20,6 +25,7 @@ function initFaq() {
         // Toggle the arrow icon
         question.classList.toggle("expanded");
         answer.classList.toggle("expanded");
+        answerList.classList.toggle("expanded");
         item.classList.toggle("expanded");
       });
     }

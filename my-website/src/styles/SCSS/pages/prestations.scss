@@ -5,11 +5,20 @@
   padding: 80px 20px;
   background: map-get($colors-rule, background-page-color);
 
-  h2 {
+  &>h2 {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     margin-bottom: 100px;
     position: relative;
+
+    @media screen and (min-width: 768px) {
+      font-size: 2.2rem;
+    }
+
+    @media screen and (min-width: 992px) {
+      font-size: 2.8rem;
+    }
+
 
     &::after {
       content: '';
@@ -49,13 +58,13 @@
         max-width: 1000px;
       }
 
-      &>h3 {
+      &>h2>strong {
         position: absolute;
         top: -45px;
         left: 0;
         z-index: 2;
-        font-size: 2.2rem;
-        padding: 15px 40px;
+        font-size: 1.1rem;
+        padding: 15px 10px;
         margin: 0;
         background: map-get($colors-rule, sixth-color);
         border-radius: 15px;
@@ -65,23 +74,34 @@
 
       }
 
+      @media screen and (min-width: 768px) {
+        &>h2>strong {
+          font-size: 1.5rem;
+        }
+      }
+
       @media screen and (min-width: 992px) {
-        &:nth-child(even) h3 {
+        &>h2>strong {
+          font-size: 1.8rem;
+        }
+
+        &:nth-child(even) h2 {
           right: 0;
           left: auto;
         }
 
-        & h3 {
-          padding: 20px 40px;
+        & h2 {
+          //padding: 0px 40px;
           transition: transform 0.3s ease;
         }
 
-        &:hover h3 {
-          transform: translateY(-3px);
-        }
+
       }
 
       @media screen and (min-width: 1500px) {
+        &>h2>strong {
+          font-size: 2rem;
+        }
 
         &:nth-child(2) {
 
@@ -124,18 +144,7 @@
 
 
 
-        /* // Bottom shadow line for extra depth
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 4px;
-          background: linear-gradient(90deg,
-              rgba(map-get($colors-rule, second-color), 0.1),
-              rgba(map-get($colors-rule, third-color), 0.1));
-        } */
+
 
         .card-image {
           position: relative;
@@ -190,7 +199,11 @@
             color: rgba(map-get($colors-rule, fifth-color), 0.85);
             line-height: 1.7;
             margin-bottom: 25px;
-            font-size: 1.1rem;
+            font-size: 1rem;
+
+            @media screen and (min-width:992px) {
+              font-size: 1.1rem;
+            }
 
             strong {
               color: map-get($colors-rule, second-color);
@@ -258,19 +271,7 @@
 
   }
 
-  @media (max-width: 992px) {
-    padding: 60px 20px;
 
-    h2 {
-      font-size: 2.2rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    h2 {
-      font-size: 2rem;
-    }
-  }
 }
 
 /*******************************************************************

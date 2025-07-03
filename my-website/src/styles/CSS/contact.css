@@ -153,14 +153,14 @@
     width: 35%;
   }
 }
-.contact-content .contact-info h2 {
+.contact-content .contact-info h3 {
   font-size: 1.8rem;
   color: #171717;
   margin-bottom: 30px;
   position: relative;
   padding-bottom: 15px;
 }
-.contact-content .contact-info h2::after {
+.contact-content .contact-info h3::after {
   content: "";
   position: absolute;
   bottom: 0;

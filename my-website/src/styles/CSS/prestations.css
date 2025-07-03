@@ -4,13 +4,23 @@
   padding: 80px 20px;
   background: #fbfbfc;
 }
-.website-types h2 {
+.website-types > h2 {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   margin-bottom: 100px;
   position: relative;
 }
-.website-types h2::after {
+@media screen and (min-width: 768px) {
+  .website-types > h2 {
+    font-size: 2.2rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .website-types > h2 {
+    font-size: 2.8rem;
+  }
+}
+.website-types > h2::after {
   content: "";
   position: absolute;
   bottom: -15px;
@@ -23,7 +33,7 @@
   background: #00beb8;
   border-radius: 2px;
 }
-.website-types h2 strong {
+.website-types > h2 strong {
   color: #171717;
 }
 .website-types .website-cards {
@@ -55,13 +65,13 @@
     max-width: 1000px;
   }
 }
-.website-types .website-cards .website-card-container > h3 {
+.website-types .website-cards .website-card-container > h2 > strong {
   position: absolute;
   top: -45px;
   left: 0;
   z-index: 2;
-  font-size: 2.2rem;
-  padding: 15px 40px;
+  font-size: 1.1rem;
+  padding: 15px 10px;
   margin: 0;
   background: #ffffff;
   border-radius: 15px;
@@ -70,25 +80,30 @@
   -webkit-box-shadow: 0 0px 20px rgba(23, 23, 23, 0.2);
           box-shadow: 0 0px 20px rgba(23, 23, 23, 0.2);
 }
+@media screen and (min-width: 768px) {
+  .website-types .website-cards .website-card-container > h2 > strong {
+    font-size: 1.5rem;
+  }
+}
 @media screen and (min-width: 992px) {
-  .website-types .website-cards .website-card-container:nth-child(even) h3 {
+  .website-types .website-cards .website-card-container > h2 > strong {
+    font-size: 1.8rem;
+  }
+  .website-types .website-cards .website-card-container:nth-child(even) h2 {
     right: 0;
     left: auto;
   }
-  .website-types .website-cards .website-card-container h3 {
-    padding: 20px 40px;
+  .website-types .website-cards .website-card-container h2 {
     -webkit-transition: -webkit-transform 0.3s ease;
     transition: -webkit-transform 0.3s ease;
     transition: transform 0.3s ease;
     transition: transform 0.3s ease, -webkit-transform 0.3s ease;
   }
-  .website-types .website-cards .website-card-container:hover h3 {
-    -webkit-transform: translateY(-3px);
-        -ms-transform: translateY(-3px);
-            transform: translateY(-3px);
-  }
 }
 @media screen and (min-width: 1500px) {
+  .website-types .website-cards .website-card-container > h2 > strong {
+    font-size: 2rem;
+  }
   .website-types .website-cards .website-card-container:nth-child(2) {
     -webkit-transform: translateX(-5%);
         -ms-transform: translateX(-5%);
@@ -123,18 +138,6 @@
   transition: transform 0.3s ease, -webkit-transform 0.3s ease;
   -webkit-box-shadow: 0 0px 20px rgba(23, 23, 23, 0.3);
           box-shadow: 0 0px 20px rgba(23, 23, 23, 0.3);
-  /* // Bottom shadow line for extra depth
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg,
-        rgba(map-get($colors-rule, second-color), 0.1),
-        rgba(map-get($colors-rule, third-color), 0.1));
-  } */
 }
 @media screen and (min-width: 992px) {
   .website-types .website-cards .website-card-container .website-card {
@@ -197,7 +200,12 @@
   color: rgba(23, 23, 23, 0.85);
   line-height: 1.7;
   margin-bottom: 25px;
-  font-size: 1.1rem;
+  font-size: 1rem;
+}
+@media screen and (min-width: 992px) {
+  .website-types .website-cards .website-card-container .website-card .card-content p {
+    font-size: 1.1rem;
+  }
 }
 .website-types .website-cards .website-card-container .website-card .card-content p strong {
   color: #00beb8;
@@ -246,19 +254,6 @@
   }
   .website-types .website-cards .website-card-container:nth-child(even) .website-card .card-content {
     margin-left: auto;
-  }
-}
-@media (max-width: 992px) {
-  .website-types {
-    padding: 60px 20px;
-  }
-  .website-types h2 {
-    font-size: 2.2rem;
-  }
-}
-@media (max-width: 768px) {
-  .website-types h2 {
-    font-size: 2rem;
   }
 }
 

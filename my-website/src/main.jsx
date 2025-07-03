@@ -9,7 +9,7 @@ import { Navbar } from "@components/Navbar/Navbar.jsx";
 import { Footer } from "@components/Footer/Footer.jsx";
 import { ArticlesList } from "@components/Articles/ArticlesList";
 import { Dashboard } from "@components/Dashboard/Dashboard.jsx";
-import { ArticleMenuSide } from "@components/Navbar/ArticleMenuSide.jsx";
+import { MenuSide } from "@components/Navbar/MenuSide.jsx";
 import { IndexCards } from "@components/Card/IndexCards.jsx";
 import { Hero } from "@components/Hero/Hero.jsx";
 import { CtaSection } from "@components/CtaSection/CtaSection.jsx";
@@ -105,6 +105,24 @@ try {
 }
 
 /******* concerne la page index   ********************
+ * ***end
+ */
+
+/******* concerne les pages services   ********************
+ * ***start
+ */
+/* document.addEventListener("DOMContentLoaded", () => {
+  const menuSideContainer = document.getElementById("RC-menu-side");
+  console.log("element menu side: ", menuSideContainer);
+
+  ReactDOM.createRoot(menuSideContainer).render(
+    <React.StrictMode>
+      <MenuSide classContainer={".page-container"} titleType={"h2"} />
+    </React.StrictMode>
+  );
+}); */
+
+/******* concerne les pages services   ********************
  * ***end
  */
 

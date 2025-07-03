@@ -73,13 +73,6 @@
 .hero-index .hero-title .hero-subtitle strong {
   color: #00beb8;
 }
-.hero-index .hero-title:hover {
-  -webkit-transform: translateY(-2px);
-      -ms-transform: translateY(-2px);
-          transform: translateY(-2px);
-  -webkit-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
-}
 .hero-index .hero-intro {
   position: relative;
   z-index: 1;
@@ -121,17 +114,17 @@
       -ms-flex-align: center;
           align-items: center;
 }
-.services h3 {
+.services h2 {
   font-size: 2rem;
   color: rgba(23, 23, 23, 0.9);
   margin-bottom: 100px;
   text-align: center;
   position: relative;
 }
-.services h3 strong {
+.services h2 strong {
   color: #c3066b;
 }
-.services h3::after {
+.services h2::after {
   content: "";
   position: absolute;
   z-index: 10;
@@ -148,7 +141,7 @@
   padding: 100px 15px;
   background: linear-gradient(135deg, rgba(2, 77, 74, 0.02) 0%, rgba(251, 251, 252, 0.05) 50%, rgba(0, 190, 184, 0.02) 100%);
 }
-.values h3 {
+.values h2 {
   font-size: 2rem;
   color: #171717;
   margin-bottom: 60px;
@@ -159,10 +152,10 @@
   width: fit-content;
   margin: 0 auto 60px;
 }
-.values h3 strong {
+.values h2 strong {
   color: #c3066b;
 }
-.values h3::after {
+.values h2::after {
   content: "";
   position: absolute;
   z-index: 1;
@@ -274,7 +267,7 @@
   padding: 100px 15px;
   background: linear-gradient(135deg, rgba(195, 6, 107, 0.03) 5%, rgba(0, 190, 184, 0.05) 20%, rgba(195, 6, 107, 0.05) 80%, rgba(195, 6, 107, 0.05) 100%);
 }
-.commitments h3 {
+.commitments h2 {
   font-size: 2rem;
   color: #171717;
   margin-bottom: 100px;
@@ -282,10 +275,10 @@
   position: relative;
   padding: 0px;
 }
-.commitments h3 strong {
+.commitments h2 strong {
   color: #c3066b;
 }
-.commitments h3::after {
+.commitments h2::after {
   content: "";
   position: absolute;
   top: 0px;
@@ -438,9 +431,9 @@
   .hero-index::before {
     background-attachment: fixed;
   }
-  .services h3,
-  .values h3,
-  .commitments h3 {
+  .services h2,
+  .values h2,
+  .commitments h2 {
     font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: 60px;
   }

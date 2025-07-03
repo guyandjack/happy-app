@@ -1,4 +1,8 @@
 /* Login Form Styles */
+.navbar-wrapper {
+  background-color: #00beb8;
+}
+
 .navbar {
   position: relative;
   z-index: 1000;

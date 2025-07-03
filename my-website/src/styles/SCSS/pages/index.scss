@@ -82,12 +82,7 @@
       }
     }
 
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow:
-        0 6px 8px rgba(0, 0, 0, 0.12),
-        0 2px 4px rgba(0, 0, 0, 0.08);
-    }
+
   }
 
   .hero-intro {
@@ -131,7 +126,7 @@
   flex-direction: column;
   align-items: center;
 
-  h3 {
+  h2 {
     font-size: 2rem;
     color: rgba(map-get($colors-rule, fifth-color), 0.9);
     margin-bottom: 100px;
@@ -166,7 +161,7 @@
       rgba(map-get($colors-rule, background-page-color), 0.05) 50%,
       rgba(map-get($colors-rule, second-color), 0.02) 100%);
 
-  h3 {
+  h2 {
     font-size: 2rem;
     color: map-get($colors-rule, fifth-color);
     margin-bottom: 60px;
@@ -304,7 +299,7 @@
       rgba(map-get($colors-rule, fourth-color), 0.05) 100%);
 
 
-  h3 {
+  h2 {
     font-size: 2rem;
     color: map-get($colors-rule, fifth-color);
     margin-bottom: 100px;
@@ -487,7 +482,7 @@
   .commitments {
 
 
-    h3 {
+    h2 {
       font-size: clamp(2rem, 4vw, 3rem);
       margin-bottom: 60px;
     }

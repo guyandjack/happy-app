@@ -1,13 +1,20 @@
 @import '../../utils/color-rule/color-rule.scss';
 
+
+.hero-container {
+  width: 100%;
+  //border: 1px solid blue;
+}
+
 .hero {
   color: map-get($colors-rule, first-color);
-  height: 300px;
+  min-height: 300px;
+  width: 100%;
   text-align: center;
   position: relative;
   overflow: hidden;
   background-color: map-get($colors-rule, background-page-color);
-  border: none;
+  //border: 2px solid red;
 
   /*  @media screen and (min-width: 1500px) {
     overflow: visible;
@@ -94,6 +101,57 @@
 
 
   }
+
+
+}
+
+.intro-nav {
+  flex-flow: column wrap;
+  height: 250px;
+  gap: 10px;
+  padding: 10px;
+  width: 100%;
+  color: rgba(map-get($colors-rule, fifth-color), 0.7);
+  //border: 1px solid blue;
+  margin-top: 20px;
+
+  @media screen and (min-width: 768px) {
+    gap: 20px;
+    height: 100px;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &>li {
+    @media screen and (min-width: 768px) {
+      flex: 0 0 150px;
+    }
+
+
+
+
+
+    & a {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: rgba(map-get($colors-rule, first-color), 0.9);
+      color: map-get($colors-rule, sixth-color);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-align: center;
+
+      &:hover {
+        background-color: rgba(map-get($colors-rule, second-color), 0.8);
+        transform: translateY(-5px);
+      }
+    }
+  }
+
 }
 
 .page-container.dark-mode .hero {
