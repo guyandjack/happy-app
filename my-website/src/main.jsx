@@ -20,11 +20,16 @@ import { LinkTopPage } from "@components/linkTopPage/linkTopPage.jsx";
 import { initFaq, initIconSetting } from "@scripts/page-services.js";
 import { checkToken } from "@scripts/page-dashboard.js";
 
-//initialisation des scripts
+//import des fonctions
+
+//scripts d'initialisation
+
 //effet collapse faq
 initFaq();
+
 //effet rotation icon
 initIconSetting();
+
 //check token page dashboard
 //checkToken();
 

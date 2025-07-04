@@ -34,6 +34,10 @@
   background-color: #024d4a;
 }
 
+.hide {
+  display: none;
+}
+
 body,
 header {
   width: 100%;
@@ -42,9 +46,9 @@ header {
 
 header {
   position: sticky;
+  max-width: 2000px;
   top: 0;
-  left: 0;
-  right: 0;
+  margin: 0 auto;
   z-index: 1000;
 }
 

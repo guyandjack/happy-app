@@ -73,7 +73,7 @@ const MenuSide = ({ classContainer, titleType }) => {
       // Scroll smoothly to the heading
       window.scrollTo({
         behavior: "smooth",
-        top: rect.top + window.scrollY - 150,
+        top: rect.top + window.scrollY - 200,
         left: rect.left + window.scrollX,
       });
     }

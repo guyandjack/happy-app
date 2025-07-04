@@ -13,12 +13,12 @@
   background-color: #024d4a;
   -webkit-transition: opacity 1s ease;
   transition: opacity 1s ease;
-  opacity: 1;
-}
-.navbar.scrolled {
-  opacity: 0.05;
-  -webkit-transition: opacity 1s ease;
-  transition: opacity 1s ease;
+  /* opacity: 1;
+
+  &.scrolled {
+      opacity: 0.05;
+      transition: opacity 1s ease;
+  } */
 }
 .navbar .toast {
   position: absolute;

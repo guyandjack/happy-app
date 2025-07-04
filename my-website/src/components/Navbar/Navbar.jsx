@@ -6,9 +6,10 @@ import React, { useEffect, useRef, useState } from "react";
 //const { url, url_api, mode } = localOrProd();
 
 //import des composants enfants
-import { ToggleSwitch } from "@components/ToggleSwitch/ToggleSwitch.jsx";
+//import { ToggleSwitch } from "@components/ToggleSwitch/ToggleSwitch.jsx";
 import { TimerSession } from "@components/TimerSession/timerSession.jsx";
 import { MenuSide } from "@components/Navbar/MenuSide.jsx";
+//import { LinkTopPage } from "@components/linkTopPage/linkTopPage.jsx";
 
 //import des icons
 //import burgerIcon from '../../../public/images/icons/menu-burger.svg';
@@ -299,7 +300,7 @@ function Navbar() {
               </li>
             )
           )}
-          <li className="language-switcher" role="none">
+          {/* <li className="language-switcher" role="none">
             <button
               onClick={() => switchLanguage("fr")}
               aria-label="Switch to French"
@@ -312,7 +313,7 @@ function Navbar() {
             >
               <img className="flag-image" src={flagEN} alt="English" />
             </button>
-          </li>
+          </li> */}
           <li className="timer-session-container" role="none">
             <TimerSession />
           </li>

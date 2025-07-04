@@ -18,12 +18,12 @@
     padding: 0 2rem;
     background-color: map-get($colors-rule, first-color);
     transition: opacity 1s ease;
-    opacity: 1;
+    /* opacity: 1;
 
     &.scrolled {
         opacity: 0.05;
         transition: opacity 1s ease;
-    }
+    } */
 
     // Toast
     .toast {

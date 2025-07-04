@@ -45,6 +45,10 @@
     //color: map-get($colors-rule, sixth-color);
 }
 
+.hide {
+    display: none;
+}
+
 body,
 header {
 
@@ -55,9 +59,9 @@ header {
 
 header {
     position: sticky;
+    max-width: 2000px;
     top: 0;
-    left: 0;
-    right: 0;
+    margin: 0 auto;
     z-index: 1000;
 }
 
@@ -89,12 +93,14 @@ main {
 
 // link top page
 #RC-link-top-page {
+
     position: sticky;
     top: 85%;
     left: 100%;
     z-index: 1000;
     width: 100px;
     height: 0px;
+
 
 }
 

@@ -1,5 +1,5 @@
+/* conteneur positionner szicky dans shared style */
 .link-top-page {
-  /* conteneur positionner szicky dans shared style */
   margin: 10px 0px;
 }
 @media screen and (min-width: 992px) {
@@ -11,7 +11,7 @@
 .link-top-page a {
   background-color: #024d4a;
   color: white;
-  border: 2px solid #ffffff;
+  border: 4px solid #ffffff;
   padding: 10px;
   border-radius: 50%;
   display: -webkit-box;
@@ -31,5 +31,6 @@
   transition: all 0.3s ease;
 }
 .link-top-page a:hover {
-  background-color: rgba(2, 77, 74, 0.8);
+  border-color: #00beb8;
+  color: #00beb8;
 }/*# sourceMappingURL=linkTopPage.css.map */
