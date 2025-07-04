@@ -4,7 +4,7 @@ import "@styles/CSS/linkTopPage.css";
 
 const LinkTopPage = () => {
   let topPage = () => {
-    let elementTopPage = document.querySelector(".intro-nav");
+    let elementTopPage = document.querySelector(".page-container");
     if (!elementTopPage) {
       return;
     }

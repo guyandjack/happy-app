@@ -49,9 +49,8 @@ header {
 }
 
 main {
-  width: 100%;
-  margin: 0 auto;
   position: relative;
+  width: 100%;
 }
 
 /**** mise en forme des conteneur pour le contenu dynamique ***/
@@ -67,6 +66,15 @@ main {
 
 #RC-menu-side {
   width: 100%;
+}
+
+#RC-link-top-page {
+  position: sticky;
+  top: 90%;
+  left: 100%;
+  z-index: 1000;
+  width: 100px;
+  height: 100px;
 }
 
 #RC-articles-list {
@@ -241,7 +249,7 @@ main {
   width: fit-content;
   color: #171717;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 .faq-section .container .faq-container-title > h2 strong {
   color: #c3066b;
@@ -366,7 +374,7 @@ main {
 }
 @media (min-width: 768px) {
   .faq-section .container .faq-container-title h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
   .faq-section .container .faq-grid .faq-item {
     padding: 25px;
@@ -398,7 +406,7 @@ main {
             align-items: center;
   }
   .faq-section .container .faq-container-title > h2 {
-    font-size: 2rem;
+    font-size: 2.8rem;
   }
 }
 @media screen and (min-width: 992px) and (min-width: 992px) {

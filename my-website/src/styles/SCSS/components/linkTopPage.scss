@@ -1,10 +1,12 @@
 @import "../../utils/color-rule/color-rule.scss";
 
 .link-top-page {
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    z-index: 1000;
+    /* conteneur positionner szicky dans shared style */
+
+    @media screen and (min-width: 992px) {
+        bottom: 80px;
+        right: 0px;
+    }
 
     a {
         background-color: map-get($colors-rule, first-color);

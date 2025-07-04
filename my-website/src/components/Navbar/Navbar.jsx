@@ -316,9 +316,9 @@ function Navbar() {
           <li className="timer-session-container" role="none">
             <TimerSession />
           </li>
-          <li className="dark-mode-switch" role="none">
+          {/* <li className="dark-mode-switch" role="none">
             <ToggleSwitch />
-          </li>
+          </li> */}
         </ul>
       </nav>
       <MenuSide classContainer=".page-container" titleType="h2" />

@@ -38,6 +38,8 @@
 
 }
 
+
+
 .dark-mode {
     background-color: map-get($colors-rule, first-color);
     //color: map-get($colors-rule, sixth-color);
@@ -60,10 +62,9 @@ header {
 }
 
 main {
-
-    width: 100%;
-    margin: 0 auto;
     position: relative;
+    width: 100%;
+
 }
 
 /**** mise en forme des conteneur pour le contenu dynamique ***/
@@ -82,9 +83,18 @@ main {
 // menu side
 #RC-menu-side {
 
-
     width: 100%;
 
+}
+
+// link top page
+#RC-link-top-page {
+    position: sticky;
+    top: 90%;
+    left: 100%;
+    z-index: 1000;
+    width: 100px;
+    height: 100px;
 
 }
 
@@ -294,7 +304,7 @@ main {
                 width: fit-content;
                 color: map-get($colors-rule, fifth-color);
                 text-align: center;
-                font-size: 1.2rem;
+                font-size: 1.5rem;
 
                 strong {
                     color: map-get($colors-rule, fourth-color);
@@ -433,7 +443,7 @@ main {
     @media (min-width: 768px) {
         .container {
             .faq-container-title h2 {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
 
             .faq-grid {
@@ -470,7 +480,7 @@ main {
                 align-items: center;
 
                 &>h2 {
-                    font-size: 2rem;
+                    font-size: 2.8rem;
                 }
 
                 //background-color: blue;
