@@ -119,7 +119,7 @@ function Navbar() {
   const menuItems = {
     fr: [
       { path: `/index.html`, text: "Accueil" },
-      { path: `/public/fr/qui-suis-je.html`, text: "Qui suis je" },
+      { path: `/public/fr/qui-suis-je.html`, text: "A propos" },
       {
         text: "Prestations",
         submenu: [
