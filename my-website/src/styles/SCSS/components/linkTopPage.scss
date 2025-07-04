@@ -2,6 +2,8 @@
 
 .link-top-page {
     /* conteneur positionner szicky dans shared style */
+    margin: 10px 0px;
+
 
     @media screen and (min-width: 992px) {
         bottom: 80px;
@@ -11,6 +13,7 @@
     a {
         background-color: map-get($colors-rule, first-color);
         color: white;
+        border: 2px solid map-get($colors-rule, sixth-color);
         padding: 10px;
         border-radius: 50%;
         display: flex;
