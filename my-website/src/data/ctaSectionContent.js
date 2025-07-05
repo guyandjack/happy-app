@@ -3,7 +3,7 @@ let ctaSectionContent = {
   fr: {
     index: {
       title: "Des solutions web complètes pour répondre à tous vos besoins.",
-      text: "Que vous ayez besoin d’un site web performant, d’une application sur mesure, ou d'un référencement optimisé, nous avons la solution.",
+      text: "Que vous ayez besoin d’un site web performant, d’une application sur mesure, ou d'un référencement optimisé, je peux vous proposer la solution.",
       btn_text: "Contactez-moi",
     },
 

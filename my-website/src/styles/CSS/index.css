@@ -138,7 +138,7 @@
 
 .values {
   width: 100%;
-  padding: 100px 15px;
+  padding: 100px 15px 0px 15px;
   background: linear-gradient(135deg, rgba(2, 77, 74, 0.02) 0%, rgba(251, 251, 252, 0.05) 50%, rgba(0, 190, 184, 0.02) 100%);
 }
 .values h2 {
@@ -179,13 +179,6 @@
   transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   transition: transform 0.3s ease, box-shadow 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
-}
-.values .value-card:hover {
-  -webkit-transform: translateY(-5px);
-      -ms-transform: translateY(-5px);
-          transform: translateY(-5px);
-  -webkit-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.05), 0 12px 18px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 6px 8px rgba(0, 0, 0, 0.05), 0 12px 18px rgba(0, 0, 0, 0.1);
 }
 .values .value-card .img-text-container {
   padding: 30px;
@@ -261,121 +254,6 @@
   color: #024d4a;
 }
 
-.commitments {
-  width: 100%;
-  margin: 0 auto;
-  padding: 100px 15px;
-  background: linear-gradient(135deg, rgba(195, 6, 107, 0.03) 5%, rgba(0, 190, 184, 0.05) 20%, rgba(195, 6, 107, 0.05) 80%, rgba(195, 6, 107, 0.05) 100%);
-}
-.commitments h2 {
-  font-size: 2rem;
-  color: #171717;
-  margin-bottom: 100px;
-  text-align: center;
-  position: relative;
-  padding: 0px;
-}
-.commitments h2 strong {
-  color: #c3066b;
-}
-.commitments h2::after {
-  content: "";
-  position: absolute;
-  top: 0px;
-  left: -10%;
-  width: 1px;
-  height: 100%;
-  background: #c3066b;
-  border-radius: 2px;
-}
-.commitments .container-cards {
-  width: 100%;
-  gap: 70px;
-}
-.commitments .commitments-card {
-  position: relative;
-  z-index: 1;
-  margin: 0;
-  width: 100%;
-  max-width: 350px;
-  height: 350px;
-  /*&::after {
-    position: absolute;
-    z-index: -2;
-    content: '';
-    top: -10px;
-    left: -10px;
-    width: 106%;
-    height: 106%;
-    background: map-get($colors-rule, fourth-color);
-    transform: rotate(10deg);
-    border-radius: 15px;
-    opacity: 0.05;
-  }*/
-}
-.commitments .commitments-card::before {
-  position: absolute;
-  z-index: -1;
-  content: "";
-  top: -10px;
-  left: -10px;
-  width: 105%;
-  height: 105%;
-  background: #6080a0;
-  -webkit-transform: rotate(2deg);
-      -ms-transform: rotate(2deg);
-          transform: rotate(2deg);
-  border-radius: 15px;
-  opacity: 0.3;
-}
-.commitments .commitments-card:nth-child(2)::before {
-  background: #00beb8;
-  -webkit-transform: rotate(-2deg);
-      -ms-transform: rotate(-2deg);
-          transform: rotate(-2deg);
-}
-.commitments .commitments-card:nth-child(3)::before {
-  background: #c3066b;
-  -webkit-transform: rotate(-4deg);
-      -ms-transform: rotate(-4deg);
-          transform: rotate(-4deg);
-}
-.commitments .commitments-card .img-text-container {
-  height: 100%;
-  width: 100%;
-  padding: 25px;
-  background: white;
-  border-radius: 15px;
-  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-}
-.commitments .commitments-card .img-text-container .title-container {
-  text-align: center;
-  margin-bottom: 15px;
-}
-.commitments .commitments-card .img-text-container .title-container .h4-title {
-  font-size: 1.2rem;
-  margin-bottom: 15px;
-  color: #00a59f;
-}
-.commitments .commitments-card .img-text-container .title-container .img-text {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  margin: 0 auto;
-}
-.commitments .commitments-card .img-text-container .text-container p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #171717;
-  text-align: center;
-}
-.commitments .commitments-card .img-text-container .text-container strong {
-  color: #024d4a;
-}
-
 .list-eco-conception {
   margin-top: 20px;
   gap: 20px;
@@ -432,8 +310,7 @@
     background-attachment: fixed;
   }
   .services h2,
-  .values h2,
-  .commitments h2 {
+  .values h2 {
     font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: 60px;
   }
@@ -456,8 +333,7 @@
     font-size: 1rem;
   }
   .intro .intro-content h2,
-  .services .section-title h2,
-  .commitments .section-title h2 {
+  .services .section-title h2 {
     font-size: 1.8rem;
   }
 }
@@ -478,8 +354,7 @@
     font-size: 1.1rem;
   }
   .intro .intro-content h2,
-  .services .section-title h2,
-  .commitments .section-title h2 {
+  .services .section-title h2 {
     font-size: 2rem;
   }
   .services .container {
@@ -497,18 +372,15 @@
     font-size: 1.3rem;
   }
   .services,
-  .values,
-  .commitments {
-    padding: 120px 15px;
+  .values {
+    padding: 120px 15px 0px 15px;
   }
   .services h3,
-  .values h3,
-  .commitments h3 {
+  .values h3 {
     margin-bottom: 120px;
   }
   .intro .intro-content h2,
-  .services .section-title h2,
-  .commitments .section-title h2 {
+  .services .section-title h2 {
     font-size: 2.2rem;
   }
   .container-cards {
@@ -517,9 +389,6 @@
     -webkit-box-pack: space-evenly;
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
-  }
-  .commitments-card {
-    margin: 0;
   }
 }
 @media (min-width: 1500px) {
@@ -706,12 +575,6 @@
         -ms-transform: translateY(-50%);
             transform: translateY(-50%);
   }
-  .why-green-click .why-choose ul li:hover {
-    -webkit-transform: translateY(-5px);
-        -ms-transform: translateY(-5px);
-            transform: translateY(-5px);
-    background: rgba(199, 227, 205, 0.1);
-  }
   .why-green-click .why-choose ul li:last-child:hover {
     -webkit-transform: none;
         -ms-transform: none;
@@ -733,7 +596,7 @@
 }
 @media (min-width: 768px) {
   .values {
-    padding: 120px 30px;
+    padding: 120px 30px 0px 30px;
   }
   .values h3 {
     font-size: clamp(2rem, 4vw, 2.5rem);
@@ -758,7 +621,7 @@
 }
 @media (min-width: 992px) {
   .values {
-    padding: 150px 50px;
+    padding: 150px 50px 0px 50px;
   }
   .values .value-card {
     max-width: 900px;

@@ -19,7 +19,7 @@ function Footer() {
     fr: {
       main: [
         { path: `/index.html`, text: "Accueil" },
-        { path: `/public/fr/qui-suis-je.html`, text: "Qui suis je" },
+        { path: `/public/fr/qui-suis-je.html`, text: "A propos" },
         { path: `/public/fr/contact.html`, text: "Contact" },
       ],
       services: [

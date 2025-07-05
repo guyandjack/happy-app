@@ -154,8 +154,9 @@
 
 // Values section - Mobile first
 .values {
+  //border: 1px solid red;
   width: 100%;
-  padding: 100px 15px;
+  padding: 100px 15px 0px 15px;
   background: linear-gradient(135deg,
       rgba(map-get($colors-rule, first-color), 0.02) 0%,
       rgba(map-get($colors-rule, background-page-color), 0.05) 50%,
@@ -199,12 +200,7 @@
       0 10px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow:
-        0 6px 8px rgba(0, 0, 0, 0.05),
-        0 12px 18px rgba(0, 0, 0, 0.1);
-    }
+
 
     .img-text-container {
       padding: 30px;
@@ -287,140 +283,6 @@
   }
 }
 
-// Commitments section - Mobile first
-.commitments {
-  width: 100%;
-  margin: 0 auto;
-  padding: 100px 15px;
-  background: linear-gradient(135deg,
-      rgba(map-get($colors-rule, fourth-color), 0.03) 5%,
-      rgba(map-get($colors-rule, second-color), 0.05) 20%,
-      rgba(map-get($colors-rule, fourth-color), 0.05) 80%,
-      rgba(map-get($colors-rule, fourth-color), 0.05) 100%);
-
-
-  h2 {
-    font-size: 2rem;
-    color: map-get($colors-rule, fifth-color);
-    margin-bottom: 100px;
-    text-align: center;
-    position: relative;
-    padding: 0px;
-
-    strong {
-      color: map-get($colors-rule, fourth-color);
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0px;
-      left: -10%;
-      width: 1px;
-      height: 100%;
-      background: map-get($colors-rule, fourth-color);
-      border-radius: 2px;
-
-    }
-  }
-
-  .container-cards {
-    width: 100%;
-    gap: 70px;
-  }
-
-  .commitments-card {
-    position: relative;
-    z-index: 1;
-    margin: 0;
-    width: 100%;
-    max-width: 350px;
-    height: 350px;
-
-    &::before {
-      position: absolute;
-      z-index: -1;
-      content: '';
-      top: -10px;
-      left: -10px;
-      width: 105%;
-      height: 105%;
-      background: map-get($colors-rule, footer-color);
-      transform: rotate(2deg);
-      border-radius: 15px;
-      opacity: 0.3;
-    }
-
-    &:nth-child(2) {
-      &::before {
-        background: map-get($colors-rule, second-color);
-        transform: rotate(-2deg);
-      }
-    }
-
-    &:nth-child(3) {
-      &::before {
-        background: map-get($colors-rule, fourth-color);
-        transform: rotate(-4deg);
-      }
-    }
-
-    /*&::after {
-      position: absolute;
-      z-index: -2;
-      content: '';
-      top: -10px;
-      left: -10px;
-      width: 106%;
-      height: 106%;
-      background: map-get($colors-rule, fourth-color);
-      transform: rotate(10deg);
-      border-radius: 15px;
-      opacity: 0.05;
-    }*/
-
-    .img-text-container {
-      height: 100%;
-      width: 100%;
-      padding: 25px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-
-      .title-container {
-        text-align: center;
-        margin-bottom: 15px;
-
-        .h4-title {
-          font-size: 1.2rem;
-          margin-bottom: 15px;
-          color: darken(map-get($colors-rule, second-color), 5%);
-        }
-
-        .img-text {
-          width: 100px;
-          height: 100px;
-          border-radius: 50%;
-          object-fit: cover;
-          margin: 0 auto;
-        }
-      }
-
-      .text-container {
-        p {
-          font-size: 1rem;
-          line-height: 1.6;
-          color: map-get($colors-rule, fifth-color);
-          text-align: center;
-        }
-
-        strong {
-          color: map-get($colors-rule, first-color);
-        }
-      }
-    }
-  }
-}
 
 .list-eco-conception {
   margin-top: 20px;
@@ -478,8 +340,7 @@
   }
 
   .services,
-  .values,
-  .commitments {
+  .values {
 
 
     h2 {
@@ -519,8 +380,7 @@
   }
 
   .intro .intro-content h2,
-  .services .section-title h2,
-  .commitments .section-title h2 {
+  .services .section-title h2 {
     font-size: 1.8rem;
   }
 }
@@ -547,8 +407,7 @@
   }
 
   .intro .intro-content h2,
-  .services .section-title h2,
-  .commitments .section-title h2 {
+  .services .section-title h2 {
     font-size: 2rem;
   }
 
@@ -575,20 +434,17 @@
   }
 
   .services,
-  .values,
-  .commitments {
-    padding: 120px 15px;
+  .values {
+    padding: 120px 15px 0px 15px;
   }
 
   .services h3,
-  .values h3,
-  .commitments h3 {
+  .values h3 {
     margin-bottom: 120px;
   }
 
   .intro .intro-content h2,
-  .services .section-title h2,
-  .commitments .section-title h2 {
+  .services .section-title h2 {
     font-size: 2.2rem;
   }
 
@@ -600,9 +456,7 @@
 
   }
 
-  .commitments-card {
-    margin: 0;
-  }
+
 }
 
 @media (min-width: 1500px) {
@@ -808,10 +662,7 @@
             transform: translateY(-50%);
           }
 
-          &:hover {
-            transform: translateY(-5px);
-            background: rgba(map-get($colors-rule, third-color), 0.1);
-          }
+
 
           &:last-child:hover {
             transform: none;
@@ -842,7 +693,7 @@
 // Tablet (768px and up)
 @media (min-width: 768px) {
   .values {
-    padding: 120px 30px;
+    padding: 120px 30px 0px 30px;
 
     h3 {
       font-size: clamp(2rem, 4vw, 2.5rem);
@@ -877,7 +728,7 @@
 // Desktop (992px and up)
 @media (min-width: 992px) {
   .values {
-    padding: 150px 50px;
+    padding: 150px 50px 0px 50px;
 
     .value-card {
       max-width: 900px;
