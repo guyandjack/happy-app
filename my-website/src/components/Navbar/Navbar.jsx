@@ -256,6 +256,10 @@ function Navbar() {
               >
                 <a
                   href="#"
+                  role="menuitem"
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
                   className={`has-submenu ${isActive(item.path)} ${
                     isServicesOpen ? "open" : ""
                   }`}
