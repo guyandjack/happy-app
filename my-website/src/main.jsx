@@ -161,22 +161,6 @@ try {
  * ***start
  */
 
-/* try {
-  const menuSideContainer = document.getElementById(
-    "RC-article-menu-side-container"
-  );
-  if (menuSideContainer) {
-    ReactDOM.createRoot(menuSideContainer).render(
-      <React.StrictMode>
-        <ArticleMenuSide />
-      </React.StrictMode>
-    );
-  } else {
-    console.log("no menu side container found");
-  }
-} catch (error) {
-  console.error("Error mounting article menu side:", error);
-} */
 /******* concerne la page  article ********************
  * ***end
  */

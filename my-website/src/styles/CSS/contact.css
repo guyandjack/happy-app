@@ -1,54 +1,19 @@
-.contact-content {
+.contact-content .contact-subtitle {
+  font-size: 1.8rem;
+  color: #171717;
+  margin-bottom: 30px;
   position: relative;
-  padding: 0 0 80px;
+  padding-bottom: 15px;
 }
-@-webkit-keyframes img-contact-1 {
-  0% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(-30%);
-            transform: translateY(-30%);
-    opacity: 0.5;
-  }
-}
-@keyframes img-contact-1 {
-  0% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(-30%);
-            transform: translateY(-30%);
-    opacity: 0.5;
-  }
-}
-@-webkit-keyframes img-contact-2 {
-  0% {
-    -webkit-transform: translateX(100px) rotate(90deg);
-            transform: translateX(100px) rotate(90deg);
-    opacity: 0.1;
-  }
-  100% {
-    -webkit-transform: translateX(-214px) rotate(0deg);
-            transform: translateX(-214px) rotate(0deg);
-    opacity: 0.6;
-  }
-}
-@keyframes img-contact-2 {
-  0% {
-    -webkit-transform: translateX(100px) rotate(90deg);
-            transform: translateX(100px) rotate(90deg);
-    opacity: 0.1;
-  }
-  100% {
-    -webkit-transform: translateX(-214px) rotate(0deg);
-            transform: translateX(-214px) rotate(0deg);
-    opacity: 0.6;
-  }
+.contact-content .contact-subtitle::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: #00beb8;
+  border-radius: 2px;
 }
 .contact-content .img-contact {
   display: none;
@@ -60,16 +25,6 @@
     display: block;
     opacity: 0.5;
   }
-}
-.contact-content #img-contact-1 {
-  top: -10%;
-  right: 10%;
-  width: 300px;
-  height: 200px;
-  -webkit-clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-          clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-  -webkit-animation: img-contact-1 8s ease-in-out 0s infinite alternate both;
-          animation: img-contact-1 8s ease-in-out 0s infinite alternate both;
 }
 .contact-content #img-contact-2 {
   bottom: -425px;
@@ -112,10 +67,6 @@
     width: 100%;
   }
 }
-.contact-content #RC-contact-form {
-  width: 100%;
-  max-width: 800px;
-}
 .contact-content .contact-form-container {
   background-color: #fbfbfc;
   border-radius: 12px;
@@ -139,6 +90,13 @@
   color: #024d4a;
   font-weight: 600;
 }
+.contact-content .contact-form-container .form-disclaimer {
+  margin-top: 20px;
+}
+.contact-content .contact-form-container .form-disclaimer a {
+  color: #024d4a;
+  text-decoration: underline;
+}
 .contact-content .contact-info {
   position: relative;
   background-color: #fbfbfc;
@@ -152,23 +110,6 @@
   .contact-content .contact-info {
     width: 35%;
   }
-}
-.contact-content .contact-info h3 {
-  font-size: 1.8rem;
-  color: #171717;
-  margin-bottom: 30px;
-  position: relative;
-  padding-bottom: 15px;
-}
-.contact-content .contact-info h3::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 50px;
-  height: 3px;
-  background: #00beb8;
-  border-radius: 2px;
 }
 .contact-content .contact-info .info-item {
   margin-bottom: 25px;
@@ -198,10 +139,10 @@
 .contact-content .contact-info .info-item:nth-child(5)::before {
   background-image: url("../../../src/assets/images/icons/time-icon.svg");
 }
-.contact-content .contact-info .info-item h3 {
+.contact-content .contact-info .info-item h4 {
   font-size: 1.1rem;
   color: #024d4a;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }
 .contact-content .contact-info .info-item p {
   font-size: 1rem;

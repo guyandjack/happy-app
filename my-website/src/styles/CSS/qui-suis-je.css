@@ -3,9 +3,8 @@
   background-color: rgba(0, 190, 184, 0.1);
 }
 .about-content .about-image-container {
-  position: relative;
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   background-image: url(/public/images/img-a-propos.png);
   background-size: cover;
   background-position: center;
@@ -13,51 +12,13 @@
   -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
           box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   border: 15px solid #024d4a;
-  overflow: hidden;
-}
-.about-content .about-image-container .about-image {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-}
-.about-content .about-links {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: 30px;
-  gap: 15px;
-}
-.about-content .about-links a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background-color: #f5f5f5;
-  color: #171717;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-.about-content .about-links a:hover {
-  background-color: #024d4a;
-  color: #ffffff;
-  -webkit-transform: translateY(-3px);
-      -ms-transform: translateY(-3px);
-          transform: translateY(-3px);
-}
-.about-content .about-links a svg {
-  width: 20px;
-  height: 20px;
+  opacity: 0.3;
+  /* .about-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+
+  } */
 }
 
 .about-charte {
@@ -82,48 +43,44 @@
   background-color: rgba(2, 77, 74, 0.1);
 }
 .about-process .process-steps {
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
 }
 .about-process .process-steps .process-step {
-  background-color: #ffffff;
+  background: linear-gradient(45deg, #ffffff 90%, #c3066b 10%);
   border-radius: 12px;
   padding: 30px;
   -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  width: 100%;
+  max-width: 600px;
+  height: 350px;
+  position: relative;
+  overflow: hidden;
 }
 .about-process .process-steps .process-step .step-number {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 50px;
-  height: 50px;
-  background-color: rgba(195, 6, 107, 0.8);
-  color: #ffffff;
-  border-radius: 50%;
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 20px;
+  color: #ffffff;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
-.about-process .process-steps .process-step h4 {
+.about-process .process-steps .process-step .step-content {
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+}
+.about-process .process-steps .process-step .step-content h4 {
   font-size: 1.3rem;
   color: #00beb8;
   margin-bottom: 15px;
+  text-align: center;
 }
-.about-process .process-steps .process-step p {
+.about-process .process-steps .process-step .step-content p {
   color: #666;
   line-height: 1.6;
 }

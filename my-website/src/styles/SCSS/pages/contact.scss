@@ -3,33 +3,27 @@
 
 // Contact content section
 .contact-content {
-    @keyframes img-contact-1 {
-        0% {
-            transform: translateY(0);
-            opacity: 0;
+
+    .contact-subtitle {
+
+        font-size: 1.8rem;
+        color: map-get($colors-rule, fifth-color);
+        margin-bottom: 30px;
+        position: relative;
+        padding-bottom: 15px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: map-get($colors-rule, second-color);
+            border-radius: 2px;
         }
 
-        100% {
-            transform: translateY(-30%);
-            opacity: 0.5;
-        }
     }
-
-    @keyframes img-contact-2 {
-        0% {
-            transform: translateX(100px) rotate(90deg);
-            opacity: 0.1;
-        }
-
-        100% {
-            transform: translateX(-214px) rotate(0deg);
-            opacity: 0.6;
-        }
-    }
-
-    position: relative;
-    padding: 0 0 80px;
-    //border: 1px solid red;
 
     .img-contact {
         display: none;
@@ -41,15 +35,6 @@
             display: block;
             opacity: 0.5;
         }
-    }
-
-    #img-contact-1 {
-        top: -10%;
-        right: 10%;
-        width: 300px;
-        height: 200px;
-        clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-        animation: img-contact-1 8s ease-in-out 0s infinite alternate both;
     }
 
     #img-contact-2 {
@@ -81,10 +66,7 @@
         }
     }
 
-    #RC-contact-form {
-        width: 100%;
-        max-width: 800px;
-    }
+
 
     // Contact form container
     .contact-form-container {
@@ -99,8 +81,6 @@
             width: 60%;
         }
 
-
-
         &>p {
 
             margin-bottom: 30px;
@@ -111,6 +91,19 @@
                 color: map-get($colors-rule, first-color);
                 font-weight: 600;
             }
+        }
+
+        .form-disclaimer {
+            //font-size: 0.8rem;
+            //color: map-get($colors-rule, first-color);
+            margin-top: 20px;
+
+            a {
+                color: map-get($colors-rule, first-color);
+                text-decoration: underline;
+            }
+
+
         }
 
 
@@ -129,24 +122,7 @@
             width: 35%;
         }
 
-        h3 {
-            font-size: 1.8rem;
-            color: map-get($colors-rule, fifth-color);
-            margin-bottom: 30px;
-            position: relative;
-            padding-bottom: 15px;
 
-            &::after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 50px;
-                height: 3px;
-                background: map-get($colors-rule, second-color);
-                border-radius: 2px;
-            }
-        }
 
         .info-item {
 
@@ -186,10 +162,10 @@
                 //fill: map-get($colors-rule, first-color);
             }
 
-            h3 {
+            h4 {
                 font-size: 1.1rem;
                 color: map-get($colors-rule, first-color);
-                margin-bottom: 5px;
+                margin-bottom: 0px;
             }
 
             p {
