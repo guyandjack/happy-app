@@ -47,7 +47,7 @@ header {
 header {
   position: sticky;
   max-width: 2000px;
-  top: 0;
+  top: 0px;
   margin: 0 auto;
   z-index: 1000;
 }
@@ -147,7 +147,7 @@ main {
 }
 
 .faq-section {
-  padding: 0px 50px 100px 50px;
+  padding: 0px 20px 100px 20px;
   background: linear-gradient(135deg, rgba(0, 190, 184, 0.1));
   width: 100%;
   margin: 0 auto;
@@ -188,10 +188,13 @@ main {
   gap: 20px;
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
 }
 .faq-section .faq-grid .faq-item {
   width: 100%;
+  max-height: 1000px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   background: #ffffff;
   border-radius: 15px;
   padding: 20px 30px;
@@ -260,7 +263,7 @@ main {
 }
 .faq-section .faq-grid .faq-item p.expanded,
 .faq-section .faq-grid .faq-item ul.expanded {
-  max-height: 300px;
+  max-height: 1000px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -274,6 +277,9 @@ main {
   height: fit-content;
 }
 @media (min-width: 768px) {
+  .faq-section {
+    padding: 0px 50px 100px 50px;
+  }
   .faq-section .faq-container-title h2 {
     font-size: 1.8rem;
   }

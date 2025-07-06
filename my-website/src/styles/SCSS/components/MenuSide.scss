@@ -3,10 +3,14 @@
 
 .menu-side {
   display: none;
+  padding: 5px;
+  position: absolute;
+  top: 100%;
+  left: 0;
   width: 100%;
-  background-color: rgba(map-get($colors-rule, fifth-color), 0.9);
+  background-color: map-get($colors-rule, fifth-color);
   z-index: 100;
-  //overflow: hidden;
+
 
   @media screen and (min-width: 992px) {
     display: block;
@@ -20,38 +24,30 @@
 
 }
 
-.menu-side-container {
-  padding: 5px;
-  width: 100%;
 
-
-}
 
 
 .menu-side-list {
+  flex-flow: row nowrap;
+  overflow-x: auto;
+  /* Scroll horizontal si dépassement */
+  overflow-y: hidden;
+  /* Pas de scroll vertical */
+  white-space: nowrap;
+  /* Empêche les retours à la ligne */
   width: 100%;
+  /* Prend toute la largeur disponible */
   list-style: none;
+  /* Optionnel : supprime les puces */
   padding: 0;
+  /* Nettoyage */
   margin: 0;
   gap: 20px;
-
-  /* @media screen and (min-width: 1600px) {
-
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 10px;
-    position: fixed;
-    top: 120px;
-    left: 50px;
-    width: 250px;
-    height: fit-content;
-
-  } */
 }
 
 .menu-side-list li {
   //margin-bottom: 10px;
+  flex: 0 0 auto;
   padding: 5px;
   border-bottom: 2px solid transparent;
   transition: border-color 0.3s ease;
@@ -66,7 +62,6 @@
 
 .menu-side-list li.active {
   border-bottom-color: map-get($colors-rule, second-color);
-
 
 }
 
@@ -86,27 +81,4 @@
 .menu-side-list li.active .menu-side-link {
   color: map-get($colors-rule, second-color);
   font-weight: 500;
-}
-
-/* .menu-side-link:hover {
-  color: map-get($colors-rule, fourth-color);
-} */
-
-/* Scrollbar styling */
-.article-menu-side::-webkit-scrollbar {
-  width: 6px;
-}
-
-.article-menu-side::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 3px;
-}
-
-.article-menu-side::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 3px;
-}
-
-.article-menu-side::-webkit-scrollbar-thumb:hover {
-  background: #999;
 }

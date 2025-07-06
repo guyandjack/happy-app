@@ -9,7 +9,6 @@ import { Navbar } from "@components/Navbar/Navbar.jsx";
 import { Footer } from "@components/Footer/Footer.jsx";
 import { ArticlesList } from "@components/Articles/ArticlesList";
 import { Dashboard } from "@components/Dashboard/Dashboard.jsx";
-import { MenuSide } from "@components/Navbar/MenuSide.jsx";
 import { IndexCards } from "@components/Card/IndexCards.jsx";
 import { Hero } from "@components/Hero/Hero.jsx";
 import { CtaSection } from "@components/CtaSection/CtaSection.jsx";
@@ -113,24 +112,6 @@ try {
  * ***end
  */
 
-/******* concerne les pages services   ********************
- * ***start
- */
-/* document.addEventListener("DOMContentLoaded", () => {
-  const menuSideContainer = document.getElementById("RC-menu-side");
-  console.log("element menu side: ", menuSideContainer);
-
-  ReactDOM.createRoot(menuSideContainer).render(
-    <React.StrictMode>
-      <MenuSide classContainer={".page-container"} titleType={"h2"} />
-    </React.StrictMode>
-  );
-}); */
-
-/******* concerne les pages services   ********************
- * ***end
- */
-
 /******* concerne la page login********************
  * ***start
  */
@@ -180,7 +161,7 @@ try {
  * ***start
  */
 
-try {
+/* try {
   const menuSideContainer = document.getElementById(
     "RC-article-menu-side-container"
   );
@@ -195,7 +176,7 @@ try {
   }
 } catch (error) {
   console.error("Error mounting article menu side:", error);
-}
+} */
 /******* concerne la page  article ********************
  * ***end
  */

@@ -43,7 +43,7 @@ const LinkTopPage = () => {
   }, []);
 
   return (
-    <div className="link-top-page-wrapper" ref={elementLinkTopPage}>
+    <div className="link-top-page-wrapper">
       <div className="link-top-page">
         <a
           role="button"

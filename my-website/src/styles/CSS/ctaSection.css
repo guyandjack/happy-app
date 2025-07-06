@@ -72,12 +72,12 @@
   margin: 0 auto;
   padding: 0 20px;
 }
-.cta-section h3 {
-  font-size: 2.8rem;
+.cta-section > h3 {
+  font-size: 2rem;
   margin-bottom: 20px;
 }
-.cta-section p {
-  font-size: 1.2rem;
+.cta-section > p {
+  font-size: 1rem;
   margin-bottom: 40px;
   color: rgba(23, 23, 23, 0.8);
 }
@@ -105,6 +105,22 @@
           transform: translateY(-5px);
 }
 
+@media screen and (min-width: 768px) {
+  .cta-section > h3 {
+    font-size: 3.2rem;
+  }
+  .cta-section > p {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .cta-section > h3 {
+    font-size: 3.6rem;
+  }
+  .cta-section > p {
+    font-size: 1.6rem;
+  }
+}
 .page-container.dark-mode .cta-section .btn-primary {
   background-color: #c3066b;
   color: #ffffff;
