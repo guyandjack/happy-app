@@ -1,12 +1,12 @@
 @import '../../utils/color-rule/color-rule.scss';
 
 
-.hero-container {
+.hero-wrapper {
   width: 100%;
 
 }
 
-.hero {
+.hero-container {
   color: map-get($colors-rule, first-color);
   min-height: 300px;
   width: 100%;
@@ -56,29 +56,22 @@
     clip-path: polygon(0 50%, 100% 0, 100% 100%, 0% 100%);
   }
 
-  .container {
+  .hero-container-title {
     position: relative;
     z-index: 5;
     margin: 0 auto;
     padding: 20px;
     background: map-get($colors-rule, background-page-color);
-    width: fit-content;
+    width: 90%;
     border-radius: 10px;
-    /*border-top-right-radius: 20%;
-        border-bottom-left-radius: 20%;*/
 
-
-
-
-
-
-    h1 {
-      font-size: 3.5rem;
+    &>h1 {
+      font-size: 2rem;
       font-weight: 800;
       margin-bottom: 1.5rem;
       line-height: 1.2;
       position: relative;
-      display: inline-block;
+      //display: inline-block;
 
       &::after {
         content: '';
@@ -93,10 +86,11 @@
       }
     }
 
-    .hero-subtitle {
+    &>.hero-subtitle {
       position: relative;
       z-index: 10;
       color: rgba(map-get($colors-rule, fifth-color), 0.7);
+      font-size: 1.1rem;
     }
 
 
@@ -105,54 +99,41 @@
 
 }
 
-.intro-nav {
-  flex-flow: column wrap;
-  height: 250px;
-  gap: 10px;
-  padding: 10px;
-  width: 100%;
-  color: rgba(map-get($colors-rule, fifth-color), 0.7);
-  //border: 1px solid blue;
-  margin-top: 20px;
+@media screen and (min-width: 768px) {
+  .hero-container {
+    .hero-container-title {
+      width: 80%;
 
-  @media screen and (min-width: 768px) {
-    gap: 20px;
-    height: 100px;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-  }
+      &>h1 {
+        font-size: 2.5rem;
+      }
 
-  &>li {
-    @media screen and (min-width: 768px) {
-      flex: 0 0 150px;
-    }
-
-
-
-
-
-    & a {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      border-radius: 10px;
-      background-color: rgba(map-get($colors-rule, first-color), 0.9);
-      color: map-get($colors-rule, sixth-color);
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      text-align: center;
-
-      &:hover {
-        background-color: rgba(map-get($colors-rule, second-color), 0.8);
-        transform: translateY(-5px);
+      &>.hero-subtitle {
+        font-size: 1.1rem;
       }
     }
   }
-
 }
+
+@media screen and (min-width: 992px) {
+  .hero-container {
+    .hero-container-title {
+      width: fit-content;
+
+      &>h1 {
+        font-size: 3rem;
+      }
+
+      &>.hero-subtitle {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+
+
+
 
 .page-container.dark-mode .hero {
 

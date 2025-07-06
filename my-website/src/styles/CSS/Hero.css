@@ -1,8 +1,8 @@
-.hero-container {
+.hero-wrapper {
   width: 100%;
 }
 
-.hero {
+.hero-container {
   color: #024d4a;
   min-height: 300px;
   width: 100%;
@@ -14,7 +14,7 @@
     overflow: visible;
   } */
 }
-.hero > img {
+.hero-container > img {
   position: absolute;
   z-index: 1;
   top: 0px;
@@ -27,7 +27,7 @@
           clip-path: polygon(0% 0%, 100% 0%, 0% 100%, 0% 100%);
   opacity: 0.8;
 }
-.hero > img:nth-child(2) {
+.hero-container > img:nth-child(2) {
   top: -15%;
   width: 500px;
   height: 500px;
@@ -37,7 +37,7 @@
           clip-path: none;
   opacity: 0.8;
 }
-.hero::after {
+.hero-container::after {
   z-index: 10;
   content: "";
   position: absolute;
@@ -48,28 +48,23 @@
   -webkit-clip-path: polygon(0 50%, 100% 0, 100% 100%, 0% 100%);
           clip-path: polygon(0 50%, 100% 0, 100% 100%, 0% 100%);
 }
-.hero .container {
+.hero-container .hero-container-title {
   position: relative;
   z-index: 5;
   margin: 0 auto;
   padding: 20px;
   background: #fbfbfc;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 90%;
   border-radius: 10px;
-  /*border-top-right-radius: 20%;
-      border-bottom-left-radius: 20%;*/
 }
-.hero .container h1 {
-  font-size: 3.5rem;
+.hero-container .hero-container-title > h1 {
+  font-size: 2rem;
   font-weight: 800;
   margin-bottom: 1.5rem;
   line-height: 1.2;
   position: relative;
-  display: inline-block;
 }
-.hero .container h1::after {
+.hero-container .hero-container-title > h1::after {
   content: "";
   position: absolute;
   bottom: -10px;
@@ -82,68 +77,37 @@
   background-color: #00beb8;
   border-radius: 2px;
 }
-.hero .container .hero-subtitle {
+.hero-container .hero-container-title > .hero-subtitle {
   position: relative;
   z-index: 10;
   color: rgba(23, 23, 23, 0.7);
+  font-size: 1.1rem;
 }
 
-.intro-nav {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column wrap;
-          flex-flow: column wrap;
-  height: 250px;
-  gap: 10px;
-  padding: 10px;
-  width: 100%;
-  color: rgba(23, 23, 23, 0.7);
-  margin-top: 20px;
-}
 @media screen and (min-width: 768px) {
-  .intro-nav {
-    gap: 20px;
-    height: 100px;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: row wrap;
-            flex-flow: row wrap;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+  .hero-container .hero-container-title {
+    width: 80%;
+  }
+  .hero-container .hero-container-title > h1 {
+    font-size: 2.5rem;
+  }
+  .hero-container .hero-container-title > .hero-subtitle {
+    font-size: 1.1rem;
   }
 }
-@media screen and (min-width: 768px) {
-  .intro-nav > li {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 150px;
-            flex: 0 0 150px;
+@media screen and (min-width: 992px) {
+  .hero-container .hero-container-title {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  .hero-container .hero-container-title > h1 {
+    font-size: 3rem;
+  }
+  .hero-container .hero-container-title > .hero-subtitle {
+    font-size: 1.2rem;
   }
 }
-.intro-nav > li a {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: rgba(2, 77, 74, 0.9);
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 600;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  text-align: center;
-}
-.intro-nav > li a:hover {
-  background-color: rgba(0, 190, 184, 0.8);
-  -webkit-transform: translateY(-5px);
-      -ms-transform: translateY(-5px);
-          transform: translateY(-5px);
-}
-
 .page-container.dark-mode .hero {
   background-color: #036662;
 }

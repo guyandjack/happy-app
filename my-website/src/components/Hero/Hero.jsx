@@ -75,8 +75,8 @@ function Hero() {
   }
 
   return (
-    <div className="flex-column-start-center hero-container">
-      <div className="flex-column-center-center hero" ref={heroRef}>
+    <div className="flex-column-start-center hero-wrapper">
+      <div className="flex-column-center-center hero-container" ref={heroRef}>
         {
           <img
             src={heroContent[`${language}`][`${pageName}`].img_1}
@@ -89,7 +89,7 @@ function Hero() {
             alt=" background"
           />
         }
-        <div className="container" ref={heroRefContainer}>
+        <div className="hero-container-title" ref={heroRefContainer}>
           <h1>{heroContent[`${language}`][`${pageName}`].title}</h1>
 
           <p className="hero-subtitle">

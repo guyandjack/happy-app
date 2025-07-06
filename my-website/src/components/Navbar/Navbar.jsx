@@ -32,14 +32,14 @@ function Navbar() {
   const navbarRef = useRef(null);
   const menuItemCollapseRef = useRef(null);
 
-  const handleScroll = () => {
+  /* const handleScroll = () => {
     if (navbarRef.current) {
       navbarRef.current.classList.add("scrolled");
       setTimeout(() => {
         navbarRef.current.classList.remove("scrolled");
       }, 1000);
     }
-  };
+  }; */
 
   const showToast = (message, type) => {
     setToast({ show: true, message, type });
@@ -142,7 +142,7 @@ function Navbar() {
     ],
     en: [
       { path: `/public/en/home.html`, text: "Home" },
-      { path: `/public/en/about.html`, text: "Who I am" },
+      { path: `/public/en/about.html`, text: "About me" },
       {
         text: "Services",
         submenu: [
