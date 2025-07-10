@@ -2,6 +2,7 @@
 
 // Hero section - Mobile first
 .hero-index {
+  gap: 40px;
   position: relative;
   z-index: 3;
   width: 100%;
@@ -15,11 +16,12 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('../../../src/assets/images/hero-index-v4.jpg');
+    background: url('../../../src/assets/images/hero-index-w.webp');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     z-index: -1;
-    opacity: 0.4;
+    opacity: 0.7;
   }
 
   &::after {
@@ -29,14 +31,14 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: map-get($colors-rule, first-color);
+    background-color: map-get($colors-rule, fifth-color);
     z-index: -2;
     opacity: 1;
 
   }
 
   .hero-index-container-title {
-    background: linear-gradient(135deg, rgba(map-get($colors-rule, third-color), 1) 0%, rgba(map-get($colors-rule, second-color), 1) 100%);
+    background: linear-gradient(135deg, rgba(map-get($colors-rule, third-color), 0.6) 0%, rgba(map-get($colors-rule, second-color), 0.7) 100%);
     backdrop-filter: blur(12px);
     border-radius: 15px;
     padding: 25px;
@@ -70,12 +72,12 @@
   }
 
   .hero-index-title-h4 {
-    font-size: 1rem;
-    color: map-get($colors-rule, fifth-color);
-    padding: 10px;
-    background-color: map-get($colors-rule, sixth-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: map-get($colors-rule, sixth-color);
+    padding: 20px;
+    background-color: rgba(map-get($colors-rule, second-color), 0.5);
     border-radius: 15px;
-
 
   }
 
@@ -116,7 +118,7 @@
     }
 
     .hero-index-title-h4 {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
     }
 
   }
@@ -132,7 +134,7 @@
 // Services section - Mobile first
 .services {
   width: 100%;
-  padding: 100px 15px;
+  padding: 120px 15px;
   background: linear-gradient(135deg,
       rgba(map-get($colors-rule, second-color), 0.03) 5%,
       rgba(map-get($colors-rule, footer-color), 0.05) 20%,
@@ -174,7 +176,7 @@
 .values {
   //border: 1px solid red;
   width: 100%;
-  padding: 100px 15px 0px 15px;
+  padding: 120px 15px;
   background: linear-gradient(135deg,
       rgba(map-get($colors-rule, first-color), 0.02) 0%,
       rgba(map-get($colors-rule, background-page-color), 0.05) 50%,
@@ -253,11 +255,9 @@
           border-radius: 50%;
           object-fit: cover;
           border: 3px solid rgba(map-get($colors-rule, second-color), 0.1);
-          transition: transform 0.3s ease;
 
-          &:hover {
-            transform: scale(1.05);
-          }
+
+
         }
       }
 
@@ -336,9 +336,9 @@
 @media screen and (min-width: 992px) {
 
 
-  .services,
+
   .values {
-    padding: 120px 15px 0px 15px;
+    padding: 120px 20px;
   }
 
   .services h3,
@@ -362,13 +362,13 @@
 
 }
 
-@media (min-width: 1500px) {
+/* @media (min-width: 1500px) {
 
 
   .services {
-    margin-top: 250px;
+    // margin-top: 250px;
   }
-}
+} */
 
 // Why Green Click section - Mobile first
 .why-green-click {

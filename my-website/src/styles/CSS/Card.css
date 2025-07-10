@@ -57,9 +57,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: -webkit-gradient(linear, right top, left top, from(rgba(0, 190, 184, 0.01)), to(rgba(0, 190, 184, 0.15)));
-  background: linear-gradient(to left, rgba(0, 190, 184, 0.01) 0%, rgba(0, 190, 184, 0.15) 100%);
-  opacity: 0;
+  background: -webkit-gradient(linear, right top, left top, from(rgba(0, 190, 184, 0.01)), to(rgba(0, 190, 184, 0.3)));
+  background: linear-gradient(to left, rgba(0, 190, 184, 0.01) 0%, rgba(0, 190, 184, 0.3) 100%);
+  opacity: 0.5;
   -webkit-transition: opacity 0.3s ease;
   transition: opacity 0.3s ease;
 }

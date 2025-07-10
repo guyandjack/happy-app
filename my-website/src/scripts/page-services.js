@@ -24,8 +24,12 @@ function initFaq() {
       question.addEventListener("click", () => {
         // Toggle the arrow icon
         question.classList.toggle("expanded");
-        answer.classList.toggle("expanded");
-        answerList.classList.toggle("expanded");
+        if (answer) {
+          answer.classList.toggle("expanded");
+        }
+        if (answerList) {
+          answerList.classList.toggle("expanded");
+        }
         item.classList.toggle("expanded");
       });
     }

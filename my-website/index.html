@@ -3,23 +3,34 @@
 
 <head>
 
-
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO Meta Tags -->
   <title>Accueil | My Web Dev Company</title>
+  <meta name="robots" content="index, follow">
+
+
   <meta name="description"
-    content="Agence de développement web spécialisée dans la création de sites web sur mesure, applications mobiles et optimisation SEO avec une approche éco-responsable.">
+    content="Développeur freelance basé à Crans-Montana, en Valais (Suisse), spécialisé dans la création de sites web sur mesure, d’applications mobiles et en optimisation SEO. Une approche éco-responsable pour des solutions performantes, durables et adaptées à vos besoins.">
+
+
 
   <!-- Open Graph Tags -->
   <meta property="og:title" content="Accueil | My Web Dev Company">
   <meta property="og:description"
-    content="Agence de développement web spécialisée dans la création de sites web sur mesure, applications mobiles et optimisation SEO avec une approche éco-responsable.">
+    content="Développeur freelance basé à Crans-Montana, en Valais (Suisse), spécialisé dans la création de sites web sur mesure, d’applications mobiles et en optimisation SEO. Une approche éco-responsable pour des solutions performantes, durables et adaptées à vos besoins.">
   <meta property="og:image" content="/images/og-home.jpg">
   <meta property="og:url" content="https://mywebdevcompany.com/">
   <meta property="og:type" content="website">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Accueil | My Web Dev Company">
+  <meta name="twitter:description"
+    content="Développeur freelance basé à Crans-Montana, en Valais (Suisse), spécialisé dans la création de sites web sur mesure, d’applications mobiles et en optimisation SEO. Une approche éco-responsable pour des solutions performantes, durables et adaptées à vos besoins.">
+  <meta name="twitter:image" content="https://mywebdevcompany.com/images/og-home.jpg">
+
 
   <!-- Canonical and Alternate Links -->
   <link rel="canonical" href="https://mywebdevcompany.com/">
@@ -27,34 +38,40 @@
   <link rel="alternate" hreflang="en" href="https://mywebdevcompany.com/en/home.html">
 
   <!-- Geolocation Tags -->
-  <meta name="geo.region" content="FR">
-  <meta name="geo.placename" content="Paris">
+  <meta name="geo.region" content="CH">
+  <meta name="geo.placename" content="Crans-Montana">
+
+
+  <!-- Schema.org Script -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nom Prénom",
+    "jobTitle": "Développeur Web Freelance",
+    "url": "https://mywebdevcompany.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Crans-Montana",
+      "addressRegion": "Valais",
+      "addressCountry": "CH"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/ton-profil",
+      "https://github.com/ton-profil"
+    ]
+  }
+  </script>
+
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/src/styles/CSS/normalise.css">
   <link rel="stylesheet" href="/src/styles/CSS/shared-style.css">
   <link rel="stylesheet" href="/src/styles/CSS/index.css">
 
-  <!-- Schema.org Script -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "My Web Dev Company",
-    "url": "https://mywebdevcompany.com",
-    "description": "Agence de développement web spécialisée dans la création de sites web sur mesure, applications mobiles et optimisation SEO avec une approche éco-responsable."
-  }
-  </script>
-
-
-
-  <!-- Add FAQ collapse script -->
-  <!-- <script type="text/javascript" src="/src/scripts/page-services.js" defer></script> -->
 
   <!-- Scripts jsx for react component -->
   <script type="module" src="/src/main.jsx"></script>
-
-
 
 </head>
 
@@ -63,14 +80,13 @@
     <!-- Navbar will be mounted here by React -->
     <header>
       <div id="RC-navbar"></div>
-
     </header>
 
     <div id="RC-link-top-page" class="hide"></div>
     <main>
 
       <!-- Hero section -->
-      <section class="flex-row-center-center hero-index">
+      <section class="flex-column-center-center hero-index">
 
         <div class="flex-column-center-center hero-index-container-title">
           <h1 class="hero-index-title-h1">
@@ -78,15 +94,15 @@
           </h1>
 
           <h3 class="hero-index-title-h3">
-            <strong>Solutions web</strong> &amp; <strong>Applications mobiles</strong>
+            <strong>Sites web</strong> &amp; <strong>Applications mobiles</strong>
           </h3>
 
-          <h4 class="hero-index-title-h4">
-            Eco-conception de solutions digitales.
-          </h4>
 
         </div>
 
+        <h4 class="hero-index-title-h4">
+          Eco-conception de solutions digitales
+        </h4>
       </section>
 
       <!-- Services section -->
@@ -101,7 +117,7 @@
           <h2>Pourquoi choisir <strong>Green Click</strong> ?</h2>
 
 
-          <h3>1. <strong>Des sites rapides, performants et éco-responsables</strong></h3>
+          <h3>1. Pour des <strong>sites</strong> rapides, performants et <strong>éco-responsables</strong></h3>
           <p>
             Je crée des <strong>sites internet légers</strong> et <strong>rapides à charger</strong> en évitant
             l'utilisation
@@ -152,7 +168,7 @@
             point
             d'honneur à <strong>respecter vos délais</strong> et à offrir une qualité irréprochable.</p>
 
-          <h3><strong>Les avantages de travailler avec moi :</strong></h3>
+          <!-- <h3><strong>Les avantages de travailler avec moi :</strong></h3>
           <ul class="flex-column-start-center">
             <li><strong>Sites rapides et performants</strong> : chaque ligne de code est pensée pour garantir une
               <strong>vitesse
@@ -183,7 +199,7 @@
               Vous avez une idée, un projet web ou une simple question ?
               <a href="/public/fr/contact.html" class="contact-button-link">Contactez-moi</a>
             </li>
-          </ul>
+          </ul> -->
 
 
 

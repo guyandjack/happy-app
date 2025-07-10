@@ -77,9 +77,9 @@ function Footer() {
   const currentLang = window.location.pathname.includes("/en/") ? "en" : "fr";
 
   return (
-    <footer className="footer">
-      <div className="footer-content">
-        <div className="footer-brand">
+    <footer className="flex-column-start-center footer">
+      <div className="flex-column-start-start footer-content">
+        <div className="flex-column-start-start footer-brand">
           <a
             href={currentLang === "fr" ? "/index.html" : "/public/en/home.html"}
             className="footer-logo"
@@ -88,8 +88,8 @@ function Footer() {
           </a>
           <p className="footer-tagline">
             {currentLang === "fr"
-              ? "Solutions web & mobile sur mesure"
-              : "Custom web & mobile solutions"}
+              ? "Solutions web & mobile"
+              : "Web & mobile solutions"}
           </p>
           <a
             href={
@@ -103,7 +103,7 @@ function Footer() {
           </a>
         </div>
 
-        <nav className="footer-nav">
+        <nav className="flex-column-start-start footer-nav">
           <div className="footer-nav-section">
             <h3>{currentLang === "fr" ? "Menu" : "Menu"}</h3>
             <ul>
@@ -139,15 +139,16 @@ function Footer() {
         </nav>
       </div>
 
-      <div className="flex-row-center-center footer-page-notation">
+      <div className="flex-column-start-start footer-page-notation">
         <p>
           <span>{<RiDoubleQuotesL className="footer-quote-icon" />}</span>
           {currentLang === "fr"
-            ? "Agissons pour une conception eco-responsable."
-            : "We act for a responsible eco-design."}
+            ? "Agissons pour une conception responsable."
+            : "We act for a responsible design."}
           <span>{<RiDoubleQuotesR className="footer-quote-icon" />}</span>
         </p>
         <a
+          className="flex-row-center-center"
           href={`https://bff.ecoindex.fr/redirect/?url=${urlFull}`}
           target="_blank"
         >

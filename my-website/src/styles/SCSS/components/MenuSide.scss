@@ -3,7 +3,7 @@
 
 .menu-side {
   display: none;
-  padding: 5px;
+
   position: absolute;
   top: 100%;
   left: 0;
@@ -30,27 +30,19 @@
 .menu-side-list {
   flex-flow: row nowrap;
   overflow-x: auto;
-  /* Scroll horizontal si dépassement */
   overflow-y: hidden;
-  /* Pas de scroll vertical */
   white-space: nowrap;
-  /* Empêche les retours à la ligne */
   width: 100%;
-  /* Prend toute la largeur disponible */
+  height: 50px;
   list-style: none;
-  /* Optionnel : supprime les puces */
-  padding: 0;
-  /* Nettoyage */
-  margin: 0;
   gap: 20px;
 }
 
 .menu-side-list li {
-  //margin-bottom: 10px;
+
   flex: 0 0 auto;
-  padding: 5px;
-  border-bottom: 2px solid transparent;
-  transition: border-color 0.3s ease;
+
+
 
   &:hover {
     border-bottom-color: map-get($colors-rule, sixth-color);
@@ -66,16 +58,32 @@
 }
 
 .menu-side-link {
+
   display: block;
-  padding: 5px 0;
+  position: relative;
   color: map-get($colors-rule, sixth-color);
   text-decoration: none;
-  font-size: 14px;
-  line-height: 1.4;
   cursor: pointer;
-  text-align: left;
-  width: 100%;
-  transition: color 0.3s ease;
+  text-align: center;
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    left: 0px;
+    bottom: -2px;
+    height: 1px;
+    width: 0%;
+    background-color: map-get($colors-rule, fourth-color);
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+
+  }
+
+
 }
 
 .menu-side-list li.active .menu-side-link {

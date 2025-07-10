@@ -62,7 +62,7 @@ const MenuSide = ({ classContainer, titleType }) => {
 
     // Set up intersection observer to highlight active section
     const observerOptions = {
-      rootMargin: "-100px 0px -70% 0px",
+      rootMargin: "-100px 0px -60% 0px",
       threshold: 0,
     };
 

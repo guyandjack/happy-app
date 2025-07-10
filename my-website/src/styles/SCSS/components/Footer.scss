@@ -1,26 +1,27 @@
 @import "../../utils/color-rule/color-rule.scss";
 
 .footer {
-  background: darken(map-get($colors-rule, footer-color), 30%);
+  gap: 20px;
+  background: darken(map-get($colors-rule, footer-color), 20%);
   color: map-get($colors-rule, sixth-color);
   padding: 60px 20px 20px 20px;
   width: 100%;
 
   .footer-content {
+
     max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
+    width: 100%;
     gap: 40px;
 
-    @media (min-width: 768px) {
-      grid-template-columns: 1fr 2fr;
+    @media screen and (min-width: 992px) {
+      flex-flow: row wrap;
+      justify-content: space-between;
+      align-items: flex-start;
     }
 
     .footer-brand {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      flex: 0 1 auto;
+
       gap: 20px;
 
       .footer-logo {
@@ -41,7 +42,7 @@
       .footer-cta {
         display: inline-block;
         padding: 12px 24px;
-        background: map-get($colors-rule, fourth-color);
+        background: rgba(map-get($colors-rule, fourth-color), 0.9);
         color: map-get($colors-rule, sixth-color);
         text-decoration: none;
         border-radius: 6px;
@@ -50,7 +51,7 @@
         transition: all 0.3s ease;
 
         &:hover {
-          background: map-get($colors-rule, background-page-color);
+          background: rgba(map-get($colors-rule, background-page-color), 0.9);
           color: map-get($colors-rule, fourth-color);
           //border: 2px solid map-get($colors-rule, fourth-color);
           transform: translateY(-2px);
@@ -59,19 +60,24 @@
     }
 
     .footer-nav {
-      display: grid;
-      grid-template-columns: 1fr;
       gap: 30px;
-      align-items: center;
 
-      @media (min-width: 768px) {
-        grid-template-columns: repeat(3, 1fr);
 
+      @media screen and (min-width: 768px) {
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        width: 100%;
+      }
+
+      @media screen and (min-width: 992px) {
+        width: auto;
+        flex: 1 0 auto;
       }
 
 
-
       .footer-nav-section {
+        flex: 0 0 auto;
+
         h3 {
           color: map-get($colors-rule, second-color);
           font-size: 1.2rem;
@@ -80,8 +86,7 @@
 
         ul {
           list-style: none;
-          padding: 0;
-          margin: 0;
+
 
           li {
             margin-bottom: 12px;
@@ -118,6 +123,7 @@
   }
 
   .footer-bottom {
+    width: 100%;
     max-width: 1200px;
     margin: 40px auto 0;
     padding-top: 20px;
@@ -134,21 +140,16 @@
   .footer-page-notation {
     gap: 30px;
     width: 100%;
-    max-width: 1200px;
-    background: darken(map-get($colors-rule, first-color), 5%);
-    /*background: linear-gradient(to bottom,
-        darken(map-get($colors-rule, footer-color), 20%) 10%,
-        map-get($colors-rule, first-color),
-        map-get($colors-rule, first-color),
-        darken(map-get($colors-rule, footer-color), 20%) 90%);*/
-    padding: 12px;
-    margin: 20px auto 0 auto;
-    border-radius: 6px;
+    max-width: 800px;
 
-    &>img {
-      border: 1px solid map-get($colors-rule, sixth-color);
 
+    @media screen and (min-width: 992px) {
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+      align-items: center;
     }
+
+
 
     &>p {
       margin: 0;
@@ -160,7 +161,7 @@
 
     &>p span:nth-child(2) {
       display: inline-block;
-      transform: translateY(15px);
+      //transform: translateY(15px);
     }
 
     .footer-quote-icon {
@@ -171,14 +172,17 @@
     }
 
     &>a {
-      display: flex;
-      flex-flow: column;
-      justify-content: center;
-      align-items: center;
-      color: map-get($colors-rule, sixth-color);
-      text-decoration: none;
-      transition: all 0.3s ease;
+      //border: 2px solid red;
+      padding: 10px;
+      border-radius: 8px;
+      border: 2px solid transparent;
+      transition: border 0.3s ease;
 
+
+    }
+
+    &>a:hover {
+      border: 2px solid map-get($colors-rule, second-color);
     }
   }
 }
