@@ -13,11 +13,13 @@ const dataImagesUrl = {
   },
   summer: {
     mobile_a:
-      "url(../../../src/assets/images/hero-index-mobile-winter-600px-modif.jpg",
+      "url(../../../src/assets/images/page-index/index-summer-700px.webp",
     mobile_b:
-      "url(../../../src/assets/images/hero-index-mobile-winter-1000px.webp)",
-    laptop: "url(../../../src/assets/images/hero-index-sumer-1500px.webp)",
-    desktop: "url(../../../src/assets/images/hero-index-sumer-2000px.webp)",
+      "url(../../../src/assets/images/page-index/index-summer-1000px.webp)",
+    laptop:
+      "url(../../../src/assets/images/page-index/index-summer-1500px.webp)",
+    desktop:
+      "url(../../../src/assets/images/page-index/index-summer-2000px.webp)",
   },
   autumn: {
     mobile_a: "600px",

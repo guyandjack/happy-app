@@ -22,7 +22,7 @@ const Card = ({ card }) => {
           </div>
         )}
         <div className="flex-column-start-center card-content">
-          {card.title && <h4 className="card-title">{card.title}</h4>}
+          {card.title && <h3 className="card-title">{card.title}</h3>}
           {card.description && (
             <p className="card-description">{card.description}</p>
           )}

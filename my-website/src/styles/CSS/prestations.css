@@ -130,7 +130,6 @@
   width: 100%;
   min-height: 400px;
   border-radius: 20px;
-  background: #ffffff;
   overflow: hidden;
   -webkit-transition: -webkit-transform 0.3s ease;
   transition: -webkit-transform 0.3s ease;
@@ -208,7 +207,7 @@
   }
 }
 .website-types .website-cards .website-card-container .website-card .card-content p strong {
-  color: #00beb8;
+  color: #00817d;
   font-weight: 600;
 }
 .website-types .website-cards .website-card-container .website-card .card-content .btn {

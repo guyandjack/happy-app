@@ -43,19 +43,11 @@
   flex: 0 0 auto;
 
 
-
-  &:hover {
-    border-bottom-color: map-get($colors-rule, sixth-color);
-  }
-
 }
 
 
 
-.menu-side-list li.active {
-  border-bottom-color: map-get($colors-rule, second-color);
 
-}
 
 .menu-side-link {
 
@@ -65,6 +57,11 @@
   text-decoration: none;
   cursor: pointer;
   text-align: center;
+  font-size: 0.8rem;
+
+  @media screen and (min-width: 1300px) {
+    font-size: 0.9rem;
+  }
 
   &::after {
     content: '';
@@ -88,5 +85,7 @@
 
 .menu-side-list li.active .menu-side-link {
   color: map-get($colors-rule, fifth-color);
-  font-weight: 500;
+  font-weight: 600;
+  padding: 2px 5px;
+  background-color: map-get($colors-rule, sixth-color);
 }

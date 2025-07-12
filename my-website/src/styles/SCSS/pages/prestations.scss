@@ -131,7 +131,7 @@
         width: 100%;
         min-height: 400px;
         border-radius: 20px;
-        background: map-get($colors-rule, sixth-color);
+        //background: rgba(map-get($colors-rule, first-color), 1);
         overflow: hidden;
         transition: transform 0.3s ease;
         box-shadow: 0 0px 20px rgba(map-get($colors-rule, fifth-color), 0.3);
@@ -206,7 +206,8 @@
             }
 
             strong {
-              color: map-get($colors-rule, second-color);
+              color: darken(map-get($colors-rule, second-color), 12%);
+              //color: map-get($colors-rule, second-color);
               font-weight: 600;
             }
           }

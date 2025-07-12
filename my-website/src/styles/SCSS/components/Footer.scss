@@ -2,7 +2,7 @@
 
 .footer {
   gap: 20px;
-  background: darken(map-get($colors-rule, footer-color), 20%);
+  background: darken(map-get($colors-rule, footer-color), 25%);
   color: map-get($colors-rule, sixth-color);
   padding: 60px 20px 20px 20px;
   width: 100%;
@@ -79,7 +79,7 @@
         flex: 0 0 auto;
 
         h3 {
-          color: map-get($colors-rule, second-color);
+          color: lighten(map-get($colors-rule, second-color), 10%);
           font-size: 1.2rem;
           margin-bottom: 20px;
         }

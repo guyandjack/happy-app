@@ -120,7 +120,7 @@ function Navbar() {
   const menuItems = {
     fr: [
       { path: `/index.html`, text: "Accueil" },
-      { path: `/public/fr/qui-suis-je.html`, text: "A propos" },
+      { path: `/public/fr/a-propos.html`, text: "A propos" },
       {
         text: "Prestations",
         submenu: [
@@ -256,7 +256,7 @@ function Navbar() {
               >
                 <a
                   href="#"
-                  role="menuitem"
+                  /* role="menuitem" */
                   onClick={(e) => {
                     e.preventDefault();
                   }}
@@ -326,7 +326,7 @@ function Navbar() {
           </li> */}
         </ul>
       </nav>
-      <MenuSide classContainer=".page-container" titleType="h2" />
+      <MenuSide classContainer=".page-container" titleType=".item-menu-side" />
     </div>
   );
 }

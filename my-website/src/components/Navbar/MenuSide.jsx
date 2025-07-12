@@ -122,11 +122,12 @@ const MenuSide = ({ classContainer, titleType }) => {
 
   return (
     <div className="menu-side">
-      <ul className="flex-row-center-center menu-side-list">
+      <ul className="flex-row-center-center menu-side-list" role="menu">
         {headings.map((heading) => (
           <li
             key={heading.id}
             className={activeHeading === heading.id ? "active" : ""}
+            role="menuitem"
           >
             <button
               onClick={() => scrollToHeading(heading.id)}

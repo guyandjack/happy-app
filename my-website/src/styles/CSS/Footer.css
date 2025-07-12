@@ -1,6 +1,6 @@
 .footer {
   gap: 20px;
-  background: #3a4d60;
+  background: #304050;
   color: #ffffff;
   padding: 60px 20px 20px 20px;
   width: 100%;
@@ -90,7 +90,7 @@
           flex: 0 0 auto;
 }
 .footer .footer-content .footer-nav .footer-nav-section h3 {
-  color: #00beb8;
+  color: #00f1e9;
   font-size: 1.2rem;
   margin-bottom: 20px;
 }

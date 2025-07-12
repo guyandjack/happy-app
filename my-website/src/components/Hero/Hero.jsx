@@ -19,25 +19,6 @@ function Hero() {
   let arrayLinkHero = [];
   const [linkHero, setLinkHero] = useState([]);
 
-  //positionne le bandeau hero en fonction de la hauteur de menuside
-  /*useEffect(() => {
-    const setPositionHero = () => {
-      const menuSideHeight = document
-        .querySelector(".menu-side")
-        .getBoundingClientRect().height;
-      if (!menuSideHeight || !heroRefContainer.current) {
-        console.log("menuSideHeight ou heroRefWrapper.current non trouvé");
-        return;
-      }
-      heroRefWrapper.current.style.paddingTop = `${menuSideHeight}px`;
-    };
-    window.addEventListener("load", () => setPositionHero());
-
-    return () => {
-      removeEventListener("DOMContentLoaded", setPositionHero());
-    };
-  }, []);*/
-
   useEffect(() => {
     let arrayElements = document.querySelectorAll("[data-hero]");
     arrayLinkHero = Array.from(arrayElements).map((element) => {

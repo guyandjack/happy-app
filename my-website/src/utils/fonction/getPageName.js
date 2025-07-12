@@ -12,7 +12,7 @@ function getPageName(lang) {
   }
   subString = string.split("/").pop().replace(".html", "");
   let masqueFr =
-    /^(index|contact|qui-suis-je|realisations|articles|site-web|seo|application-mobile)$/;
+    /^(index|contact|a-propos|realisations|articles|site-web|seo|application-mobile)$/;
   let masqueEn =
     /^(home|contact|about|achievements|articles|website|seo|mobile-application)$/;
 
@@ -20,7 +20,7 @@ function getPageName(lang) {
     //recupere le nom de la page dans l'url
     pageName = subString.match(masqueFr);
     //renomme les pages en fonction de la langue
-    if (pageName[0] === "qui-suis-je") {
+    if (pageName[0] === "a-propos") {
       pageName[0] = "qui";
     }
     if (pageName[0] === "site-web") {

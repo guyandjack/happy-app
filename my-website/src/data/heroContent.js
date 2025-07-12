@@ -1,23 +1,23 @@
 //Contenu de la section hero
 
 //import des images
-import imgContact_1 from "@assets/images/page-contact/img-anim-contact.webp";
-import imgContact_2 from "@assets/images/page-contact/img-head-contact-2.webp";
+import imgContact_1 from "@assets/images/page-contact/img-hero-1.webp";
+import imgContact_2 from "@assets/images/page-contact/img-hero-2.webp";
 
-import imgQui_1 from "@assets/images/page-qui-suis-je/img-header-about-me.webp";
-import imgQui_2 from "@assets/images/page-qui-suis-je/img-header-about-me-2.webp";
+import imgQui_1 from "@assets/images/page-qui-suis-je/img-1-hero-about.webp";
+import imgQui_2 from "@assets/images/page-qui-suis-je/img-2-hero-about.webp";
 
 import imgArticles_1 from "@assets/images/page-articles/img-hero-articles-1.webp";
 import imgArticles_2 from "@assets/images/page-articles/img-hero-articles-2.webp";
 
-import imgApp_1 from "@assets/images/page-app/img-hero.webp";
-import imgApp_2 from "@assets/images/page-app/img-card-1.webp";
+import imgApp_1 from "@assets/images/page-app/img-hero-1.webp";
+import imgApp_2 from "@assets/images/page-app/img-hero-2.webp";
 
-import imgSeo_1 from "@assets/images/page-seo/img-hero-2.webp";
-import imgSeo_2 from "@assets/images/page-seo/img-hero-3.webp";
+import imgSeo_1 from "@assets/images/page-seo/img-hero-1.webp";
+import imgSeo_2 from "@assets/images/page-seo/img-hero-2.webp";
 
-import imgSite_1 from "@assets/images/page-site-web/img-hero.webp";
-import imgSite_2 from "@assets/images/page-site-web/img-hero-2.webp";
+import imgSite_1 from "@assets/images/page-site-web/img-1-hero.webp";
+import imgSite_2 from "@assets/images/page-site-web/img-2-hero.webp";
 
 let heroContent = {
   fr: {
@@ -25,7 +25,7 @@ let heroContent = {
       img_1: imgContact_1,
       img_2: imgContact_2,
       title: "Contact",
-      subtitle: "Decouvrons de nouvelles opportunités ensemble.",
+      subtitle: "Découvrons de nouvelles opportunités ensemble.",
     },
 
     qui: {

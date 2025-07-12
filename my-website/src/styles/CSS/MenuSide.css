@@ -37,13 +37,6 @@
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
 }
-.menu-side-list li:hover {
-  border-bottom-color: #ffffff;
-}
-
-.menu-side-list li.active {
-  border-bottom-color: #00beb8;
-}
 
 .menu-side-link {
   display: block;
@@ -52,6 +45,12 @@
   text-decoration: none;
   cursor: pointer;
   text-align: center;
+  font-size: 0.8rem;
+}
+@media screen and (min-width: 1300px) {
+  .menu-side-link {
+    font-size: 0.9rem;
+  }
 }
 .menu-side-link::after {
   content: "";
@@ -71,5 +70,7 @@
 
 .menu-side-list li.active .menu-side-link {
   color: #171717;
-  font-weight: 500;
+  font-weight: 600;
+  padding: 2px 5px;
+  background-color: #ffffff;
 }/*# sourceMappingURL=MenuSide.css.map */

@@ -6,6 +6,7 @@
 .card-container .cards-list {
   width: 100%;
   list-style: none;
+  gap: 50px;
 }
 
 @media (min-width: 768px) {
