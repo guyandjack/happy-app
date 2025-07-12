@@ -544,6 +544,15 @@ main {
 
 }
 
+.flex-column-space_between-center {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    //background-color: red;
+
+}
+
 // Flexbox row
 .flex-row-start-center {
     display: flex;

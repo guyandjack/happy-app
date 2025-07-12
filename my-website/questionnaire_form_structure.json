@@ -1,0 +1,156 @@
+[
+  {
+    "title": "Sur quel(s) niveau(x) technique(s) de la Swiss Snow League basez-vous principalement vos réponses ?",
+    "type": "CHECKBOX",
+    "options": [
+      "Niveau Bleu",
+      "Niveau Rouge",
+      "Niveau Noir"
+    ]
+  },
+  {
+    "title": "Êtes-vous moniteur(trice) breveté(e) en :",
+    "type": "CHECKBOX",
+    "options": [
+      "Ski",
+      "Snowboard"
+    ]
+  },
+  {
+    "title": "Pensez-vous que les élèves connaissent suffisamment les règles FIS pour skier en sécurité ?",
+    "type": "MULTIPLE_CHOICE",
+    "options": [
+      "Oui tout à fait",
+      "Partiellement",
+      "Non, pas suffisamment",
+      "Je ne sais pas"
+    ]
+  },
+  {
+    "title": "Les élèves parviennent-ils à mettre en pratique les consignes de sécurité sur les pistes ?",
+    "type": "MULTIPLE_CHOICE",
+    "options": [
+      "Oui, sans problème",
+      "Oui, parfois",
+      "Oui, mais après plusieurs répétitions du moniteur",
+      "Non, dans la plupart des cas",
+      "Jamais"
+    ]
+  },
+  {
+    "title": "Selon vous, qu’est-ce qui permettrait aux élèves d’y arriver plus facilement ?",
+    "type": "CHECKBOX",
+    "options": [
+      "Être plus âgés (quelques années de plus)",
+      "Avoir davantage d’expérience sur le terrain",
+      "Répéter les consignes systématiquement pendant les cours",
+      "Autre"
+    ]
+  },
+  {
+    "title": "Leur niveau de connaissance est-il en adéquation avec leur niveau technique ?",
+    "type": "MULTIPLE_CHOICE",
+    "options": [
+      "Oui",
+      "Non",
+      "Je ne sais pas"
+    ]
+  },
+  {
+    "title": "Abordez-vous les règles FIS dans vos cours ?",
+    "type": "MULTIPLE_CHOICE",
+    "options": [
+      "Oui, de manière systématique",
+      "Oui, régulièrement",
+      "Oui, parfois",
+      "Non, jamais"
+    ]
+  },
+  {
+    "title": "À quel moment parlez-vous des règles FIS ?",
+    "type": "CHECKBOX",
+    "options": [
+      "En début de cours (prévention)",
+      "Lorsqu’un comportement à risque est observé",
+      "En fin de séance (retour)",
+      "Lors de journées/modules spécifiques sécurité",
+      "Autre"
+    ]
+  },
+  {
+    "title": "Comment transmettez-vous ces règles ?",
+    "type": "CHECKBOX",
+    "options": [
+      "Verbalement (discussion, explication)",
+      "Par le jeu / la mise en situation",
+      "Via des supports visuels (affiches, fiches)",
+      "Par imitation / démonstration",
+      "Autre"
+    ]
+  },
+  {
+    "title": "Pouvez-vous citer les 10 règles FIS ?",
+    "type": "TEXT",
+    "options": []
+  },
+  {
+    "title": "Pouvez-vous citer jusqu’à 5 règles SKUS ?",
+    "type": "TEXT",
+    "options": []
+  },
+  {
+    "title": "Enseignez-vous d’autres éléments de sécurité en montagne que les règles FIS/SKUS ?",
+    "type": "MULTIPLE_CHOICE",
+    "options": [
+      "Oui",
+      "Non"
+    ]
+  },
+  {
+    "title": "Si oui, lesquels ?",
+    "type": "CHECKBOX",
+    "options": [
+      "Comportement en cas de chute ou d'accident",
+      "Lecture du terrain / vigilance météo",
+      "Risques d’avalanche (notions simples)",
+      "Conduite à tenir hors-piste",
+      "Couleur des jalons selon le type de piste",
+      "Aspect des jalons selon leur emplacement",
+      "Couleurs des cordes/jalons signalant danger ou interdiction",
+      "Autre"
+    ]
+  },
+  {
+    "title": "Que pensez-vous d’un module de sécurité obligatoire dans le cursus ?",
+    "type": "MULTIPLE_CHOICE",
+    "options": [
+      "Très favorable",
+      "Plutôt favorable",
+      "Mitigé",
+      "Pas favorable",
+      "Opposé(e)"
+    ]
+  },
+  {
+    "title": "Quels contenus devraient être inclus selon vous ?",
+    "type": "CHECKBOX",
+    "options": [
+      "Comportement en cas d’accident",
+      "Signalement et premiers secours",
+      "Prévention en groupe (conduite collective)",
+      "Balisage du lieu de l'accident",
+      "Autre"
+    ]
+  },
+  {
+    "title": "Quelles méthodes vous semblent les plus adaptées pour les 8‑12 ans ?",
+    "type": "CHECKBOX",
+    "options": [
+      "Jeux / mises en situation",
+      "Petits tests ou quiz",
+      "Séances de discussion en petit groupe",
+      "Supports visuels ou vidéos",
+      "Autre"
+    ]
+  }
+]

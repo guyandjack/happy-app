@@ -18,7 +18,7 @@ import { LinkTopPage } from "@components/linkTopPage/linkTopPage.jsx";
 //import des scripts
 import { initFaq, initIconSetting } from "@scripts/page-services.js";
 import { checkToken } from "@scripts/page-dashboard.js";
-
+import { updateHeroBackground, setImageType } from "@scripts/page-index.js";
 //import des fonctions
 
 //scripts d'initialisation
@@ -28,6 +28,24 @@ initFaq();
 
 //effet rotation icon
 initIconSetting();
+
+//determine la photo de fond en fonction de la saison et du type d'ecran a l'initialisation
+let initTypeImg = updateHeroBackground();
+console.log("la photo initiale:", initTypeImg);
+setImageType(initTypeImg);
+
+//modifie la photo du landingpage en fonction de la saison et du resize de l' ecran
+window.addEventListener("resize", () => {
+  console.log("la taille de l' ecran a changée:", window.innerWidth);
+  let newTypeImg = updateHeroBackground();
+  //compare la valeur init a la nouvelle calculee si elle est differente alors on modifie la photo
+  console.log("la photo initiale:", initTypeImg);
+  if (newTypeImg !== initTypeImg) {
+    initTypeImg = newTypeImg;
+    setImageType(newTypeImg);
+    console.log("la photo a changée:", newTypeImg);
+  }
+});
 
 //check token page dashboard
 //checkToken();

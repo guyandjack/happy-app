@@ -8,7 +8,7 @@
   top: 100%;
   left: 0;
   width: 100%;
-  background-color: map-get($colors-rule, fifth-color);
+  background-color: rgba(map-get($colors-rule, fourth-color), 0.9);
   z-index: 100;
 
 
@@ -33,7 +33,7 @@
   overflow-y: hidden;
   white-space: nowrap;
   width: 100%;
-  height: 50px;
+  height: 30px;
   list-style: none;
   gap: 20px;
 }
@@ -74,7 +74,7 @@
     bottom: -2px;
     height: 1px;
     width: 0%;
-    background-color: map-get($colors-rule, fourth-color);
+    background-color: map-get($colors-rule, sixth-color);
     transition: width 0.3s ease;
   }
 
@@ -87,6 +87,6 @@
 }
 
 .menu-side-list li.active .menu-side-link {
-  color: map-get($colors-rule, second-color);
+  color: map-get($colors-rule, fifth-color);
   font-weight: 500;
 }

@@ -2,12 +2,22 @@
 
 // Hero section - Mobile first
 .hero-index {
+  --imgSeason: "";
+
+  @keyframes blurIn {
+    to {
+      filter: blur(0);
+      opacity: 0.7;
+    }
+  }
+
   gap: 40px;
   position: relative;
   z-index: 3;
   width: 100%;
-  height: 600px;
-  padding: 20px 15px;
+  height: 500px;
+  padding: 20px 0px;
+  //border: 4px solid red;
 
   &::before {
     content: '';
@@ -16,12 +26,16 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('../../../src/assets/images/hero-index-w.webp');
+    background-image: var(--imgSeason);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    background-repeat: no-repeat;
     z-index: -1;
+    //opacity: 0.7;
+    filter: blur(10px);
     opacity: 0.7;
+    animation: blurIn 2s ease-out forwards;
   }
 
   &::after {
@@ -33,53 +47,57 @@
     height: 100%;
     background-color: map-get($colors-rule, fifth-color);
     z-index: -2;
-    opacity: 1;
+    //opacity: 0.2;
+
 
   }
 
   .hero-index-container-title {
-    background: linear-gradient(135deg, rgba(map-get($colors-rule, third-color), 0.6) 0%, rgba(map-get($colors-rule, second-color), 0.7) 100%);
-    backdrop-filter: blur(12px);
-    border-radius: 15px;
+
     padding: 25px;
     gap: 20px;
+    width: 100%;
   }
 
   .hero-index-title-h1 {
 
     font-size: 2rem;
-    color: map-get($colors-rule, first-color);
+    color: map-get($colors-rule, sixth-color);
     margin-bottom: 1rem;
     line-height: 1.2;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    text-shadow: 0px 0px 10px map-get($colors-rule, fifth-color);
 
     strong {
-      color: map-get($colors-rule, fourth-color);
+      font-size: 2.5rem;
+      padding: 10px;
+      border-radius: 15px;
+      color: rgba(map-get($colors-rule, fourth-color), 1);
+      word-break: keep-all;
+      white-space: nowrap;
+    }
+
+    span {
+
+      font-size: 1.4rem;
     }
   }
 
   .hero-index-title-h3 {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     color: map-get($colors-rule, fifth-color);
     padding: 10px;
-    background-color: map-get($colors-rule, sixth-color);
+    background-color: rgba(map-get($colors-rule, second-color), 0.8);
     border-radius: 15px;
 
 
     strong {
-      color: map-get($colors-rule, second-color);
+      font-size: 1.1rem;
+      color: map-get($colors-rule, sixth-color);
     }
   }
 
-  .hero-index-title-h4 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: map-get($colors-rule, sixth-color);
-    padding: 20px;
-    background-color: rgba(map-get($colors-rule, second-color), 0.5);
-    border-radius: 15px;
 
-  }
 
 
 }
@@ -88,41 +106,90 @@
 
 @media screen and (min-width: 768px) {
   .hero-index {
-    height: 700px;
+    height: 600px;
+
+
 
     .hero-index-title-h1 {
       font-size: 2.5rem;
+
+      strong {
+        font-size: 2.8rem;
+      }
     }
 
-    .hero-index-title-h3 {
-      font-size: 1.2rem;
-    }
 
-    .hero-index-title-h4 {
-      font-size: 1.1rem;
-    }
 
   }
 }
 
 @media screen and (min-width: 992px) {
   .hero-index {
-    height: 800px;
+    //height: 700px;
+    height: calc(100vh - 60px);
 
     .hero-index-title-h1 {
-      font-size: 3rem;
+      font-size: 2.8rem;
+
+      strong {
+        font-size: 3.3rem;
+      }
+
+
     }
 
     .hero-index-title-h3 {
       font-size: 1.5rem;
+
+      strong {
+        font-size: 1.6rem;
+      }
     }
 
-    .hero-index-title-h4 {
-      font-size: 1.4rem;
-    }
 
   }
 }
+
+@media screen and (min-width: 1300px) {
+  .hero-index {
+
+    .hero-index-title-h3 {
+      font-size: 1.7rem;
+
+      strong {
+        font-size: 1.4rem;
+      }
+
+
+    }
+
+  }
+
+}
+
+@media screen and (min-width: 1900px) {
+  .hero-index {
+    //height: calc(100vh - 60px);
+
+    .hero-index-title-h1 {
+      font-size: 3rem;
+
+      strong {
+        font-size: 4.8rem;
+      }
+
+      span {
+        font-size: 2.8rem;
+
+      }
+    }
+
+
+
+  }
+}
+
+
 
 
 
