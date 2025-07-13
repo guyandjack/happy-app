@@ -29,7 +29,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: var(--imgSeason);
+  background-image: url("http://localhost:3000/api/images/landingPage/500");
   background-size: cover;
   background-position: 0 100;
   background-attachment: fixed;
@@ -92,6 +92,9 @@
   .hero-index {
     height: 600px;
   }
+  .hero-index::before {
+    background-image: url("http://localhost:3000/api/images/landingPage/1000");
+  }
   .hero-index .hero-index-title-h1 {
     font-size: 2.5rem;
   }
@@ -105,6 +108,9 @@
 @media screen and (min-width: 992px) {
   .hero-index {
     height: calc(100vh - 60px);
+  }
+  .hero-index::before {
+    background-image: url("http://localhost:3000/api/images/landingPage/1500");
   }
   .hero-index .hero-index-title-h1 {
     font-size: 2.8rem;
@@ -120,6 +126,9 @@
   }
 }
 @media screen and (min-width: 1300px) {
+  .hero-index::before {
+    background-image: url("http://localhost:3000/api/images/landingPage/2000");
+  }
   .hero-index .hero-index-title-h3 {
     font-size: 1.7rem;
   }
@@ -359,13 +368,12 @@
 }
 .why-green-click .why-choose h3 {
   font-size: 1.4rem;
-  color: #024d4a;
+  color: #171717;
   margin: 40px 0 20px;
   padding-left: 15px;
-  border-left: 3px solid #00beb8;
 }
 .why-green-click .why-choose h3 strong {
-  color: #c3066b;
+  color: #024d4a;
 }
 .why-green-click .why-choose p {
   font-size: 1rem;
@@ -375,7 +383,7 @@
   padding: 0 10px;
 }
 .why-green-click .why-choose p strong {
-  color: #024d4a;
+  color: #008b87;
 }
 .why-green-click .why-choose ul {
   -ms-flex-item-align: center;

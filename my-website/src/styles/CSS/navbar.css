@@ -13,12 +13,6 @@
   background-color: #024d4a;
   -webkit-transition: opacity 1s ease;
   transition: opacity 1s ease;
-  /* opacity: 1;
-
-  &.scrolled {
-      opacity: 0.05;
-      transition: opacity 1s ease;
-  } */
 }
 .navbar .toast {
   position: absolute;
@@ -33,7 +27,7 @@
   transition: bottom 0.3s ease;
 }
 .navbar .toast.offline {
-  background-color: rgba(195, 6, 107, 0.8);
+  background-color: rgba(255, 69, 0, 0.8);
 }
 .navbar .toast.online {
   background-color: rgba(0, 190, 184, 0.8);
@@ -54,21 +48,9 @@
           align-items: center;
   height: 100%;
 }
-.navbar .navbar-brand .logo {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 100%;
-}
-.navbar .navbar-brand .logo .logo-image {
-  height: 50px;
-  width: 50px;
-  -o-object-fit: contain;
-     object-fit: contain;
-  border-radius: 50%;
+.navbar .navbar-brand .logo-image {
+  height: 60px;
+  width: 150px;
 }
 .navbar .navbar-brand .burger-menu {
   position: relative;

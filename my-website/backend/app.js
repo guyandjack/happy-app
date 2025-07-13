@@ -13,7 +13,7 @@ const authRoutes = require("./routes/auth.routes");
 const articleRoutes = require("./routes/article.routes");
 const contactRoutes = require("./routes/contact.routes");
 const recaptchaRoutes = require("./routes/recaptcha.routes");
-//const contentRoutes = require('./routes/content.routes');
+const imagesRoutes = require("./routes/images.routes");
 
 // Create Express app
 const app = express();
@@ -23,7 +23,7 @@ const corsOptions = {
   origin: function (origin, callback) {
     const allowedOrigins = [
       "http://localhost:5173",
-      "https://www.my-website.ch",
+      "https://helveclick.ch",
       "https://happy-api-hd3g.onrender.com",
     ];
 
@@ -112,11 +112,15 @@ app.use("/api/auth", authRoutes);
 app.use("/api/articles", articleRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/recaptcha", recaptchaRoutes);
+app.use("/api/images", imagesRoutes);
 
-/* // Health check endpoint
-app.get('/api/health', (req, res) => {
-  res.status(200).json({ status: 'ok', message: 'Server is running' });
-}); */
+/* app.use(
+  "/api/public/images/landingPage",
+  (req, res) => {
+    res.status(200).json({ message: "ok" });
+  },
+  express.static(path.join(__dirname, "uploads", "landingPage"))
+); */
 
 // Error handling middleware
 app.use((err, req, res, next) => {

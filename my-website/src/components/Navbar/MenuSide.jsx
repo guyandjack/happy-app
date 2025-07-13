@@ -18,13 +18,16 @@ const MenuSide = ({ classContainer, titleType }) => {
   }
 
   const handlerSize = () => {
-    console.log("düpendance useEffect menu side modifiée");
-    setIsMenuSide(!isMenuSide);
+    console.log("dépendance useEffect menu side modifiée");
+    setIsMenuSide((actualValue) => {
+      console.log("NOUVELLE VALEUR de ismenuside: ", !actualValue);
+      return !actualValue;
+    });
   };
 
   //Creation du menu side
   useEffect(() => {
-    //controle des erreurs au premier montage du composant
+    //controle des erreurs  montage du composant
     //  si la taille de l' ecran est insufisante on ne cre pas le menuside
     if (window.innerWidth < 992) {
       console.log("Error: 3 --- pas de menu Side:  écran trop petit...");
@@ -90,7 +93,7 @@ const MenuSide = ({ classContainer, titleType }) => {
     };
   }, [isMenuSide]);
 
-  //Declenche la construction du menu side
+  //Declenche la construction du menu side lorsque la taille de l'ecran change
   useEffect(() => {
     window.addEventListener("resize", () => {
       handlerSize();

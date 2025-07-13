@@ -1,5 +1,6 @@
 //import des hook
 import React, { useEffect, useRef, useState } from "react";
+import { ReactSVG } from "react-svg";
 
 //import des fonctions
 //import { localOrProd } from "@utils/fonction/testEnvironement.js";
@@ -17,7 +18,7 @@ import flagEN from "@assets/images/icons/flag-en.png";
 import flagFR from "@assets/images/icons/flag-fr.png";
 
 //import des images
-import logos from "@assets/images/logo-happy-app.webp";
+import logos from "@assets/images/logo-helveclick.svg";
 
 //import du fichier scss
 import "@styles/CSS/navbar.css";
@@ -215,10 +216,13 @@ function Navbar() {
             href={currentLang === "fr" ? "/" : "/en/home.html"}
             className="logo"
           >
-            <img
+            <ReactSVG
               src={logos}
-              alt="Logo My Web Dev Company"
-              className="logo-image"
+              alt="Logo helveclick"
+              beforeInjection={(svg) => {
+                svg.classList.add("logo-image");
+                svg.setAttribute("role", "img");
+              }}
             />
           </a>
 

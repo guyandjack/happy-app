@@ -8,7 +8,7 @@
   top: 100%;
   left: 0;
   width: 100%;
-  background-color: rgba(map-get($colors-rule, fourth-color), 0.9);
+  background-color: map-get($colors-rule, fourth-color);
   z-index: 100;
 
 

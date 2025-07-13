@@ -10,7 +10,6 @@ import { Footer } from "@components/Footer/Footer.jsx";
 import { ArticlesList } from "@components/Articles/ArticlesList";
 import { Dashboard } from "@components/Dashboard/Dashboard.jsx";
 import { IndexCards } from "@components/Card/IndexCards.jsx";
-import { Hero } from "@components/Hero/Hero.jsx";
 import { CtaSection } from "@components/CtaSection/CtaSection.jsx";
 import { Slider } from "@components/Slider/slider.jsx";
 import { LinkTopPage } from "@components/linkTopPage/linkTopPage.jsx";
@@ -60,16 +59,6 @@ if (navbarContainer) {
   ReactDOM.createRoot(navbarContainer).render(
     <React.StrictMode>
       <Navbar />
-    </React.StrictMode>
-  );
-}
-
-//mount hero
-const heroContainer = document.getElementById("RC-hero");
-if (heroContainer) {
-  ReactDOM.createRoot(heroContainer).render(
-    <React.StrictMode>
-      <Hero />
     </React.StrictMode>
   );
 }
