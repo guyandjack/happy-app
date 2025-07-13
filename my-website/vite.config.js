@@ -22,7 +22,7 @@ export default defineConfig({
         main: "index.html",
 
         // FR pages
-        qui_suis_je_fr: "public/fr/qui-suis-je.html",
+        a_propos_fr: "public/fr/a-propos.html",
         services_web_fr: "public/fr/prestations/site-web.html",
         services_seo_fr: "public/fr/prestations/seo.html",
         services_app_fr: "public/fr/prestations/application-mobile.html",

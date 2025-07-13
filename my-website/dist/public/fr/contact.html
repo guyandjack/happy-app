@@ -6,44 +6,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO Meta Tags -->
-  <title>Contact | My Web Dev Company</title>
+  <title>Contact | Helveclick</title>
   <meta name="description"
-    content="Contactez-nous pour discuter de votre projet de développement web ou pour obtenir un devis gratuit.">
+    content="Contactez-moi pour discuter de votre projet de développement web ou pour obtenir un devis gratuit.">
+  <meta name="robots" content="index, follow">
+
 
   <!-- Open Graph Tags -->
-  <meta property="og:title" content="Contact | My Web Dev Company">
+  <meta property="og:title" content="Contact | Helveclick">
   <meta property="og:description"
-    content="Contactez-nous pour discuter de votre projet de développement web ou pour obtenir un devis gratuit.">
-  <meta property="og:image" content="/images/og-contact.jpg">
-  <meta property="og:url" content="https://mywebdevcompany.com/fr/contact.html">
+    content="Contactez-moi pour discuter de votre projet de développement web ou pour obtenir un devis gratuit.">
+  <!-- <meta property="og:image" content="/images/og-contact.jpg"> -->
+  <meta property="og:url" content="https://helveclick.ch/public/fr/contact.html">
   <meta property="og:type" content="website">
 
   <!-- Canonical and Alternate Links -->
-  <link rel="canonical" href="https://mywebdevcompany.com/fr/contact.html">
+  <!-- <link rel="canonical" href="https://mywebdevcompany.com/fr/contact.html">
   <link rel="alternate" hreflang="fr" href="https://mywebdevcompany.com/fr/contact.html">
-  <link rel="alternate" hreflang="en" href="https://mywebdevcompany.com/en/contact.html">
+  <link rel="alternate" hreflang="en" href="https://mywebdevcompany.com/en/contact.html"> -->
 
   <!-- Geolocation Tags -->
-  <meta name="geo.region" content="FR">
-  <meta name="geo.placename" content="Paris">
+  <meta name="geo.region" content="CH">
+  <meta name="geo.placename" content="Crans-Montana">
 
-  <!-- Stylesheets -->
+
 
   <!-- Schema.org Script -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "name": "Contact",
-    "description": "Contactez-nous pour discuter de votre projet de développement web ou pour obtenir un devis gratuit."
+    "@type": "Person",
+    "name": "Dupanloup Guillaume",
+    "jobTitle": "Développeur web et mobile freelance",
+    "url": "https://helveclick.ch",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Crans-Montana",
+      "addressRegion": "Valais",
+      "addressCountry": "CH"
+    },
+    "sameAs": [
+      <!-- "https://www.linkedin.com/in/ton-profil", -->
+      
+    ]
   }
   </script>
 
+  <!-- Stylesheets -->
+
   <!-- Scripts in head -->
-  <script type="module" crossorigin src="/assets/main-UP1j5Ul9.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-B7PM9MP8.css">
-  <link rel="stylesheet" crossorigin href="/assets/contact_fr-BtSaK53q.css">
-  <link rel="stylesheet" crossorigin href="/assets/shared-style-C7Nhcmov.css">
+  <script type="module" crossorigin src="/assets/main-YQrk3kRN.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-BJnYaqa2.css">
+  <link rel="stylesheet" crossorigin href="/assets/contact_fr-LDT9zcs0.css">
+  <link rel="stylesheet" crossorigin href="/assets/shared-style-DaWKfqgG.css">
 </head>
 
 <body>
@@ -54,36 +69,55 @@
       <!-- Navbar will be mounted here by React -->
       <div id="RC-navbar"></div>
     </header>
+    <div id="RC-link-top-page" class="hide"></div>
 
     <main>
-      <section id="RC-hero">
 
+      <section class="flex-column-start-center hero-wrapper">
+        <div class="flex-column-center-center hero-container">
+
+          <img src="/src/assets/images/page-contact/img-hero-1.webp " alt="Décoration du header">
+
+          <img src="/assets/img-hero-2-C1MPg4Ia.webp" alt="Décoration du header" />
+
+          <div class="hero-container-title">
+            <h1>Contact</h1>
+
+            <p class="hero-subtitle">
+              <strong>
+                Ensemble, créons votre projet web.
+              </strong>
+            </p>
+          </div>
+        </div>
       </section>
 
-      <section class="introduction">
-        <p class="text-intro">Donnez un nouvel élan à votre présence en ligne.
-          Site web éco-conçu, référencement optimisé, solutions digitales sur mesure : transformons vos idées en
-          résultats concrets. Parlons de votre projet, et créons ensemble une expérience digitale à votre image.</p>
-      </section>
 
       <section class="contact-content">
-        <img id="img-contact-1" class="img-contact" src="/assets/img-anim-contact-CSEV2F-Z.webp"
-          alt="Contact">
-
 
         <div class="flex-column-start-center contact-grid">
           <div class="flex-column-start-center contact-form-container">
-            <p class="">Prêt à concrétiser votre projet digital ?
-              Que ce soit pour un devis, un audit d’éco-conception ou une analyse SEO, il vous suffit de remplir le
-              formulaire
-              ci-dessous. Nous prenons le relais et donnons vie à vos idées.</p>
-            <div id="RC-contact-form" class="">
+            <h2 class="contact-subtitle">Vous avez un projet digital&nbsp;?</h2>
+            <p class="contact-text-intro">
+              Que ce soit pour un <strong>devis</strong>, un <strong>audit</strong> ou un <strong>accompagnement
+                web</strong>, je suis à votre écoute. Remplissez le formulaire&nbsp;: <strong>je vous réponds rapidement
+                pour donner vie à vos idées</strong>.
+            </p>
 
-            </div>
+            <div id="RC-contact-form"></div>
+            <p class="form-disclaimer">
+              Les informations saisies sont utilisées uniquement pour répondre à votre demande. Elles ne sont ni
+              revendues ni transmises à des tiers.
+              Pour en savoir plus veuillez consulter notre
+              <a href="/public/fr/legal/politique-de-confidentialite.html" target="_blank">
+                politique de confidentialite.
+              </a>.
+            </p>
+
           </div>
 
           <div class="flex-column-start-center contact-info">
-            <h2>Informations de contact</h2>
+            <h2 class="contact-subtitle">Informations de contact</h2>
             <div class="info-item">
               <h3>Adresse</h3>
               <p>3963 Montana VS</p>
@@ -91,8 +125,8 @@
 
             <div class="info-item">
               <h3>Email</h3>
-              <p><a href="mailto:info@mywebdevcompany.com">
-                  contact@mywebdevcompany.com
+              <p><a href="mailto:info@helveclick.ch">
+                  info@helveclick.ch
                 </a></p>
             </div>
 
@@ -106,8 +140,8 @@
               <p>Lundi - Vendredi: 9h00 - 18h00</p>
             </div>
 
-            <img id="img-contact-2" class="img-contact"
-              src="/assets/img-head-contact-2-DSzSbqAh.webp" alt="Contact">
+            <img id="img-contact-2" class="img-contact" src="/assets/img-deco-CGbTZpPA.webp"
+              alt="Contact" loading="lazy">
           </div>
         </div>
 

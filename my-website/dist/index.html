@@ -2,159 +2,139 @@
 <html lang="fr">
 
 <head>
+  <!-- Encodage & Affichage -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO Meta Tags -->
-  <title>Accueil | My Web Dev Company</title>
+  <!-- Balises SEO prioritaires -->
+  <title>Développeur web freelance à Crans-Montana – Sites & applications mobiles éco-responsables en Valais</title>
   <meta name="description"
-    content="Agence de développement web spécialisée dans la création de sites web sur mesure, applications mobiles et optimisation SEO avec une approche éco-responsable.">
+    content="Développeur freelance à Crans-Montana (Valais, Suisse), spécialisé dans la création de sites web sur mesure, d’applications mobiles et en optimisation SEO. Une approche éco-responsable pour des solutions performantes, durables et adaptées à vos besoins.">
+  <meta name="robots" content="index, follow">
 
-  <!-- Open Graph Tags -->
-  <meta property="og:title" content="Accueil | My Web Dev Company">
-  <meta property="og:description"
-    content="Agence de développement web spécialisée dans la création de sites web sur mesure, applications mobiles et optimisation SEO avec une approche éco-responsable.">
-  <meta property="og:image" content="/images/og-home.jpg">
-  <meta property="og:url" content="https://mywebdevcompany.com/">
+  <!-- Canonical & Hreflang -->
+  <!-- <link rel="canonical" href="https://helveclick.ch/">
+  <link rel="alternate" hreflang="fr" href="https://helveclick.ch/">
+  <link rel="alternate" hreflang="en" href="https://helveclick.ch/en/home.html"> -->
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://helveclick.ch/">
+  <meta property="og:title"
+    content="Développeur web freelance à Crans-Montana – Sites & applications mobiles éco-responsables en Valais">
+  <meta property="og:description"
+    content="Développeur freelance en Valais, spécialisé dans les sites web éco-conçus, les applications mobiles et le SEO .">
+  <!-- <meta property="og:image" content="https://helveclick.ch/images/og-home.jpg"> -->
 
-  <!-- Canonical and Alternate Links -->
-  <link rel="canonical" href="https://mywebdevcompany.com/">
-  <link rel="alternate" hreflang="fr" href="https://mywebdevcompany.com/">
-  <link rel="alternate" hreflang="en" href="https://mywebdevcompany.com/en/home.html">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title"
+    content="Développeur web freelance à Crans-Montana – Sites & applications mobiles éco-responsables en Valais">
+  <meta name="twitter:description"
+    content="Développeur freelance en Valais, création de sites web et d'applications mobiles durables optimisées SEO.">
+  <!-- <meta name="twitter:image" content="https://helveclick.ch/images/og-home.jpg"> -->
 
-  <!-- Geolocation Tags -->
-  <meta name="geo.region" content="FR">
-  <meta name="geo.placename" content="Paris">
+  <!-- Localisation -->
+  <meta name="geo.region" content="CH-VS">
+  <meta name="geo.placename" content="Crans-Montana">
 
-  <!-- Stylesheets -->
-
-  <!-- Schema.org Script -->
+  <!-- Données structurées Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "My Web Dev Company",
-    "url": "https://mywebdevcompany.com",
-    "description": "Agence de développement web spécialisée dans la création de sites web sur mesure, applications mobiles et optimisation SEO avec une approche éco-responsable."
+    "@type": "Person",
+    "name": "Ton Nom",
+    "jobTitle": "Développeur web et mobile freelance",
+    "url": "https://helveclick.ch",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Crans-Montana",
+      "addressRegion": "Valais",
+      "addressCountry": "CH"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/ton-profil",
+      
+    ]
   }
   </script>
 
-  <!-- prechargement des images -->
-  <link rel="preload" href="/assets/img-text-satisfaction-Cpm__yzF.webp" as="image">
-  <link rel="preload" href="/assets/img-eco-conception-eUZSNPJx.webp" as="image">
-  <link rel="preload" href="/assets/img-value-website-BI9O9yBV.webp" as="image">
-  <link rel="preload" href="/assets/img-value-seo-DxPIlU3t.webp" as="image">
-  <link rel="preload" href="/assets/img-value-maintenance-D5LVHpV3.webp" as="image">
-  <link rel="preload" href="/assets/img-hero-index-2-Bw2VIWg3.webp" as="image">
+  <!-- Feuilles de style -->
 
-  <!-- Add FAQ collapse script -->
-  <!-- <script type="text/javascript" src="/src/scripts/page-services.js" defer></script> -->
-
-  <!-- Scripts jsx for react component -->
-
-
-
-  <script type="module" crossorigin src="/assets/main-UP1j5Ul9.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-B7PM9MP8.css">
-  <link rel="stylesheet" crossorigin href="/assets/main-CtaHEdGe.css">
-  <link rel="stylesheet" crossorigin href="/assets/shared-style-C7Nhcmov.css">
+  <!-- Script principal (React / autres) -->
+  <script type="module" crossorigin src="/assets/main-YQrk3kRN.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-BJnYaqa2.css">
+  <link rel="stylesheet" crossorigin href="/assets/main-Cw3lMNA1.css">
+  <link rel="stylesheet" crossorigin href="/assets/shared-style-DaWKfqgG.css">
 </head>
+
 
 <body>
   <div class="page-container">
     <!-- Navbar will be mounted here by React -->
     <header>
       <div id="RC-navbar"></div>
-
     </header>
 
+    <div id="RC-link-top-page" class="hide"></div>
     <main>
 
       <!-- Hero section -->
       <section class="flex-column-space_evenly-center hero-index">
 
-        <div class="hero-title">
-          <h1>Bienvenue chez <strong>Green click</strong></h1>
-          <h2 class="hero-subtitle"><strong>Solutions web innovantes</strong> &amp; <strong>éco-responsables</strong>
-          </h2>
-        </div>
 
 
-        <!-- Intro section -->
-        <div class="hero-intro">
-
-          <div class="intro-content">
-            <p><strong>Développeur freelance</strong> spécialisé dans la création de <strong>sites web sur
-                mesure</strong>, je vous
-              accompagne dans la réalisation de votre projet, que ce soit pour un <strong>site vitrine</strong>, une
-              <strong>boutique en ligne</strong> ou une <strong>refonte complète</strong>.
-            </p>
-
-            <p>Je combine <strong>expertise technique</strong> et passion pour créer des <strong>sites web</strong> et
-              des
-              <strong>applications mobiles</strong> qui vous permettent de vous démarquer. De plus, je vous aide à
-              améliorer votre
-              visibilité en ligne grâce à des services d'<strong>optimisation SEO</strong>, afin de booster votre
-              <strong>référencement</strong> et améliorer votre <strong>classement dans les moteurs de
-                recherche</strong>.
-            </p>
+        <h1 class="hero-index-title-h1">
+          Bienvenue chez <strong>Helveclick</strong><br> <span>Développement web éco-responsable en Valais</span>
+        </h1>
 
 
-          </div>
 
-        </div>
+        <h2 class="flex-row-center-center container">
+
+          <p class="hero-index-subtitle"><strong>Sites web</strong></p>
+          <p class="hero-index-subtitle"><strong>Applications mobiles</strong></p>
+          <p class="hero-index-subtitle"><strong>Optimisation SEO</strong></p>
+
+          </h3>
+
+
       </section>
 
       <!-- Services section -->
       <section class="flex-column-start-center services">
-        <h3>Mes <strong>services</strong></h3>
+        <h2 class="item-menu-side">Mes <strong>services</strong></h2>
         <div id="RC-card-services"></div>
       </section>
       <!-- section pourquoi choisir Green click-->
       <section class="flex-column-start-center why-green-click">
 
         <div class="flex-column-start-start why-choose">
-          <h2>Pourquoi choisir <strong>Green Click</strong> ?</h2>
+          <h2 class="item-menu-side">Faire le choix <strong>Helveclick</strong></h2>
 
-          <p>Je suis <strong>Green Click</strong>, votre développeur web freelance, et mon objectif est de créer des
-            sites web
-            et des solutions numériques sur-mesure qui vous aident à vous démarquer. Contrairement aux agences
-            classiques, je
-            mets un point d'honneur à offrir des <strong>services personnalisés</strong>, axés sur la
-            <strong>performance</strong>, la <strong>rapidité</strong> et le <strong>respect de
-              l'environnement</strong>. Voici
-            pourquoi vous devriez choisir de travailler avec moi :
-          </p>
 
-          <h3>1. <strong>Des sites rapides, performants et éco-responsables</strong></h3>
-          <p>Je crée des <strong>sites internet légers</strong> et <strong>rapides à charger</strong> en évitant
+          <h3>1. <strong>Pour des sites rapides, performants et éco-responsables</strong></h3>
+          <p>
+            Je crée des <strong>sites internet légers</strong> et <strong>rapides à charger</strong> en évitant
             l'utilisation
             de <strong>frameworks lourds</strong> ou de CMS trop gourmands en ressources. Cela permet d'optimiser la
             vitesse de
             votre site tout en offrant une <strong>expérience utilisateur fluide</strong>. Avec une approche
-            <strong>éco-conçue</strong>, je m'assure que chaque site respecte l'environnement en optimisant <strong>la
-              consommation d'énergie</strong> et en réduisant l'empreinte <strong>carbone</strong>.
+            <strong>éco-conçue</strong>, je m'assure que chaque site respecte l'environnement en optimisant
+            <strong>la consommation d'énergie</strong> et en réduisant l'empreinte <strong>carbone</strong>.
+            Je veille à rester au plus près des <strong><a href="https://greenit.eco/" target="_blank">recommandations
+                du Green IT</a></strong>, afin d'adopter des
+            pratiques
+            responsables et durables dans chaque étape du développement.
           </p>
 
-          <h3>2. <strong>SEO intégré dès la conception</strong></h3>
-          <p>Le <strong>référencement naturel (SEO)</strong> est au cœur de chaque projet que je développe. Dès le début
-            de la
-            conception, j'intègre les meilleures pratiques SEO afin que votre site soit optimisé pour un bon
-            <strong>classement
-              sur Google</strong>. Que ce soit pour une <strong>site vitrine</strong>, un <strong>e-commerce</strong>,
-            ou une
-            <strong>application mobile</strong>, je travaille à vous garantir une <strong>visibilité accrue</strong> et
-            à
-            attirer des <strong>visiteurs qualifiés</strong> grâce à un contenu bien structuré et optimisé pour les
-            moteurs de
-            recherche.
-          </p>
+
+
 
           <h3>3. <strong>Des solutions sur mesure, adaptées à vos besoins spécifiques</strong></h3>
           <p>Chaque projet est unique. Que vous ayez besoin d'un <strong>site vitrine</strong>, d'une <strong>boutique
               en
-              ligne</strong>, d'une <strong>application mobile</strong> ou d'une <strong>solution SaaS</strong>, je
+              ligne</strong>, d'une <strong>application mobile</strong>, je
             conçois des
             <strong>solutions personnalisées</strong> qui répondent spécifiquement à vos besoins. Avec une
             <strong>interface
@@ -174,44 +154,16 @@
             point
             d'honneur à <strong>respecter vos délais</strong> et à offrir une qualité irréprochable.</p>
 
-          <h3>5. <strong>Livraison rapide et service de qualité</strong></h3>
-          <p>Je suis <strong>réactif</strong> et j'applique une méthode de travail <strong>Agile</strong>, ce qui me
-            permet de
-            m'adapter rapidement à vos retours et de livrer votre projet dans les <strong>délais impartis</strong>.
-            Chaque étape
-            du processus est pensée pour <strong>maximiser la qualité</strong> du produit final tout en garantissant une
-            <strong>livraison rapide</strong> et une <strong>satisfaction totale</strong>.
-          </p>
+          <h3>5. <strong>Qualité garantie</strong></h3>
+          <p>je livre un <strong>produit final robuste, soigné</strong>, et prêt
+            à évoluer avec vos besoins.</p>
 
-          <h3><strong>Les avantages de travailler avec moi :</strong></h3>
-          <ul class="flex-column-start-center">
-            <li><strong>Sites rapides et performants</strong> : Optimisation pour la <strong>vitesse</strong> et
-              l'<strong>efficacité</strong>.</li>
-            <li><strong>SEO optimisé</strong> : Augmentation de votre <strong>visibilité sur Google</strong> pour
-              attirer plus
-              de <strong>trafic qualifié</strong>.</li>
-            <li><strong>Solutions sur mesure</strong> : Développement <strong>personnalisé</strong> et adapté à vos
-              <strong>besoins spécifiques</strong>.
-            </li>
-            <li><strong>Accompagnement personnalisé</strong> : Un <strong>service client humain</strong> et une écoute
-              attentive
-              à chaque étape de votre projet.</li>
-            <li><strong>Livraison rapide et de qualité</strong> : Respect des <strong>délais</strong> et garantie d'un
-              <strong>produit final impeccable</strong>.
-            </li>
-            <li>
-              Vous avez un projet web en tête, un idée, une question ?
-              <a href="/public/fr/contact.html" class="contact-button-link">Contactez-moi</a>
-            </li>
-          </ul>
 
-          <p>En choisissant de travailler avec <strong>Green Click</strong>, vous optez pour un <strong>développeur
-              freelance</strong> passionné, capable de transformer vos idées en solutions digitales concrètes. Je mets
-            tout en
-            œuvre pour que chaque projet soit un <strong>succès</strong>, en alliant performance technique et respect de
-            vos
-            <strong>attentes spécifiques</strong>.
-          </p>
+
+
+
+
+
         </div>
 
       </section>
@@ -219,15 +171,15 @@
       <!-- Values section -->
 
       <section class="flex-column-start-center values">
-        <h3>Mes <strong>valeurs</strong></h3>
+        <h2 class="item-menu-side">Mes <strong>valeurs</strong></h2>
 
 
         <div class="value-card">
           <div class="flex-column-center-center img-text-container">
             <div class="flex-column-start-center">
-              <h4 class="h4-title"><strong>Satisfaction du client</strong></h4>
-              <img class="img-text" src="/assets/img-text-satisfaction-Cpm__yzF.webp" alt="satisfaction client"
-                loading="lazy">
+              <h3 class="h4-title"><strong>Satisfaction du client</strong></h3>
+              <img class="img-text" src="/assets/img-text-satisfaction-xFFsdbQ5.webp"
+                alt="satisfaction client" loading="lazy">
 
             </div>
             <div class="text-container">
@@ -253,22 +205,26 @@
         <div class="value-card">
           <div class="flex-column-center-center img-text-container">
             <div class="flex-column-start-center">
-              <h4 class="h4-title"><strong>Qualite</strong></h4>
-              <img class="img-text" src="/assets/img-value-quality-BGxxMqnZ.webp" alt="satisfaction client"
-                loading="lazy">
+              <h3 class="h4-title"><strong>Qualité</strong></h3>
+              <img class="img-text" src="/assets/img-value-quality-DCDgMOGh.webp"
+                alt="satisfaction client" loading="lazy">
 
             </div>
             <div class="text-container">
-              <p>La qualité est une valeur fondamentale pour moi. Je livre des <strong>sites web de haute
-                  qualité</strong>, optimisés
-                pour la performance, la sécurité et l'expérience utilisateur. Chaque ligne de code est écrite avec soin
-                pour garantir
-                une <strong>navigation fluide</strong>, un <strong>temps de chargement rapide</strong> et une
-                <strong>accessibilité
-                  optimale</strong>, tout en offrant une <strong>expérience utilisateur exceptionnelle</strong>. Mon
-                objectif est de
-                dépasser vos attentes et de vous fournir une solution durable et évolutive.
+              <p>
+              <p>
+                La qualité guide naturellement ma façon de travailler. Je m’efforce de livrer des <strong>sites web
+                  fiables et bien
+                  conçus</strong>, optimisés pour la <strong>performance</strong>, la <strong>sécurité</strong> et une
+                <strong>bonne
+                  expérience utilisateur</strong>. Chaque ligne de code est pensée avec attention pour assurer une
+                <strong>navigation
+                  fluide</strong>, un <strong>temps de chargement réduit</strong> et une <strong>accessibilité
+                  soignée</strong>. Mon
+                but est de vous proposer une solution à la fois <strong>durable</strong> et <strong>adaptée à vos
+                  besoins</strong>.
               </p>
+
             </div>
           </div>
         </div>
@@ -276,8 +232,9 @@
 
           <div class="flex-column-center-center img-text-container">
             <div class="flex-column-start-center">
-              <h4 class="h4-title"><strong>Éco-conception</strong></h4>
-              <img class="img-text" src="/assets/img-eco-conception-eUZSNPJx.webp" alt="Eco-design" loading="lazy">
+              <h3 class="h4-title"><strong>Éco-conception</strong></h3>
+              <img class="img-text" src="/assets/img-eco-conception-DACdNzaR.webp" alt="Eco-design"
+                loading="lazy">
             </div>
             <div class="text-container">
               <p>Je crois fermement que le développement web peut et doit être <strong>écologique</strong>. C'est
@@ -292,78 +249,71 @@
                 Voici quelques actions concrètes que je mets en œuvre pour intégrer l'éco-conception dans mes projets
                 web :
               </p>
-              <p>Avec Green click, je crois que le développement web peut être à la fois
-                <strong>performant</strong> et <strong>respectueux de l'environnement</strong>. Mon
-                <strong>approche d'éco-conception</strong> se traduit par :
-              </p>
+
               <ul>
-                <li><strong>Optimisation des images et des fichiers</strong> : Compression des images, des vidéos et des
-                  fichiers pour
-                  réduire leur taille sans perdre en qualité, ce qui permet un chargement plus rapide du site et une
-                  consommation
-                  énergétique réduite.</li>
-                <li><strong>Réduction des requêtes HTTP</strong> : Minimise le nombre de requêtes faites lors du
-                  chargement du site en
-                  combinant et en réduisant les fichiers CSS et JavaScript, ce qui réduit la consommation de bande
-                  passante.</li>
-                <li><strong>Choix d'hébergement écologique</strong> : J'opte pour des hébergeurs web qui utilisent des
-                  <strong>énergies renouvelables</strong> et qui ont une politique environnementale responsable.
+                <li>
+                  <p><strong>Optimisation des images et des fichiers</strong> : Compression des images, des vidéos et
+                    des
+                    fichiers pour
+                    réduire leur taille sans perdre en qualité, ce qui permet un chargement plus rapide du site et une
+                    consommation
+                    énergétique réduite.
+                  </p>
                 </li>
-                <li><strong>Code propre et optimisé</strong> : Un code léger et efficace, évitant les lignes inutiles,
-                  ce qui réduit
-                  la consommation de ressources serveur et améliore la rapidité du site.</li>
-                <li><strong>Réduction des animations et contenus lourds</strong> : Limitation de l'utilisation
-                  d'animations et
-                  d'éléments multimédia gourmands en ressources pour réduire l'impact sur la consommation d'énergie des
-                  utilisateurs.
+                <li>
+                  <p><strong>Réduction des requêtes HTTP</strong> : Minimise le nombre de requêtes faites lors du
+                    chargement du site en
+                    combinant et en réduisant les fichiers CSS et JavaScript, ce qui réduit la consommation de bande
+                    passante.</p>
                 </li>
-                <li><strong>Optimisation mobile-first</strong> : Prioriser la version mobile du site, car un design
-                  responsive adapté
-                  à tous les appareils permet de réduire la consommation de données et d'améliorer l'expérience
-                  utilisateur.</li>
+                <li>
+                  <p><strong>Choix d'hébergement écologique</strong> : J'opte pour des hébergeurs web qui utilisent des
+                    <strong>énergies renouvelables</strong> et qui ont une politique environnementale responsable.
+                  </p>
+                </li>
+                <li>
+                  <p><strong>Code propre et optimisé</strong> : Un code léger et efficace, évitant les lignes inutiles,
+                    ce qui réduit
+                    la consommation de ressources serveur et améliore la rapidité du site.</p>
+                </li>
+                <li>
+                  <p><strong>Réduction des animations et contenus lourds</strong> : Limitation de l'utilisation
+                    d'animations et
+                    d'éléments multimédia gourmands en ressources pour réduire l'impact sur la consommation d'énergie
+                    des
+                    utilisateurs.
+                </li>
+                <li>
+                  <p><strong>Optimisation mobile-first</strong> : Prioriser la version mobile du site, car un design
+                    responsive adapté
+                    à tous les appareils permet de réduire la consommation de données et d'améliorer l'expérience
+                    utilisateur.</p>
+                </li>
               </ul>
             </div>
           </div>
         </div>
-        <!-- <div class="value-card">
-          <div class="flex-column-center-center img-text-container">
-            <div class="flex-column-start-center">
-              <h4 class="h4-title"><strong>Respect du client</strong></h4>
-              <img class="img-text" src="./src/assets/images/img-value-respect.webp" alt="satisfaction client"
-                loading="lazy">
 
-            </div>
-            <div class="text-container">
-              <p>Le respect de mes clients est au cœur de ma démarche. Chaque projet est une collaboration où vos
-                besoins et vos
-                objectifs sont mes priorités. En tant que développeur freelance, je m'engage à offrir une <strong>écoute
-                  attentive</strong> et à vous fournir des solutions adaptées, tout en assurant une communication
-                constante tout au long
-                du projet. Vous êtes unique, et chaque site ou application que je développe est pensé pour répondre
-                parfaitement à vos
-                attentes.
-              </p>
-            </div>
-          </div>
-        </div> -->
 
         <div class="value-card">
           <div class="flex-column-center-center img-text-container">
             <div class="flex-column-start-center">
-              <h4 class="h4-title"><strong>Transparence</strong></h4>
-              <img class="img-text" src="/assets/img-value-transparency-D_mtI4t1.webp"
+              <h3 class="h4-title"><strong>Transparence</strong></h3>
+              <img class="img-text" src="data:image/webp;base64,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"
                 alt="transparence avec le client" loading="lazy">
 
             </div>
             <div class="text-container">
-              <p>Je m'engage à être totalement transparent dans ma façon de travailler. Dès le début de chaque projet,
-                vous êtes informé
-                des <strong>étapes clés</strong>, des <strong>délais</strong> et des <strong>tarifs</strong>. Chaque
-                décision est prise
-                ensemble, en toute confiance. Ma communication est claire et honnête, afin que vous soyez toujours au
-                courant de
-                l'avancement du projet et que vous puissiez suivre chaque étape de sa réalisation.
+              <p>
+                Je m’engage à une <strong>transparence totale</strong> dans ma manière de travailler. Dès le début du
+                projet, vous
+                êtes informé des <strong>étapes principales</strong>, des <strong>délais prévus</strong> et du
+                <strong>budget</strong>. Chaque décision est prise <strong>en collaboration</strong>, dans un climat de
+                confiance. Ma
+                communication est claire et honnête, pour que vous soyez pleinement impliqué et toujours au courant de
+                l’avancement.
               </p>
+
             </div>
           </div>
         </div>
@@ -371,9 +321,9 @@
         <div class="value-card">
           <div class="flex-column-center-center img-text-container">
             <div class="flex-column-start-center">
-              <h4 class="h4-title"><strong>Innovation</strong></h4>
-              <img class="img-text" src="/assets/img-value-innovation-CgnHuJHN.webp" alt="satisfaction client"
-                loading="lazy">
+              <h3 class="h4-title"><strong>Innovation</strong></h3>
+              <img class="img-text" src="/assets/img-value-innovation-DaxEBBNj.webp"
+                alt="satisfaction client" loading="lazy">
 
             </div>
             <div class="text-container">
@@ -397,73 +347,7 @@
       </section>
 
 
-      <!-- Commitments section -->
-      <section class="flex-column-start-center commitments">
-        <h3>Mes <strong>engagements</strong></h3>
-        <div class="flex-column-start-center container-cards">
-          <div class="commitments-card">
-            <div class="flex-column-center-center img-text-container">
-              <div class="flex-column-start-center title-container">
-                <h4 class="h4-title"><strong>Création de sites web sur-mesure</strong></h4>
-                <img class="img-text" src="/assets/img-value-website-BI9O9yBV.webp" alt="sites web sur-mesure">
 
-              </div>
-              <div class="text-container">
-                <p>Offrez à votre entreprise une <strong>vitrine digitale percutante</strong> et moderne. Nous
-                  transformons vos idées en <strong>sites performants</strong>, pensés pour <strong>convaincre et
-                    convertir</strong>.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="commitments-card">
-
-            <div class="flex-column-center-center img-text-container">
-              <div class="flex-column-start-center title-container">
-                <h4 class="h4-title"><strong>Référencement &amp; visibilité optimisés</strong></h4>
-                <img class="img-text" src="/assets/img-value-seo-DxPIlU3t.webp" alt="Référencement SEO">
-              </div>
-              <div class="text-container">
-                <p>Soyez là où vos clients vous cherchent ! Grâce à une <strong>stratégie SEO intelligente</strong>,
-                  gagnez en <strong>visibilité sur Google</strong> et attirez un <strong>trafic qualifié</strong>.
-                </p>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="commitments-card">
-
-            <div class="flex-column-center-center img-text-container">
-              <div class="flex-column-start-center title-container">
-                <h4 class="h4-title"><strong>Maintenance proactive &amp; évolutive</strong></h4>
-                <img class="img-text" src="/assets/img-value-maintenance-D5LVHpV3.webp" alt="Maintenance web">
-              </div>
-              <div class="text-container">
-                <p>Votre site reste toujours <strong>à jour, sécurisé et rapide</strong>. Nous <strong>anticipons
-                    vos besoins</strong> pour garantir une <strong>présence en ligne fluide</strong> et sans
-                  interruption.</p>
-
-              </div>
-            </div>
-          </div>
-          <div class="commitments-card">
-
-            <div class="flex-column-center-center img-text-container">
-              <div class="flex-column-start-center title-container">
-                <h4 class="h4-title"><strong>Design responsive &amp; impactant</strong></h4>
-                <img class="img-text" src="/assets/img-value-responsive-C48o9FF1.webp" alt="Design responsive">
-              </div>
-              <div class="text-container">
-                <p>Un seul design, une <strong>expérience parfaite sur tous les écrans</strong>. Votre image reste
-                  forte, que vos
-                  visiteurs soient sur <strong>mobile, tablette ou desktop</strong>.</p>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- CTA Section -->
 
@@ -472,162 +356,113 @@
 
       <!-- FAQ section -->
 
-      <section class="faq-section">
-        <div class="container">
-          <h2>Questions <strong>fréquemment posées</strong></h3>
-            <div class="faq-grid">
-              <p class="faq-intro"><strong>Vous souhaitez créer un site web professionnel</strong> et vous vous demandez
-                par où
-                commencer ? <strong>Comment choisir la bonne agence web</strong> ou un <strong>freelance adapté à vos
-                  besoins</strong>
-                ? Vous vous interrogez sur les <strong>tarifs du développement web</strong> et voulez savoir à quoi vous
-                attendre ?
-                Vous êtes curieux de découvrir les <strong>avantages</strong> et les <strong>étapes du processus de
-                  développement</strong> d’un site web performant ? Ne vous inquiétez pas, vous êtes au bon endroit !
-                Nous avons les
-                réponses à toutes vos questions et bien plus encore !</p>
+      <section class="flex-column-start-center faq-section">
 
-
-              <div class="faq-item">
-                <h3>Qu'est-ce qu'un développeur freelance spécialisé dans le développement web sur-mesure
-                  ?
-                </h3>
-                <p>Un <strong>développeur freelance</strong> spécialisé dans le <strong>développement web
-                    sur-mesure</strong>, comme
-                  moi, offre des <strong>solutions digitales personnalisées</strong>, créant des <strong>sites
-                    web</strong>, des
-                  <strong>applications mobiles</strong> et des <strong>plateformes sur-mesure</strong>, en fonction des
-                  <strong>besoins
-                    spécifiques</strong> de chaque client. Contrairement aux solutions toutes faites, je travaille avec
-                  vous pour
-                  définir précisément vos <strong>objectifs</strong> et vous fournir une solution parfaitement
-                  <strong>adaptée</strong>.
-                </p>
-
-              </div>
-
-              <div class="faq-item">
-                <h3>Pourquoi choisir un développeur freelance plutôt qu'une agence pour votre projet web
-                  ?
-                </h3>
-                <p>Choisir un <strong>développeur freelance</strong> vous permet de bénéficier d'une <strong>relation
-                    directe</strong>
-                  et plus personnalisée. Je suis votre <strong>point de contact unique</strong> et dédié, ce qui
-                  garantit une plus
-                  grande <strong>réactivité</strong> et <strong>flexibilité</strong>. En outre, mes
-                  <strong>tarifs</strong> sont souvent
-                  plus compétitifs que ceux des agences, tout en offrant des <strong>solutions sur-mesure</strong>
-                  adaptées à vos
-                  <strong>besoins précis</strong>.
-                </p>
-
-
-              </div>
-
-              <div class="faq-item">
-                <h3>Comment puis-je être sûr que mon projet sera livré dans les délais ?</strong></h3>
-                <p>En tant que <strong>freelance</strong>, je suis particulièrement impliqué dans chaque étape de votre
-                  projet. Je
-                  m'assure de respecter les <strong>délais</strong> et de vous tenir informé de
-                  l'<strong>avancement</strong>
-                  régulièrement. En utilisant une méthode de <strong>gestion de projet agile</strong>, je peux également
-                  m'adapter
-                  rapidement aux <strong>changements</strong> ou <strong>ajustements</strong> que vous souhaitez
-                  apporter.</p>
-
-              </div>
-
-              <div class="faq-item">
-                <h3>Quels sont les tarifs d'un développement web sur-mesure ?</h3>
-                <p>Les <strong>tarifs</strong> varient en fonction de la <strong>complexité</strong> et des
-                  <strong>spécifications</strong> de votre projet. Je propose des <strong>devis personnalisés</strong>,
-                  <strong>transparents</strong> et <strong>détaillés</strong>, adaptés à vos besoins. Que vous ayez
-                  besoin d'un simple
-                  <strong>site vitrine</strong> ou d'une <strong>application web complexe</strong>, je m'engage à vous
-                  fournir un
-                  <strong>devis juste</strong> et sans surprise.
-                </p>
-
-              </div>
-
-              <div class="faq-item">
-                <h3>Est-ce que vous proposez des services de référencement SEO pour mes sites web ?</h3>
-                <p>Oui, chaque projet que je développe inclut une <strong>optimisation de base pour le référencement
-                    naturel</strong>
-                  (<strong>SEO</strong>). Dès la phase de conception, j'intègre des pratiques <strong>SEO</strong> pour
-                  vous garantir
-                  une bonne <strong>visibilité sur les moteurs de recherche</strong>. Je m'assure également que votre
-                  site soit optimisé
-                  pour la <strong>vitesse de chargement</strong> et l'<strong>expérience utilisateur</strong>, deux
-                  facteurs importants
-                  pour le <strong>SEO</strong>.</p>
-
-              </div>
-
-              <div class="faq-item">
-                <h3>Quelles sont les étapes du processus de développement web ?</h3>
-                <p>Le processus se décompose en plusieurs étapes clés :</p>
-                <ul>
-                  <li><strong>Analyse de vos besoins :</strong> Je commence par comprendre vos objectifs pour définir le
-                    cahier des
-                    charges de votre projet.</li>
-                  <li><strong>Conception :</strong> Élaboration de l'architecture du site et de la charte graphique, en
-                    tenant
-                    compte de l'expérience utilisateur.</li>
-                  <li><strong>Développement :</strong> Création du site ou de l'application selon les spécifications
-                    définies.</li>
-                  <li><strong>Tests :</strong> Vérification de la performance, de la sécurité et de la compatibilité sur
-                    différents
-                    appareils et navigateurs.</li>
-                  <li><strong>Lancement :</strong> Mise en ligne du projet après validation et test final.</li>
-                  <li><strong>Maintenance :</strong> Je propose également des services de suivi et de maintenance pour
-                    assurer que
-                    votre site reste performant et sécurisé sur le long terme.</li>
-                </ul>
-              </div>
-
-              <div class="faq-item">
-                <h3>Quel type de projet puis-je confier à un développeur freelance comme vous ?</h3>
-                <p>Je prends en charge une large gamme de projets web, notamment : <strong>création de sites vitrines,
-                    développement
-                    d'applications web et mobiles, solutions e-commerce, développement de plateformes sur-mesure,
-                    intégration d'API,
-                    et bien plus encore</strong>. Si vous avez une idée en tête, je peux la transformer en solution
-                  numérique
-                  performante, adaptée à vos objectifs spécifiques.</p>
-              </div>
-
-              <div class="faq-item">
-                <h3>Pourquoi choisir un développement web éco-responsable ?</h3>
-                <p>Un <strong>développement web éco-responsable</strong> permet de réduire l'<strong>empreinte
-                    énergétique</strong> et
-                  de maximiser l'<strong>efficacité des ressources utilisées</strong>. Chez <strong>Green
-                    Click</strong>, chaque projet
-                  est conçu pour être <strong>rapide</strong>, <strong>léger</strong> et <strong>optimisé</strong>,
-                  réduisant ainsi
-                  l'<strong>impact environnemental</strong>. En choisissant cette approche, vous contribuez à un
-                  <strong>développement
-                    plus durable
-
-              </div>
-
-              <div class="faq-item">
-                <h3>Quels avantages de travailler avec un développeur freelance par rapport à une agence
-                  ?
-                </h3>
-                <p>Travailler avec un <strong>développeur freelance</strong> comme moi offre plusieurs
-                  <strong>avantages</strong> : vous
-                  bénéficiez d'une attention <strong>personnalisée</strong>, d'une plus grande
-                  <strong>flexibilité</strong>, et souvent
-                  de <strong>coûts plus abordables</strong>. De plus, je suis votre seul <strong>interlocuteur</strong>
-                  tout au long du
-                  projet, ce qui simplifie la <strong>communication</strong> et accélère la prise de
-                  <strong>décisions</strong>.
-                </p>
-
-              </div>
-            </div>
+        <div class="flex-row-center-center faq-container-title">
+          <img class="img-faq-personna" src="/assets/faq-personna-BZRj0KfC.webp" alt="FAQ" loading="lazy">
+          <h2 id="faq" class="item-menu-side" data-hero="FAQ"><strong>FAQ</strong></h2>
         </div>
+        <div class="flex-column-start-center faq-grid">
+
+          <div class="faq-item">
+            <h3>Pourquoi choisir un développement web éco-responsable ?</h3>
+            <p>Un <strong>développement web éco-responsable</strong> permet de réduire l'<strong>empreinte
+                énergétique</strong> et
+              de maximiser l'<strong>efficacité des ressources utilisées</strong>.Chaque projet
+              est conçu pour être <strong>rapide</strong>, <strong>léger</strong> et <strong>optimisé</strong>,
+              réduisant ainsi
+              l'<strong>impact environnemental</strong>. En choisissant cette approche, vous contribuez à un
+              <strong>développement
+                plus durable.
+              </strong>
+            </p>
+
+          </div>
+
+          <div class="faq-item">
+            <h3>Pourquoi choisir un développeur freelance plutôt qu'une agence pour votre projet web
+              ?
+            </h3>
+            <p>Choisir un <strong>développeur freelance</strong> vous permet de bénéficier d'une <strong>relation
+                directe</strong>
+              et plus personnalisée. Je suis votre <strong>point de contact unique</strong> et dédié, ce qui
+              garantit une plus
+              grande <strong>réactivité</strong> et <strong>flexibilité</strong>. En outre, mes
+              <strong>tarifs</strong> sont souvent
+              plus compétitifs que ceux des agences, tout en offrant des <strong>solutions sur-mesure</strong>
+              adaptées à vos
+              <strong>besoins précis</strong>.
+            </p>
+
+
+          </div>
+
+          <div class="faq-item">
+            <h3>Quels sont les tarifs d'un développement web sur-mesure ?</h3>
+            <p>Les <strong>tarifs</strong> varient en fonction de la <strong>complexité</strong> et des
+              <strong>spécifications</strong> de votre projet. Je propose des <strong>devis personnalisés</strong>,
+              <strong>transparents</strong> et <strong>détaillés</strong>, adaptés à vos besoins. Que vous ayez
+              besoin d'un simple
+              <strong>site vitrine</strong> ou d'une <strong>application web complexe</strong>, je m'engage à vous
+              fournir un
+              <strong>devis juste</strong> et sans surprise.
+            </p>
+
+          </div>
+
+          <div class="faq-item">
+            <h3>Est-ce que vous proposez des services de référencement SEO pour mes sites web ?</h3>
+            <p>Oui, chaque projet que je développe inclut une <strong>optimisation de base pour le référencement
+                naturel</strong>
+              (<strong>SEO</strong>). Dès la phase de conception, j'intègre des pratiques <strong>SEO</strong> pour
+              vous garantir
+              une bonne <strong>visibilité sur les moteurs de recherche</strong>. Je m'assure également que votre
+              site soit optimisé
+              pour la <strong>vitesse de chargement</strong> et l'<strong>expérience utilisateur</strong>, deux
+              facteurs importants pour le <strong>SEO</strong>.</p>
+
+          </div>
+
+          <div class="faq-item">
+            <h3>Quelles sont les étapes du processus de développement web ?</h3>
+            <p>Le processus se décompose en plusieurs étapes clefs :</p>
+            <ul>
+              <li><strong>Analyse de vos besoins :</strong> Je commence par comprendre vos objectifs pour définir le
+                cahier des
+                charges de votre projet.</li>
+              <li><strong>Conception :</strong> Élaboration de l'architecture du site et de la charte graphique, en
+                tenant
+                compte de l'expérience utilisateur.</li>
+              <li><strong>Développement :</strong> Création du site ou de l'application selon les spécifications
+                définies.</li>
+              <li><strong>Tests :</strong> Vérification de la performance, de la sécurité et de la compatibilité sur
+                différents
+                appareils et navigateurs.</li>
+              <li><strong>Lancement et suivi :</strong> Mise en ligne du projet après validation et test final.Je
+                propose également des services de suivi et de maintenance pour
+                assurer que
+                votre site reste performant et sécurisé sur le long terme.</li>
+
+            </ul>
+
+          </div>
+
+          <div class="faq-item">
+            <h3>Quel type de projet puis-je confier à un développeur freelance comme vous ?</h3>
+            <p>Je prends en charge une large gamme de projets web, notamment : <strong>création de sites vitrines,
+                développement
+                d'applications web et mobiles, solutions e-commerce, développement de plateformes sur-mesure,
+                intégration d'API,
+                et bien plus encore</strong>. Si vous avez une idée en tête, je peux la transformer en solution
+              numérique
+              performante, adaptée à vos objectifs spécifiques.</p>
+          </div>
+
+
+
+
+        </div>
+
 
       </section>
 
