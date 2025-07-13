@@ -128,16 +128,16 @@
   opacity: 0.8;
 }
 .contact-content .contact-info .info-item:nth-child(2)::before {
-  background-image: url("../../../src/assets/images/icons/location-icon.svg");
+  background-image: url("../../../public/assets/images/icons/location-icon.svg");
 }
 .contact-content .contact-info .info-item:nth-child(3)::before {
-  background-image: url("../../../src/assets/images/icons/mail-icon.svg");
+  background-image: url("../../../public/assets/images/icons/mail-icon.svg");
 }
 .contact-content .contact-info .info-item:nth-child(4)::before {
-  background-image: url("../../../src/assets/images/icons/phone-icon.svg");
+  background-image: url("../../../public/assets/images/icons/phone-icon.svg");
 }
 .contact-content .contact-info .info-item:nth-child(5)::before {
-  background-image: url("../../../src/assets/images/icons/time-icon.svg");
+  background-image: url("../../../public/assets/images/icons/time-icon.svg");
 }
 .contact-content .contact-info .info-item h4 {
   font-size: 1.1rem;

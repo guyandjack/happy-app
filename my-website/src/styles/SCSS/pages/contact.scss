@@ -143,22 +143,22 @@
             }
 
             &:nth-child(2)::before {
-                background-image: url("../../../src/assets/images/icons/location-icon.svg");
+                background-image: url("../../../public/assets/images/icons/location-icon.svg");
 
             }
 
             &:nth-child(3)::before {
-                background-image: url("../../../src/assets/images/icons/mail-icon.svg");
+                background-image: url("../../../public/assets/images/icons/mail-icon.svg");
                 //fill: map-get($colors-rule, first-color);
             }
 
             &:nth-child(4)::before {
-                background-image: url("../../../src/assets/images/icons/phone-icon.svg");
+                background-image: url("../../../public/assets/images/icons/phone-icon.svg");
                 //fill: map-get($colors-rule, first-color);
             }
 
             &:nth-child(5)::before {
-                background-image: url("../../../src/assets/images/icons/time-icon.svg");
+                background-image: url("../../../public/assets/images/icons/time-icon.svg");
                 //fill: map-get($colors-rule, first-color);
             }
 
