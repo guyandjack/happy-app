@@ -30,12 +30,13 @@
           flex: 0 1 auto;
   gap: 20px;
 }
-.footer .footer-content .footer-brand .footer-logo img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  -o-object-fit: cover;
-     object-fit: cover;
+.footer .footer-content .footer-brand .footer-logo {
+  width: 150px;
+  height: 50px;
+}
+.footer .footer-content .footer-brand .footer-logo .footer-logo-svg {
+  height: 100%;
+  width: 100%;
 }
 .footer .footer-content .footer-brand .footer-tagline {
   font-size: 1.1rem;

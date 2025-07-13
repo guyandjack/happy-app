@@ -25,11 +25,12 @@
       gap: 20px;
 
       .footer-logo {
-        img {
-          width: 80px;
-          height: 80px;
-          border-radius: 50%;
-          object-fit: cover;
+        width: 150px;
+        height: 50px;
+
+        .footer-logo-svg {
+          height: 100%;
+          width: 100%;
         }
       }
 
