@@ -7,7 +7,8 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
-      "@assets": path.resolve(__dirname, "public/assets"),
+      "@assets": path.resolve(__dirname, "public/assets"), //images importées dans les pages html
+      "@assetsJSX": path.resolve(__dirname, "./src/assets"), //images importées dans les scripts JSX
       "@styles": path.resolve(__dirname, "./src/styles"),
       "@components": path.resolve(__dirname, "./src/components"),
       "@utils": path.resolve(__dirname, "./src/utils"),
@@ -19,31 +20,46 @@ export default defineConfig({
     rollupOptions: {
       input: {
         // Landing page
-        main: "index.html",
+        main: path.resolve(__dirname, "./index.html"),
 
         // FR pages
-        a_propos_fr: "public/fr/a-propos.html",
-        services_web_fr: "public/fr/prestations/site-web.html",
-        services_seo_fr: "public/fr/prestations/seo.html",
-        services_app_fr: "public/fr/prestations/application-mobile.html",
-        realisations_fr: "public/fr/realisations.html",
-        contact_fr: "public/fr/contact.html",
-        articles_fr: "public/fr/articles.html",
-        connexion_fr: "public/fr/connexion.html",
-        legal_fr: "public/fr/legal/mentions-legales.html",
-        politique_fr: "public/fr/legal/politique-de-confidentialite.html",
-        dashboard_fr: "public/fr/dashboard.html",
+        a_propos_fr: path.resolve(__dirname, "./src/pages/fr/a-propos.html"),
+        services_web_fr: path.resolve(
+          __dirname,
+          "./src/pages/fr/prestations/site-web.html"
+        ),
+        services_seo_fr: path.resolve(
+          __dirname,
+          "./src/pages/fr/prestations/seo.html"
+        ),
+        services_app_fr: path.resolve(
+          __dirname,
+          "./src/pages/fr/prestations/application-mobile.html"
+        ),
+        //realisations_fr: path.resolve(__dirname, "./src/pages/fr/realisations.html"),
+        contact_fr: path.resolve(__dirname, "./src/pages/fr/contact.html"),
+        //articles_fr: path.resolve(__dirname, "./src/pages/fr/articles.html"),
+        connexion_fr: path.resolve(__dirname, "./src/pages/fr/connexion.html"),
+        legal_fr: path.resolve(
+          __dirname,
+          "./src/pages/fr/legal/mentions-legales.html"
+        ),
+        politique_fr: path.resolve(
+          __dirname,
+          "./src/pages/fr/legal/politique-de-confidentialite.html"
+        ),
+        //dashboard_fr: path.resolve(__dirname, "./src/pages/fr/dashboard.html"),
 
         // EN pages
-        about_en: "public/en/about.html",
-        services_web_en: "public/en/services/website.html",
-        services_seo_en: "public/en/services/seo.html",
-        services_app_en: "public/en/services/mobile-application.html",
-        achievements_en: "public/en/achievements.html",
-        contact_en: "public/en/contact.html",
-        articles_en: "public/en/articles.html",
-        //legal_en: "public/en/legal/legal-notice.html",
-        //privacy_en: "public/en/legal/privacy-policy.html",
+        /* about_en: path.resolve(__dirname, "./src/pages/en/about.html"),
+        services_web_en: path.resolve(__dirname, "./src/pages/en/services/website.html"),
+        services_seo_en: path.resolve(__dirname, "./src/pages/en/services/seo.html"),
+        services_app_en: path.resolve(__dirname, "./src/pages/en/services/mobile-application.html"),
+        achievements_en: path.resolve(__dirname, "./src/pages/en/achievements.html"),
+        contact_en: path.resolve(__dirname, "./src/pages/en/contact.html"),
+        articles_en: path.resolve(__dirname, "./src/pages/en/articles.html"),*/
+        //legal_en: path.resolve(__dirname, "./src/pages/en/legal/legal-notice.html"),
+        //privacy_en: path.resolve(__dirname, "./src/pages/en/legal/privacy-policy.html"),
       },
     },
   },

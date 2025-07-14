@@ -14,11 +14,11 @@ import { MenuSide } from "@components/Navbar/MenuSide.jsx";
 
 //import des icons
 //import burgerIcon from '../../../public/images/icons/menu-burger.svg';
-import flagEN from "@assets/images/icons/flag-en.png";
-import flagFR from "@assets/images/icons/flag-fr.png";
+//import flagEN from "@assetsJSX/icons/flag-en.png";
+//import flagFR from "@assetsJSX/icons/flag-fr.png";
 
 //import des images
-import logos from "@assets/images/logo-helveclick.svg";
+import logos from "@assetsJSX/logo/logo-helveclick.svg";
 
 //import du fichier scss
 import "@styles/CSS/navbar.css";
@@ -121,44 +121,44 @@ function Navbar() {
   const menuItems = {
     fr: [
       { path: `/index.html`, text: "Accueil" },
-      { path: `/public/fr/a-propos.html`, text: "A propos" },
+      { path: `/src/pages/fr/a-propos.html`, text: "A propos" },
       {
         text: "Prestations",
         submenu: [
           {
-            path: `/public/fr/prestations/site-web.html`,
+            path: `/src/pages/fr/prestations/site-web.html`,
             text: "Site Web",
           },
           {
-            path: `/public/fr/prestations/seo.html`,
+            path: `/src/pages/fr/prestations/seo.html`,
             text: "Référencement",
           },
           {
-            path: `/public/fr/prestations/application-mobile.html`,
+            path: `/src/pages/fr/prestations/application-mobile.html`,
             text: "Application Mobile",
           },
         ],
       },
-      { path: `/public/fr/contact.html`, text: "Contact" },
+      { path: `/src/pages/fr/contact.html`, text: "Contact" },
     ],
     en: [
-      { path: `/public/en/home.html`, text: "Home" },
-      { path: `/public/en/about.html`, text: "About me" },
+      { path: `/src/pages/en/home.html`, text: "Home" },
+      { path: `/src/pages/en/about.html`, text: "About me" },
       {
         text: "Services",
         submenu: [
           {
-            path: `/public/en/services/website.html`,
+            path: `/src/pages/en/services/website.html`,
             text: "Website",
           },
-          { path: `/public/en/services/seo.html`, text: "SEO" },
+          { path: `/src/pages/en/services/seo.html`, text: "SEO" },
           {
-            path: `/public/en/services/mobile-application.html`,
+            path: `/src/pages/en/services/mobile-application.html`,
             text: "Mobile App",
           },
         ],
       },
-      { path: `/public/en/contact.html`, text: "Contact" },
+      { path: `/src/pages/en/contact.html`, text: "Contact" },
     ],
   };
 

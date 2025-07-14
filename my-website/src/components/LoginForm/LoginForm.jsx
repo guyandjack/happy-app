@@ -13,8 +13,8 @@ import { storeToken } from "@utils/fonction/storeToken";
 import { handleAxiosError } from "@utils/fonction/handleAxiosError";
 
 //import des icons
-import eyeClosed from "@assets/images/icons/eye-closed.png";
-import eyeOpened from "@assets/images/icons/eye-opened.png";
+import eyeClosed from "@assetsJSX/icons/eye-closed.png";
+import eyeOpened from "@assetsJSX/icons/eye-opened.png";
 
 //import des feuilles de style
 import "@styles/CSS/loginform.css";

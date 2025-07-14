@@ -4,7 +4,7 @@ import React from "react";
 import { ReactSVG } from "react-svg";
 
 //import des images
-import logo from "@assets/images/logo-helveclick.svg";
+import logo from "@assetsJSX/logo/logo-helveclick.svg";
 
 //import des feuilles de style
 import "@styles/CSS/Footer.css";
@@ -21,55 +21,55 @@ function Footer() {
     fr: {
       main: [
         { path: `/index.html`, text: "Accueil" },
-        { path: `/public/fr/qui-suis-je.html`, text: "A propos" },
-        { path: `/public/fr/contact.html`, text: "Contact" },
+        { path: `/src/pages/fr/qui-suis-je.html`, text: "A propos" },
+        { path: `/src/pages/fr/contact.html`, text: "Contact" },
       ],
       services: [
         {
-          path: `/public/fr/prestations/site-web.html`,
+          path: `/src/pages/fr/prestations/site-web.html`,
           text: "Site Web",
         },
         {
-          path: `/public/fr/prestations/seo.html`,
+          path: `/src/pages/fr/prestations/seo.html`,
           text: "Référencement",
         },
         {
-          path: `/public/fr/prestations/application-mobile.html`,
+          path: `/src/pages/fr/prestations/application-mobile.html`,
           text: "Application Mobile",
         },
       ],
       legal: [
         {
-          path: `/public/fr/legal/mentions-legales.html`,
+          path: `/src/pages/fr/legal/mentions-legales.html`,
           text: "Mentions légales",
         },
         {
-          path: `/public/fr/legal/politique-de-confidentialite.html`,
+          path: `/src/pages/fr/legal/politique-de-confidentialite.html`,
           text: "Politique de confidentialité",
         },
-        { path: `/public/fr/connexion.html`, text: "Connexion" },
+        { path: `/src/pages/fr/connexion.html`, text: "Connexion" },
       ],
     },
     en: {
       main: [
-        { path: `/public/en/home.html`, text: "Home" },
-        { path: `/public/en/about.html`, text: "Who I am" },
+        { path: `/src/pages/en/home.html`, text: "Home" },
+        { path: `/src/pages/en/about.html`, text: "Who I am" },
       ],
       services: [
-        { path: `/public/en/services/website.html`, text: "Website" },
-        { path: `/public/en/services/seo.html`, text: "SEO" },
+        { path: `/src/pages/en/services/website.html`, text: "Website" },
+        { path: `/src/pages/en/services/seo.html`, text: "SEO" },
         {
-          path: `/public/en/services/mobile-application.html`,
+          path: `/src/pages/en/services/mobile-application.html`,
           text: "Mobile App",
         },
       ],
       legal: [
         {
-          path: `/public/en/legal/legal-notice.html`,
+          path: `/src/pages/en/legal/legal-notice.html`,
           text: "Legal Notice",
         },
         {
-          path: `/public/en/legal/privacy-policy.html`,
+          path: `/src/pages/en/legal/privacy-policy.html`,
           text: "Privacy Policy",
         },
       ],
@@ -83,7 +83,9 @@ function Footer() {
       <div className="flex-column-start-start footer-content">
         <div className="flex-column-start-start footer-brand">
           <a
-            href={currentLang === "fr" ? "/index.html" : "/public/en/home.html"}
+            href={
+              currentLang === "fr" ? "/index.html" : "/src/pages/en/home.html"
+            }
             className="footer-logo"
           >
             <ReactSVG
@@ -100,8 +102,8 @@ function Footer() {
           <a
             href={
               currentLang === "fr"
-                ? "/public/fr/contact.html"
-                : "/public/en/contact.html"
+                ? "/src/pages/fr/contact.html"
+                : "/src/pages/en/contact.html"
             }
             className="footer-cta"
           >
