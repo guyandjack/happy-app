@@ -14,8 +14,8 @@ import { MenuSide } from "@components/Navbar/MenuSide.jsx";
 
 //import des icons
 //import burgerIcon from '../../../public/images/icons/menu-burger.svg';
-//import flagEN from "@assetsJSX/icons/flag-en.png";
-//import flagFR from "@assetsJSX/icons/flag-fr.png";
+import flagEN from "@assetsJSX/icons/flag-en.png";
+import flagFR from "@assetsJSX/icons/flag-fr.png";
 
 //import des images
 import logos from "@assetsJSX/logo/logo-helveclick.svg";
@@ -121,57 +121,74 @@ function Navbar() {
   const menuItems = {
     fr: [
       { path: `/index.html`, text: "Accueil" },
-      { path: `/src/pages/fr/a-propos.html`, text: "A propos" },
+      { path: `/public/fr/a-propos.html`, text: "A propos" },
       {
         text: "Prestations",
         submenu: [
           {
-            path: `/src/pages/fr/prestations/site-web.html`,
+            path: `/public/fr/prestations/site-web.html`,
             text: "Site Web",
           },
           {
-            path: `/src/pages/fr/prestations/seo.html`,
+            path: `/public/fr/prestations/seo.html`,
             text: "Référencement",
           },
           {
-            path: `/src/pages/fr/prestations/application-mobile.html`,
+            path: `/public/fr/prestations/application-mobile.html`,
             text: "Application Mobile",
           },
         ],
       },
-      { path: `/src/pages/fr/contact.html`, text: "Contact" },
+      { path: `/public/fr/contact.html`, text: "Contact" },
+      {
+        path: `/public/fr/legal/mentions-legales.html`,
+        text: "",
+      },
+      {
+        path: `/public/fr/legal/politique-de-confidentialite.html`,
+        text: "",
+      },
     ],
     en: [
-      { path: `/src/pages/en/home.html`, text: "Home" },
-      { path: `/src/pages/en/about.html`, text: "About me" },
+      { path: `/public/en/home.html`, text: "Home" },
+      { path: `/public/en/about.html`, text: "About me" },
       {
         text: "Services",
         submenu: [
           {
-            path: `/src/pages/en/services/website.html`,
+            path: `/public/en/services/website.html`,
             text: "Website",
           },
-          { path: `/src/pages/en/services/seo.html`, text: "SEO" },
+          { path: `/public/en/services/seo.html`, text: "SEO" },
           {
-            path: `/src/pages/en/services/mobile-application.html`,
+            path: `/public/en/services/mobile-application.html`,
             text: "Mobile App",
           },
         ],
       },
-      { path: `/src/pages/en/contact.html`, text: "Contact" },
+      { path: `/public/en/contact.html`, text: "Contact" },
+      { path: `/public/en/legal/legal-notice.html`, text: "" },
+      {
+        path: `/public/en/legal/privacy-policy.html`,
+        text: "",
+      },
     ],
   };
 
   const switchLanguage = (lang) => {
+    //recupere le chemin actuel
     const currentPath = window.location.pathname;
-    console.log("Current path:", currentPath);
 
     // Cas spécifique pour la page d'accueil
-    if (currentPath === "/index.html" && lang === "en") {
-      window.location.href = "/en/home.html";
+    if (
+      currentPath === "/index.html" ||
+      (currentPath === "" && lang === "en")
+    ) {
+      window.location.href = "/public/en/home.html";
       return;
     }
-    if (currentPath === "/en/home.html" && lang === "fr") {
+
+    if (currentPath.includes("en/home.html") && lang === "fr") {
       window.location.href = "/index.html";
       return;
     }
@@ -192,19 +209,30 @@ function Navbar() {
       }
     }
 
-    // Recherche de l'index du chemin actuel
-    const currentIndex = menuItems[currentLang].findIndex(
-      (item) => item.path === currentPath
-    );
+    //pages contact
+    if (currentPath.includes("contact")) {
+      window.location.href = menuItems[lang][3].path;
+    }
 
-    // Si le chemin actuel existe dans le menu, on fait la redirection
-    if (currentIndex !== -1 && currentLang !== lang) {
-      window.location.href = menuItems[lang][currentIndex].path;
+    //Pages mentions legales
+    if (
+      currentPath.includes("mentions-legales") ||
+      currentPath.includes("legal-notice")
+    ) {
+      window.location.href = menuItems[lang][4].path;
+    }
+
+    //pages politique de confidentialite
+    if (
+      currentPath.includes("politique") ||
+      currentPath.includes("privacy-policy")
+    ) {
+      window.location.href = menuItems[lang][5].path;
     }
   };
 
   return (
-    <div className="flex-column-start-center navbar-wrapper">
+    <div className="flex-column-center-center navbar-wrapper">
       <nav ref={navbarRef} className="navbar" aria-label="Main navigation">
         {toast.show ? (
           <div className={`toast ${toast.type}`}>
@@ -213,7 +241,7 @@ function Navbar() {
         ) : null}
         <div className="navbar-brand">
           <a
-            href={currentLang === "fr" ? "/" : "/en/home.html"}
+            href={currentLang === "fr" ? "/index.html" : "/public/en/home.html"}
             className="logo"
           >
             <ReactSVG
@@ -258,8 +286,8 @@ function Navbar() {
                 aria-haspopup="true"
                 aria-expanded={isServicesOpen}
               >
-                <a
-                  href="#"
+                <span
+                  href="/null"
                   /* role="menuitem" */
                   onClick={(e) => {
                     e.preventDefault();
@@ -278,7 +306,7 @@ function Navbar() {
                   >
                     ▼
                   </span>
-                </a>
+                </span>
                 <ul
                   className={`submenu ${isServicesOpen ? "open" : ""}`}
                   role="menu"
@@ -296,7 +324,7 @@ function Navbar() {
                   ))}
                 </ul>
               </li>
-            ) : (
+            ) : item.text !== "" ? (
               <li key={index} role="none">
                 <a
                   href={item.path}
@@ -306,22 +334,26 @@ function Navbar() {
                   {item.text}
                 </a>
               </li>
-            )
+            ) : null
           )}
-          {/* <li className="language-switcher" role="none">
-            <button
-              onClick={() => switchLanguage("fr")}
-              aria-label="Switch to French"
-            >
-              <img className="flag-image" src={flagFR} alt="Français" />
-            </button>
-            <button
-              onClick={() => switchLanguage("en")}
-              aria-label="Switch to English"
-            >
-              <img className="flag-image" src={flagEN} alt="English" />
-            </button>
-          </li> */}
+          <li className="language-switcher" role="none">
+            {currentLang === "en" ? (
+              <button
+                onClick={() => switchLanguage("fr")}
+                aria-label="Switch to French"
+              >
+                <img className="flag-image" src={flagFR} alt="Français" />
+              </button>
+            ) : null}
+            {currentLang === "fr" ? (
+              <button
+                onClick={() => switchLanguage("en")}
+                aria-label="Switch to English"
+              >
+                <img className="flag-image" src={flagEN} alt="English" />
+              </button>
+            ) : null}
+          </li>
           <li className="timer-session-container" role="none">
             <TimerSession />
           </li>

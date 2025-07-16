@@ -14,7 +14,7 @@ import { CtaSection } from "@components/CtaSection/CtaSection.jsx";
 import { LinkTopPage } from "@components/linkTopPage/linkTopPage.jsx";
 
 //import des scripts
-import { initFaq } from "@scripts/page-services.js";
+import { initFaq, initIconSetting } from "@scripts/page-services.js";
 
 /****************************************************
  * ************* code principal page "prestations"*******
@@ -22,6 +22,9 @@ import { initFaq } from "@scripts/page-services.js";
 
 //logique des collapse des FAQ
 initFaq();
+
+//logique de l'animation de l'icon setting
+initIconSetting();
 
 // Mount Navbar
 try {

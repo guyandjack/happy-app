@@ -3,8 +3,8 @@
   background-color: rgba(0, 190, 184, 0.1);
 }
 .about-content .about-image-container {
-  width: 500px;
-  height: 500px;
+  width: 300px;
+  height: 300px;
   background-image: url("/public/assets/images/page-qui-suis-je/img-a-propos.webp");
   background-size: cover;
   background-position: center;

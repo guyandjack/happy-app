@@ -1,6 +1,5 @@
 @charset "UTF-8";
 .hero-index {
-  --imgSeason: "";
   gap: 40px;
   position: relative;
   z-index: 3;
@@ -71,9 +70,6 @@
   word-break: keep-all;
   white-space: nowrap;
 }
-.hero-index .hero-index-title-h1 span {
-  font-size: 1.4rem;
-}
 .hero-index .container {
   gap: 10px;
   width: 100%;
@@ -82,8 +78,8 @@
   padding: 5px;
   background-color: rgba(0, 190, 184, 0.5);
   border-radius: 12px;
-}
-.hero-index .hero-index-subtitle strong {
+  border: 2px solid #00beb8;
+  cursor: pointer;
   font-size: 0.8rem;
   color: #ffffff;
 }
@@ -101,7 +97,7 @@
   .hero-index .hero-index-title-h1 strong {
     font-size: 2.8rem;
   }
-  .hero-index .hero-index-subtitle strong {
+  .hero-index .hero-index-subtitle {
     font-size: 1rem;
   }
 }
@@ -118,11 +114,26 @@
   .hero-index .hero-index-title-h1 strong {
     font-size: 3.3rem;
   }
+  .hero-index .container {
+    gap: 15px;
+  }
   .hero-index .hero-index-subtitle {
     padding: 8px;
-  }
-  .hero-index .hero-index-subtitle strong {
     font-size: 1.3rem;
+    -webkit-transition: background-color linear 0.2s, -webkit-transform linear 0.2s;
+    transition: background-color linear 0.2s, -webkit-transform linear 0.2s;
+    transition: background-color linear 0.2s, transform linear 0.2s;
+    transition: background-color linear 0.2s, transform linear 0.2s, -webkit-transform linear 0.2s;
+  }
+  .hero-index .hero-index-subtitle:hover {
+    background-color: #00beb8;
+    -webkit-transform: translateY(-5px);
+        -ms-transform: translateY(-5px);
+            transform: translateY(-5px);
+    -webkit-transition: background-color linear 0.2s, -webkit-transform linear 0.2s;
+    transition: background-color linear 0.2s, -webkit-transform linear 0.2s;
+    transition: background-color linear 0.2s, transform linear 0.2s;
+    transition: background-color linear 0.2s, transform linear 0.2s, -webkit-transform linear 0.2s;
   }
 }
 @media screen and (min-width: 1300px) {
@@ -134,6 +145,12 @@
   }
   .hero-index .hero-index-title-h3 strong {
     font-size: 1.4rem;
+  }
+  .hero-index .hero-index-title-h3 span {
+    font-size: 1.3rem;
+  }
+  .hero-index .container {
+    gap: 20px;
   }
 }
 @media screen and (min-width: 1900px) {
@@ -332,6 +349,7 @@
   }
 } */
 .why-green-click {
+  position: relative;
   width: 100%;
   padding: 0px 15px;
   background: linear-gradient(135deg, rgba(2, 77, 74, 0.03) 0%, rgba(251, 251, 252, 0.05) 50%, rgba(0, 190, 184, 0.03) 100%);
@@ -339,14 +357,12 @@
 .why-green-click .why-choose {
   width: 95%;
   max-width: 1200px;
-  margin: 0 auto;
 }
 .why-green-click .why-choose h2 {
   font-size: 2rem;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  margin: 0 auto;
   color: #171717;
   margin-bottom: 40px;
   text-align: center;
@@ -366,14 +382,17 @@
   background: #c3066b;
   border-radius: 2px;
 }
+.why-green-click .why-choose .why-choose-card {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+}
 .why-green-click .why-choose h3 {
   font-size: 1.4rem;
   color: #171717;
   margin: 40px 0 20px;
   padding-left: 15px;
-}
-.why-green-click .why-choose h3 strong {
-  color: #024d4a;
+  opacity: 0.9;
 }
 .why-green-click .why-choose p {
   font-size: 1rem;
@@ -385,50 +404,8 @@
 .why-green-click .why-choose p strong {
   color: #008b87;
 }
-.why-green-click .why-choose ul {
-  -ms-flex-item-align: center;
-      align-self: center;
-  gap: 30px;
-  list-style: none;
-  padding: 20px;
-  width: 90%;
-  max-width: 800px;
-  margin: 0 auto;
-  background: rgba(199, 227, 205, 0.5);
-  border-radius: 15px;
-}
-.why-green-click .why-choose ul li {
-  position: relative;
-  padding: 15px 10px;
-  color: #171717;
-  border: 2px solid rgba(0, 190, 184, 0.7);
-  border-radius: 15px;
-  background: #fbfbfc;
-  width: 100%;
-}
-.why-green-click .why-choose ul li strong {
-  color: #024d4a;
-}
-.why-green-click .why-choose ul li:nth-child(even) {
-  border: 2px solid #024d4a;
-}
-.why-green-click .why-choose ul li:last-child {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 10px;
-  border: none;
-  background: none;
+.why-green-click .why-choose .img-why-card {
+  display: none;
 }
 
 @media (min-width: 768px) {
@@ -448,65 +425,132 @@
     font-size: clamp(1rem, 1.5vw, 1.1rem);
     padding: 0 20px;
   }
-  .why-green-click .why-choose ul {
-    padding: 30px;
-    margin: 40px 0;
-  }
-  .why-green-click .why-choose ul li {
-    padding: 20px 0 20px 40px;
-    font-size: clamp(1rem, 1.5vw, 1.1rem);
-  }
-  .why-green-click .why-choose ul li::before {
-    font-size: 1.2rem;
-  }
 }
 @media (min-width: 992px) {
   .why-green-click {
-    padding: 100px 50px;
+    padding: 80px 50px 0px 50px;
+  }
+  .why-green-click .why-choose {
+    gap: 50px;
   }
   .why-green-click .why-choose h2 {
-    margin-bottom: 80px;
+    margin-bottom: 150px;
+  }
+  .why-green-click .why-choose .why-choose-card {
+    position: relative;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row;
+            flex-flow: row;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    height: 600px;
   }
   .why-green-click .why-choose h3 {
-    border-left-width: 4px;
+    position: absolute;
+    padding: 50px 60px 50px 20px;
+    top: 0px;
+    left: 5%;
+    width: 40%;
+    color: #ffffff;
   }
-  .why-green-click .why-choose ul {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+  .why-green-click .why-choose #why-choose-card-1 {
+    background-color: #024d4a;
   }
-  .why-green-click .why-choose ul li {
-    padding: 25px 30px 25px 50px;
-    border-radius: 10px;
-    -webkit-transition: -webkit-transform 0.3s ease;
-    transition: -webkit-transform 0.3s ease;
-    transition: transform 0.3s ease;
-    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  .why-green-click .why-choose #why-choose-card-2 {
+    background-color: #00beb8;
   }
-  .why-green-click .why-choose ul li::before {
-    left: 20px;
+  .why-green-click .why-choose #why-choose-card-3 {
+    background-color: #171717;
+  }
+  .why-green-click .why-choose #why-choose-card-4 {
+    background-color: #c3066b;
+  }
+  .why-green-click .why-choose p {
+    position: absolute;
+    padding: 40px 20px 40px 70px;
+    text-align: left;
+    top: 100px;
+    right: 0%;
+    width: 60%;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  .why-green-click .why-choose p::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50px;
+    height: 4px;
+  }
+  .why-green-click .why-choose p::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 4px;
+    height: 50px;
+  }
+  .why-green-click .why-choose #why-choose-card-1-p::after, .why-green-click .why-choose #why-choose-card-1-p::before {
+    background-color: #024d4a;
+  }
+  .why-green-click .why-choose #why-choose-card-2-p::after, .why-green-click .why-choose #why-choose-card-2-p::before {
+    background-color: #00beb8;
+  }
+  .why-green-click .why-choose #why-choose-card-3-p::after, .why-green-click .why-choose #why-choose-card-3-p::before {
+    background-color: #171717;
+  }
+  .why-green-click .why-choose #why-choose-card-4-p::after, .why-green-click .why-choose #why-choose-card-4-p::before {
+    background-color: #c3066b;
+  }
+  .why-green-click .why-choose .img-why-card {
+    display: block;
+    position: absolute;
     top: 50%;
-    -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
+    left: 10%;
+    width: 300px;
+    height: 200px;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
-  .why-green-click .why-choose ul li:last-child:hover {
-    -webkit-transform: none;
-        -ms-transform: none;
-            transform: none;
-    background: none;
+  .why-green-click .why-choose #img-why-card-1 {
+    height: 200px;
+    width: 200px;
+    left: 20%;
+    -webkit-clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+            clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+    border-bottom: 12px solid #024d4a;
   }
-  .why-green-click .why-choose ul li:nth-child(2) {
-    border: 2px solid #c3066b;
+  .why-green-click .why-choose #img-why-card-2 {
+    border-left: 12px solid #00beb8;
+    -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+            clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+    -webkit-transform: rotate(-20deg);
+        -ms-transform: rotate(-20deg);
+            transform: rotate(-20deg);
   }
-  .why-green-click .why-choose ul li:nth-child(3) {
-    border: 2px solid #c3066b;
+  .why-green-click .why-choose #img-why-card-3 {
+    left: 20%;
+    top: 40%;
+    width: 200px;
+    height: 200px;
+    border-left: 12px solid #171717;
+    border-radius: 50%;
   }
-  .why-green-click .why-choose ul li:nth-child(4) {
-    border: 2px solid #024d4a;
+  .why-green-click .why-choose #img-why-card-4 {
+    left: 20%;
+    top: 30%;
+    width: 200px;
+    height: 200px;
   }
-  .why-green-click .why-choose ul li:nth-child(5) {
-    border: 2px solid #00beb8;
+}
+@media screen and (min-width: 1300px) {
+  .why-green-click .why-choose .why-choose-card {
+    height: 500px;
   }
 }
 @media (min-width: 768px) {

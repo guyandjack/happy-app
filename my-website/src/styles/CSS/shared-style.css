@@ -141,9 +141,6 @@ main {
   position: relative;
   overflow: hidden;
   background-color: #fbfbfc;
-  /*  @media screen and (min-width: 1500px) {
-    overflow: visible;
-  } */
 }
 .hero-container > img {
   position: absolute;

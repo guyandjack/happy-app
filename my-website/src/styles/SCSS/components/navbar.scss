@@ -4,6 +4,7 @@
 
 // Mobile first base styles
 .navbar-wrapper {
+    height: 100%;
     background-color: map-get($colors-rule, second-color);
 }
 
@@ -23,7 +24,7 @@
     // Toast
     .toast {
         position: absolute;
-        bottom: -50px;
+        bottom: -100px;
         right: 50px;
         padding: 10px 20px;
         color: map-get($colors-rule, sixth-color);
@@ -132,10 +133,10 @@
         li {
             width: 100%;
             list-style: none;
-            //margin: 0;
-            //padding: 0;
+
         }
 
+        .has-submenu,
         a {
             display: block;
             padding: 1rem 0;
@@ -358,7 +359,7 @@
 
             .language-switcher {
                 margin-top: 0;
-                margin-left: 2rem;
+
                 border-left: 1px solid rgba(map-get($colors-rule, sixth-color), 0.2);
                 padding-left: 2rem;
             }

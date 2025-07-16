@@ -41,44 +41,44 @@ let ctaSectionContent = {
   },
   en: {
     home: {
-      title: "Complete web solutions to meet all your needs.",
-      text: "If you are looking for a <strong>passionate and committed web developer</strong> for your next project, I would be happy to discuss it with you.",
-      btn_text: "Contact me",
-    },
-    contact: {
-      title: "Ready to <strong>work together</strong> ?",
-      text: "If you are looking for a <strong>passionate and committed web developer</strong> for your next project, I would be happy to discuss it with you.",
+      title: "Comprehensive web solutions for all your needs.",
+      text: "Whether you need a high-performing website, a custom application, or optimized SEO, I can offer you the right solution.",
       btn_text: "Contact me",
     },
 
-    about: {
-      title: "Prêt à <strong>travailler ensemble</strong> ?",
-      text: "If you are looking for a <strong>passionate and committed web developer</strong> for your next project, I would be happy to discuss it with you.",
+    qui: {
+      title: "Passionate and dedicated web developer",
+      text: "If you're looking for a passionate and committed web developer for your next project, I’d be happy to discuss it with you.",
       btn_text: "Contact me",
     },
-    achievements: {
-      img_1: "",
-      text: "If you are looking for a <strong>passionate and committed web developer</strong> for your next project, I would be happy to discuss it with you.",
-      btn_text: "Contact me",
-    },
+
     articles: {
-      title: "Prêt à <strong>travailler ensemble</strong> ?",
-      text: "If you are looking for a <strong>passionate and committed web developer</strong> for your next project, I would be happy to discuss it with you.",
+      title: "Do you have more questions?",
+      text: "Contact me for more information.",
       btn_text: "Contact me",
     },
+
     mobile: {
-      title: "Prêt à <strong>travailler ensemble</strong> ?",
-      text: "If you are looking for a <strong>passionate and committed web developer</strong> for your next project, I would be happy to discuss it with you.",
+      title: "Boost your business with a custom application",
+      text: "Let's discuss the perfect solution for your users!",
       btn_text: "Contact me",
     },
+
     seo: {
-      title: "Prêt à <strong>travailler ensemble</strong> ?",
-      text: "If you are looking for a <strong>passionate and committed web developer</strong> for your next project, I would be happy to discuss it with you.",
+      title: "Optimize your SEO and gain visibility",
+      text: "Attract more visitors with high-performance SEO. Contact me for an audit!",
       btn_text: "Contact me",
     },
+
     site: {
-      title: "Prêt à <strong>travailler ensemble</strong> ?",
-      text: "If you are looking for a <strong>passionate and committed web developer</strong> for your next project, I would be happy to discuss it with you.",
+      title: "Create a website that converts today",
+      text: "Looking for a high-performing site that boosts your sales? Contact me to discuss it!",
+      btn_text: "Contact me",
+    },
+
+    realisations: {
+      title: "Discover the businesses I've worked with.",
+      text: "Contact me to learn more.",
       btn_text: "Contact me",
     },
   },

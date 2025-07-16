@@ -21,55 +21,56 @@ function Footer() {
     fr: {
       main: [
         { path: `/index.html`, text: "Accueil" },
-        { path: `/src/pages/fr/qui-suis-je.html`, text: "A propos" },
-        { path: `/src/pages/fr/contact.html`, text: "Contact" },
+        { path: `/public/fr/a-propos.html`, text: "A propos" },
+        { path: `/public/fr/contact.html`, text: "Contact" },
       ],
       services: [
         {
-          path: `/src/pages/fr/prestations/site-web.html`,
+          path: `/public/fr/prestations/site-web.html`,
           text: "Site Web",
         },
         {
-          path: `/src/pages/fr/prestations/seo.html`,
+          path: `/public/fr/prestations/seo.html`,
           text: "Référencement",
         },
         {
-          path: `/src/pages/fr/prestations/application-mobile.html`,
+          path: `/public/fr/prestations/application-mobile.html`,
           text: "Application Mobile",
         },
       ],
       legal: [
         {
-          path: `/src/pages/fr/legal/mentions-legales.html`,
+          path: `/public/fr/legal/mentions-legales.html`,
           text: "Mentions légales",
         },
         {
-          path: `/src/pages/fr/legal/politique-de-confidentialite.html`,
+          path: `/public/fr/legal/politique-de-confidentialite.html`,
           text: "Politique de confidentialité",
         },
-        { path: `/src/pages/fr/connexion.html`, text: "Connexion" },
+        { path: `/public/fr/connexion.html`, text: "Connexion" },
       ],
     },
     en: {
       main: [
-        { path: `/src/pages/en/home.html`, text: "Home" },
-        { path: `/src/pages/en/about.html`, text: "Who I am" },
+        { path: `/public/en/home.html`, text: "Home" },
+        { path: `/public/en/about.html`, text: "About me" },
+        { path: `/public/en/contact.html`, text: "Contact" },
       ],
       services: [
-        { path: `/src/pages/en/services/website.html`, text: "Website" },
-        { path: `/src/pages/en/services/seo.html`, text: "SEO" },
+        { path: `/public/en/services/website.html`, text: "Website" },
+        { path: `/public/en/services/seo.html`, text: "SEO" },
         {
-          path: `/src/pages/en/services/mobile-application.html`,
+          path: `/public/en/services/mobile-application.html`,
           text: "Mobile App",
         },
       ],
       legal: [
         {
-          path: `/src/pages/en/legal/legal-notice.html`,
+          path: `/public/en/legal/legal-notice.html`,
           text: "Legal Notice",
         },
         {
-          path: `/src/pages/en/legal/privacy-policy.html`,
+          path: `/public/en/legal/privacy-policy.html`,
           text: "Privacy Policy",
         },
       ],
@@ -83,9 +84,7 @@ function Footer() {
       <div className="flex-column-start-start footer-content">
         <div className="flex-column-start-start footer-brand">
           <a
-            href={
-              currentLang === "fr" ? "/index.html" : "/src/pages/en/home.html"
-            }
+            href={currentLang === "fr" ? "/index.html" : "/public/en/home.html"}
             className="footer-logo"
           >
             <ReactSVG
@@ -102,8 +101,8 @@ function Footer() {
           <a
             href={
               currentLang === "fr"
-                ? "/src/pages/fr/contact.html"
-                : "/src/pages/en/contact.html"
+                ? "/public/fr/contact.html"
+                : "/public/en/contact.html"
             }
             className="footer-cta"
           >
@@ -168,7 +167,7 @@ function Footer() {
       </div>
       <div className="footer-bottom">
         <p>
-          © {new Date().getFullYear()} SkyNet Dev Company.{" "}
+          © {new Date().getFullYear()} Helveclick.{" "}
           {currentLang === "fr"
             ? "Tous droits réservés."
             : "All rights reserved."}

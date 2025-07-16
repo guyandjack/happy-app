@@ -1,6 +1,7 @@
 // recupere le nom de la page courante dans l' url
 
 function getPageName(lang) {
+  console.log("lang: ", lang);
   let pageName = [];
   let subString = "";
   let string = window.location.pathname;

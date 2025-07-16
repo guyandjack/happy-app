@@ -54,10 +54,7 @@
 
 .card-content {
     padding: 24px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 0;
+    height: 320px;
 
     .card-title {
         margin-bottom: 12px;
@@ -73,10 +70,6 @@
     }
 
     .card-button {
-        margin-top: auto;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
         padding: 12px 24px;
         background-color: rgba(map-get($colors-rule, first-color), 0.9);
         color: map-get($colors-rule, sixth-color);
@@ -89,6 +82,7 @@
         cursor: pointer;
         transition: all 0.3s ease;
         width: 80%;
+        text-align: center;
 
         &:hover {
             background-color: transparent;
@@ -118,6 +112,7 @@
     font-weight: 600;
     font-size: 0.9rem;
     text-transform: uppercase;
+    text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
 
