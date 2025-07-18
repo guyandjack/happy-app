@@ -701,21 +701,22 @@
         position: absolute;
         top: 50%;
         left: 10%;
-        width: 300px;
+        width: 200px;
         height: 200px;
         object-fit: cover;
 
       }
 
       #img-why-card-1 {
-        height: 200px;
-        width: 200px;
+
         left: 20%;
         clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
         border-bottom: 12px solid map-get($colors-rule, first-color);
       }
 
       #img-why-card-2 {
+
+        width: 300px;
         border-left: 12px solid map-get($colors-rule, second-color);
         clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
         transform: rotate(-20deg);
@@ -724,8 +725,7 @@
       #img-why-card-3 {
         left: 20%;
         top: 40%;
-        width: 200px;
-        height: 200px;
+
         border-left: 12px solid map-get($colors-rule, fifth-color);
         border-radius: 50%;
 
@@ -735,8 +735,7 @@
       #img-why-card-4 {
         left: 20%;
         top: 30%;
-        width: 200px;
-        height: 200px;
+
       }
 
 

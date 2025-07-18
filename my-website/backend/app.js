@@ -114,13 +114,9 @@ app.use("/api/contact", contactRoutes);
 app.use("/api/recaptcha", recaptchaRoutes);
 app.use("/api/images", imagesRoutes);
 
-/* app.use(
-  "/api/public/images/landingPage",
-  (req, res) => {
-    res.status(200).json({ message: "ok" });
-  },
-  express.static(path.join(__dirname, "uploads", "landingPage"))
-); */
+app.use("/api/test", (req, res) => {
+  res.status(200).json({ message: "test ok" });
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {

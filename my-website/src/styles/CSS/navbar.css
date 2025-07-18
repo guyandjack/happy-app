@@ -300,6 +300,9 @@
     background: #00beb8;
     height: 100%;
   }
+  .navbar .navbar-menu .menu-item-with-submenu .has-submenu {
+    border-bottom: none;
+  }
   .navbar .navbar-menu .menu-item-with-submenu .submenu {
     position: absolute;
     top: 100%;

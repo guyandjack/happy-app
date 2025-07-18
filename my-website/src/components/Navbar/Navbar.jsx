@@ -5,6 +5,7 @@ import { ReactSVG } from "react-svg";
 //import des fonctions
 //import { localOrProd } from "@utils/fonction/testEnvironement.js";
 //const { url, url_api, mode } = localOrProd();
+import { subMenuNavigation } from "@utils/fonction/subMenuNavigation.js";
 
 //import des composants enfants
 //import { ToggleSwitch } from "@components/ToggleSwitch/ToggleSwitch.jsx";
@@ -33,18 +34,58 @@ function Navbar() {
   const navbarRef = useRef(null);
   const menuItemCollapseRef = useRef(null);
 
-  /* const handleScroll = () => {
-    if (navbarRef.current) {
-      navbarRef.current.classList.add("scrolled");
-      setTimeout(() => {
-        navbarRef.current.classList.remove("scrolled");
-      }, 1000);
-    }
-  }; */
+  const btnSubMenuRef = useRef(null);
+  const submenuRef = useRef(null);
 
   const showToast = (message, type) => {
     setToast({ show: true, message, type });
   };
+
+  //gestion du focus sur le bouton flag
+  useEffect(() => {
+    const flagBtn = document.querySelector(".flag-btn");
+    flagBtn.addEventListener("focus", () => {
+      flagBtn.style.outline = "auto";
+    });
+    flagBtn.addEventListener("blur", () => {
+      flagBtn.style.outline = "none";
+    });
+
+    return () => {
+      flagBtn.removeEventListener("focus", () => {
+        flagBtn.style.outline = "auto";
+      });
+      flagBtn.removeEventListener("blur", () => {
+        flagBtn.style.outline = "none";
+      });
+    };
+  }, []);
+
+  // gestion de la navigation dans le sous menu
+  useEffect(() => {
+    const submenuItems = submenuRef.current.querySelectorAll("a");
+    const lastItem = submenuItems[submenuItems.length - 1];
+
+    btnSubMenuRef.current.addEventListener("focus", () => {
+      setIsServicesOpen(true);
+      btnSubMenuRef.current.style.outline = "auto";
+    });
+
+    lastItem.addEventListener("blur", () => {
+      btnSubMenuRef.current.style.outline = "none";
+      setIsServicesOpen(false);
+    });
+
+    return () => {
+      btnSubMenuRef.current.removeEventListener("focus", () => {
+        setIsServicesOpen(true);
+        btnSubMenuRef.current.style.border = "1px solid red";
+      });
+      lastItem.removeEventListener("blur", () => {
+        setIsServicesOpen(false);
+      });
+    };
+  }, []);
 
   //detecte si la connexion internet est rompue
   useEffect(() => {
@@ -85,15 +126,6 @@ function Navbar() {
     setCurrentLang(window.location.pathname.includes("/en/") ? "en" : "fr");
   }, []);
 
-  /* // Gestion du scroll pour effet de style sur la navbar
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []); */
-
   // Detection des liens actifs du sous menu
   // pour effet de style sur lien collapse
   useEffect(() => {
@@ -120,7 +152,7 @@ function Navbar() {
   // Updated menu items with services submenu
   const menuItems = {
     fr: [
-      { path: `/index.html`, text: "Accueil" },
+      { path: `/`, text: "Accueil" },
       { path: `/public/fr/a-propos.html`, text: "A propos" },
       {
         text: "Prestations",
@@ -180,16 +212,13 @@ function Navbar() {
     const currentPath = window.location.pathname;
 
     // Cas spécifique pour la page d'accueil
-    if (
-      currentPath === "/index.html" ||
-      (currentPath === "" && lang === "en")
-    ) {
+    if (currentPath === "/" && lang === "en") {
       window.location.href = "/public/en/home.html";
       return;
     }
 
     if (currentPath.includes("en/home.html") && lang === "fr") {
-      window.location.href = "/index.html";
+      window.location.href = "/";
       return;
     }
 
@@ -229,6 +258,11 @@ function Navbar() {
     ) {
       window.location.href = menuItems[lang][5].path;
     }
+
+    //pages apropos et about
+    if (currentPath.includes("a-propos") || currentPath.includes("about")) {
+      window.location.href = menuItems[lang][1].path;
+    }
   };
 
   return (
@@ -241,7 +275,8 @@ function Navbar() {
         ) : null}
         <div className="navbar-brand">
           <a
-            href={currentLang === "fr" ? "/index.html" : "/public/en/home.html"}
+            href={currentLang === "fr" ? "/" : "/public/en/home.html"}
+            aria-label={currentLang === "fr" ? "Accueil" : "Home"}
             className="logo"
           >
             <ReactSVG
@@ -266,7 +301,7 @@ function Navbar() {
           </button>
         </div>
 
-        <ul className={`navbar-menu ${isOpen ? "open" : ""}`} role="menubar">
+        <ul className={`navbar-menu ${isOpen ? "open" : ""}`}>
           {menuItems[currentLang].map((item, index) =>
             item.submenu ? (
               <li
@@ -282,16 +317,15 @@ function Navbar() {
                 onClick={() => {
                   setIsServicesOpen(!isServicesOpen);
                 }}
-                role="menuitem"
                 aria-haspopup="true"
                 aria-expanded={isServicesOpen}
               >
-                <span
-                  href="/null"
-                  /* role="menuitem" */
-                  onClick={(e) => {
-                    e.preventDefault();
-                  }}
+                <button
+                  ref={btnSubMenuRef}
+                  type="button"
+                  aria-haspopup="true"
+                  aria-expanded={isServicesOpen}
+                  aria-controls="sous-menu"
                   className={`has-submenu ${isActive(item.path)} ${
                     isServicesOpen ? "open" : ""
                   }`}
@@ -306,17 +340,18 @@ function Navbar() {
                   >
                     ▼
                   </span>
-                </span>
+                </button>
                 <ul
+                  ref={submenuRef}
+                  id="sous-menu"
+                  hidden={!isServicesOpen}
                   className={`submenu ${isServicesOpen ? "open" : ""}`}
-                  role="menu"
                 >
                   {item.submenu.map((subItem, subIndex) => (
-                    <li key={subIndex} role="none">
+                    <li key={subIndex}>
                       <a
                         href={subItem.path}
                         className={`subMenuLink ${isActive(subItem.path)}`}
-                        role="menuitem"
                       >
                         {subItem.text}
                       </a>
@@ -326,11 +361,7 @@ function Navbar() {
               </li>
             ) : item.text !== "" ? (
               <li key={index} role="none">
-                <a
-                  href={item.path}
-                  className={isActive(item.path)}
-                  role="menuitem"
-                >
+                <a href={item.path} className={isActive(item.path)}>
                   {item.text}
                 </a>
               </li>
@@ -339,6 +370,7 @@ function Navbar() {
           <li className="language-switcher" role="none">
             {currentLang === "en" ? (
               <button
+                className="flag-btn"
                 onClick={() => switchLanguage("fr")}
                 aria-label="Switch to French"
               >
@@ -347,6 +379,7 @@ function Navbar() {
             ) : null}
             {currentLang === "fr" ? (
               <button
+                className="flag-btn"
                 onClick={() => switchLanguage("en")}
                 aria-label="Switch to English"
               >

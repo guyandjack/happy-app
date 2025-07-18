@@ -20,7 +20,7 @@ function Footer() {
   const menuItems = {
     fr: {
       main: [
-        { path: `/index.html`, text: "Accueil" },
+        { path: `/`, text: "Accueil" },
         { path: `/public/fr/a-propos.html`, text: "A propos" },
         { path: `/public/fr/contact.html`, text: "Contact" },
       ],
@@ -84,7 +84,8 @@ function Footer() {
       <div className="flex-column-start-start footer-content">
         <div className="flex-column-start-start footer-brand">
           <a
-            href={currentLang === "fr" ? "/index.html" : "/public/en/home.html"}
+            href={currentLang === "fr" ? "/" : "/public/en/home.html"}
+            aria-label={currentLang === "fr" ? "Accueil" : "Home"}
             className="footer-logo"
           >
             <ReactSVG
