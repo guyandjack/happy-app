@@ -78,6 +78,7 @@ function ContactForm() {
 
       if (!response.ok) {
         throw new Error("une erreure http est survenue");
+        showToast("une erreure http est survenue", "error");
       }
 
       const result = await response.json();
