@@ -1,23 +1,26 @@
 const nodemailer = require("nodemailer");
-
 const localOrProd = require("../utils/function/localOrProd");
-/**
- * Send contact email
- */
+
 exports.sendContactEmail = async (req, res, next) => {
   const { mode } = localOrProd();
+  console.log("mode:", mode);
   let emailTo = "";
+  let transporter;
+
   try {
     const { name, email, subject, message } = req.body;
 
-    // Create transporter
-    //test si on est en prod
-    if (mode === "prod" && req.hostname.includes(".ch")) {
+    if (mode === "prod" && req.hostname.includes("helveclick.ch")) {
       transporter = nodemailer.createTransport({
-        service: "gmail",
+        host: process.env.MAILBOX_PROD_HOST,
+        port: 465, // ou 587 selon ton host
+        secure: true,
         auth: {
           user: process.env.MAILBOX_PROD_ADRESS,
           pass: process.env.MAILBOX_PROD_PASSWORD,
+        },
+        tls: {
+          rejectUnauthorized: false,
         },
       });
       emailTo = process.env.MAILBOX_PROD_ADRESS;
@@ -35,10 +38,10 @@ exports.sendContactEmail = async (req, res, next) => {
       emailTo = process.env.MAILBOX_DEV_ADRESS;
     }
 
-    // Email options
     const mailOptions = {
-      from: `"${name}" <${email}>`,
+      from: `"${name}" <${emailTo}>`,
       to: emailTo,
+      replyTo: email, // pour que le destinataire puisse répondre directement
       subject: `Contact Form: ${subject}`,
       html: `
         <h3>New Contact Form Submission</h3>
@@ -50,7 +53,6 @@ exports.sendContactEmail = async (req, res, next) => {
       `,
     };
 
-    // Send email
     await transporter.sendMail(mailOptions);
 
     res.status(200).json({
@@ -59,6 +61,9 @@ exports.sendContactEmail = async (req, res, next) => {
     });
   } catch (error) {
     console.error("Email sending error:", error);
-    next(error);
+    res.status(500).json({
+      status: "error",
+      message: `Email sending error: ${error.message}`,
+    });
   }
 };

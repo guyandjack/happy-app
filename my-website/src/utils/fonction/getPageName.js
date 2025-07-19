@@ -1,17 +1,20 @@
 // recupere le nom de la page courante dans l' url
 
 function getPageName(lang) {
-  console.log("lang: ", lang);
   let pageName = [];
   let subString = "";
   let string = window.location.pathname;
+
   if (string.includes("prestations")) {
     subString = string.split("/prestations/").pop().replace(".html", "");
-  }
-  if (string.includes("services")) {
+  } else if (string.includes("services")) {
     subString = string.split("/services/").pop().replace(".html", "");
+  } else if (string === "/") {
+    subString = "index";
+  } else {
+    subString = string.split("/").pop().replace(".html", "");
   }
-  subString = string.split("/").pop().replace(".html", "");
+
   let masqueFr =
     /^(index|contact|a-propos|realisations|articles|site-web|seo|application-mobile)$/;
   let masqueEn =
@@ -20,6 +23,10 @@ function getPageName(lang) {
   if (lang === "fr") {
     //recupere le nom de la page dans l'url
     pageName = subString.match(masqueFr);
+
+    if (!pageName) {
+      return undefined;
+    }
     //renomme les pages en fonction de la langue
     if (pageName[0] === "a-propos") {
       pageName[0] = "qui";
@@ -30,10 +37,13 @@ function getPageName(lang) {
     if (pageName[0] === "application-mobile") {
       pageName[0] = "mobile";
     }
-    console.log("pageName: ", pageName[0]);
+
     return pageName[0];
   } else if (lang === "en") {
     pageName = subString.match(masqueEn);
+    if (!pageName) {
+      return undefined;
+    }
     if (pageName[0] === "website") {
       pageName[0] = "site";
     }

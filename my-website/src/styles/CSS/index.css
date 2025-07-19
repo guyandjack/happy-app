@@ -7,20 +7,6 @@
   height: 500px;
   padding: 20px 10px;
 }
-@-webkit-keyframes blurIn {
-  to {
-    -webkit-filter: blur(0);
-            filter: blur(0);
-    opacity: 0.7;
-  }
-}
-@keyframes blurIn {
-  to {
-    -webkit-filter: blur(0);
-            filter: blur(0);
-    opacity: 0.7;
-  }
-}
 .hero-index::before {
   content: "";
   position: absolute;
@@ -34,11 +20,7 @@
   background-attachment: fixed;
   background-repeat: no-repeat;
   z-index: -1;
-  -webkit-filter: blur(10px);
-          filter: blur(10px);
   opacity: 0.7;
-  -webkit-animation: blurIn 2s ease-out forwards;
-          animation: blurIn 2s ease-out forwards;
 }
 .hero-index::after {
   content: "";
@@ -67,6 +49,10 @@
   padding: 10px;
   border-radius: 15px;
   color: #c3066b;
+}
+.hero-index .hero-index-title-h1 span {
+  color: #00f1e9;
+  font-weight: 600;
   word-break: keep-all;
   white-space: nowrap;
 }
@@ -364,7 +350,7 @@
   width: -moz-fit-content;
   width: fit-content;
   color: #171717;
-  margin-bottom: 40px;
+  margin: 40px 0;
   text-align: center;
   position: relative;
 }
@@ -389,8 +375,8 @@
 }
 .why-green-click .why-choose h3 {
   font-size: 1.4rem;
-  color: #171717;
-  margin: 40px 0 20px;
+  color: #c3066b;
+  margin-bottom: 20px;
   padding-left: 15px;
   opacity: 0.9;
 }

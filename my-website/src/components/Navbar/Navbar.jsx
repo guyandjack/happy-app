@@ -2,16 +2,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ReactSVG } from "react-svg";
 
-//import des fonctions
-//import { localOrProd } from "@utils/fonction/testEnvironement.js";
-//const { url, url_api, mode } = localOrProd();
-import { subMenuNavigation } from "@utils/fonction/subMenuNavigation.js";
-
 //import des composants enfants
 //import { ToggleSwitch } from "@components/ToggleSwitch/ToggleSwitch.jsx";
 import { TimerSession } from "@components/TimerSession/timerSession.jsx";
 import { MenuSide } from "@components/Navbar/MenuSide.jsx";
-//import { LinkTopPage } from "@components/linkTopPage/linkTopPage.jsx";
 
 //import des icons
 //import burgerIcon from '../../../public/images/icons/menu-burger.svg';
@@ -41,34 +35,15 @@ function Navbar() {
     setToast({ show: true, message, type });
   };
 
-  //gestion du focus sur le bouton flag
-  useEffect(() => {
-    const flagBtn = document.querySelector(".flag-btn");
-    flagBtn.addEventListener("focus", () => {
-      flagBtn.style.outline = "auto";
-    });
-    flagBtn.addEventListener("blur", () => {
-      flagBtn.style.outline = "none";
-    });
-
-    return () => {
-      flagBtn.removeEventListener("focus", () => {
-        flagBtn.style.outline = "auto";
-      });
-      flagBtn.removeEventListener("blur", () => {
-        flagBtn.style.outline = "none";
-      });
-    };
-  }, []);
-
-  // gestion de la navigation dans le sous menu
+  // gestion de la navigation avec keyTab dans le sous menu
+  // Ouvre le sous menu des que le bouton à le focus
   useEffect(() => {
     const submenuItems = submenuRef.current.querySelectorAll("a");
     const lastItem = submenuItems[submenuItems.length - 1];
 
     btnSubMenuRef.current.addEventListener("focus", () => {
       setIsServicesOpen(true);
-      btnSubMenuRef.current.style.outline = "auto";
+      //btnSubMenuRef.current.style.outline = "auto";
     });
 
     lastItem.addEventListener("blur", () => {

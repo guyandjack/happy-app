@@ -3,42 +3,22 @@
 
 
 // About section
-.about-content {
-    gap: 30px;
+.about-text {
+
     background-color: rgba(map-get($colors-rule, second-color), 0.1);
 
-
-    // Profile image and logo section
-    .about-image-container {
-
-        //position: relative;
-        width: 300px;
-        height: 300px;
-        background-image: url("/public/assets/images/page-qui-suis-je/img-a-propos.webp");
-        background-size: cover;
-        background-position: center;
-        border-radius: 50%;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        border: 15px solid map-get($colors-rule, first-color);
-        opacity: 0.3;
-        //overflow: hidden;
-
-        /* .about-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-
-        } */
+    .wrapper-about-text {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
     }
-
-
 
 }
 
 
 // Charte section
 .about-charte {
-    //margin: 0 auto;
+
     background-color: rgba(map-get($colors-rule, third-color), 0.3);
     padding: 30px;
 
@@ -66,7 +46,7 @@
 
 // Process section
 .about-process {
-    width: 100%;
+
     background-color: rgba(map-get($colors-rule, first-color), 0.1);
 
     .process-steps {
@@ -123,9 +103,10 @@
 
 
 //titre et container commun
-.about-content,
+.about-text,
 .about-charte,
 .about-process {
+    width: 100%;
     padding: 40px;
 
     .h2-title {
@@ -170,13 +151,14 @@
 
 
     //titre et container commun
-    .about-content,
+    .about-text,
     .about-charte,
     .about-process {
         padding: 80px;
 
         .h2-title {
             font-size: 2.2rem;
+            margin: 60px 30px;
         }
 
         p,
@@ -185,16 +167,7 @@
         }
     }
 
-    .about-content {
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-        padding: 40px;
-    }
 
-    .about-text {
-        width: 50%;
-    }
 
 
 
@@ -205,7 +178,7 @@
 @media screen and (min-width: 768px) {
 
     //titre et container commun
-    .about-content,
+    .about-text,
     .about-charte,
     .about-process {
         padding: 50px;
@@ -225,17 +198,10 @@
         padding: 60px 0;
     }
 
-    .about-section .about-content h2,
+    .about-section .about-text h2,
     .process-section h2 {
         font-size: 2rem;
     }
 
-    .about-section .about-content .skills-grid,
-    .about-section .about-content .values-grid {
-        grid-template-columns: 1fr 1fr;
-    }
 
-    .process-section .process-steps {
-        grid-template-columns: 1fr;
-    }
 }

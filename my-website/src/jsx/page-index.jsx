@@ -23,10 +23,8 @@ import { initFaq } from "@scripts/page-services.js";
 
 if (import.meta.env.MODE === "production") {
   import("@styles/CSS/index-prod.css");
-  console.log("mode production");
 } else {
   import("@styles/CSS/index.css");
-  console.log("mode development");
 }
 
 //Logique collapse faq
