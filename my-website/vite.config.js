@@ -1,9 +1,10 @@
 import react from "@vitejs/plugin-react";
 import path from "path";
 import { defineConfig } from "vite";
+import Sitemap from "vite-plugin-sitemap";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), Sitemap({ hostname: "https://www.helveclick.ch" })],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -18,6 +19,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
+        // 404 page
+        error_404: path.resolve(__dirname, "./public/404.html"),
+
         // Landing page
         main: path.resolve(__dirname, "./index.html"),
 
