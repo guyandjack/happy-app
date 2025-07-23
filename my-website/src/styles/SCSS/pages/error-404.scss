@@ -54,12 +54,20 @@
     padding: 12px 24px;
     border-radius: 6px;
     border: 2px solid map-get($colors-rule, fourth-color);
-    background-color: rgba(map-get($colors-rule, fourth-color), 0.4);
+    background-color: rgba(map-get($colors-rule, fourth-color), 0.8);
     color: white;
     cursor: pointer;
+    font-weight: 600;
+    font-size: 1.2rem;
 
     &:hover {
-        background-color: rgba(map-get($colors-rule, fourth-color), 0.8);
+        background-color: map-get($colors-rule, fourth-color);
+    }
+
+    .error-actions-icon {
+        margin-right: 10px;
+        font-size: 1.5rem;
+        font-weight: 900;
     }
 }
 
