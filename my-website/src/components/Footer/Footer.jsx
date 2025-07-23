@@ -1,8 +1,6 @@
 import React from "react";
 //import { localOrProd } from "@utils/fonction/testEnvironement.js";
 
-import { ReactSVG } from "react-svg";
-
 //import des images
 import logo from "@assetsJSX/logo/logo-helveclick.svg";
 
@@ -88,11 +86,7 @@ function Footer() {
             aria-label={currentLang === "fr" ? "Accueil" : "Home"}
             className="footer-logo"
           >
-            <ReactSVG
-              src={logo}
-              alt="Logo helveclick"
-              beforeInjection={(svg) => svg.classList.add("footer-logo-svg")}
-            />
+            <img src={logo} alt="Logo helveclick" className="footer-logo-svg" />
           </a>
           <p className="footer-tagline">
             {currentLang === "fr"

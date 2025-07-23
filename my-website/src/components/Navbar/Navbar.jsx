@@ -1,6 +1,5 @@
 //import des hook
 import React, { useEffect, useRef, useState } from "react";
-import { ReactSVG } from "react-svg";
 
 //import des composants enfants
 //import { ToggleSwitch } from "@components/ToggleSwitch/ToggleSwitch.jsx";
@@ -254,14 +253,7 @@ function Navbar() {
             aria-label={currentLang === "fr" ? "Accueil" : "Home"}
             className="logo"
           >
-            <ReactSVG
-              src={logos}
-              alt="Logo helveclick"
-              beforeInjection={(svg) => {
-                svg.classList.add("logo-image");
-                svg.setAttribute("role", "img");
-              }}
-            />
+            <img src={logos} alt="Logo helveclick" className="logo-image" />
           </a>
 
           <button
@@ -283,15 +275,9 @@ function Navbar() {
                 key={index}
                 className="menu-item-with-submenu"
                 ref={menuItemCollapseRef}
-                onMouseOver={() => {
-                  setIsServicesOpen(true);
-                }}
-                onMouseLeave={() => {
-                  setIsServicesOpen(false);
-                }}
-                onClick={() => {
-                  setIsServicesOpen(!isServicesOpen);
-                }}
+                onMouseOver={() => setIsServicesOpen(true)}
+                onMouseLeave={() => setIsServicesOpen(false)}
+                onClick={() => setIsServicesOpen(!isServicesOpen)}
                 aria-haspopup="true"
                 aria-expanded={isServicesOpen}
               >
@@ -335,15 +321,16 @@ function Navbar() {
                 </ul>
               </li>
             ) : item.text !== "" ? (
-              <li key={index} role="none">
+              <li key={index}>
                 <a href={item.path} className={isActive(item.path)}>
                   {item.text}
                 </a>
               </li>
             ) : null
           )}
-          <li className="language-switcher" role="none">
-            {currentLang === "en" ? (
+
+          <li className="language-switcher">
+            {currentLang === "en" && (
               <button
                 className="flag-btn"
                 onClick={() => switchLanguage("fr")}
@@ -351,8 +338,8 @@ function Navbar() {
               >
                 <img className="flag-image" src={flagFR} alt="Français" />
               </button>
-            ) : null}
-            {currentLang === "fr" ? (
+            )}
+            {currentLang === "fr" && (
               <button
                 className="flag-btn"
                 onClick={() => switchLanguage("en")}
@@ -360,14 +347,12 @@ function Navbar() {
               >
                 <img className="flag-image" src={flagEN} alt="English" />
               </button>
-            ) : null}
+            )}
           </li>
-          <li className="timer-session-container" role="none">
+
+          <li className="timer-session-container">
             <TimerSession />
           </li>
-          {/* <li className="dark-mode-switch" role="none">
-            <ToggleSwitch />
-          </li> */}
         </ul>
       </nav>
       <MenuSide classContainer=".page-container" titleType=".item-menu-side" />

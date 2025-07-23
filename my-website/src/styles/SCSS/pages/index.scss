@@ -43,14 +43,11 @@
 
   }
 
-  .hero-index-container-title {
 
-    padding: 25px;
-    gap: 20px;
-    width: 100%;
-  }
 
   .hero-index-title-h1 {
+
+    min-height: 150px;
 
     font-size: 2rem;
     color: map-get($colors-rule, sixth-color);
@@ -200,7 +197,6 @@
 
 @media screen and (min-width: 1900px) {
   .hero-index {
-    //height: calc(100vh - 60px);
 
     .hero-index-title-h1 {
       font-size: 3rem;
@@ -219,13 +215,6 @@
 
   }
 }
-
-
-
-
-
-
-
 
 
 
@@ -582,10 +571,10 @@
     padding: 80px 50px 0px 50px;
 
     .why-choose {
-      gap: 50px;
+      gap: 60px;
 
       h2 {
-        margin-bottom: 150px;
+        margin-bottom: 80px;
       }
 
       .why-choose-card {
@@ -613,15 +602,15 @@
       }
 
       #why-choose-card-2 {
-        background-color: rgba(map-get($colors-rule, second-color), 1);
+        background-color: map-get($colors-rule, second-color);
       }
 
       #why-choose-card-3 {
-        background-color: rgba(map-get($colors-rule, fifth-color), 1);
+        background-color: map-get($colors-rule, fifth-color);
       }
 
       #why-choose-card-4 {
-        background-color: rgba(map-get($colors-rule, fourth-color), 1);
+        background-color: map-get($colors-rule, fourth-color);
       }
 
 
@@ -642,8 +631,7 @@
           right: 0;
           bottom: 0;
           width: 50px;
-          height: 4px;
-          //background-color: map-get($colors-rule, first-color);
+          height: 1px;
 
 
         }
@@ -653,9 +641,9 @@
           position: absolute;
           right: 0;
           bottom: 0;
-          width: 4px;
+          width: 1px;
           height: 50px;
-          //background-color: map-get($colors-rule, first-color);
+
         }
       }
 
@@ -700,12 +688,14 @@
         left: 10%;
         width: 200px;
         height: 200px;
-        object-fit: cover;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
 
       }
 
       #img-why-card-1 {
-
+        background-image: url("../../../public/assets/images/page-index/feuille-verte.webp");
         left: 20%;
         clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
         border-bottom: 12px solid map-get($colors-rule, first-color);
@@ -713,6 +703,7 @@
 
       #img-why-card-2 {
 
+        background-image: url("../../../public/assets/images/page-index/regle-crayon.webp");
         width: 300px;
         border-left: 12px solid map-get($colors-rule, second-color);
         clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
@@ -720,6 +711,7 @@
       }
 
       #img-why-card-3 {
+        background-image: url("../../../public/assets/images/page-index/humain.webp");
         left: 20%;
         top: 40%;
 
@@ -730,13 +722,11 @@
       }
 
       #img-why-card-4 {
+        background-image: url("../../../public/assets/images/page-index/quality.svg");
         left: 20%;
         top: 30%;
 
       }
-
-
-
 
     }
   }

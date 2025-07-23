@@ -32,12 +32,8 @@
   background-color: #171717;
   z-index: -2;
 }
-.hero-index .hero-index-container-title {
-  padding: 25px;
-  gap: 20px;
-  width: 100%;
-}
 .hero-index .hero-index-title-h1 {
+  min-height: 150px;
   font-size: 2rem;
   color: #ffffff;
   margin-bottom: 1rem;
@@ -417,10 +413,10 @@
     padding: 80px 50px 0px 50px;
   }
   .why-green-click .why-choose {
-    gap: 50px;
+    gap: 60px;
   }
   .why-green-click .why-choose h2 {
-    margin-bottom: 150px;
+    margin-bottom: 80px;
   }
   .why-green-click .why-choose .why-choose-card {
     position: relative;
@@ -471,14 +467,14 @@
     right: 0;
     bottom: 0;
     width: 50px;
-    height: 4px;
+    height: 1px;
   }
   .why-green-click .why-choose p::before {
     content: "";
     position: absolute;
     right: 0;
     bottom: 0;
-    width: 4px;
+    width: 1px;
     height: 50px;
   }
   .why-green-click .why-choose #why-choose-card-1-p::after, .why-green-click .why-choose #why-choose-card-1-p::before {
@@ -498,20 +494,22 @@
     position: absolute;
     top: 50%;
     left: 10%;
-    width: 300px;
+    width: 200px;
     height: 200px;
-    -o-object-fit: cover;
-       object-fit: cover;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   .why-green-click .why-choose #img-why-card-1 {
-    height: 200px;
-    width: 200px;
+    background-image: url("../../../public/assets/images/page-index/feuille-verte.webp");
     left: 20%;
     -webkit-clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
             clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
     border-bottom: 12px solid #024d4a;
   }
   .why-green-click .why-choose #img-why-card-2 {
+    background-image: url("../../../public/assets/images/page-index/regle-crayon.webp");
+    width: 300px;
     border-left: 12px solid #00beb8;
     -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
             clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
@@ -520,18 +518,16 @@
             transform: rotate(-20deg);
   }
   .why-green-click .why-choose #img-why-card-3 {
+    background-image: url("../../../public/assets/images/page-index/humain.webp");
     left: 20%;
     top: 40%;
-    width: 200px;
-    height: 200px;
     border-left: 12px solid #171717;
     border-radius: 50%;
   }
   .why-green-click .why-choose #img-why-card-4 {
+    background-image: url("../../../public/assets/images/page-index/quality.svg");
     left: 20%;
     top: 30%;
-    width: 200px;
-    height: 200px;
   }
 }
 @media screen and (min-width: 1300px) {

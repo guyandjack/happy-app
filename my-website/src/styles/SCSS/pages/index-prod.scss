@@ -44,14 +44,11 @@
 
   }
 
-  .hero-index-container-title {
 
-    padding: 25px;
-    gap: 20px;
-    width: 100%;
-  }
 
   .hero-index-title-h1 {
+
+    min-height: 150px;
 
     font-size: 2rem;
     color: map-get($colors-rule, sixth-color);
@@ -584,10 +581,10 @@
     padding: 80px 50px 0px 50px;
 
     .why-choose {
-      gap: 50px;
+      gap: 60px;
 
       h2 {
-        margin-bottom: 150px;
+        margin-bottom: 80px;
       }
 
       .why-choose-card {
@@ -644,7 +641,7 @@
           right: 0;
           bottom: 0;
           width: 50px;
-          height: 4px;
+          height: 1px;
           //background-color: map-get($colors-rule, first-color);
 
 
@@ -655,7 +652,7 @@
           position: absolute;
           right: 0;
           bottom: 0;
-          width: 4px;
+          width: 1px;
           height: 50px;
           //background-color: map-get($colors-rule, first-color);
         }
@@ -700,31 +697,35 @@
         position: absolute;
         top: 50%;
         left: 10%;
-        width: 300px;
+        width: 200px;
         height: 200px;
-        object-fit: cover;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
 
       }
 
       #img-why-card-1 {
-        height: 200px;
-        width: 200px;
+        background-image: url("../../../public/assets/images/page-index/feuille-verte.webp");
         left: 20%;
         clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
         border-bottom: 12px solid map-get($colors-rule, first-color);
       }
 
       #img-why-card-2 {
+
+        background-image: url("../../../public/assets/images/page-index/regle-crayon.webp");
+        width: 300px;
         border-left: 12px solid map-get($colors-rule, second-color);
         clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
         transform: rotate(-20deg);
       }
 
       #img-why-card-3 {
+        background-image: url("../../../public/assets/images/page-index/humain.webp");
         left: 20%;
         top: 40%;
-        width: 200px;
-        height: 200px;
+
         border-left: 12px solid map-get($colors-rule, fifth-color);
         border-radius: 50%;
 
@@ -732,10 +733,10 @@
       }
 
       #img-why-card-4 {
+        background-image: url("../../../public/assets/images/page-index/quality.svg");
         left: 20%;
         top: 30%;
-        width: 200px;
-        height: 200px;
+
       }
 
 
