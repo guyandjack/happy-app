@@ -1,12 +1,12 @@
-.page-container {
-  position: relative;
-  z-index: 5;
+.articles-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }
 
-.articles-content {
-  width: 100%;
-  margin: 50px auto;
-}/*# sourceMappingURL=articles.css.map */ay: -webkit-box;
+.filter-container {
+  margin-bottom: 2rem;
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
@@ -50,118 +50,15 @@
   gap: 2rem;
 }
 
-.article-card {
-  background-color: white;
-  border-radius: 8px;
-  overflow: hidden;
-  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  -webkit-transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
-  transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
-  cursor: pointer;
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-.article-card:hover, .article-card:focus, .article-card.focused {
-  -webkit-transform: translateY(-5px);
-      -ms-transform: translateY(-5px);
-          transform: translateY(-5px);
-  -webkit-box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  outline: none;
-}
-.article-card:hover .article-title, .article-card:focus .article-title, .article-card.focused .article-title {
-  color: var(--primary-color);
-}
-.article-card:focus {
-  outline: 2px solid var(--primary-color);
-}
-.article-card .article-image {
-  height: 200px;
-  overflow: hidden;
-}
-.article-card .article-image img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -webkit-transition: -webkit-transform 0.5s ease;
-  transition: -webkit-transform 0.5s ease;
-  transition: transform 0.5s ease;
-  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
-}
-.article-card .article-image:hover img {
-  -webkit-transform: scale(1.05);
-      -ms-transform: scale(1.05);
-          transform: scale(1.05);
-}
-.article-card .article-content {
-  padding: 1.5rem;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-.article-card .article-title {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-  color: var(--heading-color);
-  -webkit-transition: color 0.3s ease;
-  transition: color 0.3s ease;
-}
-.article-card .article-meta {
-  font-size: 0.875rem;
-  color: var(--text-light);
-  margin-bottom: 1rem;
-}
-.article-card .article-excerpt {
-  color: var(--text-color);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-}
-.article-card .read-more-link {
-  display: inline-block;
-  color: var(--primary-color);
-  font-weight: 600;
-  text-decoration: none;
-  position: relative;
-}
-.article-card .read-more-link::after {
-  content: "→";
-  margin-left: 0.25rem;
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
-}
-.article-card .read-more-link:hover::after {
-  -webkit-transform: translateX(4px);
-      -ms-transform: translateX(4px);
-          transform: translateX(4px);
-}
-
-.loading-container, .error-container, .no-articles {
+.loading-container,
+.error-container,
+.no-articles {
   text-align: center;
   padding: 3rem 1rem;
 }
-.loading-container .loader, .error-container .loader, .no-articles .loader {
+.loading-container .loader,
+.error-container .loader,
+.no-articles .loader {
   display: inline-block;
   width: 50px;
   height: 50px;

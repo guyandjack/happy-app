@@ -29,34 +29,33 @@ function ArticleCard({ article }) {
   // Get the article URL (server-rendered page)
   const articleUrl = article.articleUrl;
 
-  // Determine language from URL
-  //const language = window.location.pathname.includes("/fr/") ? "fr" : "en";
-  //const fullArticleUrl = `${articleUrl}?lang=${language}`;
-
   // Handle click on the entire card
   const handleCardClick = () => {
     window.location.href = articleUrl;
   };
 
   return (
-    <article
+    <a
+      href={articleUrl}
+      target="_blank"
       className={`article-card ${isFocused ? "focused" : ""}`}
       tabIndex="0"
-      onFocus={() => setIsFocused(true)}
+      /* onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       onMouseEnter={() => setIsFocused(true)}
-      onMouseLeave={() => setIsFocused(false)}
+      onMouseLeave={() => setIsFocused(false)} */
       onClick={handleCardClick}
-      style={{ cursor: "pointer" }}
     >
-      <div className="article-card-image">
+      <div className="flex-column-start-center article-card-image">
         <img src={imageUrl} alt={article.title} loading="lazy" />
-      </div>
-      <div className="article-card-content">
-        <h3 className="article-title">{article.title}</h3>
         <p className="article-meta">
-          Published on {formattedDate} | Category: {article.category}
+          {lang == "en" ? "Published on" : "Publié le"} {formattedDate}{" "}
+          <br></br>
+          {lang == "en" ? "Category:" : "Catégorie:"} {article.category}
         </p>
+      </div>
+      <div className="flex-column-start-center article-card-content">
+        <h3 className="article-title">{article.title}</h3>
         <p className="article-card-excerpt">
           <ReactMarkdown children={excerpt} rehypePlugins={[rehypeRaw]} />
         </p>
@@ -64,11 +63,8 @@ function ArticleCard({ article }) {
           {lang == "fr" ? "Lire la suite" : "Read more"}
         </span>
       </div>
-    </article>
+    </a>
   );
 }
 
 export { ArticleCard };
-
-
-
