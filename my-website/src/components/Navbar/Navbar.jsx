@@ -146,6 +146,7 @@ function Navbar() {
         ],
       },
       { path: `/public/fr/contact.html`, text: "Contact" },
+      { path: `/public/fr/articles.html`, text: "Articles" },
       {
         path: `/public/fr/legal/mentions-legales.html`,
         text: "",

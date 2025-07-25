@@ -1,0 +1,76 @@
+@import "../../utils/color-rule/color-rule.scss";
+
+.select-list {
+    position: relative;
+    width: 100%;
+    //border: 1px solid red;
+    padding: 0 2rem;
+}
+
+.select-list-content,
+.select-list-header {
+    width: 100%;
+    //max-width: 400px;
+}
+
+.select-list-header {
+
+    padding: 0.8rem 1rem 0.8rem 2.8rem;
+    border-radius: 8px;
+    border: 1px solid map-get($colors-rule, third-color);
+    background-color: map-get($colors-rule, sixth-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: map-get($colors-rule, first-color);
+
+
+
+    .select-list-icon {
+        transition: all 0.3s ease;
+
+    }
+
+
+
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+
+.select-list-content {
+    //border: 1px solid blue;
+    list-style: none;
+    flex-flow: column-reverse;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 1000;
+    background-color: map-get($colors-rule, background-page-color);
+    transition: all 0.3s ease;
+
+    & li {
+        position: relative;
+        width: 100%;
+        padding: 10px;
+        cursor: pointer;
+        margin-left: 1.5em;
+
+
+        &::after {
+            content: "*";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-40%);
+            left: -10px;
+            font-size: 2rem;
+            color: map-get($colors-rule, second-color);
+            height: 100%;
+
+
+        }
+
+    }
+
+}

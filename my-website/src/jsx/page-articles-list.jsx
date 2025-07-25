@@ -1,6 +1,7 @@
 //import du style
 import "@styles/CSS/normalise.css";
 import "@styles/CSS/shared-style.css";
+import "@styles/CSS/articles-list.css";
 
 //import des hooks
 import React from "react";
@@ -9,25 +10,9 @@ import ReactDOM from "react-dom/client";
 //import des composants enfants
 import { Navbar } from "@components/Navbar/Navbar.jsx";
 import { Footer } from "@components/Footer/Footer.jsx";
-import { IndexCards } from "@components/Card/IndexCards.jsx";
 import { CtaSection } from "@components/CtaSection/CtaSection.jsx";
 import { LinkTopPage } from "@components/linkTopPage/linkTopPage.jsx";
-
-//import des scripts
-import { initFaq } from "@scripts/page-services.js";
-
-/****************************************************
- * ************* code principal page "index"*******
- *  * ************************************************/
-
-if (import.meta.env.MODE === "production") {
-  import("@styles/CSS/index-prod.css");
-} else {
-  import("@styles/CSS/index.css");
-}
-
-//Logique collapse faq
-initFaq();
+import { ArticlesList } from "@components/Articles/ArticlesList.jsx";
 
 // Mount Navbar
 try {
@@ -43,6 +28,22 @@ try {
   }
 } catch (error) {
   console.error("Error mounting Navbar:", error);
+}
+
+//mount articles list
+try {
+  const articlesListContainer = document.getElementById("RC-articles-list");
+  if (articlesListContainer) {
+    ReactDOM.createRoot(articlesListContainer).render(
+      <React.StrictMode>
+        <ArticlesList />
+      </React.StrictMode>
+    );
+  } else {
+    console.error("no container articles list found");
+  }
+} catch (error) {
+  console.error("Error mounting Articles List:", error);
 }
 
 //mount cta section
@@ -91,20 +92,4 @@ try {
   }
 } catch (error) {
   console.error("Error mounting Footer:", error);
-}
-
-//mount card services
-try {
-  const CardServicesContainer = document.getElementById("RC-card-services");
-  if (CardServicesContainer) {
-    ReactDOM.createRoot(CardServicesContainer).render(
-      <React.StrictMode>
-        <IndexCards />
-      </React.StrictMode>
-    );
-  } else {
-    console.error("no card services container found");
-  }
-} catch (error) {
-  console.error("Error mounting Card Services:", error);
 }

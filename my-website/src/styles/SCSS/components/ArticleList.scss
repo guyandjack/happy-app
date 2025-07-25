@@ -1,9 +1,10 @@
 @import '../../utils/color-rule/color-rule.scss';
 
 .admin-article-list-container {
+  //border: 1px solid red;
   max-width: 1200px;
-  //width: 80%;
   margin: 0 auto;
+  width: 100%;
   padding: 2rem;
   background-color: map-get($colors-rule, background-page-color);
   min-height: 80vh;
@@ -43,16 +44,23 @@
   }
 
   .filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 2rem;
+    margin-bottom: 4rem;
     justify-content: center;
+    width: 100%;
+
+
+    .search-box,
+    .category-filter {
+      //flex: 1 1 auto;
+      width: 100%;
+      max-width: 400px;
+      //border: 1px solid rgb(212, 15, 212);
+    }
+
 
     .search-box {
       position: relative;
-      flex: 1;
-      max-width: 400px;
 
       input {
         width: 100%;
@@ -62,6 +70,7 @@
         background-color: map-get($colors-rule, sixth-color);
         font-size: 1rem;
         transition: all 0.3s ease;
+        flex: 1 1 auto;
 
         &:focus {
           outline: none;
@@ -81,61 +90,28 @@
         transform: translateY(-50%);
         color: map-get($colors-rule, first-color);
         opacity: 0.6;
+        width: 1.2rem;
+        height: 1.2rem;
       }
     }
 
     .category-filter {
       position: relative;
-      min-width: 200px;
-
-      select {
-        width: 100%;
-        appearance: none;
-        padding: 0.8rem 1rem 0.8rem 2.8rem;
-        border-radius: 8px;
-        border: 1px solid map-get($colors-rule, third-color);
-        background-color: map-get($colors-rule, sixth-color);
-        font-size: 1rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-
-        &:focus {
-          outline: none;
-          border-color: map-get($colors-rule, second-color);
-          box-shadow: 0 0 0 3px rgba(map-get($colors-rule, second-color), 0.1);
-        }
-      }
 
       .filter-icon {
-        position: absolute;
-        left: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
+        flex: 0 0 auto;
         color: map-get($colors-rule, first-color);
-        opacity: 0.6;
+        opacity: 0.8;
         pointer-events: none;
+        width: 1.2rem;
+        height: 1.2rem;
       }
 
-      &:after {
-        content: '';
-        position: absolute;
-        right: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        border-style: solid;
-        border-width: 6px 6px 0 6px;
-        border-color: map-get($colors-rule, first-color) transparent transparent transparent;
-        pointer-events: none;
-        opacity: 0.6;
-      }
     }
   }
 
   .admin-articles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.5rem;
-    margin-bottom: 2rem;
   }
 
   .admin-article-card-wrapper {
@@ -256,7 +232,37 @@
 }
 
 /* Responsive styles */
-@media (max-width: 768px) {
+@media (min-width: 768px) {
+  .admin-article-list-container {
+    padding: 1.5rem 1rem;
+
+    .articles-header h2 {
+      font-size: 1.8rem;
+    }
+
+
+    .admin-articles-grid {
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .pagination {
+      .page-numbers {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+        flex-wrap: wrap;
+      }
+    }
+  }
+}
+
+
+
+@media (min-width: 992px) {
   .admin-article-list-container {
     padding: 1.5rem 1rem;
 
@@ -265,7 +271,8 @@
     }
 
     .filters {
-      flex-direction: column;
+      flex-direction: row;
+      gap: 1.5rem;
 
       .search-box,
       .category-filter {
@@ -274,9 +281,7 @@
       }
     }
 
-    .admin-articles-grid {
-      grid-template-columns: 1fr;
-    }
+
 
     .pagination {
       .page-numbers {

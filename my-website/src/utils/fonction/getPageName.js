@@ -16,9 +16,9 @@ function getPageName(lang) {
   }
 
   let masqueFr =
-    /^(index|contact|a-propos|realisations|articles|site-web|seo|application-mobile)$/;
+    /^(index|contact|a-propos|realisations|articles-list|site-web|seo|application-mobile)$/;
   let masqueEn =
-    /^(home|contact|about|achievements|articles|website|seo|mobile-application)$/;
+    /^(home|contact|about|achievements|articles-list|website|seo|mobile-application)$/;
 
   if (lang === "fr") {
     //recupere le nom de la page dans l'url
@@ -36,6 +36,9 @@ function getPageName(lang) {
     }
     if (pageName[0] === "application-mobile") {
       pageName[0] = "mobile";
+    }
+    if (pageName[0] === "articles-list") {
+      pageName[0] = "articles";
     }
 
     return pageName[0];

@@ -1,0 +1,65 @@
+.select-list {
+  position: relative;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.select-list-content,
+.select-list-header {
+  width: 100%;
+}
+
+.select-list-header {
+  padding: 0.8rem 1rem 0.8rem 2.8rem;
+  border-radius: 8px;
+  border: 1px solid #c7e3cd;
+  background-color: #ffffff;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  color: #024d4a;
+}
+.select-list-header .select-list-icon {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.rotate {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.select-list-content {
+  list-style: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-flow: column-reverse;
+          flex-flow: column-reverse;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1000;
+  background-color: #fbfbfc;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.select-list-content li {
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  margin-left: 1.5em;
+}
+.select-list-content li::after {
+  content: "*";
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-40%);
+      -ms-transform: translateY(-40%);
+          transform: translateY(-40%);
+  left: -10px;
+  font-size: 2rem;
+  color: #00beb8;
+  height: 100%;
+}/*# sourceMappingURL=selectList.css.map */

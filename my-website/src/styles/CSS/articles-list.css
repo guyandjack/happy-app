@@ -1,0 +1,10 @@
+.page-container {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+}
+
+.articles-content {
+  width: 100%;
+  padding: 50px 20px;
+}/*# sourceMappingURL=articles-list.css.map */

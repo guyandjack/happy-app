@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <title>Articles sur le Développement Web, SEO, Éco-conception et Apps Mobiles | helveclick</title>
+  <meta name="description"
+    content="Explorez nos articles dédiés au développement web, à l’éco-conception, au SEO, aux applications mobiles et aux sites internet. Des contenus utiles pour débutants et experts." />
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical & Hreflang -->
+  <link rel="canonical" href="https://helveclick.ch/public/fr/articles.html">
+  <link rel="alternate" hreflang="fr" href="https://helveclick.ch/public/fr/articles.html">
+  <link rel="alternate" hreflang="en" href="https://helveclick.ch/public/en/articles.html">
+  <link rel="alternate" hreflang="x-default" href="https://helveclick.ch/public/en/articles.html">
+
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://helveclick.ch/public/fr/articles.html">
+  <meta property="og:title"
+    content="Articles sur le Développement Web, SEO, Éco-conception et Apps Mobiles | helveclick">
+  <meta property="og:description"
+    content="Explorez mes articles dédiés au développement web, à l’éco-conception, au SEO, aux applications mobiles et aux sites internet. Des contenus utiles pour débutants et experts.">
+  <!-- <meta property="og:image" content="https://helveclick.ch/images/og-home.jpg"> -->
+  <meta property="og:locale" content="fr_CH">
+  <meta property="og:site_name" content="HelveClick">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title"
+    content="Articles sur le Développement Web, SEO, Éco-conception et Apps Mobiles | helveclick">
+  <meta name="twitter:description"
+    content="Explorez mes articles dédiés au développement web, à l’éco-conception, au SEO, aux applications mobiles et aux sites internet. Des contenus utiles pour débutants et experts.">
+  <!-- <meta name="twitter:image" content="https://helveclick.ch/images/og-home.jpg"> -->
+
+
+  <!-- Geolocation Tags -->
+  <meta name="geo.region" content="CH">
+  <meta name="geo.placename" content="Crans-Montana">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "HelveClick",
+      "url": "https://helveclick.ch",
+      "logo": "",
+      "description": "Développeur web et mobile freelance basé à Crans-Montana (Valais, Suisse), spécialisé dans la création de sites internet éco-conçus, d'applications mobiles et l'optimisation SEO.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "",
+        "addressLocality": "Crans-Montana",
+        "addressRegion": "Valais",
+        "postalCode": "3963",
+        "addressCountry": "CH"
+      },
+      "email": "mailto:info@helveclick.ch",
+      "telephone": "+41 78 894 09 87",
+      "sameAs": [
+        "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/",
+        
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Dupanloup Guillaume",
+        "jobTitle": "Développeur web et mobile freelance",
+        "url": "https://helveclick.ch",
+        "image": "",
+        "sameAs": [
+          "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/",
+          
+        ]
+      }
+    }
+    </script>
+
+  <!-- Scripts in head -->
+  <script type="module" src="../../src/jsx/page-articles-list.jsx"></script>
+</head>
+
+<body>
+  <div class="page-container">
+    <header>
+      <!-- Navbar will be mounted here by React -->
+      <div id="RC-navbar"></div>
+    </header>
+
+    <main>
+      <section class="flex-column-start-center hero-wrapper">
+        <div class="flex-column-center-center hero-container">
+
+          <img src="/assets/images/page-contact/img-hero-1-contact.webp" alt="Décoration du header">
+
+          <img src="/assets/images/page-contact/img-hero-2-contact.webp" alt="Décoration du header" />
+
+          <div class="hero-container-title">
+            <h1>Articles dédiés au développement web.</h1>
+
+            <p class="hero-subtitle">
+              <strong>
+                Eco-conception, SEO, applications mobiles, tendances...
+              </strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="flex-column-start-center articles-content">
+        <!-- ArticlesList component will be mounted here -->
+        <div id="RC-articles-list"></div>
+      </section>
+      <div id="RC-cta-section">
+
+
+      </div>
+    </main>
+
+    <!-- Footer will be mounted here by React -->
+    <div id="RC-footer"></div>
+  </div>
+</body>
+
+
+</html>

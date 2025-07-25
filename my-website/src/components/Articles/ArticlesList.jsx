@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { IoFilterSharp } from "react-icons/io5";
+
 import { toast } from "react-toastify";
 
 import { ArticleCard } from "@components/Articles/ArticleCard";
+import { SelectList } from "@components/SelectList/SelectList";
 import { localOrProd } from "@utils/fonction/testEnvironement";
 
 //import "@styles/CSS/articles.css";
@@ -132,8 +133,9 @@ const ArticlesList = () => {
     }
   };
 
-  const handleCategoryChange = (e) => {
-    setSelectedCategory(e.target.value);
+  const handleCategoryChange = (item) => {
+    setSelectedCategory(item);
+    console.log("item dans handleCategoryChange: ", item);
     setCurrentPage(1); // Reset to first page when changing category
   };
 
@@ -146,12 +148,13 @@ const ArticlesList = () => {
   }
 
   return (
-    <div className="admin-article-list-container">
-      <div className="filters">
-        <div className="search-box">
+    <div className="flex-column-start-center admin-article-list-container">
+      <div className="flex-column-start-center filters">
+        <div className="flex-row-start-center search-box">
           <FaSearch className="search-icon" />
           <input
             type="text"
+            name="search"
             placeholder="Rechercher des articles..."
             value={searchValue}
             onChange={(e) => {
@@ -159,17 +162,8 @@ const ArticlesList = () => {
             }}
           />
         </div>
-        <div className="category-filter">
-          <IoFilterSharp className="filter-icon" />
-          <select value={selectedCategory} onChange={handleCategoryChange}>
-            <option value="">Toutes les catégories</option>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category.charAt(0).toUpperCase() +
-                  category.slice(1).replace("-", " ")}
-              </option>
-            ))}
-          </select>
+        <div className="flex-row-start-center category-filter">
+          <SelectList listItems={categories} callback={handleCategoryChange} />
         </div>
       </div>
 
@@ -180,7 +174,7 @@ const ArticlesList = () => {
             : "Aucun article trouvé."}
         </div>
       ) : (
-        <div className="admin-articles-grid">
+        <div className="flex-column-start-center admin-articles-grid">
           {filteredArticles.map((article) => (
             <div key={article.id} className="admin-article-card-wrapper">
               <ArticleCard article={article} />
@@ -226,4 +220,3 @@ const ArticlesList = () => {
 };
 
 export { ArticlesList };
-
