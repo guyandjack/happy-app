@@ -5,45 +5,99 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO Meta Tags - Will be dynamically updated -->
-  <title>Article | My Web Dev Company</title>
-  <meta name="description" content="Article détaillé sur le développement web.">
+  <!-- SEO Meta Tags -->
+  <title>Article en chargement</title>
+  <meta name="description" content="decription enchargement" />
+  <meta name="robots" content="index, follow">
 
-  <!-- Open Graph Tags - Will be dynamically updated -->
-  <meta property="og:title" content="Article | My Web Dev Company">
-  <meta property="og:description" content="Article détaillé sur le développement web.">
-  <meta property="og:image" content="/images/og-article.jpg">
-  <meta property="og:url" content="https://mywebdevcompany.com/fr/article.html">
-  <meta property="og:type" content="article">
+  <!-- Canonical & Hreflang -->
+  <link rel="canonical" href="https://helveclick.ch/public/fr/article.html">
+  <link rel="alternate" hreflang="fr" href="https://helveclick.ch/public/fr/article.html">
+  <link rel="alternate" hreflang="en" href="https://helveclick.ch/public/en/article.html">
+  <link rel="alternate" hreflang="x-default" href="https://helveclick.ch/public/en/article.html">
 
-  <!-- Canonical Link - Will be dynamically updated -->
-  <link rel="canonical" href="https://mywebdevcompany.com/fr/article.html">
 
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="/src/styles/CSS/normalise.css">
-  <link rel="stylesheet" href="/src/styles/CSS/shared-style.css">
-  <link rel="stylesheet" href="/src/styles/CSS/article.css">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://helveclick.ch/public/fr/article.html">
+  <meta property="og:title" content="Article en chargement | helveclick">
+  <meta property="og:description" content="Article en chargement">
+  <!-- <meta property="og:image" content="https://helveclick.ch/images/og-home.jpg"> -->
+  <meta property="og:locale" content="fr_CH">
+  <meta property="og:site_name" content="HelveClick">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Article en chargement | helveclick">
+  <meta name="twitter:description" content="Article en chargement">
+  <!-- <meta name="twitter:image" content="https://helveclick.ch/images/og-home.jpg"> -->
+
+
+  <!-- Geolocation Tags -->
+  <meta name="geo.region" content="CH">
+  <meta name="geo.placename" content="Crans-Montana">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "HelveClick",
+      "url": "https://helveclick.ch",
+      "logo": "",
+      "description": "Développeur web et mobile freelance basé à Crans-Montana (Valais, Suisse), spécialisé dans la création de sites internet éco-conçus, d'applications mobiles et l'optimisation SEO.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "",
+        "addressLocality": "Crans-Montana",
+        "addressRegion": "Valais",
+        "postalCode": "3963",
+        "addressCountry": "CH"
+      },
+      "email": "mailto:info@helveclick.ch",
+      "telephone": "+41 78 894 09 87",
+      "sameAs": [
+        "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/",
+        
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Dupanloup Guillaume",
+        "jobTitle": "Développeur web et mobile freelance",
+        "url": "https://helveclick.ch",
+        "image": "",
+        "sameAs": [
+          "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/",
+          
+        ]
+      }
+    }
+    </script>
 
   <!-- Scripts in head -->
-  <script type="module" src="/src/main.jsx"></script>
+  <script type="module" src="../../src/jsx/page-article.jsx"></script>
 </head>
 
 <body>
-  <header>
-    <!-- Navbar will be mounted here by React -->
-    <div id="RC-navbar"></div>
-  </header>
+  <div class="page-container">
+    <header>
+      <!-- Navbar will be mounted here by React -->
+      <div id="RC-navbar"></div>
+    </header>
 
-  <main>
-    <section id="RC-hero"></section>
-    <!-- Article content will be mounted here by React -->
-    <div id="RC-article-content"></div>
-    <div id="RC-cta-section"></div>
+    <main>
 
-  </main>
 
-  <!-- Footer will be mounted here by React -->
-  <div id="RC-footer"></div>
+      <section id="RC-article-content" class="flex-column-start-center article-content">
+
+      </section>
+
+    </main>
+
+    <!-- Footer will be mounted here by React -->
+    <div id="RC-footer"></div>
+  </div>
 </body>
+
 
 </html>

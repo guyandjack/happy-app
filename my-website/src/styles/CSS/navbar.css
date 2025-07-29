@@ -121,7 +121,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #036662;
+  background-color: rgb(2.6455696203, 101.8544303797, 97.8860759494);
   padding: 2rem;
   -webkit-box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
           box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
@@ -309,7 +309,7 @@
     left: 0;
     height: auto;
     min-width: 200px;
-    background: #023e3c;
+    background: rgb(1.6126582278, 62.0873417722, 59.6683544304);
     border-radius: 10px;
     padding: 0.5rem 0;
     opacity: 0;

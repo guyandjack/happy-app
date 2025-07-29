@@ -27,24 +27,24 @@ function ArticleCard({ article }) {
   const slug = article.slug;
 
   // Get the article URL (server-rendered page)
-  const articleUrl = article.articleUrl;
+  //const articleUrl = article.articleUrl;
 
   // Handle click on the entire card
-  const handleCardClick = () => {
-    window.location.href = articleUrl;
+  const handleCardClick = (e) => {
+    e.preventDefault();
+    //store article in local storage
+    localStorage.setItem("article", JSON.stringify(article));
+    window.location.href = "/public/fr/article.html?slug=" + slug;
   };
 
   return (
-    <a
-      href={articleUrl}
-      target="_blank"
+    <button
+      type="button"
       className={`article-card ${isFocused ? "focused" : ""}`}
       tabIndex="0"
-      /* onFocus={() => setIsFocused(true)}
-      onBlur={() => setIsFocused(false)}
-      onMouseEnter={() => setIsFocused(true)}
-      onMouseLeave={() => setIsFocused(false)} */
-      onClick={handleCardClick}
+      onClick={(e) => {
+        handleCardClick(e);
+      }}
     >
       <div className="flex-column-start-center article-card-image">
         <img src={imageUrl} alt={article.title} loading="lazy" />
@@ -63,7 +63,7 @@ function ArticleCard({ article }) {
           {lang == "fr" ? "Lire la suite" : "Read more"}
         </span>
       </div>
-    </a>
+    </button>
   );
 }
 

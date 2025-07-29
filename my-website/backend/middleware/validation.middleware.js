@@ -21,10 +21,25 @@ exports.validate = (req, res, next) => {
  * Validation rules for login
  */
 exports.loginValidation = [
-  body("email").isEmail().withMessage("Please provide a valid email address"),
+  body("email")
+    .isEmail()
+    .normalizeEmail()
+    .withMessage("Please provide a valid email address")
+    .isLength({ min: 8, max: 50 })
+    .withMessage("Email must be between 8 and 50 characters"),
   body("password")
-    .isLength({ min: 8 })
-    .withMessage("Password must be at least 8 characters long"),
+    .isLength({ min: 8, max: 50 })
+    .withMessage("Password must be at least 8 characters long")
+    .isString()
+    .withMessage("Password must be a string")
+    .isStrongPassword()
+    .withMessage(
+      "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character"
+    )
+    .matches(/^[^<>/%=&]+$/)
+    .withMessage(
+      "Password must not contain any of the following characters: <, >, %, &, ="
+    ),
 ];
 
 /**
@@ -38,7 +53,11 @@ exports.contactValidation = [
     .isString()
     .withMessage("Name must be a string")
     .isLength({ min: 2, max: 50 })
-    .withMessage("Name must be between 2 and 50 characters"),
+    .withMessage("Name must be between 2 and 50 characters")
+    .matches(/^[\w\-'. ]{2,50}$/u)
+    .withMessage(
+      "Name must contain only letters, spaces, dashes, apostrophes and dots"
+    ),
 
   body("firstName")
     .notEmpty()
@@ -47,7 +66,11 @@ exports.contactValidation = [
     .isString()
     .withMessage("First name must be a string")
     .isLength({ min: 2, max: 50 })
-    .withMessage("First name must be between 2 and 50 characters"),
+    .withMessage("First name must be between 2 and 50 characters")
+    .matches(/^[\w\-'. ]{2,50}$/u)
+    .withMessage(
+      "Name must contain only letters, spaces, dashes, apostrophes and dots"
+    ),
 
   body("email")
     .notEmpty()
@@ -66,6 +89,29 @@ exports.contactValidation = [
 
     .isLength({ min: 10, max: 1000 })
     .withMessage("Message must be between 10 and 1000 characters"),
+];
+
+/**
+ * Validation rules for vote
+ */
+exports.voteValidation = [
+  body("evaluation")
+    .notEmpty()
+    .withMessage("Evaluation is required")
+    .isString()
+    .withMessage("Evaluation must be a string")
+    .isIn(["-1", "1"])
+    .withMessage("Evaluation must be -1 or 1"),
+
+  body("articleId")
+    .notEmpty()
+    .withMessage("Article ID is required")
+    .isString()
+    .withMessage("Article ID must be a string")
+    .isLength({ min: 1, max: 3 })
+    .withMessage("Article ID must be between 1 and 3 characters")
+    .matches(/^[0-9]{1,3}$/)
+    .withMessage("Article ID must be an integer"),
 ];
 
 /**

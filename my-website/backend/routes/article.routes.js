@@ -1,7 +1,10 @@
 const express = require("express");
 const articleController = require("../controllers/article.controller");
 const authMiddleware = require("../middleware/auth.middleware");
-
+const {
+  voteValidation,
+  validate,
+} = require("../middleware/validation.middleware");
 const router = express.Router();
 
 // Public routes
@@ -18,6 +21,7 @@ router.get("/:id/next", articleController.getNextArticle);
 
 // Create article - no upload middleware here, it's in the controller
 router.post("/", authMiddleware.protect, articleController.createArticle);
+router.post("/vote", voteValidation, validate, articleController.vote);
 
 // Update and delete routes
 router.patch("/:id", authMiddleware.protect, articleController.updateArticle);

@@ -44,7 +44,7 @@ header {
   margin: 0 auto;
 }
 
-header {
+.page-container > header {
   position: sticky;
   max-width: 2000px;
   top: 0px;
@@ -112,6 +112,16 @@ main {
   min-height: 600px;
 }
 
+#RC-article-content {
+  width: 100%;
+  min-height: 800px;
+}
+
+#RC-article-footer {
+  width: 100%;
+  min-height: 100px;
+}
+
 /********************************************************
 **********page ******
 ********************************************************/
@@ -151,8 +161,7 @@ main {
   height: 500px;
   -o-object-fit: cover;
      object-fit: cover;
-  -webkit-clip-path: polygon(0% 0%, 100% 0%, 0% 100%, 0% 100%);
-          clip-path: polygon(0% 0%, 100% 0%, 0% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 100% 0%, 0% 100%, 0% 100%);
   opacity: 0.8;
 }
 .hero-container > img:nth-child(2) {
@@ -161,8 +170,7 @@ main {
   height: 500px;
   left: calc(100% - 350px);
   border-radius: 50%;
-  -webkit-clip-path: none;
-          clip-path: none;
+  clip-path: none;
   opacity: 0.8;
 }
 .hero-container::after {
@@ -173,8 +181,7 @@ main {
   left: 0;
   width: 100%;
   height: 100px;
-  -webkit-clip-path: polygon(0 50%, 100% 0, 100% 100%, 0% 100%);
-          clip-path: polygon(0 50%, 100% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(0 50%, 100% 0, 100% 100%, 0% 100%);
 }
 .hero-container .hero-container-title {
   position: relative;
@@ -237,10 +244,10 @@ main {
   }
 }
 .page-container.dark-mode .hero {
-  background-color: #036662;
+  background-color: rgb(2.6455696203, 101.8544303797, 97.8860759494);
 }
 .page-container.dark-mode .hero .container {
-  background-color: #037f7a;
+  background-color: rgb(3.2911392405, 126.7088607595, 121.7721518987);
 }
 .page-container.dark-mode .hero .container h1 {
   color: #ffffff;
@@ -462,23 +469,23 @@ main {
   color: #ffffff;
 }
 .page-container.dark-mode .faq-section > h2 strong {
-  color: #dc0779;
+  color: rgb(219.7388059701, 6.7611940299, 120.5746268657);
 }
 .page-container.dark-mode .faq-section > h2::after {
-  background: #dc0779;
+  background: rgb(219.7388059701, 6.7611940299, 120.5746268657);
 }
 .page-container.dark-mode .faq-section .faq-grid .faq-intro {
   color: rgba(255, 255, 255, 0.9);
-  background: #575757;
+  background: rgb(86.75, 86.75, 86.75);
 }
 .page-container.dark-mode .faq-section .faq-grid .faq-intro strong {
-  color: #00d8d1;
+  color: rgb(0, 215.5, 208.6947368421);
 }
 .page-container.dark-mode .faq-section .faq-grid .faq-item {
-  background: #313131;
+  background: rgb(48.5, 48.5, 48.5);
 }
 .page-container.dark-mode .faq-section .faq-grid .faq-item > h3 {
-  color: #00d8d1;
+  color: rgb(0, 215.5, 208.6947368421);
 }
 .page-container.dark-mode .faq-section .faq-grid .faq-item > h3:hover {
   color: rgba(255, 255, 255, 0.9);
@@ -489,7 +496,7 @@ main {
 }
 .page-container.dark-mode .faq-section .faq-grid .faq-item p strong,
 .page-container.dark-mode .faq-section .faq-grid .faq-item ul > li strong {
-  color: #00d8d1;
+  color: rgb(0, 215.5, 208.6947368421);
 }
 
 /********************************************************

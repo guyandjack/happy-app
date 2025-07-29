@@ -47,7 +47,7 @@
   color: #c3066b;
 }
 .hero-index .hero-index-title-h1 span {
-  color: #00f1e9;
+  color: rgb(0, 241, 233.3894736842);
   font-weight: 600;
   word-break: keep-all;
   white-space: nowrap;
@@ -384,7 +384,7 @@
   padding: 0 10px;
 }
 .why-green-click .why-choose p strong {
-  color: #008b87;
+  color: rgb(0, 139, 134.6105263158);
 }
 .why-green-click .why-choose .img-why-card {
   display: none;
@@ -503,16 +503,14 @@
   .why-green-click .why-choose #img-why-card-1 {
     background-image: url("../../../public/assets/images/page-index/feuille-verte.webp");
     left: 20%;
-    -webkit-clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-            clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+    clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
     border-bottom: 12px solid #024d4a;
   }
   .why-green-click .why-choose #img-why-card-2 {
     background-image: url("../../../public/assets/images/page-index/regle-crayon.webp");
     width: 300px;
     border-left: 12px solid #00beb8;
-    -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
-            clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+    clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
     -webkit-transform: rotate(-20deg);
         -ms-transform: rotate(-20deg);
             transform: rotate(-20deg);

@@ -57,7 +57,7 @@ header {
 
 }
 
-header {
+.page-container>header {
     position: sticky;
     max-width: 2000px;
     top: 0px;
@@ -144,9 +144,17 @@ main {
     min-height: 600px;
 }
 
+// article content
+#RC-article-content {
+    width: 100%;
+    min-height: 800px;
 
+}
 
-
+#RC-article-footer {
+    width: 100%;
+    min-height: 100px;
+}
 
 /********************************************************
 **********page ******

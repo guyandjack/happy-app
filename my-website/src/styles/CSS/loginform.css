@@ -240,8 +240,7 @@
       -ms-flex-align: center;
           align-items: center;
   z-index: 1000;
-  -webkit-backdrop-filter: blur(3px);
-          backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
 }
 
 .loader-container {
@@ -269,7 +268,7 @@
 }
 
 .page-container.dark-mode .login-form {
-  background-color: #013432;
+  background-color: rgb(1.3544303797, 52.1455696203, 50.1139240506);
 }
 .page-container.dark-mode .form-label {
   color: #ffffff;
@@ -279,7 +278,7 @@
   color: #ffffff;
 }
 .page-container.dark-mode .btn-primary {
-  background-color: #036662;
+  background-color: rgb(2.6455696203, 101.8544303797, 97.8860759494);
   color: #ffffff;
 }
 .page-container.dark-mode .btn-primary:hover:not(:disabled) {

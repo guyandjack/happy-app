@@ -6,8 +6,109 @@ const { JSDOM } = require("jsdom");
 const { getConnection, releaseConnection } = require("../config/database");
 const multer = require("multer");
 const { v4: uuidv4 } = require("uuid");
+
+//fonctions utilitaires
 const localOrProd = require("../utils/function/localOrProd");
 const createArticle = require("../utils/function/generateArticle");
+const checkParams = require("../utils/function/checkParams");
+
+/**
+ * vote
+ */
+exports.vote = async (req, res) => {
+  const adressIp = req.ip || req.headers["x-forwarded-for"];
+  //recuperation de l'evaluation et de l'id de l'article
+  const { evaluation, articleId } = req.body;
+  let evaluationInt = parseInt(evaluation, 10);
+  let articleIdInt = parseInt(articleId, 10);
+  let connection;
+
+  try {
+    //connection a la bdd
+    connection = await getConnection();
+
+    //On recherche si l'ip existe deja dans la bdd
+    const [ip] = await connection.execute(
+      "SELECT ip_address FROM votes WHERE article_id = ? LIMIT 1",
+      [articleIdInt]
+    );
+    console.log("ip client ds la bdd: ", ip);
+
+    let voteValue;
+
+    //si l'ip existe deja, on recupere la note existante dans la bdd
+    if (ip.length > 0) {
+      [voteValue] = await connection.execute(
+        "SELECT note FROM votes WHERE ip_address = ? AND article_id = ? LIMIT 1",
+        [ip[0].ip_address, articleIdInt]
+      );
+      console.log("note existante ds la bdd: ", voteValue);
+
+      //si le note a la meme valeur pour cette ip, on renvoie une erreur
+      //On peut inverser son vote, mais pas voter plusieurs fois la meme note
+      if (voteValue[0].note === evaluationInt) {
+        return res.status(400).json({
+          status: "error",
+          message: "You have already voted for this article",
+        });
+      }
+      //si le note a une valeur differente pour cette ip, on peut inverser son vote
+      if (voteValue[0].note !== evaluationInt) {
+        //on modifie la note dans la bdd
+        const [responseVote] = await connection.execute(
+          "UPDATE votes SET note = ? WHERE ip_address = ? AND article_id = ?",
+          [evaluationInt, adressIp, articleIdInt]
+        );
+
+        //si la modification n'a pas fonctionnée  , on renvoie un message d'erreur
+
+        if (responseVote.affectedRows === 0) {
+          return res.status(400).json({
+            status: "error",
+            message: "Impossible to modify your vote",
+          });
+        }
+
+        return res.status(200).json({
+          status: "success",
+          message: "Vote modified successfully",
+        });
+      }
+    } else {
+      //si l'ip n'existe pas dans la bdd, on enregistre un nouveau vote
+
+      //insertion du votes dans la bdd
+      const [responseVote] = await connection.execute(
+        "INSERT INTO votes (create_time, article_id, ip_address, note) VALUES (NOW(), ?, ?, ?)",
+        [articleIdInt, adressIp, evaluationInt]
+      );
+
+      //si l'insertion n'a pas fonctionné, on renvoie une erreur
+      if (responseVote.affectedRows === 0) {
+        return res.status(400).json({
+          status: "error",
+          message: "Impossible to vote",
+        });
+      }
+
+      return res.status(200).json({
+        status: "success",
+        message: "Vote recorded successfully",
+      });
+    }
+  } catch (error) {
+    console.error("Error getting connection:", error);
+
+    return res.status(500).json({
+      status: "error",
+      message: "An error occurred vote denied",
+    });
+  } finally {
+    if (connection) {
+      releaseConnection(connection);
+    }
+  }
+};
 
 /**
  * Get all categories
@@ -20,6 +121,13 @@ exports.getCategories = async (req, res) => {
     const [categories] = await connection.execute(
       "SELECT DISTINCT category FROM articles"
     );
+
+    if (categories.length === 0) {
+      return res.status(404).json({
+        status: "error",
+        message: "No categories found",
+      });
+    }
 
     let result = categories.map((category) => category.category);
 
@@ -41,24 +149,40 @@ exports.getCategories = async (req, res) => {
 };
 
 /**
- * Get all articles
- */
+ * Get many articles
+ *
+ *  */
 exports.getAllArticles = async (req, res) => {
-  let connection;
+  const { status, data } = checkParams(req.query, ["page", "limit"]);
 
+  if (status === "error") {
+    return res.status(400).json({
+      status: "error",
+      data: data,
+    });
+  }
+  const { page, limit } = data;
+
+  let connection;
   try {
     connection = await getConnection();
 
-    const [articles] = await connection.execute(
-      "SELECT * FROM articles ORDER BY createdAt DESC"
-    );
+    const sql = `SELECT * FROM articles ORDER BY createdAt DESC LIMIT ${connection.escape(
+      limit
+    )} OFFSET ${connection.escape(page)}`;
+    const [articles] = await connection.query(sql);
+
+    if (articles.length === 0) {
+      return res.status(404).json({
+        status: "error",
+        message: "No articles found",
+      });
+    }
 
     return res.status(200).json({
       status: "success",
       results: articles.length,
-      data: {
-        articles,
-      },
+      data: { articles },
     });
   } catch (error) {
     console.error("Error getting articles:", error);
@@ -67,36 +191,41 @@ exports.getAllArticles = async (req, res) => {
       message: "An error occurred while fetching articles",
     });
   } finally {
-    if (connection) {
-      releaseConnection(connection);
-    }
+    if (connection) releaseConnection(connection);
   }
 };
 
 /**
- * get article by category
+ * get many articles by category
  */
 exports.getArticleByCategory = async (req, res) => {
-  console.log("req.query:", req.query);
+  const { status, data } = checkParams(req.query, [
+    "page",
+    "limit",
+    "category",
+  ]);
 
-  if (!req.query.category) {
+  if (status === "error") {
     return res.status(400).json({
       status: "error",
-      message: "Category is required",
+      data: data,
     });
   }
+
+  const { page, limit, category } = data;
+
   let connection;
 
   try {
     connection = await getConnection();
-    let categoryValue = req.query.category.toLowerCase().trim();
 
     const [articles] = await connection.execute(
-      "SELECT * FROM articles WHERE category = ?",
-      [categoryValue]
+      `SELECT * FROM articles WHERE category = ? ORDER BY createdAt DESC LIMIT ${connection.escape(
+        limit
+      )} OFFSET ${connection.escape(page)}`,
+      [category]
     );
     if (articles.length === 0) {
-      console.log("req.query.category: ", req.query.category);
       return res.status(404).json({
         status: "error",
         message: "Article not found",
@@ -128,21 +257,34 @@ exports.getArticleByCategory = async (req, res) => {
  * get articles by search term
  */
 exports.searchArticles = async (req, res) => {
-  if (!req.query.search) {
+  const { status, data } = checkParams(req.query, ["page", "limit", "search"]);
+
+  if (status === "error") {
     return res.status(400).json({
       status: "error",
-      message: "Search term is required",
+      data: data,
     });
   }
-  const { search } = req.query;
-  console.log("search:", search);
+
+  const { page, limit, search } = data;
+
   let connection;
   try {
     connection = await getConnection();
     const [articles] = await connection.execute(
-      "SELECT * FROM articles WHERE title LIKE ? OR excerpt LIKE ?",
+      `SELECT * FROM articles WHERE title LIKE ? OR excerpt LIKE ? ORDER BY createdAt DESC LIMIT ${connection.escape(
+        limit
+      )} OFFSET ${connection.escape(page)}`,
       [`%${search}%`, `%${search}%`]
     );
+
+    if (articles.length === 0) {
+      return res.status(404).json({
+        status: "error",
+        message: "Article not found",
+      });
+    }
+
     return res.status(200).json({
       status: "success",
       results: articles.length,

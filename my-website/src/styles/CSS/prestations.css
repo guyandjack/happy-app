@@ -207,7 +207,7 @@
   }
 }
 .website-types .website-cards .website-card-container .website-card .card-content p strong {
-  color: #00817d;
+  color: rgb(0, 128.8, 124.7326315789);
   font-weight: 600;
 }
 .website-types .website-cards .website-card-container .website-card .card-content .btn {
@@ -559,8 +559,7 @@
     width: 100%;
     height: 160px;
     background: #fbfbfc;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 70%);
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 70%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 70%);
   }
   .eco-section::after,
   .seo-section::after {
@@ -571,8 +570,7 @@
     width: 100%;
     height: 160px;
     background: #fbfbfc;
-    -webkit-clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
-            clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
   }
 }
 .page-container.dark-mode .website-types {

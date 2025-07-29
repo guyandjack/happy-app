@@ -24,7 +24,7 @@ const ArticlesList = () => {
   const [categories, setCategories] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
 
-  //recupere les categories des articles de la bdd
+  //recupere toutes les categories d' articles de la bdd et met a jour la liste des categories
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -38,8 +38,8 @@ const ArticlesList = () => {
     fetchCategories();
   }, []);
 
-  //recupere les articles de la bdd
-  // tous les articles ou par categorie
+  //recupere 10 articles de la bdd
+  // tous types d' articles ou par categorie
   useEffect(() => {
     const fetchArticles = async () => {
       try {
@@ -70,7 +70,7 @@ const ArticlesList = () => {
     };
 
     fetchArticles();
-  }, [currentPage, selectedCategory, urlApi]);
+  }, [currentPage, selectedCategory]);
 
   //recherche par titre, resume ou tags
   useEffect(() => {
@@ -97,6 +97,8 @@ const ArticlesList = () => {
     };
     fetchArticlesSearch();
   }, [searchTerm]);
+
+  //suppression d'un article
 
   const handleDelete = async (id, title) => {
     if (window.confirm(`Êtes-vous sûr de vouloir supprimer "${title}" ?`)) {
@@ -127,7 +129,7 @@ const ArticlesList = () => {
 
   const handleSearch = (e) => {
     setSearchValue(e.target.value);
-    if (e.target.value.length > 2) {
+    if (e.target.value.length > 3) {
       setSearchTerm(e.target.value);
       setCurrentPage(1);
     }
@@ -135,7 +137,6 @@ const ArticlesList = () => {
 
   const handleCategoryChange = (item) => {
     setSelectedCategory(item);
-    console.log("item dans handleCategoryChange: ", item);
     setCurrentPage(1); // Reset to first page when changing category
   };
 

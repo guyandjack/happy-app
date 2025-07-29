@@ -6,7 +6,7 @@
   padding: 60px 20px;
   border-radius: 10px;
   background: linear-gradient(135deg, #00beb8 40%, #c7e3cd 70%, #00beb8 90%, #c7e3cd 100%);
-  color: #013432;
+  color: rgb(1.3544303797, 52.1455696203, 50.1139240506);
   text-align: center;
 }
 .cta-section:hover::before {
