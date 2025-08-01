@@ -57,9 +57,11 @@ const ArticlesList = () => {
           response = await axios.get(`${urlApi}/articles/filter`, { params });
         } else response = await axios.get(`${urlApi}/articles`, { params });
 
-        setArticles(response.data.data.articles);
-        setFilteredArticles(response.data.data.articles);
-        setTotalPages(response.data.totalPages || 1);
+        if (response.data.status === "success") {
+          setArticles(response.data.data.articles);
+          setFilteredArticles(response.data.data.articles);
+          setTotalPages(response.data.totalPages || 1);
+        }
 
         setLoading(false);
       } catch (error) {

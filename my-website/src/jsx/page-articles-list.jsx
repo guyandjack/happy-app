@@ -12,7 +12,7 @@ import { Navbar } from "@components/Navbar/Navbar.jsx";
 import { Footer } from "@components/Footer/Footer.jsx";
 import { CtaSection } from "@components/CtaSection/CtaSection.jsx";
 import { LinkTopPage } from "@components/linkTopPage/linkTopPage.jsx";
-import { ArticlesList } from "@components/Articles/ArticlesList.jsx";
+import { AdminArticleList } from "@components/Admin/AdminArticleList.jsx";
 
 // Mount Navbar
 try {
@@ -36,7 +36,7 @@ try {
   if (articlesListContainer) {
     ReactDOM.createRoot(articlesListContainer).render(
       <React.StrictMode>
-        <ArticlesList />
+        <AdminArticleList />
       </React.StrictMode>
     );
   } else {

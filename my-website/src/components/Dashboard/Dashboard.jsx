@@ -15,7 +15,7 @@ import {
 } from "react-icons/fa";
 
 //import des composants enfants
-import AdminArticleList from "@components/Admin/AdminArticleList";
+import { AdminArticleList } from "@components/Admin/AdminArticleList";
 import PasswordChange from "@components/Admin/PasswordChange";
 import ArticleForm from "@components/Articles/ArticleForm";
 

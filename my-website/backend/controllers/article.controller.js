@@ -12,6 +12,9 @@ const localOrProd = require("../utils/function/localOrProd");
 const createArticle = require("../utils/function/generateArticle");
 const checkParams = require("../utils/function/checkParams");
 
+//variables globales
+let bddIsEmpty = false;
+
 /************************************************
  * ************ vote ***************************
  **** start **************************************/
@@ -176,23 +179,37 @@ exports.getCategories = async (req, res) => {
 
   try {
     connection = await getConnection();
-    const [categories] = await connection.execute(
-      "SELECT DISTINCT category FROM articles"
-    );
+    //test si la bdd est vide
+    const [rows] = await connection.execute("SELECT COUNT(*) FROM articles");
+    console.log("rows: ", rows[0]["COUNT(*)"]);
 
-    if (categories.length === 0) {
-      return res.status(404).json({
-        status: "error",
-        message: "No categories found",
+    if (rows[0]["COUNT(*)"] === 0) {
+      return res.status(200).json({
+        status: "success",
+        message: "No article found in the database",
+        data: [],
       });
     }
+    //recuperation des categories
+    if (rows[0]["COUNT(*)"] > 0) {
+      const [categories] = await connection.execute(
+        "SELECT DISTINCT category FROM articles"
+      );
 
-    let result = categories.map((category) => category.category);
+      if (categories.length === 0) {
+        return res.status(404).json({
+          status: "error",
+          message: "No categories found",
+        });
+      }
 
-    return res.status(200).json({
-      status: "success",
-      data: result,
-    });
+      let result = categories.map((category) => category.category);
+
+      return res.status(200).json({
+        status: "success",
+        data: result,
+      });
+    }
   } catch (error) {
     console.error("Error getting categories:", error);
     return res.status(500).json({
@@ -227,24 +244,35 @@ exports.getAllArticles = async (req, res) => {
   let connection;
   try {
     connection = await getConnection();
-
-    const sql = `SELECT * FROM articles ORDER BY createdAt DESC LIMIT ${connection.escape(
-      limit
-    )} OFFSET ${connection.escape(page)}`;
-    const [articles] = await connection.query(sql);
-
-    if (articles.length === 0) {
-      return res.status(404).json({
-        status: "error",
-        message: "No articles found",
+    //test si la bdd est vide
+    const [test] = await connection.execute("SELECT COUNT(*) FROM articles");
+    if (test[0]["COUNT(*)"] === 0) {
+      return res.status(200).json({
+        status: "success",
+        message: "No article found in the database",
+        data: [],
       });
     }
 
-    return res.status(200).json({
-      status: "success",
-      results: articles.length,
-      data: { articles },
-    });
+    if (test[0]["COUNT(*)"] > 0) {
+      const sql = `SELECT * FROM articles ORDER BY createdAt DESC LIMIT ${connection.escape(
+        limit
+      )} OFFSET ${connection.escape(page)}`;
+      const [articles] = await connection.query(sql);
+
+      if (articles.length === 0) {
+        return res.status(404).json({
+          status: "error",
+          message: "No articles found",
+        });
+      }
+
+      return res.status(200).json({
+        status: "success",
+        articlesNumber: articles.length,
+        data: articles,
+      });
+    }
   } catch (error) {
     console.error("Error getting articles:", error);
     return res.status(500).json({

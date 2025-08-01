@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 import { localOrProd } from "@utils/fonction/testEnvironement";
 import { ArticleCard } from "@components/Articles/ArticleCard";
 
-//import "@styles/CSS/articles.css";
 import "@styles/CSS/AdminArticleList.css";
 
 const AdminArticleList = () => {
@@ -22,14 +21,35 @@ const AdminArticleList = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
+  const [message, setMessage] = useState("");
+  const [isPageDashboard, setIsPageDashboard] = useState(false);
+
+  //recupere le nom de la page
+  useEffect(() => {
+    if (window.location.href.includes("dashboard")) {
+      setIsPageDashboard(true);
+    }
+    setIsPageDashboard(false);
+  }),
+    [];
 
   //recupere les categories des articles de la bdd
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(`${urlApi}/articles/categories`);
-        console.log("response.data.data: ", response.data.data);
-        setCategories(response.data.data);
+        const response = await axios.get(`${urlApi}/articles/categories`, {
+          validateStatus: function (status) {
+            return status < 500;
+          },
+        });
+        if (
+          response.data.status === "success" &&
+          response.data.data.length > 0
+        ) {
+          setCategories(response.data.data);
+        } else {
+          setMessage(response.data.message);
+        }
       } catch (error) {
         console.error("Error fetching categories:", error);
       }
@@ -51,14 +71,29 @@ const AdminArticleList = () => {
         let response = null;
 
         if (selectedCategory) params.category = selectedCategory;
+        console.log("selectedCategory: ", selectedCategory);
 
         if (selectedCategory) {
           response = await axios.get(`${urlApi}/articles/filter`, { params });
-        } else response = await axios.get(`${urlApi}/articles`, { params });
+        } else {
+          console.log("dans la condition pour fecher les articles");
+          response = await axios.get(
+            `${urlApi}/articles`,
+            { params },
+            {
+              validateStatus: function (status) {
+                return status < 500;
+              },
+            }
+          );
+        }
+        console.log("response: ", response);
 
-        setArticles(response.data.data.articles);
-        setFilteredArticles(response.data.data.articles);
-        setTotalPages(response.data.totalPages || 1);
+        if (response.data.status === "success") {
+          setArticles(response.data.data);
+          setFilteredArticles(response.data.data);
+          setTotalPages(Math.ceil(response.data.articlesNumber / params.limit));
+        }
 
         setLoading(false);
       } catch (error) {
@@ -137,8 +172,12 @@ const AdminArticleList = () => {
     setCurrentPage(1); // Reset to first page when changing category
   };
 
-  if (loading && articles.length === 0) {
+  if (loading === 0) {
     return <div className="loading">Chargement des articles...</div>;
+  }
+
+  if (message) {
+    return <div className="message">{message}</div>;
   }
 
   if (error) {
@@ -184,24 +223,26 @@ const AdminArticleList = () => {
           {filteredArticles.map((article) => (
             <div key={article.id} className="admin-article-card-wrapper">
               <ArticleCard article={article} />
-              <div className="admin-article-actions">
-                <button
-                  className="edit-btn"
-                  onClick={() =>
-                    (window.location.href = `/admin/articles/edit/${article.id}`)
-                  }
-                  title="Modifier l'article"
-                >
-                  <FaEdit /> Modifier
-                </button>
-                <button
-                  className="delete-btn"
-                  onClick={() => handleDelete(article.id, article.title)}
-                  title="Supprimer l'article"
-                >
-                  <FaTrash /> Supprimer
-                </button>
-              </div>
+              {isPageDashboard ?? (
+                <div className="admin-article-actions">
+                  <button
+                    className="edit-btn"
+                    onClick={() =>
+                      (window.location.href = `/admin/articles/edit/${article.id}`)
+                    }
+                    title="Modifier l'article"
+                  >
+                    <FaEdit /> Modifier
+                  </button>
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDelete(article.id, article.title)}
+                    title="Supprimer l'article"
+                  >
+                    <FaTrash /> Supprimer
+                  </button>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -243,7 +284,4 @@ const AdminArticleList = () => {
   );
 };
 
-export default AdminArticleList;
-
-
-
+export { AdminArticleList };
