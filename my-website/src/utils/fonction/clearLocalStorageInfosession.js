@@ -2,13 +2,20 @@
  * @param {string} url paramètre optionnel pour rediriger vers une page spécifique
  */
 function clearLocalStorageInfoSession(url) {
-  localStorage.removeItem("timeRemaining");
+  let adminPage =
+    window.location.href.includes("dashboard") ??
+    localStorage.removeItem("timeRemaining");
   localStorage.removeItem("token");
   localStorage.removeItem("user");
   localStorage.removeItem("lastTime");
   localStorage.removeItem("tokenExpiration");
   if (url) {
     window.location.href = `/${url}`;
+    return;
+  }
+  if (adminPage) {
+    window.location.href = "./connexion.html";
+    return;
   }
 }
 export { clearLocalStorageInfoSession };

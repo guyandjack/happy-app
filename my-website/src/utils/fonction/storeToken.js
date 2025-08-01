@@ -19,8 +19,8 @@ function storeToken(responseData, jwtDecode) {
     //update time remaining
     const timeRemaining = expirationTime - currentTime;
     if (timeRemaining > 0) {
-      localStorage.setItem("timeRemaining", timeRemaining.toString());
-      localStorage.setItem("lastTime", new Date().getTime().toString());
+      /* localStorage.setItem("timeRemaining", timeRemaining.toString());
+      localStorage.setItem("lastTime", new Date().getTime().toString()); */
       localStorage.setItem("tokenExpiration", expirationTime.toString());
       return true;
     }

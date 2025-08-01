@@ -34,7 +34,7 @@ function TimerSession() {
   const [startCounterDown, setStartCounterDown] = useState(false);
 
   //state qui lance le test de la session
-  const [testSession, setTestSession] = useState(false);
+  //const [testSession, setTestSession] = useState(false);
 
   //state pour le collapse
   const [isOpen, setIsOpen] = useState(false);
@@ -49,7 +49,7 @@ function TimerSession() {
   const initialTime = useRef(initCounterDown()); */
 
   //fonction qui décrémente le compteur
-  const counterDown = () => {
+  /* const counterDown = () => {
     console.log("counter.current dans le compte à rebours:", counter.current);
 
     counter.current = setInterval(() => {
@@ -69,6 +69,19 @@ function TimerSession() {
           return 0;
         }
       });
+    }, 1000);
+  }; */
+
+  //fonction counterdown version 2
+  const counterDownV2 = () => {
+    const isToken = localStorage.getItem("token");
+    counter.current = setInterval(() => {
+      if (timeRemaining > 0 && isToken) {
+        setTimeRemaining((prevTime) => prevTime - 1);
+      } else {
+        clearInterval(counter.current);
+        deleteSession();
+      }
     }, 1000);
   };
 
@@ -93,27 +106,32 @@ function TimerSession() {
   //fonction qui lance la session
   const startSession = () => {
     setIsSessionActive(true);
+    if (localStorage.getItem("user")) {
+      const userName = localStorage.getItem("user");
+      setUser(userName);
+    }
     setTimeRemaining(initCounterDown());
-    setStartCounterDown(!startCounterDown);
+    setStartCounterDown(true);
   };
 
-  //detect if a session is active all 1s
+  //gere la detection d'une session declarer dans le localStorage
   useEffect(() => {
     let intervalSearchSession = null;
-    //test si la session est active au montage de la page
-    if (!checkSession()) {
-      deleteSession();
+    //si une session est declarée dans le localStorage et que la session n'est pas active, on la lance une session
+    if (checkSession() && !isSessionActive) {
+      startSession();
+    }
+    //si pas de session declaree dans le localStorage, et pas de session active,
+    //  on la lance un check session toutes les secondes
+    if (!checkSession() && !isSessionActive) {
       intervalSearchSession = setInterval(() => {
         console.log("pas de session active");
         if (checkSession()) {
           console.log("session active");
           startSession();
-          //clearInterval(intervalSearchSession);//stop la recherche d'une session
+          clearInterval(intervalSearchSession); //stop la recherche d'une session
         }
       }, 1000);
-      return;
-    } else {
-      startSession();
     }
 
     return () => {
@@ -121,20 +139,13 @@ function TimerSession() {
         clearInterval(intervalSearchSession);
       }
     };
-  }, []);
+  }, [isSessionActive]);
 
   //lance le compte à rebours
   useEffect(() => {
-    if (localStorage.getItem("user")) {
-      const userName = localStorage.getItem("user");
-      setUser(userName);
+    if (startCounterDown) {
+      counterDownV2();
     }
-    counterDown();
-    return () => {
-      if (counter.current) {
-        clearInterval(counter.current);
-      }
-    };
   }, [startCounterDown]);
 
   //fetch to refresh token
@@ -155,6 +166,7 @@ function TimerSession() {
       if (response.data.status === "success") {
         //stop le count down actuel
         clearInterval(counter.current);
+        setStartCounterDown(false);
 
         //store the new accesstoken
         const isTokenRefreshed = storeToken(response.data, jwtDecode);
@@ -166,7 +178,7 @@ function TimerSession() {
         setTimeRemaining(initCounterDown());
 
         //relance le count down
-        setStartCounterDown(!startCounterDown);
+        setStartCounterDown(true);
       }
     } catch (error) {
       handleAxiosError(error);
