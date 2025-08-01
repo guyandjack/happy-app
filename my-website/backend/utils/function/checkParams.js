@@ -31,6 +31,7 @@ function checkParams(paramsReq, paramsExpected) {
     limit: (val) => Number.isInteger(+val) && +val > 0,
     category: (val) => typeof val === "string" && val.trim().length > 0,
     search: (val) => typeof val === "string" && val.trim().length > 0,
+    articleId: (val) => Number.isInteger(+val) && +val > 0,
   };
 
   const errors = [];

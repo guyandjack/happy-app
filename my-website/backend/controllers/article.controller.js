@@ -12,9 +12,9 @@ const localOrProd = require("../utils/function/localOrProd");
 const createArticle = require("../utils/function/generateArticle");
 const checkParams = require("../utils/function/checkParams");
 
-/**
- * vote
- */
+/************************************************
+ * ************ vote ***************************
+ **** start **************************************/
 exports.vote = async (req, res) => {
   const adressIp = req.ip || req.headers["x-forwarded-for"];
   //recuperation de l'evaluation et de l'id de l'article
@@ -109,10 +109,68 @@ exports.vote = async (req, res) => {
     }
   }
 };
+/************************************************
+ * ************ vote ***************************
+ **** end **************************************/
 
-/**
- * Get all categories
- */
+/************************************************
+ * ************ get score ******************
+ **** start **************************************/
+
+exports.getScore = async (req, res) => {
+  const articleId = req.params.id;
+  console.log("articleId: ", articleId);
+  if (!articleId) {
+    return res.status(400).json({
+      status: "error",
+      message: "Article ID is required",
+    });
+  }
+  let articleIdInt = parseInt(articleId, 10);
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    const [score] = await connection.execute(
+      "SELECT note FROM votes WHERE article_id = ?",
+      [articleIdInt]
+    );
+
+    if (score.length === 0) {
+      return res.status(404).json({
+        status: "error",
+        message: "No score found",
+      });
+    }
+
+    const scoreUp = score.filter((vote) => vote.note === 1).length;
+    const scoreDown = score.filter((vote) => vote.note === -1).length;
+
+    return res.status(200).json({
+      status: "success",
+      scoreUp,
+      scoreDown,
+    });
+  } catch (error) {
+    console.error("Error getting score:", error);
+    return res.status(500).json({
+      status: "error",
+      message: "An error occurred while getting the score",
+    });
+  } finally {
+    if (connection) {
+      releaseConnection(connection);
+    }
+  }
+};
+/************************************************
+ * ************ get score ******************
+ **** end **************************************/
+
+/************************************************
+ * ************ get categories ******************
+ **** start **************************************/
 exports.getCategories = async (req, res) => {
   let connection;
 
@@ -147,11 +205,14 @@ exports.getCategories = async (req, res) => {
     }
   }
 };
+/************************************************
+ * ************ get categories ******************
+ **** end **************************************/
 
-/**
- * Get many articles
- *
- *  */
+/************************************************
+ * ************ get many articles ***************
+ **** start **************************************/
+
 exports.getAllArticles = async (req, res) => {
   const { status, data } = checkParams(req.query, ["page", "limit"]);
 
@@ -195,9 +256,10 @@ exports.getAllArticles = async (req, res) => {
   }
 };
 
-/**
- * get many articles by category
- */
+/************************************************
+ * ************ get many articles by category ****
+ **** start **************************************/
+
 exports.getArticleByCategory = async (req, res) => {
   const { status, data } = checkParams(req.query, [
     "page",
@@ -252,10 +314,14 @@ exports.getArticleByCategory = async (req, res) => {
     }
   }
 };
+/************************************************
+ * ************ get many articles by category ****
+ **** end **************************************/
 
-/**
- * get articles by search term
- */
+/************************************************
+ * ************ get articles by search term ******
+ **** start **************************************/
+
 exports.searchArticles = async (req, res) => {
   const { status, data } = checkParams(req.query, ["page", "limit", "search"]);
 
@@ -304,10 +370,14 @@ exports.searchArticles = async (req, res) => {
     }
   }
 };
+/************************************************
+ * ************ get articles by search term ******
+ **** end **************************************/
 
-/**
- * Get single article
- */
+/************************************************
+ * ************ get single article *************
+ **** start **************************************/
+
 exports.getArticle = async (req, res) => {
   let connection;
 
@@ -368,10 +438,14 @@ exports.getArticle = async (req, res) => {
     }
   }
 };
+/************************************************
+ * ************ get single article *************
+ **** end **************************************/
 
-/**
- * Get previous article
- */
+/************************************************
+ * ************ get previous article ***********
+ **** start **************************************/
+
 exports.getPreviousArticle = async (req, res) => {
   let connection;
 
@@ -445,10 +519,14 @@ exports.getPreviousArticle = async (req, res) => {
     }
   }
 };
+/************************************************
+ * ************ get previous article ***********
+ **** end **************************************/
 
-/**
- * Get next article
- */
+/************************************************
+ * ************ get next article ***************
+ **** start **************************************/
+
 exports.getNextArticle = async (req, res) => {
   let connection;
 
@@ -522,10 +600,14 @@ exports.getNextArticle = async (req, res) => {
     }
   }
 };
+/************************************************
+ * ************ get next article ***************
+ **** end **************************************/
 
-/**
- * Create article
- */
+/************************************************
+ * ************ create article *****************
+ **** start **************************************/
+
 exports.createArticle = async (req, res) => {
   const { url, url_api } = localOrProd();
   let connection;
@@ -545,9 +627,9 @@ exports.createArticle = async (req, res) => {
           uploadPath = path.join(
             __dirname,
             "..",
-            "uploads",
-            "articles",
-            "images"
+            "public",
+            "images",
+            "articles"
           );
         }
 
@@ -591,7 +673,7 @@ exports.createArticle = async (req, res) => {
     // Process uploaded files
     const uploadMiddleware = upload.fields([
       { name: "mainImage", maxCount: 1 },
-      { name: "additionalImages", maxCount: 5 },
+      { name: "additionalImages", maxCount: 10 },
     ]);
 
     uploadMiddleware(req, res, async (err) => {
@@ -646,41 +728,28 @@ exports.createArticle = async (req, res) => {
         let mainImagePath = "";
         let additionalImagePaths = [];
 
-        // Create article URL
-        let articleUrl = `${url}/public/${language}/article/${slug}.html`;
-
         if (req.files.mainImage && req.files.mainImage.length > 0) {
-          // Create relative path for main image
+          // Create url for reacth main image
           mainImagePath =
-            "uploads/articles/images/" +
-            path.basename(req.files.mainImage[0].path);
+            "/images/articles/" + path.basename(req.files.mainImage[0].path);
         }
 
         if (
           req.files.additionalImages &&
           req.files.additionalImages.length > 0
         ) {
-          // Create relative paths for additional images
+          // Create url for reacth additional images
           additionalImagePaths = req.files.additionalImages.map(
-            (file) => "uploads/articles/images/" + path.basename(file.path)
+            (file) => "/images/articles/" + path.basename(file.path)
           );
         }
-
-        // Generate article page
-        await createArticle({
-          title: title,
-          slug: slug,
-          content: contentArticle,
-          language: language,
-          excerpt: excerpt,
-        });
 
         // Save article data to database
         const [result] = await connection.execute(
           `INSERT INTO articles (
             title, slug, content, excerpt, mainImage, category, tags, author, createdAt,updatedAt, 
-            additionalImages, language, articleUrl
-          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(),?,?,?)`,
+            additionalImages, language
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(),?,?)`,
           [
             title,
             slug,
@@ -692,11 +761,10 @@ exports.createArticle = async (req, res) => {
             author || "",
             JSON.stringify(additionalImagePaths) || "",
             language,
-            articleUrl,
           ]
         );
 
-        // Get the auto-generated ID
+        // recupere l'id de l'article pour tester si l'article est bien créé
         const articleId = result.insertId;
 
         return res.status(201).json({
@@ -735,10 +803,14 @@ exports.createArticle = async (req, res) => {
     }
   }
 };
+/************************************************
+ * ************ create article *****************
+ **** end **************************************/
 
-/**
- * Update article
- */
+/************************************************
+ * ************ update article *****************
+ **** start **************************************/
+
 exports.updateArticle = async (req, res) => {
   try {
     const article = await Article.findById(req.params.id);
@@ -831,49 +903,72 @@ exports.updateArticle = async (req, res) => {
   }
 };
 
-/**
- * Delete article
- */
+/************************************************
+ * ************ delete article ******************
+ **** start **************************************/
+
 exports.deleteArticle = async (req, res) => {
   let connection;
 
   try {
     const { id } = req.params;
+    if (!id) {
+      return res.status(400).json({
+        status: "error",
+        message: "Article ID is required",
+      });
+    }
+    let idInt = parseInt(id, 10);
 
     connection = await getConnection();
 
     // First get the article to know which files to delete
-    const [articles] = await connection.execute(
+    const [articlesImages] = await connection.execute(
       "SELECT mainImage, additionalImages FROM articles WHERE id = ?",
-      [id]
+      [idInt]
     );
 
-    if (articles.length === 0) {
+    if (articlesImages.length === 0) {
       return res.status(404).json({
         status: "error",
-        message: "Article not found",
+        message: "Article images not found",
       });
     }
 
-    const article = articles[0];
+    console.log("articlesImages: ", articlesImages);
+
+    const article = articlesImages[0];
+    let isMainImgDeleted = false;
+    let isAdditionalImgDeleted = false;
 
     // Delete files
     try {
       // Delete main image if it exists
       if (article.mainImage) {
-        const mainImagePath = path.join(__dirname, "..", article.mainImage);
+        const mainImagePath = path.join(
+          __dirname,
+          "../public",
+          article.mainImage
+        );
+        console.log("mainImagePath: ", mainImagePath);
         if (fs.existsSync(mainImagePath)) {
           fs.unlinkSync(mainImagePath);
+        }
+        if (!fs.existsSync(mainImagePath)) {
+          isMainImgDeleted = true;
         }
       }
 
       // Delete additional images if they exist
       if (article.additionalImages) {
-        const additionalImages = JSON.parse(article.additionalImages);
-        additionalImages.forEach((imagePath) => {
-          const fullPath = path.join(__dirname, "..", imagePath);
+        article.additionalImages.forEach((imagePath) => {
+          const fullPath = path.join(__dirname, "../public", imagePath);
+          console.log("fullPath: ", fullPath);
           if (fs.existsSync(fullPath)) {
             fs.unlinkSync(fullPath);
+          }
+          if (!fs.existsSync(fullPath)) {
+            isAdditionalImgDeleted = true;
           }
         });
       }
@@ -882,13 +977,30 @@ exports.deleteArticle = async (req, res) => {
       // Continue with article deletion even if file deletion fails
     }
 
-    // Delete article from database
-    await connection.execute("DELETE FROM articles WHERE id = ?", [id]);
+    if (!isMainImgDeleted || !isAdditionalImgDeleted) {
+      return res.status(400).json({
+        status: "error",
+        message: "Images can not be deleted",
+      });
+    }
 
-    return res.status(200).json({
-      status: "success",
-      message: "Article deleted successfully",
-    });
+    if (isMainImgDeleted && isAdditionalImgDeleted) {
+      // Delete article from database
+      const response = await connection.execute(
+        "DELETE FROM articles WHERE id = ?",
+        [id]
+      );
+      if (response.affectedRows === 0) {
+        return res.status(400).json({
+          status: "error",
+          message: "Impossible to delete article",
+        });
+      }
+      return res.status(200).json({
+        status: "success",
+        message: "Article deleted",
+      });
+    }
   } catch (error) {
     console.error("Error deleting article:", error);
     return res.status(500).json({
@@ -901,3 +1013,6 @@ exports.deleteArticle = async (req, res) => {
     }
   }
 };
+/************************************************
+ * ************ delete article ******************
+ **** end **************************************/

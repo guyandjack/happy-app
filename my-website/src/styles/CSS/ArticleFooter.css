@@ -1,6 +1,7 @@
 .article-footer {
   width: 100%;
-  margin: 20px 0px;
+  max-width: 900px;
+  margin: 20px auto;
   padding: 30px 10px;
   border-top: 1px solid rgba(23, 23, 23, 0.5);
   border-bottom: 1px solid rgba(23, 23, 23, 0.5);

@@ -1,5 +1,6 @@
 .menu-side {
   display: none;
+  padding: 2px;
   position: absolute;
   top: 100%;
   left: 0;
@@ -40,27 +41,30 @@
   text-decoration: none;
   cursor: pointer;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  min-width: 100px;
+  -webkit-transition: -webkit-transform 0.2s ease;
+  transition: -webkit-transform 0.2s ease;
+  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, -webkit-transform 0.2s ease;
 }
 @media screen and (min-width: 1300px) {
   .menu-side-link {
     font-size: 0.9rem;
   }
 }
-.menu-side-link::after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  left: 0px;
-  bottom: -2px;
-  height: 1px;
-  width: 0%;
-  background-color: #ffffff;
-  -webkit-transition: width 0.3s ease;
-  transition: width 0.3s ease;
-}
-.menu-side-link:hover::after {
-  width: 100%;
+.menu-side-link:hover {
+  -webkit-transform: translateY(-2px);
+      -ms-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-transition: -webkit-transform 0.2s ease;
+  transition: -webkit-transform 0.2s ease;
+  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, -webkit-transform 0.2s ease;
 }
 
 .menu-side-list li.active .menu-side-link {

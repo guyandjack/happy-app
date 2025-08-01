@@ -3,7 +3,7 @@
 
 .menu-side {
   display: none;
-
+  padding: 2px;
   position: absolute;
   top: 100%;
   left: 0;
@@ -17,8 +17,6 @@
   }
 
 }
-
-
 
 
 .menu-side-list {
@@ -36,11 +34,7 @@
 
   flex: 0 0 auto;
 
-
 }
-
-
-
 
 
 .menu-side-link {
@@ -51,27 +45,22 @@
   text-decoration: none;
   cursor: pointer;
   text-align: center;
-  font-size: 0.8rem;
-  //font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  min-width: 100px;
+  transition: transform 0.2s ease;
+
 
   @media screen and (min-width: 1300px) {
     font-size: 0.9rem;
   }
 
-  &::after {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    left: 0px;
-    bottom: -2px;
-    height: 1px;
-    width: 0%;
-    background-color: map-get($colors-rule, sixth-color);
-    transition: width 0.3s ease;
-  }
-
-  &:hover::after {
-    width: 100%;
+  &:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease;
 
   }
 
@@ -80,7 +69,6 @@
 
 .menu-side-list li.active .menu-side-link {
   color: map-get($colors-rule, fifth-color);
-
   padding: 2px 5px;
   background-color: map-get($colors-rule, sixth-color);
 }

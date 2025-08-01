@@ -1,5 +1,5 @@
 //import des hook
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 //import des librairies
 import axios from "axios";
@@ -71,13 +71,54 @@ async function vote(articleId, note) {
   }
 }
 
+/************* article footer *************
+ * ****************************************/
 function ArticleFooter({ article }) {
+  const { urlApi } = localOrProd();
   //declaration des states
   const [evaluation, setEvaluation] = useState(0);
   const [statusMessage, setStatusMessage] = useState({
     message: "",
     status: "",
   });
+  const [articleScore, setArticleScore] = useState({
+    scoreUp: "0",
+    scoreDown: "0",
+  });
+  const [fetchScore, setFetchScore] = useState(false);
+
+  //useeffect qui recupere le score de l' article
+  useEffect(() => {
+    const fetchArticleScore = async () => {
+      try {
+        const response = await axios.get(
+          `${urlApi}/articles/score/${article.id}`,
+          {
+            validateStatus: function (status) {
+              return status < 500;
+            },
+          }
+        );
+
+        if (response.data.status === "success") {
+          console.log("response data:", response.data);
+          setArticleScore({
+            scoreUp: response.data.scoreUp,
+            scoreDown: response.data.scoreDown,
+          });
+        } else {
+          console.log(response.data);
+        }
+      } catch (error) {
+        console.error(
+          "Erreur lors de la récupération du score de l'article:",
+          error
+        );
+      }
+    };
+    fetchArticleScore();
+  }, [fetchScore]);
+
   let lang = getLanguage();
 
   //copie le lien de la page pour partager article
@@ -105,6 +146,7 @@ function ArticleFooter({ article }) {
       setTimeout(() => {
         setStatusMessage({ message: "", status: "" });
       }, 3000);
+      setFetchScore(!fetchScore);
       setEvaluation(note);
     } else {
       setStatusMessage({ message: result.message, status: "error" });
@@ -130,6 +172,7 @@ function ArticleFooter({ article }) {
           >
             {lang === "fr" ? "J'aime" : "I like"}{" "}
             <FaRegThumbsUp className="thumb-icon" />
+            <span className="score-thumb-up">{articleScore.scoreUp}</span>
           </button>
           <button
             className="flex-row-start-center btn-thumb"
@@ -138,6 +181,7 @@ function ArticleFooter({ article }) {
           >
             {lang === "fr" ? "Je n'aime pas" : "I don't like"}{" "}
             <FaRegThumbsDown className="thumb-icon" />
+            <span className="score-thumb-down">{articleScore.scoreDown}</span>
           </button>
         </div>
         <p className={`vote-toast ${statusMessage.status}`}>

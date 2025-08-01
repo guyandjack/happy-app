@@ -1,15 +1,20 @@
 @import '../../utils/color-rule/color-rule.scss';
 
 .article-form-dashboard {
-  background-color: map-get($colors-rule, background-page-color);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(map-get($colors-rule, first-color), 0.6);
   max-width: 800px;
   margin: 0 auto;
+  padding: 20px;
+  border-radius: 6px;
+
+  .article-form {
+    width: 100%;
+  }
 
   .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+
+
 
     label {
       display: block;
@@ -22,7 +27,7 @@
     input[type="file"],
     select,
     textarea {
-      width: 100%;
+      width: 95%;
       padding: 10px;
       border: 1px solid map-get($colors-rule, third-color);
       border-radius: 4px;
@@ -40,6 +45,81 @@
       color: map-get($colors-rule, fourth-color);
       font-size: 0.9em;
       margin-top: 5px;
+    }
+
+
+
+    .image-preview {
+      margin: 20px 0;
+      position: relative;
+      max-width: 400px;
+      max-height: 200px;
+      border-radius: 4px;
+      overflow: hidden;
+
+
+      .image-preview-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .additional-images-preview {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-start;
+      align-items: center;
+
+      gap: 20px;
+      margin: 20px 0;
+      padding: 10px;
+      background-color: rgba(map-get($colors-rule, fifth-color), 0.6);
+
+      .additional-image-item {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        border-radius: 4px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .image-remove-btn {
+          position: absolute;
+          top: 5px;
+          right: 5px;
+          background: none;
+          border: none;
+          color: map-get($colors-rule, sixth-color);
+          cursor: pointer;
+          font-size: 1.2em;
+        }
+
+        .image-remove-btn {
+          display: flex;
+          flex-flow: row wrap;
+          justify-content: center;
+          align-items: center;
+          padding: 5px;
+          background-color: map-get($colors-rule, fourth-color);
+          border-radius: 2px;
+
+          &:hover {
+            .trash-icon {
+              color: map-get($colors-rule, fifth-color);
+            }
+
+          }
+
+        }
+      }
+
+
     }
   }
 
@@ -109,4 +189,41 @@
       font-size: 1.2em;
     }
   }
+
+  .form-actions {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    padding: 10px;
+    border: 1px solid map-get($colors-rule, second-color);
+    border-radius: 4px;
+    gap: 20px;
+    margin: 20px auto;
+
+
+  }
+
+  .preview-article {
+
+    width: 100%;
+    padding: 10px;
+    border: 1px solid map-get($colors-rule, fifth-color);
+    border-radius: 4px;
+    margin: 50px auto;
+    overflow: hidden;
+  }
+
+  .preview-article-title {
+
+    width: fit-content;
+    border-bottom: 1px solid rgba(map-get($colors-rule, fifth-color), 0.6);
+    color: map-get($colors-rule, fifth-color);
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+
 }

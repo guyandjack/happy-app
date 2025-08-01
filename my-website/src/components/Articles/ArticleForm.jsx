@@ -1,11 +1,23 @@
-import axios from "axios";
+//import des hooks
 import React, { useEffect, useRef, useState } from "react";
+
+//import des librairies
 import { useForm } from "react-hook-form";
+import axios from "axios";
+
+//import des icons
 import { FaTrash, FaUpload } from "react-icons/fa";
+
+//import des composants enfants
 import { ThreeDots } from "react-loader-spinner";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
+
+//import des feuilles de style
+import "@styles/CSS/normalise.css";
+import "@styles/CSS/shared-style.css";
 import "@styles/CSS/articleFormDashboard.css";
+import "@styles/CSS/article.css";
+
+//import des fonctions
 import { localOrProd } from "@utils/fonction/testEnvironement";
 
 const ArticleForm = ({ onSuccess, onCancel }) => {
@@ -292,7 +304,7 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
   const isButtonDisabled = !isValid || isSubmitting;
 
   return (
-    <div className="article-form-dashboard">
+    <div className="flex-column-start-center article-form-dashboard">
       {toast.show && (
         <div className={`toast-notification ${toast.type}`}>
           <div className="toast-content">
@@ -324,7 +336,7 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
         </div>
       )}
 
-      <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+      <form className="article-form" onSubmit={handleSubmit(onSubmit)}>
         {httpError && (
           <div className="error-message http-error">{httpError}</div>
         )}
@@ -419,9 +431,9 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
 
         {/* champ markdown */}
         <div className="form-group">
-          <label htmlFor="content">Contenu (en markdown) *</label>
+          <label htmlFor="content">Contenu</label>
           <textarea
-            placeholder="Contenu (en markdown)"
+            placeholder="Contenu"
             {...register("content", { required: "Le contenu est requis" })}
             rows={10}
             className="border p-2 rounded font-mono text-sm"
@@ -452,7 +464,11 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
             </button>
             {mainImagePreview && (
               <div className="image-preview">
-                <img src={mainImagePreview} alt="Aperçu" />
+                <img
+                  className="image-preview-img"
+                  src={mainImagePreview}
+                  alt="Aperçu"
+                />
                 <button
                   type="button"
                   className="image-remove-btn"
@@ -501,7 +517,7 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
                     className="image-remove-btn"
                     onClick={() => removeAdditionalImage(index)}
                   >
-                    <FaTrash />
+                    <FaTrash className="trash-icon" />
                   </button>
                 </div>
               ))}
@@ -528,19 +544,17 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
           </button>
         </div>
       </form>
-      {/* PRÉVISUALISATION MARKDOWN */}
-      <div className="bg-white border p-4 rounded shadow-sm">
-        <h3 className="text-lg font-semibold mb-2">🖼️ Aperçu de l'article</h3>
+      {/* PRÉVISUALISATION de l' article */}
+      <div className="preview-article">
+        <h3 className="preview-article-title"> Aperçu de l'article</h3>
         {watchContent.trim() === "" ? (
-          <p className="text-gray-400 italic">
+          <p className="preview-article-content">
             Commence à écrire du contenu...
           </p>
         ) : (
-          <div className="markdown-preview">
-            <ReactMarkdown
-              children={watchContent}
-              rehypePlugins={[rehypeRaw]}
-            />
+          <div className="preview-article-content">
+            <h1>{watchTitle}</h1>
+            <div dangerouslySetInnerHTML={{ __html: watchContent }} />
           </div>
         )}
       </div>
@@ -549,6 +563,3 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
 };
 
 export default ArticleForm;
-
-
-

@@ -4,8 +4,8 @@
 // Article container - Mobile First
 .article-wrapper {
     max-width: 900px;
-    margin: 0 auto;
-    padding: 0.5rem;
+    margin: 50px auto;
+    padding: 0px 20px;
     background: map-get($colors-rule, sixth-color);
     line-height: 1.7;
     color: map-get($colors-rule, fifth-color);
@@ -82,13 +82,13 @@
             font-size: 1rem;
             margin: 0;
             color: map-get($colors-rule, first-color);
-            font-weight: 400;
+            font-weight: 500;
             font-style: italic;
             border-left: 3px solid map-get($colors-rule, second-color);
             padding-left: 1rem;
 
             strong {
-                color: map-get($colors-rule, fourth-color);
+                color: map-get($colors-rule, fifth-color);
                 font-weight: 600;
             }
         }
@@ -116,9 +116,9 @@
         .article-subtitle-h2 {
             font-size: 1.2rem;
             font-weight: 600;
-            color: map-get($colors-rule, first-color);
+            color: map-get($colors-rule, fifth-color);
             //margin: 1.5rem 0 1rem 0;
-            border: 1px solid green;
+            //border: 1px solid green;
         }
     }
 
@@ -144,11 +144,11 @@
         .article-text {
             font-size: 1rem;
             margin: 0 0 1rem 0;
-            color: map-get($colors-rule, fifth-color);
+            color: rgba(map-get($colors-rule, fifth-color), 0.8);
             text-align: justify;
 
             strong {
-                color: map-get($colors-rule, fourth-color);
+                color: map-get($colors-rule, fifth-color);
                 font-weight: 600;
             }
         }
@@ -156,17 +156,21 @@
 
     }
 
+
+
     // Article conclusion section
     .article-conclusion-section {
         margin: 3rem 0;
         padding: 2rem;
 
 
-        .article-subtitle {
-            font-size: 1.6rem;
+        .article-subtitle-h2 {
+            font-size: 1.2rem;
             font-weight: 700;
-            color: map-get($colors-rule, fifth-color);
-            border-left: 3px solid map-get($colors-rule, second-color);
+            color: map-get($colors-rule, fourth-color);
+            color: rgba(map-get($colors-rule, sixth-color), 1);
+            padding: 1.5rem 0;
+            background-color: map-get($colors-rule, second-color);
             margin: 0 0 1.5rem 0;
             text-align: center;
         }
@@ -193,30 +197,48 @@
     }
 
     // Article list resume
+
+    .article-resume-section {
+        .article-subtitle-h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-align: center;
+            color: rgba(map-get($colors-rule, sixth-color), 1);
+            padding: 1.5rem 0;
+            background-color: map-get($colors-rule, second-color);
+        }
+    }
+
     .article-list-resume {
         list-style: none;
-        padding: 0;
         margin: 1.5rem 0;
+
+
 
         li {
             position: relative;
             padding: 0.5rem 0 0.5rem 1.5rem;
             margin-bottom: 0.75rem;
-            //border-left: 2px solid map-get($colors-rule, second-color);
-            padding-left: 1rem;
 
             &::before {
-                content: '•';
+                content: '*';
                 position: absolute;
                 left: 0;
+                top: 50%;
+                transform: translateY(-50%);
                 color: map-get($colors-rule, second-color);
                 font-weight: bold;
-                font-size: 1.1rem;
+                font-size: 1.8rem;
             }
 
             strong {
-                color: map-get($colors-rule, fourth-color);
+                color: map-get($colors-rule, fifth-color);
                 font-weight: 600;
+            }
+
+            .article-text {
+                font-size: 1.1rem;
+                color: rgba(map-get($colors-rule, fifth-color), 0.8);
             }
         }
     }
@@ -249,7 +271,7 @@
         .article-main-section {
             margin-bottom: 4rem;
 
-            .article-subtitle {
+            .article-subtitle-h2 {
                 font-size: 1.6rem;
                 margin: 2rem 0 1.5rem 0;
             }
@@ -262,7 +284,7 @@
                 font-size: 1.2rem;
             }
 
-            .article-subtitle {
+            .article-subtitle-h3 {
                 font-size: 1.3rem;
                 margin: 2rem 0 1rem 0;
             }
@@ -281,15 +303,23 @@
             margin: 4rem 0;
             padding: 2.5rem;
 
-            .article-subtitle {
+            .article-subtitle-h2 {
                 font-size: 1.8rem;
-                margin: 0 0 2rem 0;
             }
+
+
 
             .article-conclusion-text {
                 font-size: 1.2rem;
                 line-height: 1.9;
                 margin: 0 0 2rem 0;
+            }
+        }
+
+        .article-resume-section {
+            .article-subtitle-h2 {
+                font-size: 1.6rem;
+
             }
         }
 
@@ -300,7 +330,12 @@
                 padding: 0.5rem 0 0.5rem 2rem;
                 margin-bottom: 1rem;
                 padding-left: 1.5rem;
+
+                .article-text {
+                    font-size: 1.2rem;
+                }
             }
+
         }
     }
 
@@ -330,11 +365,20 @@
         .article-main-section {
             .article-img-subtitle-wrapper {
                 flex-flow: row nowrap;
-                gap: 3rem;
+                justify-content: flex-start;
+                gap: 10px;
+                height: 200px;
             }
 
-            .article-subtitle {
+            .article-img-subtitle {
+                width: 300px;
+                height: 100%;
+            }
+
+            .article-subtitle-h2 {
+                flex: 0 1 50%;
                 font-size: 2rem;
+                height: 100%;
             }
         }
 
@@ -354,7 +398,7 @@
             margin: 5rem 0;
             padding: 3rem;
 
-            .article-subtitle {
+            .article-subtitle-h2 {
                 font-size: 2rem;
                 margin: 0 0 2.5rem 0;
             }
@@ -363,6 +407,13 @@
                 font-size: 1.3rem;
                 line-height: 2;
                 margin: 0 0 2.5rem 0;
+            }
+        }
+
+        .article-resume-section {
+            .article-subtitle-h2 {
+                font-size: 2rem;
+
             }
         }
     }

@@ -5,7 +5,6 @@ const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
 const compression = require("compression");
 const path = require("path");
-const fs = require("fs");
 const cookieParser = require("cookie-parser");
 
 // Import routes
@@ -18,6 +17,9 @@ const imagesRoutes = require("./routes/images.routes");
 // Create Express app
 const app = express();
 
+// Serve static files from the public directory (this should be first)
+app.use(express.static(path.join(__dirname, "public")));
+
 // Configure CORS options
 const corsOptions = {
   origin: function (origin, callback) {
@@ -28,7 +30,7 @@ const corsOptions = {
     ];
 
     if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true); // ✅ autorise les requêtes sans origin (ex: mobile, curl)
+      callback(null, true); // autorise les requêtes sans origin (ex: mobile, curl)
     } else {
       callback(new Error("Not allowed by CORS"), false);
     }
@@ -41,7 +43,7 @@ const corsOptions = {
 // Apply CORS middleware
 app.use(cors(corsOptions));
 
-// Set security HTTP headers
+// Set security HTTP headers (should be applied after CORS)
 app.use(
   helmet({
     contentSecurityPolicy: false, // Disable CSP for development
@@ -49,76 +51,35 @@ app.use(
   })
 );
 
-// Parse JSON request body
+// Parse JSON and URL-encoded request bodies (before routes)
 app.use(express.json({ limit: "10mb" }));
-
-// Parse URL-encoded request body
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
-// Logger middleware
+// Logger middleware (can be applied after body parsers)
 app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev"));
 
-// Compress all responses
+// Compress all responses (after parsing)
 app.use(compression());
 
 // Parse cookies
 app.use(cookieParser());
 
-// Rate limiting
+// Rate limiting (apply after CORS and body parsers)
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 50, // limit each IP to 100 requests per windowMs
+  max: 50, // limit each IP to 50 requests per windowMs
   message: "Too many requests from this IP, please try again after 15 minutes",
 });
-app.use("/api/", limiter);
+app.use("/api/", limiter); // Apply rate limiting on /api routes
 
-// Create uploads directory if it doesn't exist
-const uploadsDir = path.join(__dirname, "uploads");
-if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir, { recursive: true });
-}
-
-// Serve static files from the uploads directory with CORS enabled
-app.use(
-  "/api/uploads",
-  (req, res, next) => {
-    // Set CORS headers specifically for static files
-    res.header("Access-Control-Allow-Origin", "*"); // Allow all origins for static files
-    res.header("Access-Control-Allow-Methods", "GET");
-    res.header("Access-Control-Allow-Headers", "Content-Type");
-    res.header("cross-origin-resource-policy", "cross-origin");
-    next();
-  },
-  express.static(path.join(__dirname, "uploads"))
-);
-
-// Serve static files from the public directory
-app.use(express.static(path.join(__dirname, "public")));
-
-// Serve frontend build files in production
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "..", "dist")));
-
-  // For any route not handled by the API, serve the index.html
-  /* app.get("*", (req, res) => {
-    if (!req.path.startsWith("/api")) {
-      res.sendFile(path.join(__dirname, "..", "dist", "index.html"));
-    }
-  }); */
-}
-
-// Routes
+// Routes (after static files and middlewares)
 app.use("/api/auth", authRoutes);
 app.use("/api/articles", articleRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/recaptcha", recaptchaRoutes);
 app.use("/api/images", imagesRoutes);
 
-app.use("/api/test", (req, res) => {
-  res.status(200).json({ message: "test ok" });
-});
-
-// Error handling middleware
+// Error handling middleware (should be applied last)
 app.use((err, req, res, next) => {
   console.error(err.stack);
 

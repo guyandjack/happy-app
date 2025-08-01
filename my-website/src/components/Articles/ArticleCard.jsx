@@ -8,6 +8,10 @@ import "@styles/CSS/ArticleCard.css";
 
 function ArticleCard({ article }) {
   const { urlApi, url } = localOrProd();
+
+  //modifie urlApi pour la requete sur le dossier static
+  const newUrlApi = urlApi.split("/api")[0];
+
   const lang = getLanguage();
   const [isFocused, setIsFocused] = useState(false);
 
@@ -21,20 +25,20 @@ function ArticleCard({ article }) {
 
   // Get the correct image URL
   const imageUrl = article.mainImage
-    ? `${urlApi}/${article.mainImage}`
+    ? `${newUrlApi}/${article.mainImage}`
     : "/images/article-placeholder.jpg";
 
   const slug = article.slug;
 
-  // Get the article URL (server-rendered page)
-  //const articleUrl = article.articleUrl;
-
   // Handle click on the entire card
-  const handleCardClick = (e) => {
-    e.preventDefault();
+  const handleCardClick = () => {
     //store article in local storage
-    localStorage.setItem("article", JSON.stringify(article));
-    window.location.href = "/public/fr/article.html?slug=" + slug;
+    localStorage.getItem("article")
+      ? localStorage.removeItem("article")
+      : localStorage.setItem("article", JSON.stringify(article));
+    if (localStorage.getItem("article")) {
+      window.location.href = "/public/fr/article.html?article_title=" + slug;
+    }
   };
 
   return (
@@ -42,9 +46,7 @@ function ArticleCard({ article }) {
       type="button"
       className={`article-card ${isFocused ? "focused" : ""}`}
       tabIndex="0"
-      onClick={(e) => {
-        handleCardClick(e);
-      }}
+      onClick={handleCardClick}
     >
       <div className="flex-column-start-center article-card-image">
         <img src={imageUrl} alt={article.title} loading="lazy" />
