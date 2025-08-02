@@ -1,16 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { FaEdit, FaFilter, FaSearch, FaTrash } from "react-icons/fa";
+import { FaEdit, FaSearch, FaTrash } from "react-icons/fa";
+import { FaLanguage } from "react-icons/fa6";
 import { IoFilterSharp } from "react-icons/io5";
 import { toast } from "react-toastify";
 
 import { localOrProd } from "@utils/fonction/testEnvironement";
 import { ArticleCard } from "@components/Articles/ArticleCard";
+import { getLanguage } from "@utils/fonction/getLanguage";
 
 import "@styles/CSS/AdminArticleList.css";
 
 const AdminArticleList = () => {
   const { urlApi } = localOrProd();
+  const lang = getLanguage();
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -28,10 +31,10 @@ const AdminArticleList = () => {
   useEffect(() => {
     if (window.location.href.includes("dashboard")) {
       setIsPageDashboard(true);
+    } else {
+      setIsPageDashboard(false);
     }
-    setIsPageDashboard(false);
-  }),
-    [];
+  }, []);
 
   //recupere les categories des articles de la bdd
   useEffect(() => {
@@ -66,6 +69,7 @@ const AdminArticleList = () => {
         const params = {
           page: currentPage,
           limit: 10,
+          lang: lang,
         };
 
         let response = null;
@@ -74,7 +78,15 @@ const AdminArticleList = () => {
         console.log("selectedCategory: ", selectedCategory);
 
         if (selectedCategory) {
-          response = await axios.get(`${urlApi}/articles/filter`, { params });
+          response = await axios.get(
+            `${urlApi}/articles/filter`,
+            { params },
+            {
+              validateStatus: function (status) {
+                return status < 500;
+              },
+            }
+          );
         } else {
           console.log("dans la condition pour fecher les articles");
           response = await axios.get(
@@ -87,11 +99,12 @@ const AdminArticleList = () => {
             }
           );
         }
-        console.log("response: ", response);
 
         if (response.data.status === "success") {
+          console.log("dans la condition pour de success");
           setArticles(response.data.data);
           setFilteredArticles(response.data.data);
+          console.log("filteredArticles: ", filteredArticles);
           setTotalPages(Math.ceil(response.data.articlesNumber / params.limit));
         }
 
@@ -117,12 +130,21 @@ const AdminArticleList = () => {
         const params = {
           page: currentPage,
           limit: 10,
+          lang: lang,
         };
         params.search = searchTerm;
-        const response = await axios.get(`${urlApi}/articles/search`, {
-          params,
-        });
-        setFilteredArticles(response.data.data.articles);
+        const response = await axios.get(
+          `${urlApi}/articles/search`,
+          {
+            params,
+          },
+          {
+            validateStatus: function (status) {
+              return status < 500;
+            },
+          }
+        );
+        setFilteredArticles(response.data.data);
       } catch (error) {
         console.error("Error fetching articles:", error);
       } finally {
@@ -172,6 +194,23 @@ const AdminArticleList = () => {
     setCurrentPage(1); // Reset to first page when changing category
   };
 
+  const getAllLanguageArticles = async () => {
+    console.log("getAllLanguageArticles running");
+    try {
+      const response = await axios.get(`${urlApi}/articles/dashboard`, {
+        validateStatus: function (status) {
+          return status < 500;
+        },
+      });
+      if (response.data.status === "success") {
+        setArticles(response.data.data);
+        setFilteredArticles(response.data.data);
+      }
+    } catch (error) {
+      console.error("Error fetching articles:", error);
+    }
+  };
+
   if (loading === 0) {
     return <div className="loading">Chargement des articles...</div>;
   }
@@ -187,6 +226,18 @@ const AdminArticleList = () => {
   return (
     <div className="admin-article-list-container">
       <div className="filters">
+        {isPageDashboard && (
+          <div className="language-filter">
+            <button
+              type="button"
+              onClick={() => getAllLanguageArticles()}
+              className="flex-row-start-center language-filter-button"
+            >
+              <FaLanguage className="language-filter-icon" />
+              <span>Afficher l'ensemble des articles</span>
+            </button>
+          </div>
+        )}
         <div className="search-box">
           <FaSearch className="search-icon" />
           <input
@@ -223,7 +274,7 @@ const AdminArticleList = () => {
           {filteredArticles.map((article) => (
             <div key={article.id} className="admin-article-card-wrapper">
               <ArticleCard article={article} />
-              {isPageDashboard ?? (
+              {isPageDashboard && (
                 <div className="admin-article-actions">
                   <button
                     className="edit-btn"

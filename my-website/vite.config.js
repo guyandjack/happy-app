@@ -41,7 +41,7 @@ export default defineConfig({
         ),
         //realisations_fr: path.resolve(__dirname, "./src/pages/fr/realisations.html"),
         contact_fr: path.resolve(__dirname, "./public/fr/contact.html"),
-        //articles_fr: path.resolve(__dirname, "./src/pages/fr/articles.html"),
+        articles_fr: path.resolve(__dirname, "./public/fr/articles-list.html"),
         connexion_fr: path.resolve(__dirname, "./public/fr/connexion.html"),
         legal_fr: path.resolve(
           __dirname,
@@ -51,7 +51,7 @@ export default defineConfig({
           __dirname,
           "./public/fr/legal/politique-de-confidentialite.html"
         ),
-        //dashboard_fr: path.resolve(__dirname, "./src/pages/fr/dashboard.html"),
+        dashboard_fr: path.resolve(__dirname, "./public/fr/dashboard.html"),
 
         // EN pages
         home_en: path.resolve(__dirname, "./public/en/home.html"),
@@ -74,6 +74,8 @@ export default defineConfig({
         ), */
         contact_en: path.resolve(__dirname, "./public/en/contact.html"),
         /* articles_en: path.resolve(__dirname, "./public/en/articles.html"),*/
+        articles_en: path.resolve(__dirname, "./public/en/articles-list.html"),
+        article_en: path.resolve(__dirname, "./public/en/article.html"),
         legal_en: path.resolve(
           __dirname,
           "./public/en/legal/legal-notice.html"

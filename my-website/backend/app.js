@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, "public")));
 const corsOptions = {
   origin: function (origin, callback) {
     const allowedOrigins = [
+      "http://localhost:4173",
       "http://localhost:5173",
       "https://helveclick.ch",
       "https://happy-api-hd3g.onrender.com",
@@ -78,6 +79,9 @@ app.use("/api/articles", articleRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/recaptcha", recaptchaRoutes);
 app.use("/api/images", imagesRoutes);
+app.get("/api/dashboard", (req, res) => {
+  res.send("Hello World");
+});
 
 // Error handling middleware (should be applied last)
 app.use((err, req, res, next) => {

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Articles on Web Development, SEO, Eco-design and Mobile Apps | helveclick</title>
+    <meta name="description"
+        content="Explore our articles dedicated to web development, eco-design, SEO, mobile applications and websites. Useful content for beginners and experts." />
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical & Hreflang -->
+    <link rel="canonical" href="https://helveclick.ch/public/en/articles-list.html">
+    <link rel="alternate" hreflang="fr" href="https://helveclick.ch/public/fr/articles-list.html">
+    <link rel="alternate" hreflang="en" href="https://helveclick.ch/public/en/articles-list.html">
+    <link rel="alternate" hreflang="x-default" href="https://helveclick.ch/public/en/articles-list.html">
+
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://helveclick.ch/public/en/articles.html">
+    <meta property="og:title" content="Articles on Web Development, SEO, Eco-design and Mobile Apps | helveclick">
+    <meta property="og:description"
+        content="Explore my articles dedicated to web development, eco-design, SEO, mobile applications and websites. Useful content for beginners and experts.">
+    <!-- <meta property="og:image" content="https://helveclick.ch/images/og-home.jpg"> -->
+    <meta property="og:locale" content="en_CH">
+    <meta property="og:site_name" content="HelveClick">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Articles on Web Development, SEO, Eco-design and Mobile Apps | helveclick">
+    <meta name="twitter:description"
+        content="Explore my articles dedicated to web development, eco-design, SEO, mobile applications and websites. Useful content for beginners and experts.">
+    <!-- <meta name="twitter:image" content="https://helveclick.ch/images/og-home.jpg"> -->
+
+
+    <!-- Geolocation Tags -->
+    <meta name="geo.region" content="CH">
+    <meta name="geo.placename" content="Crans-Montana">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "HelveClick",
+      "url": "https://helveclick.ch",
+      "logo": "",
+      "description": "Freelance web and mobile developer based in Crans-Montana (Valais, Switzerland), specialized in eco-designed website creation, mobile applications and SEO optimization.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "",
+        "addressLocality": "Crans-Montana",
+        "addressRegion": "Valais",
+        "postalCode": "3963",
+        "addressCountry": "CH"
+      },
+      "email": "mailto:info@helveclick.ch",
+      "telephone": "+41 78 894 09 87",
+      "sameAs": [
+        "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/",
+        
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Dupanloup Guillaume",
+        "jobTitle": "Freelance web and mobile developer",
+        "url": "https://helveclick.ch",
+        "image": "",
+        "sameAs": [
+          "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/",
+          
+        ]
+      }
+    }
+    </script>
+
+    <!-- Scripts in head -->
+    <script type="module" src="../../src/jsx/page-articles-list.jsx"></script>
+</head>
+
+<body>
+    <div class="page-container">
+        <header>
+            <!-- Navbar will be mounted here by React -->
+            <div id="RC-navbar"></div>
+        </header>
+        <div id="RC-link-top-page" class="hide"></div>
+
+        <main>
+            <section class="flex-column-start-center hero-wrapper">
+                <div class="flex-column-center-center hero-container">
+
+                    <img src="/assets/images/page-articles/img-hero-articles-1.webp" alt="Header decoration">
+
+                    <img src="/assets/images/page-articles/img-hero-articles-2.webp" alt="Header decoration" />
+
+                    <div class="hero-container-title">
+                        <h1>Articles dedicated to web development.</h1>
+
+                        <p class="hero-subtitle">
+                            <strong>
+                                Eco-design, SEO, mobile applications, trends...
+                            </strong>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="flex-column-start-center articles-content">
+                <!-- ArticlesList component will be mounted here -->
+                <div id="RC-articles-list"></div>
+            </section>
+            <div id="RC-cta-section">
+
+
+            </div>
+        </main>
+
+        <!-- Footer will be mounted here by React -->
+        <div id="RC-footer"></div>
+    </div>
+</body>
+
+
+</html>

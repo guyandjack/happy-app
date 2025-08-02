@@ -1,3 +1,6 @@
+@import "../../utils/color-rule/color-rule.scss";
+
+
 .admin-article-list-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -43,6 +46,27 @@
     align-items: flex-start;
     gap: 1rem;
     margin-bottom: 1.5rem;
+
+    .language-filter {
+      margin-bottom: 1rem;
+
+      .language-filter-button {
+        position: relative;
+        z-index: 2;
+        gap: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        border: 1px solid map-get($colors-rule, fifth-color);
+        cursor: pointer;
+
+
+      }
+
+      .language-filter-icon {
+        font-size: 2rem;
+        opacity: 0.6;
+      }
+    }
 
     .search-box {
       //flex: 1;

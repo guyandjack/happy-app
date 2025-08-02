@@ -2,36 +2,24 @@
 .timer-session {
   position: relative;
   list-style: none;
-  padding: 0;
-  margin: 10px 0px;
-  background-color: #ffffff;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 200px;
-  overflow: hidden;
-}
-@media (min-width: 992px) {
-  .timer-session {
-    width: 130px;
-    margin: 0px;
-    overflow: visible;
-  }
+  background-color: #c7e3cd;
+  width: 130px;
+  gap: 0;
 }
 @media (min-width: 1500px) {
   .timer-session {
-    width: 200px;
-    margin: 0px;
+    width: 150px;
   }
 }
 .timer-session .timer-user-session {
   position: relative;
+  width: 100%;
   cursor: pointer;
   padding: 0.75rem;
   background-color: #00beb8;
   color: #ffffff;
   -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
-  width: 100%;
 }
 .timer-session .timer-user-session:hover {
   background-color: #024d4a;
@@ -63,40 +51,54 @@
           transform: rotate(180deg);
 }
 .timer-session .collapsible-content {
-  width: 100%;
   max-height: 0;
   overflow: hidden;
   -webkit-transition: max-height 0.3s ease-out;
   transition: max-height 0.3s ease-out;
-  background-color: #ffffff;
+  width: 0;
+  gap: 0;
+}
+.timer-session .collapsible-content li {
+  width: 100%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
 }
 @media (min-width: 992px) {
   .timer-session .collapsible-content {
     position: absolute;
     top: 100%;
     left: 0;
-    max-width: 150px;
     z-index: 1000;
   }
-}
-.timer-session .collapsible-content.active {
-  width: 100%;
-  max-height: 300px;
+  .timer-session .collapsible-content.active {
+    width: 100%;
+    max-height: 400px;
+  }
 }
 .timer-session .timer-session-counter {
-  width: 100%;
-  text-align: center;
-  color: #024d4a;
-  margin: 1rem 0;
-  padding: 1rem;
+  padding: 0.75rem 0;
   background-color: #c7e3cd;
+}
+.timer-session #timer-session-link {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 0;
+  border: none;
+  background-color: #00beb8;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  line-height: normal;
+  color: #ffffff;
+}
+.timer-session #timer-session-link:hover {
+  background-color: #024d4a;
 }
 .timer-session .timer-session-button {
   width: 100%;
-}
-.timer-session .timer-session-button button {
-  width: 100%;
-  padding: 0.75rem;
+  padding: 0.75rem 0;
   border: none;
   background-color: #00beb8;
   color: #ffffff;
@@ -105,6 +107,6 @@
   transition: background-color 0.3s ease;
   text-align: center;
 }
-.timer-session .timer-session-button button:hover {
+.timer-session .timer-session-button:hover {
   background-color: #024d4a;
 }/*# sourceMappingURL=Timersession.css.map */

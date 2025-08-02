@@ -123,6 +123,14 @@ function Navbar() {
     return "";
   };
 
+  const isActiveV2 = (itemtext) => {
+    if (window.location.pathname.includes(itemtext.toLowerCase())) {
+      console.log("itemtext", itemtext);
+      return "active";
+    }
+    return "";
+  };
+
   // Updated menu items with services submenu
   const menuItems = {
     fr: [
@@ -137,7 +145,7 @@ function Navbar() {
           },
           {
             path: `/public/fr/prestations/seo.html`,
-            text: "Référencement",
+            text: "Optimisation SEO",
           },
           {
             path: `/public/fr/prestations/application-mobile.html`,
@@ -147,6 +155,7 @@ function Navbar() {
       },
       { path: `/public/fr/contact.html`, text: "Contact" },
       { path: `/public/fr/articles-list.html`, text: "Articles" },
+      { path: `/public/fr/article.html`, text: "" },
       {
         path: `/public/fr/legal/mentions-legales.html`,
         text: "",
@@ -166,7 +175,7 @@ function Navbar() {
             path: `/public/en/services/website.html`,
             text: "Website",
           },
-          { path: `/public/en/services/seo.html`, text: "SEO" },
+          { path: `/public/en/services/seo.html`, text: "SEO Optimization" },
           {
             path: `/public/en/services/mobile-application.html`,
             text: "Mobile App",
@@ -174,6 +183,8 @@ function Navbar() {
         ],
       },
       { path: `/public/en/contact.html`, text: "Contact" },
+      { path: `/public/en/articles-list.html`, text: "Articles" },
+      { path: `/public/en/article.html`, text: "" },
       { path: `/public/en/legal/legal-notice.html`, text: "" },
       {
         path: `/public/en/legal/privacy-policy.html`,
@@ -223,7 +234,7 @@ function Navbar() {
       currentPath.includes("mentions-legales") ||
       currentPath.includes("legal-notice")
     ) {
-      window.location.href = menuItems[lang][4].path;
+      window.location.href = menuItems[lang][6].path;
     }
 
     //pages politique de confidentialite
@@ -231,12 +242,20 @@ function Navbar() {
       currentPath.includes("politique") ||
       currentPath.includes("privacy-policy")
     ) {
-      window.location.href = menuItems[lang][5].path;
+      window.location.href = menuItems[lang][7].path;
     }
 
     //pages apropos et about
     if (currentPath.includes("a-propos") || currentPath.includes("about")) {
       window.location.href = menuItems[lang][1].path;
+    }
+
+    //pages articles-list
+    if (
+      currentPath.includes("articles-list") ||
+      currentPath.includes("article")
+    ) {
+      window.location.href = menuItems[lang][4].path;
     }
   };
 
@@ -288,7 +307,7 @@ function Navbar() {
                   aria-haspopup="true"
                   aria-expanded={isServicesOpen}
                   aria-controls="sous-menu"
-                  className={`has-submenu ${isActive(item.path)} ${
+                  className={`has-submenu ${isActiveV2(item.text)} ${
                     isServicesOpen ? "open" : ""
                   }`}
                   aria-label={`${item.text} menu`}

@@ -4,33 +4,26 @@
 .timer-session {
     position: relative;
     list-style: none;
-    padding: 0;
-    margin: 10px 0px;
-    background-color: map-get($colors-rule, 'sixth-color');
-    //border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    overflow: hidden;
+    background-color: map-get($colors-rule, 'third-color');
+    width: 130px;
+    gap: 0;
+    //overflow: hidden;
 
-    @media (min-width: 992px) {
-        width: 130px;
-        margin: 0px;
-        overflow: visible;
-    }
+
 
     @media (min-width: 1500px) {
-        width: 200px;
-        margin: 0px;
+        width: 150px;
+
     }
 
     .timer-user-session {
         position: relative;
+        width: 100%;
         cursor: pointer;
         padding: 0.75rem;
         background-color: map-get($colors-rule, 'second-color');
         color: map-get($colors-rule, 'sixth-color');
         transition: background-color 0.3s ease;
-        width: 100%;
 
         &:hover {
             background-color: map-get($colors-rule, 'first-color');
@@ -58,58 +51,73 @@
     }
 
     .collapsible-content {
-        width: 100%;
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease-out;
-        background-color: map-get($colors-rule, 'sixth-color');
+        width: 0;
+        gap: 0;
+
+        & li {
+            width: 100%;
+            flex: 0 0 auto;
+        }
+
 
         @media (min-width: 992px) {
             position: absolute;
             top: 100%;
             left: 0;
-            max-width: 150px;
-            //padding: 0.5rem;
             z-index: 1000;
+
+            &.active {
+
+                width: 100%;
+                max-height: 400px; // Adjust this value based on your content
+
+            }
         }
 
-        &.active {
-
-            width: 100%;
-            max-height: 300px; // Adjust this value based on your content
-            //padding: 1rem;
-        }
     }
 
     .timer-session-counter {
-        width: 100%;
-        text-align: center;
-        //font-size: 1.1rem;
-        color: map-get($colors-rule, 'first-color');
-        margin: 1rem 0;
-        padding: 1rem;
+        padding: 0.75rem 0;
         background-color: map-get($colors-rule, 'third-color');
-        //border-radius: 4px;
+
+    }
+
+    #timer-session-link {
+        display: block;
+        width: 100%;
+        padding: 0.75rem 0;
+        border: none;
+        background-color: map-get($colors-rule, 'second-color');
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-align: center;
+        line-height: normal;
+        color: map-get($colors-rule, 'sixth-color');
+
+        &:hover {
+            background-color: map-get($colors-rule, 'first-color');
+        }
+
+
+
     }
 
     .timer-session-button {
-        //margin: 0.5rem 0;
         width: 100%;
+        padding: 0.75rem 0;
+        border: none;
+        background-color: map-get($colors-rule, 'second-color');
+        color: map-get($colors-rule, 'sixth-color');
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-align: center;
 
-        button {
-            width: 100%;
-            padding: 0.75rem;
-            border: none;
-            //border-radius: 4px;
-            background-color: map-get($colors-rule, 'second-color');
-            color: map-get($colors-rule, 'sixth-color');
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            text-align: center;
-
-            &:hover {
-                background-color: map-get($colors-rule, 'first-color');
-            }
+        &:hover {
+            background-color: map-get($colors-rule, 'first-color');
         }
+
     }
 }

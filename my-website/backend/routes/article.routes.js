@@ -9,6 +9,7 @@ const router = express.Router();
 
 // Public routes
 router.get("/", articleController.getAllArticles);
+router.get("/dashboard", articleController.getArticlesDashboard);
 router.get("/filter", articleController.getArticleByCategory);
 router.get("/categories", articleController.getCategories);
 router.get("/search", articleController.searchArticles);

@@ -2,18 +2,41 @@ const Article = require("../models/article.model");
 const cloudinary = require("../utils/cloudinary");
 const fs = require("fs");
 const path = require("path");
-const { JSDOM } = require("jsdom");
 const { getConnection, releaseConnection } = require("../config/database");
 const multer = require("multer");
-const { v4: uuidv4 } = require("uuid");
 
 //fonctions utilitaires
 const localOrProd = require("../utils/function/localOrProd");
-const createArticle = require("../utils/function/generateArticle");
 const checkParams = require("../utils/function/checkParams");
 
-//variables globales
-let bddIsEmpty = false;
+/************************************************
+ * ************ get articles dashboard **********
+ **** start **************************************/
+exports.getArticlesDashboard = async (req, res) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+    const [articles] = await connection.execute("SELECT * FROM articles ");
+
+    if (articles.length === 0) {
+      return res.status(404).json({
+        status: "error",
+        message: "No articles found for dashboard",
+      });
+    }
+    return res.status(200).json({
+      status: "success",
+      data: articles,
+    });
+  } catch (error) {
+    console.error("Error getting connection:", error);
+  }
+};
+
+/************************************************
+ * ************ get articles dashboard **********
+ **** end **************************************/
 
 /************************************************
  * ************ vote ***************************
@@ -231,7 +254,10 @@ exports.getCategories = async (req, res) => {
  **** start **************************************/
 
 exports.getAllArticles = async (req, res) => {
-  const { status, data } = checkParams(req.query, ["page", "limit"]);
+  const { status, data } = checkParams(req.query, ["page", "limit", "lang"]);
+  console.log("data: ", data);
+  console.log("status: ", status);
+  console.log("req.query: ", req.query);
 
   if (status === "error") {
     return res.status(400).json({
@@ -239,7 +265,10 @@ exports.getAllArticles = async (req, res) => {
       data: data,
     });
   }
-  const { page, limit } = data;
+  const { page, limit, lang } = data;
+  console.log("page: ", page);
+  console.log("limit: ", limit);
+  console.log("lang: ", lang);
 
   let connection;
   try {
@@ -255,15 +284,15 @@ exports.getAllArticles = async (req, res) => {
     }
 
     if (test[0]["COUNT(*)"] > 0) {
-      const sql = `SELECT * FROM articles ORDER BY createdAt DESC LIMIT ${connection.escape(
+      const sql = `SELECT * FROM articles WHERE language = ? ORDER BY createdAt DESC LIMIT ${connection.escape(
         limit
       )} OFFSET ${connection.escape(page)}`;
-      const [articles] = await connection.query(sql);
+      const [articles] = await connection.query(sql, [lang]);
 
       if (articles.length === 0) {
         return res.status(404).json({
           status: "error",
-          message: "No articles found",
+          message: "No articles founded",
         });
       }
 
@@ -293,6 +322,7 @@ exports.getArticleByCategory = async (req, res) => {
     "page",
     "limit",
     "category",
+    "lang",
   ]);
 
   if (status === "error") {
@@ -302,7 +332,7 @@ exports.getArticleByCategory = async (req, res) => {
     });
   }
 
-  const { page, limit, category } = data;
+  const { page, limit, category, lang } = data;
 
   let connection;
 
@@ -310,10 +340,10 @@ exports.getArticleByCategory = async (req, res) => {
     connection = await getConnection();
 
     const [articles] = await connection.execute(
-      `SELECT * FROM articles WHERE category = ? ORDER BY createdAt DESC LIMIT ${connection.escape(
+      `SELECT * FROM articles WHERE category = ? AND language = ? ORDER BY createdAt DESC LIMIT ${connection.escape(
         limit
       )} OFFSET ${connection.escape(page)}`,
-      [category]
+      [category, lang]
     );
     if (articles.length === 0) {
       return res.status(404).json({
@@ -326,9 +356,7 @@ exports.getArticleByCategory = async (req, res) => {
 
     return res.status(200).json({
       status: "success",
-      data: {
-        articles,
-      },
+      data: articles,
     });
   } catch (error) {
     console.error("Error getting article by category:", error);
@@ -351,7 +379,12 @@ exports.getArticleByCategory = async (req, res) => {
  **** start **************************************/
 
 exports.searchArticles = async (req, res) => {
-  const { status, data } = checkParams(req.query, ["page", "limit", "search"]);
+  const { status, data } = checkParams(req.query, [
+    "page",
+    "limit",
+    "search",
+    "lang",
+  ]);
 
   if (status === "error") {
     return res.status(400).json({
@@ -360,16 +393,16 @@ exports.searchArticles = async (req, res) => {
     });
   }
 
-  const { page, limit, search } = data;
+  const { page, limit, search, lang } = data;
 
   let connection;
   try {
     connection = await getConnection();
     const [articles] = await connection.execute(
-      `SELECT * FROM articles WHERE title LIKE ? OR excerpt LIKE ? ORDER BY createdAt DESC LIMIT ${connection.escape(
+      `SELECT * FROM articles WHERE title LIKE ? OR excerpt LIKE ? AND language = ? ORDER BY createdAt DESC LIMIT ${connection.escape(
         limit
       )} OFFSET ${connection.escape(page)}`,
-      [`%${search}%`, `%${search}%`]
+      [`%${search}%`, `%${search}%`, lang]
     );
 
     if (articles.length === 0) {
@@ -382,9 +415,7 @@ exports.searchArticles = async (req, res) => {
     return res.status(200).json({
       status: "success",
       results: articles.length,
-      data: {
-        articles,
-      },
+      data: articles,
     });
   } catch (error) {
     console.error("Error getting articles by search term:", error);
@@ -497,14 +528,14 @@ exports.getPreviousArticle = async (req, res) => {
 
     // Find the previous article (older than current)
     let query =
-      "SELECT * FROM articles WHERE createdAt < ? ORDER BY createdAt DESC LIMIT 1";
-    let params = [currentArticle.createdAt];
+      "SELECT * FROM articles WHERE createdAt < ? AND language = ? ORDER BY createdAt DESC LIMIT 1";
+    let params = [currentArticle.createdAt, lang];
 
     // If category is specified in query params, filter by category
     if (req.query.category) {
       query =
-        "SELECT * FROM articles WHERE createdAt < ? AND category = ? ORDER BY createdAt DESC LIMIT 1";
-      params = [currentArticle.createdAt, req.query.category];
+        "SELECT * FROM articles WHERE createdAt < ? AND category = ? AND language = ? ORDER BY createdAt DESC LIMIT 1";
+      params = [currentArticle.createdAt, req.query.category, lang];
     }
 
     const [articles] = await connection.execute(query, params);
@@ -563,8 +594,8 @@ exports.getNextArticle = async (req, res) => {
 
     // First, get the current article to find its creation date
     const [currentArticles] = await connection.execute(
-      "SELECT createdAt, category FROM articles WHERE id = ?",
-      [req.params.id]
+      "SELECT createdAt, category FROM articles WHERE id = ? AND language = ?",
+      [req.params.id, lang]
     );
 
     if (currentArticles.length === 0) {
@@ -578,14 +609,14 @@ exports.getNextArticle = async (req, res) => {
 
     // Find the next article (newer than current)
     let query =
-      "SELECT * FROM articles WHERE createdAt > ? ORDER BY createdAt ASC LIMIT 1";
-    let params = [currentArticle.createdAt];
+      "SELECT * FROM articles WHERE createdAt > ? AND language = ? ORDER BY createdAt ASC LIMIT 1";
+    let params = [currentArticle.createdAt, lang];
 
     // If category is specified in query params, filter by category
     if (req.query.category) {
       query =
-        "SELECT * FROM articles WHERE createdAt > ? AND category = ? ORDER BY createdAt ASC LIMIT 1";
-      params = [currentArticle.createdAt, req.query.category];
+        "SELECT * FROM articles WHERE createdAt > ? AND category = ? AND language = ? ORDER BY createdAt ASC LIMIT 1";
+      params = [currentArticle.createdAt, req.query.category, lang];
     }
 
     const [articles] = await connection.execute(query, params);

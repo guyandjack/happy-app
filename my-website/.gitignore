@@ -33,3 +33,4 @@ backend/public.key
 #gitignore
 .gitignore
 .map
+dist

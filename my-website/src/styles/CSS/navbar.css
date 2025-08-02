@@ -248,14 +248,14 @@
   .navbar .navbar-menu li {
     width: auto;
   }
-  .navbar .navbar-menu > li > a {
+  .navbar .navbar-menu > li > a, .navbar .navbar-menu > li > button {
     position: relative;
     z-index: 10;
     padding: 0.3rem 0;
     border-bottom: none;
     position: relative;
   }
-  .navbar .navbar-menu > li > a::before {
+  .navbar .navbar-menu > li > a::before, .navbar .navbar-menu > li > button::before {
     content: "";
     position: absolute;
     z-index: -2;
@@ -267,7 +267,7 @@
     -webkit-transition: height 0.3s ease;
     transition: height 0.3s ease;
   }
-  .navbar .navbar-menu > li > a::after {
+  .navbar .navbar-menu > li > a::after, .navbar .navbar-menu > li > button::after {
     content: "";
     position: absolute;
     z-index: -1;
@@ -279,26 +279,29 @@
     -webkit-transition: height 0.3s ease;
     transition: height 0.3s ease;
   }
-  .navbar .navbar-menu > li > a:hover::after {
+  .navbar .navbar-menu > li > a:hover::after, .navbar .navbar-menu > li > button:hover::after {
     background: #c3066b;
     height: 100%;
     -webkit-transition: height 0.5s ease;
     transition: height 0.5s ease;
   }
-  .navbar .navbar-menu > li > a.active::before {
+  .navbar .navbar-menu > li > a.active::before, .navbar .navbar-menu > li > button.active::before {
     background: #00beb8;
     height: 100%;
   }
   .navbar .navbar-menu .menu-item-with-submenu {
     position: relative;
-  }
-  .navbar .navbar-menu .menu-item-with-submenu:hover a::after {
-    background: #c3066b;
-    height: 100%;
-  }
-  .navbar .navbar-menu .menu-item-with-submenu.active a::before {
-    background: #00beb8;
-    height: 100%;
+    /* &:hover {
+        a::after {
+            background: map-get($colors-rule, fourth-color);
+            height: 100%;
+        }
+    }
+
+    &.active a::before {
+        background: map-get($colors-rule, second-color);
+        height: 100%;
+    } */
   }
   .navbar .navbar-menu .menu-item-with-submenu .has-submenu {
     border-bottom: none;

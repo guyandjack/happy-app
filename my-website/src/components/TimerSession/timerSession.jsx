@@ -202,21 +202,28 @@ function TimerSession() {
           {user}
         </p>
       </div>
-      <ul
-        className={`flex-column-start-center collapsible-content ${
-          isOpen ? "active" : ""
-        }`}
-      >
+      <ul className={`collapsible-content ${isOpen ? "active" : ""}`}>
         <li className="timer-session-counter">
           <DisplayCounterDown timeRemaining={timeRemaining} />
         </li>
+        <li>
+          <a id="timer-session-link" href="/public/fr/dashboard.html">
+            Dashboard
+          </a>
+        </li>
         {timeRemaining < 880 && (
-          <li className="flex-column-center-center timer-session-button">
-            <button onClick={() => refreshToken()}>Rester connecté</button>
+          <li>
+            <button
+              className="timer-session-button"
+              onClick={() => refreshToken()}
+            >
+              Rester connecté
+            </button>
           </li>
         )}
-        <li className="flex-column-center-center timer-session-button">
+        <li>
           <button
+            className="timer-session-button"
             onClick={() => {
               deleteSession();
             }}

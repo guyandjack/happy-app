@@ -61,6 +61,22 @@
   gap: 1rem;
   margin-bottom: 1.5rem;
 }
+.admin-article-list-container .filters .language-filter {
+  margin-bottom: 1rem;
+}
+.admin-article-list-container .filters .language-filter .language-filter-button {
+  position: relative;
+  z-index: 2;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #171717;
+  cursor: pointer;
+}
+.admin-article-list-container .filters .language-filter .language-filter-icon {
+  font-size: 2rem;
+  opacity: 0.6;
+}
 .admin-article-list-container .filters .search-box {
   width: 100%;
   max-width: 500px;

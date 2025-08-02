@@ -22,7 +22,7 @@ function DisplayCounterDown({ timeRemaining }) {
   let formatedSeconds = seconds.toString().padStart(2, "0");
   return (
     <div className="flex-column-center-center counter-down">
-      <div>{"La session expire dans"}</div>
+      <div>{"Fin de session"}</div>
       <div>{`${formatedMinutes} : ${formatedSeconds}`}</div>
     </div>
   );
