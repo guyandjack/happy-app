@@ -161,6 +161,7 @@ const AdminArticleList = () => {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
+          withCredentials: true,
         });
 
         toast.success("Article supprimé avec succès");

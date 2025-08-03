@@ -6,7 +6,7 @@ const rateLimit = require("express-rate-limit");
 const compression = require("compression");
 const path = require("path");
 const cookieParser = require("cookie-parser");
-
+const winston = require("winston");
 // Import routes
 const authRoutes = require("./routes/auth.routes");
 const articleRoutes = require("./routes/article.routes");
@@ -16,9 +16,6 @@ const imagesRoutes = require("./routes/images.routes");
 
 // Create Express app
 const app = express();
-
-// Serve static files from the public directory (this should be first)
-app.use(express.static(path.join(__dirname, "public")));
 
 // Configure CORS options
 const corsOptions = {
@@ -41,8 +38,48 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 
-// Apply CORS middleware
+// Créez un logger avec Winston
+const logger = winston.createLogger({
+  level: "info", // Vous pouvez ajuster le niveau (info, warn, error, etc.)
+  transports: [
+    new winston.transports.Console({
+      format: winston.format.combine(
+        winston.format.colorize(), // Pour colorer les logs dans la console
+        winston.format.simple() // Format simple du message
+      ),
+    }),
+    new winston.transports.File({ filename: "logs/app.log" }), // Enregistre dans le fichier logs/app.log
+  ],
+});
+
+// Rediriger console.log vers winston
+console.log = function (message) {
+  logger.info(message); // Logs tout message envoyé à console.log
+};
+
+// Rediriger console.error vers winston pour les erreurs
+console.error = function (message) {
+  logger.error(message); // Logs les erreurs envoyées à console.error
+};
+
+// Rediriger console.warn vers winston pour les avertissements
+console.warn = function (message) {
+  logger.warn(message); // Logs les avertissements envoyés à console.warn
+};
+
+// Log requests
+app.use(
+  morgan("dev", { stream: { write: (message) => logger.info(message.trim()) } })
+);
+
+// Apply CORS middleware before serving static files
 app.use(cors(corsOptions));
+
+// Serve static files from the public directory (this should be first)
+app.use(express.static(path.join(__dirname, "public")));
+
+// Répondre aux requêtes OPTIONS (pré-vol CORS)
+app.options("*", cors(corsOptions));
 
 // Set security HTTP headers (should be applied after CORS)
 app.use(
@@ -79,17 +116,17 @@ app.use("/api/articles", articleRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/recaptcha", recaptchaRoutes);
 app.use("/api/images", imagesRoutes);
-app.get("/api/dashboard", (req, res) => {
-  res.send("Hello World");
-});
 
-// Error handling middleware (should be applied last)
+// Middleware de gestion des erreurs (appliqué en dernier)
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  // Loguer l'erreur dans les logs (fichier et console)
+  logger.error(err.stack);
 
+  // Déterminer le code de statut et le type d'erreur
   const statusCode = err.statusCode || 500;
   const status = err.status || "error";
 
+  // Répondre avec un message d'erreur et la stack trace si en développement
   res.status(statusCode).json({
     status,
     statusCode,

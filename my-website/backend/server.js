@@ -1,13 +1,48 @@
 // Load environment variables first
 const dotenv = require("dotenv");
 const path = require("path");
+// Create HTTP server
+const http = require("http");
+const winston = require("winston");
+const morgan = require("morgan");
+
+// Créez un logger avec Winston
+const logger = winston.createLogger({
+  level: "info", // Vous pouvez ajuster le niveau (info, warn, error, etc.)
+  transports: [
+    new winston.transports.Console({
+      format: winston.format.combine(
+        winston.format.colorize(), // Pour colorer les logs dans la console
+        winston.format.simple() // Format simple du message
+      ),
+    }),
+    new winston.transports.File({ filename: "logs/server.log" }), // Enregistre dans le fichier logs/app.log
+  ],
+});
+// Rediriger console.log vers winston
+console.log = function (message) {
+  logger.info(message); // Logs tout message envoyé à console.log
+};
+
+// Rediriger console.error vers winston pour les erreurs
+console.error = function (message) {
+  logger.error(message); // Logs les erreurs envoyées à console.error
+};
+
+// Rediriger console.warn vers winston pour les avertissements
+console.warn = function (message) {
+  logger.warn(message); // Logs les avertissements envoyés à console.warn
+};
+
+// Log requests
+app.use(
+  morgan("dev", { stream: { write: (message) => logger.info(message.trim()) } })
+);
+
 dotenv.config({ path: path.join(__dirname, ".env") });
 
 // Import app from app.js
 const app = require("./app");
-
-// Create HTTP server
-const http = require("http");
 
 //normalise le port
 const normalizePort = (val) => {
@@ -67,7 +102,7 @@ server.on("listening", () => {
 
 // intercepte les promesses non gérées
 process.on("unhandledRejection", (err) => {
-  console.error("UNHANDLED REJECTION! 💥 Shutting down... promesse non gérée");
+  console.error("UNHANDLED REJECTION!  Shutting down... promesse non gérée");
   console.error(err.name, err.message);
   server.close(() => {
     process.exit(1);
@@ -76,7 +111,7 @@ process.on("unhandledRejection", (err) => {
 
 // intercepte les exceptions non gérées
 process.on("uncaughtException", (err) => {
-  console.error("UNCAUGHT EXCEPTION! 💥 Shutting down... exception non gérée");
+  console.error("UNCAUGHT EXCEPTION!  Shutting down... exception non gérée");
   console.error(err.name, err.message);
   server.close(() => {
     process.exit(1);

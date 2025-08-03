@@ -272,6 +272,7 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         },
+        withCredentials: true,
       });
 
       if (response.data.status === "success") {

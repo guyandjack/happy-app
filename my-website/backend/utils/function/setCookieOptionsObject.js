@@ -4,6 +4,9 @@ const localOrProd = require("./localOrProd");
 //fonction pour définir les options de cookie
 const setCookieOptionsObject = () => {
   const { mode, url, url_api } = localOrProd();
+  console.log("url:", url);
+  console.log("url_api:", url_api);
+  console.log("mode:", mode);
   switch (mode) {
     case "prod":
       return {
