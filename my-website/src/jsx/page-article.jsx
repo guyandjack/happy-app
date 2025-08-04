@@ -67,11 +67,11 @@ if (article) {
 //balise qui contient le contenu de l'article
 
 if (article) {
-  const parsed = JSON.parse(article.content);
+  //const parsed = JSON.parse(article.content);
 
   const articleContent = document.getElementById("RC-article-content");
   if (articleContent) {
-    articleContent.innerHTML = parsed[1];
+    articleContent.innerHTML = article.content;
     //gerer l' affichage des images
     const imageTitle = articleContent.querySelector(".article-img-title");
     if (imageTitle) {

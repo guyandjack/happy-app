@@ -241,7 +241,7 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
       formData.append("category", data.category);
       formData.append("title", data.title);
       formData.append("slug", data.slug);
-      formData.append("contentArticle", data.contentArticle);
+      formData.append("contentArticle", JSON.stringify(data.contentArticle));
       formData.append("excerpt", data.excerpt);
       formData.append("author", data.author);
       // Process tags (convert comma-separated string to array)
@@ -272,15 +272,15 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
       const token = localStorage.getItem("token");
 
       // Send request to API
-      /* const response = await axios.post(`${urlApi}/articles`, formData, {
+      const response = await axios.post(`${urlApi}/articles/create`, formData, {
         headers: {
           //"Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         },
         withCredentials: true,
-      }); */
+      });
 
-      const response = await fetch(`${urlApi}/articles/create`, {
+      /*const response = await fetch(`${urlApi}/articles/create`, {
         method: "POST",
         body: formData, // le navigateur gère Content-Type automatiquement
         headers: {
@@ -288,7 +288,7 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
           // NE PAS ajouter Content-Type ici
         },
         credentials: "include", // équivalent à withCredentials: true
-      });
+      });*/
 
       if (response.status === "success") {
         showToast("Article créé avec succès", "success");

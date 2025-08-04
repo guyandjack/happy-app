@@ -836,14 +836,13 @@ exports.createArticle = async (req, res) => {
           },
         });
       } catch (error) {
-        logger.error("[L118] ❌ Erreur interne dans bloc d’upload", {
-          message: error.message,
-          stack: error.stack,
-        });
-
+        console.error("[L118] ❌ Erreur interne dans bloc d’upload", error);
         return res.status(500).json({
           status: "error",
-          message: "Erreur interne lors de la création de l'article",
+          message: error.message,
+          code: error.code,
+          sqlMessage: error.sqlMessage,
+          sql: error.sql,
         });
       }
     });
@@ -864,7 +863,18 @@ exports.createArticle = async (req, res) => {
     }
   }
 };
+/*exports.createArticle = async (req, res) => {
+  logger.info("[L3] ➡️ Requête reçue - Création article");
+  logger.info(`[L4] Origin: ${req.headers.origin}`);
+  logger.info(`[L5] Referer: ${req.headers.referer}`);
+  logger.info(`[L6] Host: ${req.headers.host}`);
+  logger.info(`[L7] Accept: ${req.headers.accept}`);
 
+  res.status(200).json({
+    status: "success",
+    message: "Article created",
+  });
+};*/
 /************************************************
  * ************ create article *****************
  **** end **************************************/
