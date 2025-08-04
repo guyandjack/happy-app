@@ -6,132 +6,112 @@ const rateLimit = require("express-rate-limit");
 const compression = require("compression");
 const path = require("path");
 const cookieParser = require("cookie-parser");
-const winston = require("winston");
-// Import routes
-const authRoutes = require("./routes/auth.routes");
-const articleRoutes = require("./routes/article.routes");
-const contactRoutes = require("./routes/contact.routes");
-const recaptchaRoutes = require("./routes/recaptcha.routes");
-const imagesRoutes = require("./routes/images.routes");
 
-// Create Express app
+const logger = require("./logger.js"); // ✅ Utilise ton logger Winston centralisé
+
+// Import routes
+const authRoutes = require("./routes/auth.routes.js");
+const articleRoutes = require("./routes/article.routes.js");
+const contactRoutes = require("./routes/contact.routes.js");
+const recaptchaRoutes = require("./routes/recaptcha.routes.js");
+const imagesRoutes = require("./routes/images.routes.js");
+
 const app = express();
 
-// Configure CORS options
+// ✅ Configuration CORS
 const corsOptions = {
   origin: function (origin, callback) {
-    const allowedOrigins = [
-      "http://localhost:4173",
-      "http://localhost:5173",
-      "https://helveclick.ch",
-      "https://happy-api-hd3g.onrender.com",
-    ];
+    const allowedOrigins = ["https://helveclick.ch", "http://localhost:5173"];
 
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true); // autorise les requêtes sans origin (ex: mobile, curl)
+    if (!origin) {
+      callback(null, true);
+    } else if (allowedOrigins.includes(origin)) {
+      callback(null, true);
     } else {
-      callback(new Error("Not allowed by CORS"), false);
+      callback(new Error("CORS error: origin not allowed"));
     }
   },
   credentials: true,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
-
-// Créez un logger avec Winston
-const logger = winston.createLogger({
-  level: "info", // Vous pouvez ajuster le niveau (info, warn, error, etc.)
-  transports: [
-    new winston.transports.Console({
-      format: winston.format.combine(
-        winston.format.colorize(), // Pour colorer les logs dans la console
-        winston.format.simple() // Format simple du message
-      ),
-    }),
-    new winston.transports.File({ filename: "logs/app.log" }), // Enregistre dans le fichier logs/app.log
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "Accept",
+    "X-Requested-With",
   ],
-});
-
-// Rediriger console.log vers winston
-console.log = function (message) {
-  logger.info(message); // Logs tout message envoyé à console.log
 };
 
-// Rediriger console.error vers winston pour les erreurs
-console.error = function (message) {
-  logger.error(message); // Logs les erreurs envoyées à console.error
-};
-
-// Rediriger console.warn vers winston pour les avertissements
-console.warn = function (message) {
-  logger.warn(message); // Logs les avertissements envoyés à console.warn
-};
-
-// Log requests
-app.use(
-  morgan("dev", { stream: { write: (message) => logger.info(message.trim()) } })
-);
-
-// Apply CORS middleware before serving static files
+// ✅ CORS middleware (avant tout)
+app.options("*", cors(corsOptions));
 app.use(cors(corsOptions));
 
-// Serve static files from the public directory (this should be first)
+// ✅ Fichiers statiques
 app.use(express.static(path.join(__dirname, "public")));
 
-// Répondre aux requêtes OPTIONS (pré-vol CORS)
-app.options("*", cors(corsOptions));
-
-// Set security HTTP headers (should be applied after CORS)
-app.use(
+// ✅ Headers de sécurité
+/*app.use(
   helmet({
-    contentSecurityPolicy: false, // Disable CSP for development
-    crossOriginEmbedderPolicy: false, // Allow loading resources from different origins
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false,
   })
-);
+);*/
 
-// Parse JSON and URL-encoded request bodies (before routes)
+// ✅ Body parsers
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
-// Logger middleware (can be applied after body parsers)
-app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev"));
+// ✅ Logger HTTP via morgan -> Winston
+app.use(
+  morgan(process.env.NODE_ENV === "production" ? "combined" : "dev", {
+    stream: {
+      write: (message) => logger.info(message.trim()),
+    },
+  })
+);
 
-// Compress all responses (after parsing)
-app.use(compression());
+// ✅ Compression (désactivée ici)
+/*app.use(compression());*/
 
-// Parse cookies
+// ✅ Cookies
 app.use(cookieParser());
 
-// Rate limiting (apply after CORS and body parsers)
+// ✅ Limiteur de requêtes
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 50, // limit each IP to 50 requests per windowMs
+  windowMs: 15 * 60 * 1000,
+  max: 100,
   message: "Too many requests from this IP, please try again after 15 minutes",
 });
-app.use("/api/", limiter); // Apply rate limiting on /api routes
+app.use("/api/", limiter);
 
-// Routes (after static files and middlewares)
+// ✅ Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/articles", articleRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/recaptcha", recaptchaRoutes);
 app.use("/api/images", imagesRoutes);
 
-// Middleware de gestion des erreurs (appliqué en dernier)
+// ✅ Route de test
+app.get("/test", (req, res) => {
+  res.json({ message: "Hello, world of bugs" });
+});
+
+logger.info("🚀 app listening ");
+
+// ✅ Middleware global de gestion des erreurs
 app.use((err, req, res, next) => {
-  // Loguer l'erreur dans les logs (fichier et console)
-  logger.error(err.stack);
+  logger.error(`Erreur serveur: ${err.message}`, {
+    stack: err.stack,
+    path: req.path,
+    method: req.method,
+    status: err.status || 500,
+    body: req.body,
+    query: req.query,
+  });
 
-  // Déterminer le code de statut et le type d'erreur
-  const statusCode = err.statusCode || 500;
-  const status = err.status || "error";
-
-  // Répondre avec un message d'erreur et la stack trace si en développement
-  res.status(statusCode).json({
-    status,
-    statusCode,
-    message: err.message,
-    stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
+  res.status(err.status || 500).json({
+    error: true,
+    message: err.message || "Erreur serveur",
+    status: err.status || 500,
   });
 });
 

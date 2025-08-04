@@ -25,6 +25,7 @@ database-client-config.json
 
 
 #assets and file
+dist
 backend/uploads/*
 backend/.env
 .env
@@ -33,4 +34,4 @@ backend/public.key
 #gitignore
 .gitignore
 .map
-dist
+

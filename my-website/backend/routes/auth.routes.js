@@ -4,7 +4,8 @@ const {
   loginValidation,
   validate,
 } = require("../middleware/validation.middleware.js");
-const { verifyRecaptcha } = require("../middleware/recaptcha.middleware.js");
+
+//const corsOptions = require("../middleware/corsOptions");
 
 const router = express.Router();
 
@@ -23,6 +24,7 @@ router.get("/me", authController.protect, authController.getCurrentUser);
 // Add password change route
 router.patch(
   "/update-password",
+
   authController.protect,
   authController.updatePassword
 );

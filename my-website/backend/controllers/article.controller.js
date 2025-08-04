@@ -3,10 +3,10 @@ const cloudinary = require("../utils/cloudinary");
 const fs = require("fs");
 const path = require("path");
 const { getConnection, releaseConnection } = require("../config/database");
+const logger = require("../logger");
 const multer = require("multer");
 
 //fonctions utilitaires
-const localOrProd = require("../utils/function/localOrProd");
 const checkParams = require("../utils/function/checkParams");
 
 /************************************************
@@ -668,35 +668,31 @@ exports.getNextArticle = async (req, res) => {
  **** start **************************************/
 
 exports.createArticle = async (req, res) => {
-  const { url, url_api } = localOrProd();
+  logger.info("[L3] ➡️ Requête reçue - Création article");
+  logger.info(`[L4] Origin: ${req.headers.origin}`);
+  logger.info(`[L5] Referer: ${req.headers.referer}`);
+  logger.info(`[L6] Host: ${req.headers.host}`);
+  logger.info(`[L7] Accept: ${req.headers.accept}`);
+
   let connection;
 
   try {
     connection = await getConnection();
+    logger.info("[L11] ✅ Connexion à la base de données établie");
 
-    // Configure storage for file uploads
+    // Définition du storage pour multer
     const storage = multer.diskStorage({
       destination: function (req, file, cb) {
-        let uploadPath;
-
-        if (
-          file.fieldname === "mainImage" ||
-          file.fieldname === "additionalImages"
-        ) {
-          uploadPath = path.join(
-            __dirname,
-            "..",
-            "public",
-            "images",
-            "articles"
-          );
-        }
-
-        // Create directory if it doesn't exist
+        const uploadPath = path.join(
+          __dirname,
+          "..",
+          "public",
+          "images",
+          "articles"
+        );
         if (!fs.existsSync(uploadPath)) {
           fs.mkdirSync(uploadPath, { recursive: true });
         }
-
         cb(null, uploadPath);
       },
       filename: function (req, file, cb) {
@@ -706,46 +702,40 @@ exports.createArticle = async (req, res) => {
       },
     });
 
-    // Configure upload middleware
+    // Configurer multer
     const upload = multer({
-      storage: storage,
-      limits: {
-        fileSize: 10 * 1024 * 1024, // 10MB limit
-      },
+      storage,
+      limits: { fileSize: 10 * 1024 * 1024 }, // 10MB
       fileFilter: function (req, file, cb) {
-        if (
-          file.fieldname === "mainImage" ||
-          file.fieldname === "additionalImages"
-        ) {
-          // Accept images
-          if (file.mimetype.startsWith("image/")) {
-            cb(null, true);
-          } else {
-            cb(new Error("Only image files are allowed for images"), false);
-          }
+        if (file.mimetype.startsWith("image/")) {
+          cb(null, true);
         } else {
-          cb(new Error("Unexpected field"), false);
+          cb(new Error("Only image files are allowed"), false);
         }
       },
     });
 
-    // Process uploaded files
     const uploadMiddleware = upload.fields([
       { name: "mainImage", maxCount: 1 },
       { name: "additionalImages", maxCount: 10 },
     ]);
 
+    // Appel de l'upload middleware
     uploadMiddleware(req, res, async (err) => {
       if (err) {
-        console.error("Error uploading files:", err);
+        logger.error("[L42] ❌ Erreur Multer", { message: err.message });
+        logger.warn("[L43] Headers actuels:", res.getHeaders());
+
         return res.status(400).json({
           status: "error",
-          message: err.message || "Error uploading files",
+          message: err.message || "Erreur d’upload",
         });
       }
 
       try {
-        // Extract data from request
+        logger.info("[L49] 📨 Fichiers uploadés avec succès");
+        logger.info("[L50] Corps de la requête reçu:", req.body);
+
         const {
           author,
           language,
@@ -757,7 +747,6 @@ exports.createArticle = async (req, res) => {
           tags,
         } = req.body;
 
-        // Validate required fields
         if (
           !language ||
           !category ||
@@ -766,49 +755,50 @@ exports.createArticle = async (req, res) => {
           !contentArticle ||
           !author
         ) {
+          logger.warn("[L61] ❌ Champs requis manquants");
           return res.status(400).json({
             status: "error",
-            message: "language, category, title, slug and content are required",
+            message: "Champs requis manquants",
           });
         }
 
-        // Process tags
+        logger.info("[L67] ✅ Champs validés");
+
+        // Traitement des tags
         let processedTags = tags;
         if (typeof tags === "string") {
           try {
             processedTags = JSON.parse(tags);
-          } catch (e) {
-            // If parsing fails, split by comma
-            processedTags = tags.split(",").map((tag) => tag.trim());
+          } catch {
+            processedTags = tags.split(",").map((t) => t.trim());
           }
         }
 
-        // Process uploaded files and create relative paths
         let mainImagePath = "";
         let additionalImagePaths = [];
 
-        if (req.files.mainImage && req.files.mainImage.length > 0) {
-          // Create url for reacth main image
+        if (req.files.mainImage?.length > 0) {
           mainImagePath =
             "/images/articles/" + path.basename(req.files.mainImage[0].path);
         }
 
-        if (
-          req.files.additionalImages &&
-          req.files.additionalImages.length > 0
-        ) {
-          // Create url for reacth additional images
+        if (req.files.additionalImages?.length > 0) {
           additionalImagePaths = req.files.additionalImages.map(
             (file) => "/images/articles/" + path.basename(file.path)
           );
         }
 
-        // Save article data to database
+        logger.info("[L83] 📸 Images traitées", {
+          mainImagePath,
+          additionalImagePaths,
+        });
+
+        // Insertion BDD
         const [result] = await connection.execute(
           `INSERT INTO articles (
-            title, slug, content, excerpt, mainImage, category, tags, author, createdAt,updatedAt, 
-            additionalImages, language
-          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(),?,?)`,
+            title, slug, content, excerpt, mainImage, category, tags, author,
+            createdAt, updatedAt, additionalImages, language
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), ?, ?)`,
           [
             title,
             slug,
@@ -823,8 +813,11 @@ exports.createArticle = async (req, res) => {
           ]
         );
 
-        // recupere l'id de l'article pour tester si l'article est bien créé
         const articleId = result.insertId;
+
+        //res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
+        logger.info("[L102] ✅ Article créé en BDD", { articleId });
+        logger.info("[L103] Headers de réponse:", res.getHeaders());
 
         return res.status(201).json({
           status: "success",
@@ -843,25 +836,35 @@ exports.createArticle = async (req, res) => {
           },
         });
       } catch (error) {
-        console.error("Error creating article:", error);
+        logger.error("[L118] ❌ Erreur interne dans bloc d’upload", {
+          message: error.message,
+          stack: error.stack,
+        });
+
         return res.status(500).json({
           status: "error",
-          message: "An error occurred while creating the article",
+          message: "Erreur interne lors de la création de l'article",
         });
       }
     });
   } catch (error) {
-    console.error("Error creating article:", error);
+    logger.error("[L128] ❌ Erreur externe try/catch principal", {
+      message: error.message,
+      stack: error.stack,
+    });
+
     return res.status(500).json({
       status: "error",
-      message: "An error occurred while creating the article",
+      message: "Erreur serveur lors de la création de l'article",
     });
   } finally {
     if (connection) {
       releaseConnection(connection);
+      logger.info("[L138] 🔄 Connexion DB libérée");
     }
   }
 };
+
 /************************************************
  * ************ create article *****************
  **** end **************************************/

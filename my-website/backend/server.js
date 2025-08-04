@@ -1,123 +1,93 @@
-// Load environment variables first
+// Load environment variables
 const dotenv = require("dotenv");
 const path = require("path");
-// Create HTTP server
-const http = require("http");
-const winston = require("winston");
-const morgan = require("morgan");
-
-// Créez un logger avec Winston
-const logger = winston.createLogger({
-  level: "info", // Vous pouvez ajuster le niveau (info, warn, error, etc.)
-  transports: [
-    new winston.transports.Console({
-      format: winston.format.combine(
-        winston.format.colorize(), // Pour colorer les logs dans la console
-        winston.format.simple() // Format simple du message
-      ),
-    }),
-    new winston.transports.File({ filename: "logs/server.log" }), // Enregistre dans le fichier logs/app.log
-  ],
-});
-// Rediriger console.log vers winston
-console.log = function (message) {
-  logger.info(message); // Logs tout message envoyé à console.log
-};
-
-// Rediriger console.error vers winston pour les erreurs
-console.error = function (message) {
-  logger.error(message); // Logs les erreurs envoyées à console.error
-};
-
-// Rediriger console.warn vers winston pour les avertissements
-console.warn = function (message) {
-  logger.warn(message); // Logs les avertissements envoyés à console.warn
-};
-
-// Log requests
-app.use(
-  morgan("dev", { stream: { write: (message) => logger.info(message.trim()) } })
-);
-
 dotenv.config({ path: path.join(__dirname, ".env") });
 
-// Import app from app.js
+// Logger Winston
+const logger = require("./logger");
+
+// Core modules
+const http = require("http");
+
+// Logging HTTP requests
+const morgan = require("morgan");
+
+// App Express
 const app = require("./app");
 
-//normalise le port
+// Logger HTTP avec Winston (stream)
+app.use(
+  morgan("dev", {
+    stream: {
+      write: (message) => logger.info(message.trim()),
+    },
+  })
+);
+
+// Normalise le port
 const normalizePort = (val) => {
   const port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    return val;
-  }
-  if (port >= 0) {
-    return port;
-  }
+  if (isNaN(port)) return val;
+  if (port >= 0) return port;
   return false;
 };
 
 const port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
 
-//creation du serveur
+// Création du serveur HTTP
 const server = http.createServer(app);
-//lancement du serveur
+
+// Lancement du serveur
 server.listen(port);
 
-/*********************gestion des erreurs*********************
- *
- * start**************/
-
-//fonction qui gère les erreurs de connexion au serveur
+// Gestion des erreurs de démarrage serveur
 const errorHandler = (error) => {
-  if (error.syscall !== "listen") {
-    throw error;
-  }
+  if (error.syscall !== "listen") throw error;
+
   const address = server.address();
-  const bind =
-    typeof address === "string" ? "pipe " + address : "port: " + port;
+  const bind = typeof address === "string" ? "pipe " + address : "port " + port;
+  let message = "";
+
   switch (error.code) {
     case "EACCES":
-      console.error(bind + " requires elevated privileges.");
-      process.exit(1);
+      message = `${bind} requires elevated privileges.`;
       break;
     case "EADDRINUSE":
-      console.error(bind + " is already in use.");
-      process.exit(1);
+      message = `${bind} is already in use.`;
       break;
     default:
       throw error;
   }
+
+  logger.error(`🛑 Server error: ${message}`);
+  process.exit(1);
 };
 
 server.on("error", errorHandler);
 
-//aider à diagnostiquer des problèmes en affichant le port d'écoute.
+// Affiche le port utilisé dans les logs
 server.on("listening", () => {
   const address = server.address();
   const bind = typeof address === "string" ? "pipe " + address : "port " + port;
-  console.log("Listening on " + bind);
+  logger.info("🚀 Server listening on " + bind);
 });
 
-// intercepte les promesses non gérées
-process.on("unhandledRejection", (err) => {
-  console.error("UNHANDLED REJECTION!  Shutting down... promesse non gérée");
-  console.error(err.name, err.message);
+// Capture des promesses non gérées
+process.on("unhandledRejection", (reason, promise) => {
+  logger.error("💥 Unhandled Rejection", {
+    promise,
+    reason: reason instanceof Error ? reason.message : reason,
+  });
   server.close(() => {
     process.exit(1);
   });
 });
 
-// intercepte les exceptions non gérées
+// Capture des exceptions non attrapées
 process.on("uncaughtException", (err) => {
-  console.error("UNCAUGHT EXCEPTION!  Shutting down... exception non gérée");
-  console.error(err.name, err.message);
+  logger.error(`🔥 Uncaught Exception: ${err.message}`, { stack: err.stack });
   server.close(() => {
     process.exit(1);
   });
 });
-
-/*********************gestion des erreurs*********************
- *
- * end**************/

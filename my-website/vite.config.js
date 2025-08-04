@@ -42,6 +42,7 @@ export default defineConfig({
         //realisations_fr: path.resolve(__dirname, "./src/pages/fr/realisations.html"),
         contact_fr: path.resolve(__dirname, "./public/fr/contact.html"),
         articles_fr: path.resolve(__dirname, "./public/fr/articles-list.html"),
+        article_fr: path.resolve(__dirname, "./public/fr/article.html"),
         connexion_fr: path.resolve(__dirname, "./public/fr/connexion.html"),
         legal_fr: path.resolve(
           __dirname,

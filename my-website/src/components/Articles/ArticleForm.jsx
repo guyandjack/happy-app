@@ -61,6 +61,11 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
     { value: "seo", label: "Référencement SEO" },
     { value: "design", label: "Design" },
     { value: "tutorials", label: "Tutoriels" },
+    { value: "marketing", label: "Marketing" },
+    { value: "business", label: "Business" },
+    { value: "react", label: "React" },
+    { value: "nodejs", label: "Node.js" },
+    { value: "other", label: "Autre" },
   ];
 
   // language for dropdown
@@ -267,15 +272,25 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
       const token = localStorage.getItem("token");
 
       // Send request to API
-      const response = await axios.post(`${urlApi}/articles`, formData, {
+      /* const response = await axios.post(`${urlApi}/articles`, formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          //"Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         },
         withCredentials: true,
+      }); */
+
+      const response = await fetch(`${urlApi}/articles/create`, {
+        method: "POST",
+        body: formData, // le navigateur gère Content-Type automatiquement
+        headers: {
+          Authorization: `Bearer ${token}`,
+          // NE PAS ajouter Content-Type ici
+        },
+        credentials: "include", // équivalent à withCredentials: true
       });
 
-      if (response.data.status === "success") {
+      if (response.status === "success") {
         showToast("Article créé avec succès", "success");
 
         // Reset form
@@ -411,6 +426,7 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
 
         {/* slug title */}
         <div className="form-group">
+          <label htmlFor="slug">Slug for SEO (automatique)</label>
           <input
             type="text"
             placeholder="Slug Title"
