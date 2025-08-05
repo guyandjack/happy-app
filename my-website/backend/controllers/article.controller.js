@@ -1,6 +1,7 @@
 const Article = require("../models/article.model");
 const cloudinary = require("../utils/cloudinary");
 const fs = require("fs");
+const fsPromises = require("fs").promises;
 const path = require("path");
 const { getConnection, releaseConnection } = require("../config/database");
 const logger = require("../logger");
@@ -702,15 +703,17 @@ exports.createArticle = async (req, res) => {
       },
     });
 
-    // Configurer multer
     const upload = multer({
       storage,
-      limits: { fileSize: 10 * 1024 * 1024 }, // 10MB
-      fileFilter: function (req, file, cb) {
-        if (file.mimetype.startsWith("image/")) {
+      limits: { fileSize: 10 * 1024 * 1024 }, // 10 MB
+      fileFilter: (req, file, cb) => {
+        const isImage = file.mimetype.startsWith("image/");
+        const isText = file.mimetype === "text/plain";
+
+        if (isImage || isText) {
           cb(null, true);
         } else {
-          cb(new Error("Only image files are allowed"), false);
+          cb(new Error("❌ Only image files or plain text are allowed"), false);
         }
       },
     });
@@ -718,6 +721,7 @@ exports.createArticle = async (req, res) => {
     const uploadMiddleware = upload.fields([
       { name: "mainImage", maxCount: 1 },
       { name: "additionalImages", maxCount: 10 },
+      { name: "contentArticle", maxCount: 1 },
     ]);
 
     // Appel de l'upload middleware
@@ -736,25 +740,10 @@ exports.createArticle = async (req, res) => {
         logger.info("[L49] 📨 Fichiers uploadés avec succès");
         logger.info("[L50] Corps de la requête reçu:", req.body);
 
-        const {
-          author,
-          language,
-          category,
-          title,
-          slug,
-          contentArticle,
-          excerpt,
-          tags,
-        } = req.body;
+        const { author, language, category, title, slug, excerpt, tags } =
+          req.body;
 
-        if (
-          !language ||
-          !category ||
-          !title ||
-          !slug ||
-          !contentArticle ||
-          !author
-        ) {
+        if (!language || !category || !title || !slug || !author) {
           logger.warn("[L61] ❌ Champs requis manquants");
           return res.status(400).json({
             status: "error",
@@ -780,12 +769,34 @@ exports.createArticle = async (req, res) => {
         if (req.files.mainImage?.length > 0) {
           mainImagePath =
             "/images/articles/" + path.basename(req.files.mainImage[0].path);
+        } else {
+          logger.error("fichier mainImage non trouvé");
+          return res.status(400).json({
+            status: "error",
+            message: "Fichier mainImage non trouvé",
+          });
         }
 
         if (req.files.additionalImages?.length > 0) {
           additionalImagePaths = req.files.additionalImages.map(
             (file) => "/images/articles/" + path.basename(file.path)
           );
+        }
+
+        // Traitement du contenu de l'article
+        let contentArticle = "";
+        if (req.files.contentArticle?.length > 0) {
+          const content = await fsPromises.readFile(
+            req.files.contentArticle[0].path,
+            "utf8"
+          );
+          contentArticle = JSON.stringify(content);
+        } else {
+          logger.error("fichier .txt non trouvé");
+          return res.status(400).json({
+            status: "error",
+            message: "Fichier .txt non trouvé",
+          });
         }
 
         logger.info("[L83] 📸 Images traitées", {

@@ -31,10 +31,13 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
   const [mainImagePreview, setMainImagePreview] = useState("");
   const [additionalImages, setAdditionalImages] = useState([]);
   const [additionalImagePreviews, setAdditionalImagePreviews] = useState([]);
+  const [contentArticleName, setContentArticleName] = useState("");
+  const [articleContent, setArticleContent] = useState("");
 
   // Refs for file inputs
   const mainImageInputRef = useRef(null);
   const additionalImagesInputRef = useRef(null);
+  const contentArticleInputRef = useRef(null);
 
   const {
     register,
@@ -52,7 +55,7 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
 
   // Watch title
   const watchTitle = watch("title", "");
-  const watchContent = watch("content", "");
+  //const watchContent = watch("content", "");
 
   // Categories for dropdown
   const categories = [
@@ -105,6 +108,15 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
         setMainImagePreview(reader.result);
       };
       reader.readAsDataURL(file);
+    }
+  };
+
+  // Handle content article change
+  const handleContentArticleChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setArticleContent(file);
+      setContentArticleName(file.name);
     }
   };
 
@@ -176,12 +188,12 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
       }
 
       // Validate required content article
-      if (!watchContent.trim()) {
+      /*if (!watchContent.trim()) {
         setHttpError("Le contenu de l'article est requis");
         showToast("Le contenu de l'article est requis", "error");
         setIsSubmitting(false);
         return;
-      }
+      }*/
 
       // Validate required main image
       if (!mainImage) {
@@ -241,7 +253,6 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
       formData.append("category", data.category);
       formData.append("title", data.title);
       formData.append("slug", data.slug);
-      formData.append("contentArticle", JSON.stringify(data.contentArticle));
       formData.append("excerpt", data.excerpt);
       formData.append("author", data.author);
       // Process tags (convert comma-separated string to array)
@@ -258,8 +269,8 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
         formData.append("mainImage", mainImage);
       }
 
-      if (watchContent) {
-        formData.append("contentArticle", watchContent);
+      if (articleContent) {
+        formData.append("contentArticle", articleContent);
       }
 
       if (additionalImages.length > 0) {
@@ -276,6 +287,9 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
         headers: {
           //"Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
+        },
+        validateStatus: function (status) {
+          return status < 599; // Accept only 200-303 status codes
         },
         withCredentials: true,
       });
@@ -447,7 +461,7 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
         </div>
 
         {/* champ markdown */}
-        <div className="form-group">
+        {/*<div className="form-group">
           <label htmlFor="content">Contenu</label>
           <textarea
             placeholder="Contenu"
@@ -458,6 +472,30 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
           {errors.content && (
             <span className="text-red-500">{errors.content.message}</span>
           )}
+        </div>
+        {/* contentArticle file .txt */}
+        <div className="form-group">
+          <label htmlFor="contentArticle">Contenu (fichier .txt)</label>
+          <div className="file-upload-container">
+            <input
+              type="file"
+              id="contentArticle"
+              accept=".txt"
+              onChange={handleContentArticleChange}
+              ref={contentArticleInputRef}
+              style={{ display: "none" }}
+            />
+            <button
+              type="button"
+              className="file-upload-btn"
+              onClick={() => contentArticleInputRef.current.click()}
+            >
+              <FaUpload />{" "}
+              {contentArticleName
+                ? contentArticleName
+                : "Choisir un fichier .txt"}
+            </button>
+          </div>
         </div>
 
         {/* Main Image Upload */}
@@ -555,7 +593,7 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
           <button
             type="submit"
             className="submit-btn"
-            disabled={isButtonDisabled || !mainImage || !watchContent}
+            disabled={isButtonDisabled || !mainImage || !contentArticleName}
           >
             {isSubmitting ? "Création en cours..." : "Créer l'article"}
           </button>
@@ -564,14 +602,14 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
       {/* PRÉVISUALISATION de l' article */}
       <div className="preview-article">
         <h3 className="preview-article-title"> Aperçu de l'article</h3>
-        {watchContent.trim() === "" ? (
+        {contentArticleName.trim() === "" ? (
           <p className="preview-article-content">
             Commence à écrire du contenu...
           </p>
         ) : (
           <div className="preview-article-content">
             <h1>{watchTitle}</h1>
-            <div dangerouslySetInnerHTML={{ __html: watchContent }} />
+            <div>{}</div>
           </div>
         )}
       </div>
