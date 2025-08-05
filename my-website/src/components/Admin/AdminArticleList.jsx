@@ -101,7 +101,6 @@ const AdminArticleList = () => {
         }
 
         if (response.data.status === "success") {
-          console.log("dans la condition pour de success");
           setArticles(response.data.data);
           setFilteredArticles(response.data.data);
           console.log("filteredArticles: ", filteredArticles);

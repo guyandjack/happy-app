@@ -7,6 +7,9 @@ import "@styles/CSS/article.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+//import des librairies
+import axios from "axios";
+
 //import des composants enfants
 import { Navbar } from "@components/Navbar/Navbar.jsx";
 import { Footer } from "@components/Footer/Footer.jsx";
@@ -71,20 +74,29 @@ if (article) {
 
   const articleContent = document.getElementById("RC-article-content");
   if (articleContent) {
-    articleContent.innerHTML = article.content;
-    //gerer l' affichage des images
+    //recuperation du contenu de l'article
+
+    const articleText = await axios.get(newUrlApi + article.content);
+    console.log("article.content: ", articleText.data);
+
+    //insertion du contenu de l'article dans la balise articleContent
+    articleContent.innerHTML = articleText.data;
+
+    //recuperation de l'image principale
     const imageTitle = articleContent.querySelector(".article-img-title");
     if (imageTitle) {
       imageTitle.src = newUrlApi + article.mainImage;
       imageTitle.alt = article.slug;
     }
 
+    //recuperation des images secondaires
     const articleImgSubtitles = articleContent.querySelectorAll(
       ".article-img-subtitle"
     );
     if (articleImgSubtitles) {
       articleImgSubtitles.forEach((subtitle, index) => {
         subtitle.src = newUrlApi + article.additionalImages[index];
+        subtitle.alt = article.slug;
       });
     }
   }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { localOrProd } from "@utils/fonction/testEnvironement";
 import { getLanguage } from "@utils/fonction/getLanguage.js";
 import ReactMarkdown from "react-markdown";
@@ -7,10 +7,15 @@ import rehypeRaw from "rehype-raw";
 import "@styles/CSS/ArticleCard.css";
 
 function ArticleCard({ article }) {
-  const { urlApi, url } = localOrProd();
+  const [imageUrl, setImageUrl] = useState("");
 
-  //modifie urlApi pour la requete sur le dossier static
-  const newUrlApi = urlApi.split("/api")[0];
+  //useEffect qui genere l' url de l'image
+  useEffect(() => {
+    const { urlApi } = localOrProd();
+    //modifie urlApi pour la requete sur le dossier static
+    const newUrlApi = urlApi.split("/api")[0];
+    setImageUrl(`${newUrlApi}${article.mainImage}`);
+  }, []);
 
   const lang = getLanguage();
   const [isFocused, setIsFocused] = useState(false);
@@ -22,11 +27,6 @@ function ArticleCard({ article }) {
   const formattedDate = new Date(
     article.publishedAt || article.createdAt
   ).toLocaleDateString();
-
-  // Get the correct image URL
-  const imageUrl = article.mainImage
-    ? `${newUrlApi}/${article.mainImage}`
-    : "/images/article-placeholder.jpg";
 
   const slug = article.slug;
 

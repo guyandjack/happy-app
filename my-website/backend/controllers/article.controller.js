@@ -784,13 +784,15 @@ exports.createArticle = async (req, res) => {
         }
 
         // Traitement du contenu de l'article
-        let contentArticle = "";
+        let articlePath = "";
         if (req.files.contentArticle?.length > 0) {
           const content = await fsPromises.readFile(
             req.files.contentArticle[0].path,
             "utf8"
           );
-          contentArticle = JSON.stringify(content);
+          articlePath =
+            "/images/articles/" +
+            path.basename(req.files.contentArticle[0].path);
         } else {
           logger.error("fichier .txt non trouvé");
           return res.status(400).json({
@@ -813,7 +815,7 @@ exports.createArticle = async (req, res) => {
           [
             title,
             slug,
-            contentArticle,
+            articlePath,
             excerpt,
             mainImagePath,
             category,
