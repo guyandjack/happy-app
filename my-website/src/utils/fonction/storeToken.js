@@ -7,26 +7,29 @@
  */
 function storeToken(responseData, jwtDecode) {
   try {
-    // Store token and user
-    localStorage.setItem("token", responseData.accessToken.toString());
-    localStorage.setItem("user", responseData.data.toString());
+    // Stocker le token
+    localStorage.setItem("token", responseData.accessToken);
 
-    //decoded token
+    // Stocker l'utilisateur (en JSON)
+    localStorage.setItem("user", JSON.stringify(responseData.data));
+
+    // Décoder le token
     const decodedToken = jwtDecode(responseData.accessToken);
-    const expirationTime = decodedToken.exp;
-    const currentTime = Math.floor(Date.now() / 1000);
+    const expirationTime = decodedToken.exp; // en secondes
+    const currentTime = Math.floor(Date.now() / 1000); // en secondes
 
-    //update time remaining
     const timeRemaining = expirationTime - currentTime;
+
     if (timeRemaining > 0) {
-      /* localStorage.setItem("timeRemaining", timeRemaining.toString());
-      localStorage.setItem("lastTime", new Date().getTime().toString()); */
       localStorage.setItem("tokenExpiration", expirationTime.toString());
       return true;
     }
+
+    return false; // token déjà expiré
   } catch (error) {
     console.error("Error storing token:", error);
     return false;
   }
 }
+
 export { storeToken };

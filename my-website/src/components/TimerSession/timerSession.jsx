@@ -160,7 +160,7 @@ function TimerSession() {
         //store the new accesstoken
         const isTokenRefreshed = storeToken(response.data, jwtDecode);
         if (!isTokenRefreshed) {
-          throw new Error("Impossible de stoker le token dans le localStorage");
+          return "Impossible de stoker le token dans le localStorage ou le token n'est pas valide";
         }
 
         //reinitialise le compteur
