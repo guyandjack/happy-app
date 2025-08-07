@@ -156,14 +156,22 @@ const AdminArticleList = () => {
   const handleDelete = async (id, title) => {
     if (window.confirm(`Êtes-vous sûr de vouloir supprimer "${title}" ?`)) {
       try {
-        await axios.delete(`${urlApi}/articles/${id}`, {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          throw new Error("Token non trouvé");
+        }
+        const response = await axios.delete(`${urlApi}/articles/${id}`, {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
           },
           withCredentials: true,
         });
 
-        toast.success("Article supprimé avec succès");
+        if (response.status === 200) {
+          toast.success("Article supprimé avec succès");
+        } else {
+          toast.error("Échec de la suppression de l'article");
+        }
 
         // Refresh the article list
         setArticles(articles.filter((article) => article.id !== id));

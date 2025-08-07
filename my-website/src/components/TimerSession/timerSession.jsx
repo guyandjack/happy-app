@@ -80,7 +80,7 @@ function TimerSession() {
   const startSession = () => {
     setIsSessionActive(true);
     if (localStorage.getItem("user")) {
-      const userName = localStorage.getItem("user");
+      const userName = JSON.parse(localStorage.getItem("user"));
       setUser(userName);
     }
     setTimeRemaining(initCounterDown());

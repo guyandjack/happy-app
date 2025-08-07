@@ -1016,95 +1016,123 @@ exports.deleteArticle = async (req, res) => {
         message: "Article ID is required",
       });
     }
-    let idInt = parseInt(id, 10);
 
+    const idInt = parseInt(id, 10);
     connection = await getConnection();
 
-    // First get the article to know which files to delete
+    // Récupérer les images de l'article
     const [articlesImages] = await connection.execute(
-      "SELECT mainImage, additionalImages FROM articles WHERE id = ?",
+      "SELECT content,mainImage, additionalImages FROM articles WHERE id = ?",
       [idInt]
     );
 
     if (articlesImages.length === 0) {
       return res.status(404).json({
         status: "error",
-        message: "Article images not found",
+        message: "Article not found",
       });
     }
 
-    console.log("articlesImages: ", articlesImages);
+    const { mainImage, additionalImages, content } = articlesImages[0];
 
-    const article = articlesImages[0];
+    // Fonction utilitaire pour supprimer un fichier
+    const deleteFile = async (filePath) => {
+      try {
+        await fs.promises.unlink(filePath);
+        return true;
+      } catch (err) {
+        console.error("Failed to delete file:", filePath, err);
+        return false;
+      }
+    };
+
     let isMainImgDeleted = false;
-    let isAdditionalImgDeleted = false;
+    let isAdditionalImgDeleted = true;
+    let isContentDeleted = false;
 
-    // Delete files
-    try {
-      // Delete main image if it exists
-      if (article.mainImage) {
-        const mainImagePath = path.join(
-          __dirname,
-          "../public",
-          article.mainImage
-        );
-        console.log("mainImagePath: ", mainImagePath);
-        if (fs.existsSync(mainImagePath)) {
-          fs.unlinkSync(mainImagePath);
-        }
-        if (!fs.existsSync(mainImagePath)) {
-          isMainImgDeleted = true;
-        }
-      }
-
-      // Delete additional images if they exist
-      if (article.additionalImages) {
-        article.additionalImages.forEach((imagePath) => {
-          const fullPath = path.join(__dirname, "../public", imagePath);
-          console.log("fullPath: ", fullPath);
-          if (fs.existsSync(fullPath)) {
-            fs.unlinkSync(fullPath);
-          }
-          if (!fs.existsSync(fullPath)) {
-            isAdditionalImgDeleted = true;
-          }
-        });
-      }
-    } catch (fileError) {
-      console.error("Error deleting files:", fileError);
-      // Continue with article deletion even if file deletion fails
-    }
-
-    if (!isMainImgDeleted || !isAdditionalImgDeleted) {
-      return res.status(400).json({
-        status: "error",
-        message: "Images can not be deleted",
-      });
-    }
-
-    if (isMainImgDeleted && isAdditionalImgDeleted) {
-      // Delete article from database
-      const response = await connection.execute(
-        "DELETE FROM articles WHERE id = ?",
-        [id]
-      );
-      if (response.affectedRows === 0) {
+    // Supprimer l'image principale si elle existe
+    if (mainImage) {
+      const mainImagePath = path.join(__dirname, "../public", mainImage);
+      isMainImgDeleted = await deleteFile(mainImagePath);
+      if (!isMainImgDeleted) {
         return res.status(400).json({
           status: "error",
-          message: "Impossible to delete article",
+          message: `Impossible to delete main image: ${mainImage}`,
         });
       }
-      return res.status(200).json({
-        status: "success",
-        message: "Article deleted",
+    } else {
+      isMainImgDeleted = true;
+      console.log("No main image found.");
+    }
+
+    // Supprimer les images additionnelles si présentes
+    if (additionalImages && additionalImages.length > 0) {
+      for (const imagePath of additionalImages) {
+        const fullPath = path.join(__dirname, "../public", imagePath);
+        const deleted = await deleteFile(fullPath);
+        if (!deleted) {
+          isAdditionalImgDeleted = false;
+          return res.status(400).json({
+            status: "error",
+            message: `Impossible to delete additional image: ${imagePath}`,
+          });
+        }
+      }
+    } else {
+      console.log("No additional images found.");
+    }
+
+    //suprimer le fichier .txt contenant l'article
+    if (content) {
+      const contentPath = path.join(__dirname, "../public", content);
+      isContentDeleted = await deleteFile(contentPath);
+      if (!isContentDeleted) {
+        return res.status(400).json({
+          status: "error",
+          message: `Impossible to delete content: ${content}`,
+        });
+      }
+    } else {
+      isContentDeleted = true;
+      console.log("No content found.");
+    }
+
+    // Vérifier que toutes les suppressions de fichiers sont réussies
+    if (!isMainImgDeleted || !isAdditionalImgDeleted || !isContentDeleted) {
+      return res.status(400).json({
+        status: "error",
+        message: "Some images or content could not be deleted",
+        mainImageDeleted: isMainImgDeleted,
+        additionalImagesDeleted: isAdditionalImgDeleted,
+        contentDeleted: isContentDeleted,
       });
     }
+
+    // Supprimer l'article de la BDD
+    const [deleteResult] = await connection.execute(
+      "DELETE FROM articles WHERE id = ?",
+      [idInt]
+    );
+
+    if (deleteResult.affectedRows === 0) {
+      return res.status(400).json({
+        status: "error",
+        message: "Article could not be deleted from database",
+      });
+    }
+
+    return res.status(200).json({
+      status: "success",
+      message: "Article deleted successfully",
+    });
   } catch (error) {
     console.error("Error deleting article:", error);
-    return res.status(500).json({
-      status: "error",
-      message: "An error occurred while deleting the article",
-    });
+    if (!res.headersSent) {
+      return res.status(500).json({
+        status: "error",
+        message: "An error occurred while deleting the article",
+      });
+    }
   } finally {
     if (connection) {
       releaseConnection(connection);
