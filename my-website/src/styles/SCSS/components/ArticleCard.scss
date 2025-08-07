@@ -8,6 +8,7 @@
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     cursor: pointer;
 
+
     overflow: hidden;
     border: 1px solid rgba(map-get($colors-rule, fifth-color), 0.3);
 
@@ -27,7 +28,8 @@
 
 
     .article-title {
-        font-size: 1.2rem;
+        width: 95%;
+        font-size: 1.1rem;
         font-weight: 600;
         color: map-get($colors-rule, first-color);
         text-align: center;
@@ -84,8 +86,15 @@
     }
 
     .article-card-excerpt {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        /* ← nombre de lignes avant le "..." */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
         color: map-get($colors-rule, fifth-color);
         opacity: 0.8;
+
     }
 
     .article-card-read-more-link {

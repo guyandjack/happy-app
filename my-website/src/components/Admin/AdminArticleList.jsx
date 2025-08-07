@@ -225,7 +225,7 @@ const AdminArticleList = () => {
 
   return (
     <div className="admin-article-list-container">
-      <div className="filters">
+      <div className="flex-column-start-center filters">
         {isPageDashboard && (
           <div className="language-filter">
             <button
@@ -238,8 +238,10 @@ const AdminArticleList = () => {
             </button>
           </div>
         )}
-        <div className="search-box">
-          <FaSearch className="search-icon" />
+        <div className="flex-row-start-center search-box">
+          <div className="flex-row-center-center search-icon-wrapper">
+            <FaSearch className="search-icon" />
+          </div>
           <input
             type="text"
             placeholder="Rechercher des articles..."
@@ -249,8 +251,10 @@ const AdminArticleList = () => {
             }}
           />
         </div>
-        <div className="category-filter">
-          <IoFilterSharp className="filter-icon" />
+        <div className="flex-row-start-center category-filter">
+          <div className="flex-row-center-center filter-icon-wrapper">
+            <IoFilterSharp className="filter-icon" />
+          </div>
           <select value={selectedCategory} onChange={handleCategoryChange}>
             <option value="">Toutes les catégories</option>
             {categories.map((category) => (
@@ -270,12 +274,12 @@ const AdminArticleList = () => {
             : "Aucun article trouvé."}
         </div>
       ) : (
-        <div className="admin-articles-grid">
+        <div className="flex-row-center-center admin-articles-wrapper">
           {filteredArticles.map((article) => (
             <div key={article.id} className="admin-article-card-wrapper">
               <ArticleCard article={article} />
               {isPageDashboard && (
-                <div className="admin-article-actions">
+                <div className="flex-row-space_evenly-center admin-article-actions">
                   <button
                     className="edit-btn"
                     onClick={() =>
