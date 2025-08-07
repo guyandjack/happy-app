@@ -4,7 +4,7 @@ import "@styles/CSS/shared-style.css";
 import "@styles/CSS/article.css";
 
 //import des hooks
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 
 //import des librairies
@@ -17,88 +17,72 @@ import { LinkTopPage } from "@components/linkTopPage/linkTopPage.jsx";
 import { ArticleFooter } from "@components/Articles/ArticleFooter.jsx";
 
 //import des fonctions
-import { localOrProd } from "@utils/fonction/testEnvironement.js";
+import { handleAxiosError } from "@utils/fonction/handleAxiosError.js";
+import { setArticlePageHeader } from "@utils/fonction/setArticlePageHeader.js";
+import { endpointStaticFile } from "@utils/fonction/endpointStaticFile.js";
+
+//variable globale
+//get article from local storage
+const article = JSON.parse(localStorage.getItem("article"));
+const { endPoint, mode } = endpointStaticFile();
 
 /****************************************************
  * ************* code principal page "a propos"*******
  *  * ************************************************/
 
-//determine si on est en local ou en prod
-const { urlApi } = localOrProd();
+async function displayArticle() {
+  try {
+    const articleText = await axios.get(endPoint + article.content, {
+      /* validateStatus: function (status) {
+        status < 599;
+      }, */
+    });
+    if (!articleText) {
+      console.log("impossible de recuperer le contenu de l' article");
+    }
 
-//modifier urlApi pour atteindre le dosiier qui sert les fichier ststique sur l' api
-const newUrlApi = urlApi.split("/api")[0];
+    //set dynamic page header
+    setArticlePageHeader(article);
 
-//get article from local storage
-const article = JSON.parse(localStorage.getItem("article"));
-
-//set dynamic page header
-
-if (article) {
-  document.title = article.title;
-  const seoDescription = document.querySelector("meta[name='description']");
-  if (seoDescription) {
-    seoDescription.content = article.excerpt;
-  }
-
-  const ogDescription = document.querySelector(
-    "meta[property='og:description']"
-  );
-  if (ogDescription) {
-    ogDescription.content = article.excerpt;
-  }
-  const ogTitle = document.querySelector("meta[property='og:title']");
-  if (ogTitle) {
-    ogTitle.content = article.title;
-  }
-  const ogUrl = document.querySelector("meta[property='og:url']");
-  if (ogUrl) {
-    ogUrl.content = article.url;
-  }
-  const twitterTitle = document.querySelector("meta[name='twitter:title']");
-  if (twitterTitle) {
-    twitterTitle.content = article.title;
-  }
-  const twitterDescription = document.querySelector(
-    "meta[name='twitter:description']"
-  );
-  if (twitterDescription) {
-    twitterDescription.content = article.excerpt;
-  }
-}
-
-//balise qui contient le contenu de l'article
-
-if (article) {
-  //const parsed = JSON.parse(article.content);
-
-  const articleContent = document.getElementById("RC-article-content");
-  if (articleContent) {
-    //recuperation du contenu de l'article
-
-    const articleText = await axios.get(newUrlApi + article.content);
-    console.log("article.content: ", articleText.data);
-
-    //insertion du contenu de l'article dans la balise articleContent
-    articleContent.innerHTML = articleText.data;
+    //insere le contenu de l'article dans la page
+    const articleContent = document.querySelector(".article-content");
+    if (articleContent) {
+      articleContent.innerHTML = articleText.data;
+    }
 
     //recuperation de l'image principale
-    const imageTitle = articleContent.querySelector(".article-img-title");
+    const imageTitle = document.querySelector(".article-img-title");
+    console.log("imageTitle: ", imageTitle);
     if (imageTitle) {
-      imageTitle.src = newUrlApi + article.mainImage;
+      const fullUrl = `${endPoint}${article.mainImage}`;
+      console.log("✅ Image URL construite :", fullUrl);
+      imageTitle.src = fullUrl;
       imageTitle.alt = article.slug;
     }
 
     //recuperation des images secondaires
-    const articleImgSubtitles = articleContent.querySelectorAll(
+    const articleImgSubtitles = document.querySelectorAll(
       ".article-img-subtitle"
     );
     if (articleImgSubtitles) {
       articleImgSubtitles.forEach((subtitle, index) => {
-        subtitle.src = newUrlApi + article.additionalImages[index];
-        subtitle.alt = article.slug;
+        if (mode === "production") {
+          let arrayImages = JSON.parse(article.additionalImages);
+          console.log("arrayImages: ", arrayImages);
+          const fullUrl = `${endPoint}${arrayImages[index]}`;
+          console.log("✅ Image URL construite :", fullUrl);
+          subtitle.src = fullUrl;
+          subtitle.alt = article.slug;
+        } else {
+          const fullUrl = `${endPoint}${article.additionalImages[index]}`;
+          console.log("✅ Image URL construite :", fullUrl);
+          subtitle.src = fullUrl;
+          subtitle.alt = article.slug;
+        }
       });
     }
+  } catch (error) {
+    handleAxiosError(error);
   }
 }
 
@@ -165,3 +149,5 @@ try {
 } catch (error) {
   console.error("Error mounting Footer:", error);
 }
+
+displayArticle();

@@ -11,11 +11,26 @@ function ArticleCard({ article }) {
 
   //useEffect qui genere l' url de l'image
   useEffect(() => {
-    const { urlApi } = localOrProd();
-    //modifie urlApi pour la requete sur le dossier static
-    const newUrlApi = urlApi.split("/api")[0];
-    setImageUrl(`${newUrlApi}${article.mainImage}`);
-  }, []);
+    if (!article?.mainImage) return;
+
+    const { urlApi, mode } = localOrProd();
+    console.log("urlApi: ", urlApi);
+
+    let newUrlApi;
+
+    if (mode === "production") {
+      newUrlApi = urlApi.split("ch/api")[0] + "ch";
+      console.log("newUrlApiprod: ", newUrlApi);
+    } else {
+      newUrlApi = urlApi.split("/api")[0];
+      console.log("newUrlApiDev: ", newUrlApi);
+    }
+
+    const fullUrl = `${newUrlApi}${article.mainImage}`;
+    console.log("✅ Image URL construite :", fullUrl);
+
+    setImageUrl(fullUrl);
+  }, [article.mainImage]);
 
   const lang = getLanguage();
   const [isFocused, setIsFocused] = useState(false);

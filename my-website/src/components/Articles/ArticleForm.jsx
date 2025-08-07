@@ -20,7 +20,7 @@ import "@styles/CSS/article.css";
 //import des fonctions
 import { localOrProd } from "@utils/fonction/testEnvironement";
 
-const ArticleForm = ({ onSuccess, onCancel }) => {
+const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
   const { urlApi } = localOrProd();
   const [httpError, setHttpError] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -187,14 +187,6 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
         return;
       }
 
-      // Validate required content article
-      /*if (!watchContent.trim()) {
-        setHttpError("Le contenu de l'article est requis");
-        showToast("Le contenu de l'article est requis", "error");
-        setIsSubmitting(false);
-        return;
-      }*/
-
       // Validate required main image
       if (!mainImage) {
         setHttpError("L'image principale est requise");
@@ -270,6 +262,7 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
       }
 
       if (articleContent) {
+        console.log("articleContent: ", articleContent);
         formData.append("contentArticle", articleContent);
       }
 
@@ -294,16 +287,6 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
         withCredentials: true,
       });
 
-      /*const response = await fetch(`${urlApi}/articles/create`, {
-        method: "POST",
-        body: formData, // le navigateur gère Content-Type automatiquement
-        headers: {
-          Authorization: `Bearer ${token}`,
-          // NE PAS ajouter Content-Type ici
-        },
-        credentials: "include", // équivalent à withCredentials: true
-      });*/
-
       if (response.status === "success") {
         showToast("Article créé avec succès", "success");
 
@@ -311,6 +294,8 @@ const ArticleForm = ({ onSuccess, onCancel }) => {
         if (onSuccess) {
           onSuccess(response.data.data.article);
         }
+        setIsSubmitting(false);
+        setShow(false);
       }
     } catch (error) {
       console.error("Error creating article:", error);

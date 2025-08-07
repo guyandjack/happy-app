@@ -713,7 +713,10 @@ exports.createArticle = async (req, res) => {
         if (isImage || isText) {
           cb(null, true);
         } else {
-          cb(new Error("❌ Only image files or plain text are allowed"), false);
+          cb(
+            new Error("❌ Seuls les fichiers image ou .txt sont autorisés"),
+            false
+          );
         }
       },
     });
@@ -743,15 +746,19 @@ exports.createArticle = async (req, res) => {
         const { author, language, category, title, slug, excerpt, tags } =
           req.body;
 
-        if (!language || !category || !title || !slug || !author) {
-          logger.warn("[L61] ❌ Champs requis manquants");
-          return res.status(400).json({
-            status: "error",
-            message: "Champs requis manquants",
-          });
+        // Validation dynamique des champs requis
+        const requiredFields = { author, language, category, title, slug };
+        for (const [key, value] of Object.entries(requiredFields)) {
+          if (!value) {
+            logger.warn(`[L61] ❌ Champ requis manquant : ${key}`);
+            return res.status(400).json({
+              status: "error",
+              message: `Le champ ${key} est requis`,
+            });
+          }
         }
 
-        logger.info("[L67] ✅ Champs validés");
+        logger.info("[L67] ✅ Champs requis validés");
 
         // Traitement des tags
         let processedTags = tags;
@@ -763,6 +770,7 @@ exports.createArticle = async (req, res) => {
           }
         }
 
+        // Images
         let mainImagePath = "";
         let additionalImagePaths = [];
 
@@ -770,7 +778,7 @@ exports.createArticle = async (req, res) => {
           mainImagePath =
             "/images/articles/" + path.basename(req.files.mainImage[0].path);
         } else {
-          logger.error("fichier mainImage non trouvé");
+          logger.error("[L78] ❌ Fichier mainImage non trouvé");
           return res.status(400).json({
             status: "error",
             message: "Fichier mainImage non trouvé",
@@ -783,7 +791,7 @@ exports.createArticle = async (req, res) => {
           );
         }
 
-        // Traitement du contenu de l'article
+        // Contenu de l'article (.txt)
         let articlePath = "";
         if (req.files.contentArticle?.length > 0) {
           const content = await fsPromises.readFile(
@@ -794,19 +802,19 @@ exports.createArticle = async (req, res) => {
             "/images/articles/" +
             path.basename(req.files.contentArticle[0].path);
         } else {
-          logger.error("fichier .txt non trouvé");
+          logger.error("[L91] ❌ Fichier .txt non trouvé");
           return res.status(400).json({
             status: "error",
             message: "Fichier .txt non trouvé",
           });
         }
 
-        logger.info("[L83] 📸 Images traitées", {
+        logger.info("[L95] 📸 Images traitées", {
           mainImagePath,
           additionalImagePaths,
         });
 
-        // Insertion BDD
+        // Insertion en base de données
         const [result] = await connection.execute(
           `INSERT INTO articles (
             title, slug, content, excerpt, mainImage, category, tags, author,
@@ -828,9 +836,8 @@ exports.createArticle = async (req, res) => {
 
         const articleId = result.insertId;
 
-        //res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
-        logger.info("[L102] ✅ Article créé en BDD", { articleId });
-        logger.info("[L103] Headers de réponse:", res.getHeaders());
+        logger.info("[L113] ✅ Article créé en BDD", { articleId });
+        logger.info("[L114] Headers de réponse:", res.getHeaders());
 
         return res.status(201).json({
           status: "success",
@@ -838,18 +845,23 @@ exports.createArticle = async (req, res) => {
             article: {
               id: articleId,
               title,
+              slug,
               excerpt,
-              contentArticle,
+              content: articlePath, // <--- le champ correct
               category,
               tags: processedTags,
               mainImage: mainImagePath,
               additionalImages: additionalImagePaths,
-              language: language || "en",
+              language,
             },
           },
         });
       } catch (error) {
-        console.error("[L118] ❌ Erreur interne dans bloc d’upload", error);
+        logger.error("[L128] ❌ Erreur dans bloc upload", {
+          message: error.message,
+          stack: error.stack,
+        });
+
         return res.status(500).json({
           status: "error",
           message: error.message,
@@ -860,7 +872,7 @@ exports.createArticle = async (req, res) => {
       }
     });
   } catch (error) {
-    logger.error("[L128] ❌ Erreur externe try/catch principal", {
+    logger.error("[L139] ❌ Erreur dans le bloc try/catch principal", {
       message: error.message,
       stack: error.stack,
     });
@@ -872,10 +884,11 @@ exports.createArticle = async (req, res) => {
   } finally {
     if (connection) {
       releaseConnection(connection);
-      logger.info("[L138] 🔄 Connexion DB libérée");
+      logger.info("[L148] 🔄 Connexion DB libérée");
     }
   }
 };
+
 /*exports.createArticle = async (req, res) => {
   logger.info("[L3] ➡️ Requête reçue - Création article");
   logger.info(`[L4] Origin: ${req.headers.origin}`);

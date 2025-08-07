@@ -1,6 +1,29 @@
 // Import color variables
 @import '../../utils/color-rule/color-rule.scss';
 
+.page-container {
+    position: relative;
+
+    .btn-retour-articles {
+        display: block;
+        position: fixed;
+        z-index: 1000;
+        top: 150px;
+        left: 30px;
+
+        padding: 1rem 2rem;
+        background-color: map-get($colors-rule, second-color);
+        color: map-get($colors-rule, sixth-color);
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: map-get($colors-rule, first-color);
+
+        }
+    }
+}
+
 // Article container - Mobile First
 .article-wrapper {
     max-width: 900px;

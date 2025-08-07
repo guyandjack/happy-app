@@ -141,6 +141,7 @@ const Dashboard = () => {
                   <ArticleForm
                     onSuccess={handleArticleSubmitSuccess}
                     onCancel={toggleArticleForm}
+                    setShow={setShowArticleForm}
                   />
                 </div>
               )}
