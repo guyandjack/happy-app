@@ -112,6 +112,22 @@ function Navbar() {
     }
   }, []);
 
+  //useEffect qui referme le menu burger si detecte un click en dehors du menu burger
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (event.target.closest(".navbar-wrapper")) {
+        return;
+      }
+      if (isOpen) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isOpen]);
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
