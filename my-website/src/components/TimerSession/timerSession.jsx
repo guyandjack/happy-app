@@ -45,33 +45,6 @@ function TimerSession() {
   //ref qui contient l' id du setInterval du compteur
   const counter = useRef(null);
 
-  /* //ref qui contient la valeur initiale du compteur
-  const initialTime = useRef(initCounterDown()); */
-
-  //fonction qui décrémente le compteur
-  /* const counterDown = () => {
-    console.log("counter.current dans le compte à rebours:", counter.current);
-
-    counter.current = setInterval(() => {
-      setTimeRemaining((prevTime) => {
-        if (prevTime > 0) {
-          console.log("prevTime in counterDown:", prevTime);
-          localStorage.setItem("timeRemaining", (prevTime - 1).toString());
-          localStorage.setItem("lastTime", new Date().getTime().toString());
-          return prevTime - 1;
-        } else {
-          //alert("Session expirée!, redirection vers page de connexion");
-          console.log("Session expirée!, redirection vers page de connexion");
-          clearInterval(counter.current);
-          setIsSessionActive(false);
-          clearLocalStorageInfoSession();
-          //setTestSession(!testSession);
-          return 0;
-        }
-      });
-    }, 1000);
-  }; */
-
   //fonction counterdown version 2
   const counterDownV2 = () => {
     const isToken = localStorage.getItem("token");
@@ -147,6 +120,22 @@ function TimerSession() {
       counterDownV2();
     }
   }, [startCounterDown]);
+
+  //useEffect qui referme le collapse si detecte un click en dehors du collapse
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (event.target.closest(".timer-user-session")) {
+        return;
+      }
+      if (isOpen) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isOpen]);
 
   //fetch to refresh token
   const refreshToken = async () => {

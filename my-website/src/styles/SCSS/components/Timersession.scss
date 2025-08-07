@@ -3,6 +3,7 @@
 
 .timer-session {
     position: relative;
+    z-index: 1000;
     list-style: none;
     background-color: map-get($colors-rule, 'third-color');
     width: 130px;

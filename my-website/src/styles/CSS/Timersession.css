@@ -1,6 +1,7 @@
 @charset "UTF-8";
 .timer-session {
   position: relative;
+  z-index: 1000;
   list-style: none;
   background-color: #c7e3cd;
   width: 130px;
