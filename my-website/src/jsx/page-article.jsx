@@ -33,21 +33,44 @@ const { endPoint, mode } = endpointStaticFile();
 async function displayArticle() {
   try {
     const articleText = await axios.get(endPoint + article.content, {
-      /* validateStatus: function (status) {
-        status < 599;
-      }, */
+      validateStatus: function (status) {
+        return status < 500;
+      },
     });
+
     if (!articleText) {
       console.log("impossible de recuperer le contenu de l' article");
+      return;
     }
-
-    //set dynamic page header
-    setArticlePageHeader(article);
 
     //insere le contenu de l'article dans la page
     const articleContent = document.querySelector(".article-content");
     if (articleContent) {
       articleContent.innerHTML = articleText.data;
+    }
+
+    //set dynamic page header
+    setArticlePageHeader(article);
+
+    //Insere le nom de l'auteur dans le contenu de l'article
+    const spanAuthorName = document.querySelector(".article-author-name");
+
+    if (spanAuthorName) {
+      spanAuthorName.textContent = article.author;
+    }
+
+    //Insere la date de mise à jour dans le contenu de l'article
+    const spanDateUpdate = document.querySelector(".article-date-update");
+    if (spanDateUpdate) {
+      const rawDate = "2025-08-07T11:42:14.000Z";
+      const date = new Date(rawDate);
+
+      const formatted = date.toLocaleDateString("fr-FR", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      });
+      spanDateUpdate.textContent = formatted || "Date non disponible";
     }
 
     //recuperation de l'image principale
