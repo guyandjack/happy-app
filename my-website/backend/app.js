@@ -21,7 +21,11 @@ const app = express();
 // ✅ Configuration CORS
 const corsOptions = {
   origin: function (origin, callback) {
-    const allowedOrigins = ["https://helveclick.ch", "http://localhost:5173"];
+    const allowedOrigins = [
+      "https://helveclick.ch",
+      "http://localhost:5173",
+      "http://localhost:4173",
+    ];
 
     if (!origin) {
       callback(null, true);

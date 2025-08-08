@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { localOrProd } from "@utils/fonction/testEnvironement";
 import { getLanguage } from "@utils/fonction/getLanguage.js";
-/* import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw"; */
+import { endpointStaticFile } from "@utils/fonction/endpointStaticFile.js";
 
 import "@styles/CSS/ArticleCard.css";
 
@@ -19,20 +18,9 @@ function ArticleCard({ article }) {
   useEffect(() => {
     if (!article?.mainImage) return;
 
-    const { urlApi, mode } = localOrProd();
-    console.log("urlApi: ", urlApi);
+    const { endPoint } = endpointStaticFile();
 
-    let newUrlApi;
-
-    if (mode === "production") {
-      newUrlApi = urlApi.split("ch/api")[0] + "ch";
-      console.log("newUrlApiprod: ", newUrlApi);
-    } else {
-      newUrlApi = urlApi.split("/api")[0];
-      console.log("newUrlApiDev: ", newUrlApi);
-    }
-
-    const fullUrl = `${newUrlApi}${article.mainImage}`;
+    const fullUrl = `${endPoint}${article.mainImage}`;
     console.log("✅ Image URL construite :", fullUrl);
 
     setImageUrl(fullUrl);

@@ -24,7 +24,7 @@ import { endpointStaticFile } from "@utils/fonction/endpointStaticFile.js";
 //variable globale
 //get article from local storage
 const article = JSON.parse(localStorage.getItem("article"));
-const { endPoint, mode } = endpointStaticFile();
+const { endPoint } = endpointStaticFile();
 
 /****************************************************
  * ************* code principal *******
@@ -62,7 +62,7 @@ async function displayArticle() {
     //Insere la date de mise à jour dans le contenu de l'article
     const spanDateUpdate = document.querySelector(".article-date-update");
     if (spanDateUpdate) {
-      const rawDate = "2025-08-07T11:42:14.000Z";
+      const rawDate = article.updatedAt;
       const date = new Date(rawDate);
 
       const formatted = date.toLocaleDateString("fr-FR", {
@@ -87,17 +87,18 @@ async function displayArticle() {
     const articleImgSubtitles = document.querySelectorAll(
       ".article-img-subtitle"
     );
+    console.log("tableau des articleImgSubtitles: ", articleImgSubtitles);
     if (articleImgSubtitles) {
       articleImgSubtitles.forEach((subtitle, index) => {
-        if (mode === "production") {
-          let arrayImages = JSON.parse(article.additionalImages);
-          console.log("arrayImages: ", arrayImages);
-          const fullUrl = `${endPoint}${arrayImages[index]}`;
+        if (window.location.hostname.includes("localhost")) {
+          const fullUrl = `${endPoint}${article.additionalImages[index]}`;
           console.log("✅ Image URL construite :", fullUrl);
           subtitle.src = fullUrl;
           subtitle.alt = article.slug;
         } else {
-          const fullUrl = `${endPoint}${article.additionalImages[index]}`;
+          let arrayImages = JSON.parse(article.additionalImages);
+          console.log("arrayImages: ", arrayImages);
+          const fullUrl = `${endPoint}${arrayImages[index]}`;
           console.log("✅ Image URL construite :", fullUrl);
           subtitle.src = fullUrl;
           subtitle.alt = article.slug;

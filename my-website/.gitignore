@@ -25,7 +25,7 @@ database-client-config.json
 
 
 #assets and file
-dist
+dist/*
 backend/uploads/*
 backend/public/*
 backend/.env

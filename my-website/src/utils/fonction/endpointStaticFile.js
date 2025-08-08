@@ -7,13 +7,14 @@ function endpointStaticFile() {
 
   //modifier urlApi pour atteindre le dosiier qui sert les fichier ststique sur l' api
   let endPoint = "";
+  let isLocalhost = window.location.hostname.includes("localhost");
 
-  if (mode === "production") {
-    endPoint = urlApi.split("ch/api")[0] + "ch";
-    console.log("endPointprod: ", endPoint);
-  } else {
+  if (isLocalhost) {
     endPoint = urlApi.split("/api")[0];
     console.log("endPointDev: ", endPoint);
+  } else {
+    endPoint = urlApi.split("ch/api")[0] + "ch";
+    console.log("endPointprod: ", endPoint);
   }
 
   return { endPoint, mode };
