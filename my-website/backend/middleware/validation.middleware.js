@@ -1,6 +1,4 @@
 const { body, validationResult } = require("express-validator");
-const multer = require("multer");
-const path = require("path");
 const fs = require("fs");
 
 /**
@@ -119,13 +117,10 @@ exports.voteValidation = [
  */
 exports.articleValidation = [
   body("author").notEmpty().withMessage("Author is required"),
+  body("category").notEmpty().withMessage("Category is required"),
   body("title").notEmpty().withMessage("Title is required"),
 
   body("slug").notEmpty().withMessage("Slug is required"),
-
-  body("contentArticle").notEmpty().withMessage("Content is required"),
-
-  body("category").notEmpty().withMessage("Category is required"),
 
   body("excerpt")
     .optional()
@@ -165,11 +160,6 @@ exports.articleValidation = [
     .withMessage(
       "Tags must be a comma-separated list or a JSON array of strings"
     ),
-
-  body("publishedAt")
-    .optional()
-    .isISO8601()
-    .withMessage("Published date must be a valid date"),
 
   body("language")
     .optional()
@@ -210,37 +200,22 @@ exports.articleValidation = [
   },
 ];
 
-/* // Validation middleware for article update
+// Validation middleware for article update
 exports.validateArticleUpdate = [
-  // Process file uploads first (optional for updates)
-  (req, res, next) => {
-    const uploadMiddleware = upload.fields([
-      { name: "contentFile", maxCount: 1 },
-      { name: "mainImage", maxCount: 1 },
-      { name: "additionalImages", maxCount: 5 },
-    ]);
-
-    uploadMiddleware(req, res, (err) => {
-      if (err) {
-        console.error("Error uploading files:", err);
-        return res.status(400).json({
-          status: "error",
-          message: err.message || "Error uploading files",
-        });
-      }
-
-      next();
-    });
-  },
-
   // Validate text fields (all optional for updates)
+  body("author").optional(),
+  body("language")
+    .optional()
+    .isIn(["en", "fr"])
+    .withMessage('Language must be either "en" or "fr"'),
+
+  body("category").optional(),
+  body("tags").optional(),
   body("title")
     .optional()
     .isLength({ max: 200 })
     .withMessage("Title must be less than 200 characters"),
-
-  body("category").optional(),
-
+  body("slug").optional(),
   body("excerpt")
     .optional()
     .isLength({ max: 500 })
@@ -280,16 +255,6 @@ exports.validateArticleUpdate = [
       "Tags must be a comma-separated list or a JSON array of strings"
     ),
 
-  body("publishedAt")
-    .optional()
-    .isISO8601()
-    .withMessage("Published date must be a valid date"),
-
-  body("language")
-    .optional()
-    .isIn(["en", "fr"])
-    .withMessage('Language must be either "en" or "fr"'),
-
   // Check validation results
   (req, res, next) => {
     const errors = validationResult(req);
@@ -313,4 +278,4 @@ exports.validateArticleUpdate = [
 
     next();
   },
-]; */
+];

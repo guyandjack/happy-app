@@ -44,6 +44,20 @@ function LoginForm() {
     return () => clearTimeout(toastTimer);
   }, [toast]);
 
+  //lance la fonction handleSubmit en pressant la touche enter
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSubmit(onSubmit)();
+    }
+  };
+  //ajout d'un écouteur de touche pour la connexion
+  useEffect(() => {
+    document.addEventListener("keydown", (event) => handleKeyDown(event));
+    return () => {
+      document.removeEventListener("keydown", (event) => handleKeyDown(event));
+    };
+  }, [handleKeyDown]);
+
   const showToast = (message, type = "info") => {
     setToast({ show: true, message, type });
   };

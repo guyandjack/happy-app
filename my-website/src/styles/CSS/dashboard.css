@@ -167,6 +167,18 @@
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   padding: 2rem;
 }
+.dashboard-content .article-form-container {
+  background-color: #fff;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+}
+.dashboard-content .article-form-container .article-form-title {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: #333;
+}
 .dashboard-content .password-section {
   max-width: 600px;
   margin: 0 auto;

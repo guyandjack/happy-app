@@ -1,15 +1,15 @@
 const express = require("express");
 const articleController = require("../controllers/article.controller");
 const authMiddleware = require("../middleware/auth.middleware");
-const corsOptions = require("../middleware/corsOptions");
+const multerConfigArticle = require("../middleware/multerConfigArticle");
+
 const {
   voteValidation,
+  validateArticleUpdate,
+  articleValidation,
   validate,
 } = require("../middleware/validation.middleware");
 const router = express.Router();
-
-//GÈRE LES PRE-REQUÊTES AVANT LES AUTRES MIDDLEWARES
-//router.options("*", cors(corsOptions));
 
 // Public routes
 router.get("/", articleController.getAllArticles);
@@ -22,8 +22,15 @@ router.get("/:id", articleController.getArticle);
 //router.get("/:id/next", articleController.getNextArticle);
 router.get("/score/:id", articleController.getScore);
 
-// Create article - no upload middleware here, it's in the controller
-router.post("/create", authMiddleware.protect, articleController.createArticle);
+// Create article -upload middleware here-
+router.post(
+  "/create",
+  authMiddleware.protect,
+  multerConfigArticle,
+  articleValidation,
+  validate,
+  articleController.createArticle
+);
 router.post("/vote", voteValidation, validate, articleController.vote);
 
 // Update and delete routes
@@ -33,6 +40,15 @@ router.delete(
 
   authMiddleware.protect,
   articleController.deleteArticle
+);
+
+router.put(
+  "/update/:id",
+  authMiddleware.protect,
+  multerConfigArticle,
+  validateArticleUpdate,
+  validate,
+  articleController.updateArticle
 );
 
 module.exports = router;

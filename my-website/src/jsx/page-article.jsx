@@ -27,7 +27,7 @@ const article = JSON.parse(localStorage.getItem("article"));
 const { endPoint, mode } = endpointStaticFile();
 
 /****************************************************
- * ************* code principal page "a propos"*******
+ * ************* code principal *******
  *  * ************************************************/
 
 async function displayArticle() {

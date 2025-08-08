@@ -18,6 +18,7 @@ import {
 import { AdminArticleList } from "@components/Admin/AdminArticleList";
 import PasswordChange from "@components/Admin/PasswordChange";
 import ArticleForm from "@components/Articles/ArticleForm";
+import { UpdateArticle } from "@components/Admin/UpdateArticle";
 
 //import des fonctions
 import { localOrProd } from "@utils/fonction/testEnvironement";
@@ -33,6 +34,7 @@ const Dashboard = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showArticleForm, setShowArticleForm] = useState(false);
+  const [modifyForm, setModifyForm] = useState(false);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -68,12 +70,20 @@ const Dashboard = () => {
   const handleLogout = () => {
     toast.success("Déconnexion réussie");
     setTimeout(() => {
-      clearLocalStorageInfoSession("index.html");
+      clearLocalStorageInfoSession("/");
     }, 3000);
   };
 
+  //gere la logique d' affichage des differents formulaires
   const toggleArticleForm = () => {
-    setShowArticleForm(!showArticleForm);
+    if (showArticleForm || modifyForm) {
+      setModifyForm(false);
+      setShowArticleForm(false);
+    }
+    if (!showArticleForm && !modifyForm) {
+      setModifyForm(false);
+      setShowArticleForm(true);
+    }
   };
 
   const handleArticleSubmitSuccess = () => {
@@ -124,7 +134,7 @@ const Dashboard = () => {
               <div className="section-header">
                 <h2>Gestion des Articles</h2>
                 <button onClick={toggleArticleForm} className="new-article-btn">
-                  {showArticleForm ? (
+                  {showArticleForm || modifyForm ? (
                     <>
                       <FaTimes /> Annuler
                     </>
@@ -136,8 +146,9 @@ const Dashboard = () => {
                 </button>
               </div>
 
-              {showArticleForm && (
+              {showArticleForm && !modifyForm && (
                 <div className="article-form-container">
+                  <h3 className="article-form-title">Créer un article</h3>
                   <ArticleForm
                     onSuccess={handleArticleSubmitSuccess}
                     onCancel={toggleArticleForm}
@@ -145,13 +156,20 @@ const Dashboard = () => {
                   />
                 </div>
               )}
+              {modifyForm && !showArticleForm && (
+                <div className="article-form-container">
+                  <h3 className="article-form-title">
+                    Mettre à jour l'article
+                  </h3>
+                  <UpdateArticle />
+                </div>
+              )}
+              {!showArticleForm && !modifyForm && (
+                <div className="articles-section">
+                  <AdminArticleList setModifyForm={setModifyForm} />
+                </div>
+              )}
             </div>
-
-            {!showArticleForm && (
-              <div className="articles-section">
-                <AdminArticleList />
-              </div>
-            )}
           </>
         )}
 

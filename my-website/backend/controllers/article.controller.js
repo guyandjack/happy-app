@@ -681,196 +681,136 @@ exports.createArticle = async (req, res) => {
     connection = await getConnection();
     logger.info("[L11] ✅ Connexion à la base de données établie");
 
-    // Définition du storage pour multer
-    const storage = multer.diskStorage({
-      destination: function (req, file, cb) {
-        const uploadPath = path.join(
-          __dirname,
-          "..",
-          "public",
-          "images",
-          "articles"
-        );
-        if (!fs.existsSync(uploadPath)) {
-          fs.mkdirSync(uploadPath, { recursive: true });
+    try {
+      logger.info("[L49] 📨 Fichiers uploadés avec succès");
+      logger.info("[L50] Corps de la requête reçu:", req.body);
+
+      const { author, language, category, title, slug, excerpt, tags } =
+        req.body;
+
+      // Validation dynamique des champs requis
+      const requiredFields = { author, language, category, title, slug };
+      for (const [key, value] of Object.entries(requiredFields)) {
+        if (!value) {
+          logger.warn(`[L61] ❌ Champ requis manquant : ${key}`);
+          return res.status(400).json({
+            status: "error",
+            message: `Le champ ${key} est requis`,
+          });
         }
-        cb(null, uploadPath);
-      },
-      filename: function (req, file, cb) {
-        const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-        const ext = path.extname(file.originalname);
-        cb(null, file.fieldname + "-" + uniqueSuffix + ext);
-      },
-    });
+      }
 
-    const upload = multer({
-      storage,
-      limits: { fileSize: 10 * 1024 * 1024 }, // 10 MB
-      fileFilter: (req, file, cb) => {
-        const isImage = file.mimetype.startsWith("image/");
-        const isText = file.mimetype === "text/plain";
+      logger.info("[L67] ✅ Champs requis validés");
 
-        if (isImage || isText) {
-          cb(null, true);
-        } else {
-          cb(
-            new Error("❌ Seuls les fichiers image ou .txt sont autorisés"),
-            false
-          );
+      // Traitement des tags
+      let processedTags = tags;
+      if (typeof tags === "string") {
+        try {
+          processedTags = JSON.parse(tags);
+        } catch {
+          processedTags = tags.split(",").map((t) => t.trim());
         }
-      },
-    });
+      }
 
-    const uploadMiddleware = upload.fields([
-      { name: "mainImage", maxCount: 1 },
-      { name: "additionalImages", maxCount: 10 },
-      { name: "contentArticle", maxCount: 1 },
-    ]);
+      // Images
+      let mainImagePath = "";
+      let additionalImagePaths = [];
 
-    // Appel de l'upload middleware
-    uploadMiddleware(req, res, async (err) => {
-      if (err) {
-        logger.error("[L42] ❌ Erreur Multer", { message: err.message });
-        logger.warn("[L43] Headers actuels:", res.getHeaders());
-
+      if (req.files.mainImage?.length > 0) {
+        mainImagePath =
+          "/images/articles/" + path.basename(req.files.mainImage[0].path);
+      } else {
+        logger.error("[L78] ❌ Fichier mainImage non trouvé");
         return res.status(400).json({
           status: "error",
-          message: err.message || "Erreur d’upload",
+          message: "Fichier mainImage non trouvé",
         });
       }
 
-      try {
-        logger.info("[L49] 📨 Fichiers uploadés avec succès");
-        logger.info("[L50] Corps de la requête reçu:", req.body);
+      if (req.files.additionalImages?.length > 0) {
+        additionalImagePaths = req.files.additionalImages.map(
+          (file) => "/images/articles/" + path.basename(file.path)
+        );
+      }
 
-        const { author, language, category, title, slug, excerpt, tags } =
-          req.body;
-
-        // Validation dynamique des champs requis
-        const requiredFields = { author, language, category, title, slug };
-        for (const [key, value] of Object.entries(requiredFields)) {
-          if (!value) {
-            logger.warn(`[L61] ❌ Champ requis manquant : ${key}`);
-            return res.status(400).json({
-              status: "error",
-              message: `Le champ ${key} est requis`,
-            });
-          }
-        }
-
-        logger.info("[L67] ✅ Champs requis validés");
-
-        // Traitement des tags
-        let processedTags = tags;
-        if (typeof tags === "string") {
-          try {
-            processedTags = JSON.parse(tags);
-          } catch {
-            processedTags = tags.split(",").map((t) => t.trim());
-          }
-        }
-
-        // Images
-        let mainImagePath = "";
-        let additionalImagePaths = [];
-
-        if (req.files.mainImage?.length > 0) {
-          mainImagePath =
-            "/images/articles/" + path.basename(req.files.mainImage[0].path);
-        } else {
-          logger.error("[L78] ❌ Fichier mainImage non trouvé");
-          return res.status(400).json({
-            status: "error",
-            message: "Fichier mainImage non trouvé",
-          });
-        }
-
-        if (req.files.additionalImages?.length > 0) {
-          additionalImagePaths = req.files.additionalImages.map(
-            (file) => "/images/articles/" + path.basename(file.path)
-          );
-        }
-
-        // Contenu de l'article (.txt)
-        let articlePath = "";
-        if (req.files.contentArticle?.length > 0) {
-          const content = await fsPromises.readFile(
-            req.files.contentArticle[0].path,
-            "utf8"
-          );
-          articlePath =
-            "/images/articles/" +
-            path.basename(req.files.contentArticle[0].path);
-        } else {
-          logger.error("[L91] ❌ Fichier .txt non trouvé");
-          return res.status(400).json({
-            status: "error",
-            message: "Fichier .txt non trouvé",
-          });
-        }
-
-        logger.info("[L95] 📸 Images traitées", {
-          mainImagePath,
-          additionalImagePaths,
+      // Contenu de l'article (.txt)
+      let articlePath = "";
+      if (req.files.contentArticle?.length > 0) {
+        const content = await fsPromises.readFile(
+          req.files.contentArticle[0].path,
+          "utf8"
+        );
+        articlePath =
+          "/images/articles/" + path.basename(req.files.contentArticle[0].path);
+      } else {
+        logger.error("[L91] ❌ Fichier .txt non trouvé");
+        return res.status(400).json({
+          status: "error",
+          message: "Fichier .txt non trouvé",
         });
+      }
 
-        // Insertion en base de données
-        const [result] = await connection.execute(
-          `INSERT INTO articles (
+      logger.info("[L95] 📸 Images traitées", {
+        mainImagePath,
+        additionalImagePaths,
+      });
+
+      // Insertion en base de données
+      const [result] = await connection.execute(
+        `INSERT INTO articles (
             title, slug, content, excerpt, mainImage, category, tags, author,
             createdAt, updatedAt, additionalImages, language
           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), ?, ?)`,
-          [
+        [
+          title,
+          slug,
+          articlePath,
+          excerpt,
+          mainImagePath,
+          category,
+          JSON.stringify(processedTags) || "",
+          author || "",
+          JSON.stringify(additionalImagePaths) || "",
+          language,
+        ]
+      );
+
+      const articleId = result.insertId;
+
+      logger.info("[L113] ✅ Article créé en BDD", { articleId });
+      logger.info("[L114] Headers de réponse:", res.getHeaders());
+
+      return res.status(201).json({
+        status: "success",
+        data: {
+          article: {
+            id: articleId,
             title,
             slug,
-            articlePath,
             excerpt,
-            mainImagePath,
+            content: articlePath, // <--- le champ correct
             category,
-            JSON.stringify(processedTags) || "",
-            author || "",
-            JSON.stringify(additionalImagePaths) || "",
+            tags: processedTags,
+            mainImage: mainImagePath,
+            additionalImages: additionalImagePaths,
             language,
-          ]
-        );
-
-        const articleId = result.insertId;
-
-        logger.info("[L113] ✅ Article créé en BDD", { articleId });
-        logger.info("[L114] Headers de réponse:", res.getHeaders());
-
-        return res.status(201).json({
-          status: "success",
-          data: {
-            article: {
-              id: articleId,
-              title,
-              slug,
-              excerpt,
-              content: articlePath, // <--- le champ correct
-              category,
-              tags: processedTags,
-              mainImage: mainImagePath,
-              additionalImages: additionalImagePaths,
-              language,
-            },
           },
-        });
-      } catch (error) {
-        logger.error("[L128] ❌ Erreur dans bloc upload", {
-          message: error.message,
-          stack: error.stack,
-        });
+        },
+      });
+    } catch (error) {
+      logger.error("[L128] ❌ Erreur dans bloc upload", {
+        message: error.message,
+        stack: error.stack,
+      });
 
-        return res.status(500).json({
-          status: "error",
-          message: error.message,
-          code: error.code,
-          sqlMessage: error.sqlMessage,
-          sql: error.sql,
-        });
-      }
-    });
+      return res.status(500).json({
+        status: "error",
+        message: error.message,
+        code: error.code,
+        sqlMessage: error.sqlMessage,
+        sql: error.sql,
+      });
+    }
   } catch (error) {
     logger.error("[L139] ❌ Erreur dans le bloc try/catch principal", {
       message: error.message,
@@ -889,18 +829,6 @@ exports.createArticle = async (req, res) => {
   }
 };
 
-/*exports.createArticle = async (req, res) => {
-  logger.info("[L3] ➡️ Requête reçue - Création article");
-  logger.info(`[L4] Origin: ${req.headers.origin}`);
-  logger.info(`[L5] Referer: ${req.headers.referer}`);
-  logger.info(`[L6] Host: ${req.headers.host}`);
-  logger.info(`[L7] Accept: ${req.headers.accept}`);
-
-  res.status(200).json({
-    status: "success",
-    message: "Article created",
-  });
-};*/
 /************************************************
  * ************ create article *****************
  **** end **************************************/
@@ -910,94 +838,262 @@ exports.createArticle = async (req, res) => {
  **** start **************************************/
 
 exports.updateArticle = async (req, res) => {
-  try {
-    const article = await Article.findById(req.params.id);
+  logger.info("[L3] ➡️ Requête reçue - Mise à jour article");
+  logger.info(`[L4] Origin: ${req.headers.origin}`);
+  logger.info(`[L5] Referer: ${req.headers.referer}`);
+  logger.info(`[L6] Host: ${req.headers.host}`);
+  logger.info(`[L7] Accept: ${req.headers.accept}`);
 
-    if (!article) {
+  console.log("Champs texte:", req.body); // ✅
+  console.log("Fichiers:", req.files);
+
+  let connection;
+  let columns = [];
+  let values = [];
+
+  try {
+    connection = await getConnection();
+
+    const { id } = req.params;
+    const { author, language, category, title, slug, excerpt, tags } = req.body;
+    console.log("author: ", author);
+    console.log("language: ", language);
+    console.log("category: ", category);
+    console.log("title: ", title);
+    console.log("slug: ", slug);
+    console.log("excerpt: ", excerpt);
+    console.log("tags: ", tags);
+
+    if (!id) {
+      return res.status(400).json({
+        status: "error",
+        message: "Article ID is required",
+      });
+    }
+
+    const [oldArticle] = await connection.execute(
+      "SELECT * FROM articles WHERE id = ?",
+      [id]
+    );
+
+    if (!oldArticle.length) {
       return res.status(404).json({
         status: "error",
         message: "Article not found",
       });
     }
 
-    const updateData = {
-      title: req.body.title,
-      category: req.body.category,
-      excerpt: req.body.excerpt,
-      tags: req.body.tags ? JSON.parse(req.body.tags) : undefined,
+    const requiredFields = {
+      author: author,
+      language: language,
+      category: category,
+      title: title,
+      slug: slug,
+      excerpt: excerpt,
+      tags: tags,
     };
-
-    // Handle HTML content file if uploaded
-    if (req.files && req.files.htmlContent && req.files.htmlContent[0]) {
-      const htmlFile = req.files.htmlContent[0];
-      updateData.contentType = "html_file";
-
-      // Read HTML content from file
-      updateData.content = await Article.readHtmlContent(htmlFile.path);
-
-      // Delete the temporary file after reading
-      fs.unlinkSync(htmlFile.path);
-    } else if (req.body.content) {
-      // Use text content from request body
-      updateData.content = req.body.content;
-      updateData.contentType = "text";
-    }
-
-    // Handle main featured image
-    if (req.files && req.files.image && req.files.image[0]) {
-      const result = await cloudinary.uploadImage(req.files.image[0].path);
-      updateData.image = result.secure_url;
-
-      // Delete the temporary file after upload
-      fs.unlinkSync(req.files.image[0].path);
-    }
-
-    // Handle multiple additional images
-    if (req.files && req.files.images) {
-      const imageDetails = [];
-      const imageUrls = [];
-
-      for (const file of req.files.images) {
-        const result = await cloudinary.uploadImage(file.path);
-        imageUrls.push(result.secure_url);
-
-        imageDetails.push({
-          url: result.secure_url,
-          alt:
-            req.body[`alt_${file.originalname}`] ||
-            updateData.title ||
-            article.title,
+    for (const [key, value] of Object.entries(requiredFields)) {
+      if (!value) {
+        logger.warn(`[L61] ❌ Champ requis manquant : ${key}`);
+        return res.status(400).json({
+          status: "error",
+          message: `Le champ ${key} est requis`,
         });
+      }
+    }
 
-        // Delete the temporary file after upload
-        fs.unlinkSync(file.path);
+    //ajout des colonnes et des valeurs à la requête update
+    columns.push(
+      "author = ?",
+      "language = ?",
+      "category = ?",
+      "title = ?",
+      "slug = ?",
+      "excerpt = ?",
+      "tags = ?"
+    );
+    values.push(author, language, category, title, slug, excerpt, tags);
+
+    logger.info("[L67] ✅ Champs requis validés");
+
+    try {
+      logger.info("[L49] 📨 Fichiers uploadés avec succès");
+      logger.info("[L50] Corps de la requête reçu:", req.body);
+
+      // Images
+      let mainImagePath = "";
+      let additionalImagePaths = [];
+      let articlePath = "";
+
+      //cree un path si une nouvelle image principale est uploadée
+      if (req.files.mainImage?.length > 0) {
+        mainImagePath =
+          "/images/articles/" + path.basename(req.files.mainImage[0].path);
+      } else {
+        console.log("No main image to replace.");
       }
 
-      updateData.images = imageUrls;
-      updateData.imageDetails = imageDetails;
+      //cree un path si une nouvelle image additionnelle est uploadée
+      if (req.files.additionalImages?.length > 0) {
+        additionalImagePaths = req.files.additionalImages.map(
+          (file) => "/images/articles/" + path.basename(file.path)
+        );
+      } else {
+        console.log("No additional images to replace.");
+      }
+
+      if (req.files.contentArticle?.length > 0) {
+        const newContent = await fsPromises.readFile(
+          req.files.contentArticle[0].path,
+          "utf8"
+        );
+        articlePath =
+          "/images/articles/" + path.basename(req.files.contentArticle[0].path);
+      } else {
+        console.log("No content article to replace.");
+      }
+
+      // Supprimer anciennes images et contenu uniquement
+      // si de nouvelles images ou contenu sont présents
+
+      let isNewMainImage = mainImagePath == "" ? false : true;
+      let isNewAdditionalImages =
+        additionalImagePaths.length == 0 ? false : true;
+      let isNewContent = articlePath == "" ? false : true;
+
+      const deleteFile = async (filePath) => {
+        try {
+          await fs.promises.unlink(filePath);
+          return true;
+        } catch (err) {
+          console.error("Failed to delete file:", filePath, err);
+          return false;
+        }
+      };
+
+      let isMainImgDeleted = true;
+      let isAdditionalImgDeleted = true;
+      let isContentDeleted = true;
+      let errorTab = [];
+
+      if (isNewMainImage) {
+        const fullMainImagePath = path.join(
+          __dirname,
+          "../public",
+          oldArticle[0].mainImage
+        );
+        isMainImgDeleted = await deleteFile(fullMainImagePath);
+        if (!isMainImgDeleted) {
+          errorTab.push(
+            "Impossible to delete main image: " + oldArticle[0].mainImage
+          );
+        }
+      } else {
+        console.log("No main image to delete.");
+        isMainImgDeleted = false;
+      }
+
+      if (isNewAdditionalImages) {
+        for (const imagePath of oldArticle[0].additionalImages) {
+          const fullPath = path.join(__dirname, "../public", imagePath);
+          const deleted = await deleteFile(fullPath);
+          if (!deleted) {
+            errorTab.push(
+              "Impossible to delete additional image: " + imagePath
+            );
+          }
+        }
+      } else {
+        console.log("No additional images to delete.");
+        isAdditionalImgDeleted = false;
+      }
+
+      if (isNewContent) {
+        const contentPath = path.join(
+          __dirname,
+          "../public",
+          oldArticle[0].content
+        );
+        isContentDeleted = await deleteFile(contentPath);
+        if (!isContentDeleted) {
+          errorTab.push(
+            "Impossible to delete content: " + oldArticle[0].content
+          );
+        }
+      } else {
+        console.log("No content to delete.");
+        isContentDeleted = false;
+      }
+
+      // Vérifier si tout a bien été supprimé
+      if (errorTab.length > 0) {
+        return res.status(400).json({
+          status: "error",
+          message: "Certaines images ou le contenu n'ont pas pu être supprimés",
+          errorTab: errorTab,
+        });
+      }
+
+      //selection des colones a modifier
+      if (isNewMainImage) {
+        columns.push("mainImage = ?");
+        values.push(mainImagePath);
+      }
+
+      if (isNewAdditionalImages) {
+        columns.push("additionalImages = ?");
+        values.push(JSON.stringify(additionalImagePaths));
+      }
+
+      if (isNewContent) {
+        columns.push("content = ?");
+        values.push(articlePath);
+      }
+
+      columns.push("updatedAt = NOW()");
+
+      // Mettre à jour en BDD
+      const sql = `UPDATE articles SET ${columns.join(", ")} WHERE id = ?`;
+      const [result] = await connection.execute(sql, [...values, id]);
+
+      if (result.affectedRows === 0) {
+        return res.status(400).json({
+          status: "error",
+          message: "Article could not be updated in database",
+        });
+      }
+
+      return res.status(200).json({
+        status: "success",
+        data: {
+          article: id,
+          title,
+          slug,
+          excerpt,
+          content: articlePath,
+          category,
+          tags,
+          mainImage: mainImagePath,
+          additionalImages: additionalImagePaths,
+          language,
+        },
+      });
+    } catch (error) {
+      logger.error("❌ Erreur interne updateArticle", error);
+      return res.status(500).json({
+        status: "error",
+        message: "Erreur lors de la mise à jour de l'article",
+      });
     }
-
-    // Remove undefined fields
-    Object.keys(updateData).forEach(
-      (key) => updateData[key] === undefined && delete updateData[key]
-    );
-
-    const updatedArticle = await Article.findByIdAndUpdate(
-      req.params.id,
-      updateData
-    );
-
-    res.status(200).json({
-      status: "success",
-      data: {
-        article: updatedArticle,
-      },
-    });
+    // ← fermeture du uploadMiddleware
   } catch (error) {
-    res.status(500).json({
+    logger.error("❌ Erreur externe updateArticle", error);
+    return res.status(500).json({
       status: "error",
-      message: error.message,
+      message: error.message || "Erreur serveur",
     });
+  } finally {
+    if (connection) releaseConnection(connection);
   }
 };
 

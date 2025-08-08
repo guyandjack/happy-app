@@ -11,7 +11,7 @@ import { getLanguage } from "@utils/fonction/getLanguage";
 
 import "@styles/CSS/AdminArticleList.css";
 
-const AdminArticleList = () => {
+const AdminArticleList = ({ setModifyForm }) => {
   const { urlApi } = localOrProd();
   const lang = getLanguage();
   const [articles, setArticles] = useState([]);
@@ -185,6 +185,11 @@ const AdminArticleList = () => {
     }
   };
 
+  const handleModify = (article) => {
+    localStorage.setItem("article", JSON.stringify(article));
+    setModifyForm(true);
+  };
+
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
@@ -290,9 +295,7 @@ const AdminArticleList = () => {
                 <div className="flex-row-space_evenly-center admin-article-actions">
                   <button
                     className="edit-btn"
-                    onClick={() =>
-                      (window.location.href = `/admin/articles/edit/${article.id}`)
-                    }
+                    onClick={() => handleModify(article)}
                     title="Modifier l'article"
                   >
                     <FaEdit /> Modifier
