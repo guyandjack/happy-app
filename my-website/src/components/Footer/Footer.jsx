@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 //import { localOrProd } from "@utils/fonction/testEnvironement.js";
 
 //import des images
@@ -10,72 +10,82 @@ import "@styles/CSS/Footer.css";
 //import des icones
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
 
+//import des fonctions
+import { getLanguage } from "@utils/fonction/getLanguage.js";
+
 //constante
 const theme = "light";
 const urlFull = window.location.href;
 
+const menuItems = {
+  fr: {
+    main: [
+      { path: `/`, text: "Accueil" },
+      { path: `/public/fr/a-propos.html`, text: "A propos" },
+      { path: `/public/fr/contact.html`, text: "Contact" },
+    ],
+    services: [
+      {
+        path: `/public/fr/prestations/site-web.html`,
+        text: "Site Web",
+      },
+      {
+        path: `/public/fr/prestations/seo.html`,
+        text: "Référencement",
+      },
+      {
+        path: `/public/fr/prestations/application-mobile.html`,
+        text: "Application Mobile",
+      },
+    ],
+    legal: [
+      {
+        path: `/public/fr/legal/mentions-legales.html`,
+        text: "Mentions légales",
+      },
+      {
+        path: `/public/fr/legal/politique-de-confidentialite.html`,
+        text: "Politique de confidentialité",
+      },
+      { path: `/public/fr/connexion.html`, text: "Connexion" },
+    ],
+  },
+  en: {
+    main: [
+      { path: `/public/en/home.html`, text: "Home" },
+      { path: `/public/en/about.html`, text: "About me" },
+      { path: `/public/en/contact.html`, text: "Contact" },
+    ],
+    services: [
+      { path: `/public/en/services/website.html`, text: "Website" },
+      { path: `/public/en/services/seo.html`, text: "SEO" },
+      {
+        path: `/public/en/services/mobile-application.html`,
+        text: "Mobile App",
+      },
+    ],
+    legal: [
+      {
+        path: `/public/en/legal/legal-notice.html`,
+        text: "Legal Notice",
+      },
+      {
+        path: `/public/en/legal/privacy-policy.html`,
+        text: "Privacy Policy",
+      },
+    ],
+  },
+};
 function Footer() {
-  const menuItems = {
-    fr: {
-      main: [
-        { path: `/`, text: "Accueil" },
-        { path: `/public/fr/a-propos.html`, text: "A propos" },
-        { path: `/public/fr/contact.html`, text: "Contact" },
-      ],
-      services: [
-        {
-          path: `/public/fr/prestations/site-web.html`,
-          text: "Site Web",
-        },
-        {
-          path: `/public/fr/prestations/seo.html`,
-          text: "Référencement",
-        },
-        {
-          path: `/public/fr/prestations/application-mobile.html`,
-          text: "Application Mobile",
-        },
-      ],
-      legal: [
-        {
-          path: `/public/fr/legal/mentions-legales.html`,
-          text: "Mentions légales",
-        },
-        {
-          path: `/public/fr/legal/politique-de-confidentialite.html`,
-          text: "Politique de confidentialité",
-        },
-        { path: `/public/fr/connexion.html`, text: "Connexion" },
-      ],
-    },
-    en: {
-      main: [
-        { path: `/public/en/home.html`, text: "Home" },
-        { path: `/public/en/about.html`, text: "About me" },
-        { path: `/public/en/contact.html`, text: "Contact" },
-      ],
-      services: [
-        { path: `/public/en/services/website.html`, text: "Website" },
-        { path: `/public/en/services/seo.html`, text: "SEO" },
-        {
-          path: `/public/en/services/mobile-application.html`,
-          text: "Mobile App",
-        },
-      ],
-      legal: [
-        {
-          path: `/public/en/legal/legal-notice.html`,
-          text: "Legal Notice",
-        },
-        {
-          path: `/public/en/legal/privacy-policy.html`,
-          text: "Privacy Policy",
-        },
-      ],
-    },
-  };
+  const [displayBadge, setDisplayBadge] = useState(true);
+  const currentLang = getLanguage();
 
-  const currentLang = window.location.pathname.includes("/en/") ? "en" : "fr";
+  //use effect qui gere le display du badge eco index
+  useEffect(() => {
+    if (window.location.pathname.includes("/article.html")) {
+      setDisplayBadge(false);
+    }
+  }, []);
 
   return (
     <footer className="flex-column-start-center footer">
@@ -149,16 +159,18 @@ function Footer() {
             : "We act for a responsible design."}
           <span>{<RiDoubleQuotesR className="footer-quote-icon" />}</span>
         </p>
-        <a
-          className="flex-row-center-center"
-          href={`https://bff.ecoindex.fr/redirect/?url=${urlFull}`}
-          target="_blank"
-        >
-          <img
-            src={`https://bff.ecoindex.fr/badge/?theme=${theme}&url=${urlFull}`}
-            alt="Ecoindex Badge"
-          />
-        </a>
+        {displayBadge && (
+          <a
+            className="flex-row-center-center"
+            href={`https://bff.ecoindex.fr/redirect/?url=${urlFull}`}
+            target="_blank"
+          >
+            <img
+              src={`https://bff.ecoindex.fr/badge/?theme=${theme}&url=${urlFull}`}
+              alt="Ecoindex Badge"
+            />
+          </a>
+        )}
       </div>
       <div className="footer-bottom">
         <p>

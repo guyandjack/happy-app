@@ -1,90 +1,81 @@
 const path = require("path");
-const fs = require("fs");
 
-exports.getLandingPageImages = async (req, res, next) => {
-  const size = parseInt(req.params.size);
-  console.log("valeur du param size:", size);
-  // Fonction pour obtenir la saison actuelle
+exports.getLandingPageImages = (req, res, next) => {
+  const ALLOWED_SIZES = [500, 1000, 1500, 2000];
+  const size = Number.parseInt(req.params.size, 10);
+
+  // 1) Validation du paramètre
+  if (!Number.isInteger(size) || !ALLOWED_SIZES.includes(size)) {
+    return res.status(400).json({
+      error: "Invalid size",
+      allowed: ALLOWED_SIZES,
+    });
+  }
+
+  // 2) Saison astronomique (HN)
   function getSeason() {
-    const month = new Date().getMonth();
-    if (month >= 2 && month <= 4) {
-      return "spring";
-    } else if (month >= 5 && month <= 7) {
-      return "summer";
-    } else if (month >= 8 && month <= 10) {
-      return "autumn";
-    } else {
-      return "winter";
-    }
+    const date = new Date();
+    const y = date.getFullYear();
+    const spring = new Date(y, 2, 20, 0, 0, 0); // ~20 mars
+    const summer = new Date(y, 5, 21, 0, 0, 0); // ~21 juin
+    const autumn = new Date(y, 8, 22, 0, 0, 0); // ~22 sept.
+    const winter = new Date(y, 11, 21, 0, 0, 0); // ~21 déc.
+    if (date >= winter || date < spring) return "winter";
+    if (date >= spring && date < summer) return "spring";
+    if (date >= summer && date < autumn) return "summer";
+    return "autumn";
   }
 
   const season = getSeason();
-  let imagePath = "";
 
-  console.log("season actuel: ", season);
+  // 3) Table de correspondance saison → fichiers
+  // Remplace les noms si tes fichiers diffèrent.
+  const FILES = {
+    spring: {
+      500: "index-spring-700px.webp",
+      1000: "index-spring-1000px.webp",
+      1500: "index-spring-1500px.webp",
+      2000: "index-spring-2000px.webp",
+    },
+    summer: {
+      500: "index-summer-700px.webp",
+      1000: "index-summer-1000px.webp",
+      1500: "index-summer-1500px.webp",
+      2000: "index-summer-2000px.webp",
+    },
+    autumn: {
+      500: "index-summer-700px.webp",
+      1000: "index-summer-1000px.webp",
+      1500: "index-summer-1500px.webp",
+      2000: "index-summer-2000px.webp",
+    },
+    winter: {
+      500: "index-winter-700px.webp",
+      1000: "index-winter-1000px.webp",
+      1500: "index-winter-1500px.webp",
+      2000: "index-winter-2000px.webp",
+    },
+  };
 
-  // Déterminer l'image en fonction de la saison
-  switch (season) {
-    case "spring":
-      if (size === 500) {
-        imagePath = path.join(__dirname, "public/images", "spring.jpg");
-      }
-      break;
-
-    case "summer":
-      if (size === 500) {
-        imagePath = path.join(
-          __dirname,
-          "../public/images/landingPage",
-          "index-summer-700px.webp"
-        );
-      }
-      if (size === 1000) {
-        imagePath = path.join(
-          __dirname,
-          "../public/images/landingPage",
-          "index-summer-1000px.webp"
-        );
-      }
-      if (size === 1500) {
-        imagePath = path.join(
-          __dirname,
-          "../public/images/landingPage",
-          "index-summer-1500px.webp"
-        );
-      }
-      if (size === 2000) {
-        imagePath = path.join(
-          __dirname,
-          "../public/images/landingPage",
-
-          "index-summer-2000px.webp"
-        );
-      }
-      break;
-
-    case "autumn":
-      if (size === 500) {
-        imagePath = path.join(__dirname, "public/images", "autumn.jpg");
-      }
-      break;
-
-    case "winter":
-      imagePath = path.join(__dirname, "images", "winter.jpg");
-      break;
+  const filename = FILES[season]?.[size];
+  if (!filename) {
+    // Si la saison n’a pas de mapping pour ce size
+    return res.status(404).send("Image not found");
   }
 
-  fs.access(imagePath, fs.constants.F_OK, (err) => {
-    if (err) {
-      // Si le fichier n'existe pas, renvoyer une erreur 404
-      console.error(`Image not found: ${imagePath}`);
-      return res.status(404).send("Image not found");
-    }
+  const absPath = path.resolve(
+    __dirname,
+    "../public/images/landingPage",
+    filename
+  );
 
-    //modification du header de la reponse
-    res.setHeader("Cache-Control", "public, max-age=3600");
-    res.setHeader("Expires", new Date(Date.now() + 3600 * 1000).toISOString());
-    res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
-    res.status(200).sendFile(imagePath);
+  // 4) Envoi + gestion d’erreur via callback de sendFile
+  // (pas besoin de fs.access en amont)
+  res.set("Cache-Control", "public, max-age=3600"); // ajuste selon tes besoins
+  //res.set("Cross-Origin-Resource-Policy", "cross-origin");
+  res.sendFile(absPath, (err) => {
+    if (!err) return;
+    if (err.code === "ENOENT") return res.status(404).send("Image not found");
+    return next(err);
   });
 };

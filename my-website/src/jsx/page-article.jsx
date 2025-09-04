@@ -20,6 +20,7 @@ import { ArticleFooter } from "@components/Articles/ArticleFooter.jsx";
 import { handleAxiosError } from "@utils/fonction/handleAxiosError.js";
 import { setArticlePageHeader } from "@utils/fonction/setArticlePageHeader.js";
 import { endpointStaticFile } from "@utils/fonction/endpointStaticFile.js";
+import { getLanguage } from "@utils/fonction/getLanguage.js";
 
 //variable globale
 //get article from local storage
@@ -31,13 +32,23 @@ const { endPoint } = endpointStaticFile();
  *  * ************************************************/
 
 async function displayArticle() {
+  //detection de la langue de la page
+  const lang = getLanguage();
+  let articleText;
   try {
-    const articleText = await axios.get(endPoint + article.content, {
-      validateStatus: function (status) {
-        return status < 500;
-      },
-    });
-
+    if (lang === "fr") {
+      articleText = await axios.get(endPoint + article.content, {
+        validateStatus: function (status) {
+          return status < 500;
+        },
+      });
+    } else {
+      articleText = await axios.get(endPoint + article.content_en, {
+        validateStatus: function (status) {
+          return status < 500;
+        },
+      });
+    }
     if (!articleText) {
       console.log("impossible de recuperer le contenu de l' article");
       return;

@@ -180,12 +180,12 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
       setHttpError(null);
 
       // Validate required author
-      if (!data.author) {
+      /* if (!data.author) {
         setHttpError("L'auteur est requis");
         showToast("L'auteur est requis", "error");
         setIsSubmitting(false);
         return;
-      }
+      } */
 
       // Validate required main image
       if (!mainImage) {
@@ -216,12 +216,12 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
       }
 
       // Validate required language
-      if (!data.language) {
+      /* if (!data.language) {
         setHttpError("La langue est requise");
         showToast("La langue est requise", "error");
         setIsSubmitting(false);
         return;
-      }
+      } */
 
       // Validate required category
       if (!data.category) {
@@ -232,21 +232,31 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
       }
 
       // Validate required excerpt
-      if (!data.excerpt) {
+      /* if (!data.excerpt) {
         setHttpError("L'extrait est requis");
         showToast("L'extrait est requis", "error");
         setIsSubmitting(false);
         return;
       }
+      //transform en base 64 le resume
+      const b64 = btoa(data.excerpt); // Les espaces restent des " " classiques
+      console.log("b64: ", b64); */
+
+      //sanitize toutes les données
+      //const cleenLanguage = data.language.replace(/[^a-zA-Z0-9]/g, "").trim();
+      const cleenCategory = data.category.replace(/[^a-zA-Z0-9]/g, "").trim();
+      //const cleenTitle = data.title.replace(/[^a-zA-Z0-9]/g, "").trim();
+      //const cleenSlug = data.slug.replace(/[^a-zA-Z0-9]/g, "").trim();
+      //const cleenAuthor = data.author.replace(/[^a-zA-Z0-9]/g, "").trim();
 
       // Create FormData object for file uploads
       const formData = new FormData();
-      formData.append("language", data.language);
-      formData.append("category", data.category);
-      formData.append("title", data.title);
-      formData.append("slug", data.slug);
-      formData.append("excerpt", data.excerpt);
-      formData.append("author", data.author);
+      //formData.append("language", cleenLanguage);
+      formData.append("category", cleenCategory);
+      //formData.append("title", cleenTitle);
+      //formData.append("slug", cleenSlug);
+      //formData.append("excerpt", b64);
+      //formData.append("author", cleenAuthor);
       // Process tags (convert comma-separated string to array)
       if (data.tags) {
         const tagsArray = data.tags
@@ -357,13 +367,13 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
         )}
 
         {/* Author */}
-        <div className="form-group">
+        {/* <div className="form-group">
           <label htmlFor="author">Auteur *</label>
           <input type="text" id="author" {...register("author")} />
-        </div>
+        </div> */}
 
         {/* Language */}
-        <div className="form-group">
+        {/* <div className="form-group">
           <label htmlFor="language">Langue *</label>
           <select
             id="language"
@@ -375,13 +385,14 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
 
         {/* Category */}
         <div className="form-group">
           <label htmlFor="category">Catégorie *</label>
           <select
             id="category"
+            name="category"
             {...register("category", {
               required: "La catégorie est requise",
             })}
@@ -404,13 +415,14 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
           <input
             type="text"
             id="tags"
+            name="tags"
             {...register("tags")}
             placeholder="ex: javascript, react, web"
           />
         </div>
 
         {/* title */}
-        <div className="form-group">
+        {/* <div className="form-group">
           <label htmlFor="title">Titre de l'article *</label>
           <input
             type="text"
@@ -421,10 +433,10 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
           {errors.title && (
             <span className="text-red-500">{errors.title.message}</span>
           )}
-        </div>
+        </div> */}
 
         {/* slug title */}
-        <div className="form-group">
+        {/* <div className="form-group">
           <label htmlFor="slug">Slug for SEO (automatique)</label>
           <input
             type="text"
@@ -433,17 +445,17 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
             className=""
             readOnly
           />
-        </div>
+        </div> */}
 
         {/* excerpt */}
-        <div className="form-group">
+        {/* <div className="form-group">
           <label htmlFor="excerpt">Résumé de l'article</label>
           <textarea
             placeholder="Résumé de l'article"
             {...register("excerpt")}
             className=""
           />
-        </div>
+        </div> */}
 
         {/* champ markdown */}
         {/*<div className="form-group">
@@ -465,6 +477,7 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
             <input
               type="file"
               id="contentArticle"
+              name="contentArticle"
               accept=".txt"
               onChange={handleContentArticleChange}
               ref={contentArticleInputRef}
@@ -490,6 +503,7 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
             <input
               type="file"
               id="mainImage"
+              name="mainImage"
               accept="image/*"
               onChange={handleMainImageChange}
               ref={mainImageInputRef}
@@ -533,6 +547,7 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
             <input
               type="file"
               id="additionalImages"
+              name="additionalImages"
               accept="image/*"
               multiple
               onChange={handleAdditionalImagesChange}

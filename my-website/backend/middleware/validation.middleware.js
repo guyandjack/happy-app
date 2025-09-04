@@ -116,16 +116,15 @@ exports.voteValidation = [
  * Validation rules for article creation
  */
 exports.articleValidation = [
-  body("author").notEmpty().withMessage("Author is required"),
-  body("category").notEmpty().withMessage("Category is required"),
-  body("title").notEmpty().withMessage("Title is required"),
-
-  body("slug").notEmpty().withMessage("Slug is required"),
-
-  body("excerpt")
-    .optional()
-    .isLength({ max: 500 })
-    .withMessage("Excerpt must be less than 500 characters"),
+  body("category")
+    .notEmpty()
+    .withMessage("Category is required")
+    .isString()
+    .withMessage("Category must be a string")
+    .isLength({ min: 2, max: 50 })
+    .withMessage("Category must be between 2 and 50 characters")
+    .matches(/^[a-zA-Z0-9\s\-]+$/)
+    .withMessage("Category must contain only letters, spaces, dashes"),
 
   body("tags")
     .optional()
@@ -161,21 +160,8 @@ exports.articleValidation = [
       "Tags must be a comma-separated list or a JSON array of strings"
     ),
 
-  body("language")
-    .optional()
-    .isIn(["en", "fr"])
-    .withMessage('Language must be either "en" or "fr"'),
-
   // Validate file uploads
   (req, res, next) => {
-    // Check if mainImage exists in the request
-    if (!req.files || !req.files.mainImage) {
-      return res.status(400).json({
-        status: "error",
-        message: "Main image is required",
-      });
-    }
-
     // Continue to next middleware if validation passes
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

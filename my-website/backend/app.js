@@ -6,6 +6,7 @@ const rateLimit = require("express-rate-limit");
 const compression = require("compression");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const fileUpload = require("express-fileupload");
 
 const logger = require("./logger.js"); // ✅ Utilise ton logger Winston centralisé
 
@@ -46,7 +47,7 @@ const corsOptions = {
 };
 
 // ✅ CORS middleware (avant tout)
-app.options("*", cors(corsOptions));
+//app.options("*", cors(corsOptions));
 app.use(cors(corsOptions));
 
 // ✅ Fichiers statiques
@@ -61,8 +62,8 @@ app.use(express.static(path.join(__dirname, "public")));
 );*/
 
 // ✅ Body parsers
-app.use(express.json({ limit: "10mb" }));
-app.use(express.urlencoded({ extended: true, limit: "10mb" }));
+app.use(express.json({ limit: "5mb" }));
+app.use(express.urlencoded({ extended: true, limit: "5mb" }));
 
 // ✅ Logger HTTP via morgan -> Winston
 app.use(
@@ -75,6 +76,7 @@ app.use(
 
 // ✅ Compression (désactivée ici)
 /*app.use(compression());*/
+app.use(fileUpload());
 
 // ✅ Cookies
 app.use(cookieParser());

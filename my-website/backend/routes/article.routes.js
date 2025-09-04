@@ -1,7 +1,8 @@
 const express = require("express");
 const articleController = require("../controllers/article.controller");
 const authMiddleware = require("../middleware/auth.middleware");
-const multerConfigArticle = require("../middleware/multerConfigArticle");
+//const multerConfigArticle = require("../middleware/multerConfigArticle");
+const validationFileUpload = require("../middleware/validationFileUpload");
 
 const {
   voteValidation,
@@ -26,7 +27,8 @@ router.get("/score/:id", articleController.getScore);
 router.post(
   "/create",
   authMiddleware.protect,
-  multerConfigArticle,
+  //multerConfigArticle,
+  validationFileUpload,
   articleValidation,
   validate,
   articleController.createArticle
@@ -40,15 +42,6 @@ router.delete(
 
   authMiddleware.protect,
   articleController.deleteArticle
-);
-
-router.put(
-  "/update/:id",
-  authMiddleware.protect,
-  multerConfigArticle,
-  validateArticleUpdate,
-  validate,
-  articleController.updateArticle
 );
 
 module.exports = router;

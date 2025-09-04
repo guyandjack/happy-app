@@ -30,16 +30,19 @@ function ArticleCard({ article }) {
   useEffect(() => {
     if (!article) return;
 
-    setTitle(article.title);
+    //const lang = getLanguage();
 
-    const resume = article.excerpt || article.content.substring(0, 150) + "...";
+    setTitle(lang === "fr" ? article.title : article.title_en);
+
+    const resume = lang === "fr" ? article.excerpt : article.excerpt_en;
+
     setExcerpt(resume);
 
     const formattedDate = new Date(article.createdAt).toLocaleDateString();
     setFormattedDate(formattedDate);
 
     setCategory(article.category);
-    setSlug(article.slug);
+    setSlug(lang === "fr" ? article.slug : article.slug_en);
   }, [article]);
 
   const lang = getLanguage();
@@ -51,7 +54,10 @@ function ArticleCard({ article }) {
       ? localStorage.removeItem("article")
       : localStorage.setItem("article", JSON.stringify(article));
     if (localStorage.getItem("article")) {
-      window.location.href = "/public/fr/article.html?article_title=" + slug;
+      window.location.href =
+        lang === "fr"
+          ? "/public/fr/article.html?article_title=" + slug
+          : "/public/en/article.html?article_title=" + slug;
     }
   };
 
