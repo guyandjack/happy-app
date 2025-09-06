@@ -212,9 +212,9 @@
 }
 .website-types .website-cards .website-card-container .website-card .card-content .btn {
   position: relative;
-  display: inline-block;
+  display: block;
   margin: 0 auto;
-  max-width: 400px;
+  max-width: 300px;
   padding: 12px 30px;
   border-radius: 30px;
   background: #c3066b;
@@ -487,9 +487,9 @@
 }
 .seo-section .icon-seo {
   position: absolute;
-  top: 0px;
-  right: -50px;
-  opacity: 0.1;
+  top: -40px;
+  right: -40px;
+  opacity: 0;
   width: 40px;
   height: 40px;
 }

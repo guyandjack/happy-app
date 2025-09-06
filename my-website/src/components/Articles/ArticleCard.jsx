@@ -71,9 +71,9 @@ function ArticleCard({ article }) {
       <div className="flex-column-start-center article-card-image">
         <img src={imageUrl} alt={title} loading="lazy" />
         <p className="article-meta">
-          {lang == "en" ? "Published on" : "Publié le"} {formattedDate}{" "}
+          {lang == "en" ? "Updated on" : "Mis à jour le: "} {formattedDate}{" "}
           <br></br>
-          {lang == "en" ? "Category:" : "Catégorie:"} {category}
+          {lang == "en" ? "Category:" : "Catégorie: "} {category}
         </p>
       </div>
       <div className="flex-column-start-center article-card-content">

@@ -94,8 +94,7 @@
   margin-top: 20px;
 }
 .contact-content .contact-form-container .form-disclaimer a {
-  color: #024d4a;
-  text-decoration: underline;
+  text-decoration: none;
 }
 .contact-content .contact-info {
   position: relative;
@@ -151,13 +150,7 @@
   margin: 0;
 }
 .contact-content .contact-info .info-item p a {
-  color: #666;
   text-decoration: none;
-  -webkit-transition: color 0.3s ease;
-  transition: color 0.3s ease;
-}
-.contact-content .contact-info .info-item p a:hover {
-  color: #024d4a;
 }
 .contact-content .contact-info .icon-contact {
   fill: #024d4a;

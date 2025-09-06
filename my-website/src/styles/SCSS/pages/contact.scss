@@ -99,8 +99,7 @@
             margin-top: 20px;
 
             a {
-                color: map-get($colors-rule, first-color);
-                text-decoration: underline;
+                text-decoration: none;
             }
 
 
@@ -175,13 +174,8 @@
                 margin: 0;
 
                 a {
-                    color: #666;
                     text-decoration: none;
-                    transition: color 0.3s ease;
 
-                    &:hover {
-                        color: map-get($colors-rule, first-color);
-                    }
                 }
             }
         }

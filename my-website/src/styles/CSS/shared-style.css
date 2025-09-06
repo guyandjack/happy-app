@@ -23,6 +23,7 @@
 **********page size ******
 ********************************************************/
 .page-container {
+  position: relative;
   width: 100%;
   max-width: 2000px;
   min-width: 400px;
@@ -73,12 +74,13 @@ main {
 }
 
 #RC-link-top-page {
-  position: sticky;
-  top: 85%;
-  left: 100%;
+  position: fixed;
+  top: 80%;
+  right: 0;
   z-index: 1000;
-  width: 100px;
-  height: 0px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 #RC-articles-list {
@@ -596,6 +598,22 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.flex-column-center-end {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .flex-row-start-center {

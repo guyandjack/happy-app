@@ -29,7 +29,7 @@
 ********************************************************/
 
 .page-container {
-
+    position: relative;
     width: 100%;
     max-width: 2000px;
     min-width: 400px;
@@ -95,13 +95,12 @@ main {
 // link top page
 #RC-link-top-page {
 
-    position: sticky;
-    top: 85%;
-    left: 100%;
+    position: fixed;
+    top: 80%;
+    right: 0;
     z-index: 1000;
-    width: 100px;
-    height: 0px;
-
+    //border: 1px solid red;
+    width: fit-content;
 
 }
 
@@ -721,6 +720,13 @@ main {
     align-items: center;
     //background-color: red;
 
+}
+
+.flex-column-center-end {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 // Flexbox row

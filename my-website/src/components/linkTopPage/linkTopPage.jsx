@@ -28,9 +28,9 @@ const LinkTopPage = () => {
       });
     }
   };
-  useEffect(() => {
+  /* useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
+      if (window.scrollY > 30) {
         elementLinkTopPage.classList.remove("hide");
       } else {
         elementLinkTopPage.classList.add("hide");
@@ -40,35 +40,35 @@ const LinkTopPage = () => {
     return () => {
       document.removeEventListener("scroll", () => handleScroll());
     };
-  }, []);
+  }, []); */
 
   return (
-    <div className="link-top-page-wrapper">
+    <div className="flex-column-center-end link-top-page-wrapper">
       <div className="link-top-page">
-        <a
+        <button
+          className="flex-row-center-center"
           role="button"
           aria-label="Vers le haut de la page"
-          href="#"
           onClick={(e) => {
             e.preventDefault();
             topPage("up");
           }}
         >
           <FaArrowUp />
-        </a>
+        </button>
       </div>
       <div className="link-top-page">
-        <a
+        <button
+          className="flex-row-center-center"
           role="button"
           aria-label="Vers le bas de la page"
-          href="#"
           onClick={(e) => {
             e.preventDefault();
             topPage("down");
           }}
         >
           <FaArrowDown />
-        </a>
+        </button>
       </div>
     </div>
   );

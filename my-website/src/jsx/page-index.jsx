@@ -1,7 +1,7 @@
 //import du style
 import "@styles/CSS/normalise.css";
 import "@styles/CSS/shared-style.css";
-
+import "@styles/CSS/index.css";
 //import des hooks
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -20,14 +20,18 @@ import { initFaq } from "@scripts/page-services.js";
  * ************* code principal page "index"*******
  *  * ************************************************/
 
-if (import.meta.env.MODE === "production") {
-  import("@styles/CSS/index-prod.css");
-} else {
-  import("@styles/CSS/index.css");
-}
-
 //Logique collapse faq
 initFaq();
+
+//effet parallaxe
+const elementImg = document.querySelector(".hero-index-img");
+console.log("elementImg: ", elementImg);
+if (elementImg) {
+  window.addEventListener("scroll", () => {
+    let scrolled = window.scrollY;
+    elementImg.style.transform = "translateY(" + scrolled * 0.6 + "px)";
+  });
+}
 
 // Mount Navbar
 try {

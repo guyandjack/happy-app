@@ -164,17 +164,19 @@
 .navbar .navbar-menu .menu-item-with-submenu .submenu {
   max-height: 0px;
   overflow: hidden;
-  -webkit-transition: max-height 0.3s ease;
-  transition: max-height 0.3s ease;
   padding-left: 1rem;
   background-color: #024d4a;
-}
-.navbar .navbar-menu .menu-item-with-submenu .submenu.open {
-  max-height: 500px;
+  -webkit-transition: max-height 0.2s ease;
+  transition: max-height 0.2s ease;
 }
 .navbar .navbar-menu .menu-item-with-submenu .submenu a {
   padding: 0.8rem 0;
   border-bottom: none;
+}
+.navbar .navbar-menu .menu-item-with-submenu .open {
+  max-height: 500px;
+  -webkit-transition: max-height 0.3s ease;
+  transition: max-height 0.3s ease;
 }
 .navbar .navbar-menu .menu-item-with-submenu .submenu-arrow {
   margin-left: 0.5rem;

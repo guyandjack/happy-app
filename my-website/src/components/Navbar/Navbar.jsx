@@ -341,7 +341,7 @@ function Navbar() {
                 <ul
                   ref={submenuRef}
                   id="sous-menu"
-                  hidden={!isServicesOpen}
+                  /* hidden={!isServicesOpen} */
                   className={`submenu ${isServicesOpen ? "open" : ""}`}
                 >
                   {item.submenu.map((subItem, subIndex) => (
