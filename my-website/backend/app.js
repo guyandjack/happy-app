@@ -19,7 +19,6 @@ const authRoutes = require("./routes/auth.routes.js");
 const articleRoutes = require("./routes/article.routes.js");
 const contactRoutes = require("./routes/contact.routes.js");
 const recaptchaRoutes = require("./routes/recaptcha.routes.js");
-const imagesRoutes = require("./routes/images.routes.js");
 
 const app = express();
 
@@ -119,7 +118,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/articles", articleRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/recaptcha", recaptchaRoutes);
-app.use("/api/images", imagesRoutes);
 
 // ✅ Test
 app.get("/test", (req, res) => res.json({ message: "Hello, world of bugs" }));
