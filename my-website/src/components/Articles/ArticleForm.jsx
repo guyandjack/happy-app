@@ -166,9 +166,9 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
   // Custom validation function for image files
   const validateImage = (file) => {
     if (!file) return "Image is required";
-    const validTypes = ["image/jpeg", "image/webp"];
+    const validTypes = ["image/jpeg", "image/webp", "image/png", "image/jpg"];
     if (!validTypes.includes(file.type)) {
-      return "Only JPEG and WebP images are allowed";
+      return "Only JPEG, WebP and PNG images are allowed";
     }
     return true;
   };

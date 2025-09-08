@@ -1,12 +1,10 @@
 const express = require("express");
 const articleController = require("../controllers/article.controller");
 const authMiddleware = require("../middleware/auth.middleware");
-//const multerConfigArticle = require("../middleware/multerConfigArticle");
 const validationFileUpload = require("../middleware/validationFileUpload");
 
 const {
   voteValidation,
-  validateArticleUpdate,
   articleValidation,
   validate,
 } = require("../middleware/validation.middleware");
@@ -27,7 +25,6 @@ router.get("/score/:id", articleController.getScore);
 router.post(
   "/create",
   authMiddleware.protect,
-  //multerConfigArticle,
   validationFileUpload,
   articleValidation,
   validate,
@@ -35,8 +32,8 @@ router.post(
 );
 router.post("/vote", voteValidation, validate, articleController.vote);
 
-// Update and delete routes
-//router.patch("/:id", authMiddleware.protect, articleController.updateArticle);
+// Delete routes
+
 router.delete(
   "/:id",
 

@@ -3,9 +3,14 @@
 const path = require("path");
 
 function validateFileUploads(req, res, next) {
-  const MAX_IMAGE_SIZE = 1 * 1024 * 1024; // 1MB
-  const allowedImageExtensions = new Set([".jpg", ".jpeg", ".webp"]);
-  const allowedImageMime = new Set(["image/jpeg", "image/webp"]);
+  const MAX_IMAGE_SIZE = 5 * 1024 * 1024; // 5MB
+  const allowedImageExtensions = new Set([".jpg", ".jpeg", ".webp", ".png"]);
+  const allowedImageMime = new Set([
+    "image/jpeg",
+    "image/webp",
+    "image/png",
+    "image/jpg",
+  ]);
 
   // Helper: force en tableau
   const toArray = (f) => (Array.isArray(f) ? f : [f]);
@@ -40,7 +45,7 @@ function validateFileUploads(req, res, next) {
   if (mainImage.size > MAX_IMAGE_SIZE) {
     return res.status(400).json({
       status: "error",
-      message: "Main image must be smaller than 5MB",
+      message: "Main image must be smaller than 2MB",
     });
   }
 
@@ -56,7 +61,7 @@ function validateFileUploads(req, res, next) {
       if (!allowedImageMime.has(image.mimetype)) {
         return res.status(400).json({
           status: "error",
-          message: "Additional images must be JPG or WEBP",
+          message: "Additional images must be JPG or WEBP or PNG",
         });
       }
 
@@ -64,7 +69,7 @@ function validateFileUploads(req, res, next) {
         return res.status(400).json({
           status: "error",
           message:
-            "Additional images must have valid extensions (.jpg, .jpeg, .webp)",
+            "Additional images must have valid extensions (.jpg, .jpeg, .webp, .png)",
         });
       }
 

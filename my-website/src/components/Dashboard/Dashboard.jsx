@@ -18,7 +18,6 @@ import {
 import { AdminArticleList } from "@components/Admin/AdminArticleList";
 import PasswordChange from "@components/Admin/PasswordChange";
 import ArticleForm from "@components/Articles/ArticleForm";
-import { UpdateArticle } from "@components/Admin/UpdateArticle";
 
 //import des fonctions
 import { localOrProd } from "@utils/fonction/testEnvironement";

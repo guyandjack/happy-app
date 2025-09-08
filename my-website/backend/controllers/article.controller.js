@@ -11,6 +11,7 @@ const { safeWriteFile } = require("../utils/function/safeWriteFile");
 const checkParams = require("../utils/function/checkParams");
 const translateArticle = require("../utils/function/translateArticle");
 const fileToString = require("../utils/function/fileToString");
+const { formatArticleImage } = require("../utils/function/formatArticleImage");
 
 // helper
 const toArray = (f) => (Array.isArray(f) ? f : [f]);
@@ -683,6 +684,7 @@ exports.createArticle = async (req, res) => {
   try {
     connection = await getConnection();
 
+    // ===== 1) verification minimamle du contenu de la requete
     const { category, tags } = req.body;
     if (!category || !tags) {
       return res
@@ -695,6 +697,9 @@ exports.createArticle = async (req, res) => {
         .status(400)
         .json({ status: "error", message: "Fichier client non trouvé" });
     }
+
+    // ===== 2) Formatage des images contenu dans la requete
+    const formattedImages = await formatArticleImage(req);
 
     // ===== 3) Chemins BDD (avec / initial) ET chemins disque (sans / initial) =====
     const publicRoot = path.join(__dirname, "../public");
@@ -713,26 +718,31 @@ exports.createArticle = async (req, res) => {
     const contentArticlePathServer = path.join(publicRoot, contentArticleRel); // disque
 
     // Image principale → nom unique
-    const mainImageName = req.files.mainImage.name.toLowerCase().trim();
-    const imgParsed = path.parse(mainImageName);
-    const mainImageUnique = `${imgParsed.name}-${uniqueKey()}${imgParsed.ext}`;
+    const mainImageUnique = formattedImages.mainImg.filename;
+
     const mainImageRel = path.posix.join("articles/images", mainImageUnique);
     const mainImagePathDataBase = "/" + mainImageRel;
     const mainImagePathServer = path.join(publicRoot, mainImageRel);
 
-    // Images additionnelles (tableau sûr) → noms uniques
-    const additionalImagesFiles = req.files.additionalImages
-      ? toArray(req.files.additionalImages)
-      : [];
-    const additionalImagePathsDataBase = additionalImagesFiles.map((f) => {
-      const p = path.parse(f.name.toLowerCase().trim());
-      const uniqueName = `${p.name}-${uniqueKey()}${p.ext}`;
-      return "/" + path.posix.join("articles/images", uniqueName);
-    });
+    // Images additionnelles → noms uniques
+
+    const additionalImagePathsDataBase = formattedImages.additionalImgs.map(
+      (f) => {
+        return "/" + path.posix.join("articles/images", f.filename);
+      }
+    );
+
+    const additionalImagePathsServer = formattedImages.additionalImgs.map(
+      (f) => {
+        return path.join(
+          publicRoot,
+          path.posix.join("articles/images", f.filename)
+        );
+      }
+    );
 
     // ===== 5) Extraction FR =====
     const contentArticleFile = req.files.contentArticle;
-    const mainImageFile = req.files.mainImage;
 
     let {
       title = "",
@@ -807,22 +817,24 @@ exports.createArticle = async (req, res) => {
     await contentArticleFile.mv(contentArticlePathServer); // <-- pas de callback
 
     // ===== 8) Copie de l'image principale =====
+
     await fsPromises.mkdir(path.dirname(mainImagePathServer), {
       recursive: true,
     });
-    await mainImageFile.mv(mainImagePathServer); // <-- pas de callback
+
+    const mainImageFile = formattedImages.mainImg.buffer;
+
+    // Écriture sur disque (Buffer → fichier)
+    await fsPromises.writeFile(mainImagePathServer, mainImageFile);
+    // <-- pas de callback
 
     // ===== 9) Copie des images additionnelles =====
-    if (additionalImagesFiles.length) {
-      await Promise.all(
-        additionalImagesFiles.map((imageFile, i) => {
-          const relFromDb = additionalImagePathsDataBase[i].replace(/^\//, ""); // retire le / avant path.join
-          const imagePath = path.join(publicRoot, relFromDb);
-          return fsPromises
-            .mkdir(path.dirname(imagePath), { recursive: true })
-            .then(() => imageFile.mv(imagePath)); // <-- retourne la Promise
-        })
-      );
+    for (let i = 0; i < formattedImages.additionalImgs.length; i++) {
+      const img = formattedImages.additionalImgs[i];
+      const imagePath = additionalImagePathsServer[i];
+
+      await fsPromises.mkdir(path.dirname(imagePath), { recursive: true });
+      await fsPromises.writeFile(imagePath, img.buffer);
     }
 
     // ===== 10) INSERT BDD =====

@@ -161,7 +161,7 @@ exports.articleValidation = [
     ),
 
   // Validate file uploads
-  (req, res, next) => {
+  /* (req, res, next) => {
     // Continue to next middleware if validation passes
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -183,11 +183,11 @@ exports.articleValidation = [
     }
 
     next();
-  },
+  }, */
 ];
 
 // Validation middleware for article update
-exports.validateArticleUpdate = [
+/* exports.validateArticleUpdate = [
   // Validate text fields (all optional for updates)
   body("author").optional(),
   body("language")
@@ -264,4 +264,4 @@ exports.validateArticleUpdate = [
 
     next();
   },
-];
+]; */

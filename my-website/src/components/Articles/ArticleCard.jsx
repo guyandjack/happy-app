@@ -76,7 +76,7 @@ function ArticleCard({ article }) {
           {lang == "en" ? "Category:" : "Catégorie: "} {category}
         </p>
       </div>
-      <div className="flex-column-start-center article-card-content">
+      <div className="flex-column-space_evenly-center article-card-content">
         <h3 className="article-title">{title}</h3>
         <p className="article-card-excerpt">{excerpt}</p>
         <span className="article-card-read-more-link">
