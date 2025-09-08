@@ -185,12 +185,6 @@
   max-width: 300px;
 }
 
-.admin-article-card-wrapper:hover {
-  -webkit-transform: translateY(-5px);
-      -ms-transform: translateY(-5px);
-          transform: translateY(-5px);
-}
-
 .admin-article-actions {
   margin-top: 1rem;
 }

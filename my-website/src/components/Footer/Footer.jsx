@@ -23,6 +23,7 @@ const menuItems = {
       { path: `/`, text: "Accueil" },
       { path: `/public/fr/a-propos.html`, text: "A propos" },
       { path: `/public/fr/contact.html`, text: "Contact" },
+      { path: `/public/fr/articles-list.html`, text: "Articles" },
     ],
     services: [
       {
@@ -55,6 +56,7 @@ const menuItems = {
       { path: `/public/en/home.html`, text: "Home" },
       { path: `/public/en/about.html`, text: "About me" },
       { path: `/public/en/contact.html`, text: "Contact" },
+      { path: `/public/en/articles-list.html`, text: "Articles" },
     ],
     services: [
       { path: `/public/en/services/website.html`, text: "Website" },

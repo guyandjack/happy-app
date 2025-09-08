@@ -13,18 +13,7 @@
     background-color: map-get($colors-rule, sixth-color);
     margin: 20px;
 
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 
-        .card-image {
-            transform: scale(1.05);
-        }
-
-        .card-overlay {
-            opacity: 1;
-        }
-    }
 }
 
 .card-image-container {
@@ -84,12 +73,7 @@
         width: 80%;
         text-align: center;
 
-        &:hover {
-            background-color: transparent;
-            color: rgba(map-get($colors-rule, first-color), 0.9);
-            border: 2px solid rgba(map-get($colors-rule, first-color), 0.9);
-            transform: translateY(-2px);
-        }
+
 
         &:active {
             transform: translateY(0);
@@ -118,11 +102,7 @@
 
 
 
-    &:hover {
-        color: map-get($colors-rule, fourth-color);
-        border: 2px solid map-get($colors-rule, fourth-color);
-        background-color: map-get($colors-rule, background-page-color);
-    }
+
 
 
 
@@ -139,6 +119,43 @@
 
         .card-title {
             font-size: 1.3rem;
+        }
+    }
+}
+
+@media (min-width: 1300px) {
+
+    .card-link {
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+            .card-image {
+                transform: scale(1.05);
+            }
+
+            .card-overlay {
+                opacity: 1;
+            }
+        }
+    }
+
+    .card-content {
+        .card-button {
+            &:hover {
+                background-color: transparent;
+                color: rgba(map-get($colors-rule, first-color), 0.9);
+                border: 2px solid rgba(map-get($colors-rule, first-color), 0.9);
+                transform: translateY(-2px);
+            }
+        }
+    }
+
+    .card-button-contact {
+        &:hover {
+            color: map-get($colors-rule, fourth-color);
+            border: 2px solid map-get($colors-rule, fourth-color);
+            background-color: map-get($colors-rule, background-page-color);
         }
     }
 }
