@@ -45,14 +45,22 @@ function TimerSession() {
   //ref qui contient l' id du setInterval du compteur
   const counter = useRef(null);
 
-  //fonction counterdown version 2
+  //fonction counterdown version 2 - basée sur l'expiration réelle du token
   const counterDownV2 = () => {
-    const isToken = localStorage.getItem("token");
+    // Nettoie un éventuel interval en cours avant d'en recréer un
+    if (counter.current) {
+      clearInterval(counter.current);
+      counter.current = null;
+    }
     counter.current = setInterval(() => {
-      if (timeRemaining > 0 && isToken) {
-        setTimeRemaining((prevTime) => prevTime - 1);
+      const hasToken = !!localStorage.getItem("token");
+      const remaining = initCounterDown();
+      if (remaining > 0 && hasToken) {
+        // Recalcule en fonction de l'heure système pour éviter les décalages
+        setTimeRemaining(remaining);
       } else {
         clearInterval(counter.current);
+        counter.current = null;
         deleteSession();
       }
     }, 1000);
@@ -114,11 +122,17 @@ function TimerSession() {
     };
   }, [isSessionActive]);
 
-  //lance le compte à rebours
+  //lance le compte à rebours et nettoie à l'unmount/changement d'état
   useEffect(() => {
     if (startCounterDown) {
       counterDownV2();
     }
+    return () => {
+      if (counter.current) {
+        clearInterval(counter.current);
+        counter.current = null;
+      }
+    };
   }, [startCounterDown]);
 
   //useEffect qui referme le collapse si detecte un click en dehors du collapse
