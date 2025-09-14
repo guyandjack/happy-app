@@ -1,5 +1,12 @@
 @import '../../utils/color-rule/color-rule.scss';
 
+
+ @font-face {
+   font-family: 'Madimi';
+   src: url('./src/font/subset-MadimiOne-Regular.woff2') format('woff2');
+ }
+
+
 @keyframes opacity-img {
   from {
     opacity: 0.1;
@@ -23,13 +30,9 @@
   padding: 20px 10px;
   overflow: hidden;
 
-
-
-
   .hero-index-title-h1 {
 
     min-height: 150px;
-
     font-size: 2rem;
     color: map-get($colors-rule, sixth-color);
     margin-bottom: 1rem;
@@ -38,10 +41,12 @@
     //text-shadow: 0px 0px 5px map-get($colors-rule, fifth-color);
 
     strong {
+      //font-weight: 400;
+      font-family: "Madimi";
       font-size: 2.5rem;
       padding: 10px;
       border-radius: 15px;
-      color: rgba(map-get($colors-rule, fourth-color), 1);
+      color: map-get($colors-rule, fourth-color);
 
     }
 
@@ -117,11 +122,7 @@
     .hero-index-subtitle {
       font-size: 1rem;
 
-
-
     }
-
-
 
   }
 }
@@ -207,9 +208,6 @@
 
       }
     }
-
-
-
   }
 }
 

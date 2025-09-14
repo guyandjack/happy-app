@@ -34,24 +34,11 @@
   background-color: rgba(0, 190, 184, 0.8);
 }
 .navbar .navbar-brand {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   height: 100%;
 }
 .navbar .navbar-brand .logo-image {
-  height: 60px;
-  width: 150px;
+  height: 100%;
+  width: 200px;
 }
 .navbar .navbar-brand .burger-menu {
   position: relative;
@@ -119,8 +106,8 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
   background-color: rgb(2.6455696203, 101.8544303797, 97.8860759494);
   padding: 2rem;
   -webkit-box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
@@ -220,6 +207,10 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row;
+            flex-flow: row;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
@@ -233,11 +224,16 @@
   }
   .navbar .navbar-menu {
     position: static;
-    width: auto;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
+        -ms-flex-flow: row;
+            flex-flow: row;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -334,10 +330,8 @@
   }
   .navbar .navbar-menu .menu-item-with-submenu .submenu a {
     padding: 0.8rem 1rem;
-    -webkit-transition: -webkit-transform 0.3s ease;
-    transition: -webkit-transform 0.3s ease;
-    transition: transform 0.3s ease;
-    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+    -webkit-transition: border-left 0.3s linear;
+    transition: border-left 0.3s linear;
   }
   .navbar .navbar-menu .menu-item-with-submenu .submenu a.active {
     color: #00beb8;
@@ -345,13 +339,13 @@
   }
   .navbar .navbar-menu .menu-item-with-submenu .submenu a:hover {
     font-weight: bolder;
-    -webkit-transform: translateX(10px);
-        -ms-transform: translateX(10px);
-            transform: translateX(10px);
+    border-left: 5px solid #00beb8;
+    -webkit-transition: border-left 0.2s linear;
+    transition: border-left 0.2s linear;
   }
   .navbar .navbar-menu .language-switcher {
     margin-top: 0;
     border-left: 1px solid rgba(255, 255, 255, 0.2);
     padding-left: 2rem;
   }
-}/*# sourceMappingURL=navbar.css.map */
+}

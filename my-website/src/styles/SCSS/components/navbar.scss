@@ -44,16 +44,13 @@
 
     // Brand section
     .navbar-brand {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
-        align-items: center;
         height: 100%;
         //border: 2px solid blue;
 
         .logo-image {
-            height: 60px;
-            width: 150px;
+            height: 100%;
+            width: 200px;
+            //object-fit: contain;
             //border: 2px solid red;
         }
 
@@ -70,6 +67,7 @@
             cursor: pointer;
             padding: 0;
             background: none;
+           
 
             span {
                 position: absolute;
@@ -120,11 +118,12 @@
         bottom: 0;
         width: 250px;
         display: flex;
-        flex-direction: column;
+        flex-flow: column;
         background-color: lighten(map-get($colors-rule, first-color), 5%);
         padding: 2rem;
         box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
         transition: left 0.3s ease;
+        //border: 2px solid red;
 
         &.open {
             left: 0;
@@ -223,6 +222,7 @@
 @media (min-width: 992px) {
     .navbar {
         display: flex;
+        flex-flow: row;
         justify-content: space-between;
         align-items: center;
         padding: 0 5rem;
@@ -235,13 +235,15 @@
 
         .navbar-menu {
             position: static;
-            width: auto;
-            flex-direction: row;
+            width: fit-content;
+            flex-flow: row;
+            justify-content: space-evenly;
             align-items: center;
             background: none;
             box-shadow: none;
             padding: 0;
             gap: 2rem;
+            //border: 2px solid red;
 
 
 
@@ -302,6 +304,7 @@
             .menu-item-with-submenu {
 
                 position: relative;
+                //border: 2px solid pink;
 
                 /* &:hover {
                     a::after {
@@ -341,7 +344,7 @@
 
                     a {
                         padding: 0.8rem 1rem;
-                        transition: transform 0.3s ease;
+                        transition: border-left 0.3s linear;
 
 
                         &.active {
@@ -352,8 +355,8 @@
                         &:hover {
 
                             font-weight: bolder;
-                            //color: map-get($colors-rule, fourth-color);
-                            transform: translateX(10px);
+                            border-left: 5px solid map-get($colors-rule, second-color);
+                            transition: border-left 0.2s linear;
                         }
                     }
 

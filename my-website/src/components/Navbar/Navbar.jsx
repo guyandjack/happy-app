@@ -12,7 +12,7 @@ import flagEN from "@assetsJSX/icons/flag-en.png";
 import flagFR from "@assetsJSX/icons/flag-fr.png";
 
 //import des images
-import logos from "@assetsJSX/logo/logo-helveclick.svg";
+import logos from "@assetsJSX/logo/logo-v8.svg";
 
 //import du fichier scss
 import "@styles/CSS/navbar.css";
@@ -283,7 +283,7 @@ function Navbar() {
             <p>{toast.message}</p>
           </div>
         ) : null}
-        <div className="navbar-brand">
+        <div className="flex-row-space_between-center navbar-brand">
           <a
             href={currentLang === "fr" ? "/" : "/public/en/home.html"}
             aria-label={currentLang === "fr" ? "Accueil" : "Home"}
@@ -304,7 +304,11 @@ function Navbar() {
           </button>
         </div>
 
-        <ul className={`navbar-menu ${isOpen ? "open" : ""}`}>
+        <ul
+          className={`navbar-menu ${
+            isOpen ? "open" : ""
+          }`}
+        >
           {menuItems[currentLang].map((item, index) =>
             item.submenu ? (
               <li

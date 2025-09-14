@@ -1,4 +1,8 @@
 @charset "UTF-8";
+@font-face {
+  font-family: "Madimi";
+  src: url("./src/font/subset-MadimiOne-Regular.woff2") format("woff2");
+}
 @-webkit-keyframes opacity-img {
   from {
     opacity: 0.1;
@@ -33,6 +37,7 @@
   text-align: center;
 }
 .hero-index .hero-index-title-h1 strong {
+  font-family: "Madimi";
   font-size: 2.5rem;
   padding: 10px;
   border-radius: 15px;
@@ -600,4 +605,4 @@
     gap: 60px;
     padding: 50px;
   }
-}/*# sourceMappingURL=index.css.map */
+}
