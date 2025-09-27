@@ -22,12 +22,12 @@
   z-index: 10;
   width: 50px;
   height: 50px;
-  background-color: rgba(0, 190, 184, 0.4);
+  background-color: rgba(0, 189, 182, 0.4);
   border-radius: 50%;
 }
 .slider-wrapper .arrow-prev:hover,
 .slider-wrapper .arrow-next:hover {
-  background-color: rgba(0, 190, 184, 0.9);
+  background-color: rgba(0, 189, 182, 0.9);
 }
 .slider-wrapper .arrow-next {
   right: -60px;
@@ -55,7 +55,7 @@
 .slider-wrapper .slider-item {
   scroll-snap-align: start;
   height: 300px;
-  background-color: #c3066b;
+  background-color: rgb(195, 6, 107);
   padding: 10px;
   text-align: center;
 }

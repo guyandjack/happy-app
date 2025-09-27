@@ -4,7 +4,7 @@
 ****************************************/
 @font-face {
   font-family: "nunito";
-  src: url(../../font/Nunito-VariableFont_wght.ttf) format("ttf");
+  src: url("/assets/font/Nunito-VariableFont_wght.ttf") format("ttf");
 }
 * {
   margin: 0px;
@@ -15,7 +15,7 @@
   list-style-type: none;
   font-size: 1em;
   font-weight: 500;
-  font-family: "nunito", Helvetica, sans-serif;
+  font-family: "nunito", sans-serif;
   line-height: 1.5;
 }
 
@@ -211,7 +211,7 @@ main {
           transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background-color: #00beb8;
+  background-color: #00bdb6;
   border-radius: 2px;
 }
 .hero-container .hero-container-title > .hero-subtitle {
@@ -266,7 +266,7 @@ main {
   max-width: 200px;
   padding: 12px 24px;
   margin-top: 10px;
-  background-color: #c3066b;
+  background-color: rgb(195, 6, 107);
   color: #ffffff;
   border: 2px solid transparent;
   border-radius: 6px;
@@ -279,14 +279,14 @@ main {
   transition: all 0.3s ease;
 }
 .contact-button-link:hover {
-  color: #c3066b;
-  border: 2px solid #c3066b;
+  color: rgb(195, 6, 107);
+  border: 2px solid rgb(195, 6, 107);
   background-color: #fbfbfc;
 }
 
 .faq-section {
   padding: 0px 20px 100px 20px;
-  background: linear-gradient(135deg, rgba(0, 190, 184, 0.1));
+  background: linear-gradient(135deg, rgba(0, 189, 182, 0.1));
   width: 100%;
   margin: 0 auto;
 }
@@ -305,7 +305,7 @@ main {
   font-size: 1.5rem;
 }
 .faq-section .faq-container-title > h2 strong {
-  color: #c3066b;
+  color: rgb(195, 6, 107);
   font-weight: bolder;
 }
 .faq-section .faq-container-title > h2::after {
@@ -315,7 +315,7 @@ main {
   left: -30px;
   width: 1px;
   height: 100%;
-  background: #c3066b;
+  background: rgb(195, 6, 107);
   border-radius: 2px;
 }
 .faq-section .faq-container-title .img-faq-personna {
@@ -338,7 +338,7 @@ main {
   padding: 20px 30px;
   -webkit-box-shadow: 0 4px 20px rgba(23, 23, 23, 0.05);
           box-shadow: 0 4px 20px rgba(23, 23, 23, 0.05);
-  border: 1px solid rgba(0, 190, 184, 0.1);
+  border: 1px solid rgba(0, 189, 182, 0.1);
 }
 .faq-section .faq-grid .faq-item > h3 {
   display: block;
@@ -375,7 +375,7 @@ main {
           transform: translateY(-50%) translateX(50px) rotate(180deg);
 }
 .faq-section .faq-grid .faq-item > h3:hover, .faq-section .faq-grid .faq-item > h3.expanded {
-  color: #c3066b;
+  color: rgb(195, 6, 107);
 }
 .faq-section .faq-grid .faq-item p,
 .faq-section .faq-grid .faq-item ul {
@@ -481,13 +481,13 @@ main {
   background: rgb(86.75, 86.75, 86.75);
 }
 .page-container.dark-mode .faq-section .faq-grid .faq-intro strong {
-  color: rgb(0, 215.5, 208.6947368421);
+  color: rgb(0, 214.5, 206.5555555556);
 }
 .page-container.dark-mode .faq-section .faq-grid .faq-item {
   background: rgb(48.5, 48.5, 48.5);
 }
 .page-container.dark-mode .faq-section .faq-grid .faq-item > h3 {
-  color: rgb(0, 215.5, 208.6947368421);
+  color: rgb(0, 214.5, 206.5555555556);
 }
 .page-container.dark-mode .faq-section .faq-grid .faq-item > h3:hover {
   color: rgba(255, 255, 255, 0.9);
@@ -498,7 +498,7 @@ main {
 }
 .page-container.dark-mode .faq-section .faq-grid .faq-item p strong,
 .page-container.dark-mode .faq-section .faq-grid .faq-item ul > li strong {
-  color: rgb(0, 215.5, 208.6947368421);
+  color: rgb(0, 214.5, 206.5555555556);
 }
 
 /********************************************************

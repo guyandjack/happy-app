@@ -77,7 +77,7 @@
   position: absolute;
   bottom: 5px;
   right: 10px;
-  color: #c3066b;
+  color: rgb(195, 6, 107);
   font-size: 0.9rem;
   opacity: 0;
   -webkit-transition: opacity 0.3s ease;

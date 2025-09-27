@@ -30,7 +30,7 @@
           transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: #00beb8;
+  background: #00bdb6;
   border-radius: 2px;
 }
 .website-types > h2 strong {
@@ -207,7 +207,7 @@
   }
 }
 .website-types .website-cards .website-card-container .website-card .card-content p strong {
-  color: rgb(0, 128.8, 124.7326315789);
+  color: rgb(0, 127.8, 123.0666666667);
   font-weight: 600;
 }
 .website-types .website-cards .website-card-container .website-card .card-content .btn {
@@ -217,7 +217,7 @@
   max-width: 300px;
   padding: 12px 30px;
   border-radius: 30px;
-  background: #c3066b;
+  background: rgb(195, 6, 107);
   border: 2px solid transparent;
   color: #ffffff;
   text-decoration: none;
@@ -230,8 +230,8 @@
 }
 .website-types .website-cards .website-card-container .website-card .card-content .btn:hover {
   background-color: transparent;
-  border: 2px solid #c3066b;
-  color: #c3066b;
+  border: 2px solid rgb(195, 6, 107);
+  color: rgb(195, 6, 107);
   -webkit-transform: translateY(-5px);
       -ms-transform: translateY(-5px);
           transform: translateY(-5px);
@@ -357,7 +357,7 @@
 }
 
 .eco-section {
-  background: linear-gradient(135deg, rgba(0, 190, 184, 0.03), rgba(199, 227, 205, 0.02));
+  background: linear-gradient(135deg, rgba(0, 189, 182, 0.03), rgba(199, 227, 205, 0.02));
 }
 .eco-section .eco-title-container .eco-image {
   display: none;
@@ -502,22 +502,22 @@
           animation: rotate-left 1s ease-out 0s 1 normal forwards;
 }
 .seo-section h2 strong {
-  color: #c3066b;
+  color: rgb(195, 6, 107);
 }
 .seo-section h2 strong::after {
-  background: #c3066b;
+  background: rgb(195, 6, 107);
 }
 .seo-section ul li {
   border: 1px solid rgba(195, 6, 107, 0.1);
 }
 .seo-section ul li::before {
-  color: #c3066b;
+  color: rgb(195, 6, 107);
 }
 .seo-section ul li strong {
-  color: #c3066b;
+  color: rgb(195, 6, 107);
 }
 .seo-section p strong {
-  color: #c3066b;
+  color: rgb(195, 6, 107);
 }
 
 @media (min-width: 768px) {

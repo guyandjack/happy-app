@@ -1,10 +1,10 @@
 @import '../../utils/color-rule/color-rule.scss';
 
 
- @font-face {
-   font-family: 'Madimi';
-   src: url('./src/font/subset-MadimiOne-Regular.woff2') format('woff2');
- }
+@font-face {
+  font-family: 'Madimi';
+  src: url('/assets/font/subset-MadimiOne-Regular.woff2') format('woff2');
+}
 
 
 @keyframes opacity-img {
@@ -32,49 +32,60 @@
 
   .hero-index-title-h1 {
 
-    min-height: 150px;
     font-size: 2rem;
+    color: map-get($colors-rule, sixth-color);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: bold;
+
+    span {
+
+      font-size: 2rem;
+      padding: 0px 10px;
+      border-radius: 15px;
+      background-color: rgba(map-get($colors-rule, second-color), 0.5);
+      border: 2px solid map-get($colors-rule, second-color);
+    }
+    
+  }
+  
+  .hero-index-title-h2 {
+    
+    font-size: 1.5rem;
     color: map-get($colors-rule, sixth-color);
     margin-bottom: 1rem;
     line-height: 1.2;
     text-align: center;
-    //text-shadow: 0px 0px 5px map-get($colors-rule, fifth-color);
+    background-color: rgba(map-get($colors-rule, fourth-color), 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid map-get($colors-rule, fourth-color);
 
-    strong {
-      //font-weight: 400;
-      font-family: "Madimi";
-      font-size: 2.5rem;
-      padding: 10px;
-      border-radius: 15px;
-      color: map-get($colors-rule, fourth-color);
 
+    & span {
+      font-size: 1rem;
     }
-
-    span {
-      color: lighten(map-get($colors-rule, second-color), 10%);
-      font-weight: 600;
-      word-break: keep-all;
-      white-space: nowrap;
-    }
-
-
   }
 
   .container {
-    gap: 10px;
+    gap: 30px;
     width: 100%;
 
   }
 
-  .hero-index-subtitle {
+  .hero-index-link {
 
     padding: 5px;
-    background-color: rgba(map-get($colors-rule, second-color), 0.5);
-    border-radius: 12px;
+    background-color: map-get($colors-rule, second-color);
     border: 2px solid map-get($colors-rule, second-color);
+    border-radius: 12px;
     cursor: pointer;
     font-size: 0.8rem;
     color: map-get($colors-rule, sixth-color);
+    transition: background-color 0.1s linear;
+
+
 
   }
 
@@ -86,10 +97,10 @@
     height: 100%;
     z-index: -1;
     object-fit: cover;
-    animation: opacity-img 0.3s ease-in-out 0s 1 forwards;
-
+    opacity: 0.7;
+    
   }
-
+  
   .hero-index-overlay {
     position: absolute;
     top: 0;
@@ -119,7 +130,15 @@
       }
     }
 
-    .hero-index-subtitle {
+    .hero-index-title-h2 {
+      font-size: 1.8rem;
+
+      & span {
+        font-size: 1.2rem;
+      }
+    }
+
+    .hero-index-link {
       font-size: 1rem;
 
     }
@@ -144,17 +163,31 @@
 
     }
 
-    .container {
-      gap: 15px;
+    .hero-index-title-h2 {
+      font-size: 2rem;
+
+      span {
+        font-size: 1.6rem;
+      }
+
+
     }
 
-    .hero-index-subtitle {
+    .container {
+      flex-direction: row;
+
+    }
+
+
+
+    .hero-index-link {
       padding: 8px;
       font-size: 1.3rem;
-      transition: background-color linear 0.2s, transform linear 0.2s;
+      border: 2px solid map-get($colors-rule, second-color);
+      transition: background-color linear 0.1s, transform linear 0.1s;
 
       &:hover {
-        background-color: map-get($colors-rule, second-color);
+        background-color: rgba(map-get($colors-rule, second-color),0.5);
         transform: translateY(-5px);
         transition: background-color linear 0.2s, transform linear 0.2s;
       }
@@ -169,8 +202,6 @@
 @media screen and (min-width: 1300px) {
   .hero-index {
 
-
-
     .hero-index-title-h3 {
       font-size: 1.7rem;
 
@@ -183,10 +214,6 @@
       }
 
 
-    }
-
-    .container {
-      gap: 20px;
     }
 
   }

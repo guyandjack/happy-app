@@ -12,7 +12,7 @@
   left: 0;
   width: 50px;
   height: 3px;
-  background: #00beb8;
+  background: #00bdb6;
   border-radius: 2px;
 }
 .contact-content .img-contact {
@@ -199,7 +199,7 @@
 .page-container.dark-mode .contact-content .contact-info .info-item:nth-child(3)::before,
 .page-container.dark-mode .contact-content .contact-info .info-item:nth-child(4)::before,
 .page-container.dark-mode .contact-content .contact-info .info-item:nth-child(5)::before {
-  fill: #c3066b;
+  fill: rgb(195, 6, 107);
 }
 .page-container.dark-mode .contact-content .contact-form-container .info-item h3,
 .page-container.dark-mode .contact-content .contact-form-container .info-item p,
@@ -209,7 +209,7 @@
 }
 .page-container.dark-mode .contact-content .contact-form-container .info-item a,
 .page-container.dark-mode .contact-content .contact-info .info-item a {
-  color: #00beb8;
+  color: #00bdb6;
 }
 .page-container.dark-mode .contact-content .contact-form-container .icon-contact,
 .page-container.dark-mode .contact-content .contact-info .icon-contact {

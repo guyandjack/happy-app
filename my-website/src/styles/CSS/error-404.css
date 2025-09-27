@@ -47,7 +47,7 @@
 .error-actions {
   padding: 12px 24px;
   border-radius: 6px;
-  border: 2px solid #c3066b;
+  border: 2px solid rgb(195, 6, 107);
   background-color: rgba(195, 6, 107, 0.8);
   color: white;
   cursor: pointer;
@@ -55,7 +55,7 @@
   font-size: 1.2rem;
 }
 .error-actions:hover {
-  background-color: #c3066b;
+  background-color: rgb(195, 6, 107);
 }
 .error-actions .error-actions-icon {
   margin-right: 10px;

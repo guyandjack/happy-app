@@ -57,7 +57,7 @@
 }
 .footer .footer-content .footer-brand .footer-cta:hover {
   background: rgba(251, 251, 252, 0.9);
-  color: #c3066b;
+  color: rgb(195, 6, 107);
   -webkit-transform: translateY(-2px);
       -ms-transform: translateY(-2px);
           transform: translateY(-2px);
@@ -91,7 +91,7 @@
           flex: 0 0 auto;
 }
 .footer .footer-content .footer-nav .footer-nav-section h3 {
-  color: rgb(0, 241, 233.3894736842);
+  color: rgb(0, 240, 231.1111111111);
   font-size: 1.2rem;
   margin-bottom: 20px;
 }
@@ -115,7 +115,7 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: #00beb8;
+  background: #00bdb6;
   -webkit-transition: width 0.3s ease;
   transition: width 0.3s ease;
 }
@@ -166,7 +166,7 @@
 }
 .footer .footer-page-notation .footer-quote-icon {
   font-size: 1.6rem;
-  color: #00beb8;
+  color: #00bdb6;
 }
 .footer .footer-page-notation > a {
   padding: 10px;
@@ -176,5 +176,5 @@
   transition: border 0.3s ease;
 }
 .footer .footer-page-notation > a:hover {
-  border: 2px solid #00beb8;
+  border: 2px solid #00bdb6;
 }

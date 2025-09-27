@@ -7,7 +7,7 @@
 ****************************************/
 @font-face {
     font-family: 'nunito';
-    src: url(../../font/Nunito-VariableFont_wght.ttf) format('ttf');
+    src: url("/assets/font/Nunito-VariableFont_wght.ttf") format('ttf');
 }
 
 
@@ -20,7 +20,7 @@
 
     font-size: 1em;
     font-weight: 500;
-    font-family: 'nunito', Helvetica, sans-serif;
+    font-family: 'nunito', sans-serif;
     line-height: 1.5;
 }
 

@@ -2,7 +2,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: rgba(0, 190, 184, 0.3);
+  background-color: rgba(0, 189, 182, 0.3);
   cursor: pointer;
   -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
@@ -14,11 +14,11 @@
 }
 
 .toggle-switch-container:hover {
-  background-color: rgba(0, 190, 184, 0.2);
+  background-color: rgba(0, 189, 182, 0.2);
   -webkit-transition: background-color 0.4s ease;
   transition: background-color 0.4s ease;
 }
 
 .toggle-switch-container:active {
-  background-color: rgba(0, 190, 184, 0.2);
+  background-color: rgba(0, 189, 182, 0.2);
 }

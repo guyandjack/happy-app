@@ -5,7 +5,7 @@
   margin: 150px auto 200px auto;
   padding: 60px 20px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #00beb8 40%, #c7e3cd 70%, #00beb8 90%, #c7e3cd 100%);
+  background: linear-gradient(135deg, #00bdb6 40%, #c7e3cd 70%, #00bdb6 90%, #c7e3cd 100%);
   color: rgb(1.3544303797, 52.1455696203, 50.1139240506);
   text-align: center;
 }
@@ -37,7 +37,7 @@
   left: 0%;
   width: 100%;
   height: 100%;
-  background-color: #00beb8;
+  background-color: #00bdb6;
   opacity: 0.2;
   border-radius: 10px;
   -webkit-transform: rotate(-4deg);
@@ -56,7 +56,7 @@
   left: 0%;
   width: 100%;
   height: 100%;
-  background-color: #c3066b;
+  background-color: rgb(195, 6, 107);
   opacity: 0.1;
   border-radius: 10px;
   -webkit-transform: rotate(2deg);
@@ -86,9 +86,9 @@
   width: 100%;
   max-width: 200px;
   margin: 0 auto;
-  background-color: #c3066b;
+  background-color: rgb(195, 6, 107);
   color: #ffffff;
-  border: 2px solid #c3066b;
+  border: 2px solid rgb(195, 6, 107);
   padding: 12px 24px;
   border-radius: 6px;
   font-size: 1.1rem;
@@ -99,7 +99,7 @@
 }
 .cta-section > .btn-primary:hover {
   background-color: #ffffff;
-  color: #c3066b;
+  color: rgb(195, 6, 107);
   -webkit-transform: translateY(-5px);
       -ms-transform: translateY(-5px);
           transform: translateY(-5px);
@@ -122,11 +122,11 @@
   }
 }
 .page-container.dark-mode .cta-section .btn-primary {
-  background-color: #c3066b;
+  background-color: rgb(195, 6, 107);
   color: #ffffff;
-  border: 2px solid #c3066b;
+  border: 2px solid rgb(195, 6, 107);
 }
 .page-container.dark-mode .cta-section .btn-primary:hover {
-  background-color: #00beb8;
+  background-color: #00bdb6;
   border: 2px solid #024d4a;
 }

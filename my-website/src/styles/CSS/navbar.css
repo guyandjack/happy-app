@@ -1,7 +1,7 @@
 /* Login Form Styles */
 .navbar-wrapper {
   height: 100%;
-  background-color: #00beb8;
+  background-color: #00bdb6;
 }
 
 .navbar {
@@ -31,7 +31,7 @@
   background-color: rgba(255, 69, 0, 0.8);
 }
 .navbar .toast.online {
-  background-color: rgba(0, 190, 184, 0.8);
+  background-color: rgba(0, 189, 182, 0.8);
 }
 .navbar .navbar-brand {
   height: 100%;
@@ -93,7 +93,7 @@
           transform: translate(0, -12px) rotate(-45deg);
 }
 .navbar .navbar-brand .burger-menu:hover span {
-  background: #00beb8;
+  background: #00bdb6;
 }
 .navbar .navbar-menu {
   position: fixed;
@@ -278,13 +278,13 @@
     transition: height 0.3s ease;
   }
   .navbar .navbar-menu > li > a:hover::after, .navbar .navbar-menu > li > button:hover::after {
-    background: #c3066b;
+    background: rgb(195, 6, 107);
     height: 100%;
     -webkit-transition: height 0.5s ease;
     transition: height 0.5s ease;
   }
   .navbar .navbar-menu > li > a.active::before, .navbar .navbar-menu > li > button.active::before {
-    background: #00beb8;
+    background: #00bdb6;
     height: 100%;
   }
   .navbar .navbar-menu .menu-item-with-submenu {
@@ -334,12 +334,12 @@
     transition: border-left 0.3s linear;
   }
   .navbar .navbar-menu .menu-item-with-submenu .submenu a.active {
-    color: #00beb8;
+    color: #00bdb6;
     font-weight: bolder;
   }
   .navbar .navbar-menu .menu-item-with-submenu .submenu a:hover {
     font-weight: bolder;
-    border-left: 5px solid #00beb8;
+    border-left: 5px solid #00bdb6;
     -webkit-transition: border-left 0.2s linear;
     transition: border-left 0.2s linear;
   }

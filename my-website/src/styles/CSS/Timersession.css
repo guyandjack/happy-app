@@ -17,7 +17,7 @@
   width: 100%;
   cursor: pointer;
   padding: 0.75rem;
-  background-color: #00beb8;
+  background-color: #00bdb6;
   color: #ffffff;
   -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
@@ -86,7 +86,7 @@
   width: 100%;
   padding: 0.75rem 0;
   border: none;
-  background-color: #00beb8;
+  background-color: #00bdb6;
   cursor: pointer;
   -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
@@ -101,7 +101,7 @@
   width: 100%;
   padding: 0.75rem 0;
   border: none;
-  background-color: #00beb8;
+  background-color: #00bdb6;
   color: #ffffff;
   cursor: pointer;
   -webkit-transition: background-color 0.3s ease;

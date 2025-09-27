@@ -117,12 +117,12 @@
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: #00beb8;
+  background-color: #00bdb6;
 }
 
 .btn-primary:focus:not(:disabled) {
   border: mone;
-  background-color: #00beb8;
+  background-color: #00bdb6;
 }
 
 .btn-primary:disabled {
@@ -282,7 +282,7 @@
   color: #ffffff;
 }
 .page-container.dark-mode .btn-primary:hover:not(:disabled) {
-  background-color: #00beb8;
+  background-color: #00bdb6;
 }
 .page-container.dark-mode .btn-primary:disabled {
   background-color: #9ca3af;

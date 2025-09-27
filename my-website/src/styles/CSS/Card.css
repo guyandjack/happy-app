@@ -43,8 +43,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: -webkit-gradient(linear, right top, left top, from(rgba(0, 190, 184, 0.01)), to(rgba(0, 190, 184, 0.3)));
-  background: linear-gradient(to left, rgba(0, 190, 184, 0.01) 0%, rgba(0, 190, 184, 0.3) 100%);
+  background: -webkit-gradient(linear, right top, left top, from(rgba(0, 189, 182, 0.01)), to(rgba(0, 189, 182, 0.3)));
+  background: linear-gradient(to left, rgba(0, 189, 182, 0.01) 0%, rgba(0, 189, 182, 0.3) 100%);
   opacity: 0.5;
   -webkit-transition: opacity 0.3s ease;
   transition: opacity 0.3s ease;
@@ -95,7 +95,7 @@
   max-width: 200px;
   padding: 12px 24px;
   margin-left: 24px;
-  background-color: #c3066b;
+  background-color: rgb(195, 6, 107);
   color: #ffffff;
   border: 2px solid transparent;
   border-radius: 6px;
@@ -144,8 +144,8 @@
             transform: translateY(-2px);
   }
   .card-button-contact:hover {
-    color: #c3066b;
-    border: 2px solid #c3066b;
+    color: rgb(195, 6, 107);
+    border: 2px solid rgb(195, 6, 107);
     background-color: #fbfbfc;
   }
 }

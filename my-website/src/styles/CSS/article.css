@@ -21,7 +21,7 @@
   transition: background-color 0.3s ease;
 }
 .page-container .btn-retour-articles:hover {
-  background-color: #00beb8;
+  background-color: #00bdb6;
   -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
 }
@@ -59,7 +59,7 @@
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 4px;
-  background-color: #00beb8;
+  background-color: #00bdb6;
   z-index: -1;
 }
 .article-wrapper .article-header .article-title {
@@ -103,7 +103,7 @@
   color: #024d4a;
   font-weight: 500;
   font-style: italic;
-  border-left: 3px solid #00beb8;
+  border-left: 3px solid #00bdb6;
   padding-left: 1rem;
 }
 .article-wrapper .article-introduction .article-text strong {
@@ -168,10 +168,10 @@
 .article-wrapper .article-conclusion-section .article-subtitle-h2 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #c3066b;
+  color: rgb(195, 6, 107);
   color: white;
   padding: 1.5rem 0;
-  background-color: #00beb8;
+  background-color: #00bdb6;
   margin: 0 0 1.5rem 0;
   text-align: center;
 }
@@ -188,7 +188,7 @@
   margin-bottom: 0;
 }
 .article-wrapper .article-conclusion-section .article-conclusion-text strong {
-  color: #00beb8;
+  color: #00bdb6;
   font-weight: 700;
   font-style: italic;
 }
@@ -198,7 +198,7 @@
   text-align: center;
   color: white;
   padding: 1.5rem 0;
-  background-color: #00beb8;
+  background-color: #00bdb6;
 }
 .article-wrapper .article-list-resume {
   list-style: none;
@@ -217,7 +217,7 @@
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
-  color: #00beb8;
+  color: #00bdb6;
   font-weight: bold;
   font-size: 1.8rem;
 }

@@ -173,8 +173,8 @@
           transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: -webkit-gradient(linear, left top, right top, from(#024d4a), to(#00beb8));
-  background: linear-gradient(to right, #024d4a, #00beb8);
+  background: -webkit-gradient(linear, left top, right top, from(#024d4a), to(#00bdb6));
+  background: linear-gradient(to right, #024d4a, #00bdb6);
   border-radius: 2px;
 }
 .mobile-app-section .app-types-section h2 strong {
@@ -225,8 +225,8 @@
   left: 0;
   width: 100%;
   height: 5px;
-  background: -webkit-gradient(linear, left top, right top, from(#024d4a), to(#00beb8));
-  background: linear-gradient(to right, #024d4a, #00beb8);
+  background: -webkit-gradient(linear, left top, right top, from(#024d4a), to(#00bdb6));
+  background: linear-gradient(to right, #024d4a, #00bdb6);
   z-index: 1;
 }
 .mobile-app-section .app-types-section .types-grid .type-card .card-content {
@@ -294,7 +294,7 @@
   transition: color 0.3s ease;
 }
 .mobile-app-section .app-types-section .types-grid .type-card .card-content .cta-link:hover {
-  color: #00beb8;
+  color: #00bdb6;
 }
 .mobile-app-section .app-types-section .types-grid .type-card .card-content .cta-link:hover svg {
   -webkit-transform: translateX(5px);
@@ -309,28 +309,28 @@
   transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 .mobile-app-section .app-types-section .types-grid .type-native::before {
-  background: -webkit-gradient(linear, left top, right top, from(#024d4a), to(#00beb8));
-  background: linear-gradient(to right, #024d4a, #00beb8);
+  background: -webkit-gradient(linear, left top, right top, from(#024d4a), to(#00bdb6));
+  background: linear-gradient(to right, #024d4a, #00bdb6);
 }
 .mobile-app-section .app-types-section .types-grid .type-hybrid::before {
-  background: -webkit-gradient(linear, left top, right top, from(#00beb8), to(#c7e3cd));
-  background: linear-gradient(to right, #00beb8, #c7e3cd);
+  background: -webkit-gradient(linear, left top, right top, from(#00bdb6), to(#c7e3cd));
+  background: linear-gradient(to right, #00bdb6, #c7e3cd);
 }
 .mobile-app-section .app-types-section .types-grid .type-hybrid .card-content .card-title::after {
-  background-color: #00beb8;
+  background-color: #00bdb6;
 }
 .mobile-app-section .app-types-section .types-grid .type-hybrid .feature-icon {
-  color: #00beb8 !important;
+  color: #00bdb6 !important;
 }
 .mobile-app-section .app-types-section .types-grid .type-hybrid .cta-link {
-  color: #00beb8;
+  color: #00bdb6;
 }
 .mobile-app-section .app-types-section .types-grid .type-hybrid .cta-link:hover {
   color: #c7e3cd;
 }
 .mobile-app-section .app-types-section .types-grid .type-pwa::before {
-  background: -webkit-gradient(linear, left top, right top, from(#c7e3cd), to(#c3066b));
-  background: linear-gradient(to right, #c7e3cd, #c3066b);
+  background: -webkit-gradient(linear, left top, right top, from(#c7e3cd), to(rgb(195, 6, 107)));
+  background: linear-gradient(to right, #c7e3cd, rgb(195, 6, 107));
 }
 .mobile-app-section .app-types-section .types-grid .type-pwa .card-content .card-title::after {
   background-color: #c7e3cd;
@@ -342,7 +342,7 @@
   color: #c7e3cd;
 }
 .mobile-app-section .app-types-section .types-grid .type-pwa .cta-link:hover {
-  color: #c3066b;
+  color: rgb(195, 6, 107);
 }
 .mobile-app-section .process-section {
   margin-bottom: 80px;
@@ -369,8 +369,8 @@
           transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: -webkit-gradient(linear, left top, right top, from(#024d4a), to(#00beb8));
-  background: linear-gradient(to right, #024d4a, #00beb8);
+  background: -webkit-gradient(linear, left top, right top, from(#024d4a), to(#00bdb6));
+  background: linear-gradient(to right, #024d4a, #00bdb6);
   border-radius: 2px;
 }
 .mobile-app-section .process-section h2 strong {
@@ -515,13 +515,13 @@
   background-color: #024d4a;
 }
 .mobile-app-section .process-section .process-timeline .timeline-item:nth-child(2) .timeline-content .step-number {
-  background-color: #00beb8;
+  background-color: #00bdb6;
 }
 .mobile-app-section .process-section .process-timeline .timeline-item:nth-child(3) .timeline-content .step-number {
   background-color: #c7e3cd;
 }
 .mobile-app-section .process-section .process-timeline .timeline-item:nth-child(4) .timeline-content .step-number {
-  background-color: #c3066b;
+  background-color: rgb(195, 6, 107);
 }
 .mobile-app-section .process-section .process-timeline .timeline-item:nth-child(5) .timeline-content .step-number {
   background-color: #024d4a;
@@ -554,8 +554,8 @@
           transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: -webkit-gradient(linear, left top, right top, from(#024d4a), to(#00beb8));
-  background: linear-gradient(to right, #024d4a, #00beb8);
+  background: -webkit-gradient(linear, left top, right top, from(#024d4a), to(#00bdb6));
+  background: linear-gradient(to right, #024d4a, #00bdb6);
   border-radius: 2px;
 }
 .mobile-app-section .technologies-section h2 strong {
@@ -645,8 +645,8 @@
           transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: -webkit-gradient(linear, left top, right top, from(#024d4a), to(#00beb8));
-  background: linear-gradient(to right, #024d4a, #00beb8);
+  background: -webkit-gradient(linear, left top, right top, from(#024d4a), to(#00bdb6));
+  background: linear-gradient(to right, #024d4a, #00bdb6);
   border-radius: 2px;
 }
 .mobile-app-section .faq-section h2 strong {
@@ -707,7 +707,7 @@
 
 .cta-section {
   padding: 80px 0;
-  background: linear-gradient(135deg, #024d4a 0%, #00beb8 100%);
+  background: linear-gradient(135deg, #024d4a 0%, #00bdb6 100%);
   color: white;
   text-align: center;
   position: relative;
