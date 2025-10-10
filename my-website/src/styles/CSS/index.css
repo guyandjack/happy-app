@@ -417,6 +417,10 @@
 .why-green-click .why-choose p strong {
   color: rgb(0, 138, 132.8888888889);
 }
+.why-green-click .why-choose p a {
+  text-decoration: underline;
+  font-weight: bold;
+}
 .why-green-click .why-choose .img-why-card {
   display: none;
 }

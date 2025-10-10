@@ -547,8 +547,16 @@
       margin-bottom: 25px;
       padding: 0 10px;
 
-      strong {
+      strong{
         color: darken(map-get($colors-rule, second-color), 10%);
+      }
+      
+      a{
+        
+        text-decoration: underline;
+        font-weight: bold;
+        color:map-get($colors-rule, link-color);
+
       }
     }
 

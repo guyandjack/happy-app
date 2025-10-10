@@ -272,16 +272,15 @@
     bottom: 60%;
     left: 0;
     width: 100%;
-    max-height: 8px;
     height: 0px;
-    -webkit-transition: height 0.3s ease;
-    transition: height 0.3s ease;
+    -webkit-transition: height 0.2s linear;
+    transition: height 0.2s linear;
   }
   .navbar .navbar-menu > li > a:hover::after, .navbar .navbar-menu > li > button:hover::after {
     background: rgb(195, 6, 107);
-    height: 100%;
-    -webkit-transition: height 0.5s ease;
-    transition: height 0.5s ease;
+    height: 8px;
+    -webkit-transition: height 0.2s linear;
+    transition: height 0.2s linear;
   }
   .navbar .navbar-menu > li > a.active::before, .navbar .navbar-menu > li > button.active::before {
     background: #00bdb6;
@@ -329,19 +328,43 @@
             transform: translateY(0);
   }
   .navbar .navbar-menu .menu-item-with-submenu .submenu a {
-    padding: 0.8rem 1rem;
-    -webkit-transition: border-left 0.3s linear;
-    transition: border-left 0.3s linear;
+    position: relative;
+    padding: 0.8rem 0rem;
+    margin-left: 1rem;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
   }
-  .navbar .navbar-menu .menu-item-with-submenu .submenu a.active {
-    color: #00bdb6;
-    font-weight: bolder;
+  .navbar .navbar-menu .menu-item-with-submenu .submenu a:hover::before {
+    height: 8px;
+    -webkit-transition: height 0.2s linear;
+    transition: height 0.2s linear;
   }
-  .navbar .navbar-menu .menu-item-with-submenu .submenu a:hover {
-    font-weight: bolder;
-    border-left: 5px solid #00bdb6;
-    -webkit-transition: border-left 0.2s linear;
-    transition: border-left 0.2s linear;
+  .navbar .navbar-menu .menu-item-with-submenu .submenu a.active::after {
+    opacity: 1;
+  }
+  .navbar .navbar-menu .menu-item-with-submenu .submenu a::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 0px;
+    bottom: 60%;
+    left: 0px;
+    background-color: rgb(195, 6, 107);
+    -webkit-transition: height 0.2s linear;
+    transition: height 0.2s linear;
+  }
+  .navbar .navbar-menu .menu-item-with-submenu .submenu a::after {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    width: 100%;
+    height: 8px;
+    bottom: 60%;
+    left: 0px;
+    background-color: #00bdb6;
+    opacity: 0;
   }
   .navbar .navbar-menu .language-switcher {
     margin-top: 0;

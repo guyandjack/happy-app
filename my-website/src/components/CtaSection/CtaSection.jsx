@@ -21,7 +21,7 @@ function CtaSection() {
       <p>{ctaSectionContent[lang][pageName].text}</p>
       <a
         className="btn btn-primary"
-        href={lang === "fr" ? "/public/fr/contact" : "/public/en/contact"}
+        href={lang === "fr" ? "/public/fr/contact.html" : "/public/en/contact.html"}
       >
         {ctaSectionContent[lang][pageName].btn_text}
       </a>
