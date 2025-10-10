@@ -1,0 +1,23 @@
+{
+  "my-website\\sitemap.xml": {
+    "Protocol": "https",
+    "DomainName": "helveclick.ch",
+    "Root": "./my-website/public",
+    "IncludeExt": [
+      ".html",
+      ".php"
+    ],
+    "Exclude": [],
+    "TagsToInclude": [
+      "priority",
+      "lastmod"
+    ],
+    "DefaultChangeFrequency": "monthly",
+    "TabCharacters": "\t",
+    "bIncludeWWW": true,
+    "bRemoveFileExtentions": false,
+    "bUseTrailingSlash": false,
+    "bAutomaticallyUpdateSitemap": true,
+    "bMinimized": false
+  }
+}
