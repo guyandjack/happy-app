@@ -40,6 +40,13 @@ function seasonFor(date = new Date()) {
   return "autumn";
 }
 
+// Version sous forme YYYY-<season>
+function seasonVersion(date = new Date()) {
+  const s = seasonFor(date);
+  const y = date.getUTCFullYear();
+  return `${y}-${s}`;
+}
+
 // Création remplaçante atomique : hardlink -> symlink -> copy, puis rename
 async function atomicPoint(linkPath, targetPath) {
   // Vérifie l'existence de la cible
@@ -99,6 +106,17 @@ async function pointLandingPageToSeason(season) {
   );
 }
 
+// Ecrit un fichier de version consommable par le serveur / client
+async function writeVersionFiles() {
+  await fs.mkdir(LP_DIR, { recursive: true });
+  const ver = seasonVersion();
+  const jsonPath = path.join(LP_DIR, "version.json");
+  const txtPath = path.join(LP_DIR, "version.txt");
+  const payload = { version: ver, updatedAt: new Date().toISOString() };
+  await fs.writeFile(jsonPath, JSON.stringify(payload), "utf8");
+  await fs.writeFile(txtPath, `${ver}\n`, "utf8");
+}
+
 // Optionnel : garantir un placeholder 1x1.webp (utile pour le fallback)
 async function ensurePlaceholder() {
   const ph = path.join(LP_DIR, "placeholder-1x1.webp");
@@ -119,6 +137,7 @@ async function startScheduler() {
   try {
     await ensurePlaceholder();
     await pointLandingPageToSeason(seasonFor());
+    await writeVersionFiles();
   } catch (e) {
     console.error("[seasonal] initial switch failed:", e);
   }
@@ -129,6 +148,7 @@ async function startScheduler() {
     async () => {
       try {
         await pointLandingPageToSeason(seasonFor());
+        await writeVersionFiles();
       } catch (e) {
         console.error("[seasonal] daily switch failed:", e);
       }
@@ -140,6 +160,8 @@ async function startScheduler() {
 module.exports = {
   LP_DIR,
   seasonFor,
+  seasonVersion,
   pointLandingPageToSeason,
+  writeVersionFiles,
   startScheduler,
 };

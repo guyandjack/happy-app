@@ -9,6 +9,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
 const fs = require("fs"); // <-- pour le fallback
+const fsp = require("fs/promises");
 
 // import des fonctions
 const { LP_DIR, startScheduler } = require("./utils/function/scheduler.js");
@@ -54,27 +55,70 @@ app.use(express.static(path.join(__dirname, "public")));
  * - Met les bons headers (cache revalidation + CORP)
  * - Évite les redirections implicites
  */
-  app.use(
-    "/images/landingPage",
-    express.static(LP_DIR, {
-      extensions: ["webp"],
-      redirect: false,
-      etag: true,
-      lastModified: true,
-      maxAge: 0,
-      setHeaders(res, filePath) {
-        const hasVersion = !!(res && res.req && res.req.query && res.req.query.v);
-        const cacheHeader = hasVersion
-          ? "public, max-age=31536000, immutable"
-          : "public, max-age=0, must-revalidate";
-        res.setHeader("Cache-Control", cacheHeader);
-        res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
-        if (filePath && filePath.endsWith(".webp")) {
-          res.setHeader("Content-Type", "image/webp");
-        }
-      },
-    })
-  );
+// 1) Redirection automatique vers l'URL versionnée si "v" est absent
+app.use("/images/landingPage", async (req, res, next) => {
+  try {
+    if (req.query && typeof req.query.v !== "undefined") return next();
+    // Ne cible que les tailles connues
+    const base = path.basename(req.path);
+    const m = base.match(/^(500|1000|1500|2000)(\.webp)?$/);
+    if (!m) return next();
+    // Lit la version actuelle depuis le fichier généré par le scheduler
+    const versionFile = path.join(LP_DIR, "version.json");
+    let version = null;
+    try {
+      const raw = await fsp.readFile(versionFile, "utf8");
+      const obj = JSON.parse(raw);
+      version = obj && obj.version ? String(obj.version) : null;
+    } catch {
+      // Si absent, pas de redirection
+      return next();
+    }
+    if (!version) return next();
+    // Reconstruit l'URL avec ?v=<version> et conserve les autres paramètres éventuels
+    const url = new URL(req.originalUrl, `${req.protocol}://${req.get("host")}`);
+    url.searchParams.set("v", version);
+    // 302 vers l'URL versionnée
+    res.setHeader("Cache-Control", "public, max-age=300");
+    return res.redirect(302, url.pathname + url.search);
+  } catch (e) {
+    return next();
+  }
+});
+
+app.use(
+  "/images/landingPage",
+  express.static(LP_DIR, {
+    extensions: ["webp"],
+    redirect: false,
+    etag: true,
+    lastModified: true,
+    maxAge: 0,
+    setHeaders(res, filePath) {
+      const hasVersion = !!(res && res.req && res.req.query && res.req.query.v);
+      const cacheHeader = hasVersion
+        ? "public, max-age=31536000, immutable"
+        : "public, max-age=0, must-revalidate";
+      res.setHeader("Cache-Control", cacheHeader);
+      res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
+      if (filePath && filePath.endsWith(".webp")) {
+        res.setHeader("Content-Type", "image/webp");
+      }
+    },
+  })
+);
+
+// 2) API optionnelle pour exposer la version courante (utile si tu veux la lire côté client)
+app.get("/api/season-version", async (req, res) => {
+  try {
+    const p = path.join(LP_DIR, "version.json");
+    const raw = await fsp.readFile(p, "utf8");
+    res.setHeader("Cache-Control", "public, max-age=60");
+    res.type("application/json").send(raw);
+  } catch (e) {
+    res.status(404).json({ error: true, message: "version unavailable" });
+  }
+});
 
 // ✅ Fallback image (en cas de 404, on renvoie une WebP → pas d'HTML ⇒ pas d'ORB)
 /* app.use("/images/landingPage", (req, res, next) => {
