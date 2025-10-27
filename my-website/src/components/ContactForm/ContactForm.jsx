@@ -274,7 +274,7 @@ function ContactForm() {
               {...register("email", {
                 required: "Ce champ est requis",
                 minLength: { value: 2, message: "Min 2 caractères" },
-                maxLength: { value: 100, message: "Max 100 caractères" },
+                maxLength: { value: 80, message: "Max 80 caractères" },
                 value: formValueRef?.current?.email,
                 pattern: {
                   value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,100}$/,

@@ -54,23 +54,27 @@ app.use(express.static(path.join(__dirname, "public")));
  * - Met les bons headers (cache revalidation + CORP)
  * - Évite les redirections implicites
  */
-app.use(
-  "/images/landingPage",
-  express.static(LP_DIR, {
-    extensions: ["webp"],
-    redirect: false,
-    etag: true,
-    lastModified: true,
-    maxAge: 0,
-    setHeaders(res, filePath) {
-      res.setHeader("Cache-Control", "public, max-age=0, must-revalidate");
-      res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
-      if (filePath && filePath.endsWith(".webp")) {
-        res.setHeader("Content-Type", "image/webp");
-      }
-    },
-  })
-);
+  app.use(
+    "/images/landingPage",
+    express.static(LP_DIR, {
+      extensions: ["webp"],
+      redirect: false,
+      etag: true,
+      lastModified: true,
+      maxAge: 0,
+      setHeaders(res, filePath) {
+        const hasVersion = !!(res && res.req && res.req.query && res.req.query.v);
+        const cacheHeader = hasVersion
+          ? "public, max-age=31536000, immutable"
+          : "public, max-age=0, must-revalidate";
+        res.setHeader("Cache-Control", cacheHeader);
+        res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
+        if (filePath && filePath.endsWith(".webp")) {
+          res.setHeader("Content-Type", "image/webp");
+        }
+      },
+    })
+  );
 
 // ✅ Fallback image (en cas de 404, on renvoie une WebP → pas d'HTML ⇒ pas d'ORB)
 /* app.use("/images/landingPage", (req, res, next) => {
