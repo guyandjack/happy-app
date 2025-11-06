@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	
 	<url>
 		<loc>https://www.helveclick.ch/index.html</loc>
 		<priority>0.50</priority>
@@ -9,55 +8,52 @@
 	<url>
 		<loc>https://www.helveclick.ch/fr/contact.html</loc>
 		<priority>0.50</priority>
-		<lastmod>2025-10-10</lastmod>
+		<lastmod>2025-11-06</lastmod>
 	</url>
-	
 	<url>
 		<loc>https://www.helveclick.ch/fr/articles-list.html</loc>
 		<priority>0.50</priority>
-		<lastmod>2025-10-10</lastmod>
+		<lastmod>2025-11-06</lastmod>
 	</url>
-	
 	<url>
 		<loc>https://www.helveclick.ch/fr/a-propos.html</loc>
 		<priority>0.50</priority>
-		<lastmod>2025-10-10</lastmod>
+		<lastmod>2025-11-06</lastmod>
 	</url>
 	<url>
 		<loc>https://www.helveclick.ch/en/home.html</loc>
 		<priority>0.50</priority>
-		<lastmod>2025-10-10</lastmod>
+		<lastmod>2025-11-06</lastmod>
 	</url>
 	<url>
 		<loc>https://www.helveclick.ch/en/contact.html</loc>
 		<priority>0.50</priority>
-		<lastmod>2025-10-10</lastmod>
+		<lastmod>2025-11-06</lastmod>
 	</url>
 	<url>
 		<loc>https://www.helveclick.ch/en/articles-list.html</loc>
 		<priority>0.50</priority>
-		<lastmod>2025-10-10</lastmod>
+		<lastmod>2025-11-06</lastmod>
 	</url>
-	
 	<url>
 		<loc>https://www.helveclick.ch/en/about.html</loc>
 		<priority>0.50</priority>
-		<lastmod>2025-10-10</lastmod>
+		<lastmod>2025-11-06</lastmod>
 	</url>
 	<url>
 		<loc>https://www.helveclick.ch/fr/prestations/site-web.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-10-10</lastmod>
+		<lastmod>2025-11-06</lastmod>
 	</url>
 	<url>
 		<loc>https://www.helveclick.ch/fr/prestations/seo.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-10-10</lastmod>
+		<lastmod>2025-11-06</lastmod>
 	</url>
 	<url>
 		<loc>https://www.helveclick.ch/fr/prestations/application-mobile.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-10-10</lastmod>
+		<lastmod>2025-11-06</lastmod>
 	</url>
 	<url>
 		<loc>https://www.helveclick.ch/fr/legal/politique-de-confidentialite.html</loc>
@@ -72,17 +68,17 @@
 	<url>
 		<loc>https://www.helveclick.ch/en/services/website.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-10-10</lastmod>
+		<lastmod>2025-11-06</lastmod>
 	</url>
 	<url>
 		<loc>https://www.helveclick.ch/en/services/seo.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-10-10</lastmod>
+		<lastmod>2025-11-06</lastmod>
 	</url>
 	<url>
 		<loc>https://www.helveclick.ch/en/services/mobile-application.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-10-10</lastmod>
+		<lastmod>2025-11-06</lastmod>
 	</url>
 	<url>
 		<loc>https://www.helveclick.ch/en/legal/privacy-policy.html</loc>
