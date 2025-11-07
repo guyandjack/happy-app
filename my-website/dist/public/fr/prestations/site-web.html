@@ -44,46 +44,99 @@
 
 
   <!-- Schema.org Script -->
+   <!-- identite de l' entreprise locale-->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://helveclick.ch/#org",
+    "name": "HelveClick",
+    "url": "https://helveclick.ch",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://helveclick.ch/public/assets/logo/logo-v8.svg"
+    },
+    "image": "https://helveclick.ch/public/assets/logo/logo-v8.svg",
+    "description": "Développeur web et mobile freelance basé à Crans-Montana (Valais, Suisse), spécialisé dans la création de sites internet éco-conçus, d'applications mobiles et l'optimisation SEO.",
+    "email": "info@helveclick.ch",
+    "telephone": "+41788940987",
+    "priceRange": "CHF CHF",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Chemin du Mont-Paisible 1",
+      "addressLocality": "Crans-Montana",
+      "addressRegion": "Valais",
+      "postalCode": "3963",
+      "addressCountry": "CH"
+    },
+    "areaServed": ["CH", "Valais"],
+    "sameAs": [
+      "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
+    ],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "telephone": "+41788940987",
+      "email": "info@helveclick.ch",
+      "areaServed": "CH",
+      "availableLanguage": ["fr-CH","fr","en"]
+    }]
+  }
+  </script>
+  
+    <!-- service spécifique de la page -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Création de sites web éco-responsables",
-    "description": "Développement de sites vitrines, e-commerce et sur mesure optimisés pour la performance, l’accessibilité et le SEO, avec une approche éco-conçue.",
-    "provider": {
-      "@type": "Person",
-      "name": "Guillaume Dupanloup",
-      "jobTitle": "Développeur web freelance",
-      "url": "https://helveclick.ch",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Crans-Montana",
-        "addressRegion": "Valais",
-        "addressCountry": "CH"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/",
-        
-      ]
+    "@id": "https://helveclick.ch/public/fr/prestations/site-web.html#service",
+    "name": "Création de site web",
+    "description": "Conception et développement de sites vitrines, e-commerce et sur mesure. Sites web éco-conçus et optimisés SEO.",
+    "provider": { "@id": "https://helveclick.ch/#org" },
+    "serviceType": "Développement web",
+    "areaServed": ["CH","Valais","Suisse romande"],
+    "inLanguage": "fr-CH",
+    "offers": {
+      "@type": "Offer",
+      "url": "https://helveclick.ch/public/fr/prestations/site-web.html",
+      "businessFunction": "ProvideService",
+      "availability": "https://schema.org/InStock"
     },
-    "areaServed": {
-      "@type": "Place",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "CH"
-      }
-    },
-    "serviceType": [
-      "Site vitrine",
-      "Site institutionnel",
-      "Site sur mesure",
-      "Refonte de site",
-      "Site optimisé SEO",
-      "Site éco-conçu",
-      "Site e-commerce"
-    ]
+    "hasOfferCatalog": {
+  "@type": "OfferCatalog",
+  "name": "Types de sites proposés",
+  "itemListElement": [
+    { "@type": "Service", "name": "Site vitrine" },
+    { "@type": "Service", "name": "Site e-commerce" },
+    { "@type": "Service", "name": "Site personnalisé" },
+    { "@type": "Service", "name": "Site optimisé SEO" },
+    { "@type": "Service", "name": "Site éco-conçu" }
+  ]
+}
+
   }
   </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://helveclick.ch/public/fr/prestations/site-web.html#webpage",
+    "url": "https://helveclick.ch/public/fr/prestations/site-web.html",
+    "name": "Création de site web – HelveClick",
+    "inLanguage": "fr-CH",
+    "about": { "@id": "https://helveclick.ch/public/fr/prestations.html#service" },
+    "isPartOf": { "@id": "https://helveclick.ch/#org" },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://helveclick.ch" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://helveclick.ch/public/fr/prestations/site-web.html" },
+      ]
+    }
+  }
+  </script>
+
 
   <!-- favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
@@ -93,7 +146,8 @@
 
 
 
-  <!-- Scripts in head -->
+  <!-- Scripts in head -->
+
 
 
   <script type="module" crossorigin src="/assets/Footer-DMF0ZL01.js"></script>
