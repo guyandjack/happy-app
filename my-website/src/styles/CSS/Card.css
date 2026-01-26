@@ -1,4 +1,5 @@
 .card-link {
+  position: relative;
   text-decoration: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -19,6 +20,12 @@
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   background-color: #ffffff;
   margin: 20px;
+}
+.card-link:hover .card-content .card-button {
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+      -ms-transform: translateY(0px);
+          transform: translateY(0px);
 }
 
 .card-image-container {
@@ -59,6 +66,7 @@
   font-size: 1.2rem;
   font-weight: 600;
   color: #171717;
+  text-align: center;
 }
 .card-content .card-description {
   margin-bottom: 24px;
@@ -66,25 +74,32 @@
   color: #4a4a4a;
 }
 .card-content .card-button {
+  position: absolute;
+  bottom: 0px;
+  /*left: 0px;*/
   padding: 12px 24px;
   background-color: rgba(2, 77, 74, 0.9);
   color: #ffffff;
   border: 2px solid transparent;
-  border-radius: 6px;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
   font-weight: 600;
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  cursor: pointer;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  width: 80%;
+  opacity: 0;
+  -webkit-transform: translateY(40px);
+      -ms-transform: translateY(40px);
+          transform: translateY(40px);
+  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+  transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease, -webkit-transform 0.5s ease;
+  width: 120%;
   text-align: center;
-}
-.card-content .card-button:active {
-  -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
-          transform: translateY(0);
+  /*  &:active {
+      transform: translateY(0);
+  } */
 }
 
 .card-button-contact {
@@ -135,14 +150,16 @@
   .card-link:hover .card-overlay {
     opacity: 1;
   }
-  .card-content .card-button:hover {
-    background-color: transparent;
-    color: rgba(2, 77, 74, 0.9);
-    border: 2px solid rgba(2, 77, 74, 0.9);
-    -webkit-transform: translateY(-2px);
-        -ms-transform: translateY(-2px);
-            transform: translateY(-2px);
-  }
+  /* .card-content {
+      .card-button {
+          &:hover {
+              background-color: transparent;
+              color: rgba(map-get($colors-rule, first-color), 0.9);
+              border: 2px solid rgba(map-get($colors-rule, first-color), 0.9);
+              transform: translateY(-2px);
+          }
+      }
+  }  */
   .card-button-contact:hover {
     color: rgb(195, 6, 107);
     border: 2px solid rgb(195, 6, 107);

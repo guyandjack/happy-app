@@ -25,14 +25,21 @@ const Card = ({ card }) => {
             <div className="card-overlay"></div>
           </div>
         )}
-        <div className="flex-column-space_between-center card-content">
-          {card.title && <h3 className="card-title">{card.title}</h3>}
+        <div className="flex-column-space_evenly-center card-content">
+          {card.title && <h3
+            dangerouslySetInnerHTML={{__html: card.title}} 
+            className="card-title"></h3>}
           {card.description && (
-            <p className="card-description">{card.description}</p>
+            <p
+              className="card-description"
+             
+            >{card.description}</p>
           )}
-          <button type="button" className="card-button">
-            {lang === "fr" ? "Découvrir" : "Discover"}
-          </button>
+          {
+            <div className="card-button">
+              {lang === "fr" ? "Découvrir" : "Discover"}
+            </div>
+          }
         </div>
       </a>
       <a

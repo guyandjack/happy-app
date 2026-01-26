@@ -24,7 +24,6 @@
   position: relative;
   z-index: 3;
   width: 100%;
-  height: 500px;
   padding: 20px 10px;
   overflow: hidden;
 }
@@ -34,14 +33,17 @@
   margin-bottom: 1rem;
   line-height: 1.5;
   text-align: center;
-  font-weight: bold;
+  /* font-weight: bold; */
+  padding: 0px 10px;
+  border-radius: 15px;
+  background-color: rgba(23, 23, 23, 0.5);
+  border: 2px solid #00bdb6;
 }
 .hero-index .hero-index-title-h1 span {
   font-size: 2rem;
-  padding: 0px 10px;
-  border-radius: 15px;
-  background-color: rgba(0, 189, 182, 0.5);
-  border: 2px solid #00bdb6;
+  font-weight: bold;
+  -webkit-text-decoration: underline #00bdb6;
+          text-decoration: underline #00bdb6;
 }
 .hero-index .hero-index-title-h2 {
   font-size: 1.5rem;
@@ -49,7 +51,7 @@
   margin-bottom: 1rem;
   line-height: 1.2;
   text-align: center;
-  background-color: rgba(195, 6, 107, 0.1);
+  background-color: rgba(195, 6, 107, 0.2);
   padding: 20px;
   border-radius: 15px;
   border: 2px solid rgb(195, 6, 107);
@@ -62,6 +64,7 @@
   width: 100%;
 }
 .hero-index .hero-index-link {
+  display: block;
   padding: 5px;
   background-color: #00bdb6;
   border: 2px solid #00bdb6;
@@ -69,8 +72,13 @@
   cursor: pointer;
   font-size: 0.8rem;
   color: #ffffff;
-  -webkit-transition: background-color 0.1s linear;
-  transition: background-color 0.1s linear;
+  -webkit-transform: translateY(0px);
+      -ms-transform: translateY(0px);
+          transform: translateY(0px);
+  -webkit-transition: background-color 0.2s linear, -webkit-transform 0.2s linear;
+  transition: background-color 0.2s linear, -webkit-transform 0.2s linear;
+  transition: background-color 0.2s linear, transform 0.2s linear;
+  transition: background-color 0.2s linear, transform 0.2s linear, -webkit-transform 0.2s linear;
 }
 .hero-index .hero-index-img {
   position: absolute;
@@ -94,9 +102,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .hero-index {
-    height: 600px;
-  }
   .hero-index .hero-index-title-h1 {
     font-size: 2.5rem;
   }
@@ -115,7 +120,7 @@
 }
 @media screen and (min-width: 992px) {
   .hero-index {
-    height: calc(100vh - 60px);
+    height: calc(100vh - 0px);
   }
   .hero-index .hero-index-title-h1 {
     font-size: 2.8rem;
@@ -139,20 +144,16 @@
     padding: 8px;
     font-size: 1.3rem;
     border: 2px solid #00bdb6;
-    -webkit-transition: background-color linear 0.1s, -webkit-transform linear 0.1s;
-    transition: background-color linear 0.1s, -webkit-transform linear 0.1s;
-    transition: background-color linear 0.1s, transform linear 0.1s;
-    transition: background-color linear 0.1s, transform linear 0.1s, -webkit-transform linear 0.1s;
   }
   .hero-index .hero-index-link:hover {
-    background-color: rgba(0, 189, 182, 0.5);
     -webkit-transform: translateY(-5px);
         -ms-transform: translateY(-5px);
             transform: translateY(-5px);
-    -webkit-transition: background-color linear 0.2s, -webkit-transform linear 0.2s;
-    transition: background-color linear 0.2s, -webkit-transform linear 0.2s;
-    transition: background-color linear 0.2s, transform linear 0.2s;
-    transition: background-color linear 0.2s, transform linear 0.2s, -webkit-transform linear 0.2s;
+    background-color: rgba(0, 189, 182, 0.5);
+    -webkit-transition: background-color 0.2s linear, -webkit-transform 0.2s linear;
+    transition: background-color 0.2s linear, -webkit-transform 0.2s linear;
+    transition: background-color 0.2s linear, transform 0.2s linear;
+    transition: background-color 0.2s linear, transform 0.2s linear, -webkit-transform 0.2s linear;
   }
 }
 @media screen and (min-width: 1300px) {
@@ -354,13 +355,6 @@
             justify-content: space-evenly;
   }
 }
-/* @media (min-width: 1500px) {
-
-
-  .services {
-    // margin-top: 250px;
-  }
-} */
 .why-green-click {
   position: relative;
   width: 100%;
@@ -418,8 +412,30 @@
   color: rgb(0, 138, 132.8888888889);
 }
 .why-green-click .why-choose p a {
-  text-decoration: underline;
-  font-weight: bold;
+  position: relative;
+  display: inline block;
+  z-index: 1;
+  color: #171717;
+}
+.why-green-click .why-choose p a::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0px;
+  width: 100%;
+  height: 1px;
+  bottom: 0px;
+  background-color: #171717;
+  -webkit-transition: height 0.2s linear;
+  transition: height 0.2s linear;
+}
+.why-green-click .why-choose p a:hover::before {
+  background-color: rgb(195, 6, 107);
+  opacity: 0.9;
+  height: 6px;
+  bottom: 60%;
+  -webkit-transition: height 0.2s linear;
+  transition: height 0.2s linear;
 }
 .why-green-click .why-choose .img-why-card {
   display: none;

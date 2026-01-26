@@ -48,7 +48,7 @@ const IndexCards = () => {
     lang === "fr" ? "Optimisation SEO" : "SEO Optimization";
   const titlePrestaApp =
     lang === "fr"
-      ? "Développement d'applications mobiles"
+      ? "Développement<br>d'applications mobiles"
       : "Mobile application development";
 
   const indexCards = [
