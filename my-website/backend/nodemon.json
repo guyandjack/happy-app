@@ -1,0 +1,21 @@
+﻿{
+  "ignore": [
+    "logs/*",
+    "logs/**/*",
+    "*.log",
+    "logs/app.log",
+    "public/images/landingPage/*",
+    "public/images/landingPage/**/*",
+    "public/images/landingPage/version.json",
+    "public/images/landingPage/version.txt"
+  ],
+  "watch": [
+    "*.js",
+    "controllers",
+    "middleware",
+    "models",
+    "routes",
+    "utils",
+    "config"
+  ]
+}

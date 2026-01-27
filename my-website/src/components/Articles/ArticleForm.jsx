@@ -32,12 +32,14 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
   const [additionalImages, setAdditionalImages] = useState([]);
   const [additionalImagePreviews, setAdditionalImagePreviews] = useState([]);
   const [contentArticleName, setContentArticleName] = useState("");
-  const [articleContent, setArticleContent] = useState("");
+  const [articleContent, setArticleContent] = useState(null);
+  const [articlePreviewHtml, setArticlePreviewHtml] = useState("");
 
   // Refs for file inputs
   const mainImageInputRef = useRef(null);
   const additionalImagesInputRef = useRef(null);
   const contentArticleInputRef = useRef(null);
+  const articlePreviewSectionRef = useRef(null);
 
   const {
     register,
@@ -61,14 +63,18 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
   const categories = [
     { value: "web-development", label: "Développement Web" },
     { value: "mobile-apps", label: "Applications Mobiles" },
-    { value: "seo", label: "Référencement SEO" },
-    { value: "design", label: "Design" },
-    { value: "tutorials", label: "Tutoriels" },
-    { value: "marketing", label: "Marketing" },
-    { value: "business", label: "Business" },
-    { value: "react", label: "React" },
-    { value: "nodejs", label: "Node.js" },
-    { value: "other", label: "Autre" },
+    { value: "SEO", label: "Référencement SEO" },
+    { value: "Design", label: "Design" },
+    { value: "Tutorials", label: "Tutoriels" },
+    { value: "Marketing", label: "Marketing" },
+    { value: "Business", label: "Business" },
+    { value: "React", label: "React" },
+    { value: "Nodejs", label: "Node.js" },
+    { value: "IA", label: "IA" },
+    { value: "Techno", label: "Techno" },
+    { value: "Code", label: "Code" },
+    { value: "Framework", label: "Framework" },
+    { value: "Other", label: "Autre" },
   ];
 
   // language for dropdown
@@ -117,6 +123,23 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
     if (file) {
       setArticleContent(file);
       setContentArticleName(file.name);
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const rawText = event.target?.result || "";
+        setArticlePreviewHtml(convertTextToHtml(rawText));
+      };
+      reader.onerror = () => {
+        setArticlePreviewHtml("");
+        showToast(
+          "Impossible de lire le fichier texte pour la prévisualisation",
+          "error"
+        );
+      };
+      reader.readAsText(file, "UTF-8");
+    } else {
+      setArticleContent(null);
+      setContentArticleName("");
+      setArticlePreviewHtml("");
     }
   };
 
@@ -151,6 +174,68 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
     setAdditionalImages((prev) => prev.filter((_, i) => i !== index));
     setAdditionalImagePreviews((prev) => prev.filter((_, i) => i !== index));
   };
+
+  const convertTextToHtml = (text) => {
+    if (!text) return "";
+    const trimmed = text.trim();
+    const containsHtml = /<\/?[a-z][\s\S]*>/i.test(trimmed);
+    if (containsHtml) {
+      return trimmed;
+    }
+    const paragraphs = trimmed
+      .split(/\r?\n\s*\r?\n/)
+      .map((paragraph) => paragraph.trim())
+      .filter(Boolean);
+    if (paragraphs.length === 0) {
+      return trimmed.replace(/\r?\n/g, "<br />");
+    }
+    return paragraphs
+      .map(
+        (paragraph) =>
+          `<p>${paragraph.replace(/(?:\r?\n)/g, "<br />")}</p>`
+      )
+      .join("");
+  };
+
+  useEffect(() => {
+    const section = articlePreviewSectionRef.current;
+    if (!section) return;
+
+    const setImgAttributes = (imgElement, src, altText) => {
+      if (!imgElement) return;
+      if (src) {
+        imgElement.src = src;
+        if (altText) {
+          imgElement.alt = altText;
+        }
+      } else {
+        imgElement.removeAttribute("src");
+        imgElement.removeAttribute("alt");
+      }
+    };
+
+    const mainImg = section.querySelector(".article-img-title");
+    setImgAttributes(
+      mainImg,
+      mainImagePreview || "",
+      watchTitle || "Image principale de l'article"
+    );
+
+    const subtitleImgs = section.querySelectorAll(".article-img-subtitle");
+    subtitleImgs.forEach((img, index) => {
+      const preview = additionalImagePreviews[index] || "";
+      const altLabel =
+        preview && watchTitle
+          ? `${watchTitle} - Image ${index + 1}`
+          : `Image additionnelle ${index + 1}`;
+      setImgAttributes(img, preview, preview ? altLabel : "");
+    });
+  }, [
+    articlePreviewHtml,
+    mainImagePreview,
+    additionalImagePreviews,
+    watchTitle,
+  ]);
 
   // slugify
   function slugify(text) {
@@ -330,64 +415,11 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
 
   return (
     <div className="flex-column-start-center article-form-dashboard">
-      {toast.show && (
-        <div className={`toast-notification ${toast.type}`}>
-          <div className="toast-content">
-            <span className="toast-message">{toast.message}</span>
-            <button
-              className="toast-close"
-              onClick={() => setToast({ ...toast, show: false })}
-              aria-label="Fermer"
-            >
-              ×
-            </button>
-          </div>
-        </div>
-      )}
-
-      {isSubmitting && (
-        <div className="loader-overlay">
-          <div className="loader-container">
-            <ThreeDots
-              height="80"
-              width="80"
-              radius="9"
-              color="#3b82f6"
-              ariaLabel="three-dots-loading"
-              visible={true}
-            />
-            <p className="loader-text">Création de l'article en cours...</p>
-          </div>
-        </div>
-      )}
-
       <form className="article-form" onSubmit={handleSubmit(onSubmit)}>
         {httpError && (
           <div className="error-message http-error">{httpError}</div>
         )}
 
-        {/* Author */}
-        {/* <div className="form-group">
-          <label htmlFor="author">Auteur *</label>
-          <input type="text" id="author" {...register("author")} />
-        </div> */}
-
-        {/* Language */}
-        {/* <div className="form-group">
-          <label htmlFor="language">Langue *</label>
-          <select
-            id="language"
-            {...register("language", { required: "La langue est requise" })}
-          >
-            {languages.map((language) => (
-              <option key={language.value} value={language.value}>
-                {language.label}
-              </option>
-            ))}
-          </select>
-        </div> */}
-
-        {/* Category */}
         <div className="form-group">
           <label htmlFor="category">Catégorie *</label>
           <select
@@ -421,56 +453,6 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
           />
         </div>
 
-        {/* title */}
-        {/* <div className="form-group">
-          <label htmlFor="title">Titre de l'article *</label>
-          <input
-            type="text"
-            placeholder="Titre de l'article"
-            {...register("title", { required: "Le titre est requis" })}
-            className="border p-2 rounded"
-          />
-          {errors.title && (
-            <span className="text-red-500">{errors.title.message}</span>
-          )}
-        </div> */}
-
-        {/* slug title */}
-        {/* <div className="form-group">
-          <label htmlFor="slug">Slug for SEO (automatique)</label>
-          <input
-            type="text"
-            placeholder="Slug Title"
-            {...register("slug")}
-            className=""
-            readOnly
-          />
-        </div> */}
-
-        {/* excerpt */}
-        {/* <div className="form-group">
-          <label htmlFor="excerpt">Résumé de l'article</label>
-          <textarea
-            placeholder="Résumé de l'article"
-            {...register("excerpt")}
-            className=""
-          />
-        </div> */}
-
-        {/* champ markdown */}
-        {/*<div className="form-group">
-          <label htmlFor="content">Contenu</label>
-          <textarea
-            placeholder="Contenu"
-            {...register("content", { required: "Le contenu est requis" })}
-            rows={10}
-            className="border p-2 rounded font-mono text-sm"
-          />
-          {errors.content && (
-            <span className="text-red-500">{errors.content.message}</span>
-          )}
-        </div>
-        {/* contentArticle file .txt */}
         <div className="form-group">
           <label htmlFor="contentArticle">Contenu (fichier .txt)</label>
           <div className="file-upload-container">
@@ -597,21 +579,58 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
           >
             {isSubmitting ? "Création en cours..." : "Créer l'article"}
           </button>
+          {toast.show && (
+            <div className={`toast-notification ${toast.type}`}>
+              <div className="toast-content">
+                <span className="toast-message">{toast.message}</span>
+                <button
+                  className="toast-close"
+                  onClick={() => setToast({ ...toast, show: false })}
+                  aria-label="Fermer"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+          )}
+
+          {isSubmitting && (
+            <div className="loader-overlay">
+              <div className="loader-container">
+                <ThreeDots
+                  height="80"
+                  width="80"
+                  radius="9"
+                  color="#3b82f6"
+                  ariaLabel="three-dots-loading"
+                  visible={true}
+                />
+                <p className="loader-text">Création de l'article en cours...</p>
+              </div>
+            </div>
+          )}
         </div>
       </form>
       {/* PRÉVISUALISATION de l' article */}
       <div className="preview-article">
         <h3 className="preview-article-title"> Aperçu de l'article</h3>
-        {contentArticleName.trim() === "" ? (
-          <p className="preview-article-content">
-            Commence à écrire du contenu...
-          </p>
-        ) : (
-          <div className="preview-article-content">
-            <h1>{watchTitle}</h1>
-            <div>{}</div>
-          </div>
-        )}
+        
+        <section
+          className="flex-column-start-center article-content"
+          ref={articlePreviewSectionRef}
+        >
+          {articlePreviewHtml ? (
+            <div
+              className="article-preview-content"
+              dangerouslySetInnerHTML={{ __html: articlePreviewHtml }}
+            />
+          ) : (
+            <p className="preview-placeholder">
+              Importez un fichier .txt pour voir le contenu de l'article ici.
+            </p>
+          )}
+        </section>
+        
       </div>
     </div>
   );

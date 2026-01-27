@@ -930,8 +930,33 @@ exports.deleteArticle = async (req, res) => {
       });
     }
 
-    const { mainImage, additionalImages, content, content_en } =
-      articlesAndImagesPath[0];
+    const {
+      mainImage,
+      additionalImages: rawAdditionalImages,
+      content,
+      content_en,
+    } = articlesAndImagesPath[0];
+
+    let additionalImages = [];
+    if (rawAdditionalImages) {
+      if (Array.isArray(rawAdditionalImages)) {
+        additionalImages = rawAdditionalImages;
+      } else if (typeof rawAdditionalImages === "string") {
+        try {
+          additionalImages = JSON.parse(rawAdditionalImages);
+        } catch (parseError) {
+          logger.warn(
+            `[deleteArticle] Impossible de parser additionalImages (${rawAdditionalImages}): ${parseError.message}`
+          );
+          additionalImages = rawAdditionalImages
+            .replace(/^\s*\[/, "")
+            .replace(/\]\s*$/, "")
+            .split(",")
+            .map((value) => value.replace(/["']/g, "").trim())
+            .filter(Boolean);
+        }
+      }
+    }
 
     // Fonction utilitaire pour supprimer un fichier
     const deleteFile = async (filePath) => {

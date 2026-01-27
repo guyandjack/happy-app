@@ -25,7 +25,8 @@ async function translateArticle(
   } = {}
 ) {
   try {
-    if (!process.env.DEEPL_API_KEY) {
+    const deeplApiKey = process.env.DEEPL_API_KEY;
+    if (!deeplApiKey) {
       throw new Error("DEEPL_API_KEY manquant (variable d'environnement).");
     }
     if (typeof html !== "string" || html.trim().length === 0) {
@@ -37,7 +38,6 @@ async function translateArticle(
       : "https://api.deepl.com/v2/translate";
 
     const params = new URLSearchParams();
-    params.append("auth_key", process.env.DEEPL_API_KEY);
     params.append("text", html);
     params.append("target_lang", targetLang.toUpperCase());
     if (sourceLang) params.append("source_lang", sourceLang.toUpperCase());
@@ -52,7 +52,10 @@ async function translateArticle(
       let res;
       try {
         res = await axios.post(endpoint, params.toString(), {
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": `DeepL-Auth-Key ${deeplApiKey}`,
+          },
           validateStatus: () => true, // on gère nous-mêmes les statuts
           timeout: 15000,
         });
