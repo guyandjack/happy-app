@@ -7,6 +7,7 @@ const path = require("path");
 const PROJECT_ROOT = path.join(__dirname, "..", "..");
 const PUBLIC_ROOT = path.join(PROJECT_ROOT, "public");
 const LP_DIR = path.join(PUBLIC_ROOT, "images", "landingPage"); // ./public/images/landingPage
+const TIMEZONE = "Europe/Zurich";
 
 // Mapping URL -> fichiers saison
 const WIDTH_MAP = [
@@ -40,13 +41,6 @@ function seasonFor(date = new Date()) {
   return "autumn";
 }
 
-// Version sous forme YYYY-<season>
-function seasonVersion(date = new Date()) {
-  const s = seasonFor(date);
-  const y = date.getUTCFullYear();
-  return `${y}-${s}`;
-}
-
 // Création remplaçante atomique : hardlink -> symlink -> copy, puis rename
 async function atomicPoint(linkPath, targetPath) {
   // Vérifie l'existence de la cible
@@ -55,20 +49,8 @@ async function atomicPoint(linkPath, targetPath) {
   const dir = path.dirname(linkPath);
   const tmp = path.join(dir, `.tmp-${path.basename(linkPath)}-${Date.now()}`);
 
-  // 1) Créer un "lien" temporaire
-  try {
-    // Hard link (meilleure compat cross-OS, même volume)
-    await fs.link(targetPath, tmp);
-  } catch {
-    try {
-      // Symlink relatif (parfait sur Linux/macOS)
-      const rel = path.relative(dir, targetPath) || path.basename(targetPath);
-      await fs.symlink(rel, tmp);
-    } catch {
-      // Copie (dernier recours)
-      await fs.copyFile(targetPath, tmp);
-    }
-  }
+  // 1) Copie temporaire la cible (plus fiable cross-plateforme)
+  await fs.copyFile(targetPath, tmp);
 
   // 2) Rename -> atomique sur POSIX si la destination n'existe pas
   try {
@@ -79,11 +61,21 @@ async function atomicPoint(linkPath, targetPath) {
     try {
       await fs.rm(linkPath, { force: true });
       await fs.rename(tmp, linkPath);
-    } catch (e) {
+      return;
+    } catch {
+      // Dernier recours : écraser directement le fichier cible
+      try {
+        await fs.copyFile(tmp, linkPath);
+      } catch (copyErr) {
+        try {
+          await fs.rm(tmp, { force: true });
+        } catch {}
+        throw copyErr;
+      }
       try {
         await fs.rm(tmp, { force: true });
       } catch {}
-      throw e;
+      return;
     }
   }
 }
@@ -106,17 +98,6 @@ async function pointLandingPageToSeason(season) {
   );
 }
 
-// Ecrit un fichier de version consommable par le serveur / client
-async function writeVersionFiles() {
-  await fs.mkdir(LP_DIR, { recursive: true });
-  const ver = seasonVersion();
-  const jsonPath = path.join(LP_DIR, "version.json");
-  const txtPath = path.join(LP_DIR, "version.txt");
-  const payload = { version: ver, updatedAt: new Date().toISOString() };
-  await fs.writeFile(jsonPath, JSON.stringify(payload), "utf8");
-  await fs.writeFile(txtPath, `${ver}\n`, "utf8");
-}
-
 // Optionnel : garantir un placeholder 1x1.webp (utile pour le fallback)
 async function ensurePlaceholder() {
   const ph = path.join(LP_DIR, "placeholder-1x1.webp");
@@ -132,36 +113,47 @@ async function ensurePlaceholder() {
   }
 }
 
+async function syncSeasonAssets(reason = "manual") {
+  const season = seasonFor();
+  await ensurePlaceholder();
+  await pointLandingPageToSeason(season);
+  console.log(`[seasonal] sync (${reason}) -> ${season}`);
+  return season;
+}
+
+function scheduleSeasonJob(expression, label) {
+  cron.schedule(
+    expression,
+    async () => {
+      try {
+        await syncSeasonAssets(label);
+      } catch (e) {
+        console.error(`[seasonal] ${label} sync failed:`, e);
+      }
+    },
+    { timezone: TIMEZONE }
+  );
+}
+
 // Lance tout : bascule immédiate + cron quotidien
 async function startScheduler() {
   try {
-    await ensurePlaceholder();
-    await pointLandingPageToSeason(seasonFor());
-    await writeVersionFiles();
+    await syncSeasonAssets("initial");
   } catch (e) {
     console.error("[seasonal] initial switch failed:", e);
   }
 
-  // Tous les 21 du mois à 00:00 Europe/Zurich
-  cron.schedule(
-    "0 0 21 * *",
-    async () => {
-      try {
-        await pointLandingPageToSeason(seasonFor());
-        await writeVersionFiles();
-      } catch (e) {
-        console.error("[seasonal] daily switch failed:", e);
-      }
-    },
-    { timezone: "Europe/Zurich" }
-  );
+  // Tentative dédiée aux changements de saison (jour 21 de chaque mois)
+  scheduleSeasonJob("0 0 21 * *", "season-switch");
+
+  // Garde-fou quotidien à 02:00 pour rattraper les assets ajoutés/après coup
+  scheduleSeasonJob("0 2 * * *", "daily-guard");
 }
 
 module.exports = {
   LP_DIR,
   seasonFor,
-  seasonVersion,
   pointLandingPageToSeason,
-  writeVersionFiles,
+  syncSeasonAssets,
   startScheduler,
 };

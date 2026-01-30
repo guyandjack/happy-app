@@ -58,7 +58,6 @@ const MenuSide = ({ classContainer, titleType }) => {
           text: heading.textContent,
         };
       }) || ["bug"];
-      console.log("menu side créé.");
       setHeadings(headingsData);
       setIsMenuSideCreated(true);
     }
