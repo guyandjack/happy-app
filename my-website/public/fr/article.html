@@ -9,14 +9,15 @@
 
   <!-- SEO Meta Tags -->
   <title>Article en chargement</title>
-  <meta name="description" content="decription enchargement" />
+  <meta name="description" content="decription en chargement" />
   <meta name="robots" content="index, follow">
 
   <!-- Canonical & Hreflang -->
   <link rel="canonical" href="https://helveclick.ch/public/fr/article.html">
-  <link rel="alternate" hreflang="fr" href="https://helveclick.ch/public/fr/article.html">
-  <link rel="alternate" hreflang="en" href="https://helveclick.ch/public/en/article.html">
-  <link rel="alternate" hreflang="x-default" href="https://helveclick.ch/public/en/article.html">
+
+  <link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/public/fr/article.html">
+  <link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/public/en/article.html">
+  <link rel="alternate" hreflang="x-default" href="https://helveclick.ch/public/fr/article.html">
 
 
   <!-- Open Graph -->
@@ -42,44 +43,50 @@
   <!-- Schema.org -->
   <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "HelveClick",
-      "url": "https://helveclick.ch",
-      "logo": "https://helveclick.ch/public/assets/logo/logo-v8.svg",
-      "description": "Développeur web et mobile freelance basé à Crans-Montana (Valais, Suisse), spécialisé dans la création de sites internet éco-conçus, d'applications mobiles et l'optimisation SEO.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Chemin du mont paisible 1",
-        "addressLocality": "Crans-Montana",
-        "addressRegion": "Valais",
-        "postalCode": "3963",
-        "addressCountry": "CH"
-      },
-      "email": "info@helveclick.ch",
-      "telephone": "+41 78 894 09 87",
-      "sameAs": [
-        "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
-        
-      ],
-      "founder": {
-        "@type": "Person",
-        "name": "Dupanloup Guillaume",
-        "jobTitle": "Développeur web et mobile freelance",
-        "url": "https://helveclick.ch",
-        
-        "sameAs": [
-          "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/",
-          
-        ]
-      },
-      "serviceType": [
-        "Mobile application",
-        "Web site",
-        "SEO",
-        
-      ]
-    }
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://helveclick.ch/#org",
+  "name": "HelveClick",
+  "url": "https://helveclick.ch/",
+  "logo": "https://helveclick.ch/public/assets/logo/logo-v8.svg",
+  "description": "Développeur web et mobile freelance basé à Crans-Montana (Valais, Suisse), spécialisé dans la création de sites internet éco-conçus, d'applications mobiles et l'optimisation SEO.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Chemin du mont paisible 1",
+    "addressLocality": "Crans-Montana",
+    "addressRegion": "Valais",
+    "postalCode": "3963",
+    "addressCountry": "CH"
+  },
+  "email": "info@helveclick.ch",
+  "telephone": "+41 78 894 09 87",
+  "sameAs": [
+    "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Dupanloup Guillaume",
+    "jobTitle": "Développeur web et mobile freelance",
+    "url": "https://helveclick.ch/",
+    "sameAs": [
+      "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
+    ]
+  },
+"makesOffer": [
+  {
+    "@type": "Offer",
+    "itemOffered": { "@type": "Service", "name": "Création de site internet" }
+  },
+  {
+    "@type": "Offer",
+    "itemOffered": { "@type": "Service", "name": "Développement d’applications mobiles" }
+  },
+  {
+    "@type": "Offer",
+    "itemOffered": { "@type": "Service", "name": "SEO (référencement naturel)" }
+  }
+]
+}
     </script>
 
     <!-- favicons -->

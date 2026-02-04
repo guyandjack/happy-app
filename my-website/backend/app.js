@@ -13,6 +13,7 @@ const fs = require("fs"); // <-- pour le fallback
 // import des fonctions
 const { LP_DIR, startScheduler } = require("./utils/function/scheduler.js");
 const logger = require("./logger.js");
+const testNotif = require("./utils/function/testNotification.js");
 
 // Import routes
 const authRoutes = require("./routes/auth.routes.js");
@@ -63,7 +64,7 @@ app.use(
         res.setHeader("Content-Type", "image/webp");
       }
     },
-  })
+  }),
 );
 
 // ✅ Fallback image (en cas de 404, on renvoie une WebP → pas d'HTML ⇒ pas d'ORB)
@@ -91,7 +92,7 @@ app.use(express.urlencoded({ extended: true, limit: "5mb" }));
 app.use(
   morgan(process.env.NODE_ENV === "production" ? "combined" : "dev", {
     stream: { write: (message) => logger.info(message.trim()) },
-  })
+  }),
 );
 
 // ✅ Compression / Cookies / Upload
@@ -114,7 +115,20 @@ app.use("/api/contact", contactRoutes);
 app.use("/api/recaptcha", recaptchaRoutes);
 
 // ✅ Test
-app.get("/test", (req, res) => res.json({ message: "Hello, world of bugs" }));
+app.get("/api/test", (req, res) => res.json({ message: "Hello, world of bugs" }));
+app.post("/api/test", (req, res) => {
+  testNotif()
+    .then((result) => {
+      if (!result) {
+        
+        res.json({ message: "erreur sur variable env" });
+      }
+      res.json({ message: "notif envoyée" });
+    })
+    .catch((e) => {
+      res.json({ message: "error de notif: " + e });
+    });
+});
 
 logger.info("🚀 app listening ");
 

@@ -14,9 +14,10 @@
 
   <!-- Canonical and Alternate Links -->
   <link rel="canonical" href="https://helveclick.ch/public/fr/a-propos.html">
-  <link rel="alternate" hreflang="fr" href="https://helveclick.ch/public/fr/a-propos.html">
-  <link rel="alternate" hreflang="en" href="https://helveclick.ch/public/en/about.html">
-  <link rel="alternate" hreflang="x-default" href="https://helveclick.ch/public/en/about.html">
+
+  <link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/public/fr/a-propos.html">
+  <link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/public/en/about.html">
+  <link rel="alternate" hreflang="x-default" href="https://helveclick.ch/public/fr/a-propos.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -83,12 +84,29 @@
             "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
           ]
         },
-        "serviceType": [
-          "Création de site internet",
-          "Développement web",
-          "Développement d'application mobile",
-          "Optimisation SEO"
-        ]
+        "makesOffer": [
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Création de site internet"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Développement d’applications mobiles"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "SEO (référencement naturel)"
+      }
+    }
+  ]
       }
     ]
   }
@@ -117,11 +135,9 @@
       <section class="flex-column-start-center hero-wrapper">
         <div class="flex-column-center-center hero-container">
 
-          <img src="/assets/images/page-qui-suis-je/img-left-hero-about.webp " type="image/webp"
-            alt="Décoration du header">
+          <img src="/assets/images/page-qui-suis-je/img-left-hero-about.webp " alt="Décoration du header">
 
-          <img src="/assets/images/page-qui-suis-je/img-right-hero-about.webp" type="image/webp"
-            alt="Décoration du header" />
+          <img src="/assets/images/page-qui-suis-je/img-right-hero-about.webp" alt="Décoration du header" />
 
           <div class="hero-container-title">
             <h1>A propos</h1>
@@ -130,7 +146,7 @@
               <strong>
                 Découvrez qui je suis et comment je peux vous aider.
               </strong>
-              </p>
+            </h2>
           </div>
         </div>
       </section>

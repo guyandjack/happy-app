@@ -13,9 +13,10 @@
 
     <!-- Canonical & Hreflang -->
     <link rel="canonical" href="https://helveclick.ch/public/en/articles-list.html">
-    <link rel="alternate" hreflang="fr" href="https://helveclick.ch/public/fr/articles-list.html">
-    <link rel="alternate" hreflang="en" href="https://helveclick.ch/public/en/articles-list.html">
-    <link rel="alternate" hreflang="x-default" href="https://helveclick.ch/public/en/articles-list.html">
+
+    <link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/public/fr/articles-list.html">
+    <link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/public/en/articles-list.html">
+    <link rel="alternate" hreflang="x-default" href="https://helveclick.ch/public/fr/articles-list.html">
 
 
     <!-- Open Graph -->
@@ -42,47 +43,62 @@
 
     <!-- Schema.org -->
     <script type="application/ld+json">
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "HelveClick",
-            "url": "https://helveclick.ch",
-            "logo": "https://helveclick.ch/public/assets/logo/logo-v8.svg",
-            "description": "Freelance developer in Crans-Montana (Valais, Switzerland), specialized in creating custom websites, mobile applications and SEO optimization. An eco-responsible approach for high-performance, sustainable solutions tailored to your needs.",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Chemin du mont paisible 1",
-              "addressLocality": "Crans-Montana",
-              "addressRegion": "Valais",
-              "postalCode": "3963",
-              "addressCountry": "CH"
-            },
-            "email": "info@helveclick.ch",
-            "telephone": "+41 78 894 09 87",
-            "sameAs": [
-              "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
-              
-            ],
-            "founder": {
-              "@type": "Person",
-              "name": "Dupanloup Guillaume",
-              "jobTitle": "Freelance Web Developer",
-              "url": "https://helveclick.ch",
-              
-              "sameAs": [
-                "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
-                
-              ]
-            },
-            "serviceType": [
-          "Mobile application",
-          "Web site",
-          "SEO"
-          
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://helveclick.ch/#org",
+      "name": "HelveClick",
+      "url": "https://helveclick.ch/",
+      "logo": "https://helveclick.ch/public/assets/logo/logo-v8.svg",
+      "description": "Freelance web and mobile developer based in Crans-Montana (Valais, Switzerland), specialized in eco-designed website development, mobile applications, and SEO optimization.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Chemin du mont paisible 1",
+        "addressLocality": "Crans-Montana",
+        "addressRegion": "Valais",
+        "postalCode": "3963",
+        "addressCountry": "CH"
+      },
+      "email": "info@helveclick.ch",
+      "telephone": "+41 78 894 09 87",
+      "sameAs": [
+        "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Guillaume Dupanloup",
+        "jobTitle": "Freelance web and mobile developer",
+        "url": "https://helveclick.ch/",
+        "sameAs": [
+          "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
         ]
-    
+      },
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Website development"
           }
-          </script>
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Mobile application development"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "SEO (search engine optimization)"
+          }
+        }
+      ]
+    }
+    </script>
+
 
     <!-- favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
