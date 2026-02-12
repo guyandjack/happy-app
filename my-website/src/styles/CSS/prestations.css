@@ -140,7 +140,9 @@
 }
 @media screen and (min-width: 992px) {
   .website-types .website-cards .website-card-container .website-card {
-    height: 500px;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

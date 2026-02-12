@@ -5,7 +5,9 @@
 }
 
 .login-form {
+  margin: 0px auto;
   width: 100%;
+  max-width: 500px;
   padding: 1.5rem;
   background-color: #fbfbfc;
   border-radius: 0.5rem;

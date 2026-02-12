@@ -24,184 +24,327 @@
         <a href="./articles-list.html" class="btn-retour-articles">Retour vers les articles</a>
 
         <article class="article-wrapper">
-        
+
             <header class="article-header">
-                <img src="/public/assets/images/page-ia/img-hero-llm.webp" class="article-img-title"
-                    alt="Fonctionnement des LLM">
-                <h1 class="article-title">Comment fonctionnent les LLM : comprendre les modèles de langage modernes</h1>
+                <img src="/public/assets/images/page-ia/img-hero-model-collapse.webp" class="article-img-title"
+                    alt="Effondrement des modèles IA et contenu synthétique">
+                <h1 class="article-title">Effondrement des modèles d’IA et contenu synthétique : comprendre les risques
+                    pour le
+                    web</h1>
                 <p class="article-meta">
                     <span class="article-author">Auteur: <span class="article-author-name">Helveclick</span></span> |
-                    <time class="article-date" datetime="2026-01-26">
+                    <time class="article-date" datetime="2026-02-12">
                         Mis à jour le:
                         <span class="article-date-update"></span>
                     </time>
                 </p>
             </header>
-        
+
             <div class="article-introduction">
-                <p class="article-text">Les LLM (<strong>Large Language Models</strong>) sont au cœur des outils d’intelligence
-                    artificielle générative modernes. Ils permettent de rédiger des textes, résumer des documents, répondre à
-                    des questions ou générer du code. Leur fonctionnement peut sembler complexe, mais il repose sur quelques
-                    principes fondamentaux : la prédiction statistique, la vectorisation du langage et une architecture appelée
-                    <strong>Transformer</strong>. Cet article explique simplement comment fonctionnent les LLM, sans jargon
-                    inutile.</p>
+                <p class="article-text">L’intelligence artificielle générative permet aujourd’hui de produire des
+                    textes, des
+                    images et des vidéos à grande échelle. Cette capacité transforme profondément Internet. Mais une
+                    question
+                    importante apparaît : que se passe-t-il lorsque les modèles d’IA sont entraînés sur des contenus
+                    créés par
+                    d’autres IA ? Ce phénomène, appelé « effondrement des modèles » (model collapse), peut avoir des
+                    conséquences sur la qualité de l’information, la diversité du web et la fiabilité des systèmes
+                    d’intelligence artificielle.</p>
             </div>
-        
+
+            <!-- SECTION 1 : DEFINITION -->
+
             <section class="article-main-section">
                 <div class="flex-column-center-center article-img-subtitle-wrapper">
-                    <img src="" class="article-img-subtitle" alt="Principe de prédiction">
-                    <h2 class="article-subtitle-h2 item-menu-side">1. Le principe fondamental : prédire le prochain mot</h2>
+                    <img src="" class="article-img-subtitle" alt="Définition model collapse">
+                    <h2 class="article-subtitle-h2 item-menu-side">1. Qu’est-ce que l’effondrement des modèles ?</h2>
                 </div>
-        
+
                 <div class="article-section">
-                    <h3 class="article-subtitle-h3">Une prédiction statistique, pas une compréhension humaine</h3>
-                    <p class="article-text">Un LLM ne “comprend” pas le langage comme un humain. Son rôle principal est de
-                        <strong>prédire le token suivant</strong> à partir d’une séquence de tokens précédents. À chaque étape,
-                        le modèle calcule la probabilité de chaque token possible et sélectionne le plus probable (ou un
-                        compromis probabiliste).</p>
-                    <p class="article-text">Par exemple, après la phrase « Le ciel est », le modèle estime que des mots comme «
-                        bleu », « nuageux » ou « gris » sont statistiquement plausibles, en fonction de ce qu’il a appris lors
-                        de son entraînement.</p>
+                    <h3 class="article-subtitle-h3">Une explication simple</h3>
+                    <p class="article-text">Un modèle d’IA apprend en analysant de grandes quantités de contenus
+                        disponibles sur
+                        Internet. Si, au fil du temps, une grande partie de ces contenus est générée par d’autres IA, le
+                        modèle
+                        risque d’apprendre sur des données qui ne reflètent plus fidèlement la réalité humaine.</p>
+                    <p class="article-text">L’« effondrement des modèles » décrit ce processus progressif : les
+                        nouvelles
+                        générations de modèles s’appuient sur des données déjà synthétiques, ce qui peut réduire la
+                        diversité
+                        des informations et appauvrir la qualité globale des réponses produites.</p>
+                </div>
+
+                <div class="article-section">
+                    <h3 class="article-subtitle-h3">Pourquoi cela pose problème</h3>
+                    <p class="article-text">Les recherches montrent que lorsque des modèles sont entraînés uniquement
+                        sur des
+                        données générées par d’autres modèles, ils peuvent progressivement « oublier » les cas rares,
+                        les
+                        nuances et certaines subtilités du langage. Cela ne signifie pas que les performances chutent
+                        immédiatement, mais que la représentation du monde devient plus uniforme et moins riche.</p>
+                    <p class="article-text">Une étude scientifique publiée en 2023 a démontré ce phénomène dans des
+                        conditions
+                        expérimentales contrôlées, montrant une perte progressive de diversité dans les résultats
+                        produits.</p>
+                        <p class="article-text">Source : <a href="https://www.nature.com/articles/s41586-024-07566-y" target="_blank"
+                                rel="noopener noreferrer">Effondrement des modèles IA</a>.</p>
                 </div>
             </section>
-        
+
+            <!-- SECTION 2 : QUANTITE DE CONTENU SYNTHETIQUE -->
+
             <section class="article-main-section">
                 <div class="flex-column-center-center article-img-subtitle-wrapper">
-                    <img src="" class="article-img-subtitle" alt="Tokenisation">
-                    <h2 class="article-subtitle-h2 item-menu-side">2. Les tokens : découper le langage</h2>
+                    <img src="" class="article-img-subtitle" alt="Quantité de contenu IA">
+                    <h2 class="article-subtitle-h2 item-menu-side">2. Quelle est la part de contenu généré par IA sur le
+                        web ?
+                    </h2>
                 </div>
-        
+
                 <div class="article-section">
-                    <h3 class="article-subtitle-h3">Qu’est-ce qu’un token ?</h3>
-                    <p class="article-text">Avant de traiter un texte, un LLM le découpe en <strong>tokens</strong>. Un token
-                        peut être un mot entier, une partie de mot, un caractère ou un symbole. Cette découpe permet au modèle
-                        de gérer efficacement les langues, la ponctuation et les mots rares.</p>
-                    <p class="article-text">Par exemple, le mot « intelligence » peut être découpé en plusieurs sous-unités
-                        selon le vocabulaire du modèle.</p>
+                    <h3 class="article-subtitle-h3">Un chiffre global impossible à établir</h3>
+                    <p class="article-text">Il n’existe pas aujourd’hui de mesure officielle indiquant quelle proportion
+                        du web
+                        est générée par IA. La raison est simple : Internet n’est pas une base de données unique. Il
+                        regroupe
+                        des sites publics, des contenus privés, des pages dynamiques, des archives et différents formats
+                        (texte,
+                        image, vidéo).</p>
+                    <p class="article-text">Les bases de données utilisées par les chercheurs, comme Common Crawl, ne
+                        représentent qu’une partie du web accessible. Elles permettent d’avoir une idée générale, mais
+                        ne
+                        couvrent pas l’ensemble de l’écosystème numérique.</p>
                 </div>
-        
+
                 <div class="article-section">
-                    <h3 class="article-subtitle-h3">Pourquoi la tokenisation est essentielle</h3>
-                    <ul class="article-list-text">
-                        <li>Réduire la taille du vocabulaire global.</li>
-                        <li>Gérer les mots inconnus ou rares.</li>
-                        <li>Permettre au modèle de fonctionner sur plusieurs langues.</li>
-                    </ul>
+                    <h3 class="article-subtitle-h3">Pourquoi la question est stratégique</h3>
+                    <p class="article-text">La part de contenu synthétique devient un enjeu majeur parce que le web est
+                        l’une
+                        des principales sources de données utilisées pour entraîner les modèles d’IA. Si cette source se
+                        transforme profondément, cela influence directement la qualité des systèmes futurs.</p>
                 </div>
             </section>
-        
+
+            <!-- SECTION 3 : RISQUES STRUCTURELS -->
+
             <section class="article-main-section">
                 <div class="flex-column-center-center article-img-subtitle-wrapper">
-                    <img src="" class="article-img-subtitle" alt="Vectorisation du langage">
-                    <h2 class="article-subtitle-h2 item-menu-side">3. Vectorisation : transformer les mots en nombres</h2>
+                    <img src="" class="article-img-subtitle" alt="Manipulation informationnelle IA">
+                    <h2 class="article-subtitle-h2 item-menu-side">3. Manipulation et inondation informationnelle</h2>
                 </div>
-        
+
                 <div class="article-section">
-                    <h3 class="article-subtitle-h3">Du texte aux vecteurs</h3>
-                    <p class="article-text">Les ordinateurs ne comprennent que des nombres. Chaque token est donc converti en un
-                        <strong>vecteur</strong>, c’est-à-dire une suite de valeurs numériques représentant ses propriétés
-                        sémantiques et syntaxiques.</p>
-                    <p class="article-text">Dans cet espace vectoriel, des mots proches en sens (“chat” et “chien”) se
-                        retrouvent proches mathématiquement, tandis que des concepts éloignés sont plus distants.</p>
-                </div>
-        
-                <div class="article-section">
-                    <h3 class="article-subtitle-h3">Pourquoi les vecteurs sont puissants</h3>
-                    <ul class="article-list-text">
-                        <li>Ils capturent les relations de sens entre les mots.</li>
-                        <li>Ils permettent des calculs mathématiques sur le langage.</li>
-                        <li>Ils facilitent la recherche sémantique et la génération cohérente.</li>
-                    </ul>
-                </div>
-            </section>
-        
-            <section class="article-main-section">
-                <div class="flex-column-center-center article-img-subtitle-wrapper">
-                    <img src="" class="article-img-subtitle" alt="Architecture Transformer">
-                    <h2 class="article-subtitle-h2 item-menu-side">4. L’architecture Transformer</h2>
-                </div>
-        
-                <div class="article-section">
-                    <h3 class="article-subtitle-h3">Une révolution introduite en 2017</h3>
-                    <p class="article-text">Les LLM modernes reposent sur l’architecture <strong>Transformer</strong>,
-                        introduite par Google en 2017. Contrairement aux anciens modèles séquentiels, le Transformer traite les
-                        mots <strong>en parallèle</strong>, ce qui améliore la vitesse et la qualité.</p>
-                    <p class="article-text">Source : <a href="https://arxiv.org/abs/1706.03762" target="_blank"
-                            rel="noopener noreferrer">Attention Is All You Need – Vaswani et al.</a></p>
-                </div>
-        
-                <div class="article-section">
-                    <h3 class="article-subtitle-h3">Le mécanisme d’attention</h3>
-                    <p class="article-text">Le cœur du Transformer est le mécanisme d’<strong>attention</strong>. Il permet au
-                        modèle de déterminer quels mots d’une phrase sont les plus importants pour prédire le suivant.</p>
-                    <ul class="article-list-text">
-                        <li>Identifier les relations entre les tokens.</li>
-                        <li>Gérer des phrases longues avec cohérence.</li>
-                        <li>Maintenir le contexte sur plusieurs paragraphes.</li>
-                    </ul>
-                </div>
-            </section>
-        
-            <section class="article-main-section">
-                <div class="flex-column-center-center article-img-subtitle-wrapper">
-                    <img src="" class="article-img-subtitle" alt="Entraînement des LLM">
-                    <h2 class="article-subtitle-h2 item-menu-side">5. Entraînement et inférence</h2>
-                </div>
-        
-                <div class="article-section">
-                    <h3 class="article-subtitle-h3">L’entraînement</h3>
-                    <p class="article-text">Un LLM est entraîné sur des volumes massifs de textes. Il apprend en ajustant ses
-                        paramètres internes pour minimiser l’erreur de prédiction du token suivant. Cette phase est extrêmement
-                        coûteuse en calcul et en énergie.</p>
-                </div>
-        
-                <div class="article-section">
-                    <h3 class="article-subtitle-h3">L’inférence</h3>
-                    <p class="article-text">Une fois entraîné, le modèle est utilisé en <strong>inférence</strong>. À chaque
-                        requête utilisateur, il génère une réponse token par token, en s’appuyant sur les probabilités apprises.
+                    <h3 class="article-subtitle-h3">Pourquoi ces attaques se multiplient</h3>
+                    <p class="article-text">La production de contenu par IA réduit drastiquement les coûts et le temps
+                        nécessaires
+                        pour publier à grande échelle. Là où il fallait auparavant une équipe éditoriale, quelques
+                        outils
+                        automatisés suffisent désormais pour générer des milliers d’articles, commentaires ou
+                        publications en
+                        quelques heures. Cette asymétrie économique crée une opportunité pour des acteurs malveillants.
                     </p>
+                    <p class="article-text">Les motivations sont multiples : manipulation politique, influence
+                        géopolitique, fraude
+                        financière, désinformation sanitaire, ou encore domination algorithmique dans les moteurs de
+                        recherche.
+                        L’objectif n’est pas toujours de convaincre directement, mais parfois simplement de saturer
+                        l’espace
+                        informationnel.</p>
+                </div>
+
+                <div class="article-section">
+                    <h3 class="article-subtitle-h3">Comment fonctionne l’inondation informationnelle</h3>
+                    <p class="article-text">Le principe est relativement simple : produire un grand volume de contenus
+                        cohérents
+                        autour d’un même sujet afin d’occuper l’espace numérique. Ces contenus peuvent être diffusés via
+                        des réseaux
+                        de sites automatisés, des comptes sociaux coordonnés ou des plateformes de publication à faible
+                        contrôle
+                        éditorial.</p>
+                    <ul class="article-list-text">
+                        <li>Création massive de pages optimisées pour le référencement (SEO).</li>
+                        <li>Publication de variantes reformulées d’un même message.</li>
+                        <li>Multiplication de faux avis, commentaires ou discussions simulées.</li>
+                        <li>Utilisation de bots pour amplifier artificiellement la visibilité.</li>
+                    </ul>
+                    <p class="article-text">Cette stratégie exploite le fonctionnement des algorithmes de classement,
+                        qui détectent
+                        la popularité, la fréquence et la cohérence sémantique comme des signaux de pertinence.</p>
+                </div>
+
+                <div class="article-section">
+                    <h3 class="article-subtitle-h3">Impact sur la véracité de l’information</h3>
+                    <p class="article-text">L’inondation informationnelle ne repose pas nécessairement sur des mensonges
+                        flagrants.
+                        Elle peut consister en une répétition massive de contenus approximatifs, biaisés ou
+                        partiellement exacts. À
+                        grande échelle, cette répétition crée une illusion de consensus.</p>
+                    <p class="article-text">Lorsque ces contenus sont ensuite réutilisés dans des jeux de données
+                        d’entraînement,
+                        ils peuvent influencer les réponses futures des modèles d’IA. Le risque devient alors circulaire
+                        : une
+                        information amplifiée artificiellement peut être intégrée comme signal statistique dominant.</p>
+                    <p class="article-text">Le problème n’est donc pas seulement la désinformation ponctuelle, mais la
+                        modification
+                        progressive de l’écosystème informationnel qui sert de base aux systèmes d’apprentissage
+                        automatique.</p>
                 </div>
             </section>
-        
+
+
+            <!-- SECTION 4 : IMPACT ECONOMIQUE -->
+
+            <section class="article-main-section">
+                <div class="flex-column-center-center article-img-subtitle-wrapper">
+                    <img src="" class="article-img-subtitle" alt="Impact économique médias IA">
+                    <h2 class="article-subtitle-h2 item-menu-side">4. Impact sur les médias et le référencement :
+                        transformation du
+                        modèle économique</h2>
+                </div>
+
+                <div class="article-section">
+                    <h3 class="article-subtitle-h3">Modification de la chaîne de valeur de l’information</h3>
+                    <p class="article-text">Traditionnellement, les médias investissent dans la production de contenu
+                        (journalistes,
+                        enquêtes, vérifications), puis monétisent via la publicité, les abonnements ou les partenariats.
+                        Ce modèle
+                        repose sur le trafic généré par les moteurs de recherche et les réseaux sociaux.</p>
+                    <p class="article-text">Avec l’apparition des résumés générés par IA directement dans les résultats
+                        de
+                        recherche, une partie de la valeur informative est captée en amont. L’utilisateur obtient une
+                        synthèse sans
+                        nécessairement visiter la source originale.</p>
+                </div>
+
+                <div class="article-section">
+                    <h3 class="article-subtitle-h3">Réduction du trafic et effets mesurés</h3>
+                    <p class="article-text">Des analyses du Pew Research Center montrent que lorsque des résumés IA sont
+                        présents
+                        dans les résultats, les utilisateurs cliquent moins fréquemment sur les liens externes. Cette
+                        baisse de
+                        trafic peut fragiliser le financement des médias reposant sur l’audience.</p>
+                    <p class="article-text">Même une diminution modérée du taux de clic peut avoir un impact
+                        significatif sur les
+                        revenus publicitaires à grande échelle.</p>
+                </div>
+
+                <div class="article-section">
+                    <h3 class="article-subtitle-h3">Pression vers la production automatisée</h3>
+                    <p class="article-text">Face à la baisse de rentabilité, certains acteurs peuvent être incités à
+                        produire
+                        davantage de contenus à faible coût, en utilisant eux-mêmes l’IA. Cette dynamique crée un cercle
+                        économique
+                        particulier :</p>
+                    <ul class="article-list-text">
+                        <li>Moins de trafic vers les sources originales.</li>
+                        <li>Réduction des revenus éditoriaux.</li>
+                        <li>Pression pour automatiser la production.</li>
+                        <li>Augmentation du volume de contenus standardisés.</li>
+                    </ul>
+                    <p class="article-text">Ce mécanisme peut contribuer indirectement à l’augmentation globale du
+                        contenu
+                        synthétique disponible en ligne.</p>
+                </div>
+
+                <div class="article-section">
+                    <h3 class="article-subtitle-h3">Conséquences pour le référencement</h3>
+                    <p class="article-text">Les moteurs de recherche adaptent leurs algorithmes pour privilégier
+                        l’expertise,
+                        l’autorité et la fiabilité. Toutefois, lorsque le volume de contenu augmente massivement, la
+                        compétition
+                        devient plus intense et les signaux de qualité plus difficiles à distinguer.</p>
+                    <p class="article-text">Le référencement évolue ainsi vers une logique où la crédibilité de la
+                        source, la
+                        profondeur d’analyse et la différenciation deviennent déterminantes face à l’inflation de
+                        contenus
+                        similaires.</p>
+                </div>
+            </section>
+
+
+            <!-- SECTION 5 : SOLUTIONS -->
+
+            <section class="article-main-section">
+                <div class="flex-column-center-center article-img-subtitle-wrapper">
+                    <img src="" class="article-img-subtitle" alt="Solutions contenu IA">
+                    <h2 class="article-subtitle-h2 item-menu-side">5. Quelles solutions envisagées ?</h2>
+                </div>
+
+                <div class="article-section">
+                    <h3 class="article-subtitle-h3">Maintenir des données humaines de qualité</h3>
+                    <p class="article-text">L’une des stratégies consiste à conserver une part significative de données
+                        produites par des humains dans les jeux d’entraînement. Cela permet de maintenir un ancrage dans
+                        la
+                        réalité et d’éviter une dépendance excessive au contenu synthétique.</p>
+                </div>
+
+                <div class="article-section">
+                    <h3 class="article-subtitle-h3">Traçabilité et étiquetage</h3>
+                    <p class="article-text">Des mécanismes d’étiquetage ou de traçabilité peuvent aider à distinguer les
+                        contenus générés automatiquement. Cependant, ces systèmes doivent être robustes et accompagnés
+                        de règles
+                        claires pour éviter les abus.</p>
+                </div>
+
+                <div class="article-section">
+                    <h3 class="article-subtitle-h3">Qualité avant origine</h3>
+                    <p class="article-text">Il est important de rappeler qu’un contenu généré par IA n’est pas
+                        automatiquement
+                        de mauvaise qualité. S’il est vérifié, factuellement exact et pertinent, il peut constituer une
+                        ressource utile. L’enjeu principal reste la validation et le contrôle qualitatif.</p>
+                </div>
+            </section>
+
             <section class="article-resume-section">
                 <h2 class="article-subtitle-h2 item-menu-side">Les points essentiels</h2>
                 <ul class="article-list-resume">
                     <li>
-                        <p class="article-text">Un LLM prédit le prochain token à partir d’une séquence existante.</p>
+                        <p class="article-text">L’effondrement des modèles correspond à une dégradation progressive liée
+                            à
+                            l’entraînement sur des données synthétiques.</p>
                     </li>
                     <li>
-                        <p class="article-text">Le texte est découpé en tokens avant traitement.</p>
+                        <p class="article-text">Il n’existe pas de mesure globale fiable de la part du contenu IA sur le
+                            web.
+                        </p>
                     </li>
                     <li>
-                        <p class="article-text">Les tokens sont transformés en vecteurs numériques.</p>
+                        <p class="article-text">Les risques incluent perte de diversité, biais amplifiés et manipulation
+                            informationnelle.</p>
                     </li>
                     <li>
-                        <p class="article-text">L’architecture Transformer permet un traitement parallèle et contextuel.</p>
+                        <p class="article-text">La sélection des données (curation) influence fortement les résultats
+                            des
+                            modèles.</p>
                     </li>
                     <li>
-                        <p class="article-text">L’entraînement est coûteux, l’inférence est l’usage quotidien du modèle.</p>
+                        <p class="article-text">La qualité dépend davantage des mécanismes de validation que de
+                            l’origine du
+                            contenu.</p>
                     </li>
                 </ul>
             </section>
-        
+
             <section class="article-conclusion-section">
-                <h2 class="article-subtitle-h2 item-menu-side">Conclusion : une intelligence statistique puissante</h2>
-                <p class="article-conclusion-text">Les LLM ne pensent pas, ne raisonnent pas comme des humains et n’ont pas de
-                    compréhension consciente. Ils excellent toutefois dans la modélisation statistique du langage, grâce à la
-                    combinaison de la tokenisation, de la vectorisation et de l’architecture Transformer. Comprendre leur
-                    fonctionnement permet de mieux saisir leurs forces, leurs limites et les usages pertinents à en faire dans
-                    un contexte professionnel.</p>
-                    <p>A voir :</p>
-                   <ul>
-                    <li><a href="https://www.youtube.com/watch?v=7ell8KEbhJo" target="_blank"
-                        rel="noopener noreferrer">Fonctionnement des LLM</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=wrZFyKfJN_Y" target="_blank"
-                        rel="noopener noreferrer">Guide complet des LLM</a></li>
-                    
-                   
-                   </ul> 
+                <h2 class="article-subtitle-h2 item-menu-side">Conclusion : un enjeu de responsabilité collective</h2>
+                <p class="article-conclusion-text">L’effondrement des modèles n’est pas une fatalité, mais un risque
+                    réel si la
+                    production de contenu synthétique dépasse la capacité de contrôle et de validation. Préserver la
+                    diversité
+                    et la qualité du web nécessite une responsabilité partagée entre entreprises technologiques, médias,
+                    institutions et utilisateurs. Le futur de l’IA dépendra moins
+                    de la puissance brute des modèles que de la qualité des données qui les nourrissent.</p>
+                <p>
+                    A voir :
+                </p>
+                <ul>
+                    <li><a href="https://www.youtube.com/watch?v=AfgAEIK9F8c"
+                            target="_blank" rel="noopener noreferrer">Web et données synthétiques</a>
+                    </li>
+
+                </ul>
             </section>
-        
+
         </article>
 
 

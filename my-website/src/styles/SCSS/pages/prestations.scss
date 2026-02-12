@@ -137,7 +137,7 @@
         box-shadow: 0 0px 20px rgba(map-get($colors-rule, fifth-color), 0.3);
 
         @media screen and (min-width: 992px) {
-          height: 500px;
+          height: fit-content;
           display: flex;
           align-items: center;
         }

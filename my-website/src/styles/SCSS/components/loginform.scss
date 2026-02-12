@@ -14,8 +14,9 @@
 }
 
 .login-form {
+    margin: 0px auto;
     width: 100%;
-    //max-width: 800px;
+    max-width: 500px;
     padding: 1.5rem;
     background-color: map-get($colors-rule, background-page-color);
     border-radius: 0.5rem;

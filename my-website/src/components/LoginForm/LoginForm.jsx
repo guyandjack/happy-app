@@ -159,6 +159,7 @@ function LoginForm() {
             <input
               id="email"
               type="email"
+              autoFocus
               className={`form-input ${errors.email ? "input-error" : ""}`}
               {...register("email", {
                 required: "L'identifiant est requis",
