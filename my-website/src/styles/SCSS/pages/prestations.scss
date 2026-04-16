@@ -1,5 +1,39 @@
 @import '../../utils/color-rule/color-rule.scss';
 
+@keyframes card-anim {
+  0% {
+    transform: translate(0px, 0px) rotateZ(0deg);
+  }
+
+  50% {
+    transform: translate(-10px, -20px) rotateZ(-10deg);
+
+  }
+
+  80% {
+
+    transform: translate(-5px, 0px) rotateZ(0deg);
+  }
+  
+  100%{
+    
+    transform: translate(-0px, 0px) rotateZ(5deg);
+  }
+
+}
+
+.card-anim-1 {
+  @media screen and (min-width: 992px) {
+    animation: card-anim 10s linear 0s infinite alternate;
+  }
+}
+
+.card-anim-2 {
+  @media screen and (min-width: 992px) {
+    animation: card-anim 10s linear 2s infinite alternate;
+  }
+}
+
 .website-types {
   position: relative;
   padding: 80px 20px;
@@ -153,6 +187,7 @@
           overflow: hidden;
 
           @media screen and (min-width: 992px) {
+
             position: absolute;
             top: -10%;
             right: -15%;

@@ -1,4 +1,54 @@
 @charset "UTF-8";
+@-webkit-keyframes card-anim {
+  0% {
+    -webkit-transform: translate(0px, 0px) rotateZ(0deg);
+            transform: translate(0px, 0px) rotateZ(0deg);
+  }
+  50% {
+    -webkit-transform: translate(-10px, -20px) rotateZ(-10deg);
+            transform: translate(-10px, -20px) rotateZ(-10deg);
+  }
+  80% {
+    -webkit-transform: translate(-5px, 0px) rotateZ(0deg);
+            transform: translate(-5px, 0px) rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: translate(0px, 0px) rotateZ(5deg);
+            transform: translate(0px, 0px) rotateZ(5deg);
+  }
+}
+@keyframes card-anim {
+  0% {
+    -webkit-transform: translate(0px, 0px) rotateZ(0deg);
+            transform: translate(0px, 0px) rotateZ(0deg);
+  }
+  50% {
+    -webkit-transform: translate(-10px, -20px) rotateZ(-10deg);
+            transform: translate(-10px, -20px) rotateZ(-10deg);
+  }
+  80% {
+    -webkit-transform: translate(-5px, 0px) rotateZ(0deg);
+            transform: translate(-5px, 0px) rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: translate(0px, 0px) rotateZ(5deg);
+            transform: translate(0px, 0px) rotateZ(5deg);
+  }
+}
+@media screen and (min-width: 992px) {
+  .card-anim-1 {
+    -webkit-animation: card-anim 10s linear 0s infinite alternate;
+            animation: card-anim 10s linear 0s infinite alternate;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .card-anim-2 {
+    -webkit-animation: card-anim 10s linear 2s infinite alternate;
+            animation: card-anim 10s linear 2s infinite alternate;
+  }
+}
+
 .website-types {
   position: relative;
   padding: 80px 20px;
@@ -385,9 +435,6 @@
   color: #024d4a;
 }
 
-.seo-section {
-  background: linear-gradient(135deg, rgba(195, 6, 107, 0.03), rgba(199, 227, 205, 0.02));
-}
 @-webkit-keyframes rotate-right {
   0% {
     -webkit-transform: rotate(0deg);
@@ -408,6 +455,7 @@
     opacity: 0.1;
   }
 }
+
 @keyframes rotate-right {
   0% {
     -webkit-transform: rotate(0deg);
@@ -467,6 +515,9 @@
             transform: rotate(-360deg);
     opacity: 0.1;
   }
+}
+.seo-section {
+  background: linear-gradient(135deg, rgba(195, 6, 107, 0.03), rgba(199, 227, 205, 0.02));
 }
 .seo-section .seo-title-container {
   position: relative;
