@@ -45,22 +45,22 @@
 }
 @-webkit-keyframes hero-sheen {
   from {
-    -webkit-transform: translateX(-130%);
-            transform: translateX(-130%);
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
   }
   to {
-    -webkit-transform: translateX(130%);
-            transform: translateX(130%);
+    -webkit-transform: translateX(200%);
+            transform: translateX(200%);
   }
 }
 @keyframes hero-sheen {
   from {
-    -webkit-transform: translateX(-130%);
-            transform: translateX(-130%);
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
   }
   to {
-    -webkit-transform: translateX(130%);
-            transform: translateX(130%);
+    -webkit-transform: translateX(200%);
+            transform: translateX(200%);
   }
 }
 .hero-index {
@@ -148,7 +148,7 @@
   /* background: linear-gradient(120deg,
       map-get($colors-rule, second-color) 0%,
       darken(map-get($colors-rule, second-color), 8%) 100%); */
-  background-color: rgba(0, 189, 182, 0.5333333333);
+  background-color: #00bdb6;
   border: 1px solid rgba(255, 255, 255, 0.45);
   border-radius: 14px;
   cursor: pointer;
@@ -290,7 +290,7 @@
     font-size: 3.6rem;
   }
 }
-.services {
+.services, .creations {
   width: 100%;
   padding: 120px 15px;
   background: linear-gradient(135deg, rgba(0, 189, 182, 0.03) 5%, rgba(96, 128, 160, 0.05) 20%, rgba(0, 189, 182, 0.05) 80%, rgba(0, 189, 182, 0.05) 100%);
@@ -307,17 +307,17 @@
       -ms-flex-align: center;
           align-items: center;
 }
-.services h2 {
+.services h2, .creations h2 {
   font-size: 2rem;
   color: rgba(23, 23, 23, 0.9);
   margin-bottom: 100px;
   text-align: center;
   position: relative;
 }
-.services h2 strong {
+.services h2 strong, .creations h2 strong {
   color: rgb(195, 6, 107);
 }
-.services h2::after {
+.services h2::after, .creations h2::after {
   content: "";
   position: absolute;
   z-index: 10;
@@ -440,7 +440,8 @@
 
 @media (min-width: 768px) {
   .services h2,
-  .values h2 {
+  .values h2,
+  .creations h2 {
     font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: 60px;
   }

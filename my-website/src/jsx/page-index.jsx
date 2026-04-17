@@ -12,6 +12,7 @@ import { Footer } from "@components/Footer/Footer.jsx";
 import { IndexCards } from "@components/Card/IndexCards.jsx";
 import { CtaSection } from "@components/CtaSection/CtaSection.jsx";
 import { LinkTopPage } from "@components/linkTopPage/linkTopPage.jsx";
+import { DisplayCreation } from "@components/DisplayCreation/displayCreation.jsx";
 
 //import des scripts
 import { initFaq } from "@scripts/page-services.js";
@@ -111,4 +112,21 @@ try {
   }
 } catch (error) {
   console.error("Error mounting Card Services:", error);
+}
+
+//mount creation
+try {
+  const creationContainer = document.getElementById("RC-creation");
+  if (creationContainer) {
+    ReactDOM.createRoot(creationContainer).render(
+      <React.StrictMode>
+        <DisplayCreation />
+      
+      </React.StrictMode>
+    );
+  } else {
+    console.error("no container creation found");
+  }
+} catch (error) {
+  console.error("Error mounting Cta Section:", error);
 }

@@ -33,11 +33,11 @@
 
 @keyframes hero-sheen {
   from {
-    transform: translateX(-130%);
+    transform: translateX(0%);
   }
 
   to {
-    transform: translateX(130%);
+    transform: translateX(200%);
   }
 }
 
@@ -140,7 +140,7 @@
     /* background: linear-gradient(120deg,
         map-get($colors-rule, second-color) 0%,
         darken(map-get($colors-rule, second-color), 8%) 100%); */
-    background-color: #00bdb688;
+    background-color: #00bdb6ff;
     border: 1px solid rgba(map-get($colors-rule, sixth-color), 0.45);
     border-radius: 14px;
     cursor: pointer;
@@ -318,7 +318,7 @@
 
 
 // Services section - Mobile first
-.services {
+.services,.creations {
   width: 100%;
   padding: 120px 15px;
   background: linear-gradient(135deg,
@@ -495,7 +495,8 @@
 
 
   .services,
-  .values {
+  .values,
+  .creations {
 
 
     h2 {

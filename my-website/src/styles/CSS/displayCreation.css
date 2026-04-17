@@ -1,0 +1,235 @@
+@-webkit-keyframes creation-fade-up {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+            transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@keyframes creation-fade-up {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+            transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+.creation-wrapper {
+  width: min(100%, 500px);
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 24px;
+}
+.creation-wrapper .card {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 22px;
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.93) 100%);
+  border: 1px solid rgba(0, 189, 182, 0.16);
+  -webkit-box-shadow: 0 14px 36px rgba(23, 23, 23, 0.11);
+          box-shadow: 0 14px 36px rgba(23, 23, 23, 0.11);
+  overflow: hidden;
+  -webkit-animation: creation-fade-up 0.6s ease both;
+          animation: creation-fade-up 0.6s ease both;
+}
+.creation-wrapper .overlay {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.creation-wrapper .overlay-visible {
+  display: block;
+}
+.creation-wrapper .card-head {
+  width: 100%;
+  min-height: 140px;
+  padding: 22px 16px;
+  gap: 1.5em;
+  background: linear-gradient(130deg, rgba(2, 77, 74, 0.92) 0%, rgba(0, 189, 182, 0.88) 100%);
+}
+.creation-wrapper .card-head .card-title {
+  font-size: clamp(1.4rem, 5.5vw, 2rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  color: #ffffff;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 2px 16px rgba(23, 23, 23, 0.28);
+}
+.creation-wrapper .card-head .card-logo {
+  width: clamp(68px, 14vw, 104px);
+  height: clamp(68px, 14vw, 104px);
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 50%;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  -webkit-box-shadow: 0 8px 18px rgba(23, 23, 23, 0.2);
+          box-shadow: 0 8px 18px rgba(23, 23, 23, 0.2);
+}
+.creation-wrapper .card-head .card-creation-link {
+  color: #171717;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 0.8rem;
+  border: 2px solid #00bdb6;
+  border-radius: 8px;
+}
+.creation-wrapper .card-head .card-creation-link:hover span {
+  color: #ffffff;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+.creation-wrapper .card-head .card-creation-link:hover .card-icon-arrow {
+  fill: #ffffff;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+.creation-wrapper .card-head .card-icon-arrow {
+  fill: #024d4a;
+  width: 35px;
+  height: 35px;
+}
+.creation-wrapper .card-head .card-text-error {
+  position: relative;
+  z-index: 10;
+  color: orangered;
+  font-size: 1.5rem;
+}
+.creation-wrapper .card-body {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+  padding: 20px 14px 22px;
+  /*   .mobile>div,
+    .desktop>div {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    } */
+  /* .mockup-shell {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    //width: 100%;
+    overflow: hidden;
+  }
+
+  .mockup-shell.mobile {
+    max-width: 150px;
+  }
+
+  .mockup-shell.desktop {
+    max-width: 200px;
+  } */
+}
+.creation-wrapper .card-body .card-wrapper-mockup {
+  gap: 1rem;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+.creation-wrapper .card-body .card-screenshot {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+.creation-wrapper .card-body .card-description {
+  width: 100%;
+  max-width: 70ch;
+  font-size: clamp(0.98rem, 2.9vw, 1.08rem);
+  line-height: 1.75;
+  color: rgba(23, 23, 23, 0.9);
+  text-align: left;
+  background: linear-gradient(135deg, rgba(0, 189, 182, 0.09) 0%, rgba(2, 77, 74, 0.06) 100%);
+  border: 1px solid rgba(0, 189, 182, 0.2);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+@media screen and (min-width: 768px) {
+  .creation-wrapper {
+    gap: 32px;
+  }
+  .creation-wrapper .card-head {
+    min-height: 156px;
+    gap: 14px;
+  }
+  .creation-wrapper .card-body {
+    padding: 24px 20px 28px;
+  }
+  .creation-wrapper .card-body .card-description {
+    padding: 18px 20px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .creation-wrapper {
+    width: 100%;
+    max-width: 900px;
+  }
+  .creation-wrapper .card {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+  }
+  .creation-wrapper .card-head {
+    padding: 30px 18px;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  .creation-wrapper .card-body {
+    padding: 28px 26px;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    gap: 18px;
+  }
+  .creation-wrapper .card-body .mobile,
+  .creation-wrapper .card-body .desktop {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .creation-wrapper .card-body .card-description {
+    font-size: 1.05rem;
+  }
+}
