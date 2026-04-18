@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 //import { reactSVG } from "react-svg";
 
 import { AndroidTabMockup, IPhoneMockup } from "react-device-mockup";
@@ -15,20 +15,11 @@ function DisplayCreation() {
   if (creationContent.length === 0) return null;
 
   const deferredPrompt = useRef(null);
-
-  async function handleClick() {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    const choiceResult = await deferredPrompt.userChoice;
-    deferredPrompt.current = null;
-  }
-
+  const [lang, setLang] = useState("");
   useEffect(() => {
-    window.addEventListener("beforeinstallprompt", (e) => {
-      e.preventDefault();
-      deferredPrompt.current = e;
-    });
-  });
+    const language = document.documentElement.lang || "fr";
+    setLang(language);
+  }, []);
 
   return (
     <div className="flex-row-start-center creation-wrapper">
@@ -40,7 +31,9 @@ function DisplayCreation() {
 
       {creationContent.map((card, index) => (
         <div key={index} className="flex-row-start-center card">
-              <div className={`overlay ${!card.status ? "overlay-visible" : null}`}></div>
+          <div
+            className={`overlay ${!card.status ? "overlay-visible" : null}`}
+          ></div>
 
           <div className="flex-column-start-center card-head">
             <p className="card-title">{card.title}</p>
@@ -54,16 +47,23 @@ function DisplayCreation() {
             {card.status ? (
               <a
                 className="flex-row-center-center card-creation-link"
-                href={card.url }
+                href={card.url}
                 target="_blank"
               >
-                <span>Visiter le site</span>
+                <span>
+                  {" "}
+                  {lang === "fr" ? "Visiter le site" : "Visit the website"}
+                </span>
                 <svg className="card-icon-arrow">
                   <use href="#arrow-circle" />
                 </svg>
               </a>
             ) : (
-              <span className="card-text-error">Site en maintenance...</span>
+              <span className="card-text-error">
+                {lang === "fr"
+                  ? "Site en maintenance..."
+                  : "Site is currently under maintenance..."}
+              </span>
             )}
           </div>
 
@@ -106,7 +106,9 @@ function DisplayCreation() {
                   </div>
                 ))}
             </div>
-            <div className="card-description">{card.description}</div>
+            <div className="card-description">
+              {lang === "fr" ? card.description_fr : card.description_en}
+            </div>
           </div>
         </div>
       ))}
