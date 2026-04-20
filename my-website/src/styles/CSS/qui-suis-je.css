@@ -1,168 +1,382 @@
-.about-text {
-  background-color: rgba(0, 189, 182, 0.1);
+@charset "UTF-8";
+/* Page: a-propos (qui-suis-je.css est importé uniquement par page-a-propos.jsx) */
+.page-container {
+  --bg: #fbfbfc;
+  --panel: rgba(255, 255, 255, 0.9);
+  --ink: #171717;
+  --muted: rgba(23, 23, 23, 0.7);
+  --brand: #024d4a;
+  --accent: #00bdb6;
+  --highlight: rgb(195, 6, 107);
+  background: var(--bg);
 }
-.about-text .wrapper-about-text {
-  width: 100%;
-  max-width: 1200px;
+.page-container .ref-svg {
+  display: none;
+}
+.page-container main {
+  background: var(--bg);
+}
+.page-container {
+  /* Container commun aux sections */
+}
+.page-container .about-text,
+.page-container .about-charte,
+.page-container .about-process {
+  padding: clamp(2.5rem, 4vw, 4.5rem) clamp(1rem, 3vw, 2.5rem);
+}
+.page-container .about-section-inner {
+  width: min(1100px, 100%);
   margin: 0 auto;
 }
-
-.about-charte {
-  background-color: rgba(199, 227, 205, 0.3);
-  padding: 30px;
+.page-container {
+  /* Titres (override des styles génériques) */
 }
-.about-charte .about-charte-text {
-  color: #171717;
-}
-.about-charte .about-charte-text a strong {
-  color: blue;
-  white-space: nowrap;
-}
-.about-charte p,
-.about-charte ul > li {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.about-process {
-  background-color: rgba(2, 77, 74, 0.1);
-}
-.about-process .process-steps {
-  max-width: 1500px;
-  margin: 0 auto;
-  gap: 30px;
-}
-.about-process .process-steps .process-step {
-  background: linear-gradient(45deg, #ffffff 90%, rgb(195, 6, 107) 10%);
-  border-radius: 12px;
-  padding: 30px;
-  -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  width: 100%;
-  max-width: 600px;
-  height: 400px;
-  position: relative;
-  overflow: hidden;
-}
-.about-process .process-steps .process-step .step-number {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #ffffff;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-.about-process .process-steps .process-step .step-content {
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  width: 100%;
-  height: 100%;
-}
-.about-process .process-steps .process-step .step-content h4 {
-  font-size: 1.3rem;
-  color: #00bdb6;
-  margin-bottom: 15px;
-  text-align: center;
-}
-.about-process .process-steps .process-step .step-content p {
-  color: #666;
-  line-height: 1.6;
-}
-
-.about-text,
-.about-charte,
-.about-process {
-  width: 100%;
-  padding: 40px;
-}
-.about-text .h2-title,
-.about-charte .h2-title,
-.about-process .h2-title {
-  margin: 60px 0px;
-  font-size: 1.8rem;
-  color: #171717;
+.page-container .h2-title {
+  margin: 0 0 clamp(1.25rem, 2.2vw, 2rem) 0;
+  font-size: clamp(1.55rem, 2.6vw, 2.3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
   position: relative;
 }
-.about-text .h2-title::after,
-.about-charte .h2-title::after,
-.about-process .h2-title::after {
+.page-container .h2-title::after {
   content: "";
   position: absolute;
-  bottom: -10px;
   left: 0;
-  width: 60px;
+  bottom: -0.7rem;
+  width: 4.5rem;
   height: 3px;
-  background-color: rgb(195, 6, 107);
-  border-radius: 3px;
+  border-radius: 999px;
+  background: -webkit-gradient(linear, left top, right top, from(var(--highlight)), to(var(--accent)));
+  background: linear-gradient(90deg, var(--highlight), var(--accent));
 }
-.about-text p,
-.about-text ul > li,
-.about-charte p,
-.about-charte ul > li,
-.about-process p,
-.about-process ul > li {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: rgba(23, 23, 23, 0.8);
-  margin-bottom: 20px;
-}
-.about-text p strong,
-.about-text ul > li strong,
-.about-charte p strong,
-.about-charte ul > li strong,
-.about-process p strong,
-.about-process ul > li strong {
-  color: #024d4a;
-  font-weight: 600;
-}
+.page-container .h2-title {
+  /*
+   font-size: 2rem;
+  color: rgba(map-get($colors-rule, fifth-color), 0.9);
+  margin-bottom: 100px;
+  text-align: center;
+  position: relative;
 
-@media screen and (min-width: 992px) {
-  .about-text,
-  .about-charte,
-  .about-process {
-    padding: 80px;
+  strong {
+    color: map-get($colors-rule, fourth-color);
   }
-  .about-text .h2-title,
-  .about-charte .h2-title,
-  .about-process .h2-title {
-    font-size: 2.2rem;
-    margin: 60px 30px;
-  }
-  .about-text p,
-  .about-text ul > li,
-  .about-charte p,
-  .about-charte ul > li,
-  .about-process p,
-  .about-process ul > li {
-    font-size: 1.2rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 10;
+    top: 0px;
+    left: -10%;
+    width: 1px;
+    height: 100%;
+    background: map-get($colors-rule, fourth-color);
+    border-radius: 2px;
+
+  }*/
+}
+.page-container {
+  /* p,
+  ul > li {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    //color: var(--muted);
+
+    strong {
+      color: var(--brand);
+      font-weight: 700;
+    }
+  } */
+  /* HERO: plus premium, sans casser shared-style */
+}
+.page-container .hero-container {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.page-container .hero-container::after {
+  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 189, 182, 0.35)), to(rgba(199, 227, 205, 0.2)));
+  background: linear-gradient(90deg, rgba(0, 189, 182, 0.35), rgba(199, 227, 205, 0.2));
+  opacity: 0.85;
+}
+.page-container .hero-container > img {
+  -webkit-filter: saturate(0.95) contrast(1.02);
+          filter: saturate(0.95) contrast(1.02);
+  opacity: 0.75;
+}
+.page-container .hero-container .hero-container-title {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  -webkit-box-shadow: 0 18px 60px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 18px 60px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(10px);
+}
+.page-container .hero-container .hero-container-title > h1 {
+  color: var(--brand);
+}
+.page-container {
+  /* Section 1: intro */
+}
+.page-container .about-text {
+  background: radial-gradient(circle at 15% 10%, rgba(0, 189, 182, 0.15), transparent 55%), var(--bg);
+}
+.page-container .wrapper-about-text {
+  gap: 1rem;
+  max-width: 72ch;
+}
+.page-container .about-image {
+  width: 44px;
+  height: 44px;
+  display: block;
+}
+.page-container .wrapper-about-text a {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--panel);
+  -webkit-box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+  -webkit-transition: border-color 180ms ease, -webkit-transform 180ms ease, -webkit-box-shadow 180ms ease;
+  transition: border-color 180ms ease, -webkit-transform 180ms ease, -webkit-box-shadow 180ms ease;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, -webkit-transform 180ms ease, -webkit-box-shadow 180ms ease;
+}
+.page-container .wrapper-about-text a:hover {
+  -webkit-transform: translateY(-2px);
+      -ms-transform: translateY(-2px);
+          transform: translateY(-2px);
+  border-color: rgba(0, 189, 182, 0.5);
+  -webkit-box-shadow: 0 18px 44px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 18px 44px rgba(0, 0, 0, 0.12);
+}
+.page-container {
+  /* Section 2: charte */
+}
+.page-container .about-charte {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(199, 227, 205, 0.18)), to(rgba(255, 255, 255, 0)));
+  background: linear-gradient(180deg, rgba(199, 227, 205, 0.18), rgba(255, 255, 255, 0));
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.page-container .about-charte-text {
+  max-width: 86ch;
+}
+.page-container .about-charte-text a strong {
+  color: #0000ff;
+  white-space: nowrap;
+}
+.page-container .diagram-wrapper {
+  margin-top: clamp(1.25rem, 2.4vw, 2rem);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+}
+@media (max-width: 900px) {
+  .page-container .diagram-wrapper {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
   }
 }
-@media screen and (min-width: 768px) {
-  .about-text,
-  .about-charte,
-  .about-process {
-    padding: 50px;
+@media (max-width: 600px) {
+  .page-container .diagram-wrapper {
+    grid-template-columns: 1fr;
   }
-  .about-text .h2-title,
-  .about-charte .h2-title,
-  .about-process .h2-title {
-    font-size: 2rem;
+}
+.page-container {
+  /* > 1300px : disposition pyramidale (1 / 2 / 3) */
+}
+@media (min-width: 1301px) {
+  .page-container .diagram-wrapper {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: auto auto auto;
+    gap: 1.1rem;
   }
-  .about-text p,
-  .about-text ul > li,
-  .about-charte p,
-  .about-charte ul > li,
-  .about-process p,
-  .about-process ul > li {
-    font-size: 1.1rem;
+  .page-container .diagram-description {
+    justify-self: center;
   }
-  .about-section,
-  .process-section {
-    padding: 60px 0;
+  .page-container {
+    /* Ordre actuel (DOM) :
+       1) sommet, 2-3) ligne intermédiaire, 4-6) base */
   }
-  .about-section .about-text h2,
-  .process-section h2 {
-    font-size: 2rem;
+  .page-container .diagram-description:nth-child(1) {
+    grid-column: 3/span 2;
+    grid-row: 1;
+  }
+  .page-container .diagram-description:nth-child(2) {
+    grid-column: 2/span 2;
+    grid-row: 2;
+  }
+  .page-container .diagram-description:nth-child(3) {
+    grid-column: 4/span 2;
+    grid-row: 2;
+  }
+  .page-container .diagram-description:nth-child(4) {
+    grid-column: 1/span 2;
+    grid-row: 3;
+  }
+  .page-container .diagram-description:nth-child(5) {
+    grid-column: 3/span 2;
+    grid-row: 3;
+  }
+  .page-container .diagram-description:nth-child(6) {
+    grid-column: 5/span 2;
+    grid-row: 3;
+  }
+}
+.page-container .diagram-description {
+  padding: 1rem 1rem 1rem 0.95rem;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: var(--panel);
+  -webkit-box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid rgba(0, 189, 182, 0.9);
+}
+.page-container .diagram-description > .flex-row-start-center {
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+.page-container .diagram-description > .flex-row-start-center span:last-child {
+  color: var(--ink);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  font-size: 1.05rem;
+}
+.page-container .description-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: -webkit-gradient(linear, left top, left bottom, from(var(--highlight)), to(var(--accent)));
+  background: linear-gradient(180deg, var(--highlight), var(--accent));
+  -webkit-box-shadow: 0 0 0 4px rgba(0, 189, 182, 0.18);
+          box-shadow: 0 0 0 4px rgba(0, 189, 182, 0.18);
+}
+.page-container .about-charte-conclusion {
+  margin-top: clamp(1.25rem, 2.4vw, 2rem);
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  text-align: center;
+  color: rgba(23, 23, 23, 0.8);
+}
+.page-container {
+  /* Section 3: process */
+}
+.page-container .about-process {
+  background: radial-gradient(circle at 85% 15%, rgba(2, 77, 74, 0.12), transparent 55%), var(--bg);
+}
+.page-container .process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+.page-container .process-steps > p {
+  grid-column: 1/-1;
+  max-width: 86ch;
+  margin-bottom: 0.25rem;
+}
+.page-container {
+  /* Desktop: max 3 colonnes, puis 2 cartes réparties sur la largeur (5 étapes) */
+}
+@media (min-width: 900px) {
+  .page-container .process-steps {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .page-container .process-steps > .process-step {
+    grid-column: span 2; /* 3 cartes sur la première ligne */
+  }
+  .page-container .process-steps > .process-step:nth-last-of-type(-n + 2) {
+    grid-column: span 3; /* 2 cartes sur la seconde ligne */
+  }
+}
+.page-container .process-step {
+  position: relative;
+  overflow: hidden;
+  padding: 1.2rem 1.1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: var(--panel);
+  -webkit-box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+  -webkit-transition: border-color 200ms ease, -webkit-transform 200ms ease, -webkit-box-shadow 200ms ease;
+  transition: border-color 200ms ease, -webkit-transform 200ms ease, -webkit-box-shadow 200ms ease;
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease, -webkit-transform 200ms ease, -webkit-box-shadow 200ms ease;
+}
+.page-container {
+  /* .process-step:hover {
+    transform: translateY(-3px);
+    border-color: rgba(map-get($colors-rule, second-color), 0.4);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+  } */
+}
+.page-container .process-step::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 15% 15%, rgba(0, 189, 182, 0.12), transparent 55%);
+  pointer-events: none;
+}
+.page-container .step-number {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: -webkit-gradient(linear, left top, left bottom, from(var(--highlight)), to(var(--accent)));
+  background: linear-gradient(180deg, var(--highlight), var(--accent));
+  color: #ffffff;
+  font-weight: 800;
+  -webkit-box-shadow: 0 12px 22px rgba(0, 0, 0, 0.18);
+          box-shadow: 0 12px 22px rgba(0, 0, 0, 0.18);
+}
+.page-container .step-content {
+  position: relative;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 0.75rem;
+  text-align: left;
+}
+.page-container .process-step h3 {
+  font-size: 1.15rem;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.page-container .process-step p {
+  color: rgba(23, 23, 23, 0.72);
+  line-height: 1.75;
+}
+.page-container .process-icon {
+  position: absolute;
+  left: 1rem;
+  bottom: 0.9rem;
+  width: 68px;
+  height: 68px;
+  fill: rgba(23, 23, 23, 0.32);
+  opacity: 0.3;
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-container .process-step,
+  .page-container .wrapper-about-text a {
+    -webkit-transition: none;
+    transition: none;
   }
 }

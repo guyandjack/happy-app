@@ -1,0 +1,139 @@
+.diagram-wrapper {
+  --panel-bg: rgba(255, 255, 255, 0.88);
+  position: relative;
+  width: 100%;
+  margin: 3em auto;
+  padding: clamp(1rem, 3vw, 2.5rem);
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(320px, 520px) minmax(220px, 1fr);
+  grid-template-rows: auto auto auto;
+  grid-template-areas: ". dt6 ." "dt4 core dt5" "dt1 dt2 dt3";
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  /* background: radial-gradient(
+    circle at 20% 10%,
+    rgba(map-get($colors-rule, second-color), 0.16),
+    transparent 55%
+  ),
+  radial-gradient(
+    circle at 85% 80%,
+    rgba(map-get($colors-rule, third-color), 0.22),
+    transparent 60%
+  ),
+  linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0)); */
+}
+
+/* .diagram-core {
+    grid-area: core;
+    width: min(560px, 100%);
+    padding: clamp(0.75rem, 2vw, 1.25rem);
+    border-radius: 1.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.85),
+            rgba(255, 255, 255, 0.55));
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.08);
+
+    display: flex;
+    flex-flow: column;
+    gap: clamp(0.75rem, 2vw, 1.25rem);
+    align-items: center;
+    justify-content: center;
+
+
+} */
+.diagram-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  gap: clamp(1rem, 3vw, 2rem);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.diagram-description {
+  width: 100%;
+  max-width: 22rem;
+  padding: 0.95rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-left: 4px solid #00bdb6;
+  background: var(--panel-bg);
+  color: #171717;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  -webkit-box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+}
+.diagram-description .description-icon {
+  color: rgba(23, 23, 23, 0.6);
+  width: 30px;
+  height: 30px;
+}
+.diagram-description span {
+  padding: 0.35rem 0.65rem;
+  color: rgb(195, 6, 107);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+#dt-6 {
+  grid-area: dt6;
+  justify-self: center;
+}
+
+#dt-5 {
+  grid-area: dt5;
+  justify-self: end;
+}
+
+#dt-4 {
+  grid-area: dt4;
+  justify-self: start;
+}
+
+#dt-3 {
+  grid-area: dt3;
+  justify-self: end;
+}
+
+#dt-2 {
+  grid-area: dt2;
+  justify-self: center;
+}
+
+#dt-1 {
+  grid-area: dt1;
+  justify-self: start;
+}
+
+@media (max-width: 1300px) {
+  .diagram-wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "core" "dt6" "dt5" "dt4" "dt2" "dt1" "dt3";
+  }
+  .diagram-core {
+    display: none;
+  }
+  .diagram-row {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .diagram-description {
+    max-width: 44rem;
+    height: 140px;
+    justify-self: stretch;
+  }
+}

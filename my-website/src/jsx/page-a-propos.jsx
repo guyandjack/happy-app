@@ -8,9 +8,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 //import des composants enfants
-import { Navbar } from "@components/Navbar/Navbar.jsx";
-import { Footer } from "@components/Footer/Footer.jsx";
-import { LinkTopPage } from "@components/linkTopPage/linkTopPage.jsx";
+import { Navbar } from "@/components/Navbar/Navbar.jsx";
+import { Footer } from "@/components/Footer/Footer.jsx";
+import { LinkTopPage } from "@/components/linkTopPage/linkTopPage.jsx";
 
 /****************************************************
  * ************* code principal page "a propos"*******
@@ -47,6 +47,7 @@ try {
 } catch (error) {
   console.error("Error mounting Link Top Page:", error);
 }
+
 
 // Mount Footer
 try {

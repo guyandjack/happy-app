@@ -39,6 +39,15 @@
   display: none;
 }
 
+/* Sprite SVG (defs/symbols) : ne doit ni s’afficher ni prendre de place */
+.ref-svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
 body,
 header {
   width: 100%;
@@ -96,6 +105,10 @@ main {
 #RC-cta-section {
   position: relative;
   z-index: 10;
+  width: 100%;
+}
+
+#RC-diagram {
   width: 100%;
 }
 
