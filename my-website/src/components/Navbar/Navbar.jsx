@@ -10,6 +10,7 @@ import { MenuSide } from "@components/Navbar/MenuSide.jsx";
 //import burgerIcon from '../../../public/images/icons/menu-burger.svg';
 import flagEN from "@assetsJSX/icons/flag-en.png";
 import flagFR from "@assetsJSX/icons/flag-fr.png";
+import { CiMenuKebab } from "react-icons/ci";
 
 //import des images
 import logos from "@assetsJSX/logo/logo-v8.svg";
@@ -29,6 +30,8 @@ function Navbar() {
 
   const btnSubMenuRef = useRef(null);
   const submenuRef = useRef(null);
+
+  const menuSideRef = useRef(null);
 
   const showToast = (message, type) => {
     setToast({ show: true, message, type });
@@ -127,6 +130,27 @@ function Navbar() {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [isOpen]);
+
+  //usEeffect qui detecte un scroll du user
+  useEffect(() => {
+    let isStart = true;
+    document.addEventListener("scroll", () => {
+      handleUserScroll(true);
+    });
+    document.addEventListener("scrollend", () => {
+      handleUserScroll(false);
+    });
+    return () => {
+      document.removeEventListener("scroll", () => {
+        
+        handleUserScroll(true);
+      })
+      document.removeEventListener("scrollend", () => {
+        
+        handleUserScroll(false);
+      })
+    }
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -275,6 +299,27 @@ function Navbar() {
     }
   };
 
+  const handleClickMenuSide = () => {
+    console.log("icon kebab clické!");
+    if (!menuSideRef.current) {
+      console.log("le composant menu side n' est pas detecté...");
+    }
+    menuSideRef.current.classList.toggle("show-menu-side");
+  }
+
+  const handleUserScroll = (scroll) => {
+    if (!navbarRef.current) return;
+    if (scroll) {
+      
+      navbarRef.current.classList.add("hide-navbar");
+      return
+    }
+    
+    navbarRef.current.classList.remove("hide-navbar");
+  }
+
+
+
   return (
     <div className="flex-column-center-center navbar-wrapper">
       <nav ref={navbarRef} className="navbar" aria-label="Main navigation">
@@ -304,11 +349,7 @@ function Navbar() {
           </button>
         </div>
 
-        <ul
-          className={`navbar-menu ${
-            isOpen ? "open" : ""
-          }`}
-        >
+        <ul className={`navbar-menu ${isOpen ? "open" : ""}`}>
           {menuItems[currentLang].map((item, index) =>
             item.submenu ? (
               <li
@@ -366,8 +407,16 @@ function Navbar() {
                   {item.text}
                 </a>
               </li>
-            ) : null
+            ) : null,
           )}
+
+          <li
+            onClick={() => {
+              handleClickMenuSide();
+            }}
+          >
+            <CiMenuKebab className="icon-kebab" />
+          </li>
 
           <li className="language-switcher">
             {currentLang === "en" && (
@@ -395,7 +444,15 @@ function Navbar() {
           </li>
         </ul>
       </nav>
-      <MenuSide classContainer=".page-container" titleType=".item-menu-side" />
+      
+      <MenuSide
+        
+        classContainer=".page-container"
+          titleType=".item-menu-side"
+          reference= {menuSideRef}
+        
+        />
+      
     </div>
   );
 }

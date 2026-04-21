@@ -4,28 +4,43 @@
 .menu-side {
   display: none;
   padding: 2px;
-  position: relative;
+  position: absolute;
   top: 100%;
-  left: 0;
-  width: 100%;
-  background-color: map-get($colors-rule, fourth-color);
+  right: 1rem;
+  //width: 100%;
+  background-color: rgba(map-get($colors-rule, fourth-color),0.5);
   z-index: 100;
+  padding: 2rem 1.5rem;
+  border-radius: 1.5rem;
 
 
-  @media screen and (min-width: 992px) {
-    display: block;
-  }
-
+  
 }
 
+.menu-side-icon-close{
+  position:absolute;
+  top: 0.5rem;
+  right:0.5rem;
+  width: 30px;
+  height: 30px;
+  color: white;
+  cursor:pointer;
+}
+
+@media screen and (min-width: 1300px) {
+  .menu-side.show-menu-side{
+
+    display: block;
+  }
+}
 
 .menu-side-list {
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
-  width: 100%;
-  height: 30px;
+  //width: 100%;
+  //height: 30px;
   list-style: none;
   gap: 20px;
 }

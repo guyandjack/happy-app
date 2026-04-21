@@ -68,7 +68,7 @@ header {
 }
 
 .page-container>header {
-    position: sticky;
+    position: fixed;
     max-width: 2000px;
     top: 0px;
     margin: 0 auto;
@@ -203,7 +203,7 @@ main {
 
 .hero-container {
     color: map-get($colors-rule, first-color);
-    height: 280px;
+    height: 380px;
     width: 100%;
     text-align: center;
     position: relative;

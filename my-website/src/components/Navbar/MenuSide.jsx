@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import "@styles/CSS/MenuSide.css";
 import { getLanguage } from "@utils/fonction/getLanguage.js";
+import { IoMdCloseCircle } from "react-icons/io";
 
-const MenuSide = ({ classContainer, titleType }) => {
+const MenuSide = ({ classContainer, titleType, reference}) => {
   const [headings, setHeadings] = useState([]);
   const [activeHeading, setActiveHeading] = useState("");
   const [isMenuSide, setIsMenuSide] = useState(false);
@@ -29,7 +30,7 @@ const MenuSide = ({ classContainer, titleType }) => {
   useEffect(() => {
     //controle des erreurs  montage du composant
     //  si la taille de l' ecran est insufisante on ne cre pas le menuside
-    if (window.innerWidth < 992) {
+    if (window.innerWidth < 1300) {
       console.log("Error: 3 --- pas de menu Side:  écran trop petit...");
       return;
     }
@@ -93,7 +94,7 @@ const MenuSide = ({ classContainer, titleType }) => {
   }, [isMenuSide]);
 
   //Declenche la construction du menu side lorsque la taille de l'ecran change
-  useEffect(() => {
+  /* useEffect(() => {
     window.addEventListener("resize", () => {
       handlerSize();
     });
@@ -102,7 +103,7 @@ const MenuSide = ({ classContainer, titleType }) => {
         handlerSize();
       });
     };
-  }, []);
+  }, []); */
 
   const scrollToHeading = (id) => {
     const element = document.getElementById(id);
@@ -118,13 +119,19 @@ const MenuSide = ({ classContainer, titleType }) => {
   };
 
   // Don't render if there are no headings or on small screens
-  if (headings.length === 0 || window.innerWidth <= 992) {
+  if (headings.length === 0 || window.innerWidth <= 1300) {
     return null;
   }
 
+  const handleCloseMenu = () => {
+    if (!reference.current) return;
+    reference.current.classList.remove("show-menu-side");
+  }
+
   return (
-    <div className="menu-side">
-      <ul className="flex-row-center-center menu-side-list" role="menu">
+    <div ref={reference} className="menu-side">
+      <IoMdCloseCircle className="menu-side-icon-close" onClick={()=>handleCloseMenu()}></IoMdCloseCircle>
+      <ul className="flex-column-start-center menu-side-list" role="menu">
         {headings.map((heading) => (
           <li
             key={heading.id}

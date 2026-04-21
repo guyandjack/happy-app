@@ -3,10 +3,7 @@
 @import "../../utils/color-rule/color-rule.scss";
 
 // Mobile first base styles
-.navbar-wrapper {
-    height: 100%;
-    background-color: map-get($colors-rule, second-color);
-}
+
 
 .navbar {
 
@@ -14,11 +11,12 @@
     position: relative;
     z-index: 1000;
     width: 100%;
-    height: 60px;
+    height: 90px;
     margin: 0 auto;
-    padding: 0 2rem;
-    background-color: map-get($colors-rule, first-color);
+   padding: 1rem 1rem;
+    //background-color: rgba(map-get($colors-rule, fifth-color),0.2);
     transition: opacity 1s ease;
+    //border: 2px solid red;
 
 
     // Toast
@@ -60,39 +58,40 @@
             position: relative;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            width: 40px;
-            height: 30px;
-            border: none;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 35px;
+            height: 35px;
             cursor: pointer;
-            padding: 0;
-            background: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            background-color: rgba(map-get($colors-rule, first-color), 0.9);
 
 
             span {
-                position: absolute;
-                width: 100%;
+
+                width: 25px;
                 height: 2px;
                 background: lighten(map-get($colors-rule, sixth-color), 30%);
                 transition: all 0.3s ease;
                 transform-origin: center;
 
-                &#burger-menu-1 {
-                    top: 0;
-                }
-
-                &#burger-menu-2 {
-                    top: 12px;
-                }
-
-                &#burger-menu-3 {
-                    top: 24px;
-                }
             }
 
             &.open {
+
+
+                span {
+                    position: absolute;
+                    top: 50%;
+                    transform: translate(0, -50%)
+                }
+
+
+
                 span:first-child {
-                    transform: translate(0, 12px) rotate(45deg);
+                    transform: rotate(45deg);
                 }
 
                 span:nth-child(2) {
@@ -100,12 +99,17 @@
                 }
 
                 span:last-child {
-                    transform: translate(0, -12px) rotate(-45deg);
+                    transform: rotate(-45deg);
                 }
             }
 
             &:hover span {
                 background: map-get($colors-rule, second-color);
+            }
+            @media screen and (min-width:"992px") {
+                gap: 6px;
+                    width: 40px;
+                    height: 40px;
             }
         }
     }
@@ -113,7 +117,7 @@
     // Mobile menu
     .navbar-menu {
         position: fixed;
-        top: 60px;
+        top: 0px;
         left: -100%;
         bottom: 0;
         width: 250px;
@@ -212,25 +216,45 @@
                 height: 25px;
             }
         }
+
+        .icon-kebab{
+            display: none;
+        }
     }
 
+}
+
+.navbar.hide-navbar{
+    opacity: 0.2;
 }
 
 
 
 // Desktop styles (min-width: 992px)
-@media (min-width: 992px) {
+@media (min-width: 1300px) {
+
+     /* .navbar-wrapper{
+margin-top: 1rem;       
+       
+    }  */
     .navbar {
         display: flex;
         flex-flow: row;
         justify-content: space-between;
         align-items: center;
-        padding: 0 5rem;
+        //padding: 0 5rem;
+        //background-color: rgba(map-get($colors-rule, sixth-color), 0.5);
+        //margin: 0 auto;
+        //width:90%;
+        //border-radius: 1.5rem;
 
         .navbar-brand {
-            .burger-menu {
+
+            .burger-menu,
+            .logo-image {
                 display: none;
             }
+
         }
 
         .navbar-menu {
@@ -241,9 +265,11 @@
             align-items: center;
             background: none;
             box-shadow: none;
-            padding: 0;
+            padding: 0 1em;
             gap: 2rem;
             //border: 2px solid red;
+            background-color: rgba(map-get($colors-rule, first-color), 0.9);
+            border-radius: 1.5rem;
 
 
 
@@ -328,8 +354,8 @@
                     left: 0;
                     height: auto;
                     min-width: 200px;
-                    background: darken(map-get($colors-rule, first-color), 3%);
-                    border-radius: 10px;
+                    background: darken(rgba(map-get($colors-rule, first-color),0.9), 8%);
+                    border-radius: 1.5rem;
                     padding: 0.5rem 0;
                     opacity: 0;
                     visibility: hidden;
@@ -400,6 +426,14 @@
 
                 border-left: 1px solid rgba(map-get($colors-rule, sixth-color), 0.2);
                 padding-left: 2rem;
+            }
+
+            .icon-kebab {
+                display:block;
+                height: 30px;
+                width: 30px;
+                color: map-get($colors-rule, sixth-color);
+                cursor: pointer;
             }
         }
     }

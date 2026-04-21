@@ -67,7 +67,8 @@
   position: relative;
   z-index: 3;
   width: 100%;
-  padding: 20px 10px;
+  min-height: 100vh;
+  padding: 90px 10px;
   overflow: hidden;
 }
 .hero-index .hero-index-title-h1 {
@@ -236,9 +237,6 @@
   }
 }
 @media screen and (min-width: 992px) {
-  .hero-index {
-    height: calc(100vh - 92px);
-  }
   .hero-index .hero-index-title-h1 {
     max-width: 980px;
     /*font-size: clamp(2.5rem, 3.2vw, 3.4rem);*/

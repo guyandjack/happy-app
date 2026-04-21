@@ -1,17 +1,11 @@
 /* Login Form Styles */
-.navbar-wrapper {
-  height: 100%;
-  background-color: #00bdb6;
-}
-
 .navbar {
   position: relative;
   z-index: 1000;
   width: 100%;
-  height: 60px;
+  height: 90px;
   margin: 0 auto;
-  padding: 0 2rem;
-  background-color: #024d4a;
+  padding: 1rem 1rem;
   -webkit-transition: opacity 1s ease;
   transition: opacity 1s ease;
 }
@@ -49,19 +43,22 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 40px;
-  height: 30px;
-  border: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5px;
+  width: 35px;
+  height: 35px;
   cursor: pointer;
-  padding: 0;
-  background: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: rgba(2, 77, 74, 0.9);
 }
 .navbar .navbar-brand .burger-menu span {
-  position: absolute;
-  width: 100%;
+  width: 25px;
   height: 2px;
   background: white;
   -webkit-transition: all 0.3s ease;
@@ -70,34 +67,39 @@
       -ms-transform-origin: center;
           transform-origin: center;
 }
-.navbar .navbar-brand .burger-menu span#burger-menu-1 {
-  top: 0;
-}
-.navbar .navbar-brand .burger-menu span#burger-menu-2 {
-  top: 12px;
-}
-.navbar .navbar-brand .burger-menu span#burger-menu-3 {
-  top: 24px;
+.navbar .navbar-brand .burger-menu.open span {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+          transform: translate(0, -50%);
 }
 .navbar .navbar-brand .burger-menu.open span:first-child {
-  -webkit-transform: translate(0, 12px) rotate(45deg);
-      -ms-transform: translate(0, 12px) rotate(45deg);
-          transform: translate(0, 12px) rotate(45deg);
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 .navbar .navbar-brand .burger-menu.open span:nth-child(2) {
   opacity: 0;
 }
 .navbar .navbar-brand .burger-menu.open span:last-child {
-  -webkit-transform: translate(0, -12px) rotate(-45deg);
-      -ms-transform: translate(0, -12px) rotate(-45deg);
-          transform: translate(0, -12px) rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
 .navbar .navbar-brand .burger-menu:hover span {
   background: #00bdb6;
 }
+@media screen and (min-width: 992px) {
+  .navbar .navbar-brand .burger-menu {
+    gap: 6px;
+    width: 40px;
+    height: 40px;
+  }
+}
 .navbar .navbar-menu {
   position: fixed;
-  top: 60px;
+  top: 0px;
   left: -100%;
   bottom: 0;
   width: 250px;
@@ -201,8 +203,19 @@
   width: 25px;
   height: 25px;
 }
+.navbar .navbar-menu .icon-kebab {
+  display: none;
+}
 
-@media (min-width: 992px) {
+.navbar.hide-navbar {
+  opacity: 0.2;
+}
+
+@media (min-width: 1300px) {
+  /* .navbar-wrapper{
+  margin-top: 1rem;       
+
+      }  */
   .navbar {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -217,9 +230,9 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    padding: 0 5rem;
   }
-  .navbar .navbar-brand .burger-menu {
+  .navbar .navbar-brand .burger-menu,
+  .navbar .navbar-brand .logo-image {
     display: none;
   }
   .navbar .navbar-menu {
@@ -240,8 +253,10 @@
     background: none;
     -webkit-box-shadow: none;
             box-shadow: none;
-    padding: 0;
+    padding: 0 1em;
     gap: 2rem;
+    background-color: rgba(2, 77, 74, 0.9);
+    border-radius: 1.5rem;
   }
   .navbar .navbar-menu li {
     width: auto;
@@ -309,8 +324,8 @@
     left: 0;
     height: auto;
     min-width: 200px;
-    background: rgb(1.6126582278, 62.0873417722, 59.6683544304);
-    border-radius: 10px;
+    background: rgba(0.9670886076, 37.2329113924, 35.782278481, 0.9);
+    border-radius: 1.5rem;
     padding: 0.5rem 0;
     opacity: 0;
     visibility: hidden;
@@ -370,5 +385,12 @@
     margin-top: 0;
     border-left: 1px solid rgba(255, 255, 255, 0.2);
     padding-left: 2rem;
+  }
+  .navbar .navbar-menu .icon-kebab {
+    display: block;
+    height: 30px;
+    width: 30px;
+    color: #ffffff;
+    cursor: pointer;
   }
 }
