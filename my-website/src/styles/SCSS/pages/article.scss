@@ -1,8 +1,10 @@
 // Import color variables
-@import '../../utils/color-rule/color-rule.scss';
+@use "../../utils/color-rule/color-rule" as *;
 
 .page-container {
     position: relative;
+    background-color: rgba(map-get($colors-rule, bg-page-shade-light-1), 1);
+    //background-color: red;
 
     .btn-retour-articles {
         display: block;

@@ -12,10 +12,10 @@ import { FaTrash, FaUpload } from "react-icons/fa";
 import { ThreeDots } from "react-loader-spinner";
 
 //import des feuilles de style
-import "@styles/CSS/normalise.css";
-import "@styles/CSS/shared-style.css";
-import "@styles/CSS/articleFormDashboard.css";
-import "@styles/CSS/article.css";
+import "@styles/SCSS/normalise.scss";
+import "@styles/SCSS/shared-style.scss";
+import "@styles/SCSS/components/ArticleFormDashboard.scss";
+import "@styles/SCSS/pages/article.scss";
 
 //import des fonctions
 import { localOrProd } from "@utils/fonction/testEnvironement";

@@ -1,8 +1,9 @@
-@import "../../utils/color-rule/color-rule.scss";
+@use "../../utils/color-rule/color-rule" as *;
 
 .footer {
   gap: 20px;
-  background: darken(map-get($colors-rule, footer-color), 25%);
+  //background: darken(map-get($colors-rule, footer-color), 25%);
+  background:map-get($colors-rule, footer-color);
   color: map-get($colors-rule, sixth-color);
   padding: 60px 20px 20px 20px;
   width: 100%;
@@ -43,18 +44,18 @@
       .footer-cta {
         display: inline-block;
         padding: 12px 24px;
-        background: rgba(map-get($colors-rule, fourth-color), 0.9);
+        background: rgba(map-get($colors-rule, link-color), 0.9);
         color: map-get($colors-rule, sixth-color);
         text-decoration: none;
         border-radius: 6px;
-        border: 2px solid rgba(map-get($colors-rule, fourth-color), 0.9);
+        border: 2px solid rgba(map-get($colors-rule, sixth-color), 1);
         font-weight: 600;
         transition: all 0.3s ease;
 
         &:hover {
-          background: rgba(map-get($colors-rule, background-page-color), 0.9);
-          color: map-get($colors-rule, fourth-color);
-          //border: 2px solid map-get($colors-rule, fourth-color);
+          background: rgba(map-get($colors-rule, link-color), 0.7);
+          //color: map-get($colors-rule, first-color);
+          //border: 2px solid map-get($colors-rule, first-color);
           transform: translateY(-2px);
         }
       }

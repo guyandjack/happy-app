@@ -1,4 +1,4 @@
-@import "../../utils/color-rule/color-rule.scss";
+@use "../../utils/color-rule/color-rule" as *;
 
 .article-card {
     display: block;

@@ -9,7 +9,7 @@ import { localOrProd } from "@utils/fonction/testEnvironement";
 import { ArticleCard } from "@components/Articles/ArticleCard";
 import { getLanguage } from "@utils/fonction/getLanguage";
 
-import "@styles/CSS/AdminArticleList.css";
+import "@styles/SCSS/components/AdminArticleList.scss";
 
 const AdminArticleList = ({ setModifyForm }) => {
   const { urlApi } = localOrProd();

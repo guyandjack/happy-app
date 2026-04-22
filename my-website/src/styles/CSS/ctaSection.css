@@ -1,3 +1,20 @@
+/* $colors-rule: (
+    first-color: #024d4a,
+    second-color: #00bdb6,
+    third-color: #c7e3cd,
+    fourth-color: #c3066b,
+    fifth-color: #171717,
+    sixth-color: #ffffff,
+    footer-color: #6080a0,
+    // footer-color: #101010,
+    link-color:#0000ff,
+
+    background-page-color: #fbfbfc,
+    disabled-color: #9ca3af,
+    dark-mode-color: #373737,
+    alert-color: orangered,
+
+); */
 .cta-section {
   position: relative;
   width: 90%;
@@ -5,8 +22,15 @@
   margin: 150px auto 200px auto;
   padding: 60px 20px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #00bdb6 40%, #c7e3cd 70%, #00bdb6 90%, #c7e3cd 100%);
-  color: rgb(1.3544303797, 52.1455696203, 50.1139240506);
+  /* background: linear-gradient(135deg,
+          map-get($colors-rule, first-color) 40%,
+          map-get($colors-rule, fourth-color) 70%,
+          map-get($colors-rule, first-color) 90%,
+          map-get($colors-rule, fourth-color) 100%); */
+  background: #1A1627;
+  background: -webkit-gradient(linear, left top, right top, from(rgb(26, 22, 39)), to(rgb(0, 212, 255)));
+  background: linear-gradient(90deg, rgb(26, 22, 39) 0%, rgb(0, 212, 255) 100%);
+  color: rgb(245.5, 245.5, 236);
   text-align: center;
 }
 .cta-section:hover::before {
@@ -37,7 +61,7 @@
   left: 0%;
   width: 100%;
   height: 100%;
-  background-color: #00bdb6;
+  background-color: #00d4ff;
   opacity: 0.2;
   border-radius: 10px;
   -webkit-transform: rotate(-4deg);
@@ -56,7 +80,7 @@
   left: 0%;
   width: 100%;
   height: 100%;
-  background-color: rgb(195, 6, 107);
+  background-color: #b7950b;
   opacity: 0.1;
   border-radius: 10px;
   -webkit-transform: rotate(2deg);
@@ -79,16 +103,16 @@
 .cta-section > p {
   font-size: 1rem;
   margin-bottom: 40px;
-  color: rgba(23, 23, 23, 0.8);
+  opacity: 0.9;
 }
 .cta-section > .btn-primary {
   display: inline-block;
   width: 100%;
   max-width: 200px;
   margin: 0 auto;
-  background-color: rgb(195, 6, 107);
-  color: #ffffff;
-  border: 2px solid rgb(195, 6, 107);
+  background-color: rgba(249, 105, 0, 0.9);
+  color: #fefefd;
+  border: 2px solid #fefefd;
   padding: 12px 24px;
   border-radius: 6px;
   font-size: 1.1rem;
@@ -98,11 +122,10 @@
   transition: all 0.3s ease;
 }
 .cta-section > .btn-primary:hover {
-  background-color: #ffffff;
-  color: rgb(195, 6, 107);
-  -webkit-transform: translateY(-5px);
-      -ms-transform: translateY(-5px);
-          transform: translateY(-5px);
+  background-color: rgba(249, 105, 0, 0.8);
+  -webkit-transform: translateY(-2px);
+      -ms-transform: translateY(-2px);
+          transform: translateY(-2px);
 }
 
 @media screen and (min-width: 768px) {
@@ -122,11 +145,11 @@
   }
 }
 .page-container.dark-mode .cta-section .btn-primary {
-  background-color: rgb(195, 6, 107);
-  color: #ffffff;
-  border: 2px solid rgb(195, 6, 107);
+  background-color: #b7950b;
+  color: #fefefd;
+  border: 2px solid #b7950b;
 }
 .page-container.dark-mode .cta-section .btn-primary:hover {
-  background-color: #00bdb6;
-  border: 2px solid #024d4a;
+  background-color: #00d4ff;
+  border: 2px solid #1A1627;
 }

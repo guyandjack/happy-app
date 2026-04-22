@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import logo from "@assetsJSX/logo/logo-v8.svg";
 
 //import des feuilles de style
-import "@styles/CSS/Footer.css";
+import "@styles/SCSS/components/Footer.scss";
 
 //import des icones
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";

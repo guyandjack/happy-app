@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import "@styles/CSS/Card.css";
+import "@styles/SCSS/components/Card.scss";
 
 //import des fonctions
 import { getLanguage } from "@utils/fonction/getLanguage";

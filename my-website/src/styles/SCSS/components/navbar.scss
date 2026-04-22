@@ -1,6 +1,6 @@
 /* Login Form Styles */
-@import "../../utils/breakpoint/breakpoint.scss";
-@import "../../utils/color-rule/color-rule.scss";
+@use "../../utils/breakpoint/breakpoint" as *;
+@use "../../utils/color-rule/color-rule" as *;
 
 // Mobile first base styles
 
@@ -315,7 +315,7 @@ margin-top: 1rem;
                 }
 
                 &:hover::after {
-                    background: map-get($colors-rule, fourth-color);
+                    background: map-get($colors-rule, link-color);
                     height: 8px;
                     transition: height 0.2s linear;
                 }
@@ -354,7 +354,8 @@ margin-top: 1rem;
                     left: 0;
                     height: auto;
                     min-width: 200px;
-                    background: darken(rgba(map-get($colors-rule, first-color),0.9), 8%);
+                    //background: darken(rgba(map-get($colors-rule, first-color),0.9), 8%);
+                    background-color: rgba(map-get($colors-rule, first-color), 1);
                     border-radius: 1.5rem;
                     padding: 0.5rem 0;
                     opacity: 0;
@@ -396,7 +397,7 @@ margin-top: 1rem;
                         height: 0px;
                         bottom: 60%;
                         left: 0px;
-                        background-color: map-get($colors-rule, fourth-color);
+                        background-color: map-get($colors-rule, link-color);
                         transition: height 0.2s linear;
                     }
 

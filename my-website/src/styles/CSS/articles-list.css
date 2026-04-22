@@ -1,7 +1,25 @@
+/* $colors-rule: (
+    first-color: #024d4a,
+    second-color: #00bdb6,
+    third-color: #c7e3cd,
+    fourth-color: #c3066b,
+    fifth-color: #171717,
+    sixth-color: #ffffff,
+    footer-color: #6080a0,
+    // footer-color: #101010,
+    link-color:#0000ff,
+
+    background-page-color: #fbfbfc,
+    disabled-color: #9ca3af,
+    dark-mode-color: #373737,
+    alert-color: orangered,
+
+); */
 .page-container {
   position: relative;
   z-index: 5;
   width: 100%;
+  background-color: rgba(231, 229, 241, 0.2);
 }
 
 .articles-content {

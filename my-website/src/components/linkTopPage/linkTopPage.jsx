@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { FaArrowUp } from "react-icons/fa";
 import { FaArrowDown } from "react-icons/fa";
-import "@styles/CSS/linkTopPage.css";
+import "@styles/SCSS/components/linkTopPage.scss";
 
 const LinkTopPage = () => {
   const elementLinkTopPage = document.querySelector("#RC-link-top-page");

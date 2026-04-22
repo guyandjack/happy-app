@@ -1,4 +1,4 @@
-@import '../../utils/color-rule/color-rule.scss';
+/* @use "../../utils/color-rule/color-rule" as *;
 
 
 // Mobile app section
@@ -141,7 +141,7 @@
   .app-types-section {
     margin-bottom: 80px;
     padding: 60px 0;
-    background-color: #f9f9f9;
+    background-color: black;
     border-radius: 20px;
     position: relative;
     overflow: hidden;
@@ -920,3 +920,4 @@
     font-size: 1rem;
   }
 }
+ */

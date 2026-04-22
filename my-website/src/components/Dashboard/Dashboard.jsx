@@ -25,7 +25,7 @@ import { handleAxiosError } from "@utils/fonction/handleAxiosError";
 import { clearLocalStorageInfoSession } from "@utils/fonction/clearLocalStorageInfosession";
 
 //feuilles de style
-import "@styles/CSS/dashboard.css";
+import "@styles/SCSS/components/Dashboard.scss";
 
 const Dashboard = () => {
   const { urlApi, url, mode } = localOrProd();

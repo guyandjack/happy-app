@@ -1,4 +1,4 @@
-@import '../../utils/color-rule/color-rule.scss';
+@use "../../utils/color-rule/color-rule" as *;
 
 .card-link {
     position: relative;
@@ -74,7 +74,7 @@
         bottom: 0px;
         /*left: 0px;*/
         padding: 12px 24px;
-        background-color: rgba(map-get($colors-rule, first-color), 0.9);
+        background-color: rgba(map-get($colors-rule, cta-color), 0.9);
         color: map-get($colors-rule, sixth-color);
         border: 2px solid transparent;
         border-top-right-radius: 50%;
@@ -105,7 +105,7 @@
     max-width: 200px;
     padding: 12px 24px;
     margin-left: 24px;
-    background-color: map-get($colors-rule, fourth-color);
+    background-color: rgba(map-get($colors-rule, link-color),0.9);
     color: map-get($colors-rule, sixth-color);
     border: 2px solid transparent;
     border-radius: 6px;
@@ -169,8 +169,8 @@
 
     .card-button-contact {
         &:hover {
-            color: map-get($colors-rule, fourth-color);
-            border: 2px solid map-get($colors-rule, fourth-color);
+            color: map-get($colors-rule, first-color);
+            border: 2px solid map-get($colors-rule, first-color);
             background-color: map-get($colors-rule, background-page-color);
         }
     }

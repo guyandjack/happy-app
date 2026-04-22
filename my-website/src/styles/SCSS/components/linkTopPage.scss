@@ -1,4 +1,4 @@
-@import "../../utils/color-rule/color-rule.scss";
+@use "../../utils/color-rule/color-rule" as *;
 
 
 /* conteneur positionner szicky dans shared style */

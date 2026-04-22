@@ -12,7 +12,7 @@ import { IoMdCloseCircleOutline } from "react-icons/io";
 const siteKey = import.meta.env.VITE_SITE_KEY_RECAPTCHA;
 
 // Import same SCSS file as LoginForm
-import "@styles/CSS/loginform.css";
+import "@styles/SCSS/components/loginform.scss";
 
 function ContactForm() {
   const { url, urlApi, mode } = localOrProd();

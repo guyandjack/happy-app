@@ -1,11 +1,11 @@
 //Charte de couleur de l' "App"
 
 
-$colors-rule: (
+/* $colors-rule: (
     first-color: #024d4a,
     second-color: #00bdb6,
     third-color: #c7e3cd,
-    fourth-color: rgb(195, 6, 107),
+    fourth-color: #c3066b,
     fifth-color: #171717,
     sixth-color: #ffffff,
     footer-color: #6080a0,
@@ -13,6 +13,29 @@ $colors-rule: (
     link-color:#0000ff,
 
     background-page-color: #fbfbfc,
+    disabled-color: #9ca3af,
+    dark-mode-color: #373737,
+    alert-color: orangered,
+
+); */
+$colors-rule: (
+    first-color: /* #024d4a, #27213C,*/#1A1627,
+    second-color:/* #00bdb6 , */#00d4ff,
+    third-color:  #00bdb6,
+    fourth-color: /* #f7dc69,#f4d03f,#f1c40f,#d4ac0d, ,#F0E100,#a096c5,*/#b7950b,
+    fifth-color: #171717,
+    sixth-color: #fefefd,
+    footer-color: #1a1627,
+    cta-color:#F96900,
+    link-color:#F96900,
+    
+     
+
+    background-page-color: #fbfbfc,
+    bg-page-primary:#27213c ,
+    bg-page-shade-light-1:#e7e5f1,
+    bg-page-shade-light-2:#c4bddb,
+    bg-page-shade-light-3:#a096c5,
     disabled-color: #9ca3af,
     dark-mode-color: #373737,
     alert-color: orangered,

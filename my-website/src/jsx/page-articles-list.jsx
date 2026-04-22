@@ -1,7 +1,7 @@
 //import du style
-import "@styles/CSS/normalise.css";
-import "@styles/CSS/shared-style.css";
-import "@styles/CSS/articles-list.css";
+import "@styles/SCSS/normalise.scss";
+import "@styles/SCSS/shared-style.scss";
+import "@styles/SCSS/pages/articles-list.scss";
 
 //import des hooks
 import React from "react";

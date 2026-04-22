@@ -1,5 +1,23 @@
+/* $colors-rule: (
+    first-color: #024d4a,
+    second-color: #00bdb6,
+    third-color: #c7e3cd,
+    fourth-color: #c3066b,
+    fifth-color: #171717,
+    sixth-color: #ffffff,
+    footer-color: #6080a0,
+    // footer-color: #101010,
+    link-color:#0000ff,
+
+    background-page-color: #fbfbfc,
+    disabled-color: #9ca3af,
+    dark-mode-color: #373737,
+    alert-color: orangered,
+
+); */
 .page-container {
   position: relative;
+  background-color: #e7e5f1;
 }
 .page-container .btn-retour-articles {
   display: block;
@@ -8,10 +26,10 @@
   left: 1rem;
   top: 85%;
   padding: 1rem;
-  background-color: #024d4a;
-  color: #ffffff;
+  background-color: #1A1627;
+  color: #fefefd;
   border-radius: 8px;
-  border: 4px solid #ffffff;
+  border: 4px solid #fefefd;
   cursor: pointer;
   text-align: center;
   width: -webkit-fit-content;
@@ -30,7 +48,7 @@
   max-width: 900px;
   margin: 50px auto;
   padding: 0px 20px;
-  background: #ffffff;
+  background: #fefefd;
   line-height: 1.7;
   color: #171717;
   font-size: 1rem;
@@ -70,7 +88,7 @@
   width: 100%;
   font-size: 1.8rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #fefefd;
   line-height: 1.3;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   padding: 0 1rem;
@@ -100,7 +118,7 @@
 .article-wrapper .article-introduction .article-text {
   font-size: 1rem;
   margin: 0;
-  color: #024d4a;
+  color: #1A1627;
   font-weight: 500;
   font-style: italic;
   border-left: 3px solid #00bdb6;
@@ -142,7 +160,7 @@
 .article-wrapper .article-section .article-subtitle-h3 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #024d4a;
+  color: #1A1627;
   margin: 1.5rem 0 1rem 0;
 }
 .article-wrapper .article-section .article-text,
@@ -168,8 +186,8 @@
 .article-wrapper .article-conclusion-section .article-subtitle-h2 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: rgb(195, 6, 107);
-  color: white;
+  color: #b7950b;
+  color: #fefefd;
   padding: 1.5rem 0;
   background-color: #00bdb6;
   margin: 0 0 1.5rem 0;
@@ -196,7 +214,7 @@
   font-size: 1.2rem;
   font-weight: 700;
   text-align: center;
-  color: white;
+  color: #fefefd;
   padding: 1.5rem 0;
   background-color: #00bdb6;
 }

@@ -17,7 +17,7 @@ import eyeClosed from "@assetsJSX/icons/eye-closed.png";
 import eyeOpened from "@assetsJSX/icons/eye-opened.png";
 
 //import des feuilles de style
-import "@styles/CSS/loginform.css";
+import "@styles/SCSS/components/loginform.scss";
 
 function LoginForm() {
   const { url, urlApi, mode } = localOrProd();

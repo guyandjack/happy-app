@@ -1,4 +1,4 @@
-@import '../../utils/color-rule/color-rule.scss';
+@use "../../utils/color-rule/color-rule" as *;
 
 
 @font-face {
@@ -142,7 +142,7 @@
     /* background: linear-gradient(120deg,
         map-get($colors-rule, second-color) 0%,
         darken(map-get($colors-rule, second-color), 8%) 100%); */
-    background-color: #00bdb6ff;
+    background-color: map-get($colors-rule, cta-color);
     border: 1px solid rgba(map-get($colors-rule, sixth-color), 0.45);
     border-radius: 14px;
     cursor: pointer;
@@ -323,11 +323,12 @@
 .services,.creations {
   width: 100%;
   padding: 120px 15px;
-  background: linear-gradient(135deg,
+  /* background: linear-gradient(135deg,
       rgba(map-get($colors-rule, second-color), 0.03) 5%,
       rgba(map-get($colors-rule, footer-color), 0.05) 20%,
       rgba(map-get($colors-rule, second-color), 0.05) 80%,
-      rgba(map-get($colors-rule, second-color), 0.05) 100%);
+      rgba(map-get($colors-rule, second-color), 0.05) 100%); */
+      background-color: rgba(map-get($colors-rule, bg-page-shade-light-1),0.2);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -342,7 +343,7 @@
     position: relative;
 
     strong {
-      color: map-get($colors-rule, fourth-color);
+      color: map-get($colors-rule, second-color);
     }
 
     &::after {
@@ -353,7 +354,7 @@
       left: -10%;
       width: 1px;
       height: 100%;
-      background: map-get($colors-rule, fourth-color);
+      background: map-get($colors-rule, second-color);
       border-radius: 2px;
 
     }
@@ -365,10 +366,11 @@
   //border: 1px solid red;
   width: 100%;
   padding: 120px 15px;
-  background: linear-gradient(135deg,
+  /* background: linear-gradient(135deg,
       rgba(map-get($colors-rule, first-color), 0.02) 0%,
       rgba(map-get($colors-rule, background-page-color), 0.05) 50%,
-      rgba(map-get($colors-rule, second-color), 0.02) 100%);
+      rgba(map-get($colors-rule, second-color), 0.02) 100%); */
+      background-color: rgba(map-get($colors-rule, bg-page-shade-light-3),0.2);
 
   h2 {
     font-size: 2rem;
@@ -380,7 +382,7 @@
     margin: 0 auto 60px;
 
     strong {
-      color: map-get($colors-rule, fourth-color);
+      color: map-get($colors-rule, second-color);
     }
 
     &::after {
@@ -391,7 +393,7 @@
       left: -30px;
       width: 1px;
       height: 100%;
-      background: map-get($colors-rule, fourth-color);
+      background: map-get($colors-rule, second-color);
       border-radius: 2px;
     }
   }
@@ -457,7 +459,7 @@
           text-align: center;
 
           strong {
-            color: map-get($colors-rule, first-color);
+            color: darken(map-get($colors-rule, second-color), 10%);
             font-weight: 600;
           }
         }
@@ -470,17 +472,17 @@
           li {
             position: relative;
             padding: 12px 0 12px 25px;
-            color: rgba(map-get($colors-rule, fifth-color), 0.9);
+            color: rgba(map-get($colors-rule, first-color), 0.9);
 
             &::before {
               content: '→';
               position: absolute;
               left: 0;
-              color: map-get($colors-rule, second-color);
+              color: darken(map-get($colors-rule, second-color), 10%);
             }
 
             strong {
-              color: map-get($colors-rule, first-color);
+              color: darken(map-get($colors-rule, second-color), 10%);
             }
           }
         }
@@ -558,12 +560,12 @@
   position: relative;
   width: 100%;
   padding: 0px 15px;
-  background: linear-gradient(135deg,
+  /* background: linear-gradient(135deg,
       rgba(map-get($colors-rule, first-color), 0.03) 0%,
       rgba(map-get($colors-rule, background-page-color), 0.05) 50%,
-      rgba(map-get($colors-rule, second-color), 0.03) 100%);
+      rgba(map-get($colors-rule, second-color), 0.03) 100%); */
 
-
+background-color: rgba(map-get($colors-rule, bg-page-shade-light-2),0.2);
 
 
   .why-choose {
@@ -574,14 +576,14 @@
     h2 {
       font-size: 2rem;
       width: fit-content;
-      color: map-get($colors-rule, fifth-color);
+      color: map-get($colors-rule, first-color);
       margin: 40px 0;
       text-align: center;
       position: relative;
 
 
       strong {
-        color: map-get($colors-rule, fourth-color);
+        color: map-get($colors-rule, second-color);
       }
 
       &::after {
@@ -592,7 +594,7 @@
         left: -30px;
         width: 1px;
         height: 100%;
-        background: map-get($colors-rule, fourth-color);
+        background: map-get($colors-rule, second-color);
         border-radius: 2px;
       }
     }
@@ -640,13 +642,13 @@
           width: 100%;
           height: 1px;
           bottom: 0px;
-          background-color: map-get($colors-rule, fifth-color);
+          background-color: map-get($colors-rule, first-color);
           transition: height 0.2s linear;
         }
 
 
         &:hover::before {
-          background-color: map-get($colors-rule, fourth-color);
+          background-color: map-get($colors-rule, link-color);
           opacity: 0.9;
           height: 6px;
           bottom: 60%;
@@ -736,7 +738,7 @@
       }
 
       #why-choose-card-3 {
-        background-color: map-get($colors-rule, fifth-color);
+        background-color: map-get($colors-rule, third-color);
       }
 
       #why-choose-card-4 {
@@ -797,7 +799,7 @@
 
         &::after,
         &::before {
-          background-color: map-get($colors-rule, fifth-color);
+          background-color: map-get($colors-rule, third-color);
         }
       }
 
@@ -845,7 +847,7 @@
         left: 20%;
         top: 40%;
 
-        border-left: 12px solid map-get($colors-rule, fifth-color);
+        border-left: 12px solid map-get($colors-rule, third-color);
         border-radius: 50%;
 
 

@@ -1,4 +1,4 @@
-@import "../../utils/color-rule/color-rule.scss";
+@use "../../utils/color-rule/color-rule" as *;
 
 
 .menu-side {
@@ -8,7 +8,7 @@
   top: 100%;
   right: 1rem;
   //width: 100%;
-  background-color: rgba(map-get($colors-rule, fourth-color),0.5);
+  background-color: rgba(map-get($colors-rule, second-color),0.7);
   z-index: 100;
   padding: 2rem 1.5rem;
   border-radius: 1.5rem;
@@ -67,6 +67,7 @@
   max-width: 200px;
   min-width: 100px;
   transition: transform 0.2s ease;
+  padding: 2px 5px;
 
 
   @media screen and (min-width: 1300px) {

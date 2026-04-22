@@ -1,4 +1,21 @@
 @charset "UTF-8";
+/* $colors-rule: (
+    first-color: #024d4a,
+    second-color: #00bdb6,
+    third-color: #c7e3cd,
+    fourth-color: #c3066b,
+    fifth-color: #171717,
+    sixth-color: #ffffff,
+    footer-color: #6080a0,
+    // footer-color: #101010,
+    link-color:#0000ff,
+
+    background-page-color: #fbfbfc,
+    disabled-color: #9ca3af,
+    dark-mode-color: #373737,
+    alert-color: orangered,
+
+); */
 @-webkit-keyframes card-anim {
   0% {
     -webkit-transform: translate(0px, 0px) rotateZ(0deg);
@@ -52,7 +69,7 @@
 .website-types {
   position: relative;
   padding: 80px 20px;
-  background: #fbfbfc;
+  background: rgba(231, 229, 241, 0.2);
 }
 .website-types > h2 {
   text-align: center;
@@ -123,9 +140,9 @@
   font-size: 1.1rem;
   padding: 15px 10px;
   margin: 0;
-  background: #ffffff;
+  background: #fefefd;
   border-radius: 15px;
-  color: rgba(2, 77, 74, 0.9);
+  color: rgba(26, 22, 39, 0.9);
   font-weight: 800;
   -webkit-box-shadow: 0 0px 20px rgba(23, 23, 23, 0.2);
           box-shadow: 0 0px 20px rgba(23, 23, 23, 0.2);
@@ -269,9 +286,9 @@
   max-width: 300px;
   padding: 12px 30px;
   border-radius: 30px;
-  background: rgb(195, 6, 107);
+  background: #b7950b;
   border: 2px solid transparent;
-  color: #ffffff;
+  color: #fefefd;
   text-decoration: none;
   text-align: center;
   font-weight: 600;
@@ -282,8 +299,8 @@
 }
 .website-types .website-cards .website-card-container .website-card .card-content .btn:hover {
   background-color: transparent;
-  border: 2px solid rgb(195, 6, 107);
-  color: rgb(195, 6, 107);
+  border: 2px solid #b7950b;
+  color: #b7950b;
   -webkit-transform: translateY(-5px);
       -ms-transform: translateY(-5px);
           transform: translateY(-5px);
@@ -374,7 +391,7 @@
 .seo-section ul li {
   position: relative;
   padding: 20px 30px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(254, 254, 253, 0.9);
   border-radius: 15px;
   -webkit-transition: -webkit-transform 0.3s ease;
   transition: -webkit-transform 0.3s ease;
@@ -409,7 +426,10 @@
 }
 
 .eco-section {
-  background: linear-gradient(135deg, rgba(0, 189, 182, 0.03), rgba(199, 227, 205, 0.02));
+  /* background: linear-gradient(135deg,
+      rgba(map-get($colors-rule, second-color), 0.03),
+      rgba(map-get($colors-rule, third-color), 0.02)); */
+  background-color: rgba(160, 150, 197, 0.2);
 }
 .eco-section .eco-title-container .eco-image {
   display: none;
@@ -417,22 +437,22 @@
   height: 100px;
 }
 .eco-section h2 strong {
-  color: #024d4a;
+  color: #1A1627;
 }
 .eco-section h2 strong::after {
-  background: #024d4a;
+  background: #1A1627;
 }
 .eco-section ul li {
-  border: 1px solid rgba(199, 227, 205, 0.1);
+  border: 1px solid rgba(183, 36, 92, 0.1);
 }
 .eco-section ul li::before {
-  color: #024d4a;
+  color: #1A1627;
 }
 .eco-section ul li strong {
-  color: #024d4a;
+  color: #1A1627;
 }
 .eco-section p strong {
-  color: #024d4a;
+  color: #1A1627;
 }
 
 @-webkit-keyframes rotate-right {
@@ -517,7 +537,10 @@
   }
 }
 .seo-section {
-  background: linear-gradient(135deg, rgba(195, 6, 107, 0.03), rgba(199, 227, 205, 0.02));
+  /* background: linear-gradient(135deg,
+    rgba(map-get($colors-rule, fourth-color), 0.03),
+    rgba(map-get($colors-rule, third-color), 0.02)); */
+  background-color: rgba(196, 189, 219, 0.2);
 }
 .seo-section .seo-title-container {
   position: relative;
@@ -555,22 +578,22 @@
           animation: rotate-left 1s ease-out 0s 1 normal forwards;
 }
 .seo-section h2 strong {
-  color: rgb(195, 6, 107);
+  color: #b7950b;
 }
 .seo-section h2 strong::after {
-  background: rgb(195, 6, 107);
+  background: #b7950b;
 }
 .seo-section ul li {
-  border: 1px solid rgba(195, 6, 107, 0.1);
+  border: 1px solid rgba(183, 149, 11, 0.1);
 }
 .seo-section ul li::before {
-  color: rgb(195, 6, 107);
+  color: #b7950b;
 }
 .seo-section ul li strong {
-  color: rgb(195, 6, 107);
+  color: #b7950b;
 }
 .seo-section p strong {
-  color: rgb(195, 6, 107);
+  color: #b7950b;
 }
 
 @media (min-width: 768px) {
@@ -627,13 +650,13 @@
   }
 }
 .page-container.dark-mode .website-types {
-  background: #024d4a;
+  background: #1A1627;
 }
 .page-container.dark-mode .eco-seo {
-  background: #024d4a;
+  background: #1A1627;
 }
 .page-container.dark-mode .eco-seo .eco-design-section::before, .page-container.dark-mode .eco-seo .eco-design-section::after,
 .page-container.dark-mode .eco-seo .seo-section::before,
 .page-container.dark-mode .eco-seo .seo-section::after {
-  background: rgba(2, 77, 74, 0.8);
+  background: rgba(26, 22, 39, 0.8);
 }

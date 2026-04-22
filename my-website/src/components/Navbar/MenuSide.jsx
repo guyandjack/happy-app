@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import "@styles/CSS/MenuSide.css";
+import "@styles/SCSS/components/MenuSide.scss";
 import { getLanguage } from "@utils/fonction/getLanguage.js";
 import { IoMdCloseCircle } from "react-icons/io";
 

@@ -1,10 +1,27 @@
+/* $colors-rule: (
+    first-color: #024d4a,
+    second-color: #00bdb6,
+    third-color: #c7e3cd,
+    fourth-color: #c3066b,
+    fifth-color: #171717,
+    sixth-color: #ffffff,
+    footer-color: #6080a0,
+    // footer-color: #101010,
+    link-color:#0000ff,
+
+    background-page-color: #fbfbfc,
+    disabled-color: #9ca3af,
+    dark-mode-color: #373737,
+    alert-color: orangered,
+
+); */
 .menu-side {
   display: none;
   padding: 2px;
   position: absolute;
   top: 100%;
   right: 1rem;
-  background-color: rgba(195, 6, 107, 0.5);
+  background-color: rgba(0, 189, 182, 0.7);
   z-index: 100;
   padding: 2rem 1.5rem;
   border-radius: 1.5rem;
@@ -46,7 +63,7 @@
 .menu-side-link {
   display: block;
   position: relative;
-  color: #ffffff;
+  color: #fefefd;
   text-decoration: none;
   cursor: pointer;
   text-align: center;
@@ -60,6 +77,7 @@
   transition: -webkit-transform 0.2s ease;
   transition: transform 0.2s ease;
   transition: transform 0.2s ease, -webkit-transform 0.2s ease;
+  padding: 2px 5px;
 }
 @media screen and (min-width: 1300px) {
   .menu-side-link {
@@ -79,5 +97,5 @@
 .menu-side-list li.active .menu-side-link {
   color: #171717;
   padding: 2px 5px;
-  background-color: #ffffff;
+  background-color: #fefefd;
 }

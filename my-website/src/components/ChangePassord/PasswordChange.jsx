@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import { ThreeDots } from 'react-loader-spinner';
 
 //import des feuilles de style
-import "@styles/CSS/loginform.css";
+import "@styles/SCSS/components/loginform.scss";
 
 import { localOrProd } from '@utils/fonction/testEnvironement';
 

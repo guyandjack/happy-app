@@ -3,7 +3,7 @@ import { localOrProd } from "@utils/fonction/testEnvironement";
 import { getLanguage } from "@utils/fonction/getLanguage.js";
 import { endpointStaticFile } from "@utils/fonction/endpointStaticFile.js";
 
-import "@styles/CSS/ArticleCard.css";
+import "@styles/SCSS/components/ArticleCard.scss";
 
 function ArticleCard({ article }) {
   const [imageUrl, setImageUrl] = useState("");

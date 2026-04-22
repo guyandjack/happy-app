@@ -1,4 +1,4 @@
-@import '../../utils/color-rule/color-rule.scss';
+@use "../../utils/color-rule/color-rule" as *;
 
 @keyframes card-anim {
   0% {
@@ -37,7 +37,7 @@
 .website-types {
   position: relative;
   padding: 80px 20px;
-  background: map-get($colors-rule, background-page-color);
+  background: rgba(map-get($colors-rule, bg-page-shade-light-1),0.2);
 
   &>h2 {
     text-align: center;
@@ -416,9 +416,10 @@
 
 // Specific styles for eco-design section
 .eco-section {
-  background: linear-gradient(135deg,
+  /* background: linear-gradient(135deg,
       rgba(map-get($colors-rule, second-color), 0.03),
-      rgba(map-get($colors-rule, third-color), 0.02));
+      rgba(map-get($colors-rule, third-color), 0.02)); */
+      background-color: rgba(map-get($colors-rule, bg-page-shade-light-3),0.2);
 
   .eco-title-container {
 
@@ -512,9 +513,10 @@
     }
   }
 
-  background: linear-gradient(135deg,
+  /* background: linear-gradient(135deg,
     rgba(map-get($colors-rule, fourth-color), 0.03),
-    rgba(map-get($colors-rule, third-color), 0.02));
+    rgba(map-get($colors-rule, third-color), 0.02)); */
+    background-color: rgba(map-get($colors-rule, bg-page-shade-light-2),0.2);
 
 
 

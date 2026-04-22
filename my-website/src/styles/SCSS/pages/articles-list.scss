@@ -1,7 +1,11 @@
+@use "../../utils/color-rule/color-rule" as *;
+
 .page-container {
     position: relative;
     z-index: 5;
     width: 100%;
+    background-color: rgba(map-get($colors-rule, bg-page-shade-light-1),0.2);
+
 }
 
 .articles-content {

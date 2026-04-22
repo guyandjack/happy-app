@@ -1,13 +1,30 @@
 @charset "UTF-8";
+/* $colors-rule: (
+    first-color: #024d4a,
+    second-color: #00bdb6,
+    third-color: #c7e3cd,
+    fourth-color: #c3066b,
+    fifth-color: #171717,
+    sixth-color: #ffffff,
+    footer-color: #6080a0,
+    // footer-color: #101010,
+    link-color:#0000ff,
+
+    background-page-color: #fbfbfc,
+    disabled-color: #9ca3af,
+    dark-mode-color: #373737,
+    alert-color: orangered,
+
+); */
 /* Page: a-propos (qui-suis-je.css est importé uniquement par page-a-propos.jsx) */
 .page-container {
   --bg: #fbfbfc;
   --panel: rgba(255, 255, 255, 0.9);
   --ink: #171717;
   --muted: rgba(23, 23, 23, 0.7);
-  --brand: #024d4a;
+  --brand: #1A1627;
   --accent: #00bdb6;
-  --highlight: rgb(195, 6, 107);
+  --highlight: #b7950b;
   background: var(--bg);
 }
 .page-container .ref-svg {
@@ -32,48 +49,46 @@
   /* Titres (override des styles génériques) */
 }
 .page-container .h2-title {
-  margin: 0 0 clamp(1.25rem, 2.2vw, 2rem) 0;
+  /* margin: 0 0 clamp(1.25rem, 2.2vw, 2rem) 0;
   font-size: clamp(1.55rem, 2.6vw, 2.3rem);
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--ink);
   position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.7rem;
+    width: 4.5rem;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--highlight), var(--accent));
+  }  */
+  position: relative;
+  font-size: 2rem;
+  color: rgba(26, 22, 39, 0.9);
+  margin-bottom: 100px;
+  text-align: center;
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.page-container .h2-title strong {
+  color: #00bdb6;
 }
 .page-container .h2-title::after {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: -0.7rem;
-  width: 4.5rem;
-  height: 3px;
-  border-radius: 999px;
-  background: -webkit-gradient(linear, left top, right top, from(var(--highlight)), to(var(--accent)));
-  background: linear-gradient(90deg, var(--highlight), var(--accent));
-}
-.page-container .h2-title {
-  /*
-   font-size: 2rem;
-  color: rgba(map-get($colors-rule, fifth-color), 0.9);
-  margin-bottom: 100px;
-  text-align: center;
-  position: relative;
-
-  strong {
-    color: map-get($colors-rule, fourth-color);
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    z-index: 10;
-    top: 0px;
-    left: -10%;
-    width: 1px;
-    height: 100%;
-    background: map-get($colors-rule, fourth-color);
-    border-radius: 2px;
-
-  }*/
+  z-index: 10;
+  top: 0px;
+  left: -10%;
+  width: 1px;
+  height: 100%;
+  background: #00bdb6;
+  border-radius: 2px;
 }
 .page-container {
   /* p,
@@ -91,11 +106,14 @@
 }
 .page-container .hero-container {
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-.page-container .hero-container::after {
-  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 189, 182, 0.35)), to(rgba(199, 227, 205, 0.2)));
-  background: linear-gradient(90deg, rgba(0, 189, 182, 0.35), rgba(199, 227, 205, 0.2));
-  opacity: 0.85;
+  /* &::after {
+    background: linear-gradient(
+      90deg,
+      rgba(map-get($colors-rule, second-color), 0.35),
+      rgba(map-get($colors-rule, third-color), 0.2)
+    );
+    opacity: 0.85;
+  } */
 }
 .page-container .hero-container > img {
   -webkit-filter: saturate(0.95) contrast(1.02);
@@ -116,7 +134,13 @@
   /* Section 1: intro */
 }
 .page-container .about-text {
-  background: radial-gradient(circle at 15% 10%, rgba(0, 189, 182, 0.15), transparent 55%), var(--bg);
+  /* background: radial-gradient(
+      circle at 15% 10%,
+      rgba(map-get($colors-rule, second-color), 0.15),
+      transparent 55%
+    ),
+    var(--bg); */
+  background-color: rgba(160, 150, 197, 0.2);
 }
 .page-container .wrapper-about-text {
   gap: 1rem;
@@ -163,10 +187,14 @@
   /* Section 2: charte */
 }
 .page-container .about-charte {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(199, 227, 205, 0.18)), to(rgba(255, 255, 255, 0)));
-  background: linear-gradient(180deg, rgba(199, 227, 205, 0.18), rgba(255, 255, 255, 0));
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  /*  background: linear-gradient(
+     180deg,
+     rgba(map-get($colors-rule, third-color), 0.18),
+     rgba(255, 255, 255, 0)
+   );
+   border-top: 1px solid rgba(0, 0, 0, 0.05);
+   border-bottom: 1px solid rgba(0, 0, 0, 0.05); */
+  background-color: rgba(196, 189, 219, 0.2);
 }
 .page-container .about-charte-text {
   max-width: 86ch;
@@ -271,7 +299,13 @@
   /* Section 3: process */
 }
 .page-container .about-process {
-  background: radial-gradient(circle at 85% 15%, rgba(2, 77, 74, 0.12), transparent 55%), var(--bg);
+  /* background: radial-gradient(
+      circle at 85% 15%,
+      rgba(map-get($colors-rule, first-color), 0.12),
+      transparent 55%
+    ),
+    var(--bg); */
+  background-color: rgba(231, 229, 241, 0.2);
 }
 .page-container .process-steps {
   display: grid;

@@ -1,6 +1,6 @@
 //collapse component
 
-import "@styles/CSS/SelectList.css";
+import "@styles/SCSS/components/selectList.scss";
 import React, { useState, useRef } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";

@@ -1,4 +1,21 @@
 @charset "UTF-8";
+/* $colors-rule: (
+    first-color: #024d4a,
+    second-color: #00bdb6,
+    third-color: #c7e3cd,
+    fourth-color: #c3066b,
+    fifth-color: #171717,
+    sixth-color: #ffffff,
+    footer-color: #6080a0,
+    // footer-color: #101010,
+    link-color:#0000ff,
+
+    background-page-color: #fbfbfc,
+    disabled-color: #9ca3af,
+    dark-mode-color: #373737,
+    alert-color: orangered,
+
+); */
 /****************************************
 ******** personal reset 
 ****************************************/
@@ -32,7 +49,7 @@
 }
 
 .dark-mode {
-  background-color: #024d4a;
+  background-color: #1A1627;
 }
 
 .hide {
@@ -159,7 +176,7 @@ main {
 }
 
 .hero-container {
-  color: #024d4a;
+  color: #1A1627;
   height: 380px;
   width: 100%;
   text-align: center;
@@ -263,16 +280,16 @@ main {
   }
 }
 .page-container.dark-mode .hero {
-  background-color: rgb(2.6455696203, 101.8544303797, 97.8860759494);
+  background-color: rgb(36.868852459, 31.1967213115, 55.3032786885);
 }
 .page-container.dark-mode .hero .container {
-  background-color: rgb(3.2911392405, 126.7088607595, 121.7721518987);
+  background-color: rgb(47.737704918, 40.393442623, 71.606557377);
 }
 .page-container.dark-mode .hero .container h1 {
-  color: #ffffff;
+  color: #fefefd;
 }
 .page-container.dark-mode .hero .container .hero-subtitle {
-  color: #ffffff;
+  color: #fefefd;
 }
 
 .contact-button-link {
@@ -283,8 +300,8 @@ main {
   max-width: 200px;
   padding: 12px 24px;
   margin-top: 10px;
-  background-color: rgb(195, 6, 107);
-  color: #ffffff;
+  background-color: #F0E100;
+  color: #171717;
   border: 2px solid transparent;
   border-radius: 6px;
   font-weight: 600;
@@ -296,14 +313,13 @@ main {
   transition: all 0.3s ease;
 }
 .contact-button-link:hover {
-  color: rgb(195, 6, 107);
-  border: 2px solid rgb(195, 6, 107);
+  border: 2px solid #F0E100;
   background-color: #fbfbfc;
 }
 
 .faq-section {
   padding: 0px 20px 100px 20px;
-  background: linear-gradient(135deg, rgba(0, 189, 182, 0.1));
+  background: linear-gradient(135deg, rgba(231, 229, 241, 0.8));
   width: 100%;
   margin: 0 auto;
 }
@@ -322,7 +338,7 @@ main {
   font-size: 1.5rem;
 }
 .faq-section .faq-container-title > h2 strong {
-  color: rgb(195, 6, 107);
+  color: #00bdb6;
   font-weight: bolder;
 }
 .faq-section .faq-container-title > h2::after {
@@ -332,7 +348,7 @@ main {
   left: -30px;
   width: 1px;
   height: 100%;
-  background: rgb(195, 6, 107);
+  background: #00bdb6;
   border-radius: 2px;
 }
 .faq-section .faq-container-title .img-faq-personna {
@@ -350,7 +366,7 @@ main {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  background: #ffffff;
+  background: #fefefd;
   border-radius: 15px;
   padding: 20px 30px;
   -webkit-box-shadow: 0 4px 20px rgba(23, 23, 23, 0.05);
@@ -392,7 +408,7 @@ main {
           transform: translateY(-50%) translateX(50px) rotate(180deg);
 }
 .faq-section .faq-grid .faq-item > h3:hover, .faq-section .faq-grid .faq-item > h3.expanded {
-  color: rgb(195, 6, 107);
+  color: #00bdb6;
 }
 .faq-section .faq-grid .faq-item p,
 .faq-section .faq-grid .faq-item ul {
@@ -408,7 +424,7 @@ main {
 }
 .faq-section .faq-grid .faq-item p strong,
 .faq-section .faq-grid .faq-item ul strong {
-  color: #024d4a;
+  color: #1A1627;
   font-weight: 600;
 }
 .faq-section .faq-grid .faq-item ul > li {
@@ -490,16 +506,16 @@ main {
 }
 
 .page-container.dark-mode .faq-section > h2 {
-  color: #ffffff;
+  color: #fefefd;
 }
 .page-container.dark-mode .faq-section > h2 strong {
-  color: rgb(219.7388059701, 6.7611940299, 120.5746268657);
+  color: rgb(255, 239.71875, 10.5);
 }
 .page-container.dark-mode .faq-section > h2::after {
-  background: rgb(219.7388059701, 6.7611940299, 120.5746268657);
+  background: rgb(255, 239.71875, 10.5);
 }
 .page-container.dark-mode .faq-section .faq-grid .faq-intro {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(254, 254, 253, 0.9);
   background: rgb(86.75, 86.75, 86.75);
 }
 .page-container.dark-mode .faq-section .faq-grid .faq-intro strong {
@@ -512,11 +528,11 @@ main {
   color: rgb(0, 214.5, 206.5555555556);
 }
 .page-container.dark-mode .faq-section .faq-grid .faq-item > h3:hover {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(254, 254, 253, 0.9);
 }
 .page-container.dark-mode .faq-section .faq-grid .faq-item p,
 .page-container.dark-mode .faq-section .faq-grid .faq-item ul > li {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(254, 254, 253, 0.9);
 }
 .page-container.dark-mode .faq-section .faq-grid .faq-item p strong,
 .page-container.dark-mode .faq-section .faq-grid .faq-item ul > li strong {

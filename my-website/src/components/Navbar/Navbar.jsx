@@ -16,7 +16,7 @@ import { CiMenuKebab } from "react-icons/ci";
 import logos from "@assetsJSX/logo/logo-v8.svg";
 
 //import du fichier scss
-import "@styles/CSS/navbar.css";
+import "@styles/SCSS/components/navbar.scss";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

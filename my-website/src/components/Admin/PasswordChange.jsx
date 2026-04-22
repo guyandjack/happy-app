@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { ThreeDots } from "react-loader-spinner";
-import "@styles/CSS/dashboard.css";
+import "@styles/SCSS/components/Dashboard.scss";
 import { localOrProd } from "@utils/fonction/testEnvironement";
 
 // Import icons for password visibility

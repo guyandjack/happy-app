@@ -16,7 +16,7 @@ import { localOrProd } from "@utils/fonction/testEnvironement.js";
 import { handleAxiosError } from "@utils/fonction/handleAxiosError";
 
 //feuilles de style
-import "@styles/CSS/Timersession.css";
+import "@styles/SCSS/components/Timersession.scss";
 
 //import des icones
 import { FaUser } from "react-icons/fa";

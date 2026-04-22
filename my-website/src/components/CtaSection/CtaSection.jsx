@@ -8,7 +8,7 @@ import { getPageName } from "@utils/fonction/getPageName.js";
 import { ctaSectionContent } from "@data/ctaSectionContent.js";
 
 //feuille de style
-import "@styles/CSS/ctaSection.css";
+import "@styles/SCSS/components/ctaSection.scss";
 
 function CtaSection() {
   let lang = getLanguage();

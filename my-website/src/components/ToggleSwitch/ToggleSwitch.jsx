@@ -6,7 +6,7 @@ import { IoSunnyOutline } from "react-icons/io5";
 import { IoMoonOutline } from "react-icons/io5";
 
 //import du fichier scss
-import "@styles/CSS/ToggleSwitch.css";
+import "@styles/SCSS/components/ToggleSwitch.scss";
 
 function ToggleSwitch() {
   let initialMode = JSON.parse(localStorage.getItem("darkMode")) || false;

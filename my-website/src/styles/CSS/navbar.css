@@ -1,4 +1,21 @@
 /* Login Form Styles */
+/* $colors-rule: (
+    first-color: #024d4a,
+    second-color: #00bdb6,
+    third-color: #c7e3cd,
+    fourth-color: #c3066b,
+    fifth-color: #171717,
+    sixth-color: #ffffff,
+    footer-color: #6080a0,
+    // footer-color: #101010,
+    link-color:#0000ff,
+
+    background-page-color: #fbfbfc,
+    disabled-color: #9ca3af,
+    dark-mode-color: #373737,
+    alert-color: orangered,
+
+); */
 .navbar {
   position: relative;
   z-index: 1000;
@@ -14,7 +31,7 @@
   bottom: -100px;
   right: 50px;
   padding: 10px 20px;
-  color: #ffffff;
+  color: #fefefd;
   border-radius: 5px;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -25,7 +42,7 @@
   background-color: rgba(255, 69, 0, 0.8);
 }
 .navbar .toast.online {
-  background-color: rgba(0, 189, 182, 0.8);
+  background-color: rgba(0, 212, 255, 0.8);
 }
 .navbar .navbar-brand {
   height: 100%;
@@ -55,7 +72,7 @@
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 50%;
-  background-color: rgba(2, 77, 74, 0.9);
+  background-color: rgba(26, 22, 39, 0.9);
 }
 .navbar .navbar-brand .burger-menu span {
   width: 25px;
@@ -88,7 +105,7 @@
           transform: rotate(-45deg);
 }
 .navbar .navbar-brand .burger-menu:hover span {
-  background: #00bdb6;
+  background: #00d4ff;
 }
 @media screen and (min-width: 992px) {
   .navbar .navbar-brand .burger-menu {
@@ -110,7 +127,7 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  background-color: rgb(2.6455696203, 101.8544303797, 97.8860759494);
+  background-color: rgb(36.868852459, 31.1967213115, 55.3032786885);
   padding: 2rem;
   -webkit-box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
           box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
@@ -128,9 +145,9 @@
 .navbar .navbar-menu a {
   display: block;
   padding: 1rem 0;
-  color: #ffffff;
+  color: #fefefd;
   text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(254, 254, 253, 0.1);
 }
 .navbar .navbar-menu .menu-item-with-submenu {
   /* &:hover {
@@ -154,7 +171,7 @@
   max-height: 0px;
   overflow: hidden;
   padding-left: 1rem;
-  background-color: #024d4a;
+  background-color: #1A1627;
   -webkit-transition: max-height 0.2s ease;
   transition: max-height 0.2s ease;
 }
@@ -255,7 +272,7 @@
             box-shadow: none;
     padding: 0 1em;
     gap: 2rem;
-    background-color: rgba(2, 77, 74, 0.9);
+    background-color: rgba(26, 22, 39, 0.9);
     border-radius: 1.5rem;
   }
   .navbar .navbar-menu li {
@@ -292,13 +309,13 @@
     transition: height 0.2s linear;
   }
   .navbar .navbar-menu > li > a:hover::after, .navbar .navbar-menu > li > button:hover::after {
-    background: rgb(195, 6, 107);
+    background: #F96900;
     height: 8px;
     -webkit-transition: height 0.2s linear;
     transition: height 0.2s linear;
   }
   .navbar .navbar-menu > li > a.active::before, .navbar .navbar-menu > li > button.active::before {
-    background: #00bdb6;
+    background: #00d4ff;
     height: 100%;
   }
   .navbar .navbar-menu .menu-item-with-submenu {
@@ -324,7 +341,7 @@
     left: 0;
     height: auto;
     min-width: 200px;
-    background: rgba(0.9670886076, 37.2329113924, 35.782278481, 0.9);
+    background-color: #1a1627;
     border-radius: 1.5rem;
     padding: 0.5rem 0;
     opacity: 0;
@@ -366,7 +383,7 @@
     height: 0px;
     bottom: 60%;
     left: 0px;
-    background-color: rgb(195, 6, 107);
+    background-color: #F96900;
     -webkit-transition: height 0.2s linear;
     transition: height 0.2s linear;
   }
@@ -378,19 +395,19 @@
     height: 8px;
     bottom: 60%;
     left: 0px;
-    background-color: #00bdb6;
+    background-color: #00d4ff;
     opacity: 0;
   }
   .navbar .navbar-menu .language-switcher {
     margin-top: 0;
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 1px solid rgba(254, 254, 253, 0.2);
     padding-left: 2rem;
   }
   .navbar .navbar-menu .icon-kebab {
     display: block;
     height: 30px;
     width: 30px;
-    color: #ffffff;
+    color: #fefefd;
     cursor: pointer;
   }
 }
