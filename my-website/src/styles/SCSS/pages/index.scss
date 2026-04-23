@@ -44,7 +44,7 @@
 // Hero section - Mobile first
 .hero-index {
 
- // gap: 40px;
+  // gap: 40px;
   position: relative;
   z-index: 3;
   width: 100%;
@@ -142,8 +142,8 @@
     /* background: linear-gradient(120deg,
         map-get($colors-rule, second-color) 0%,
         darken(map-get($colors-rule, second-color), 8%) 100%); */
-    background-color: map-get($colors-rule, cta-color);
-    border: 1px solid rgba(map-get($colors-rule, sixth-color), 0.45);
+    background: map-get($colors-rule, link-color);
+    //border: 1px solid rgba(map-get($colors-rule, sixth-color), 0.45);
     border-radius: 14px;
     cursor: pointer;
     font-size: clamp(0.9rem, 3.2vw, 1.05rem);
@@ -207,7 +207,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: map-get($colors-rule, fifth-color);
+    background: map-get($colors-rule, fifth-color);
     z-index: -2;
   }
 
@@ -258,7 +258,8 @@
     }
 
     .container {
-      flex-direction: row;
+      width:50%;
+      //flex-direction: row;
 
     }
 
@@ -269,11 +270,11 @@
       min-width: 245px;
       padding: 13px 22px;
       font-size: 1.08rem;
-      border: 1px solid rgba(map-get($colors-rule, sixth-color), 0.45);
+      //border: 1px solid rgba(map-get($colors-rule, sixth-color), 0.45);
 
 
       &:hover {
-        transform: translateY(-4px);
+        transform: translateY(-2px);
       }
 
 
@@ -287,7 +288,7 @@
   .hero-index {
     flex-direction: row;
     gap: 1rem;
-    
+
 
     .hero-index-title-h3 {
       font-size: 1.7rem;
@@ -320,7 +321,8 @@
 
 
 // Services section - Mobile first
-.services,.creations {
+.services,
+.creations {
   width: 100%;
   padding: 120px 15px;
   /* background: linear-gradient(135deg,
@@ -328,7 +330,7 @@
       rgba(map-get($colors-rule, footer-color), 0.05) 20%,
       rgba(map-get($colors-rule, second-color), 0.05) 80%,
       rgba(map-get($colors-rule, second-color), 0.05) 100%); */
-      background-color: rgba(map-get($colors-rule, bg-page-shade-light-1),0.2);
+  background: map-get($colors-rule, bg-page-shade-light-4);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -370,7 +372,7 @@
       rgba(map-get($colors-rule, first-color), 0.02) 0%,
       rgba(map-get($colors-rule, background-page-color), 0.05) 50%,
       rgba(map-get($colors-rule, second-color), 0.02) 100%); */
-      background-color: rgba(map-get($colors-rule, bg-page-shade-light-3),0.2);
+  background: map-get($colors-rule, bg-page-shade-light-4);
 
   h2 {
     font-size: 2rem;
@@ -403,7 +405,7 @@
     width: 100%;
     max-width: 500px;
     margin: 40px auto;
-    background: map-get($colors-rule, sixth-color);
+    background: rgba(map-get($colors-rule, sixth-color), 0.9);
     border-radius: 20px;
     box-shadow:
       0 4px 6px rgba(0, 0, 0, 0.05),
@@ -532,6 +534,10 @@
     padding: 120px 20px;
   }
 
+  .creations h2{
+    margin-bottom: 120px;
+  }
+
   .services h3,
   .values h3 {
     margin-bottom: 120px;
@@ -553,6 +559,21 @@
 
 }
 
+@media screen and (min-width: 1300px) {
+
+  .values {
+   
+    .value-card:nth-child(even){
+      margin: 60px 0px 60px 100px;
+    }
+
+    .value-card:nth-child(odd){
+      margin: 60px 100px 60px 0px;
+    }
+   
+  }
+}
+
 
 
 // Why Green Click section - Mobile first
@@ -565,18 +586,18 @@
       rgba(map-get($colors-rule, background-page-color), 0.05) 50%,
       rgba(map-get($colors-rule, second-color), 0.03) 100%); */
 
-background-color: rgba(map-get($colors-rule, bg-page-shade-light-2),0.2);
+  background: map-get($colors-rule, brand-gradient-primary);
 
 
   .why-choose {
     width: 95%;
-    max-width: 1200px;
+    max-width: 1300px;
 
 
     h2 {
       font-size: 2rem;
       width: fit-content;
-      color: map-get($colors-rule, first-color);
+      color: map-get($colors-rule, sixth-color);
       margin: 40px 0;
       text-align: center;
       position: relative;
@@ -622,6 +643,9 @@ background-color: rgba(map-get($colors-rule, bg-page-shade-light-2),0.2);
       color: map-get($colors-rule, fifth-color);
       margin-bottom: 25px;
       padding: 0 10px;
+      //border: 2px solid blue;
+      background: rgba(map-get($colors-rule, sixth-color), 0.9);
+      border-radius: 1rem;
 
       strong {
         color: darken(map-get($colors-rule, second-color), 10%);
@@ -642,13 +666,13 @@ background-color: rgba(map-get($colors-rule, bg-page-shade-light-2),0.2);
           width: 100%;
           height: 1px;
           bottom: 0px;
-          background-color: map-get($colors-rule, first-color);
+          background: map-get($colors-rule, first-color);
           transition: height 0.2s linear;
         }
 
 
         &:hover::before {
-          background-color: map-get($colors-rule, link-color);
+          background: map-get($colors-rule, link-color);
           opacity: 0.9;
           height: 6px;
           bottom: 60%;
@@ -729,20 +753,20 @@ background-color: rgba(map-get($colors-rule, bg-page-shade-light-2),0.2);
       }
 
       #why-choose-card-1 {
-        background-color: map-get($colors-rule, first-color);
+        background: map-get($colors-rule, first-color);
 
       }
 
       #why-choose-card-2 {
-        background-color: map-get($colors-rule, second-color);
+        background: map-get($colors-rule, second-color);
       }
 
       #why-choose-card-3 {
-        background-color: map-get($colors-rule, third-color);
+        background: map-get($colors-rule, third-color);
       }
 
       #why-choose-card-4 {
-        background-color: map-get($colors-rule, fourth-color);
+        background: map-get($colors-rule, fourth-color);
       }
 
 
@@ -754,7 +778,8 @@ background-color: rgba(map-get($colors-rule, bg-page-shade-light-2),0.2);
         top: 100px;
         right: 0%;
         width: 60%;
-        background-color: rgba(map-get($colors-rule, sixth-color), 0.5);
+        border-bottom-right-radius: 0;
+
 
 
         &::after {
@@ -763,7 +788,7 @@ background-color: rgba(map-get($colors-rule, bg-page-shade-light-2),0.2);
           right: 0;
           bottom: 0;
           width: 50px;
-          height: 1px;
+          height: 8px;
 
 
         }
@@ -773,7 +798,7 @@ background-color: rgba(map-get($colors-rule, bg-page-shade-light-2),0.2);
           position: absolute;
           right: 0;
           bottom: 0;
-          width: 1px;
+          width: 8px;
           height: 50px;
 
         }
@@ -783,7 +808,7 @@ background-color: rgba(map-get($colors-rule, bg-page-shade-light-2),0.2);
 
         &::after,
         &::before {
-          background-color: map-get($colors-rule, first-color);
+          background: map-get($colors-rule, first-color);
         }
       }
 
@@ -791,7 +816,7 @@ background-color: rgba(map-get($colors-rule, bg-page-shade-light-2),0.2);
 
         &::after,
         &::before {
-          background-color: map-get($colors-rule, second-color);
+          background: map-get($colors-rule, second-color);
         }
       }
 
@@ -799,7 +824,7 @@ background-color: rgba(map-get($colors-rule, bg-page-shade-light-2),0.2);
 
         &::after,
         &::before {
-          background-color: map-get($colors-rule, third-color);
+          background: map-get($colors-rule, third-color);
         }
       }
 
@@ -807,7 +832,7 @@ background-color: rgba(map-get($colors-rule, bg-page-shade-light-2),0.2);
 
         &::after,
         &::before {
-          background-color: map-get($colors-rule, fourth-color);
+          background: map-get($colors-rule, fourth-color);
         }
       }
 

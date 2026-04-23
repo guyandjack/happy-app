@@ -16,6 +16,41 @@
     alert-color: orangered,
 
 ); */
+/* $colors-rule: (
+    //couleurs de base
+    first-color: #1A1627,
+    second-color:#00d4ff,
+    third-color:  #00bdb6,
+    fourth-color: #b7950b,
+    fifth-color: #171717,
+    sixth-color: #fefefd,
+    footer-color: #1A1627,
+    nav-bar-color:#141627,
+    link-color:#F96900,
+
+
+    //couleur d' interaction / alerte
+    disabled-color: #9ca3af,
+    alert-color: orangered,
+    dark-mode-color: #373737,
+
+    //couleur d'arriere plans simple
+    background-page-color: #fbfbfc,
+    bg-page-shade-light-1:#3d335b,
+    bg-page-shade-light-2:#574983,
+    bg-page-shade-light-3:#7e6fae, 
+
+    //gradient d'arriere plan clair
+    bg-page-gradient-light-1: linear-gradient(),
+    bg-page-gradient-light-2: linear-gradient(),
+    bg-page-gradient-light-3: linear-gradient(), 
+
+    //gradient d'arriere plan foncé
+    bg-page-gradient-dark-1: linear-gradient(),
+    bg-page-gradient-dark-2: linear-gradient(),
+    bg-page-gradient-dark-3: linear-gradient(), 
+
+); */
 @-webkit-keyframes card-anim {
   0% {
     -webkit-transform: translate(0px, 0px) rotateZ(0deg);
@@ -69,7 +104,7 @@
 .website-types {
   position: relative;
   padding: 80px 20px;
-  background: rgba(231, 229, 241, 0.2);
+  background: #f2f0fe;
 }
 .website-types > h2 {
   text-align: center;
@@ -97,7 +132,7 @@
           transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: #00bdb6;
+  background: #00d4ff;
   border-radius: 2px;
 }
 .website-types > h2 strong {
@@ -123,6 +158,7 @@
   padding: 50px 20px;
 }
 .website-types .website-cards .website-card-container {
+  background-color: rgba(254, 254, 253, 0.9);
   position: relative;
   width: 100%;
   max-width: 600px;
@@ -276,7 +312,7 @@
   }
 }
 .website-types .website-cards .website-card-container .website-card .card-content p strong {
-  color: rgb(0, 127.8, 123.0666666667);
+  color: rgb(0, 161.12, 193.8);
   font-weight: 600;
 }
 .website-types .website-cards .website-card-container .website-card .card-content .btn {
@@ -286,8 +322,8 @@
   max-width: 300px;
   padding: 12px 30px;
   border-radius: 30px;
-  background: #b7950b;
-  border: 2px solid transparent;
+  background: #7c5cfc;
+  border: 2px solid #fefefd;
   color: #fefefd;
   text-decoration: none;
   text-align: center;
@@ -298,12 +334,10 @@
   transition: box-shadow 0.3s ease, background-color 0.3s ease, -webkit-box-shadow 0.3s ease;
 }
 .website-types .website-cards .website-card-container .website-card .card-content .btn:hover {
-  background-color: transparent;
-  border: 2px solid #b7950b;
-  color: #b7950b;
-  -webkit-transform: translateY(-5px);
-      -ms-transform: translateY(-5px);
-          transform: translateY(-5px);
+  background-color: #957fee;
+  -webkit-transform: translateY(-2px);
+      -ms-transform: translateY(-2px);
+          transform: translateY(-2px);
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
@@ -334,7 +368,7 @@
   position: relative;
   width: 100%;
   padding: 80px 20px;
-  color: #171717;
+  color: #fefefd;
 }
 .eco-section .content-wrapper,
 .seo-section .content-wrapper {
@@ -361,7 +395,7 @@
   width: fit-content;
   font-size: 1.8rem;
   position: relative;
-  color: #171717;
+  color: #fefefd;
 }
 .eco-section h2 strong,
 .seo-section h2 strong {
@@ -376,6 +410,7 @@
   width: 100%;
   height: 2px;
   opacity: 0.3;
+  color: rgb(0, 169.6, 204);
 }
 .eco-section ul,
 .seo-section ul {
@@ -385,13 +420,12 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
-  color: #171717;
 }
 .eco-section ul li,
 .seo-section ul li {
   position: relative;
   padding: 20px 30px;
-  background: rgba(254, 254, 253, 0.9);
+  background: rgba(23, 23, 23, 0.5);
   border-radius: 15px;
   -webkit-transition: -webkit-transform 0.3s ease;
   transition: -webkit-transform 0.3s ease;
@@ -406,12 +440,14 @@
   position: absolute;
   left: 10px;
   font-weight: bold;
+  color: rgb(0, 169.6, 204);
 }
 .eco-section ul li strong,
 .seo-section ul li strong {
   display: block;
   margin-bottom: 8px;
   font-size: 1.1rem;
+  color: rgb(0, 169.6, 204);
 }
 .eco-section p,
 .seo-section p {
@@ -429,7 +465,7 @@
   /* background: linear-gradient(135deg,
       rgba(map-get($colors-rule, second-color), 0.03),
       rgba(map-get($colors-rule, third-color), 0.02)); */
-  background-color: rgba(160, 150, 197, 0.2);
+  background-color: #574983;
 }
 .eco-section .eco-title-container .eco-image {
   display: none;
@@ -437,22 +473,22 @@
   height: 100px;
 }
 .eco-section h2 strong {
-  color: #1A1627;
+  color: #00d4ff;
 }
 .eco-section h2 strong::after {
-  background: #1A1627;
+  background: #00d4ff;
 }
 .eco-section ul li {
-  border: 1px solid rgba(183, 36, 92, 0.1);
+  border: 1px solid rgba(26, 22, 39, 0.1);
 }
 .eco-section ul li::before {
-  color: #1A1627;
+  color: rgb(0, 169.6, 204);
 }
 .eco-section ul li strong {
-  color: #1A1627;
+  color: rgb(0, 169.6, 204);
 }
 .eco-section p strong {
-  color: #1A1627;
+  color: rgb(0, 169.6, 204);
 }
 
 @-webkit-keyframes rotate-right {
@@ -540,7 +576,7 @@
   /* background: linear-gradient(135deg,
     rgba(map-get($colors-rule, fourth-color), 0.03),
     rgba(map-get($colors-rule, third-color), 0.02)); */
-  background-color: rgba(196, 189, 219, 0.2);
+  background-color: #574983;
 }
 .seo-section .seo-title-container {
   position: relative;
@@ -578,22 +614,22 @@
           animation: rotate-left 1s ease-out 0s 1 normal forwards;
 }
 .seo-section h2 strong {
-  color: #b7950b;
+  color: #00d4ff;
 }
 .seo-section h2 strong::after {
-  background: #b7950b;
+  background: #00d4ff;
 }
 .seo-section ul li {
-  border: 1px solid rgba(183, 149, 11, 0.1);
+  border: 1px solid rgba(26, 22, 39, 0.1);
 }
 .seo-section ul li::before {
-  color: #b7950b;
+  color: rgb(0, 169.6, 204);
 }
 .seo-section ul li strong {
-  color: #b7950b;
+  color: rgb(0, 169.6, 204);
 }
 .seo-section p strong {
-  color: #b7950b;
+  color: rgb(0, 169.6, 204);
 }
 
 @media (min-width: 768px) {
@@ -650,10 +686,10 @@
   }
 }
 .page-container.dark-mode .website-types {
-  background: #1A1627;
+  background: #1a1627;
 }
 .page-container.dark-mode .eco-seo {
-  background: #1A1627;
+  background: #1a1627;
 }
 .page-container.dark-mode .eco-seo .eco-design-section::before, .page-container.dark-mode .eco-seo .eco-design-section::after,
 .page-container.dark-mode .eco-seo .seo-section::before,

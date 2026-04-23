@@ -1,6 +1,7 @@
 //import des hook
 import React, { useEffect, useRef, useState } from "react";
 
+
 //import des composants enfants
 //import { ToggleSwitch } from "@components/ToggleSwitch/ToggleSwitch.jsx";
 import { TimerSession } from "@components/TimerSession/timerSession.jsx";
@@ -13,10 +14,13 @@ import flagFR from "@assetsJSX/icons/flag-fr.png";
 import { CiMenuKebab } from "react-icons/ci";
 
 //import des images
-import logos from "@assetsJSX/logo/logo-v8.svg";
+import logos from "@assetsJSX/logo/helveclick.png";
 
 //import du fichier scss
 import "@styles/SCSS/components/navbar.scss";
+
+//liste de mot clef
+const keywordsUrl = ["404.html", "contact.html", "articles-list"];
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,6 +28,7 @@ function Navbar() {
   const [currentLang, setCurrentLang] = useState("fr");
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [toast, setToast] = useState({ show: false, message: "", type: "" });
+  const [iconMenuSide, setIconMenuSide] = useState(true);
 
   const navbarRef = useRef(null);
   const menuItemCollapseRef = useRef(null);
@@ -142,14 +147,23 @@ function Navbar() {
     });
     return () => {
       document.removeEventListener("scroll", () => {
-        
         handleUserScroll(true);
-      })
+      });
       document.removeEventListener("scrollend", () => {
-        
         handleUserScroll(false);
-      })
-    }
+      });
+    };
+  }, []);
+
+  //permet de cacher l' icon du menu side en fonction de la page visite
+  useEffect(() => {
+    if (keywordsUrl.length === 0) return;
+
+    const currentPage = window.location.href;
+
+    const isMatch = keywordsUrl.some((word) => currentPage.includes(word));
+
+    setIconMenuSide(!isMatch);
   }, []);
 
   const toggleMenu = () => {
@@ -255,7 +269,7 @@ function Navbar() {
     ) {
       // Recherche de l'index du chemin actuel
       const currentIndex = menuItems[currentLang][2]["submenu"].findIndex(
-        (item) => item.path === currentPath
+        (item) => item.path === currentPath,
       );
 
       // Si le chemin actuel existe dans le menu, on fait la redirection
@@ -305,20 +319,17 @@ function Navbar() {
       console.log("le composant menu side n' est pas detecté...");
     }
     menuSideRef.current.classList.toggle("show-menu-side");
-  }
+  };
 
   const handleUserScroll = (scroll) => {
     if (!navbarRef.current) return;
     if (scroll) {
-      
       navbarRef.current.classList.add("hide-navbar");
-      return
+      return;
     }
-    
+
     navbarRef.current.classList.remove("hide-navbar");
-  }
-
-
+  };
 
   return (
     <div className="flex-column-center-center navbar-wrapper">
@@ -410,13 +421,15 @@ function Navbar() {
             ) : null,
           )}
 
-          <li
-            onClick={() => {
-              handleClickMenuSide();
-            }}
-          >
-            <CiMenuKebab className="icon-kebab" />
-          </li>
+          {iconMenuSide ? (
+            <li
+              onClick={() => {
+                handleClickMenuSide();
+              }}
+            >
+              <CiMenuKebab className="icon-kebab" />
+            </li>
+          ) : null}
 
           <li className="language-switcher">
             {currentLang === "en" && (
@@ -444,15 +457,12 @@ function Navbar() {
           </li>
         </ul>
       </nav>
-      
+
       <MenuSide
-        
         classContainer=".page-container"
-          titleType=".item-menu-side"
-          reference= {menuSideRef}
-        
-        />
-      
+        titleType=".item-menu-side"
+        reference={menuSideRef}
+      />
     </div>
   );
 }

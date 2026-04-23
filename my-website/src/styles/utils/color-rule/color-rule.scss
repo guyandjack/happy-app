@@ -18,26 +18,169 @@
     alert-color: orangered,
 
 ); */
-$colors-rule: (
-    first-color: /* #024d4a, #27213C,*/#1A1627,
-    second-color:/* #00bdb6 , */#00d4ff,
+/* $colors-rule: (
+    //couleurs de base
+    first-color: #1A1627,
+    second-color:#00d4ff,
     third-color:  #00bdb6,
-    fourth-color: /* #f7dc69,#f4d03f,#f1c40f,#d4ac0d, ,#F0E100,#a096c5,*/#b7950b,
+    fourth-color: #b7950b,
     fifth-color: #171717,
     sixth-color: #fefefd,
-    footer-color: #1a1627,
-    cta-color:#F96900,
+    footer-color: #1A1627,
+    nav-bar-color:#141627,
     link-color:#F96900,
     
      
-
-    background-page-color: #fbfbfc,
-    bg-page-primary:#27213c ,
-    bg-page-shade-light-1:#e7e5f1,
-    bg-page-shade-light-2:#c4bddb,
-    bg-page-shade-light-3:#a096c5,
+    //couleur d' interaction / alerte
     disabled-color: #9ca3af,
-    dark-mode-color: #373737,
     alert-color: orangered,
+    dark-mode-color: #373737,
 
+    //couleur d'arriere plans simple
+    background-page-color: #fbfbfc,
+    bg-page-shade-light-1:#3d335b,
+    bg-page-shade-light-2:#574983,
+    bg-page-shade-light-3:#7e6fae, 
+
+    //gradient d'arriere plan clair
+    bg-page-gradient-light-1: linear-gradient(),
+    bg-page-gradient-light-2: linear-gradient(),
+    bg-page-gradient-light-3: linear-gradient(), 
+
+    //gradient d'arriere plan foncé
+    bg-page-gradient-dark-1: linear-gradient(),
+    bg-page-gradient-dark-2: linear-gradient(),
+    bg-page-gradient-dark-3: linear-gradient(), 
+
+); */
+
+$colors-rule: (
+    // =========================
+    // 1) Couleurs de base
+    // =========================
+    first-color: #1a1627,
+    // violet nuit principal
+    second-color: #00d4ff,
+    // cyan accent
+    third-color: #00bdb6,
+    // teal accent secondaire
+    fourth-color: #b7950b,
+    // gold accent
+    fifth-color: #171717,
+    // noir profond
+    sixth-color: #fefefd,
+    // blanc cassé
+
+    footer-color: #1a1627,
+    nav-bar-color: #141627,
+    link-color: #7c5cfc,
+    link-color-hover:#957fee,
+
+    // =========================
+    // 2) Variantes de first-color
+    // =========================
+    first-color-900: #0f0c18,
+    // très foncé
+    first-color-800: #141120,
+    first-color-700: #1a1627,
+    // base
+    first-color-600: #221d33,
+    first-color-500: #2c2642,
+    first-color-400: #3d335b,
+    first-color-300: #574983,
+    first-color-200: #7e6fae,
+    first-color-100: #b7aed8,
+    // clair
+
+    // Variantes bleu nuit / indigo proches
+    first-color-indigo-700: #1c1f3a,
+    first-color-indigo-600: #24284a,
+    first-color-indigo-500: #2e3561,
+    first-color-blue-700: #16213e,
+    first-color-blue-600: #1d2b53,
+    first-color-blue-500: #25356b,
+
+    // =========================
+    // 3) Couleurs d’interaction / alerte
+    // =========================
+    disabled-color: #9ca3af,
+    alert-color: #ff5a36,
+    dark-mode-color: #373737,
+    success-color: #14b87a,
+    warning-color: #f4b740,
+    info-color: #3ba8ff,
+
+    // =========================
+    // 4) Arrière-plans simples
+    // =========================
+    background-page-color: #fbfbfc,
+    background-page-color-soft: #f4f5f8,
+    background-page-color-alt: #eef1f7,
+
+    bg-page-shade-light-1: #3d335b,
+    bg-page-shade-light-2: #574983,
+    bg-page-shade-light-3: #7e6fae,
+    bg-page-shade-light-4: #f2f0fe,
+
+    bg-page-shade-dark-1: #141120,
+    bg-page-shade-dark-2: #1a1627,
+    bg-page-shade-dark-3: #24203a,
+
+    // =========================
+    // 5) Gradients clairs
+    // =========================
+    bg-page-gradient-light-1: linear-gradient(135deg,
+        #f7f8fc 0%,
+        #ece9f6 45%,
+        #d8d0ee 100%),
+
+    bg-page-gradient-light-2: linear-gradient(135deg,
+        #f8fbff 0%,
+        #e9f7fb 40%,
+        #d6f4ff 100%),
+
+    bg-page-gradient-light-3: linear-gradient(135deg,
+        #f6f3ff 0%,
+        #e7def8 35%,
+        #cfc2ee 100%),
+
+    // =========================
+    // 6) Gradients foncés
+    // =========================
+    bg-page-gradient-dark-1: linear-gradient(135deg,
+        #0f0c18 0%,
+        #1a1627 45%,
+        #2c2642 100%),
+
+    bg-page-gradient-dark-2: linear-gradient(135deg,
+        #141627 0%,
+        #1c1f3a 40%,
+        #25356b 100%),
+
+    bg-page-gradient-dark-3: linear-gradient(135deg,
+        #1a1627 0%,
+        #24284a 35%,
+        #00bdb6 100%),
+
+    // =========================
+    // 7) Gradients premium / brand
+    // =========================
+    brand-gradient-primary: linear-gradient(135deg,
+        #1a1627 0%,
+        #3d335b 25%,
+        #7e6fae 100%),
+
+    brand-gradient-secondary: linear-gradient(135deg,
+        #1a1627 0%,
+        #16213e 50%,
+        #00d4ff 100%),
+
+    brand-gradient-accent: linear-gradient(135deg,
+        #00bdb6 0%,
+        #00d4ff 100%),
+
+    brand-gradient-premium: linear-gradient(135deg,
+        #1a1627 0%,
+        #3d335b 50%,
+        #b7950b 100%)
 );

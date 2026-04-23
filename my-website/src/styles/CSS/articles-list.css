@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* $colors-rule: (
     first-color: #024d4a,
     second-color: #00bdb6,
@@ -15,11 +16,46 @@
     alert-color: orangered,
 
 ); */
+/* $colors-rule: (
+    //couleurs de base
+    first-color: #1A1627,
+    second-color:#00d4ff,
+    third-color:  #00bdb6,
+    fourth-color: #b7950b,
+    fifth-color: #171717,
+    sixth-color: #fefefd,
+    footer-color: #1A1627,
+    nav-bar-color:#141627,
+    link-color:#F96900,
+
+
+    //couleur d' interaction / alerte
+    disabled-color: #9ca3af,
+    alert-color: orangered,
+    dark-mode-color: #373737,
+
+    //couleur d'arriere plans simple
+    background-page-color: #fbfbfc,
+    bg-page-shade-light-1:#3d335b,
+    bg-page-shade-light-2:#574983,
+    bg-page-shade-light-3:#7e6fae, 
+
+    //gradient d'arriere plan clair
+    bg-page-gradient-light-1: linear-gradient(),
+    bg-page-gradient-light-2: linear-gradient(),
+    bg-page-gradient-light-3: linear-gradient(), 
+
+    //gradient d'arriere plan foncé
+    bg-page-gradient-dark-1: linear-gradient(),
+    bg-page-gradient-dark-2: linear-gradient(),
+    bg-page-gradient-dark-3: linear-gradient(), 
+
+); */
 .page-container {
   position: relative;
   z-index: 5;
   width: 100%;
-  background-color: rgba(231, 229, 241, 0.2);
+  background-color: #f2f0fe;
 }
 
 .articles-content {

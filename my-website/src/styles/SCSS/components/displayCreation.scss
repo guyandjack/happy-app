@@ -89,14 +89,15 @@
         gap:1rem;
         cursor: pointer;
         padding: 0.5rem 0.8rem;
-        border: 2px solid rgba(map-get($colors-rule, sixth-color),1);
+        //border: 2px solid rgba(map-get($colors-rule, sixth-color),1);
         background-color: rgba(map-get($colors-rule, link-color),0.9);
         border-radius: 8px;
         transition: all 0.25s linear;
-
+        
         &:hover{
+          //color: map-get($colors-rule, first-color);
           //border: 2px solid rgba(map-get($colors-rule, first-color), 0.9);
-            background-color: rgba(map-get($colors-rule, link-color), 0.7);
+            background-color: rgba(map-get($colors-rule, link-color-hover), 1);
             transform: translateY(-2px);
         }
         
@@ -106,10 +107,10 @@
             transition: all 0.25s linear;
         }
         
-        &:hover .card-icon-arrow{
-            //fill: map-get($colors-rule, first-color);
+        /* &:hover .card-icon-arrow{
+            fill: map-get($colors-rule, first-color);
             transition: all 0.25s linear;
-        }
+        } */
     }
 
     .card-icon-arrow{

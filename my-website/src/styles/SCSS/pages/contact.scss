@@ -4,6 +4,8 @@
 // Contact content section
 .contact-content {
 
+    background-color: map-get($colors-rule, bg-page-shade-light-4);
+
     .contact-subtitle {
 
         font-size: 1.8rem;

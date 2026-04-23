@@ -18,30 +18,30 @@ const MenuSide = ({ classContainer, titleType, reference}) => {
     title = "On this page";
   }
 
-  const handlerSize = () => {
+   const handlerSize = () => {
     console.log("dépendance useEffect menu side modifiée");
     setIsMenuSide((actualValue) => {
       console.log("NOUVELLE VALEUR de ismenuside: ", !actualValue);
       return !actualValue;
     });
-  };
+  }; 
 
   //Creation du menu side
   useEffect(() => {
     //controle des erreurs  montage du composant
     //  si la taille de l' ecran est insufisante on ne cre pas le menuside
     if (window.innerWidth < 1300) {
-      console.log("Error: 3 --- pas de menu Side:  écran trop petit...");
+      //console.log("Error: 3 --- pas de menu Side:  écran trop petit...");
       return;
     }
 
     // si le menu side est déjà créé on ne crée pas un nouveau menu side
     if (isMenuSideCreated) {
-      console.log("Error: 4 --- menu side déjà existant.");
+      //console.log("Error: 4 --- menu side déjà existant.");
       return;
     }
 
-    console.log("useEffect menu side lancé");
+    //console.log("useEffect menu side lancé");
 
     // Find all H2 headings in the page
     const h2TitleContainer = document.querySelector(classContainer);
@@ -94,7 +94,7 @@ const MenuSide = ({ classContainer, titleType, reference}) => {
   }, [isMenuSide]);
 
   //Declenche la construction du menu side lorsque la taille de l'ecran change
-  /* useEffect(() => {
+   useEffect(() => {
     window.addEventListener("resize", () => {
       handlerSize();
     });
@@ -103,7 +103,9 @@ const MenuSide = ({ classContainer, titleType, reference}) => {
         handlerSize();
       });
     };
-  }, []); */
+   }, []); 
+  
+  
 
   const scrollToHeading = (id) => {
     const element = document.getElementById(id);
@@ -112,7 +114,7 @@ const MenuSide = ({ classContainer, titleType, reference}) => {
       // Scroll smoothly to the heading
       window.scrollTo({
         behavior: "smooth",
-        top: rect.top + window.scrollY - 200,
+        top: rect.top + window.scrollY - 90 ,
         left: rect.left + window.scrollX,
       });
     }
@@ -123,10 +125,13 @@ const MenuSide = ({ classContainer, titleType, reference}) => {
     return null;
   }
 
+  //permet de cacher/ferner le menu side
   const handleCloseMenu = () => {
     if (!reference.current) return;
     reference.current.classList.remove("show-menu-side");
   }
+
+  
 
   return (
     <div ref={reference} className="menu-side">

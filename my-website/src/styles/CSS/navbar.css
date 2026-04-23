@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Login Form Styles */
 /* $colors-rule: (
     first-color: #024d4a,
@@ -14,6 +15,41 @@
     disabled-color: #9ca3af,
     dark-mode-color: #373737,
     alert-color: orangered,
+
+); */
+/* $colors-rule: (
+    //couleurs de base
+    first-color: #1A1627,
+    second-color:#00d4ff,
+    third-color:  #00bdb6,
+    fourth-color: #b7950b,
+    fifth-color: #171717,
+    sixth-color: #fefefd,
+    footer-color: #1A1627,
+    nav-bar-color:#141627,
+    link-color:#F96900,
+
+
+    //couleur d' interaction / alerte
+    disabled-color: #9ca3af,
+    alert-color: orangered,
+    dark-mode-color: #373737,
+
+    //couleur d'arriere plans simple
+    background-page-color: #fbfbfc,
+    bg-page-shade-light-1:#3d335b,
+    bg-page-shade-light-2:#574983,
+    bg-page-shade-light-3:#7e6fae, 
+
+    //gradient d'arriere plan clair
+    bg-page-gradient-light-1: linear-gradient(),
+    bg-page-gradient-light-2: linear-gradient(),
+    bg-page-gradient-light-3: linear-gradient(), 
+
+    //gradient d'arriere plan foncé
+    bg-page-gradient-dark-1: linear-gradient(),
+    bg-page-gradient-dark-2: linear-gradient(),
+    bg-page-gradient-dark-3: linear-gradient(), 
 
 ); */
 .navbar {
@@ -39,7 +75,7 @@
   transition: bottom 0.3s ease;
 }
 .navbar .toast.offline {
-  background-color: rgba(255, 69, 0, 0.8);
+  background-color: rgba(255, 90, 54, 0.8);
 }
 .navbar .toast.online {
   background-color: rgba(0, 212, 255, 0.8);
@@ -171,7 +207,7 @@
   max-height: 0px;
   overflow: hidden;
   padding-left: 1rem;
-  background-color: #1A1627;
+  background-color: #1a1627;
   -webkit-transition: max-height 0.2s ease;
   transition: max-height 0.2s ease;
 }
@@ -248,8 +284,7 @@
         -ms-flex-align: center;
             align-items: center;
   }
-  .navbar .navbar-brand .burger-menu,
-  .navbar .navbar-brand .logo-image {
+  .navbar .navbar-brand .burger-menu {
     display: none;
   }
   .navbar .navbar-menu {
@@ -309,13 +344,13 @@
     transition: height 0.2s linear;
   }
   .navbar .navbar-menu > li > a:hover::after, .navbar .navbar-menu > li > button:hover::after {
-    background: #F96900;
+    background: #7c5cfc;
     height: 8px;
     -webkit-transition: height 0.2s linear;
     transition: height 0.2s linear;
   }
   .navbar .navbar-menu > li > a.active::before, .navbar .navbar-menu > li > button.active::before {
-    background: #00d4ff;
+    background: #957fee;
     height: 100%;
   }
   .navbar .navbar-menu .menu-item-with-submenu {
@@ -383,7 +418,7 @@
     height: 0px;
     bottom: 60%;
     left: 0px;
-    background-color: #F96900;
+    background-color: #7c5cfc;
     -webkit-transition: height 0.2s linear;
     transition: height 0.2s linear;
   }

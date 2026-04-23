@@ -250,8 +250,8 @@ margin-top: 1rem;
 
         .navbar-brand {
 
-            .burger-menu,
-            .logo-image {
+            .burger-menu
+             {
                 display: none;
             }
 
@@ -321,7 +321,7 @@ margin-top: 1rem;
                 }
 
                 &.active::before {
-                    background: map-get($colors-rule, second-color);
+                    background: map-get($colors-rule, link-color-hover);
                     height: 100%;
                 }
             }

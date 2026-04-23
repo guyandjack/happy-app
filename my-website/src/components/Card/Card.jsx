@@ -36,7 +36,7 @@ const Card = ({ card }) => {
             >{card.description}</p>
           )}
           {
-            <div className="card-button">
+            <div className="flex-column-center-center card-button">
               {lang === "fr" ? "Découvrir" : "Discover"}
             </div>
           }

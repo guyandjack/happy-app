@@ -16,6 +16,41 @@
     alert-color: orangered,
 
 ); */
+/* $colors-rule: (
+    //couleurs de base
+    first-color: #1A1627,
+    second-color:#00d4ff,
+    third-color:  #00bdb6,
+    fourth-color: #b7950b,
+    fifth-color: #171717,
+    sixth-color: #fefefd,
+    footer-color: #1A1627,
+    nav-bar-color:#141627,
+    link-color:#F96900,
+
+
+    //couleur d' interaction / alerte
+    disabled-color: #9ca3af,
+    alert-color: orangered,
+    dark-mode-color: #373737,
+
+    //couleur d'arriere plans simple
+    background-page-color: #fbfbfc,
+    bg-page-shade-light-1:#3d335b,
+    bg-page-shade-light-2:#574983,
+    bg-page-shade-light-3:#7e6fae, 
+
+    //gradient d'arriere plan clair
+    bg-page-gradient-light-1: linear-gradient(),
+    bg-page-gradient-light-2: linear-gradient(),
+    bg-page-gradient-light-3: linear-gradient(), 
+
+    //gradient d'arriere plan foncé
+    bg-page-gradient-dark-1: linear-gradient(),
+    bg-page-gradient-dark-2: linear-gradient(),
+    bg-page-gradient-dark-3: linear-gradient(), 
+
+); */
 @font-face {
   font-family: "Madimi";
   src: url("/assets/font/subset-MadimiOne-Regular.woff2") format("woff2");
@@ -166,8 +201,7 @@
   /* background: linear-gradient(120deg,
       map-get($colors-rule, second-color) 0%,
       darken(map-get($colors-rule, second-color), 8%) 100%); */
-  background-color: #F96900;
-  border: 1px solid rgba(254, 254, 253, 0.45);
+  background: #7c5cfc;
   border-radius: 14px;
   cursor: pointer;
   font-size: clamp(0.9rem, 3.2vw, 1.05rem);
@@ -235,7 +269,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #171717;
+  background: #171717;
   z-index: -2;
 }
 
@@ -263,22 +297,18 @@
     /*font-size: clamp(1.3rem, 2vw, 2rem);*/
   }
   .hero-index .container {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
+    width: 50%;
   }
   .hero-index .hero-index-link {
     width: auto;
     min-width: 245px;
     padding: 13px 22px;
     font-size: 1.08rem;
-    border: 1px solid rgba(254, 254, 253, 0.45);
   }
   .hero-index .hero-index-link:hover {
-    -webkit-transform: translateY(-4px);
-        -ms-transform: translateY(-4px);
-            transform: translateY(-4px);
+    -webkit-transform: translateY(-2px);
+        -ms-transform: translateY(-2px);
+            transform: translateY(-2px);
   }
 }
 @media screen and (min-width: 1300px) {
@@ -305,7 +335,8 @@
     font-size: 3.6rem;
   }
 }
-.services, .creations {
+.services,
+.creations {
   width: 100%;
   padding: 120px 15px;
   /* background: linear-gradient(135deg,
@@ -313,7 +344,7 @@
       rgba(map-get($colors-rule, footer-color), 0.05) 20%,
       rgba(map-get($colors-rule, second-color), 0.05) 80%,
       rgba(map-get($colors-rule, second-color), 0.05) 100%); */
-  background-color: rgba(231, 229, 241, 0.2);
+  background: #f2f0fe;
   position: relative;
   overflow: hidden;
   display: -webkit-box;
@@ -327,17 +358,20 @@
       -ms-flex-align: center;
           align-items: center;
 }
-.services h2, .creations h2 {
+.services h2,
+.creations h2 {
   font-size: 2rem;
   color: rgba(23, 23, 23, 0.9);
   margin-bottom: 100px;
   text-align: center;
   position: relative;
 }
-.services h2 strong, .creations h2 strong {
+.services h2 strong,
+.creations h2 strong {
   color: #00d4ff;
 }
-.services h2::after, .creations h2::after {
+.services h2::after,
+.creations h2::after {
   content: "";
   position: absolute;
   z-index: 10;
@@ -356,7 +390,7 @@
       rgba(map-get($colors-rule, first-color), 0.02) 0%,
       rgba(map-get($colors-rule, background-page-color), 0.05) 50%,
       rgba(map-get($colors-rule, second-color), 0.02) 100%); */
-  background-color: rgba(160, 150, 197, 0.2);
+  background: #f2f0fe;
 }
 .values h2 {
   font-size: 2rem;
@@ -388,7 +422,7 @@
   width: 100%;
   max-width: 500px;
   margin: 40px auto;
-  background: #fefefd;
+  background: rgba(254, 254, 253, 0.9);
   border-radius: 20px;
   -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
@@ -407,7 +441,7 @@
 .values .value-card .img-text-container .flex-column-start-center .h4-title {
   font-size: 1.4rem;
   margin-bottom: 20px;
-  color: #1A1627;
+  color: #1a1627;
   position: relative;
   padding-bottom: 15px;
 }
@@ -477,6 +511,9 @@
   .values {
     padding: 120px 20px;
   }
+  .creations h2 {
+    margin-bottom: 120px;
+  }
   .services h3,
   .values h3 {
     margin-bottom: 120px;
@@ -492,6 +529,14 @@
             justify-content: space-evenly;
   }
 }
+@media screen and (min-width: 1300px) {
+  .values .value-card:nth-child(even) {
+    margin: 60px 0px 60px 100px;
+  }
+  .values .value-card:nth-child(odd) {
+    margin: 60px 100px 60px 0px;
+  }
+}
 .why-green-click {
   position: relative;
   width: 100%;
@@ -500,18 +545,18 @@
       rgba(map-get($colors-rule, first-color), 0.03) 0%,
       rgba(map-get($colors-rule, background-page-color), 0.05) 50%,
       rgba(map-get($colors-rule, second-color), 0.03) 100%); */
-  background-color: rgba(196, 189, 219, 0.2);
+  background: linear-gradient(135deg, #1a1627 0%, #3d335b 25%, #7e6fae 100%);
 }
 .why-green-click .why-choose {
   width: 95%;
-  max-width: 1200px;
+  max-width: 1300px;
 }
 .why-green-click .why-choose h2 {
   font-size: 2rem;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  color: #1A1627;
+  color: #fefefd;
   margin: 40px 0;
   text-align: center;
   position: relative;
@@ -548,6 +593,8 @@
   color: #171717;
   margin-bottom: 25px;
   padding: 0 10px;
+  background: rgba(254, 254, 253, 0.9);
+  border-radius: 1rem;
 }
 .why-green-click .why-choose p strong {
   color: rgb(0, 169.6, 204);
@@ -566,12 +613,12 @@
   width: 100%;
   height: 1px;
   bottom: 0px;
-  background-color: #1A1627;
+  background: #1a1627;
   -webkit-transition: height 0.2s linear;
   transition: height 0.2s linear;
 }
 .why-green-click .why-choose p a:hover::before {
-  background-color: #F96900;
+  background: #7c5cfc;
   opacity: 0.9;
   height: 6px;
   bottom: 60%;
@@ -633,16 +680,16 @@
     color: #fefefd;
   }
   .why-green-click .why-choose #why-choose-card-1 {
-    background-color: #1A1627;
+    background: #1a1627;
   }
   .why-green-click .why-choose #why-choose-card-2 {
-    background-color: #00d4ff;
+    background: #00d4ff;
   }
   .why-green-click .why-choose #why-choose-card-3 {
-    background-color: #00bdb6;
+    background: #00bdb6;
   }
   .why-green-click .why-choose #why-choose-card-4 {
-    background-color: #b7950b;
+    background: #b7950b;
   }
   .why-green-click .why-choose p {
     position: absolute;
@@ -651,7 +698,7 @@
     top: 100px;
     right: 0%;
     width: 60%;
-    background-color: rgba(254, 254, 253, 0.5);
+    border-bottom-right-radius: 0;
   }
   .why-green-click .why-choose p::after {
     content: "";
@@ -659,27 +706,27 @@
     right: 0;
     bottom: 0;
     width: 50px;
-    height: 1px;
+    height: 8px;
   }
   .why-green-click .why-choose p::before {
     content: "";
     position: absolute;
     right: 0;
     bottom: 0;
-    width: 1px;
+    width: 8px;
     height: 50px;
   }
   .why-green-click .why-choose #why-choose-card-1-p::after, .why-green-click .why-choose #why-choose-card-1-p::before {
-    background-color: #1A1627;
+    background: #1a1627;
   }
   .why-green-click .why-choose #why-choose-card-2-p::after, .why-green-click .why-choose #why-choose-card-2-p::before {
-    background-color: #00d4ff;
+    background: #00d4ff;
   }
   .why-green-click .why-choose #why-choose-card-3-p::after, .why-green-click .why-choose #why-choose-card-3-p::before {
-    background-color: #00bdb6;
+    background: #00bdb6;
   }
   .why-green-click .why-choose #why-choose-card-4-p::after, .why-green-click .why-choose #why-choose-card-4-p::before {
-    background-color: #b7950b;
+    background: #b7950b;
   }
   .why-green-click .why-choose .img-why-card {
     display: block;
@@ -696,7 +743,7 @@
     background-image: url("../../../public/assets/images/page-index/feuille-verte.webp");
     left: 20%;
     clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-    border-bottom: 12px solid #1A1627;
+    border-bottom: 12px solid #1a1627;
   }
   .why-green-click .why-choose #img-why-card-2 {
     background-image: url("../../../public/assets/images/page-index/regle-crayon.webp");
