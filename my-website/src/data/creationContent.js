@@ -42,9 +42,9 @@ const creationContent = [
     screenWidth: 150,
     parentSize: "desktop",
     description_fr:
-      "Boostez la qualité de vos visuels grâce à notre SaaS intelligent.Basé sur un modèle d’IA préentraîné, il permet de détourer automatiquement vos photos, supprimer ou modifier les arrière-plans en quelques secondes.🎯 Optimisez également vos images pour le web : redimensionnement, formatage et compression, tout est conçu pour des performances maximales et un rendu professionnel.",
+      "Boostez la qualité de vos visuels grâce à notre <strong>SaaS basé sur un modèle d’IA</strong> préentraîné, il permet de détourer automatiquement vos photos, supprimer ou modifier les arrière-plans en quelques secondes.<br>Optimisez également vos images pour le web : redimensionnement, formatage et compression, tout est conçu pour des performances maximales et un rendu professionnel.",
     description_en:
-      "Boost the quality of your visuals with our smart SaaS solution. Powered by a pre-trained AI model, it automatically crops your photos and removes or edits backgrounds in seconds. 🎯 You can also optimize your images for the web: resizing, formatting, and compression—everything is designed for maximum performance and a professional finish.",
+      "Boost the quality of your visuals with our SaaS solution <strong>powered by a pre-trained AI model</strong>, it automatically crops your photos and removes or edits backgrounds in seconds.<br>You can also optimize your images for the web: resizing, formatting, and compression—everything is designed for maximum performance and a professional finish.",
     screenShot: screenshots_WP,
     status: false,
   },

@@ -1,4 +1,7 @@
 @use "../utils/color-rule/color-rule" as *;
+@use "../utils/size/size.scss" as *;
+
+$navbar-height: map-get($sizes, navbar-height);
 
 
 
@@ -52,11 +55,12 @@
 
 /* Sprite SVG (defs/symbols) : ne doit ni s’afficher ni prendre de place */
 .ref-svg {
-    position: absolute;
+    /* position: absolute;
     width: 0;
     height: 0;
     overflow: hidden;
-    pointer-events: none;
+    pointer-events: none;*/
+    display: none; 
 }
 
 body,
@@ -210,11 +214,11 @@ main {
     &::before {
             content: "";
             position: absolute;
-            top:-200px;
+            top:-170px;
             left:-30px;
             z-index: 5;
-            width:300px;
-            height: 300px;
+            width:250px;
+            height: 250px;
             border-radius: 50%;
             background-color: map-get($colors-rule, sixth-color);
         }
@@ -222,14 +226,17 @@ main {
 
     .hero-logo {
             //border: 2px solid blue;
+            //transform-origin: center;
             
             position: absolute;
             z-index: 100;
             display:block;
-            top: 0.5rem;
+            top: 1rem;
             left: 1rem;
-            width: 200px;
-            height: 50px;
+            width: 150px;
+            //height: 50px;
+            //transform: translateY(-50%);
+
 
            
         }
@@ -238,7 +245,7 @@ main {
 
 .hero-container {
     color: map-get($colors-rule, first-color);
-    height: 280px;
+    height: 300px;
     width: 100%;
     text-align: center;
     position: relative;
@@ -288,17 +295,18 @@ main {
     .hero-container-title {
         position: relative;
         z-index: 5;
-        margin: 0 auto;
+        
+        margin-bottom: 1.5rem ;
         padding: 20px;
         background: map-get($colors-rule, background-page-color);
         width: 90%;
         border-radius: 10px;
         //border: 2px solid red;
-        align-self:center;
+        //align-self:center;
         
 
         &>h1 {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
             line-height: 1.2;
@@ -337,7 +345,7 @@ main {
             width: 80%;
 
             &>h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             &>.hero-subtitle {
@@ -350,10 +358,10 @@ main {
 @media screen and (min-width: 992px) {
     .hero-container {
         .hero-container-title {
-            width: fit-content;
+            //width: 40%;
 
             &>h1 {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
 
             &>.hero-subtitle {
@@ -363,6 +371,45 @@ main {
     }
 }
 
+@media screen and (min-width: 1300px) {
+
+    .hero-wrapper{
+    &::before {
+            top: -200px;
+            left: -30px;
+            width: 300px;
+            height: 300px;
+           
+        }
+    
+    
+        .hero-logo {
+            
+            width: 200px;
+           
+    
+    
+    
+        }
+    }
+
+    .hero-container{
+        .hero-container-title{
+            //width:50%;
+            background-color: transparent;
+            background: transparent;
+        }
+    }
+}
+
+/* @media screen and (min-width: 1300px) {
+    .hero-container {
+            .hero-container-title {
+               background-color: transparent;
+            }
+        }
+}
+ */
 
 
 
@@ -784,6 +831,13 @@ main {
     flex-flow: column;
     justify-content: center;
     align-items: flex-end;
+}
+
+.flex-column-end-center {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 // Flexbox row

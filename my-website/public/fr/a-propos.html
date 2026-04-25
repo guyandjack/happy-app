@@ -157,7 +157,7 @@
     <main>
       <section class="flex-column-start-center hero-wrapper">
         <img class="hero-logo" src="/assets/logo/helveclick-dark-ok.png " alt="Logo helveclick">
-        <div class="flex-column-center-center hero-container">
+        <div class="flex-column-end-center hero-container">
 
 
 
@@ -186,20 +186,10 @@
           </h2>
 
           <div class="flex-column-start-start wrapper-about-text">
-            <p>
-              Je suis un développeur web passionné par la création
-              d'<strong>interfaces modernes et performantes</strong>. Je m’investis pleinement dans l’apprentissage et
-              l’application des <strong>technologies web actuelles</strong> pour concevoir des solutions à la fois
-              esthétiques et
-              fonctionnelles.
-            </p>
-            <p>
-              Je réalise une <strong>veille technologique constante</strong> afin d’optimiser la performance des
-              sites et applications, et d’<strong>améliorer l’expérience utilisateur</strong>.
-              Chaque projet est pour moi une occasion de relever des défis techniques, d’innover et de continuer à
-              progresser dans ce domaine en constante
-              évolution.
-            </p>
+          <p>
+            Je conçois des <strong>interfaces web modernes, performantes et orientées utilisateur</strong>, avec une attention
+            particulière portée à la qualité du code, à l’optimisation des performances et à la cohérence visuelle.
+          </p>
             <a href="https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/" target="_blank"
               rel="noopener noreferrer">
               <img src="/assets/images/icons/icon-linkedin.svg" alt="Liens linkedin" class="about-image">
@@ -215,7 +205,7 @@
           <h2 class="h2-title item-menu-side" data-hero="Ma charte éthique et éco-responsable">Ma <strong>charte
               éthique et éco&#8209;responsable</strong></h2>
           <p class="about-charte-text">
-            En tant que <strong>développeur web et mobile</strong>, je m’engage à concevoir des sites et des
+           Je m’engage à développer des sites et des
             applications
             qui
             respectent à la fois<br>
@@ -244,11 +234,13 @@
             <div class="diagram-description">
               <div class="flex-row-start-center">
                 <span class="description-dot" aria-hidden="true"></span>
-                <span>Durabilité</span>
+                <span>Respect de la vie privée</span>
               </div>
-              <div>Développer des projets évolutifs, faciles à maintenir, pensés pour durer dans le temps et limiter les
-                refontes inutiles.</div>
+              <div>Protéger les données personnelles des utilisateurs, en évitant toute collecte excessive et en
+                respectant les
+                réglementations (RGPD, nLPD).</div>
             </div>
+            
             <div class="diagram-description">
               <div class="flex-row-start-center">
                 <span class="description-dot" aria-hidden="true"></span>
@@ -268,19 +260,20 @@
             <div class="diagram-description">
               <div class="flex-row-start-center">
                 <span class="description-dot" aria-hidden="true"></span>
-                <span>Respect de la vie privée</span>
+                <span>Durabilité</span>
               </div>
-              <div>Protéger les données personnelles des utilisateurs, en évitant toute collecte excessive et en
-                respectant les
-                réglementations (RGPD, nLPD).</div>
+              <div>Développer des projets évolutifs, faciles à maintenir, pensés pour durer dans le temps et limiter les
+                refontes inutiles.</div>
             </div>
+            
           </div>
 
 
-          <p class="about-charte-conclusion">Parce que le numérique peut (et doit) être plus respectueux,<br> chaque
-            projet est pour moi une opportunité
-            de contribuer<br>
-            à un web plus durable et plus humain.</p>
+          <div class="about-charte-conclusion">
+            Parce que le numérique peut (et doit) être plus respectueux,<br> chaque
+            projet est pour moi une opportunité de contribuer<br>
+            <div class="anim-wrapper"><span class="anim-conclusion"></span></div>
+          </div>
         </div>
       </section>
 
@@ -298,32 +291,37 @@
             </p>
             <div class="process-step">
               <div class="step-number">1</div>
+              <svg id="icon-analyse" class="process-icon">
+                  <use href="#analyse"></use>
+              </svg>
               <div class="flex-column-center-center step-content">
                 <h3><strong>Analyse de vos besoins</strong></h3>
                 <p>Je commence par comprendre en profondeur votre entreprise, vos objectifs et vos attentes. Cette
                   phase implique des <strong>discussions détaillées</strong> pour identifier clairement vos besoins et
                   les défis à relever.</p>
-                <svg id="icon-analyse" class="process-icon">
-                  <use href="#analyse"></use>
-                </svg>
+                
               </div>
             </div>
 
             <div class="process-step">
               <div class="step-number">2</div>
+              <svg class="process-icon">
+                  <use href="#build"></use>
+                </svg>
               <div class="flex-column-center-center step-content">
                 <h3><strong>Conception et prototypage</strong></h3>
                 <p>Je crée des <strong>maquettes</strong> et des <strong>prototypes</strong> pour visualiser le
                   projet. Nous collaborons étroitement pendant cette phase pour affiner le design et s'assurer qu'il
                   répond parfaitement à vos attentes avant de passer au développement.</p>
-                <svg class="process-icon">
-                  <use href="#build"></use>
-                </svg>
+                
               </div>
             </div>
 
             <div class="process-step">
               <div class="step-number">3</div>
+              <svg id="icon-dev" class="process-icon">
+                  <use href="#dev"></use>
+                </svg>
               <div class="flex-column-center-center step-content">
                 <h3><strong>Développement</strong></h3>
                 <p>Je code et developpe les fonctionnalités de votre site ou application en utilisant les
@@ -331,27 +329,29 @@
                   à votre projet. Je maintiens une <strong>communication régulière</strong> pour vous tenir informé de
                   l'avancement et recueillir vos retours.
                 </p>
-                <svg id="icon-dev" class="process-icon">
-                  <use href="#dev"></use>
-                </svg>
+                
               </div>
             </div>
 
             <div class="process-step">
               <div class="step-number">4</div>
+              <svg id="icon-test" class="process-icon">
+                  <use href="#test"></use>
+                </svg>
               <div class="flex-column-center-center step-content">
                 <h3><strong>Tests et optimisation</strong></h3>
                 <p>Je teste rigoureusement chaque fonctionnalité pour garantir un <strong>produit final sans
                     faille</strong>. J'optimise également les performances pour une <strong>expérience utilisateur
                     fluide</strong> et rapide.</p>
-                <svg id="icon-test" class="process-icon">
-                  <use href="#test"></use>
-                </svg>
+                
               </div>
             </div>
 
             <div class="process-step">
               <div class="step-number">5</div>
+              <svg id="icon-start" class="process-icon">
+                  <use href="#start"></use>
+                </svg>
               <div class="flex-column-center-center step-content">
                 <h3><strong>Lancement et suivi</strong></h3>
                 <p>Après le lancement, je reste à vos côtés pour assurer un accompagnement continu, résoudre les
@@ -364,9 +364,7 @@
                   site dans la
                   durée.
                 </p>
-                <svg id="icon-start" class="process-icon">
-                  <use href="#start"></use>
-                </svg>
+                
 
               </div>
             </div>

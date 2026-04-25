@@ -85,6 +85,7 @@
     
     .website-card-container {
       //border: 2px solid red;
+      border-radius: 15px;
       background-color: rgba(map-get($colors-rule, sixth-color),0.9);
       position: relative;
       width: 100%;
@@ -163,6 +164,7 @@
 
 
       .website-card {
+        
         position: relative;
         width: 100%;
         min-height: 400px;
@@ -224,6 +226,7 @@
           background: transparent;
           width: 100%;
           max-width: 600px;
+          //border-radius: 15px;
           //border: 2px solid red;
 
           @media screen and (min-width: 992px) {

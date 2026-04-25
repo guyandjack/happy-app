@@ -571,7 +571,8 @@
       rgba(map-get($colors-rule, first-color), 0.03) 0%,
       rgba(map-get($colors-rule, background-page-color), 0.05) 50%,
       rgba(map-get($colors-rule, second-color), 0.03) 100%); */
-  background: linear-gradient(135deg, #1a1627 0%, #3d335b 25%, #7e6fae 100%);
+  background-color: #574983;
+  color: #fefefd;
 }
 .why-green-click .why-choose {
   width: 95%;
@@ -607,20 +608,64 @@
   padding: 20px;
 }
 .why-green-click .why-choose h3 {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  text-align: left;
   font-size: 1.4rem;
-  color: #b7950b;
+  color: #1a1627;
   margin-bottom: 20px;
-  padding-left: 15px;
-  opacity: 0.9;
+  padding-left: 1rem;
+  font-weight: bolder;
+}
+.why-green-click .why-choose h3::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: -0.5rem;
+  left: 1rem;
+  width: 50px;
+  height: 2px;
+  background-color: #fefefd;
+}
+.why-green-click .why-choose h3 {
+  /*&::after{
+    content:"";
+    position:absolute;
+    z-index: -1;
+    top:50%;
+    right:-2rem;
+    width: 50px;
+    height: 50px;
+    background-color: map-get($colors-rule, sixth-color);
+    border-radius: 50%;
+    transform: translateY(-50%);
+
+  } */
+}
+.why-green-click .why-choose {
+  /*  .icon-check{
+     width: 50px;
+     height: 50px;
+     fill: map-get($colors-rule, third-color);
+     padding: 0.5rem;
+     background-color: map-get($colors-rule, sixth-color);
+     border-radius: 50%;
+   } */
 }
 .why-green-click .why-choose p {
   font-size: 1rem;
   line-height: 1.8;
-  color: #171717;
-  margin-bottom: 25px;
-  padding: 1rem;
-  background: rgba(254, 254, 253, 0.9);
-  border-radius: 1rem;
+  position: relative;
+  padding: 20px 30px;
+  background: rgba(23, 23, 23, 0.5);
+  border-radius: 15px;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  -webkit-box-shadow: 0 0px 10px rgba(23, 23, 23, 0.3);
+          box-shadow: 0 0px 10px rgba(23, 23, 23, 0.3);
 }
 .why-green-click .why-choose p strong {
   color: rgb(0, 169.6, 204);
@@ -629,7 +674,7 @@
   position: relative;
   display: inline block;
   z-index: 1;
-  color: #171717;
+  color: #fefefd;
 }
 .why-green-click .why-choose p a::before {
   content: "";
@@ -639,7 +684,7 @@
   width: 100%;
   height: 1px;
   bottom: 0px;
-  background: #1a1627;
+  background: #fefefd;
   -webkit-transition: height 0.2s linear;
   transition: height 0.2s linear;
 }
@@ -665,8 +710,7 @@
   }
   .why-green-click .why-choose h3 {
     font-size: clamp(1.4rem, 2.5vw, 1.8rem);
-    margin: 50px 0 30px;
-    padding-left: 20px;
+    margin: 50px 0 30px 0;
   }
   .why-green-click .why-choose p {
     font-size: clamp(1rem, 1.5vw, 1.1rem);
@@ -703,6 +747,11 @@
     left: 5%;
     width: 40%;
     color: #fefefd;
+    z-index: 1;
+    border-radius: 1rem;
+  }
+  .why-green-click .why-choose h3::before {
+    display: none;
   }
   .why-green-click .why-choose #why-choose-card-1 {
     background: #1a1627;
@@ -756,6 +805,7 @@
   .why-green-click .why-choose .img-why-card {
     display: block;
     position: absolute;
+    z-index: 1;
     top: 50%;
     left: 10%;
     width: 200px;
@@ -795,6 +845,9 @@
 @media screen and (min-width: 1300px) {
   .why-green-click .why-choose .why-choose-card {
     height: 500px;
+  }
+  .why-green-click .why-choose .why-choose-card p {
+    padding: 40px 20px 40px 100px;
   }
 }
 @media (min-width: 768px) {

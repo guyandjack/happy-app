@@ -12,9 +12,36 @@ import { Navbar } from "@/components/Navbar/Navbar.jsx";
 import { Footer } from "@/components/Footer/Footer.jsx";
 import { LinkTopPage } from "@/components/linkTopPage/linkTopPage.jsx";
 
+//import des librairie d'animation
+import Typed from "typed.js";
+
+//import des fonctions
+import {getLanguage} from "@utils/fonction/getLanguage.js"
+
+//variable et contante globales
+const fr_content_title = [
+  " à un web plus durable et plus humain.",
+];
+
+const en_content_title = [
+  " for a more sustainable and people-centered web.",
+];
+
 /****************************************************
  * ************* code principal page "a propos"*******
  *  * ************************************************/
+
+//animation h1
+const lang = getLanguage();
+
+const typed = new Typed(".anim-conclusion", {
+  strings: lang === "fr"? fr_content_title : en_content_title,
+  typeSpeed: 90,
+  backSpeed: 50,
+  loop: true,
+  loopCount: Infinity,
+  backDelay: 1500,
+});
 
 // Mount Navbar
 try {

@@ -158,6 +158,7 @@
   padding: 50px 20px;
 }
 .website-types .website-cards .website-card-container {
+  border-radius: 15px;
   background-color: rgba(254, 254, 253, 0.9);
   position: relative;
   width: 100%;

@@ -25,6 +25,16 @@
   .about-charte,
   .about-process {
     padding: clamp(2.5rem, 4vw, 4.5rem) clamp(1rem, 3vw, 2.5rem);
+    font-size: 1.1rem;
+
+  }
+
+  .anim-wrapper {
+
+    text-align: center;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: map-get($colors-rule, first-color);
   }
 
   .about-section-inner {
@@ -34,30 +44,14 @@
 
   /* Titres (override des styles génériques) */
   .h2-title {
-     /* margin: 0 0 clamp(1.25rem, 2.2vw, 2rem) 0;
-    font-size: clamp(1.55rem, 2.6vw, 2.3rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    position: relative;
 
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -0.7rem;
-      width: 4.5rem;
-      height: 3px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--highlight), var(--accent));
-    }  */
-    position:relative;
-     font-size: 2rem;
+    position: relative;
+    font-size: 2rem;
     color: rgba(map-get($colors-rule, first-color), 0.9);
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     text-align: center;
     position: relative;
-    width:fit-content;
+    width: fit-content;
 
     strong {
       color: map-get($colors-rule, second-color);
@@ -77,57 +71,12 @@
     }
   }
 
-  /* p,
-  ul > li {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    //color: var(--muted);
 
-    strong {
-      color: var(--brand);
-      font-weight: 700;
-    }
-  } */
-
-  /* HERO: plus premium, sans casser shared-style */
-  .hero-container {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-
-    /* &::after {
-      background: linear-gradient(
-        90deg,
-        rgba(map-get($colors-rule, second-color), 0.35),
-        rgba(map-get($colors-rule, third-color), 0.2)
-      );
-      opacity: 0.85;
-    } */
-
-    > img {
-      filter: saturate(0.95) contrast(1.02);
-      opacity: 0.75;
-    }
-
-    .hero-container-title {
-      background: rgba(255, 255, 255, 0.88);
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.12);
-      backdrop-filter: blur(10px);
-
-      > h1 {
-        color: var(--brand);
-      }
-    }
-  }
 
   /* Section 1: intro */
   .about-text {
-    /* background: radial-gradient(
-        circle at 15% 10%,
-        rgba(map-get($colors-rule, second-color), 0.15),
-        transparent 55%
-      ),
-      var(--bg); */
-      background-color: rgba(map-get($colors-rule, bg-page-shade-light-4),1);
+
+    background-color: rgba(map-get($colors-rule, bg-page-shade-light-4), 1);
   }
 
   .wrapper-about-text {
@@ -141,46 +90,52 @@
     display: block;
   }
 
-  .wrapper-about-text a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
-    padding: 0.9rem 1rem;
-    border-radius: 14px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    background: var(--panel);
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
-    transition: transform 180ms ease, box-shadow 180ms ease,
-      border-color 180ms ease;
-  }
 
-  .wrapper-about-text a:hover {
-    transform: translateY(-2px);
-    border-color: rgba(map-get($colors-rule, second-color), 0.5);
-    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.12);
-  }
 
   /* Section 2: charte */
   .about-charte {
-   /*  background: linear-gradient(
-      180deg,
-      rgba(map-get($colors-rule, third-color), 0.18),
-      rgba(255, 255, 255, 0)
-    );
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05); */
+
     background-color: map-get($colors-rule, bg-page-shade-light-4);
+
+    a {
+
+      position: relative;
+      display: inline block;
+      z-index: 1;
+      color: map-get($colors-rule, fifth-color);
+
+      &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 0px;
+        width: 100%;
+        height: 1px;
+        bottom: 0px;
+        background: map-get($colors-rule, first-color);
+        transition: height 0.2s linear;
+      }
+
+
+      &:hover::before {
+        background: map-get($colors-rule, link-color);
+        opacity: 0.9;
+        height: 6px;
+        bottom: 60%;
+        transition: height 0.2s linear;
+
+      }
+
+
+
+    }
   }
 
   .about-charte-text {
     max-width: 86ch;
   }
 
-  .about-charte-text a strong {
-    color: #0000ff;
-    white-space: nowrap;
-  }
+
 
   .diagram-wrapper {
     margin-top: clamp(1.25rem, 2.4vw, 2rem);
@@ -218,31 +173,37 @@
     .diagram-description:nth-child(1) {
       grid-column: 3 / span 2;
       grid-row: 1;
+      border-left: 4px solid rgba(map-get($colors-rule, third-color), 0.9);
     }
 
     .diagram-description:nth-child(2) {
       grid-column: 2 / span 2;
       grid-row: 2;
+      border-left: 4px solid rgba(map-get($colors-rule, second-color), 0.9);
     }
 
     .diagram-description:nth-child(3) {
       grid-column: 4 / span 2;
       grid-row: 2;
+      border-left: 4px solid rgba(map-get($colors-rule, second-color), 0.9);
     }
 
     .diagram-description:nth-child(4) {
       grid-column: 1 / span 2;
       grid-row: 3;
+      border-left: 4px solid rgba(map-get($colors-rule, first-color), 0.9);
     }
 
     .diagram-description:nth-child(5) {
       grid-column: 3 / span 2;
       grid-row: 3;
+      border-left: 4px solid rgba(map-get($colors-rule, first-color), 0.9);
     }
 
     .diagram-description:nth-child(6) {
       grid-column: 5 / span 2;
       grid-row: 3;
+      border-left: 4px solid rgba(map-get($colors-rule, first-color), 0.9);
     }
   }
 
@@ -254,12 +215,12 @@
     box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
     border-left: 4px solid rgba(map-get($colors-rule, second-color), 0.9);
 
-    > .flex-row-start-center {
+    >.flex-row-start-center {
       gap: 0.6rem;
       margin-bottom: 0.6rem;
     }
 
-    > .flex-row-start-center span:last-child {
+    >.flex-row-start-center span:last-child {
       color: var(--ink);
       font-weight: 800;
       letter-spacing: -0.01em;
@@ -285,13 +246,8 @@
 
   /* Section 3: process */
   .about-process {
-    /* background: radial-gradient(
-        circle at 85% 15%,
-        rgba(map-get($colors-rule, first-color), 0.12),
-        transparent 55%
-      ),
-      var(--bg); */
-      background-color: map-get($colors-rule, bg-page-shade-light-4);
+
+    background-color: map-get($colors-rule, bg-page-shade-light-4);
   }
 
   .process-steps {
@@ -301,7 +257,9 @@
     align-items: stretch;
   }
 
-  .process-steps > p {
+
+
+  .process-steps>p {
     grid-column: 1 / -1;
     max-width: 86ch;
     margin-bottom: 0.25rem;
@@ -313,12 +271,14 @@
       grid-template-columns: repeat(6, minmax(0, 1fr));
     }
 
-    .process-steps > .process-step {
-      grid-column: span 2; /* 3 cartes sur la première ligne */
+    .process-steps>.process-step {
+      grid-column: span 2;
+      /* 3 cartes sur la première ligne */
     }
 
-    .process-steps > .process-step:nth-last-of-type(-n + 2) {
-      grid-column: span 3; /* 2 cartes sur la seconde ligne */
+    .process-steps>.process-step:nth-last-of-type(-n + 2) {
+      grid-column: span 3;
+      /* 2 cartes sur la seconde ligne */
     }
   }
 
@@ -334,28 +294,34 @@
       border-color 200ms ease;
   }
 
-  /* .process-step:hover {
-    transform: translateY(-3px);
-    border-color: rgba(map-get($colors-rule, second-color), 0.4);
-    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
-  } */
+  
+
+
 
   .process-step::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-      circle at 15% 15%,
-      rgba(map-get($colors-rule, second-color), 0.12),
-      transparent 55%
-    );
+    background: radial-gradient(circle at 15% 15%,
+        rgba(map-get($colors-rule, second-color), 0.12),
+        transparent 55%);
     pointer-events: none;
   }
 
+    .process-icon {
+      position: absolute;
+      right: 0.8rem;
+      top: 0.8rem;
+      width: 300px;
+      height: 300px;
+      fill: rgba(23, 23, 23, 0.32);
+      opacity: 0.15;
+    }
+
   .step-number {
     position: absolute;
-    bottom: 14px;
-    right: 14px;
+    bottom: 0.8rem;
+    right: 0.8rem;
     width: 34px;
     height: 34px;
     display: grid;
@@ -382,21 +348,14 @@
   }
 
   .process-step p {
-    color: rgba(23, 23, 23, 0.72);
+    //color: rgba(23, 23, 23, 0.72);
     line-height: 1.75;
   }
 
-  .process-icon {
-    position: absolute;
-    left: 1rem;
-    bottom: 0.9rem;
-    width: 68px;
-    height: 68px;
-    fill: rgba(23, 23, 23, 0.32);
-    opacity: 0.3;
-  }
+
 
   @media (prefers-reduced-motion: reduce) {
+
     .process-step,
     .wrapper-about-text a {
       transition: none;

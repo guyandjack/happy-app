@@ -615,7 +615,8 @@ $navbar-height: map-get($sizes, navbar-height);
       rgba(map-get($colors-rule, background-page-color), 0.05) 50%,
       rgba(map-get($colors-rule, second-color), 0.03) 100%); */
 
-  background: map-get($colors-rule, brand-gradient-primary);
+  background-color: rgba(map-get($colors-rule, bg-page-shade-light-2), 1);
+  color: map-get($colors-rule, sixth-color);
 
 
   .why-choose {
@@ -654,27 +655,73 @@ $navbar-height: map-get($sizes, navbar-height);
       width: 100%;
       padding: 20px;
       //border: 1px solid red;
-
+      
     }
-
+    
     h3 {
+      //border: 1px solid red;
+      position: relative;
+      z-index:1;
+      width:100%;
+      text-align: left;
       font-size: 1.4rem;
-      color: map-get($colors-rule, fourth-color);
+      color: map-get($colors-rule, first-color);
       margin-bottom: 20px;
-      padding-left: 15px;
-      opacity: 0.9;
+      padding-left: 1rem;
+      //opacity: 0.9;
+      font-weight: bolder;
+      
+      
+       &::before{
+        content:"";
+        position:absolute;
+        z-index: -1;
+        bottom:-0.5rem;
+        left:1rem;
+        width: 50px;
+        height: 2px;
+        background-color: map-get($colors-rule, sixth-color);
+        //border-radius: 50%;
+        //transform: translateY(-50%);
+        
+      }
+      /*&::after{
+        content:"";
+        position:absolute;
+        z-index: -1;
+        top:50%;
+        right:-2rem;
+        width: 50px;
+        height: 50px;
+        background-color: map-get($colors-rule, sixth-color);
+        border-radius: 50%;
+        transform: translateY(-50%);
+        
+      } */
 
     }
+
+   /*  .icon-check{
+      width: 50px;
+      height: 50px;
+      fill: map-get($colors-rule, third-color);
+      padding: 0.5rem;
+      background-color: map-get($colors-rule, sixth-color);
+      border-radius: 50%;
+    } */
 
     p {
       font-size: 1rem;
       line-height: 1.8;
-      color: map-get($colors-rule, fifth-color);
-      margin-bottom: 25px;
-      padding:1rem;
-      //border: 2px solid blue;
-      background: rgba(map-get($colors-rule, sixth-color), 0.9);
-      border-radius: 1rem;
+      position: relative;
+      //z-index: -1;
+        padding: 20px 30px;
+        background: rgba(map-get($colors-rule, fifth-color), 0.5);
+        border-radius: 15px;
+        //backdrop-filter: blur(10px);
+        transition: transform 0.3s ease;
+        box-shadow: 0 0px 10px rgba(map-get($colors-rule, fifth-color), 0.3);
+        //border: 2px solid red;
 
       strong {
         color: darken(map-get($colors-rule, second-color), 10%);
@@ -685,7 +732,7 @@ $navbar-height: map-get($sizes, navbar-height);
         position: relative;
         display: inline block;
         z-index: 1;
-        color: map-get($colors-rule, fifth-color);
+        color: map-get($colors-rule, sixth-color);
 
         &::before {
           content: "";
@@ -695,7 +742,7 @@ $navbar-height: map-get($sizes, navbar-height);
           width: 100%;
           height: 1px;
           bottom: 0px;
-          background: map-get($colors-rule, first-color);
+          background: map-get($colors-rule, sixth-color);
           transition: height 0.2s linear;
         }
 
@@ -735,8 +782,8 @@ $navbar-height: map-get($sizes, navbar-height);
 
       h3 {
         font-size: clamp(1.4rem, 2.5vw, 1.8rem);
-        margin: 50px 0 30px;
-        padding-left: 20px;
+        margin: 50px 0 30px 0;
+        //padding-left: 20px;
       }
 
       p {
@@ -779,6 +826,11 @@ $navbar-height: map-get($sizes, navbar-height);
         width: 40%;
         color: map-get($colors-rule, sixth-color);
         //border: 1px solid blue;
+        z-index:1;
+        border-radius: 1rem;
+        &::before{
+          display:none;
+        }
       }
 
       #why-choose-card-1 {
@@ -870,6 +922,7 @@ $navbar-height: map-get($sizes, navbar-height);
       .img-why-card {
         display: block;
         position: absolute;
+        z-index: 1;
         top: 50%;
         left: 10%;
         width: 200px;
@@ -925,6 +978,9 @@ $navbar-height: map-get($sizes, navbar-height);
     .why-choose {
       .why-choose-card {
         height: 500px;
+        & p {
+          padding: 40px 20px 40px 100px;
+        }
       }
     }
   }
