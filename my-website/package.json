@@ -38,6 +38,7 @@
     "react-toastify": "^11.0.5",
     "react-xarrows": "^2.0.2",
     "rehype-raw": "^7.0.0",
-    "tslib": "^2.8.1"
+    "tslib": "^2.8.1",
+    "typed.js": "^3.0.0"
   }
 }

@@ -82,10 +82,12 @@
 }
 .navbar .navbar-brand {
   height: 100%;
-}
-.navbar .navbar-brand .logo-image {
-  height: 100%;
-  width: 200px;
+  /* .logo-image {
+
+      width: 200px;
+      //object-fit: contain;
+      //border: 2px solid red;
+  } */
 }
 .navbar .navbar-brand .burger-menu {
   position: relative;

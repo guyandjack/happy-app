@@ -1,9 +1,10 @@
 /* Login Form Styles */
 @use "../../utils/breakpoint/breakpoint" as *;
 @use "../../utils/color-rule/color-rule" as *;
+@use "../../utils/size/size.scss" as *;
 
 // Mobile first base styles
-
+$navbar-height:map-get($sizes, navbar-height);
 
 .navbar {
 
@@ -11,12 +12,12 @@
     position: relative;
     z-index: 1000;
     width: 100%;
-    height: 90px;
+    height: $navbar-height;
     margin: 0 auto;
    padding: 1rem 1rem;
     //background-color: rgba(map-get($colors-rule, fifth-color),0.2);
     transition: opacity 1s ease;
-    //border: 2px solid red;
+    //border: 2px solid yellow;
 
 
     // Toast
@@ -45,12 +46,12 @@
         height: 100%;
         //border: 2px solid blue;
 
-        .logo-image {
-            height: 100%;
+        /* .logo-image {
+           
             width: 200px;
             //object-fit: contain;
             //border: 2px solid red;
-        }
+        } */
 
 
         // Burger menu for mobile

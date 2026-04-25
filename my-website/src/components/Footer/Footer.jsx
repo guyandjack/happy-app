@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 //import { localOrProd } from "@utils/fonction/testEnvironement.js";
 
 //import des images
-import logo from "@assetsJSX/logo/logo-v8.svg";
+import logo from "@assetsJSX/logo/helveclick-light-ok.png";
 
 //import des feuilles de style
 import "@styles/SCSS/components/Footer.scss";

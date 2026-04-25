@@ -14,7 +14,8 @@ import flagFR from "@assetsJSX/icons/flag-fr.png";
 import { CiMenuKebab } from "react-icons/ci";
 
 //import des images
-import logos from "@assetsJSX/logo/helveclick.png";
+import logos from "@assetsJSX/logo/helveclick-light-ok.png";
+
 
 //import du fichier scss
 import "@styles/SCSS/components/navbar.scss";
@@ -339,14 +340,14 @@ function Navbar() {
             <p>{toast.message}</p>
           </div>
         ) : null}
-        <div className="flex-row-space_between-center navbar-brand">
-          <a
+        <div className="flex-row-end-center navbar-brand">
+          {/*  <a
             href={currentLang === "fr" ? "/" : "/public/en/home.html"}
             aria-label={currentLang === "fr" ? "Accueil" : "Home"}
             className="logo"
           >
             <img src={logos} alt="Logo helveclick" className="logo-image" />
-          </a>
+          </a> */ }
 
           <button
             className={`burger-menu ${isOpen ? "open" : ""}`}

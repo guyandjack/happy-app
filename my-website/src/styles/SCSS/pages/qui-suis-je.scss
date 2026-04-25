@@ -127,7 +127,7 @@
         transparent 55%
       ),
       var(--bg); */
-      background-color: rgba(map-get($colors-rule, bg-page-shade-light-3),1);
+      background-color: rgba(map-get($colors-rule, bg-page-shade-light-4),1);
   }
 
   .wrapper-about-text {
@@ -170,7 +170,7 @@
     );
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05); */
-    background-color: rgba(map-get($colors-rule, bg-page-shade-light-2),0.2);
+    background-color: map-get($colors-rule, bg-page-shade-light-4);
   }
 
   .about-charte-text {
@@ -291,7 +291,7 @@
         transparent 55%
       ),
       var(--bg); */
-      background-color: rgba(map-get($colors-rule, bg-page-shade-light-1),0.2);
+      background-color: map-get($colors-rule, bg-page-shade-light-4);
   }
 
   .process-steps {

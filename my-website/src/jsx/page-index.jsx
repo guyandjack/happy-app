@@ -8,25 +8,60 @@ import ReactDOM from "react-dom/client";
 
 //import des composants enfants
 import { Navbar } from "@components/Navbar/Navbar.jsx";
-import { Footer } from "@components/Footer/Footer.jsx";
+import { LinkTopPage } from "@components/linkTopPage/linkTopPage.jsx";
 import { IndexCards } from "@components/Card/IndexCards.jsx";
 import { CtaSection } from "@components/CtaSection/CtaSection.jsx";
-import { LinkTopPage } from "@components/linkTopPage/linkTopPage.jsx";
 import { DisplayCreation } from "@components/DisplayCreation/displayCreation.jsx";
+import { Footer } from "@components/Footer/Footer.jsx";
 
 //import des scripts
 import { initFaq } from "@scripts/page-services.js";
 
+//import des librairie d'animation
+import Typed from "typed.js";
+
+//import des fonctions
+import {getLanguage} from "@utils/fonction/getLanguage.js"
+
+//variable et contante globales
+const fr_content_title = [
+  "créer des sites internet.",
+  "créer des applications mobiles.",
+  "créer des saas.",
+  "réaliser des apllications métiers.",
+  "optimiser le SEO",
+];
+
+const en_content_title = [
+  "build websites",
+  "develop mobile apps",
+  "create SaaS solutions",
+  "develop business applications",
+  "optimize SEO",
+];
+
 /****************************************************
  * ************* code principal page "index"*******
  *  * ************************************************/
+
+//animation h1
+const lang = getLanguage();
+
+const typed = new Typed(".anim-h1", {
+  strings: lang === "fr"? fr_content_title : en_content_title,
+  typeSpeed: 90,
+  backSpeed: 30,
+  loop: true,
+  loopCount: Infinity,
+  backDelay: 1500,
+});
+
 
 //Logique collapse faq
 initFaq();
 
 //effet parallaxe
 const elementImg = document.querySelector(".hero-index-img");
-console.log("elementImg: ", elementImg);
 if (elementImg) {
   window.addEventListener("scroll", () => {
     let scrolled = window.scrollY;
@@ -114,7 +149,7 @@ try {
   console.error("Error mounting Card Services:", error);
 }
 
-//mount creation
+//mount display creation
 try {
   const creationContainer = document.getElementById("RC-creation");
   if (creationContainer) {

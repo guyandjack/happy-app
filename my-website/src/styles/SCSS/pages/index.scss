@@ -1,4 +1,8 @@
 @use "../../utils/color-rule/color-rule" as *;
+@use "../../utils/size/size.scss" as *;
+
+// Mobile first base styles
+$navbar-height: map-get($sizes, navbar-height);
 
 
 @font-face {
@@ -44,19 +48,29 @@
 // Hero section - Mobile first
 .hero-index {
 
-  // gap: 40px;
   position: relative;
   z-index: 3;
   width: 100%;
-  min-height: 100vh;
-  padding: 90px 10px;
+  height: 100vh;
+  padding: $navbar-height 10px 0px 10px;
   overflow: hidden;
-  //border: 2px solid red;
+  gap: 100px;
+  //border: 2px solid green;
 
-
+   /*  .hero-index-wrapper {
+      //min-height: 450px;
+      //padding: clamp(14px, 3vw, 28px) clamp(12px, 4vw, 32px);
+       //border: 2px solid red;
+       //padding-top: calc($navbar-height / 2);
+       
+    }   */
+  
 
   .hero-index-title-h1 {
-    width: min(100%, 900px);
+    //width: min(100%, 900px);
+    /* width: 400px;
+    height: 200px; */
+
     font-family: 'Madimi', sans-serif;
     font-size: clamp(1.9rem, 7vw, 3.2rem);
     font-weight: 800;
@@ -65,36 +79,41 @@
     //margin-bottom: 0.4rem;
     line-height: 1.2;
     text-align: center;
-    //padding: clamp(14px, 3vw, 28px) clamp(12px, 4vw, 32px);
+    padding: clamp(14px, 3vw, 28px) clamp(12px, 4vw, 32px);
     border-radius: 20px;
-    /*  background: linear-gradient(140deg,
-        rgba(map-get($colors-rule, first-color), 0.78) 0%,
-        rgba(map-get($colors-rule, first-color), 0.44) 100%);
-    border: 1px solid rgba(map-get($colors-rule, second-color), 0.7);
-    box-shadow: 0 16px 42px rgba(map-get($colors-rule, first-color), 0.28); */
-    //backdrop-filter: blur(2px);
+   
     text-shadow: 0 2px 12px rgba(map-get($colors-rule, fifth-color), 0.4);
     animation: hero-fade-up 0.7s ease-out both;
     //border: 2px solid red;
 
-    & span {
+    & span
+     {
       font-size: inherit;
       font-weight: 900;
-      text-decoration: underline rgba(map-get($colors-rule, second-color), 0.9);
+     /*  text-decoration: underline rgba(map-get($colors-rule, second-color), 0.9);
       text-decoration-thickness: 2px;
-      text-underline-offset: 5px;
+      text-underline-offset: 5px; */
       color: map-get($colors-rule, second-color);
     }
 
+    
+
   }
 
-  .hero-index-wrapper {
-    min-height: 450px;
-    //padding: clamp(14px, 3vw, 28px) clamp(12px, 4vw, 32px);
-    // border: 2px solid red;
-  }
+    .anim-h1-wrapper {
+      margin: 0 auto;
+      width: 350px;
+      height: 50px;
+      border-radius: 1rem;
+      padding: 0.5rem;
+      background-color: rgba(map-get($colors-rule, first-color), 0.8);
+      border: 2px solid rgba(map-get($colors-rule, first-color), 1);
+      color: white;
+    }
 
-  .hero-index-title-h2 {
+  
+
+  /* .hero-index-title-h2 {
     width: min(100%, 860px);
     font-size: clamp(1.1rem, 4.8vw, 1.9rem);
     font-weight: 500;
@@ -121,7 +140,7 @@
       letter-spacing: 0.02em;
       color: rgba(map-get($colors-rule, sixth-color), 0.95);
     }
-  }
+  } */
 
 
 
@@ -136,9 +155,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: min(92vw, 320px);
+    width: min(92vw, 200px);
     min-height: 48px;
-    padding: 12px 18px;
+    padding: 12px 12px;
     /* background: linear-gradient(120deg,
         map-get($colors-rule, second-color) 0%,
         darken(map-get($colors-rule, second-color), 8%) 100%); */
@@ -222,20 +241,22 @@
 
 
     .hero-index-title-h1 {
+     /*  width: 500px;
+      height: 300px; */
       padding: 22px 30px;
       line-height: 1.18;
     }
 
-    .hero-index-title-h2 {
+    /* .hero-index-title-h2 {
       padding: 16px 24px;
-    }
+    } */
 
-    .hero-index-link {
+   /*  .hero-index-link {
       width: min(40vw, 340px);
       min-height: 52px;
       padding: 13px 22px;
 
-    }
+    } */
 
   }
 }
@@ -287,7 +308,15 @@
 @media screen and (min-width: 1300px) {
   .hero-index {
     flex-direction: row;
-    gap: 1rem;
+    justify-content: space-evenly;
+    //border: 2px solid red;
+
+    gap: 3rem;
+
+    .hero-index-wrapper {
+
+      height:300px;
+    }
 
 
     .hero-index-title-h3 {
@@ -405,7 +434,7 @@
     width: 100%;
     max-width: 500px;
     margin: 40px auto;
-    background: rgba(map-get($colors-rule, sixth-color), 0.9);
+    background: rgba(map-get($colors-rule, bg-page-shade-dark-3), 0.9);
     border-radius: 20px;
     box-shadow:
       0 4px 6px rgba(0, 0, 0, 0.05),
@@ -424,7 +453,7 @@
         .h4-title {
           font-size: 1.4rem;
           margin-bottom: 20px;
-          color: map-get($colors-rule, first-color);
+          color: map-get($colors-rule, sixth-color);
           position: relative;
           padding-bottom: 15px;
 
@@ -457,7 +486,7 @@
         p {
           font-size: 1rem;
           line-height: 1.8;
-          color: rgba(map-get($colors-rule, fifth-color), 0.9);
+          color: rgba(map-get($colors-rule, sixth-color), 0.9);
           text-align: center;
 
           strong {
@@ -642,7 +671,7 @@
       line-height: 1.8;
       color: map-get($colors-rule, fifth-color);
       margin-bottom: 25px;
-      padding: 0 10px;
+      padding:1rem;
       //border: 2px solid blue;
       background: rgba(map-get($colors-rule, sixth-color), 0.9);
       border-radius: 1rem;
@@ -712,7 +741,7 @@
 
       p {
         font-size: clamp(1rem, 1.5vw, 1.1rem);
-        padding: 0 20px;
+        //padding: 0 20px;
       }
 
 
@@ -852,7 +881,7 @@
       }
 
       #img-why-card-1 {
-        background-image: url("../../../public/assets/images/page-index/feuille-verte.webp");
+        background-image: url("/assets/images/page-index/feuille-verte.webp");
         left: 20%;
         clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
         border-bottom: 12px solid map-get($colors-rule, first-color);
@@ -860,7 +889,7 @@
 
       #img-why-card-2 {
 
-        background-image: url("../../../public/assets/images/page-index/regle-crayon.webp");
+        background-image: url("/assets/images/page-index/regle-crayon.webp");
         width: 300px;
         border-left: 12px solid map-get($colors-rule, second-color);
         clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
@@ -868,7 +897,7 @@
       }
 
       #img-why-card-3 {
-        background-image: url("../../../public/assets/images/page-index/humain.webp");
+        background-image: url("/assets/images/page-index/humain.webp");
         left: 20%;
         top: 40%;
 
@@ -879,7 +908,7 @@
       }
 
       #img-why-card-4 {
-        background-image: url("../../../public/assets/images/page-index/quality.svg");
+        background-image: url("/assets/images/page-index/quality.svg");
         left: 20%;
         top: 30%;
 

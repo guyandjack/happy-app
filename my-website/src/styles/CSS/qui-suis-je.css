@@ -16,13 +16,48 @@
     alert-color: orangered,
 
 ); */
+/* $colors-rule: (
+    //couleurs de base
+    first-color: #1A1627,
+    second-color:#00d4ff,
+    third-color:  #00bdb6,
+    fourth-color: #b7950b,
+    fifth-color: #171717,
+    sixth-color: #fefefd,
+    footer-color: #1A1627,
+    nav-bar-color:#141627,
+    link-color:#F96900,
+
+
+    //couleur d' interaction / alerte
+    disabled-color: #9ca3af,
+    alert-color: orangered,
+    dark-mode-color: #373737,
+
+    //couleur d'arriere plans simple
+    background-page-color: #fbfbfc,
+    bg-page-shade-light-1:#3d335b,
+    bg-page-shade-light-2:#574983,
+    bg-page-shade-light-3:#7e6fae, 
+
+    //gradient d'arriere plan clair
+    bg-page-gradient-light-1: linear-gradient(),
+    bg-page-gradient-light-2: linear-gradient(),
+    bg-page-gradient-light-3: linear-gradient(), 
+
+    //gradient d'arriere plan foncé
+    bg-page-gradient-dark-1: linear-gradient(),
+    bg-page-gradient-dark-2: linear-gradient(),
+    bg-page-gradient-dark-3: linear-gradient(), 
+
+); */
 /* Page: a-propos (qui-suis-je.css est importé uniquement par page-a-propos.jsx) */
 .page-container {
   --bg: #fbfbfc;
   --panel: rgba(255, 255, 255, 0.9);
   --ink: #171717;
   --muted: rgba(23, 23, 23, 0.7);
-  --brand: #1A1627;
+  --brand: #1a1627;
   --accent: #00d4ff;
   --highlight: #b7950b;
   background: var(--bg);
@@ -140,7 +175,7 @@
       transparent 55%
     ),
     var(--bg); */
-  background-color: #7e6fae;
+  background-color: #f2f0fe;
 }
 .page-container .wrapper-about-text {
   gap: 1rem;
@@ -194,7 +229,7 @@
    );
    border-top: 1px solid rgba(0, 0, 0, 0.05);
    border-bottom: 1px solid rgba(0, 0, 0, 0.05); */
-  background-color: rgba(87, 73, 131, 0.2);
+  background-color: #f2f0fe;
 }
 .page-container .about-charte-text {
   max-width: 86ch;
@@ -305,7 +340,7 @@
       transparent 55%
     ),
     var(--bg); */
-  background-color: rgba(61, 51, 91, 0.2);
+  background-color: #f2f0fe;
 }
 .page-container .process-steps {
   display: grid;

@@ -28,9 +28,9 @@ const creationContent = [
     screenWidth: 100,
     parentSize: "mobile",
     description_fr:
-      "Optimisez vos investissements grâce à notre simulateur de rentabilité locative.Estimez rapidement les coûts liés à la mise en location de votre bien immobilier, en fonction de la fiscalité française (location nue ou LMNP).🚀 Bientôt disponible : des simulateurs dédiés à la Suisse et à d’autres pays européens pour accompagner tous vos projets immobiliers.",
+      "Optimisez vos investissements grâce à notre <strong>simulateur de rentabilité locative</strong>. Estimez rapidement les coûts liés à la mise en location de votre bien immobilier, en fonction de la fiscalité française (location nue ou LMNP).<br> Bientôt disponible : des simulateurs dédiés à la Suisse et à d’autres pays européens pour accompagner tous vos projets immobiliers.",
     description_en:
-      "Optimize your investments with our rental profitability simulator. Quickly estimate the costs associated with renting out your property, based on French tax laws (unfurnished rental or LMNP).🚀 Coming soon: simulators tailored to Switzerland and other European countries to support all your real estate projects.",
+      "Optimize your investments with our <strong>rental profitability simulator</strong>. Quickly estimate the costs associated with renting out your property, based on French tax laws (unfurnished rental or LMNP).<br> Coming soon: simulators tailored to Switzerland and other European countries to support all your real estate projects.",
     screenShot: screenshots_MPL,
     status: true,
   },
