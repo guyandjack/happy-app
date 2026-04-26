@@ -2,32 +2,30 @@
 @use "../../utils/color-rule/color-rule" as *;
 @use "../../utils/size/size.scss" as *;
 
-$navbar-height:map-get($sizes, navbar-height);
+$navbar-height: map-get($sizes, navbar-height);
 
 .page-container {
     //position: relative;
     background-color: rgba(map-get($colors-rule, bg-page-shade-light-4), 1);
     //background-color: red;
     padding-top: $navbar-height;
-    
+
 
     .btn-retour-articles {
-        display: block;
         position: fixed;
-        z-index: 1000;
-        left: 1rem;
-        top: 85%; //alignement avec le composant linkTopPage
-
-
-
-        padding: 1rem;
+        z-index: 10;
+        top: calc($navbar-height);
+        right: 1rem;
+        width: 50px;
+        height: 50px;
+        padding: 0.5rem;
         background-color: map-get($colors-rule, link-color);
-        color: map-get($colors-rule, sixth-color);
-        border-radius: 8px;
+        //color: map-get($colors-rule, sixth-color);
+        border-radius: 50%;
         //border: 4px solid map-get($colors-rule, sixth-color);
         cursor: pointer;
-        text-align: center;
-        width: fit-content;
+        //text-align: center;
+        //width: fit-content;
         transition: all 0.3s ease;
 
         &:hover {
@@ -36,6 +34,12 @@ $navbar-height:map-get($sizes, navbar-height);
             transition: all 0.3s ease;
 
         }
+    }
+
+    .icon-out {
+       
+
+        fill: map-get($colors-rule, sixth-color);
     }
 }
 
@@ -479,12 +483,11 @@ $navbar-height:map-get($sizes, navbar-height);
 }
 
 //x large desktop
-@media screen and (min-width: 1300px) {
+/* @media screen and (min-width: 1300px) {
     .page-container {
 
         .btn-retour-articles {
-
-            top: 200px;
+           
         }
     }
-}
+} */

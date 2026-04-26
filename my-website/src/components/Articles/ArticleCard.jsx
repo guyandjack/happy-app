@@ -17,6 +17,7 @@ function ArticleCard({ article }) {
   const [hrefLink, setHrefLink] = useState("");
   
   
+  
    
   const lang = useRef(getLanguage());
   
@@ -37,11 +38,9 @@ function ArticleCard({ article }) {
   useEffect(() => {
     if (!article) return;
 
-    //const lang = getLanguage();
+    setTitle(lang.current === "fr" ? article.title : article.title_en);
 
-    setTitle(lang === "fr" ? article.title : article.title_en);
-
-    const resume = lang === "fr" ? article.excerpt : article.excerpt_en;
+    const resume = lang.current === "fr" ? article.excerpt : article.excerpt_en;
 
     setExcerpt(resume);
 
@@ -49,26 +48,32 @@ function ArticleCard({ article }) {
     setFormattedDate(formattedDate);
 
     setCategory(article.category);
-    setSlug(lang === "fr" ? article.slug : article.slug_en);
+    setSlug(lang.current === "fr" ? article.slug : article.slug_en);
   }, [article]);
 
   //use effect qui genere l' url du lien
    useEffect(() => {
     
-    let href = "";
-    //store article in local storage
-    localStorage.getItem("article")
-      ? localStorage.removeItem("article")
-      : localStorage.setItem("article", JSON.stringify(article));
-    if (localStorage.getItem("article")) {
-      href =
+    let href =
         lang.current === "fr"
           ? "/public/fr/article.html?article_title=" + slug
           : "/public/en/article.html?article_title=" + slug;
-    }
-    setHrefLink(href);
+        
+        setHrefLink(href);
     
-  }, []); 
+   }, []); 
+  
+  /**
+   *
+   *
+   * @param {*} e
+   */
+  const handleClick = (e) => {
+    e.preventDefault();
+    window.localStorage.setItem("article", JSON.stringify(article));
+    window.location.href = hrefLink;
+
+  }
 
 
   
@@ -77,21 +82,22 @@ function ArticleCard({ article }) {
     <a
       className={`article-card ${isFocused ? "focused" : ""}`}
       tabIndex="0"
+      onClick={(e)=>handleClick(e)}
       href={hrefLink}
     >
       <div className="flex-column-start-center article-card-image">
         <img src={imageUrl} alt={title} loading="lazy" />
         <p className="article-meta">
-          {lang === "en" ? "Updated on" : "Mis à jour le: "} {formattedDate}{" "}
+          {lang.current === "en" ? "Updated on" : "Mis à jour le: "} {formattedDate}{" "}
           <br></br>
-          {lang === "en" ? "Category:" : "Catégorie: "} {category}
+          {lang.current === "en" ? "Category:" : "Catégorie: "} {category}
         </p>
       </div>
       <div className="flex-column-space_evenly-center article-card-content">
         <h3 className="article-title">{title}</h3>
         <p className="article-card-excerpt">{excerpt}</p>
         <span className="article-card-read-more-link">
-          {lang === "fr" ? "Lire la suite" : "Read more"}
+          {lang.current === "fr" ? "Lire la suite" : "Read more"}
         </span>
       </div>
     </a>

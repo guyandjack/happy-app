@@ -14,7 +14,7 @@ $navbar-height:map-get($sizes, navbar-height);
     width: 100%;
     height: $navbar-height;
     margin: 0 auto;
-   padding: 1rem 1rem;
+    padding: 1rem 1rem;
     //background-color: rgba(map-get($colors-rule, fifth-color),0.2);
     transition: opacity 1s ease;
     //border: 2px solid yellow;
@@ -107,11 +107,11 @@ $navbar-height:map-get($sizes, navbar-height);
             &:hover span {
                 background: map-get($colors-rule, second-color);
             }
-            @media screen and (min-width:"992px") {
+            /* @media screen and (min-width:"992px") {
                 gap: 6px;
                     width: 40px;
                     height: 40px;
-            }
+            } */
         }
     }
 
@@ -410,7 +410,7 @@ margin-top: 1rem;
                         height: 8px;
                         bottom: 60%;
                         left: 0px;
-                        background-color: map-get($colors-rule, second-color);
+                        background-color: map-get($colors-rule, link-color-hover);
                         opacity: 0;
 
                     }

@@ -101,13 +101,23 @@
 
 <body>
   <div class="page-container">
+    <svg class="ref-svg">
+      <symbol id="icon-out" viewBox="0 -960 960 960">
+        <path
+          d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v80h-80v-80H200v560h560v-80h80v80q0 33-23.5 56.5T760-120H200Zm480-160-56-56 103-104H360v-80h367L624-624l56-56 200 200-200 200Z" />
+      </symbol>
+    </svg>
     <header>
       <!-- Navbar will be mounted here by React -->
       <div id="RC-navbar"></div>
     </header>
 
     <div id="RC-link-top-page"></div>
-    <a href="./articles-list.html" class="btn-retour-articles">Retour vers les articles</a>
+    <a href="./articles-list.html" class="flex-column-center-center btn-retour-articles">
+      <svg class="icon-out">
+        <use href="#icon-out"></use>
+      </svg>
+    </a>
 
 
 

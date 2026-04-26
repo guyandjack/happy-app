@@ -16,7 +16,8 @@ import { LinkTopPage } from "@/components/linkTopPage/linkTopPage.jsx";
 import Typed from "typed.js";
 
 //import des fonctions
-import {getLanguage} from "@utils/fonction/getLanguage.js"
+import { getLanguage } from "@utils/fonction/getLanguage.js"
+ import { scrollToTarget } from "@utils/fonction/scrollTotarget";
 
 //variable et contante globales
 const fr_content_title = [
@@ -30,6 +31,8 @@ const en_content_title = [
 /****************************************************
  * ************* code principal page "a propos"*******
  *  * ************************************************/
+
+scrollToTarget();
 
 //animation h1
 const lang = getLanguage();

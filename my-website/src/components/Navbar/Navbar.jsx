@@ -251,6 +251,8 @@ function Navbar() {
   const switchLanguage = (lang) => {
     //recupere le chemin actuel
     const currentPath = window.location.pathname;
+    const actualScrollPage = window.scrollY + (window.innerHeight / 2);
+    window.localStorage.setItem("changeLang", actualScrollPage);
 
     // Cas spécifique pour la page d'accueil
     if (currentPath === "/" && lang === "en") {

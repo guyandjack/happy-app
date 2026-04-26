@@ -145,12 +145,12 @@
 .navbar .navbar-brand .burger-menu:hover span {
   background: #00d4ff;
 }
-@media screen and (min-width: 992px) {
-  .navbar .navbar-brand .burger-menu {
-    gap: 6px;
-    width: 40px;
-    height: 40px;
-  }
+.navbar .navbar-brand .burger-menu {
+  /* @media screen and (min-width:"992px") {
+      gap: 6px;
+          width: 40px;
+          height: 40px;
+  } */
 }
 .navbar .navbar-menu {
   position: fixed;
@@ -432,7 +432,7 @@
     height: 8px;
     bottom: 60%;
     left: 0px;
-    background-color: #00d4ff;
+    background-color: #957fee;
     opacity: 0;
   }
   .navbar .navbar-menu .language-switcher {

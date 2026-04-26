@@ -21,7 +21,8 @@ import { initFaq } from "@scripts/page-services.js";
 import Typed from "typed.js";
 
 //import des fonctions
-import {getLanguage} from "@utils/fonction/getLanguage.js"
+import { getLanguage } from "@utils/fonction/getLanguage.js"
+import { scrollToTarget } from "@utils/fonction/scrollTotarget";
 
 //variable et contante globales
 const fr_content_title = [
@@ -43,6 +44,9 @@ const en_content_title = [
 /****************************************************
  * ************* code principal page "index"*******
  *  * ************************************************/
+
+//scroll eventuel de la page
+scrollToTarget();
 
 //animation h1
 const lang = getLanguage();
