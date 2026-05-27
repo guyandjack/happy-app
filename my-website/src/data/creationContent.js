@@ -46,7 +46,7 @@ const creationContent = [
     description_en:
       "Boost the quality of your visuals with our SaaS solution <strong>powered by a pre-trained AI model</strong>, it automatically crops your photos and removes or edits backgrounds in seconds.<br>You can also optimize your images for the web: resizing, formatting, and compression—everything is designed for maximum performance and a professional finish.",
     screenShot: screenshots_WP,
-    status: false,
+    status: true,
   },
 ];
 
