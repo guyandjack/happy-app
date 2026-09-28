@@ -9,6 +9,22 @@ const PUBLIC_ROOT = path.join(PROJECT_ROOT, "public");
 const LP_DIR = path.join(PUBLIC_ROOT, "images", "landingPage"); // ./public/images/landingPage
 const TIMEZONE = "Europe/Zurich";
 
+// The public image URLs remain stable during a season. Browsers can therefore
+// cache them until the next switch without serving a stale seasonal visual.
+function secondsUntilNextSeason(date = new Date()) {
+  const year = date.getUTCFullYear();
+  const seasonStarts = [
+    Date.UTC(year, 2, 21),
+    Date.UTC(year, 5, 21),
+    Date.UTC(year, 8, 21),
+    Date.UTC(year, 11, 21),
+    Date.UTC(year + 1, 2, 21),
+  ];
+  const nextStart = seasonStarts.find((start) => start > date.getTime());
+
+  return Math.max(0, Math.ceil((nextStart - date.getTime()) / 1000));
+}
+
 // Mapping URL -> fichiers saison
 const WIDTH_MAP = [
   { urlName: "500", pxName: "700px" }, // 500 -> 700px
@@ -16,6 +32,7 @@ const WIDTH_MAP = [
   { urlName: "1500", pxName: "1500px" },
   { urlName: "2000", pxName: "2000px" },
 ];
+const SEASONS = ["winter", "spring", "summer", "autumn"];
 
 // Détermine la saison à partir de la date (bornes fixes)
 function seasonFor(date = new Date()) {
@@ -39,6 +56,51 @@ function seasonFor(date = new Date()) {
   if (now >= M21 && now < J21) return "spring";
   if (now >= J21 && now < S21) return "summer";
   return "autumn";
+}
+
+function fallbackSeasonOrder(requestedSeason) {
+  const requestedIndex = SEASONS.indexOf(requestedSeason);
+  if (requestedIndex === -1) {
+    throw new Error(`Unknown landing page season: ${requestedSeason}`);
+  }
+
+  // Préfère la dernière saison disponible afin d'éviter un changement visuel
+  // trop éloigné lorsque l'asset demandé n'a pas encore été livré.
+  return Array.from(
+    { length: SEASONS.length },
+    (_value, offset) =>
+      SEASONS[(requestedIndex - offset + SEASONS.length) % SEASONS.length]
+  );
+}
+
+async function hasCompleteSeasonAssets(season) {
+  try {
+    await Promise.all(
+      WIDTH_MAP.map(({ pxName }) =>
+        fs.access(path.join(LP_DIR, `index-${season}-${pxName}.webp`))
+      )
+    );
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function resolveAvailableSeason(requestedSeason) {
+  for (const candidate of fallbackSeasonOrder(requestedSeason)) {
+    if (await hasCompleteSeasonAssets(candidate)) {
+      if (candidate !== requestedSeason) {
+        console.warn(
+          `[seasonal] Missing assets for ${requestedSeason}; using ${candidate} fallback.`
+        );
+      }
+      return candidate;
+    }
+  }
+
+  throw new Error(
+    `No complete landing page asset set is available for: ${SEASONS.join(", ")}`
+  );
 }
 
 // Création remplaçante atomique : hardlink -> symlink -> copy, puis rename
@@ -114,10 +176,14 @@ async function ensurePlaceholder() {
 }
 
 async function syncSeasonAssets(reason = "manual") {
-  const season = seasonFor();
+  const requestedSeason = seasonFor();
   await ensurePlaceholder();
+  const season = await resolveAvailableSeason(requestedSeason);
   await pointLandingPageToSeason(season);
-  console.log(`[seasonal] sync (${reason}) -> ${season}`);
+  console.log(
+    `[seasonal] sync (${reason}) -> ${season}` +
+      (season === requestedSeason ? "" : ` (fallback for ${requestedSeason})`)
+  );
   return season;
 }
 
@@ -153,6 +219,10 @@ async function startScheduler() {
 module.exports = {
   LP_DIR,
   seasonFor,
+  secondsUntilNextSeason,
+  fallbackSeasonOrder,
+  hasCompleteSeasonAssets,
+  resolveAvailableSeason,
   pointLandingPageToSeason,
   syncSeasonAssets,
   startScheduler,

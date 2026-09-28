@@ -11,7 +11,11 @@ const fileUpload = require("express-fileupload");
 const fs = require("fs"); // <-- pour le fallback
 
 // import des fonctions
-const { LP_DIR, startScheduler } = require("./utils/function/scheduler.js");
+const {
+  LP_DIR,
+  secondsUntilNextSeason,
+  startScheduler,
+} = require("./utils/function/scheduler.js");
 const logger = require("./logger.js");
 const testNotif = require("./utils/function/testNotification.js");
 
@@ -46,9 +50,8 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// ✅ Static global (sert tout ./public à la racine → /images/... , /articles/...)
-app.use(express.static(path.join(__dirname, "public")));
-
+// Images saisonnières : déclarées avant le statique global afin que leur
+// politique de cache spécifique ne soit pas contournée.
 app.use(
   "/images/landingPage",
   express.static(LP_DIR, {
@@ -56,9 +59,9 @@ app.use(
     redirect: false,
     etag: true,
     lastModified: true,
-    maxAge: "2d",
     setHeaders(res, filePath) {
-      res.setHeader("Cache-Control", "public, max-age=172800, must-revalidate");
+      const maxAge = secondsUntilNextSeason();
+      res.setHeader("Cache-Control", `public, max-age=${maxAge}, must-revalidate`);
       res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
       if (filePath && filePath.endsWith(".webp")) {
         res.setHeader("Content-Type", "image/webp");
@@ -66,6 +69,9 @@ app.use(
     },
   }),
 );
+
+// Static global (sert tout ./public à la racine → /images/... , /articles/...)
+app.use(express.static(path.join(__dirname, "public")));
 
 // ✅ Fallback image (en cas de 404, on renvoie une WebP → pas d'HTML ⇒ pas d'ORB)
 /* app.use("/images/landingPage", (req, res, next) => {
