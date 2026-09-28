@@ -38,6 +38,7 @@ const menuItems = {
         path: `/public/fr/prestations/application-mobile.html`,
         text: "Application Mobile",
       },
+      { path: `/public/fr/prestations/saas.html`, text: "Solutions SaaS" },
     ],
     legal: [
       {
@@ -65,6 +66,7 @@ const menuItems = {
         path: `/public/en/services/mobile-application.html`,
         text: "Mobile App",
       },
+      { path: `/public/en/services/saas.html`, text: "SaaS Solutions" },
     ],
     legal: [
       {

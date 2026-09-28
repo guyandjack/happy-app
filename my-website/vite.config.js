@@ -39,6 +39,10 @@ export default defineConfig({
           __dirname,
           "./public/fr/prestations/application-mobile.html"
         ),
+        services_saas_fr: path.resolve(
+          __dirname,
+          "./public/fr/prestations/saas.html"
+        ),
         //realisations_fr: path.resolve(__dirname, "./src/pages/fr/realisations.html"),
         contact_fr: path.resolve(__dirname, "./public/fr/contact.html"),
         articles_fr: path.resolve(__dirname, "./public/fr/articles-list.html"),
@@ -68,6 +72,10 @@ export default defineConfig({
         services_app_en: path.resolve(
           __dirname,
           "./public/en/services/mobile-application.html"
+        ),
+        services_saas_en: path.resolve(
+          __dirname,
+          "./public/en/services/saas.html"
         ),
         /* achievements_en: path.resolve(
           __dirname,

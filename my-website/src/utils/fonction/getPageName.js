@@ -16,9 +16,9 @@ function getPageName(lang) {
   }
 
   let masqueFr =
-    /^(index|contact|a-propos|realisations|articles-list|site-web|seo|application-mobile)$/;
+    /^(index|contact|a-propos|realisations|articles-list|site-web|seo|application-mobile|saas)$/;
   let masqueEn =
-    /^(home|contact|about|achievements|articles-list|website|seo|mobile-application)$/;
+    /^(home|contact|about|achievements|articles-list|website|seo|mobile-application|saas)$/;
 
   if (lang === "fr") {
     //recupere le nom de la page dans l'url

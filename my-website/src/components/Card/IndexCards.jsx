@@ -26,6 +26,10 @@ const IndexCards = () => {
     lang === "fr"
       ? "/public/fr/prestations/seo.html"
       : "/public/en/services/seo.html";
+  const uriPrestaSaas =
+    lang === "fr"
+      ? "/public/fr/prestations/saas.html"
+      : "/public/en/services/saas.html";
 
   const descriptionPrestaWeb =
     lang === "fr"
@@ -34,22 +38,30 @@ const IndexCards = () => {
 
   const descriptionPrestaSeo =
     lang === "fr"
-      ? "Améliorez votre visibilité en ligne grâce à nos stratégies d'optimisation pour les moteurs de recherche, conçues pour attirer un trafic qualifié vers votre site."
-      : "Improve your online visibility thanks to our optimization strategies for search engines, designed to attract qualified traffic to your site.";
+      ? "Gagnez en visibilité sur Google et dans les réponses générées par l’IA grâce à des contenus structurés, fiables et utiles à vos clients."
+      : "Improve visibility on search engines and in AI-generated answers with structured, trustworthy content that is useful to your customers.";
 
   const descriptionPrestaApp =
     lang === "fr"
       ? "Des applications mobiles intuitives et réactives pour iOS et Android, qui permettent à vos clients d'interagir avec votre entreprise où qu'ils soient."
       : "Intuitive and responsive mobile applications for iOS and Android, which allow your clients to interact with your business wherever they are.";
 
+  const descriptionPrestaSaas =
+    lang === "fr"
+      ? "Concevez un logiciel en ligne accessible par abonnement : un outil sécurisé, évolutif et pensé pour simplifier le travail de vos utilisateurs."
+      : "Build subscription-based online software: a secure, scalable tool designed to simplify your users' daily work.";
+
   const titlePrestaWeb =
     lang === "fr" ? "Conception de sites web" : "Custom website design";
   const titlePrestaSeo =
-    lang === "fr" ? "Optimisation SEO" : "SEO Optimization";
+    lang === "fr" ? "Optimisation SEO & GEO" : "SEO & GEO Optimization";
   const titlePrestaApp =
     lang === "fr"
       ? "Développement<br>d'applications mobiles"
       : "Mobile application development";
+
+  const titlePrestaSaas =
+    lang === "fr" ? "Solutions SaaS<br>sur mesure" : "Custom SaaS<br>solutions";
 
   const indexCards = [
     {
@@ -77,6 +89,15 @@ const IndexCards = () => {
       description: `${descriptionPrestaApp}`,
       linkUrl: `${uriPrestaApp}`,
       className: "card-app",
+      imageUrl: `${cardImage_3}`,
+    },
+    {
+      width: "350px",
+      height: "500px",
+      title: `${titlePrestaSaas}`,
+      description: `${descriptionPrestaSaas}`,
+      linkUrl: `${uriPrestaSaas}`,
+      className: "card-saas",
       imageUrl: `${cardImage_3}`,
     },
   ];

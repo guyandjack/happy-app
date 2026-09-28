@@ -164,6 +164,29 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/public/fr/prestations/application-mobile.html"/>
   </url>
 
+  <!-- SERVICES: SAAS -->
+  <url>
+    <loc>https://helveclick.ch/public/fr/prestations/saas.html</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/public/fr/prestations/saas.html"/>
+    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/public/en/services/saas.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/public/fr/prestations/saas.html"/>
+  </url>
+
+  <url>
+    <loc>https://helveclick.ch/public/en/services/saas.html</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/public/fr/prestations/saas.html"/>
+    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/public/en/services/saas.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/public/fr/prestations/saas.html"/>
+  </url>
+
   <!-- LEGAL: PRIVACY POLICY -->
   <url>
     <loc>https://helveclick.ch/public/fr/legal/politique-de-confidentialite.html</loc>

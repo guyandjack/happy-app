@@ -28,6 +28,11 @@ let ctaSectionContent = {
       text: "Attirez plus de visiteurs grâce à un SEO performant. Contactez-moi pour un audit !",
       btn_text: "Contactez-moi",
     },
+    saas: {
+      title: "Transformez votre idée en logiciel SaaS",
+      text: "Parlons de vos utilisateurs, de vos processus et de la solution en ligne à construire.",
+      btn_text: "Contactez-moi",
+    },
     site: {
       title: "Créez un site web qui convertit dès aujourd'hui",
       text: "Envie d’un site performant qui booste vos ventes ? Contactez-moi pour en discuter !.",
@@ -70,6 +75,11 @@ let ctaSectionContent = {
       btn_text: "Contact me",
     },
 
+    saas: {
+      title: "Turn your idea into SaaS software",
+      text: "Let's discuss your users, your workflows, and the online solution to build.",
+      btn_text: "Contact me",
+    },
     site: {
       title: "Create a website that converts today",
       text: "Looking for a high-performing site that boosts your sales? Contact me to discuss it!",
