@@ -27,10 +27,10 @@ import { scrollToTarget } from "@utils/fonction/scrollTotarget";
 //variable et contante globales
 const fr_content_title = [
   "créer des sites internet.",
-  "créer des applications mobiles.",
-  "créer des saas.",
+  "créer des applications mobiles",
+  "créer des SaaS.",
   "réaliser des apllications métiers.",
-  "optimiser le SEO",
+  "optimiser le référencement SEO/GEO.",
 ];
 
 const en_content_title = [
@@ -38,7 +38,7 @@ const en_content_title = [
   "develop mobile apps",
   "create SaaS solutions",
   "develop business applications",
-  "optimize SEO",
+  "optimize SEO and GEO",
 ];
 
 /****************************************************
