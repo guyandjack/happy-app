@@ -3,6 +3,36 @@ function initFaq() {
   const faqItems = document.querySelectorAll(".faq-item");
 
   faqItems.forEach((item) => {
+    const questionButton = item.querySelector(".faq-question");
+
+    if (questionButton) {
+      const answerId = questionButton.getAttribute("aria-controls");
+      const answer = answerId ? document.getElementById(answerId) : null;
+
+      if (!answer) {
+        return;
+      }
+
+      questionButton.setAttribute("aria-expanded", "false");
+      answer.setAttribute("aria-hidden", "true");
+      answer.classList.remove("expanded");
+      item.classList.remove("expanded");
+
+      questionButton.addEventListener("click", () => {
+        const isExpanded = questionButton.getAttribute("aria-expanded") === "true";
+        const nextExpandedState = !isExpanded;
+
+        questionButton.setAttribute("aria-expanded", String(nextExpandedState));
+        answer.setAttribute("aria-hidden", String(!nextExpandedState));
+        questionButton.classList.toggle("expanded", nextExpandedState);
+        answer.classList.toggle("expanded", nextExpandedState);
+        item.classList.toggle("expanded", nextExpandedState);
+      });
+
+      return;
+    }
+
+    // Backward compatibility for the existing FAQ markup on service pages.
     const question = item.querySelector("h3");
     const answer = item.querySelector("p");
     const answerList = item.querySelector("ul");

@@ -21,7 +21,7 @@ const screenshots_WP = Object.values(
 
 const creationContent = [
   {
-    title: "MPL",
+    title: "Mon Projet Locatif",
     logo: logo_MPL,
     url: "https://monprojetlocatif.org",
     mockup: "iphone",

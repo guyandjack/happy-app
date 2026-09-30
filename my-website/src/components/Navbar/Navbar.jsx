@@ -200,7 +200,7 @@ function Navbar() {
           },
           {
             path: `/public/fr/prestations/seo.html`,
-            text: "Optimisation SEO",
+            text: "Référencement SEO",
           },
           {
             path: `/public/fr/prestations/application-mobile.html`,
@@ -231,7 +231,7 @@ function Navbar() {
             path: `/public/en/services/website.html`,
             text: "Website",
           },
-          { path: `/public/en/services/seo.html`, text: "SEO Optimization" },
+          { path: `/public/en/services/seo.html`, text: "SEO & GEO" },
           {
             path: `/public/en/services/mobile-application.html`,
             text: "Mobile App",

@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
 //import { reactSVG } from "react-svg";
 
 import { AndroidTabMockup, IPhoneMockup } from "react-device-mockup";
 import "@/styles/SCSS/components/displayCreation.scss";
+import { getLanguage } from "@utils/fonction/getLanguage";
 
 //import des images
 import iconArrow from "@/assets/icons/arrow-circle-right.svg";
@@ -14,12 +14,7 @@ import { creationContent } from "@/data/creationContent.js";
 function DisplayCreation() {
   if (creationContent.length === 0) return null;
 
-  const deferredPrompt = useRef(null);
-  const [lang, setLang] = useState("");
-  useEffect(() => {
-    const language = document.documentElement.lang || "fr";
-    setLang(language);
-  }, []);
+  const lang = getLanguage();
 
   return (
     <div className="flex-row-start-center creation-wrapper">
@@ -36,7 +31,7 @@ function DisplayCreation() {
           ></div>
 
           <div className="flex-column-start-center card-head">
-            <p className="card-title">{card.title}</p>
+            <h3 className="card-title">{card.title}</h3>
             <img
               className="card-logo"
               src={card.logo}
@@ -49,6 +44,7 @@ function DisplayCreation() {
                 className="flex-row-center-center card-creation-link"
                 href={card.url}
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <span>
                   {" "}

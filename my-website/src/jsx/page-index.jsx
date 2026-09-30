@@ -29,7 +29,7 @@ const fr_content_title = [
   "créer des sites internet.",
   "créer des applications mobiles",
   "créer des SaaS.",
-  "réaliser des apllications métiers.",
+  "réaliser des applications métiers.",
   "optimiser le référencement SEO/GEO.",
 ];
 
@@ -51,14 +51,19 @@ scrollToTarget();
 //animation h1
 const lang = getLanguage();
 
-const typed = new Typed(".anim-h1", {
-  strings: lang === "fr"? fr_content_title : en_content_title,
-  typeSpeed: 90,
-  backSpeed: 30,
-  loop: true,
-  loopCount: Infinity,
-  backDelay: 1500,
-});
+const typedTarget = document.querySelector(".anim-h1");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (typedTarget && !prefersReducedMotion) {
+  new Typed(typedTarget, {
+    strings: lang === "fr" ? fr_content_title : en_content_title,
+    typeSpeed: 90,
+    backSpeed: 30,
+    loop: true,
+    loopCount: Infinity,
+    backDelay: 1500,
+  });
+}
 
 
 //Logique collapse faq
@@ -92,7 +97,7 @@ try {
 //mount cta section
 try {
   const ctaSectionContainer = document.getElementById("RC-cta-section");
-  if (ctaSectionContainer) {
+  if (ctaSectionContainer && !ctaSectionContainer.hasChildNodes()) {
     ReactDOM.createRoot(ctaSectionContainer).render(
       <React.StrictMode>
         <CtaSection />
@@ -140,7 +145,7 @@ try {
 //mount card services
 try {
   const CardServicesContainer = document.getElementById("RC-card-services");
-  if (CardServicesContainer) {
+  if (CardServicesContainer && !CardServicesContainer.hasChildNodes()) {
     ReactDOM.createRoot(CardServicesContainer).render(
       <React.StrictMode>
         <IndexCards />

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr-CH">
 
 <head>
 
@@ -17,11 +17,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Balises SEO prioritaires -->
-  <title>Agence web à Crans-Montana | Création de sites internet & apps</title>
+  <title>Agence web à Crans-Montana | Sites web & SaaS</title>
 
 
   <meta name="description"
-    content="Agence web à Crans-Montana en Valais : création de sites internet, applications mobiles, référencement SEO et GEO, développement de SaaS.Solutions  digitales, durables et sur mesure, pour les PME valaisannes.">
+    content="Agence web à Crans-Montana, en Valais : sites internet, applications mobiles, SaaS, SEO/GEO et solutions écoresponsables sur mesure pour les PME.">
 
   <meta name="robots" content="index, follow">
 
@@ -40,9 +40,9 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://helveclick.ch/">
-  <meta property="og:title" content="Agence web à Crans-Montana | Création de sites internet & apps">
+  <meta property="og:title" content="Agence web à Crans-Montana | Sites web & SaaS">
   <meta property="og:description"
-    content="Agence web à Crans-Montana en Valais spécialisée en création de sites internet, applications mobiles et SEO. Solutions sur mesure pour entreprises locales.">
+    content="Sites internet, applications mobiles, SaaS, SEO/GEO et solutions écoresponsables sur mesure pour les PME du Valais.">
   <!-- <meta property="og:image" content="https://helveclick.ch/images/og-home.jpg"> -->
   <meta property="og:locale" content="fr_CH">
   <meta property="og:site_name" content="Helveclick">
@@ -50,9 +50,9 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Agence web à Crans-Montana | Sites internet & applications">
+  <meta name="twitter:title" content="Agence web à Crans-Montana | Sites web & SaaS">
   <meta name="twitter:description"
-    content="Création de sites internet, applications mobiles et SEO à Crans-Montana en Valais. Agence web spécialisée dans les solutions digitales locales.">
+    content="Sites internet, applications mobiles, SaaS, SEO/GEO et solutions écoresponsables sur mesure pour les PME du Valais.">
 
   <!-- <meta name="twitter:image" content="https://helveclick.ch/images/og-home.jpg"> -->
 
@@ -65,11 +65,12 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": ["LocalBusiness", "ProfessionalService"],
+    "@id": "https://helveclick.ch/#org",
     "name": "HelveClick",
     "url": "https://helveclick.ch/",
     "logo": "https://helveclick.ch/public/assets/logo/logo-v8.svg",
-    "description": "Création de sites internet, applications mobiles et SEO à Crans-Montana en Valais. Agence web spécialisée dans les solutions digitales locales.",
+    "description": "Agence web à Crans-Montana, en Valais : sites internet, applications mobiles, SaaS, SEO/GEO et solutions écoresponsables sur mesure pour les PME.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Chemin du mont paisible 1",
@@ -80,6 +81,18 @@
     },
     "telephone": "+41 78 894 09 87",
     "email": "info@helveclick.ch",
+    "areaServed": [
+      { "@type": "City", "name": "Crans-Montana" },
+      { "@type": "AdministrativeArea", "name": "Valais" },
+      { "@type": "Country", "name": "Suisse" }
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "telephone": "+41 78 894 09 87",
+      "email": "info@helveclick.ch",
+      "availableLanguage": ["fr", "en"]
+    },
     "sameAs": [
       "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
     ],
@@ -96,24 +109,54 @@
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Création de site internet"
+          "@id": "https://helveclick.ch/public/fr/prestations/site-web.html#service",
+          "name": "Création de sites web sur mesure",
+          "url": "https://helveclick.ch/public/fr/prestations/site-web.html"
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Développement d’applications mobiles"
+          "@id": "https://helveclick.ch/public/fr/prestations/application-mobile.html#service",
+          "name": "Développement d’applications mobiles",
+          "url": "https://helveclick.ch/public/fr/prestations/application-mobile.html"
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "SEO (référencement naturel)"
+          "@id": "https://helveclick.ch/public/fr/prestations/seo.html#service",
+          "name": "Optimisation SEO et GEO",
+          "url": "https://helveclick.ch/public/fr/prestations/seo.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "@id": "https://helveclick.ch/public/fr/prestations/saas.html#service",
+          "name": "Développement de logiciel SaaS sur mesure",
+          "url": "https://helveclick.ch/public/fr/prestations/saas.html"
         }
       }
     ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://helveclick.ch/#webpage",
+    "url": "https://helveclick.ch/",
+    "name": "Agence web à Crans-Montana | Sites web & SaaS",
+    "description": "Agence web à Crans-Montana, en Valais : sites internet, applications mobiles, SaaS, SEO/GEO et solutions écoresponsables sur mesure pour les PME.",
+    "inLanguage": "fr-CH",
+    "about": {
+      "@id": "https://helveclick.ch/#org"
+    }
   }
   </script>
 
@@ -138,18 +181,19 @@
           d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
       </symbol>
     </svg>
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
     <!-- Navbar will be mounted here by React -->
     <header style="min-height: 60px; width: 100%;">
       <div id="RC-navbar"></div>
     </header>
 
     <div id="RC-link-top-page"></div>
-    <main>
+    <main id="main-content" tabindex="-1">
 
       <!-- Hero section -->
       <section class="flex-column-center-center hero-index">
 
-        <img class="image-logo" src="/assets/logo/helveclick-light-ok.png" alt="logo helveclick">
+        <img class="image-logo" src="/assets/logo/helveclick-light-ok.png" alt="Helveclick">
 
         <div class="hero-index-wrapper">
           <h1 class="hero-index-title-h1">
@@ -157,7 +201,7 @@
             Solutions <span>digitales</span><br> pour les <span>PME</span> du Valais
 
           </h1>
-          <p class="anim-h1-wrapper">>_ pour&nbsp;<span class="anim-h1"></span></p>
+          <p class="anim-h1-wrapper" aria-hidden="true">>_ pour&nbsp;<span class="anim-h1">créer des sites internet.</span></p>
         </div>
         <div class="flex-column-space_evenly-center hero-index-wrapper">
 
@@ -167,28 +211,20 @@
           </h2> -->
 
           <ul class="flex-column-center-center container">
-            <li>
-              <h2>
-                <a class="hero-index-link" href="/public/fr/prestations/site-web.html">Sites internet</a>
-              </h2>
+            <li class="hero-index-service-item">
+              <a class="hero-index-link" href="/public/fr/prestations/site-web.html">Sites internet</a>
             </li>
-            <li>
-              <h2>
-                <a class="hero-index-link" href="/public/fr/prestations/application-mobile.html">Applications
-                  mobiles</a>
-              </h2>
+            <li class="hero-index-service-item">
+              <a class="hero-index-link" href="/public/fr/prestations/saas.html">Solutions SaaS</a>
             </li>
-            <li>
-              <h2>
-                <a class="hero-index-link" href="/public/fr/prestations/seo.html">Optimisation SEO</a>
-              </h2>
+            <li class="hero-index-service-item">
+              <a class="hero-index-link" href="/public/fr/prestations/application-mobile.html">Applications
+                mobiles</a>
+            </li>
+            <li class="hero-index-service-item">
+              <a class="hero-index-link" href="/public/fr/prestations/seo.html">Référencement SEO</a>
             </li>
 
-            <li>
-              <h2>
-                <a class="hero-index-link" href="/public/fr/prestations/saas.html">Solutions SaaS</a>
-              </h2>
-            </li>
 
           </ul>
         </div>
@@ -199,7 +235,7 @@
             https://api.helveclick.ch/images/landingPage/1500.webp 1500w,
             https://api.helveclick.ch/images/landingPage/2000.webp 2000w" sizes="100vw" fetchpriority="high"
           loading="eager" crossorigin="anonymous"
-          alt="Agence web à Crans-Montana, Valais : création de sites internet et d’applications mobiles">
+          alt="">
 
         <div class="hero-index-overlay"></div>
 
@@ -209,7 +245,83 @@
       <!-- Services section -->
       <section class="flex-column-start-center services">
         <h2 class="item-menu-side">Mes <strong>services</strong></h2>
-        <div id="RC-card-services"></div>
+        <p class="services-intro">J’accompagne les PME de tous secteurs en Valais, en présentiel, ainsi que dans les autres cantons suisses à distance.</p>
+        <div id="RC-card-services">
+          <div class="index-cards-wrapper">
+            <section class="flex-column-start-center card-container">
+              <ul class="flex-row-center-center cards-list" style="gap: 50px" role="list">
+                <li class="card-item">
+                  <div class="card-web">
+                    <a class="flex-column-start-center card-link" style="width: 350px; height: 500px"
+                      href="/public/fr/prestations/site-web.html">
+                      <div class="card-image-container">
+                        <img src="/src/assets/images/page-index/card-index/img-card-web.webp"
+                          alt="Aperçu d’un site web sur mesure" class="card-image" loading="lazy" decoding="async">
+                      </div>
+                      <div class="flex-column-space_evenly-center card-content">
+                        <h3 class="card-title">Conception de sites web</h3>
+                        <p class="card-description">Des sites web uniques et performants, conçus pour répondre exactement à vos objectifs commerciaux et à l'expérience utilisateur que vous souhaitez offrir.</p>
+                        <div class="flex-column-center-center card-button">Découvrir</div>
+                      </div>
+                    </a>
+                    <a href="/public/fr/contact.html" class="card-button-contact">Contactez-moi</a>
+                  </div>
+                </li>
+                <li class="card-item">
+                  <div class="card-seo">
+                    <a class="flex-column-start-center card-link" style="width: 350px; height: 500px"
+                      href="/public/fr/prestations/seo.html">
+                      <div class="card-image-container">
+                        <img src="/src/assets/images/page-index/card-index/img-card-seo.webp"
+                          alt="Aperçu d’un accompagnement SEO et GEO" class="card-image" loading="lazy" decoding="async">
+                      </div>
+                      <div class="flex-column-space_evenly-center card-content">
+                        <h3 class="card-title">Optimisation SEO &amp; GEO</h3>
+                        <p class="card-description">Gagnez en visibilité sur Google et dans les réponses générées par l’IA grâce à des contenus structurés, fiables et utiles à vos clients.</p>
+                        <div class="flex-column-center-center card-button">Découvrir</div>
+                      </div>
+                    </a>
+                    <a href="/public/fr/contact.html" class="card-button-contact">Contactez-moi</a>
+                  </div>
+                </li>
+                <li class="card-item">
+                  <div class="card-app">
+                    <a class="flex-column-start-center card-link" style="width: 350px; height: 500px"
+                      href="/public/fr/prestations/application-mobile.html">
+                      <div class="card-image-container">
+                        <img src="/src/assets/images/page-index/card-index/img-card-app.webp"
+                          alt="Aperçu d’une application mobile" class="card-image" loading="lazy" decoding="async">
+                      </div>
+                      <div class="flex-column-space_evenly-center card-content">
+                        <h3 class="card-title">Développement<br>d'applications mobiles</h3>
+                        <p class="card-description">Des applications mobiles intuitives et réactives pour iOS et Android, qui permettent à vos clients d'interagir avec votre entreprise où qu'ils soient.</p>
+                        <div class="flex-column-center-center card-button">Découvrir</div>
+                      </div>
+                    </a>
+                    <a href="/public/fr/contact.html" class="card-button-contact">Contactez-moi</a>
+                  </div>
+                </li>
+                <li class="card-item">
+                  <div class="card-saas">
+                    <a class="flex-column-start-center card-link" style="width: 350px; height: 500px"
+                      href="/public/fr/prestations/saas.html">
+                      <div class="card-image-container">
+                        <img src="/src/assets/images/page-index/card-index/img-card-app.webp"
+                          alt="Aperçu d’une solution SaaS" class="card-image" loading="lazy" decoding="async">
+                      </div>
+                      <div class="flex-column-space_evenly-center card-content">
+                        <h3 class="card-title">Solutions SaaS<br>sur mesure</h3>
+                        <p class="card-description">Concevez un logiciel en ligne accessible par abonnement : un outil sécurisé, évolutif et pensé pour simplifier le travail de vos utilisateurs.</p>
+                        <div class="flex-column-center-center card-button">Découvrir</div>
+                      </div>
+                    </a>
+                    <a href="/public/fr/contact.html" class="card-button-contact">Contactez-moi</a>
+                  </div>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </div>
       </section>
 
 
@@ -223,18 +335,13 @@
           <div class="flex-column-start-start why-choose-card">
             <h3 id="why-choose-card-1">Pour des sites rapides, performants et éco&#8209;responsables</h3>
             <p id="why-choose-card-1-p">
-              Je crée des <strong>sites internet légers</strong> et <strong>rapides à charger</strong> en évitant
-              l'utilisation
-              de <strong>frameworks lourds</strong> ou de CMS trop gourmands en ressources. Cela permet d'optimiser la
-              vitesse de
-              votre site tout en offrant une <strong>expérience utilisateur fluide</strong>. Avec une approche
-              <strong><a href="/public/fr/prestations/site-web.html#eco-conception">éco-conçue</a></strong>, je m'assure
-              que chaque site respecte l'environnement en optimisant
-              <strong>la consommation d'énergie</strong> et en réduisant l'empreinte <strong>carbone</strong>.
-              Je veille à rester au plus près des <strong><a href="https://greenit.eco/"
-                  target="_blank">recommandations&nbsp;du&nbsp;Green&nbsp;IT</a></strong>, afin d'adopter des
-              pratiques
-              responsables et durables dans chaque étape du développement.
+              Je conçois des <strong>sites internet légers</strong> en privilégiant des médias optimisés, des
+              fonctionnalités utiles et une structure adaptée au projet. Ces choix peuvent réduire les transferts de
+              données et contribuer à une <strong>expérience utilisateur fluide</strong>. Dans une démarche
+              <strong><a href="/public/fr/prestations/site-web.html#eco-conception">d’éco-conception</a></strong>, je
+              m’appuie sur les <strong><a href="https://greenit.eco/" target="_blank"
+                  rel="noopener noreferrer">recommandations&nbsp;du&nbsp;Green&nbsp;IT</a></strong> pour orienter les
+              choix de conception et de développement.
             </p>
             <div id="img-why-card-1" class="img-why-card" role="img" aria-label="Solutions digitales eco-responsable">
             </div>
@@ -252,16 +359,12 @@
             <p id="why-choose-card-2-p">Chaque projet est unique. Que vous ayez besoin d'un <strong>
                 <a href="/public/fr/prestations/site-web.html">site&nbsp;vitrine</a></strong>, d'une
               <strong><a href="/public/fr/prestations/site-web.html#marchand">boutique&nbsp;en&nbsp;ligne</a></strong>,
-              d'une <strong>application mobile</strong>, je
-              conçois des
+              d'une <strong><a href="/public/fr/prestations/application-mobile.html">application mobile</a></strong>
+              ou d'une <strong><a href="/public/fr/prestations/saas.html">solution SaaS</a></strong>, je conçois des
               <strong>solutions personnalisées</strong> qui répondent spécifiquement à vos besoins. Avec une
               <strong>interface
                 intuitive</strong> et <strong>adaptée à vos utilisateurs</strong>, je veille à ce que chaque
-              fonctionnalité du
-              site soit pensée pour maximiser <strong>l'engagement</strong> de vos visiteurs et
-              <strong>convertir</strong>
-              les
-              prospects en clients.
+              fonctionnalité soit pensée en fonction de vos usages, de vos priorités et de vos objectifs métier.
             </p>
             <div id="img-why-card-2" class="img-why-card" role="img" aria-label="Projet sur mesure"></div>
           </div>
@@ -283,16 +386,12 @@
 
 
           <div class="flex-column-start-start why-choose-card">
-            <h3 id="why-choose-card-4">Pour une qualité garantie.</h3>
+            <h3 id="why-choose-card-4">Pour des solutions durables et maintenables.</h3>
             <p id="why-choose-card-4-p">
-              Je m’engage à livrer un <strong>produit final robuste</strong>, <strong>soigné dans les moindres
-                détails</strong> et
-              conçu pour offrir une <strong>expérience utilisateur optimale</strong>. Chaque projet est pensé pour
-              être
-              <strong>évolutif</strong> et <strong>facilement maintenable</strong>, afin de s’adapter durablement à
-              vos
-              besoins
-              futurs.
+              Je conçois des solutions <strong>robustes</strong> et <strong>soignées</strong>, pensées pour offrir une
+              expérience utilisateur claire et adaptée à votre projet. La structure et les fonctionnalités sont
+              préparées pour faciliter les <strong>évolutions</strong> et la <strong>maintenance</strong>, selon les
+              besoins définis ensemble.
             </p>
             <div id="img-why-card-4" class="img-why-card" role="img" aria-label="Badge de qualité"></div>
           </div>
@@ -452,16 +551,55 @@
 
       <!-- CTA Section -->
 
-      <div id="RC-cta-section"></div>
+      <div id="RC-cta-section">
+        <section class="cta-section" aria-labelledby="cta-title">
+          <h2 id="cta-title">Parlons de votre projet web ou SaaS</h2>
+          <p>Décrivez votre besoin : création ou refonte de site web, plateforme SaaS ou accompagnement SEO/GEO. Pour demander un devis ou convenir d’un rendez-vous, utilisez le formulaire de contact ou appelez le <a href="tel:+41788940987">+41&nbsp;78&nbsp;894&nbsp;09&nbsp;87</a>.</p>
+          <a class="btn btn-primary" href="/public/fr/contact.html">Demander un devis <br> ou <br>un rendez-vous</a>
+        </section>
+      </div>
 
       <!-- creation section -->
 
       <section class="flex-column-start-center creations">
 
         <h2 id="heading-4" class="item-menu-side" data-hero="Créations">Dernières<strong> créations</strong></h2>
+        <p class="creations-intro">Parmi les projets en production présentés ci-dessous : <a href="https://wizpix.ch" target="_blank" rel="noopener noreferrer">Wiz Pix</a>, une solution SaaS de traitement d’images par IA, et <a href="https://monprojetlocatif.org" target="_blank" rel="noopener noreferrer">Mon Projet Locatif</a>, un simulateur de rentabilité locative.</p>
 
 
-        <div id="RC-creation"></div>
+        <div id="RC-creation">
+          <div class="flex-row-start-center creation-wrapper">
+            <article class="flex-row-start-center card">
+              <div class="flex-column-start-center card-head">
+                <h3 class="card-title">Mon Projet Locatif</h3>
+                <img class="card-logo" src="/src/assets/logo/logo-mpl.svg" alt="Logo Mon Projet Locatif" loading="lazy" decoding="async">
+                <a class="flex-row-center-center card-creation-link" href="https://monprojetlocatif.org" target="_blank" rel="noopener noreferrer">
+                  Visiter le site
+                </a>
+              </div>
+              <div class="flex-row-start-center card-body">
+                <div class="card-description">
+                  <p>Un <strong>simulateur de rentabilité locative</strong> pour estimer les coûts liés à la mise en location d’un bien immobilier, selon la fiscalité française.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="flex-row-start-center card">
+              <div class="flex-column-start-center card-head">
+                <h3 class="card-title">Wiz Pix</h3>
+                <img class="card-logo" src="/src/assets/logo/logo-wiz-pix.svg" alt="Logo Wiz Pix" loading="lazy" decoding="async">
+                <a class="flex-row-center-center card-creation-link" href="https://wizpix.ch" target="_blank" rel="noopener noreferrer">
+                  Visiter le site
+                </a>
+              </div>
+              <div class="flex-row-start-center card-body">
+                <div class="card-description">
+                  <p>Une <strong>solution SaaS de traitement d’images par IA</strong> pour détourer des photos, modifier les arrière-plans et optimiser les visuels pour le web.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
       </section>
 
 
@@ -476,46 +614,41 @@
         <div class="flex-column-start-center faq-grid">
 
           <div class="faq-item">
-            <h3>Pourquoi choisir un développement web éco-responsable&nbsp;?</h3>
-            <p>Un <strong>développement web éco-responsable</strong> permet de réduire l'<strong>empreinte
-                énergétique</strong> et
-              de maximiser l'<strong>efficacité des ressources utilisées</strong>.Chaque projet
-              est conçu pour être <strong>rapide</strong>, <strong>léger</strong> et <strong>optimisé</strong>,
-              réduisant ainsi
-              l'<strong>impact environnemental</strong>. En choisissant cette approche, vous contribuez à un
-              <strong>développement
-                plus durable.
-              </strong>
-            </p>
+            <h3 class="faq-question-heading"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-1">Pourquoi choisir un développement web éco-responsable&nbsp;?</button></h3>
+            <div id="faq-answer-1" class="faq-answer"><p>Un <strong>développement web éco-responsable</strong> vise à réduire l'<strong>empreinte
+                énergétique</strong> liée aux usages numériques et à utiliser les ressources avec davantage de
+              sobriété. Il s’appuie notamment sur des <strong>pages légères</strong>, des médias optimisés et des
+              fonctionnalités réellement utiles.
+              <br>
+              Ces choix peuvent réduire les transferts de données et améliorer la vitesse de chargement. Leur impact
+              dépend toutefois des besoins, des contenus et de l’hébergement de chaque projet.
+            </p></div>
 
           </div>
 
           <div class="faq-item">
-            <h3>Pourquoi choisir mon agence web indépendante pour votre projet&nbsp;?</h3>
-            <p>
+            <h3 class="faq-question-heading"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-2">Pourquoi choisir mon agence web indépendante pour votre projet&nbsp;?</button></h3>
+            <div id="faq-answer-2" class="faq-answer"><p>
               En faisant appel à mon <strong>agence web indépendante</strong>, vous bénéficiez de la
               <strong>souplesse et de la proximité d’un freelance</strong>, tout en profitant d’une
               <strong>approche structurée et professionnelle</strong> comparable à celle d’une agence.
               <br>
               Je suis votre <strong>interlocuteur unique</strong>, impliqué à chaque étape du projet&nbsp;:
-              stratégie, conception, développement et suivi. Cette organisation garantit une
-              <strong>communication fluide</strong>, une <strong>grande réactivité</strong> et une
-              <strong>parfaite compréhension de vos besoins</strong>.
+              stratégie, conception, développement et suivi. Cette organisation facilite des échanges directs et une
+              <strong>communication claire</strong> tout au long du projet.
               <br>
-              Mes <strong>tarifs</strong> sont généralement plus <strong>maîtrisés</strong> que ceux d’une agence
-              traditionnelle,
-              sans compromis sur la <strong>qualité</strong>, la <strong>rigueur technique</strong> et les
-              <strong>solutions sur-mesure</strong>. Lorsque nécessaire, je m’appuie également sur un
-              <strong>réseau de partenaires spécialisés</strong> afin de répondre à des besoins spécifiques.
-            </p>
+              Le devis présente le périmètre, les priorités et les étapes prévues afin de vous aider à prendre une
+              décision éclairée. Lorsque le projet le nécessite, je peux également m’appuyer sur un
+              <strong>réseau de partenaires spécialisés</strong>.
+            </p></div>
 
 
 
           </div>
 
           <div class="faq-item">
-            <h3>Quels sont les tarifs pour un développement web sur-mesure&nbsp;?</h3>
-            <p>
+            <h3 class="faq-question-heading"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-3">Quels sont les tarifs pour un développement web sur-mesure&nbsp;?</button></h3>
+            <div id="faq-answer-3" class="faq-answer"><p>
               Les <strong>tarifs</strong> dépendent de la <strong>complexité</strong>, des
               <strong>fonctionnalités</strong> et des
               <strong>objectifs</strong> de votre projet. Je propose des <strong>devis personnalisés</strong>,
@@ -524,7 +657,7 @@
               À titre indicatif, un <strong>site vitrine</strong> de 4 à 6 pages débute à partir de
               <strong>CHF&nbsp;1’500</strong>.
               Le développement d’une <strong>application web sur-mesure (SaaS)</strong> commence généralement autour de
-              <strong>CHF&nbsp;20’000</strong> et peut aller <strong>bien au-delà</strong>, selon la complexité
+              <strong>CHF&nbsp;10’000</strong> et peut aller <strong>bien au-delà</strong>, selon la complexité
               technique,
               les intégrations, la sécurité et la scalabilité attendue.
               <br />
@@ -538,7 +671,7 @@
               Mon engagement&nbsp;: vous proposer une <strong>solution pérenne</strong>, un <strong>devis juste</strong>
               et
               <strong>sans surprise</strong>, avec une vision claire des coûts, des priorités et des étapes du projet.
-            </p>
+            </p></div>
 
 
 
@@ -547,29 +680,26 @@
 
 
           <div class="faq-item">
-            <h3>Proposez-vous des services de référencement SEO et d’optimisation pour l’IA (GEO)&nbsp;?</h3>
-            <p>
-              Oui. Chaque projet que je développe intègre une <strong>optimisation complète pour le référencement
-                naturel (SEO)</strong>,dès la phase de conception. J’applique les bonnes pratiques techniques et
-              éditoriales afin de garantir une <strong>visibilité durable sur les moteurs de recherche</strong>.
+            <h3 class="faq-question-heading"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-4">Proposez-vous des services de référencement SEO et d’optimisation pour l’IA (GEO)&nbsp;?</button></h3>
+            <div id="faq-answer-4" class="faq-answer"><p>
+              Oui. Le <strong>référencement SEO</strong> est pris en compte dès la conception lorsqu’il fait partie des
+              objectifs du projet : structure HTML, performance, accessibilité, contenu et maillage interne. Une
+              prestation dédiée peut aussi inclure un audit technique, l’optimisation de contenus et le SEO local.
               <br />
-              J’optimise également votre site pour la <strong>vitesse de chargement</strong>, la <strong>structure du
-                contenu</strong>
-              et l’<strong>expérience utilisateur</strong>, des critères essentiels aussi bien pour le SEO classique que
-              pour le
-              <strong>GEO (Generative Engine Optimization)</strong>.
+              Le <strong>GEO (Generative Engine Optimization)</strong> complète cette démarche : il vise à rendre les
+              informations du site structurées, fiables et utiles pour les moteurs de recherche et les outils
+              d’intelligence artificielle.
               <br />
-              Le GEO vise à rendre votre site compréhensible, pertinent et exploitable par les
-              <strong>moteurs de recherche basés sur l’intelligence artificielle</strong> et les assistants IA, afin de
-              renforcer
-              votre visibilité dans les nouveaux usages de recherche.
-            </p>
+              Ni le SEO ni le GEO ne peuvent garantir un classement, du trafic ou une citation dans une réponse générée
+              par IA : les résultats dépendent notamment de la concurrence, du contenu disponible et des algorithmes.
+              Découvrez l’<a href="/public/fr/prestations/seo.html">accompagnement SEO et GEO</a> proposé.
+            </p></div>
 
           </div>
 
           <div class="faq-item">
-            <h3>Quelles sont les étapes du processus de développement web&nbsp;?</h3>
-            <p>Le processus se décompose en plusieurs étapes clefs :</p>
+            <h3 class="faq-question-heading"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-5">Quelles sont les étapes du processus de développement web&nbsp;?</button></h3>
+            <div id="faq-answer-5" class="faq-answer"><p>Le processus se décompose en plusieurs étapes clés :</p>
             <ul>
               <li><strong>Analyse de vos besoins :</strong> Je commence par comprendre vos objectifs pour définir le
                 cahier des
@@ -582,43 +712,35 @@
               <li><strong>Tests :</strong> Vérification de la performance, de la sécurité et de la compatibilité sur
                 différents
                 appareils et navigateurs.</li>
-              <li><strong>Lancement et suivi :</strong> Mise en ligne du projet après validation et test final.Je
+              <li><strong>Lancement et suivi :</strong> Mise en ligne du projet après validation et test final. Je
                 propose également des services de suivi et de maintenance pour
                 assurer que
                 votre site reste performant et sécurisé sur le long terme.</li>
 
-            </ul>
+            </ul></div>
 
           </div>
 
           <div class="faq-item">
-            <h3>Quel type de projet puis-je confier à un développeur freelance comme vous&nbsp;?</h3>
-            <p>Je prends en charge une large gamme de projets web, notamment : <strong>création de sites vitrines,
+            <h3 class="faq-question-heading"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-6">Quel type de projet puis-je confier à un développeur freelance comme vous&nbsp;?</button></h3>
+            <div id="faq-answer-6" class="faq-answer"><p>Je prends en charge une large gamme de projets web, notamment : <strong>création de sites vitrines,
                 développement
                 d'applications web et mobiles, solutions e-commerce, développement de plateformes sur-mesure (SaaS),
                 intégration d'API,
                 et bien plus encore</strong>. Si vous avez une idée en tête, je peux la transformer en solution
               numérique
-              performante, adaptée à vos objectifs spécifiques.</p>
+              performante, adaptée à vos objectifs spécifiques.</p></div>
           </div>
           <div class="faq-item">
-            <h3>Proposez-vous un de programme de parrainage ou de commission d’apporteur d’affaires&nbsp;?</h3>
-            <p>
-              Non, j’ai fait le choix conscient de ne pas adopter un <strong>modèle de parrainage basé sur des
-                commissions
-                financières</strong>,
-              contrairement à certaines pratiques du marché.<br />
-              J’estime qu’il est <strong>éthiquement discutable</strong> d’inciter des étudiants, des particuliers ou
-              des
-              entreprises à
-              recommander une société sans nécessairement en avoir été clients ou sans en connaître la valeur
-              réelle.<br />
-              Mon développement repose exclusivement sur la <strong>satisfaction réelle de mes clients</strong>,
-              le <strong>bouche-à-oreille authentique</strong> et la <strong>confiance</strong>.<br />
-              Je préfère être recommandé pour la <strong>qualité de mon travail</strong>, mon sérieux et mes résultats —
-              pas pour
-              une commission.
-            </p>
+            <h3 class="faq-question-heading"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-7">Comment demander un devis ou convenir d’un rendez-vous&nbsp;?</button></h3>
+            <div id="faq-answer-7" class="faq-answer"><p>
+              Utilisez le <a href="/public/fr/contact.html">formulaire de contact</a>, l’e-mail ou le téléphone pour
+              présenter votre besoin. Indiquez si possible votre activité, vos objectifs, les fonctionnalités
+              attendues et votre échéance : ces éléments permettent de préparer un devis adapté.
+              <br />
+              Nous pouvons ensuite convenir d’un <strong>rendez-vous</strong> pour préciser le périmètre, les priorités
+              et les prochaines étapes du projet.
+            </p></div>
 
           </div>
 

@@ -1,10 +1,31 @@
 import react from "@vitejs/plugin-react";
+import { copyFileSync, writeFileSync } from "node:fs";
 import path from "path";
 import { defineConfig } from "vite";
-import Sitemap from "vite-plugin-sitemap";
+
+const siteUrl = "https://helveclick.ch";
+
+function publishSeoFiles() {
+  return {
+    name: "publish-seo-files",
+    closeBundle() {
+      const outputDirectory = path.resolve(__dirname, "./dist");
+
+      copyFileSync(
+        path.resolve(__dirname, "./sitemap.xml"),
+        path.resolve(outputDirectory, "./sitemap.xml")
+      );
+      writeFileSync(
+        path.resolve(outputDirectory, "./robots.txt"),
+        `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\n`,
+        "utf8"
+      );
+    },
+  };
+}
 
 export default defineConfig({
-  plugins: [react(), Sitemap({ hostname: "https://www.helveclick.ch" })],
+  plugins: [react(), publishSeoFiles()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

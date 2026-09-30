@@ -5,6 +5,20 @@
   margin-bottom: 40px;
   
   .card-container {
+    .cards-list {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      width: 100%;
+      justify-items: center;
+      align-items: start;
+    }
+
+    .card-item {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -79,31 +93,23 @@
   }
 }
 
-// Responsive styles
-@media (max-width: 992px) {
+// Service card layout: one column on mobile, two on desktop, four on wide screens.
+@media (min-width: 992px) {
   .index-cards-wrapper {
     .card-container {
-      .cards-grid {
+      .cards-list {
         grid-template-columns: repeat(2, 1fr);
       }
     }
   }
 }
 
-@media (max-width: 576px) {
+@media (min-width: 1800px) {
   .index-cards-wrapper {
     .card-container {
-      .cards-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .card {
-        .card-content {
-          .card-title {
-            font-size: 1.2rem;
-          }
-        }
+      .cards-list {
+        grid-template-columns: repeat(4, 1fr);
       }
     }
   }
-} 
+}

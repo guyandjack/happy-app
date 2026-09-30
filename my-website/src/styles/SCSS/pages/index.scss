@@ -8,6 +8,7 @@ $navbar-height: map-get($sizes, navbar-height);
 @font-face {
   font-family: 'Madimi';
   src: url('/assets/font/subset-MadimiOne-Regular.woff2') format('woff2');
+  font-display: swap;
 }
 
 
@@ -155,6 +156,12 @@ $navbar-height: map-get($sizes, navbar-height);
     gap: 30px;
     width: 100%;
 
+  }
+
+  // Keeps the hero links' existing spacing without using heading elements as layout containers.
+  .hero-index-service-item {
+    margin: 0.83em 0;
+    font-size: 1.5em;
   }
 
   .hero-index-link {
@@ -404,6 +411,21 @@ $navbar-height: map-get($sizes, navbar-height);
   }
 }
 
+.services {
+  &>h2 {
+    margin-bottom: 24px;
+  }
+
+  .services-intro {
+    max-width: 720px;
+    margin: 0 20px 40px;
+    color: rgba(map-get($colors-rule, fifth-color), 0.9);
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+}
+
 // Values section - Mobile first
 .values {
   //border: 1px solid red;
@@ -552,6 +574,10 @@ $navbar-height: map-get($sizes, navbar-height);
     }
   }
 
+  .services>h2 {
+    margin-bottom: 24px;
+  }
+
   .values {
 
 
@@ -627,7 +653,7 @@ $navbar-height: map-get($sizes, navbar-height);
       rgba(map-get($colors-rule, background-page-color), 0.05) 50%,
       rgba(map-get($colors-rule, second-color), 0.03) 100%); */
 
-  background-color: rgba(map-get($colors-rule, bg-page-shade-light-2), 1);
+  background-color: rgba(map-get($colors-rule, bg-page-shade-light-2), 0.8);
   color: map-get($colors-rule, sixth-color);
 
 
@@ -1080,6 +1106,26 @@ $navbar-height: map-get($sizes, navbar-height);
         gap: 60px;
         padding: 50px;
       }
+    }
+  }
+}
+
+.creations {
+  &>h2 {
+    margin-bottom: 24px;
+  }
+
+  .creations-intro {
+    max-width: 720px;
+    margin: 0 20px 40px;
+    color: rgba(map-get($colors-rule, fifth-color), 0.9);
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: center;
+
+    a {
+      color: map-get($colors-rule, link-color);
+      font-weight: 700;
     }
   }
 }

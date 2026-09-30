@@ -10,7 +10,8 @@ $navbar-height: map-get($sizes, navbar-height);
 ****************************************/
 @font-face {
     font-family: 'nunito';
-    src: url("/assets/font/Nunito-VariableFont_wght.ttf") format('ttf');
+    src: url("/assets/font/Nunito-VariableFont_wght.ttf") format('truetype');
+    font-display: swap;
 }
 
 
@@ -51,6 +52,24 @@ $navbar-height: map-get($sizes, navbar-height);
 
 .hide {
     display: none;
+}
+
+.skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 1100;
+    padding: 0.7rem 1rem;
+    color: map-get($colors-rule, sixth-color);
+    background-color: map-get($colors-rule, first-color);
+    border: 2px solid map-get($colors-rule, second-color);
+    border-radius: 0.35rem;
+    transform: translateY(-200%);
+    transition: transform 0.2s ease;
+
+    &:focus {
+        transform: translateY(0);
+    }
 }
 
 /* Sprite SVG (defs/symbols) : ne doit ni s’afficher ni prendre de place */
@@ -550,7 +569,7 @@ main {
             box-shadow: 0 4px 20px rgba(map-get($colors-rule, fifth-color), 0.05);
             border: 1px solid rgba(map-get($colors-rule, second-color), 0.1);
 
-            &>h3 {
+            &>h3:not(.faq-question-heading) {
                 display: block;
                 width: 90%;
                 font-size: 1rem;
@@ -579,6 +598,47 @@ main {
                 &:hover,
                 &.expanded {
                     color: darken(map-get($colors-rule, second-color),15%);
+                }
+            }
+
+            &>h3.faq-question-heading {
+                margin: 0;
+            }
+
+            .faq-question {
+                display: block;
+                width: 90%;
+                font-size: 1rem;
+                margin-bottom: 0;
+                color: map-get($colors-rule, fifth-color);
+                position: relative;
+                padding-left: 35px;
+                cursor: pointer;
+                user-select: none;
+                text-align: left;
+                transition: color 0.3s ease;
+
+                &::after {
+                    content: '▼';
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%) translateX(50px);
+                    transition: transform 0.3s ease;
+                }
+
+                &.expanded::after {
+                    transform: translateY(-50%) translateX(50px) rotate(180deg);
+                }
+
+                &:hover,
+                &.expanded {
+                    color: darken(map-get($colors-rule, second-color),15%);
+                }
+
+                &:focus-visible {
+                    outline: 2px solid map-get($colors-rule, second-color);
+                    outline-offset: 4px;
                 }
             }
 
@@ -619,7 +679,26 @@ main {
 
             }
 
-            .faq-item.expanded {
+            .faq-answer {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.2s ease;
+
+                p,
+                ul {
+                    max-height: none;
+                    overflow: visible;
+                    transition: none;
+                }
+
+                &.expanded {
+                    max-height: 1000px;
+                    margin-top: 20px;
+                    transition: max-height 0.25s ease;
+                }
+            }
+
+            &.expanded {
                 height: fit-content;
             }
         }
@@ -642,7 +721,8 @@ main {
             .faq-item {
                 padding: 25px;
 
-                &>h3 {
+                &>h3:not(.faq-question-heading),
+                .faq-question {
                     font-size: 1.2rem;
                     padding-left: 30px;
                 }
@@ -690,7 +770,8 @@ main {
             .faq-item {
                 padding: 25px;
 
-                &>h3 {
+                &>h3:not(.faq-question-heading),
+                .faq-question {
                     font-size: 1.3rem;
                     padding-left: 30px;
                 }
@@ -744,7 +825,8 @@ main {
         .faq-item {
             background: lighten(map-get($colors-rule, fifth-color), 10%);
 
-            &>h3 {
+            &>h3:not(.faq-question-heading),
+            .faq-question {
                 color: lighten(map-get($colors-rule, second-color), 5%);
 
                 &:hover {
