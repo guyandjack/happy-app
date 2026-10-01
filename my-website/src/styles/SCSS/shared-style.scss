@@ -505,7 +505,8 @@ main {
 
     .faq-container-title {
         //border: 1px solid blue;
-        height: 250px;
+        // The illustration can be hidden depending on the viewport; avoid reserving empty space above the title.
+        height: auto;
         margin-bottom: 50px;
         gap: 50px;
 

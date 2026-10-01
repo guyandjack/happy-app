@@ -363,7 +363,7 @@
 .services,
 .creations {
   width: 100%;
-  padding: 120px 15px;
+  padding: 120px 15px clamp(5rem, 9vw, 7.5rem);
   /* background: linear-gradient(135deg,
       rgba(map-get($colors-rule, second-color), 0.03) 5%,
       rgba(map-get($colors-rule, footer-color), 0.05) 20%,
@@ -386,7 +386,7 @@
 .creations h2 {
   font-size: 2rem;
   color: rgba(23, 23, 23, 0.9);
-  margin-bottom: 100px;
+  margin: 0 0 clamp(2rem, 4vw, 3.75rem);
   text-align: center;
   position: relative;
 }
@@ -407,155 +407,36 @@
   border-radius: 2px;
 }
 
+.services {
+  padding-bottom: 120px;
+}
 .services > h2 {
-  margin-bottom: 24px;
+  margin-bottom: clamp(2rem, 4vw, 3.75rem);
 }
 .services .services-intro {
   max-width: 720px;
-  margin: 0 20px 40px;
+  margin: 0 20px clamp(2.5rem, 5vw, 4rem);
   color: rgba(23, 23, 23, 0.9);
   font-size: 1rem;
   line-height: 1.6;
   text-align: center;
 }
+.services .index-cards-wrapper,
+.services .card-container {
+  margin-bottom: 0;
+}
+.services .card-container {
+  padding-bottom: 0;
+}
 
-/* .values {
-  //border: 1px solid red;
-  width: 100%;
-  padding: 120px 15px;
-   background: linear-gradient(135deg,
-      rgba(map-get($colors-rule, first-color), 0.02) 0%,
-      rgba(map-get($colors-rule, background-page-color), 0.05) 50%,
-      rgba(map-get($colors-rule, second-color), 0.02) 100%); 
-  background: map-get($colors-rule, bg-page-shade-light-4);
-
-  h2 {
-    font-size: 2rem;
-    color: map-get($colors-rule, fifth-color);
-    margin-bottom: 60px;
-    text-align: center;
-    position: relative;
-    width: fit-content;
-    margin: 0 auto 60px;
-
-    strong {
-      color: map-get($colors-rule, second-color);
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      z-index: 1;
-      top: 0;
-      left: -30px;
-      width: 1px;
-      height: 100%;
-      background: map-get($colors-rule, second-color);
-      border-radius: 2px;
-    }
-  }
-
-  .value-card {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    margin: 40px auto;
-    background: rgba(map-get($colors-rule, bg-page-shade-dark-3), 0.9);
-    border-radius: 20px;
-    box-shadow:
-      0 4px 6px rgba(0, 0, 0, 0.05),
-      0 10px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-
-
-    .img-text-container {
-      padding: 30px;
-
-      .flex-column-start-center {
-        text-align: center;
-        margin-bottom: 25px;
-
-        .h4-title {
-          font-size: 1.4rem;
-          margin-bottom: 20px;
-          color: map-get($colors-rule, sixth-color);
-          position: relative;
-          padding-bottom: 15px;
-
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: map-get($colors-rule, second-color);
-            border-radius: 2px;
-          }
-        }
-
-        .img-text {
-          width: 120px;
-          height: 120px;
-          border-radius: 50%;
-          object-fit: cover;
-          border: 3px solid rgba(map-get($colors-rule, second-color), 0.1);
-
-
-
-        }
-      }
-
-      .text-container {
-        p {
-          font-size: 1rem;
-          line-height: 1.8;
-          color: rgba(map-get($colors-rule, sixth-color), 0.9);
-          text-align: center;
-
-          strong {
-            color: darken(map-get($colors-rule, second-color), 10%);
-            font-weight: 600;
-          }
-        }
-
-        ul {
-          list-style: none;
-          padding: 20px 0;
-          margin-top: 20px;
-
-          li {
-            position: relative;
-            padding: 12px 0 12px 25px;
-            color: rgba(map-get($colors-rule, first-color), 0.9);
-
-            &::before {
-              content: '→';
-              position: absolute;
-              left: 0;
-              color: darken(map-get($colors-rule, second-color), 10%);
-            }
-
-            strong {
-              color: darken(map-get($colors-rule, second-color), 10%);
-            }
-          }
-        }
-      }
-    }
-  }
-} */
 @media (min-width: 768px) {
   .services h2,
   .values h2,
   .creations h2 {
     font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: 60px;
   }
   .services > h2 {
-    margin-bottom: 24px;
+    margin-bottom: clamp(2rem, 4vw, 3.75rem);
   }
   .values .value-card {
     margin: 60px 0;
@@ -564,13 +445,6 @@
 @media screen and (min-width: 992px) {
   .values {
     padding: 120px 20px;
-  }
-  .creations h2 {
-    margin-bottom: 120px;
-  }
-  .services h3,
-  .values h3 {
-    margin-bottom: 120px;
   }
   .services .section-title h2 {
     font-size: 2.2rem;
@@ -594,7 +468,7 @@
 .why-green-click {
   position: relative;
   width: 100%;
-  padding: 0px 15px;
+  padding: 120px 15px clamp(5rem, 9vw, 7.5rem);
   color: #fefefd;
 }
 .why-green-click .why-choose {
@@ -607,7 +481,7 @@
   width: -moz-fit-content;
   width: fit-content;
   color: #1a1627;
-  margin: 40px 0;
+  margin: 0 0 clamp(2rem, 4vw, 3.75rem);
   text-align: center;
   position: relative;
 }
@@ -727,11 +601,10 @@
 
 @media (min-width: 768px) {
   .why-green-click {
-    padding: 80px 30px;
+    padding: 120px 30px clamp(5rem, 9vw, 7.5rem);
   }
   .why-green-click .why-choose h2 {
     font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: 60px;
   }
   .why-green-click .why-choose h3 {
     font-size: clamp(1.4rem, 2.5vw, 1.8rem);
@@ -743,13 +616,10 @@
 }
 @media (min-width: 992px) {
   .why-green-click {
-    padding: 80px 50px 0px 50px;
+    padding: 120px 50px clamp(5rem, 9vw, 7.5rem);
   }
   .why-green-click .why-choose {
     gap: 60px;
-  }
-  .why-green-click .why-choose h2 {
-    margin-bottom: 80px;
   }
   .why-green-click .why-choose .why-choose-card {
     position: relative;
@@ -881,7 +751,7 @@
   }
 }
 .creations > h2 {
-  margin-bottom: 100px;
+  margin-bottom: 120px;
 }
 .creations .creations-intro {
   max-width: 720px;
@@ -925,4 +795,36 @@
 }
 .creations .list-creation a:hover {
   color: #cb04a5;
+}
+
+#RC-cta-section {
+  width: 100%;
+  padding: 120px 15px clamp(5rem, 9vw, 7.5rem);
+}
+#RC-cta-section .cta-section {
+  margin: 0 auto;
+}
+#RC-cta-section .cta-section > h2 {
+  margin-bottom: clamp(2rem, 4vw, 3.75rem);
+}
+
+.faq-section {
+  padding: 120px 20px clamp(5rem, 9vw, 7.5rem);
+}
+.faq-section .faq-container-title {
+  margin-bottom: 120px;
+}
+
+@media (min-width: 768px) {
+  #RC-cta-section {
+    padding-inline: 30px;
+  }
+  .faq-section {
+    padding-inline: 50px;
+  }
+}
+@media (min-width: 992px) {
+  #RC-cta-section {
+    padding-inline: 50px;
+  }
 }
