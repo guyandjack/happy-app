@@ -39,7 +39,7 @@ $navbar-height: map-get($sizes, navbar-height);
     max-width: 2000px;
     min-width: 400px;
     margin: 0 auto;
-    //background-color: map-get($colors-rule, background-page-color);
+    background-color: map-get($colors-rule, background-page-color);
 
 }
 
@@ -496,7 +496,7 @@ main {
 .faq-section {
 
     padding: 0px 20px 100px 20px;
-    background: map-get($colors-rule, brand-gradient-primary);
+    //background: map-get($colors-rule, brand-gradient-secondary);
     width: 100%;
     margin: 0 auto;
 
@@ -515,7 +515,7 @@ main {
             // border: 1px solid blue;
             position: relative;
             width: fit-content;
-            color: map-get($colors-rule, sixth-color);
+            color: map-get($colors-rule, first-color);
             text-align: center;
             font-size: 1.5rem;
 
@@ -563,11 +563,11 @@ main {
             width: 100%;
             max-height: 1000px;
             height: fit-content;
-            background: map-get($colors-rule, bg-page-shade-light-4);
+            background: map-get($colors-rule, background-page-color);
             border-radius: 15px;
             padding: 20px 30px;
-            box-shadow: 0 4px 20px rgba(map-get($colors-rule, fifth-color), 0.05);
-            border: 1px solid rgba(map-get($colors-rule, second-color), 0.1);
+            box-shadow: 0 4px 20px rgba(map-get($colors-rule, first-color), 0.3);
+            //border: 10px solid rgba(map-get($colors-rule, second-color), 0.5);
 
             &>h3:not(.faq-question-heading) {
                 display: block;
@@ -575,6 +575,7 @@ main {
                 font-size: 1rem;
                 margin-bottom: 0;
                 color: map-get($colors-rule, fifth-color);
+                //color:red;
                 position: relative;
                 padding-left: 35px;
                 cursor: pointer;
@@ -597,7 +598,9 @@ main {
 
                 &:hover,
                 &.expanded {
-                    color: darken(map-get($colors-rule, second-color),15%);
+                    //color: darken(map-get($colors-rule, second-color),15%);
+                    //color: map-get($colors-rule, third-color);
+                    color:red;
                 }
             }
 
@@ -610,7 +613,7 @@ main {
                 width: 90%;
                 font-size: 1rem;
                 margin-bottom: 0;
-                color: map-get($colors-rule, fifth-color);
+                color: map-get($colors-rule, first-color);
                 position: relative;
                 padding-left: 35px;
                 cursor: pointer;
@@ -633,18 +636,19 @@ main {
 
                 &:hover,
                 &.expanded {
-                    color: darken(map-get($colors-rule, second-color),15%);
+                    //color: darken(map-get($colors-rule, second-color),15%);
+                    color: map-get($colors-rule, third-color);
                 }
 
                 &:focus-visible {
-                    outline: 2px solid map-get($colors-rule, second-color);
+                    outline: 2px solid map-get($colors-rule, third-color);
                     outline-offset: 4px;
                 }
             }
 
             p,
             ul {
-                color: rgba(map-get($colors-rule, fifth-color), 0.9);
+                color: rgba(map-get($colors-rule, first-color), 0.9);
                 line-height: 1.6;
                 font-size: 0.9rem;
                 padding: 0px 35px;
@@ -695,6 +699,43 @@ main {
                     max-height: 1000px;
                     margin-top: 20px;
                     transition: max-height 0.25s ease;
+                }
+                & a {
+                
+                    position: relative;
+                    display: inline block;
+                    z-index: 1;
+                    color: map-get($colors-rule, first-color);
+                
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        z-index: -1;
+                        left: 0px;
+                        width: 100%;
+                        height: 1px;
+                        bottom: 0px;
+                        background: map-get($colors-rule, first-color);
+                        transition: height 0.2s linear;
+                    }
+                
+                
+                    &:hover::before {
+                        background: map-get($colors-rule, link-color);
+                        opacity: 0.9;
+                        height: 6px;
+                        bottom: 60%;
+                        transition: height 0.2s linear;
+                
+                    }
+                    &#link-contact:hover::before {
+                        background: map-get($colors-rule, contact-link-color);
+                        opacity: 0.9;
+                        height: 6px;
+                        bottom: 60%;
+                        transition: height 0.2s linear;
+                
+                    }
                 }
             }
 

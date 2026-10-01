@@ -419,119 +419,134 @@
   text-align: center;
 }
 
-.values {
+/* .values {
+  //border: 1px solid red;
   width: 100%;
   padding: 120px 15px;
-  /* background: linear-gradient(135deg,
+   background: linear-gradient(135deg,
       rgba(map-get($colors-rule, first-color), 0.02) 0%,
       rgba(map-get($colors-rule, background-page-color), 0.05) 50%,
-      rgba(map-get($colors-rule, second-color), 0.02) 100%); */
-  background: #f2f0fe;
-}
-.values h2 {
-  font-size: 2rem;
-  color: #171717;
-  margin-bottom: 60px;
-  text-align: center;
-  position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 0 auto 60px;
-}
-.values h2 strong {
-  color: #00d4ff;
-}
-.values h2::after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: -30px;
-  width: 1px;
-  height: 100%;
-  background: #00d4ff;
-  border-radius: 2px;
-}
-.values .value-card {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  margin: 40px auto;
-  background: rgba(36, 32, 58, 0.9);
-  border-radius: 20px;
-  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
-  -webkit-transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
-  transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
-}
-.values .value-card .img-text-container {
-  padding: 30px;
-}
-.values .value-card .img-text-container .flex-column-start-center {
-  text-align: center;
-  margin-bottom: 25px;
-}
-.values .value-card .img-text-container .flex-column-start-center .h4-title {
-  font-size: 1.4rem;
-  margin-bottom: 20px;
-  color: #fefefd;
-  position: relative;
-  padding-bottom: 15px;
-}
-.values .value-card .img-text-container .flex-column-start-center .h4-title::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: #00d4ff;
-  border-radius: 2px;
-}
-.values .value-card .img-text-container .flex-column-start-center .img-text {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border: 3px solid rgba(0, 212, 255, 0.1);
-}
-.values .value-card .img-text-container .text-container p {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: rgba(254, 254, 253, 0.9);
-  text-align: center;
-}
-.values .value-card .img-text-container .text-container p strong {
-  color: rgb(0, 169.6, 204);
-  font-weight: 600;
-}
-.values .value-card .img-text-container .text-container ul {
-  list-style: none;
-  padding: 20px 0;
-  margin-top: 20px;
-}
-.values .value-card .img-text-container .text-container ul li {
-  position: relative;
-  padding: 12px 0 12px 25px;
-  color: rgba(26, 22, 39, 0.9);
-}
-.values .value-card .img-text-container .text-container ul li::before {
-  content: "→";
-  position: absolute;
-  left: 0;
-  color: rgb(0, 169.6, 204);
-}
-.values .value-card .img-text-container .text-container ul li strong {
-  color: rgb(0, 169.6, 204);
-}
+      rgba(map-get($colors-rule, second-color), 0.02) 100%); 
+  background: map-get($colors-rule, bg-page-shade-light-4);
 
+  h2 {
+    font-size: 2rem;
+    color: map-get($colors-rule, fifth-color);
+    margin-bottom: 60px;
+    text-align: center;
+    position: relative;
+    width: fit-content;
+    margin: 0 auto 60px;
+
+    strong {
+      color: map-get($colors-rule, second-color);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: -30px;
+      width: 1px;
+      height: 100%;
+      background: map-get($colors-rule, second-color);
+      border-radius: 2px;
+    }
+  }
+
+  .value-card {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 40px auto;
+    background: rgba(map-get($colors-rule, bg-page-shade-dark-3), 0.9);
+    border-radius: 20px;
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.05),
+      0 10px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+
+
+    .img-text-container {
+      padding: 30px;
+
+      .flex-column-start-center {
+        text-align: center;
+        margin-bottom: 25px;
+
+        .h4-title {
+          font-size: 1.4rem;
+          margin-bottom: 20px;
+          color: map-get($colors-rule, sixth-color);
+          position: relative;
+          padding-bottom: 15px;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: map-get($colors-rule, second-color);
+            border-radius: 2px;
+          }
+        }
+
+        .img-text {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 3px solid rgba(map-get($colors-rule, second-color), 0.1);
+
+
+
+        }
+      }
+
+      .text-container {
+        p {
+          font-size: 1rem;
+          line-height: 1.8;
+          color: rgba(map-get($colors-rule, sixth-color), 0.9);
+          text-align: center;
+
+          strong {
+            color: darken(map-get($colors-rule, second-color), 10%);
+            font-weight: 600;
+          }
+        }
+
+        ul {
+          list-style: none;
+          padding: 20px 0;
+          margin-top: 20px;
+
+          li {
+            position: relative;
+            padding: 12px 0 12px 25px;
+            color: rgba(map-get($colors-rule, first-color), 0.9);
+
+            &::before {
+              content: '→';
+              position: absolute;
+              left: 0;
+              color: darken(map-get($colors-rule, second-color), 10%);
+            }
+
+            strong {
+              color: darken(map-get($colors-rule, second-color), 10%);
+            }
+          }
+        }
+      }
+    }
+  }
+} */
 @media (min-width: 768px) {
   .services h2,
   .values h2,
