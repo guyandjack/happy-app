@@ -1,8 +1,61 @@
+@charset "UTF-8";
+/* $colors-rule: (
+    first-color: #024d4a,
+    second-color: #00bdb6,
+    third-color: #c7e3cd,
+    fourth-color: #c3066b,
+    fifth-color: #171717,
+    sixth-color: #ffffff,
+    footer-color: #6080a0,
+    // footer-color: #101010,
+    link-color:#0000ff,
+
+    background-page-color: #fbfbfc,
+    disabled-color: #9ca3af,
+    dark-mode-color: #373737,
+    alert-color: orangered,
+
+); */
+/* $colors-rule: (
+    //couleurs de base
+    first-color: #1A1627,
+    second-color:#00d4ff,
+    third-color:  #00bdb6,
+    fourth-color: #b7950b,
+    fifth-color: #171717,
+    sixth-color: #fefefd,
+    footer-color: #1A1627,
+    nav-bar-color:#141627,
+    link-color:#F96900,
+
+
+    //couleur d' interaction / alerte
+    disabled-color: #9ca3af,
+    alert-color: orangered,
+    dark-mode-color: #373737,
+
+    //couleur d'arriere plans simple
+    background-page-color: #fbfbfc,
+    bg-page-shade-light-1:#3d335b,
+    bg-page-shade-light-2:#574983,
+    bg-page-shade-light-3:#7e6fae, 
+
+    //gradient d'arriere plan clair
+    bg-page-gradient-light-1: linear-gradient(),
+    bg-page-gradient-light-2: linear-gradient(),
+    bg-page-gradient-light-3: linear-gradient(), 
+
+    //gradient d'arriere plan foncé
+    bg-page-gradient-dark-1: linear-gradient(),
+    bg-page-gradient-dark-2: linear-gradient(),
+    bg-page-gradient-dark-3: linear-gradient(), 
+
+); */
 .diagram-wrapper {
   --panel-bg: rgba(255, 255, 255, 0.88);
   position: relative;
-  width: 100%;
-  margin: 3em auto;
+  width: min(1100px, 100%);
+  margin: 0 auto;
   padding: clamp(1rem, 3vw, 2.5rem);
   display: grid;
   grid-template-columns: minmax(220px, 1fr) minmax(320px, 520px) minmax(220px, 1fr);
@@ -13,38 +66,38 @@
       -ms-flex-align: center;
           align-items: center;
   justify-items: center;
-  /* background: radial-gradient(
-    circle at 20% 10%,
-    rgba(map-get($colors-rule, second-color), 0.16),
-    transparent 55%
-  ),
-  radial-gradient(
-    circle at 85% 80%,
-    rgba(map-get($colors-rule, third-color), 0.22),
-    transparent 60%
-  ),
-  linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0)); */
+  border-radius: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: radial-gradient(circle at 20% 10%, rgba(0, 212, 255, 0.16), transparent 55%), radial-gradient(circle at 85% 80%, rgba(0, 189, 182, 0.22), transparent 60%), -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.45)), to(rgba(255, 255, 255, 0)));
+  background: radial-gradient(circle at 20% 10%, rgba(0, 212, 255, 0.16), transparent 55%), radial-gradient(circle at 85% 80%, rgba(0, 189, 182, 0.22), transparent 60%), linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0));
 }
 
-/* .diagram-core {
-    grid-area: core;
-    width: min(560px, 100%);
-    padding: clamp(0.75rem, 2vw, 1.25rem);
-    border-radius: 1.25rem;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    background: linear-gradient(180deg,
-            rgba(255, 255, 255, 0.85),
-            rgba(255, 255, 255, 0.55));
-    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.08);
+.diagram-core {
+  grid-area: core;
+  width: min(560px, 100%);
+  padding: clamp(0.75rem, 2vw, 1.25rem);
+  border-radius: 1.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.85)), to(rgba(255, 255, 255, 0.55)));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.55));
+  -webkit-box-shadow: 0 18px 44px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 18px 44px rgba(0, 0, 0, 0.08);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
 
-    display: flex;
-    flex-flow: column;
-    gap: clamp(0.75rem, 2vw, 1.25rem);
-    align-items: center;
-    justify-content: center;
-
-
-} */
 .diagram-row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -68,24 +121,13 @@
   padding: 0.95rem 1rem;
   border-radius: 1rem;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  border-left: 4px solid #00bdb6;
+  border-left: 4px solid #00d4ff;
   background: var(--panel-bg);
   color: #171717;
   font-size: 0.95rem;
   line-height: 1.45;
   -webkit-box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
           box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
-}
-.diagram-description .description-icon {
-  color: rgba(23, 23, 23, 0.6);
-  width: 30px;
-  height: 30px;
-}
-.diagram-description span {
-  padding: 0.35rem 0.65rem;
-  color: rgb(195, 6, 107);
-  font-size: 1.1rem;
-  font-weight: 600;
 }
 
 #dt-6 {
@@ -118,14 +160,11 @@
   justify-self: start;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 900px) {
   .diagram-wrapper {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     grid-template-areas: "core" "dt6" "dt5" "dt4" "dt2" "dt1" "dt3";
-  }
-  .diagram-core {
-    display: none;
   }
   .diagram-row {
     -ms-flex-wrap: wrap;
@@ -133,7 +172,6 @@
   }
   .diagram-description {
     max-width: 44rem;
-    height: 140px;
     justify-self: stretch;
   }
 }

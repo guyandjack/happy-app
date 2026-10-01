@@ -55,23 +55,21 @@ $navbar-height: map-get($sizes, navbar-height);
   height: 100vh;
   padding: $navbar-height 10px 0px 10px;
   overflow: hidden;
-  gap: 100px;
+  gap: 50px;
   //border: 2px solid green;
 
-   /*  .hero-index-wrapper {
+  /*  .hero-index-wrapper {
       //min-height: 450px;
       //padding: clamp(14px, 3vw, 28px) clamp(12px, 4vw, 32px);
        //border: 2px solid red;
        //padding-top: calc($navbar-height / 2);
        
     }   */
-  
+
 
   .hero-index-title-h1 {
-    //width: min(100%, 900px);
-    /* width: 400px;
-    height: 200px; */
-
+    
+    
     font-family: 'Madimi', sans-serif;
     font-size: clamp(1.9rem, 7vw, 3.2rem);
     font-weight: 800;
@@ -82,87 +80,63 @@ $navbar-height: map-get($sizes, navbar-height);
     text-align: center;
     padding: clamp(14px, 3vw, 28px) clamp(12px, 4vw, 32px);
     border-radius: 20px;
-   
+
     text-shadow: 0 2px 12px rgba(map-get($colors-rule, fifth-color), 0.4);
     animation: hero-fade-up 0.7s ease-out both;
-    //border: 2px solid red;
+    //border: 2px solid green;
+    //height: 400px;
+    width: 100%;
 
-    & span
-     {
+    & span {
       font-size: inherit;
       font-weight: 900;
-     /*  text-decoration: underline rgba(map-get($colors-rule, second-color), 0.9);
+      /*  text-decoration: underline rgba(map-get($colors-rule, second-color), 0.9);
       text-decoration-thickness: 2px;
       text-underline-offset: 5px; */
       color: map-get($colors-rule, second-color);
     }
 
-    
+
 
   }
 
-    .anim-h1-wrapper {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: start;
-      align-items: center;
+  .anim-h1-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: start;
+    align-items: center;
 
-      margin: 0 auto;
-      width: 350px;
-      height: 60px;
-      border-radius: 1rem;
-      padding: 0.5rem;
-      background-color: rgba(map-get($colors-rule, first-color), 0.8);
-      border: 2px solid rgba(map-get($colors-rule, first-color), 1);
-      color: white;
-
-       
-    }
-
-  
-
-  /* .hero-index-title-h2 {
-    width: min(100%, 860px);
-    font-size: clamp(1.1rem, 4.8vw, 1.9rem);
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    color: map-get($colors-rule, sixth-color);
-    margin-bottom: 1.1rem;
-    line-height: 1.45;
-    text-align: center;
-    background: linear-gradient(150deg,
-        rgba(map-get($colors-rule, fourth-color), 0.3) 0%,
-        rgba(map-get($colors-rule, fourth-color), 0.12) 100%);
-    padding: clamp(12px, 3vw, 20px);
-    border-radius: 16px;
-    border: 1px solid rgba(map-get($colors-rule, fourth-color), 0.65);
-    box-shadow: 0 10px 28px rgba(map-get($colors-rule, fifth-color), 0.2);
-    animation: hero-fade-up 0.9s ease-out both;
+    border-radius: 1rem;
+    padding: 0.2rem;
+    background-color: rgba(map-get($colors-rule, first-color), 0.8);
+    border: 2px solid rgba(map-get($colors-rule, first-color), 1);
+    color: white;
 
 
-    & span {
-      display: inline-block;
-      margin-top: 8px;
-      font-size: clamp(0.95rem, 3.5vw, 1.2rem);
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      color: rgba(map-get($colors-rule, sixth-color), 0.95);
-    }
-  } */
+  }
 
 
 
   .container {
-    gap: 30px;
+    gap: 15px;
     width: 100%;
+    height: 100%;
 
   }
 
   // Keeps the hero links' existing spacing without using heading elements as layout containers.
-  .hero-index-service-item {
-    margin: 0.83em 0;
-    font-size: 1.5em;
-  }
+   #hero-index-service-item-1 {
+    margin-left: -40px;
+  } 
+   #hero-index-service-item-2 {
+    margin-left: 40px;
+  } 
+   #hero-index-service-item-3 {
+    margin-left: -40px;
+  } 
+   #hero-index-service-item-4 {
+    margin-left: 40px;
+  } 
 
   .hero-index-link {
     position: relative;
@@ -255,7 +229,7 @@ $navbar-height: map-get($sizes, navbar-height);
 
 
     .hero-index-title-h1 {
-     /*  width: 500px;
+      /*  width: 500px;
       height: 300px; */
       padding: 22px 30px;
       line-height: 1.18;
@@ -265,7 +239,7 @@ $navbar-height: map-get($sizes, navbar-height);
       padding: 16px 24px;
     } */
 
-   /*  .hero-index-link {
+    /*  .hero-index-link {
       width: min(40vw, 340px);
       min-height: 52px;
       padding: 13px 22px;
@@ -293,7 +267,7 @@ $navbar-height: map-get($sizes, navbar-height);
     }
 
     .container {
-      width:50%;
+      width: 50%;
       //flex-direction: row;
 
     }
@@ -324,12 +298,13 @@ $navbar-height: map-get($sizes, navbar-height);
     flex-direction: row;
     justify-content: space-evenly;
     //border: 2px solid red;
-
+    
     gap: 3rem;
-
+    
     .hero-index-wrapper {
-
-      height:300px;
+      //border: 2px solid blue;
+      height: 50%;
+      
     }
 
 
@@ -347,10 +322,10 @@ $navbar-height: map-get($sizes, navbar-height);
 
     }
 
-        .anim-h1-wrapper{
-          width: 400px;
-          height: fit-content;
-        }
+    .anim-h1-wrapper {
+      width: 400px;
+      height: fit-content;
+    }
 
   }
 
@@ -378,7 +353,7 @@ $navbar-height: map-get($sizes, navbar-height);
       rgba(map-get($colors-rule, footer-color), 0.05) 20%,
       rgba(map-get($colors-rule, second-color), 0.05) 80%,
       rgba(map-get($colors-rule, second-color), 0.05) 100%); */
-  background: map-get($colors-rule, bg-page-shade-light-4);
+  //background-color: map-get($colors-rule, sixth-color);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -601,7 +576,7 @@ $navbar-height: map-get($sizes, navbar-height);
     padding: 120px 20px;
   }
 
-  .creations h2{
+  .creations h2 {
     margin-bottom: 120px;
   }
 
@@ -629,15 +604,15 @@ $navbar-height: map-get($sizes, navbar-height);
 @media screen and (min-width: 1300px) {
 
   .values {
-   
-    .value-card:nth-child(even){
+
+    .value-card:nth-child(even) {
       margin: 60px 0px 60px 100px;
     }
 
-    .value-card:nth-child(odd){
+    .value-card:nth-child(odd) {
       margin: 60px 100px 60px 0px;
     }
-   
+
   }
 }
 
@@ -648,12 +623,7 @@ $navbar-height: map-get($sizes, navbar-height);
   position: relative;
   width: 100%;
   padding: 0px 15px;
-  /* background: linear-gradient(135deg,
-      rgba(map-get($colors-rule, first-color), 0.03) 0%,
-      rgba(map-get($colors-rule, background-page-color), 0.05) 50%,
-      rgba(map-get($colors-rule, second-color), 0.03) 100%); */
 
-  background-color: rgba(map-get($colors-rule, bg-page-shade-light-2), 0.8);
   color: map-get($colors-rule, sixth-color);
 
 
@@ -665,7 +635,7 @@ $navbar-height: map-get($sizes, navbar-height);
     h2 {
       font-size: 2rem;
       width: fit-content;
-      color: map-get($colors-rule, sixth-color);
+      color: map-get($colors-rule, first-color);
       margin: 40px 0;
       text-align: center;
       position: relative;
@@ -692,74 +662,72 @@ $navbar-height: map-get($sizes, navbar-height);
       position: relative;
       width: 100%;
       padding: 20px;
-      //border: 1px solid red;
-      
+      //border: 1px solid green;
+
     }
-    
+
     h3 {
       //border: 1px solid red;
       position: relative;
-      z-index:1;
-      width:100%;
+      z-index: 1;
+      width: 100%;
       text-align: left;
       font-size: 1.4rem;
-      color: map-get($colors-rule, first-color);
+      //color: map-get($colors-rule, first-color);
       margin-bottom: 20px;
       padding-left: 1rem;
       //opacity: 0.9;
       font-weight: bolder;
-      
-      
-       &::before{
-        content:"";
-        position:absolute;
+
+
+      &::before {
+        content: "";
+        position: absolute;
         z-index: -1;
-        bottom:-0.5rem;
-        left:1rem;
+        bottom: -0.5rem;
+        left: 1rem;
         width: 50px;
         height: 2px;
         background-color: map-get($colors-rule, sixth-color);
         //border-radius: 50%;
         //transform: translateY(-50%);
-        
+
       }
-      /*&::after{
-        content:"";
-        position:absolute;
-        z-index: -1;
-        top:50%;
-        right:-2rem;
-        width: 50px;
-        height: 50px;
-        background-color: map-get($colors-rule, sixth-color);
-        border-radius: 50%;
-        transform: translateY(-50%);
-        
-      } */
+
+
 
     }
 
-   /*  .icon-check{
-      width: 50px;
-      height: 50px;
-      fill: map-get($colors-rule, third-color);
-      padding: 0.5rem;
-      background-color: map-get($colors-rule, sixth-color);
-      border-radius: 50%;
-    } */
+    #why-choose-card-1 {
+      color: map-get($colors-rule, fourth-color);
+    }
+
+    #why-choose-card-2 {
+      color: map-get($colors-rule, second-color);
+    }
+
+    #why-choose-card-3 {
+      color: map-get($colors-rule, height-color);
+    }
+
+    #why-choose-card-4 {
+      color: map-get($colors-rule, third-color);
+    }
+
+
 
     p {
       font-size: 1rem;
       line-height: 1.8;
       position: relative;
       //z-index: -1;
-        padding: 20px 30px;
-        background: rgba(map-get($colors-rule, fifth-color), 0.5);
-        border-radius: 15px;
-        //backdrop-filter: blur(10px);
-        transition: transform 0.3s ease;
-        box-shadow: 0 0px 10px rgba(map-get($colors-rule, fifth-color), 0.3);
-        //border: 2px solid red;
+      padding: 20px 30px;
+      background-color: rgba(map-get($colors-rule, first-color), 0.8);
+      border-radius: 15px;
+      //backdrop-filter: blur(10px);
+      transition: transform 0.3s ease;
+      //box-shadow: 0 0px 10px rgba(map-get($colors-rule, fifth-color), 0.3);
+      //border: 2px solid red;
 
       strong {
         color: darken(map-get($colors-rule, second-color), 10%);
@@ -770,7 +738,7 @@ $navbar-height: map-get($sizes, navbar-height);
         position: relative;
         display: inline block;
         z-index: 1;
-        color: map-get($colors-rule, sixth-color);
+        color: map-get($colors-rule, first-color);
 
         &::before {
           content: "";
@@ -780,7 +748,7 @@ $navbar-height: map-get($sizes, navbar-height);
           width: 100%;
           height: 1px;
           bottom: 0px;
-          background: map-get($colors-rule, sixth-color);
+          background: map-get($colors-rule, first-color);
           transition: height 0.2s linear;
         }
 
@@ -797,6 +765,29 @@ $navbar-height: map-get($sizes, navbar-height);
 
 
       }
+    }
+
+    #why-choose-card-1-p,
+    #why-choose-card-2-p,
+    #why-choose-card-3-p,
+    #why-choose-card-4-p {
+      color: map-get($colors-rule, first-color);
+    }
+
+    #why-choose-card-1-p {
+      background-color: rgba(map-get($colors-rule, fourth-color), 0.05);
+    }
+
+    #why-choose-card-2-p {
+      background-color: rgba(map-get($colors-rule, second-color), 0.05);
+    }
+
+    #why-choose-card-3-p {
+      background-color: rgba(map-get($colors-rule, height-color), 0.05);
+    }
+
+    #why-choose-card-4-p {
+      background-color: rgba(map-get($colors-rule, third-color), 0.05);
     }
 
     .img-why-card {
@@ -858,47 +849,61 @@ $navbar-height: map-get($sizes, navbar-height);
 
       h3 {
         position: absolute;
+        top: 0%;
+        left: 0px;
         padding: 50px 60px 50px 20px;
-        top: 0px;
-        left: 5%;
         width: 40%;
-        color: map-get($colors-rule, sixth-color);
+        margin:0px;
+        //color: map-get($colors-rule, sixth-color);
         //border: 1px solid blue;
-        z-index:1;
-        border-radius: 1rem;
-        &::before{
-          display:none;
+        z-index: 15;
+        //border-bottom-right-radius: 1rem;
+
+        &::before {
+          display: none;
         }
       }
 
+      #why-choose-card-1,
+      #why-choose-card-2,
+      #why-choose-card-3,
+      #why-choose-card-4 {
+        color: map-get($colors-rule, sixth-color);
+      }
+
       #why-choose-card-1 {
-        background: map-get($colors-rule, first-color);
+        background: rgba(map-get($colors-rule, fourth-color),1);
 
       }
 
       #why-choose-card-2 {
-        background: map-get($colors-rule, second-color);
+        background: rgba(map-get($colors-rule, second-color),1);
       }
 
       #why-choose-card-3 {
-        background: map-get($colors-rule, third-color);
+        background: rgba(map-get($colors-rule, height-color),1);
       }
 
       #why-choose-card-4 {
-        background: map-get($colors-rule, fourth-color);
+        background: rgba(map-get($colors-rule, third-color),1);
       }
 
 
 
       p {
         position: absolute;
+        z-index: 5;
+        left: 0px;
+        bottom: 0%;
+        width: 100%;
         padding: 40px 20px 40px 70px;
         text-align: left;
-        top: 100px;
-        right: 0%;
-        width: 60%;
         border-bottom-right-radius: 0;
+        //background-color: rgba(map-get($colors-rule, first-color), 0.8);
 
+        /* & a {
+          color:map-get($colors-rule, third-color);
+        } */
 
 
         &::after {
@@ -923,11 +928,20 @@ $navbar-height: map-get($sizes, navbar-height);
         }
       }
 
+      #why-choose-card-1-p,
+      #why-choose-card-2-p,
+      #why-choose-card-3-p,
+      #why-choose-card-4-p {
+        background-color: rgba(map-get($colors-rule, first-color), 0);
+        color: rgba(map-get($colors-rule, first-color), 0.9);
+        }
+
+
       #why-choose-card-1-p {
 
         &::after,
         &::before {
-          background: map-get($colors-rule, first-color);
+          background: map-get($colors-rule, fourth-color);
         }
       }
 
@@ -943,7 +957,7 @@ $navbar-height: map-get($sizes, navbar-height);
 
         &::after,
         &::before {
-          background: map-get($colors-rule, third-color);
+          background: map-get($colors-rule, height-color);
         }
       }
 
@@ -951,7 +965,7 @@ $navbar-height: map-get($sizes, navbar-height);
 
         &::after,
         &::before {
-          background: map-get($colors-rule, fourth-color);
+          background: map-get($colors-rule, third-color);
         }
       }
 
@@ -960,11 +974,11 @@ $navbar-height: map-get($sizes, navbar-height);
       .img-why-card {
         display: block;
         position: absolute;
-        z-index: 1;
-        top: 50%;
-        left: 10%;
-        width: 200px;
-        height: 200px;
+        z-index: 10;
+        top: 80px;
+        right: 20%;
+        width: 45%;
+        height: 300px;
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -972,36 +986,36 @@ $navbar-height: map-get($sizes, navbar-height);
       }
 
       #img-why-card-1 {
-        background-image: url("/assets/images/page-index/feuille-verte.webp");
-        left: 20%;
+        background-image: url("/assets/images/page-index/why-choose-img-card-1.webp");
+        /* left: 20%;
         clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-        border-bottom: 12px solid map-get($colors-rule, first-color);
+        border-bottom: 12px solid map-get($colors-rule, seventh-color); */
       }
 
       #img-why-card-2 {
 
-        background-image: url("/assets/images/page-index/regle-crayon.webp");
-        width: 300px;
-        border-left: 12px solid map-get($colors-rule, second-color);
+        background-image: url("/assets/images/page-index/why-choose-img-card-2.webp");
+
+        /* border-left: 12px solid map-get($colors-rule, second-color);
         clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
-        transform: rotate(-20deg);
+        transform: rotate(-20deg); */
       }
 
       #img-why-card-3 {
-        background-image: url("/assets/images/page-index/humain.webp");
-        left: 20%;
-        top: 40%;
+        background-image: url("/assets/images/page-index/why-choose-img-card-3.webp");
+        /* left: 20%;
+        top: 40%; */
 
-        border-left: 12px solid map-get($colors-rule, third-color);
-        border-radius: 50%;
+        /* border-left: 12px solid map-get($colors-rule, third-color);
+        border-radius: 50%; */
 
 
       }
 
       #img-why-card-4 {
-        background-image: url("/assets/images/page-index/quality.svg");
-        left: 20%;
-        top: 30%;
+        background-image: url("/assets/images/page-index/why-choose-img-card-4.webp");
+        /* left: 20%;
+        top: 30%; */
 
       }
 
@@ -1009,123 +1023,60 @@ $navbar-height: map-get($sizes, navbar-height);
   }
 }
 
-@media screen and (min-width: 1300px) {
-  .why-green-click {
 
-
-    .why-choose {
-      .why-choose-card {
-        height: 500px;
-        & p {
-          padding: 40px 20px 40px 100px;
-        }
-      }
-    }
-  }
-}
-
-// Tablet (768px and up)
-@media (min-width: 768px) {
-  .values {
-    padding: 120px 30px 0px 30px;
-
-    h3 {
-      font-size: clamp(2rem, 4vw, 2.5rem);
-      margin-bottom: 80px;
-    }
-
-    .value-card {
-      margin: 50px auto;
-
-      .img-text-container {
-        padding: 40px;
-
-        .flex-column-start-center {
-          .h4-title {
-            font-size: 1.5rem;
-          }
-
-          .img-text {
-            width: 150px;
-            height: 150px;
-          }
-        }
-
-        .text-container p {
-          font-size: 1.1rem;
-        }
-      }
-    }
-  }
-}
-
-// Desktop (992px and up)
-@media (min-width: 992px) {
-  .values {
-    padding: 150px 50px 0px 50px;
-
-    .value-card {
-      max-width: 900px;
-
-      .img-text-container {
-        display: grid;
-        grid-template-columns: 300px 1fr;
-        gap: 40px;
-        align-items: center;
-
-        .flex-column-start-center {
-          margin-bottom: 0;
-
-          .img-text {
-            width: 180px;
-            height: 180px;
-          }
-        }
-
-        .text-container {
-          text-align: left;
-
-          p {
-            text-align: left;
-          }
-        }
-      }
-    }
-  }
-}
-
-// Large Desktop (1200px and up)
-@media (min-width: 1200px) {
-
-  .values {
-    .value-card {
-      max-width: 1100px;
-
-      .img-text-container {
-        grid-template-columns: 350px 1fr;
-        gap: 60px;
-        padding: 50px;
-      }
-    }
-  }
-}
 
 .creations {
   &>h2 {
-    margin-bottom: 24px;
+    margin-bottom: 100px;
   }
 
   .creations-intro {
     max-width: 720px;
-    margin: 0 20px 40px;
-    color: rgba(map-get($colors-rule, fifth-color), 0.9);
+    margin: 20px 0px;
+    color: rgba(map-get($colors-rule, first-color), 0.9);
     font-size: 1rem;
     line-height: 1.6;
     text-align: center;
 
+    
+  }
+  .list-creation{
+    margin-bottom: 50px;
+    gap:1rem;
+
     a {
-      color: map-get($colors-rule, link-color);
-      font-weight: 700;
-    }
+    
+        position: relative;
+        display: inline block;
+        z-index: 1;
+        color: map-get($colors-rule, first-color);
+        transition: color 0.2s linear;
+        
+        &::before {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          left: 0px;
+          width: 100%;
+          height: 1px;
+          bottom: 0px;
+          background-color: map-get($colors-rule, first-color);
+          transition: background-color 0.2s linear;
+        }
+        
+        
+        &:hover::before {
+          background-color: map-get($colors-rule, created-link-color-hover);
+          /*   opacity: 0.9;
+          height: 6px;
+          bottom: 60%; */
+          transition: background-color 0.2s linear;
+          
+        }
+        &:hover{
+          color: map-get($colors-rule, created-link-color-hover);
+          
+        }
+      }
   }
 }

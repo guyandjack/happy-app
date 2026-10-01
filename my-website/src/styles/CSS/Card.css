@@ -131,7 +131,7 @@
   z-index: -1;
   top: 150px;
   left: 10px;
-  background-color: #7c5cfc;
+  background-color: #04b6d4;
   color: #fefefd;
   border-radius: 0.5rem;
   padding: 0.5rem;
@@ -163,7 +163,7 @@
   max-width: 200px;
   padding: 12px 24px;
   margin-left: 24px;
-  background-color: rgba(124, 92, 252, 0.9);
+  background-color: #a855f7;
   color: #fefefd;
   border: 2px solid transparent;
   border-radius: 6px;
@@ -215,8 +215,9 @@
       }
   }  */
   .card-button-contact:hover {
-    border: 2px solid #957fee;
-    background-color: #957fee;
+    color: #9333ea;
+    border: 2px solid #9333ea;
+    background-color: #f3e8ff;
     -webkit-transform: translateY(-2px);
         -ms-transform: translateY(-2px);
             transform: translateY(-2px);

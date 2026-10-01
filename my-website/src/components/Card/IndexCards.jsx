@@ -7,9 +7,9 @@ import { localOrProd } from "@utils/fonction/testEnvironement";
 import { getLanguage } from "@utils/fonction/getLanguage";
 
 //import des images
-import cardImage_1 from "@assetsJSX/images/page-index/card-index/img-card-web.webp";
-import cardImage_2 from "@assetsJSX/images/page-index/card-index/img-card-seo.webp";
-import cardImage_3 from "@assetsJSX/images/page-index/card-index/img-card-app.webp";
+import cardImage_1 from "@assetsJSX/images/page-index/card-index/service-web-img.webp";
+import cardImage_2 from "@assetsJSX/images/page-index/card-index/service-seo-img.webp";
+import cardImage_3 from "@assetsJSX/images/page-index/card-index/service-app-img.webp";
 
 const IndexCards = () => {
   const { url, urlApi, mode } = localOrProd();

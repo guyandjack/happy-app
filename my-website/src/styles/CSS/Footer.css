@@ -98,7 +98,8 @@
 .footer .footer-content .footer-brand .footer-cta {
   display: inline-block;
   padding: 12px 24px;
-  background: rgba(124, 92, 252, 0.9);
+  background: #a855f7;
+  border: 2px solid #fefefd;
   color: #fefefd;
   text-decoration: none;
   border-radius: 6px;
@@ -107,7 +108,9 @@
   transition: all 0.3s ease;
 }
 .footer .footer-content .footer-brand .footer-cta:hover {
-  background: #957fee;
+  background: #f3e8ff;
+  border: 2px solid #9333ea;
+  color: #9333ea;
   -webkit-transform: translateY(-2px);
       -ms-transform: translateY(-2px);
           transform: translateY(-2px);

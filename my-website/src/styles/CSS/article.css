@@ -63,14 +63,14 @@
   width: 50px;
   height: 50px;
   padding: 0.5rem;
-  background-color: #7c5cfc;
+  background-color: #04b6d4;
   border-radius: 50%;
   cursor: pointer;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 .page-container .btn-retour-articles:hover {
-  background-color: #957fee;
+  background-color: #cffafe;
   -webkit-transform: translateY(-2px);
       -ms-transform: translateY(-2px);
           transform: translateY(-2px);
@@ -223,7 +223,7 @@
 .article-wrapper .article-conclusion-section .article-subtitle-h2 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #b7950b;
+  color: #f96e46;
   color: #fefefd;
   padding: 1.5rem 0;
   background-color: #00d4ff;

@@ -323,7 +323,7 @@
   max-width: 300px;
   padding: 12px 30px;
   border-radius: 30px;
-  background: #7c5cfc;
+  background: #04b6d4;
   border: 2px solid #fefefd;
   color: #fefefd;
   text-decoration: none;
@@ -335,7 +335,7 @@
   transition: box-shadow 0.3s ease, background-color 0.3s ease, -webkit-box-shadow 0.3s ease;
 }
 .website-types .website-cards .website-card-container .website-card .card-content .btn:hover {
-  background-color: #957fee;
+  background-color: #cffafe;
   -webkit-transform: translateY(-2px);
       -ms-transform: translateY(-2px);
           transform: translateY(-2px);
@@ -466,7 +466,7 @@
   /* background: linear-gradient(135deg,
       rgba(map-get($colors-rule, second-color), 0.03),
       rgba(map-get($colors-rule, third-color), 0.02)); */
-  background-color: #574983;
+  background-color: #3f2f58;
 }
 .eco-section .eco-title-container .eco-image {
   display: none;
@@ -577,7 +577,7 @@
   /* background: linear-gradient(135deg,
     rgba(map-get($colors-rule, fourth-color), 0.03),
     rgba(map-get($colors-rule, third-color), 0.02)); */
-  background-color: #574983;
+  background-color: #3f2f58;
 }
 .seo-section .seo-title-container {
   position: relative;

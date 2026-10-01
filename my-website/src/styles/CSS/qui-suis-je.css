@@ -59,7 +59,7 @@
   --muted: rgba(23, 23, 23, 0.7);
   --brand: #1a1627;
   --accent: #00d4ff;
-  --highlight: #b7950b;
+  --highlight: #f96e46;
   background: var(--bg);
 }
 .page-container .ref-svg {
@@ -155,7 +155,7 @@
   transition: height 0.2s linear;
 }
 .page-container .about-charte a:hover::before {
-  background: #7c5cfc;
+  background: #04b6d4;
   opacity: 0.9;
   height: 6px;
   bottom: 60%;

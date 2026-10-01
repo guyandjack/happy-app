@@ -59,22 +59,51 @@ $colors-rule: (
     // 1) Couleurs de base
     // =========================
     first-color: #1a1627,
-   
+
     second-color: #00d4ff,
-   
+
     third-color: #00bdb6,
-   
-    fourth-color: #b7950b,
-    
+
+    //fourth-color: #b7950b,
+    fourth-color: #f96e46,
+
     fifth-color: #171717,
-    
+
     sixth-color: #fefefd,
-   
+
+    seventh-color: #551133,
+
+    height-color: #edd83d,
+
 
     footer-color: #1a1627,
     nav-bar-color: #141627,
-    link-color: #7c5cfc,
-    link-color-hover:#957fee,
+    //link-color: #7c5cfc,
+    //link-color-hover:#957fee,
+
+    //lien interne
+    link-color-hover: #cffafe,
+    link-color:#04b6d4,
+    text-link-color-hover: #0891b2,
+    text-link-color: #fefefd,
+
+    //lien realisation
+    created-link-color:#f433ab,
+    created-link-color-hover:#cb04a5,
+    created-link-text-color:#551133,
+    created-link-text-color-hover:#fefefd,
+
+    //lien vers la page contact
+    contact-link-color-hover:#f3e8ff,
+    contact-link-color:#a855f7,
+    contact-link-text-color-hover:#9333ea,
+    contact-link-text-color:#fefefd,
+    
+    //lien actif
+    actif-link-color:#0891b2,
+   
+   
+
 
     // =========================
     // 2) Variantes de first-color
@@ -118,7 +147,8 @@ $colors-rule: (
     background-page-color-alt: #eef1f7,
 
     bg-page-shade-light-1: #3d335b,
-    bg-page-shade-light-2: #574983,
+    // Prune-violet désaturé : surface de contraste distincte du lavande des services et du dégradé de la FAQ.
+    bg-page-shade-light-2: #3f2f58,
     bg-page-shade-light-3: #7e6fae,
     bg-page-shade-light-4: #f2f0fe,
 
@@ -174,6 +204,11 @@ $colors-rule: (
         #1a1627 0%,
         #16213e 50%,
         #00d4ff 100%),
+
+    brand-gradient-third: linear-gradient(135deg,
+        #7e6fae 0%,
+        #1a1627 100%,
+    ),
 
     brand-gradient-accent: linear-gradient(135deg,
         #00bdb6 0%,

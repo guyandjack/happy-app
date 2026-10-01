@@ -346,13 +346,13 @@
     transition: height 0.2s linear;
   }
   .navbar .navbar-menu > li > a:hover::after, .navbar .navbar-menu > li > button:hover::after {
-    background: #7c5cfc;
+    background: #04b6d4;
     height: 8px;
     -webkit-transition: height 0.2s linear;
     transition: height 0.2s linear;
   }
   .navbar .navbar-menu > li > a.active::before, .navbar .navbar-menu > li > button.active::before {
-    background: #957fee;
+    background: #0891b2;
     height: 100%;
   }
   .navbar .navbar-menu .menu-item-with-submenu {
@@ -420,7 +420,7 @@
     height: 0px;
     bottom: 60%;
     left: 0px;
-    background-color: #7c5cfc;
+    background-color: #04b6d4;
     -webkit-transition: height 0.2s linear;
     transition: height 0.2s linear;
   }
@@ -432,7 +432,7 @@
     height: 8px;
     bottom: 60%;
     left: 0px;
-    background-color: #957fee;
+    background-color: #0891b2;
     opacity: 0;
   }
   .navbar .navbar-menu .language-switcher {
