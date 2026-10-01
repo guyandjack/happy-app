@@ -37,14 +37,25 @@ scrollToTarget();
 //animation h1
 const lang = getLanguage();
 
-const typed = new Typed(".anim-conclusion", {
-  strings: lang === "fr"? fr_content_title : en_content_title,
-  typeSpeed: 90,
-  backSpeed: 50,
-  loop: true,
-  loopCount: Infinity,
-  backDelay: 1500,
-});
+const animationTarget = document.querySelector(".anim-conclusion");
+const animationText = lang === "fr" ? fr_content_title[0] : en_content_title[0];
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (animationTarget) {
+  // Le contenu reste disponible sans JavaScript et pour les personnes qui réduisent les animations.
+  animationTarget.textContent = animationText;
+
+  if (!prefersReducedMotion) {
+    new Typed(animationTarget, {
+      strings: lang === "fr" ? fr_content_title : en_content_title,
+      typeSpeed: 90,
+      backSpeed: 50,
+      loop: true,
+      loopCount: Infinity,
+      backDelay: 1500,
+    });
+  }
+}
 
 // Mount Navbar
 try {

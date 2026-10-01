@@ -270,7 +270,6 @@ main {
   text-align: center;
   position: relative;
   overflow: hidden;
-  background-color: #fbfbfc;
   -ms-flex-item-align: center;
       align-self: center;
 }
@@ -370,40 +369,21 @@ main {
   .hero-wrapper .hero-logo {
     width: 200px;
   }
+  .hero-container {
+    overflow: visible;
+  }
+  .hero-container > img {
+    top: -50px;
+    left: -80px;
+  }
+  .hero-container > img:nth-child(1) {
+    top: -55%;
+  }
   .hero-container .hero-container-title {
     background-color: transparent;
     background: transparent;
   }
 }
-/* @media screen and (min-width: 1300px) {
-    .hero-container {
-            .hero-container-title {
-               background-color: transparent;
-            }
-        }
-}
- */
-/* .page-container.dark-mode .hero {
-
-    background-color: lighten(map-get($colors-rule, first-color), 5%);
-
-    .container {
-        background-color: lighten(map-get($colors-rule, first-color), 10%);
-
-        h1 {
-            color: map-get($colors-rule, sixth-color);
-        }
-
-
-        .hero-subtitle {
-            color: map-get($colors-rule, sixth-color);
-        }
-
-    }
-
-
-
-} */
 .contact-button-link {
   display: block;
   position: relative;
@@ -435,7 +415,7 @@ main {
   margin: 0 auto;
 }
 .faq-section .faq-container-title {
-  height: 250px;
+  height: auto;
   margin-bottom: 50px;
   gap: 50px;
 }

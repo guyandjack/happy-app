@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-CH">
 
 <head>
     <!-- Encoding & Display -->
@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Priority SEO tags -->
-    <title>About | HelveClick – Freelance web developer in Valais</title>
+    <title>About Helveclick | Web developer and SaaS in Crans-Montana</title>
     <meta name="description"
-        content="Discover HelveClick, freelance web and mobile developer based in Crans-Montana (Valais, Switzerland). A human, ethical and eco-responsible approach at the service of your digital projects.">
+        content="Discover Helveclick, a web developer in Crans-Montana: bespoke websites and SaaS solutions for SMEs in Valais and remotely across Switzerland.">
     <meta name="robots" content="index, follow">
 
     <!-- Canonical and Alternate Links -->
@@ -20,11 +20,11 @@
     <link rel="alternate" hreflang="x-default" href="https://helveclick.ch/public/fr/a-propos.html">
 
     <!-- Open Graph -->
-    <meta property="og:type" content="profile">
+    <meta property="og:type" content="website">
     <meta property="og:url" content="https://helveclick.ch/public/en/about.html">
-    <meta property="og:title" content="About – Freelance Web Developer in Crans-Montana, Switzerland">
+    <meta property="og:title" content="About Helveclick | Web developer and SaaS in Crans-Montana">
     <meta property="og:description"
-        content="Learn more about my background, eco-conscious approach, and commitment to sustainable digital solutions.">
+        content="Discover Helveclick, a web developer in Crans-Montana: bespoke websites and SaaS solutions for SMEs in Valais and remotely across Switzerland.">
     <!-- <meta property="og:image" content="https://helveclick.ch/images/profile.jpg"> -->
     <meta property="og:site_name" content="HelveClick">
     <meta property="og:locale" content="en_GB">
@@ -32,16 +32,16 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="About – Freelance Web Developer in Crans-Montana, Switzerland">
+    <meta name="twitter:title" content="About Helveclick | Web developer and SaaS in Crans-Montana">
     <meta name="twitter:description"
-        content="My story, values, and commitment to eco-designed websites and mobile apps.">
+        content="Discover Helveclick, a web developer in Crans-Montana: bespoke websites and SaaS solutions for SMEs in Valais and remotely across Switzerland.">
     <!-- <meta name="twitter:image" content="https://helveclick.ch/images/profile.jpg"> -->
 
 
 
 
     <!-- Geolocation Tags -->
-    <meta name="geo.region" content="CH">
+    <meta name="geo.region" content="CH-VS">
     <meta name="geo.placename" content="Crans-Montana">
 
 
@@ -52,65 +52,96 @@
       "@graph": [
         {
           "@type": ["LocalBusiness", "ProfessionalService"],
-          "name": "Helveclick",
+          "@id": "https://helveclick.ch/#org",
+          "name": "HelveClick",
           "url": "https://helveclick.ch/",
           "logo": "https://helveclick.ch/public/assets/logo/logo-v8.svg",
-          "description": "Web agency / freelance developer based in Crans-Montana (Valais, Switzerland): eco-designed website development, mobile application development, and SEO optimization.",
+          "description": "Web agency in Crans-Montana, Valais: websites, mobile applications, SaaS, SEO/GEO and bespoke eco-responsible solutions for SMEs.",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Chemin du mont paisible 1",
             "addressLocality": "Crans-Montana",
-            "addressRegion": "Valais",
+            "addressRegion": "VS",
             "postalCode": "3963",
             "addressCountry": "CH"
           },
-          "email": "info@helveclick.ch",
           "telephone": "+41 78 894 09 87",
+          "email": "info@helveclick.ch",
           "areaServed": [
-            {
-              "@type": "AdministrativeArea",
-              "name": "Valais"
-            },
-            {
-              "@type": "City",
-              "name": "Crans-Montana"
-            }
+            { "@type": "City", "name": "Crans-Montana" },
+            { "@type": "AdministrativeArea", "name": "Valais" },
+            { "@type": "Country", "name": "Switzerland" }
           ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "telephone": "+41 78 894 09 87",
+            "email": "info@helveclick.ch",
+            "availableLanguage": ["fr", "en"]
+          },
           "sameAs": [
             "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
           ],
-          "founder": {
-            "@type": "Person",
-            "name": "Guillaume Dupanloup",
-            "jobTitle": "Web and mobile developer / web agency",
-            "url": "https://helveclick.ch/",
-            "sameAs": [
-              "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
-            ]
-          },
+          "founder": { "@id": "https://helveclick.ch/#guillaume-dupanloup" },
           "makesOffer": [
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Website development"
+                "@id": "https://helveclick.ch/public/en/services/website.html#service",
+                "name": "Bespoke website development",
+                "url": "https://helveclick.ch/public/en/services/website.html"
               }
             },
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Mobile application development"
+                "@id": "https://helveclick.ch/public/en/services/mobile-application.html#service",
+                "name": "Mobile application development",
+                "url": "https://helveclick.ch/public/en/services/mobile-application.html"
               }
             },
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "SEO (search engine optimization)"
+                "@id": "https://helveclick.ch/public/en/services/seo.html#service",
+                "name": "SEO and GEO optimisation",
+                "url": "https://helveclick.ch/public/en/services/seo.html"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@id": "https://helveclick.ch/public/en/services/saas.html#service",
+                "@type": "Service",
+                "name": "Bespoke SaaS software development",
+                "url": "https://helveclick.ch/public/en/services/saas.html"
               }
             }
           ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://helveclick.ch/#guillaume-dupanloup",
+          "name": "Guillaume Dupanloup",
+          "jobTitle": "Freelance web and mobile developer",
+          "url": "https://helveclick.ch/public/en/about.html",
+          "worksFor": { "@id": "https://helveclick.ch/#org" },
+          "sameAs": [
+            "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
+          ]
+        },
+        {
+          "@type": "AboutPage",
+          "@id": "https://helveclick.ch/public/en/about.html#webpage",
+          "url": "https://helveclick.ch/public/en/about.html",
+          "name": "About Helveclick | Web developer and SaaS in Crans-Montana",
+          "description": "Discover Helveclick, a web developer in Crans-Montana: bespoke websites and SaaS solutions for SMEs in Valais and remotely across Switzerland.",
+          "inLanguage": "en-CH",
+          "about": { "@id": "https://helveclick.ch/#org" },
+          "mainEntity": { "@id": "https://helveclick.ch/#guillaume-dupanloup" }
         }
       ]
     }
@@ -153,27 +184,28 @@
         </symbol>
     </svg>
     <div class="page-container">
+        <a class="skip-link" href="#main-content">Skip to main content</a>
         <header>
             <!-- Navbar will be mounted here by React -->
             <div id="RC-navbar"></div>
         </header>
 
         <div id="RC-link-top-page"></div>
-        <main>
+        <main id="main-content" tabindex="-1">
             <section class="flex-column-start-center hero-wrapper">
-                <img class="hero-logo" src="/assets/logo/helveclick-dark-ok.png" alt="logo helveclick">
+                <img class="hero-logo" src="/assets/logo/helveclick-dark-ok.png" alt="Helveclick">
                 <div class="flex-column-end-center hero-container">
 
-                    <img src="/assets/images/page-qui-suis-je/img-left-hero-about.webp " alt="Header decoration">
+                    <img src="/assets/images/page-qui-suis-je/img-left-hero-about.webp" alt="">
 
-                    <img src="/assets/images/page-qui-suis-je/img-right-hero-about.webp" alt="Header decoration" />
+                    <img src="/assets/images/page-qui-suis-je/img-right-hero-about.webp" alt="">
 
                     <div class="hero-container-title">
-                        <h1>About</h1>
+                        <h1>About Helveclick</h1>
 
                         <h2 class="hero-subtitle">
                             <strong>
-                                Discover who I am and how I&nbsp;can&nbsp;help&nbsp;you.
+                                Independent web developer in Crans-Montana, serving SMEs across Valais.
                             </strong>
                         </h2>
                     </div>
@@ -184,30 +216,26 @@
                 <div class="about-section-inner">
 
 
-                    <h2 class="h2-title item-menu-side">Welcome
-                        <strong>dear visitor&nbsp;!</strong>
-                    </h2>
+                    <h2 class="h2-title item-menu-side">A bespoke web approach <strong>for SMEs</strong></h2>
 
                     <div class="flex-column-start-start wrapper-about-text">
                         <p>
-                            I am a web developer passionate about creating
-                            <strong>modern and high-performance interfaces</strong>. I fully invest myself in learning
-                            and
-                            applying <strong>current web technologies</strong> to design solutions that are both
-                            aesthetic and
-                            functional.
+                            I am <strong>Guillaume Dupanloup</strong>, founder of Helveclick and an independent web developer. I help
+                            SMEs of all sectors create or redesign <strong><a
+                                    href="/public/en/services/website.html">websites</a></strong> and <strong><a
+                                    href="/public/en/services/saas.html">bespoke SaaS solutions</a></strong>, in Valais and
+                            remotely across other Swiss cantons.
                         </p>
                         <p>
-                            I conduct <strong>constant technological monitoring</strong> to optimize the performance of
-                            websites and applications, and to <strong>improve user experience</strong>.
-                            Each project is for me an opportunity to take on technical challenges, innovate and continue
-                            to
-                            progress in this constantly evolving field.
+                            I design <strong>high-performance, user-centred web interfaces</strong>, with close attention to code quality
+                            and performance optimisation. Depending on the project, this support can also include <strong><a
+                                    href="/public/en/services/seo.html">SEO and GEO optimisation</a></strong> or <strong><a
+                                    href="/public/en/services/mobile-application.html">mobile application development</a></strong>.
                         </p>
-                        <a href="https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/" target="_blank"
-                            rel="noopener noreferrer">
-                            <img src="/assets/images/icons/icon-linkedin.svg" alt="LinkedIn link" class="about-image">
-                        </a>
+                        <!-- <a href="https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/" target="_blank"
+                            rel="noopener noreferrer" aria-label="Guillaume Dupanloup's LinkedIn profile (opens in a new window)">
+                            <img src="/assets/images/icons/icon-linkedin.svg" alt="" class="about-image">
+                        </a> -->
                     </div>
 
                 </div>
@@ -221,37 +249,27 @@
                         <strong>ethical and eco&#8209;responsible charter</strong>
                     </h2>
                     <p class="about-charte-text">
-                        As a <strong>web and mobile developer</strong>, I commit to designing websites and applications
-                        that
-                        respect both
-                        <strong>users</strong>, <strong>the environment</strong> and <strong>good digital
-                            practices</strong>.
-                        I ensure that every aspect of my work complies with the <a href="https://greenit.eco/"
+                        I am committed to developing websites and applications that respect<br>
+                        <strong>the environment</strong> and <strong>good digital practices</strong>.<br>
+                        I ensure that every aspect of my work aligns as closely as possible with the <a href="https://greenit.eco/"
                             target="_blank"
                             rel="noopener noreferrer"><strong>Green&nbsp;IT&nbsp;recommendations</strong></a>.
-                        In addition to these <strong>eco-responsibility</strong> principles, here are the
-                        <strong>ethical
-                            attitudes</strong>
-                        that
-                        guide my approach:
                     </p>
 
                     <div class="diagram-wrapper">
                         <div class="diagram-description">
                             <div class="flex-row-start-center">
                                 <span class="description-dot" aria-hidden="true"></span>
-                                <span>Accessibility for all</span>
+                                <span>Customer satisfaction</span>
                             </div>
-                            <div>Design inclusive interfaces, accessible to people with disabilities, regardless of
-                                their device or connection.</div>
+                            <div>Put users first, measure satisfaction and continuously improve the experience.</div>
                         </div>
                         <div class="diagram-description">
                             <div class="flex-row-start-center">
                                 <span class="description-dot" aria-hidden="true"></span>
-                                <span>Digital sobriety</span>
+                                <span>Transparency</span>
                             </div>
-                            <div>Prioritize lightweight and optimized code, limit unnecessary resources and reduce the
-                                carbon footprint of digital projects.</div>
+                            <div>Work honestly, clearly explain technical choices and propose suitable solutions without overselling.</div>
                         </div>
                         <div class="diagram-description">
                             <div class="flex-row-start-center">
@@ -264,33 +282,30 @@
                         <div class="diagram-description">
                             <div class="flex-row-start-center">
                                 <span class="description-dot" aria-hidden="true"></span>
-                                <span>Transparency and ethics</span>
+                                <span>Eco-design</span>
                             </div>
-                            <div>Work with honesty, clearly explain technical choices and propose appropriate solutions,
-                                without overselling.</div>
+                            <div>Reduce environmental impact by optimising resources, media and performance.</div>
+                        </div>
+                        <div class="diagram-description">
+                            <div class="flex-row-start-center">
+                                <span class="description-dot" aria-hidden="true"></span>
+                                <span>Accessibility</span>
+                            </div>
+                            <div>Design inclusive interfaces that are accessible to people with disabilities, regardless of their device or connection.</div>
                         </div>
                         <div class="diagram-description">
                             <div class="flex-row-start-center">
                                 <span class="description-dot" aria-hidden="true"></span>
                                 <span>Sustainability</span>
                             </div>
-                            <div>Develop scalable projects, easy to maintain, designed to last over time and limit
-                                unnecessary redesigns.</div>
-                        </div>
-                        <div class="diagram-description">
-                            <div class="flex-row-start-center">
-                                <span class="description-dot" aria-hidden="true"></span>
-                                <span>Continuous monitoring</span>
-                            </div>
-                            <div>Stay informed of the latest technological advances to propose solutions that are both
-                                performant, responsible and innovative.</div>
+                            <div>Develop scalable, maintainable projects designed to last and reduce unnecessary redesigns.</div>
                         </div>
                     </div>
 
                     <div class="about-charte-conclusion">Because digital can (and must) be more respectful,<br> each
                         project is for me an opportunity
                         to contribute<br>
-                        <div class="anim-wrapper"><span class="anim-conclusion"></span></div>
+                        <div class="anim-wrapper"><span class="anim-conclusion"> for a more sustainable and people-centered web.</span></div>
                     </div>
                 </div>
             </section>

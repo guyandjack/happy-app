@@ -748,12 +748,12 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
       }
 
       #why-choose-card-1 {
-        background: rgba(map-get($colors-rule, fourth-color),1);
+        background: rgba(map-get($colors-rule, second-color),1);
 
       }
 
       #why-choose-card-2 {
-        background: rgba(map-get($colors-rule, second-color),1);
+        background: rgba(map-get($colors-rule, fourth-color),1);
       }
 
       #why-choose-card-3 {
@@ -817,7 +817,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
         &::after,
         &::before {
-          background: map-get($colors-rule, fourth-color);
+          background: map-get($colors-rule, second-color);
         }
       }
 
@@ -825,7 +825,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
         &::after,
         &::before {
-          background: map-get($colors-rule, second-color);
+          background: map-get($colors-rule, fourth-color);
         }
       }
 
@@ -858,6 +858,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
+        border-radius: 1rem;
 
       }
 

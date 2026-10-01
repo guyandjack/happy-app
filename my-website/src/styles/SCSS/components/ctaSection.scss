@@ -115,7 +115,7 @@
         
         
                 position: relative;
-                display: inline block;
+                display: inline-block;
                 z-index: 1;
                 color: rgba(map-get($colors-rule, text-link-color),0.9);
                 transition: color 0.2s linear;

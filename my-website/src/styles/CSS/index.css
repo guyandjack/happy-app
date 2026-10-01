@@ -654,10 +654,10 @@
     color: #fefefd;
   }
   .why-green-click .why-choose #why-choose-card-1 {
-    background: #f96e46;
+    background: #00d4ff;
   }
   .why-green-click .why-choose #why-choose-card-2 {
-    background: #00d4ff;
+    background: #f96e46;
   }
   .why-green-click .why-choose #why-choose-card-3 {
     background: #edd83d;
@@ -702,10 +702,10 @@
     color: rgba(26, 22, 39, 0.9);
   }
   .why-green-click .why-choose #why-choose-card-1-p::after, .why-green-click .why-choose #why-choose-card-1-p::before {
-    background: #f96e46;
+    background: #00d4ff;
   }
   .why-green-click .why-choose #why-choose-card-2-p::after, .why-green-click .why-choose #why-choose-card-2-p::before {
-    background: #00d4ff;
+    background: #f96e46;
   }
   .why-green-click .why-choose #why-choose-card-3-p::after, .why-green-click .why-choose #why-choose-card-3-p::before {
     background: #edd83d;
@@ -724,6 +724,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    border-radius: 1rem;
   }
   .why-green-click .why-choose #img-why-card-1 {
     background-image: url("/assets/images/page-index/why-choose-img-card-1.webp");

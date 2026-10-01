@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr-CH">
 
 <head>
   <!-- Encodage & Affichage -->
@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Balises SEO prioritaires -->
-  <title>À propos | Agence web à Crans-Montana (Valais) – Helveclick</title>
+  <title>À propos de Helveclick | Développeur web et SaaS à Crans-Montana</title>
   <meta name="description"
-    content="Découvrez Helveclick, agence web à Crans-Montana (Valais, Suisse). Création de sites internet, applications mobiles et SEO avec une approche éco-responsable.">
+    content="Découvrez Helveclick, développeur web à Crans-Montana : sites web et solutions SaaS sur mesure pour les PME du Valais et à distance en Suisse.">
   <meta name="robots" content="index, follow">
 
   <!-- Canonical and Alternate Links -->
@@ -22,18 +22,18 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://helveclick.ch/public/fr/a-propos.html">
-  <meta property="og:title" content="À propos | Agence web à Crans-Montana – Helveclick">
+  <meta property="og:title" content="À propos de Helveclick | Développeur web et SaaS à Crans-Montana">
   <meta property="og:description"
-    content="Mon parcours et ma vision : création de sites internet, apps mobiles et SEO à Crans-Montana (Valais) avec une approche responsable et durable.">
+    content="Découvrez Helveclick, développeur web à Crans-Montana : sites web et solutions SaaS sur mesure pour les PME du Valais et à distance en Suisse.">
   <!-- <meta property="og:image" content="https://helveclick.ch/images/og-about.jpg"> -->
   <meta property="og:site_name" content="Helveclick">
   <meta property="og:locale" content="fr_CH">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="À propos | Agence web à Crans-Montana – Helveclick">
+  <meta name="twitter:title" content="À propos de Helveclick | Développeur web et SaaS à Crans-Montana">
   <meta name="twitter:description"
-    content="Développeur / agence web à Crans-Montana (Valais) : sites internet, apps mobiles et SEO avec une démarche éco-responsable.">
+    content="Découvrez Helveclick, développeur web à Crans-Montana : sites web et solutions SaaS sur mesure pour les PME du Valais et à distance en Suisse.">
   <!-- <meta name="twitter:image" content="https://helveclick.ch/images/og-about.jpg"> -->
 
   <!-- Geolocation Tags -->
@@ -48,65 +48,113 @@
     "@graph": [
       {
         "@type": ["LocalBusiness", "ProfessionalService"],
-        "name": "Helveclick",
-        "url": "https://helveclick.ch",
+        "@id": "https://helveclick.ch/#org",
+        "name": "HelveClick",
+        "url": "https://helveclick.ch/",
         "logo": "https://helveclick.ch/public/assets/logo/logo-v8.svg",
-        "description": "Agence web / développeur freelance à Crans-Montana (Valais, Suisse) : création de sites internet éco-conçus, applications mobiles et optimisation SEO.",
+        "description": "Agence web à Crans-Montana, en Valais : sites internet, applications mobiles, SaaS, SEO/GEO et solutions écoresponsables sur mesure pour les PME.",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Chemin du mont paisible 1",
           "addressLocality": "Crans-Montana",
-          "addressRegion": "Valais",
+          "addressRegion": "VS",
           "postalCode": "3963",
           "addressCountry": "CH"
         },
-        "email": "info@helveclick.ch",
         "telephone": "+41 78 894 09 87",
+        "email": "info@helveclick.ch",
         "areaServed": [
+          {
+            "@type": "City",
+            "name": "Crans-Montana"
+          },
           {
             "@type": "AdministrativeArea",
             "name": "Valais"
           },
           {
-            "@type": "City",
-            "name": "Crans-Montana"
+            "@type": "Country",
+            "name": "Suisse"
           }
         ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "telephone": "+41 78 894 09 87",
+          "email": "info@helveclick.ch",
+          "availableLanguage": ["fr", "en"]
+        },
         "sameAs": [
           "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
         ],
         "founder": {
-          "@type": "Person",
-          "name": "Guillaume Dupanloup",
-          "jobTitle": "Développeur web et mobile / agence web",
-          "url": "https://helveclick.ch",
-          "sameAs": [
-            "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
-          ]
+          "@id": "https://helveclick.ch/#guillaume-dupanloup"
         },
         "makesOffer": [
-    {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Création de site internet"
-      }
-    },
-    {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Développement d’applications mobiles"
-      }
-    },
-    {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "SEO (référencement naturel)"
-      }
-    }
-  ]
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://helveclick.ch/public/fr/prestations/site-web.html#service",
+              "name": "Création de sites web sur mesure",
+              "url": "https://helveclick.ch/public/fr/prestations/site-web.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://helveclick.ch/public/fr/prestations/application-mobile.html#service",
+              "name": "Développement d’applications mobiles",
+              "url": "https://helveclick.ch/public/fr/prestations/application-mobile.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://helveclick.ch/public/fr/prestations/seo.html#service",
+              "name": "Optimisation SEO et GEO",
+              "url": "https://helveclick.ch/public/fr/prestations/seo.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://helveclick.ch/public/fr/prestations/saas.html#service",
+              "name": "Développement de logiciel SaaS sur mesure",
+              "url": "https://helveclick.ch/public/fr/prestations/saas.html"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://helveclick.ch/#guillaume-dupanloup",
+          "name": "Guillaume Dupanloup",
+        "jobTitle": "Développeur web et mobile freelance",
+        "url": "https://helveclick.ch/public/fr/a-propos.html",
+        "worksFor": {
+          "@id": "https://helveclick.ch/#org"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
+        ]
+      },
+      {
+        "@type": "AboutPage",
+        "@id": "https://helveclick.ch/public/fr/a-propos.html#webpage",
+        "url": "https://helveclick.ch/public/fr/a-propos.html",
+        "name": "À propos de Helveclick | Développeur web et SaaS à Crans-Montana",
+        "description": "Découvrez Helveclick, développeur web à Crans-Montana : sites web et solutions SaaS sur mesure pour les PME du Valais et à distance en Suisse.",
+        "inLanguage": "fr-CH",
+        "about": {
+          "@id": "https://helveclick.ch/#org"
+        },
+        "mainEntity": {
+          "@id": "https://helveclick.ch/#guillaume-dupanloup"
+        }
       }
     ]
   }
@@ -116,7 +164,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
-  <link rel="manifest" href="/src/assets/favicons/site.webmanifest">
+  <link rel="manifest" href="/assets/favicons/site.webmanifest">
 
   <!-- Scripts in head -->
   <script type="module" src="../../src/jsx/page-a-propos.jsx"></script>
@@ -147,6 +195,7 @@
     </symbol>
   </svg>
   <div class="page-container">
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
 
     <header>
       <!-- Navbar will be mounted here by React -->
@@ -154,23 +203,23 @@
     </header>
 
     <div id="RC-link-top-page"></div>
-    <main>
+    <main id="main-content" tabindex="-1">
       <section class="flex-column-start-center hero-wrapper">
-        <img class="hero-logo" src="/assets/logo/helveclick-dark-ok.png " alt="Logo helveclick">
+        <img class="hero-logo" src="/assets/logo/helveclick-dark-ok.png" alt="Helveclick">
         <div class="flex-column-end-center hero-container">
 
 
 
-          <img src="/assets/images/page-qui-suis-je/img-left-hero-about.webp " alt="Décoration du header">
+          <img src="/assets/images/page-qui-suis-je/img-left-hero-about.webp" alt="">
 
-          <img src="/assets/images/page-qui-suis-je/img-right-hero-about.webp" alt="Décoration du header" />
+          <img src="/assets/images/page-qui-suis-je/img-right-hero-about.webp" alt="">
 
           <div class="hero-container-title">
-            <h1>A propos</h1>
+            <h1>À propos de Helveclick</h1>
 
             <h2 class="hero-subtitle">
               <strong>
-                Découvrez qui je suis et comment je peux vous aider.
+                Développeur web indépendant à Crans-Montana, au service des PME du Valais.
               </strong>
             </h2>
           </div>
@@ -180,20 +229,33 @@
       <section class="about-text">
         <div class="about-section-inner">
 
-
-          <h2 class="h2-title item-menu-side">Bienvenue
-            <strong>cher visiteur&nbsp;!</strong>
-          </h2>
+          <h2 class="h2-title item-menu-side">Une approche web <strong>sur mesure pour les PME</strong></h2>
 
           <div class="flex-column-start-start wrapper-about-text">
-          <p>
-            Je conçois des <strong>interfaces web modernes, performantes et orientées utilisateur</strong>, avec une attention
-            particulière portée à la qualité du code, à l’optimisation des performances et à la cohérence visuelle.
-          </p>
+            <p>
+              Je suis <strong>Guillaume Dupanloup</strong>, fondateur d’Helveclick et développeur web indépendant. J’accompagne
+              les PME de tous secteurs dans la création ou la refonte de <strong><a
+                  href="/public/fr/prestations/site-web.html">sites web</a></strong> et de <strong><a
+                  href="/public/fr/prestations/saas.html">solutions SaaS sur mesure</a></strong>, en Valais et
+              dans les autres cantons suisses.
+            </p>
+            <p>
+              Je conçois des <strong>interfaces web, performantes et orientées utilisateur</strong>, avec une attention
+              particulière portée à la qualité du code, et à l’optimisation des performances.
+              Selon les besoins du projet, cet accompagnement peut aussi inclure l’<strong><a
+                  href="/public/fr/prestations/seo.html">optimisation SEO et GEO</a></strong> ou le <strong><a
+                  href="/public/fr/prestations/application-mobile.html">développement d’applications mobiles</a></strong>.
+            </p>
+            <!-- <p>
+              Parmi les projets présentés par Helveclick et actuellement en production figurent <a href="https://wizpix.ch"
+                target="_blank" rel="noopener noreferrer">Wiz Pix</a>, une solution SaaS de traitement d’images par IA, et <a
+                href="https://monprojetlocatif.org" target="_blank" rel="noopener noreferrer">Mon Projet Locatif</a>, un
+              simulateur de rentabilité locative.
+            </p>
             <a href="https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/" target="_blank"
-              rel="noopener noreferrer">
-              <img src="/assets/images/icons/icon-linkedin.svg" alt="Liens linkedin" class="about-image">
-            </a>
+              rel="noopener noreferrer" aria-label="Profil LinkedIn de Guillaume Dupanloup (nouvelle fenêtre)">
+              <img src="/assets/images/icons/icon-linkedin.svg" alt="" class="about-image">
+            </a> -->
 
           </div>
         </div>
@@ -209,9 +271,9 @@
             applications
             qui
             respectent à la fois<br>
-            <strong>les utilisateurs</strong>, <strong>l’environnement</strong> et <strong>les bonnes pratiques du
+            <strong>l’environnement</strong> et <strong>les bonnes pratiques du
               numérique</strong>.<br>
-            Je veille à ce que chaque aspect de mon travail soit conforme aux <a href="https://greenit.eco/"
+            Je veille à ce que chaque aspect de mon travail soit au plus proche des <a href="https://greenit.eco/"
               target="_blank" rel="noopener noreferrer"><strong>recommandations&nbsp;du&nbsp;Green&nbsp;IT</strong></a>.
 
           </p>
@@ -272,7 +334,7 @@
           <div class="about-charte-conclusion">
             Parce que le numérique peut (et doit) être plus respectueux,<br> chaque
             projet est pour moi une opportunité de contribuer<br>
-            <div class="anim-wrapper"><span class="anim-conclusion"></span></div>
+            <div class="anim-wrapper"><span class="anim-conclusion"> à un web plus durable et plus humain.</span></div>
           </div>
         </div>
       </section>
@@ -372,7 +434,13 @@
         </div>
       </section>
 
-      <!-- <div id="RC-cta-section"></div> -->
+      <!-- <section class="cta-section" aria-labelledby="cta-title">
+        <h2 id="cta-title">Parlons de votre projet web ou SaaS</h2>
+        <p>Pour demander un devis ou convenir d’un rendez-vous, <a href="/public/fr/contact.html"
+            class="text-link-cta">utilisez le formulaire de contact</a>&nbsp;ou appelez le <a href="tel:+41788940987"
+            class="text-link-cta">+41&nbsp;78&nbsp;894&nbsp;09&nbsp;87</a>.</p>
+        <a class="btn btn-primary" href="/public/fr/contact.html">Demander un devis<br>ou un rendez-vous</a>
+      </section> -->
     </main>
 
     <!-- Footer will be mounted here by React -->

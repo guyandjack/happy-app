@@ -10,15 +10,15 @@
   --accent: #{map-get($colors-rule, second-color)};
   --highlight: #{map-get($colors-rule, fourth-color)};
 
-  background: var(--bg);
+  //background: var(--bg);
 
   .ref-svg {
     display: none;
   }
 
-  main {
+ /*  main {
     background: var(--bg);
-  }
+  } */
 
   /* Container commun aux sections */
   .about-text,
@@ -74,14 +74,51 @@
 
 
   /* Section 1: intro */
-  .about-text {
+ /*  .about-text {
 
     background-color: rgba(map-get($colors-rule, bg-page-shade-light-4), 1);
-  }
+  } */
 
   .wrapper-about-text {
     gap: 1rem;
     max-width: 72ch;
+    //color: rgba(map-get($colors-rule, first-color), 0.8);
+
+    & a {
+    
+        position: relative;
+        display: inline block;
+        z-index: 1;
+        color: rgba(map-get($colors-rule, first-color),1);
+    
+        &::before {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          left: 0px;
+          width: 100%;
+          height: 1px;
+          bottom: 0px;
+          background: map-get($colors-rule, first-color);
+          transition: height 0.2s linear;
+        }
+    
+    
+        &:hover::before {
+          background: map-get($colors-rule, link-color);
+          opacity: 0.9;
+          height: 6px;
+          bottom: 60%;
+          transition: height 0.2s linear;
+    
+        }
+    
+    
+    
+      }
+    
+      
+    
   }
 
   .about-image {
@@ -95,7 +132,7 @@
   /* Section 2: charte */
   .about-charte {
 
-    background-color: map-get($colors-rule, bg-page-shade-light-4);
+    //background-color: map-get($colors-rule, bg-page-shade-light-4);
 
     a {
 
@@ -245,10 +282,10 @@
   }
 
   /* Section 3: process */
-  .about-process {
+ /*  .about-process {
 
     background-color: map-get($colors-rule, bg-page-shade-light-4);
-  }
+  } */
 
   .process-steps {
     display: grid;
