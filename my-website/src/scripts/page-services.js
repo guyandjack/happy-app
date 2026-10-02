@@ -2,6 +2,12 @@
 function initFaq() {
   const faqItems = document.querySelectorAll(".faq-item");
 
+  if (!faqItems.length) {
+    return;
+  }
+
+  document.documentElement.classList.add("js-enabled");
+
   faqItems.forEach((item) => {
     const questionButton = item.querySelector(".faq-question");
 

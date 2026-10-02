@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr-CH">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO Meta Tags -->
-  <title>Création de site internet en Valais | Crans-Montana – Helveclick</title>
+  <title>Création de sites web en Valais | PME & sur mesure – Helveclick</title>
   <meta name="description"
-    content="Création de sites internet à Crans-Montana en Valais : site vitrine, e-commerce ou sur mesure. Sites rapides, éco-conçus et optimisés SEO.">
+    content="Création de sites web à Crans-Montana : vitrines, e-commerce et sur mesure pour les PME du Valais et à distance en Suisse.">
   <meta name="robots" content="index, follow">
 
   <!-- Canonical and Alternate Links -->
@@ -21,9 +21,9 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://helveclick.ch/public/fr/prestations/site-web.html">
-  <meta property="og:title" content="Création de sites internet en Valais | Crans-Montana – Helveclick">
+  <meta property="og:title" content="Création de sites web en Valais | PME & sur mesure – Helveclick">
   <meta property="og:description"
-    content="Agence web à Crans-Montana (Valais) : sites vitrines, e-commerce et sur mesure. Performants, accessibles, éco-conçus et optimisés SEO.">
+    content="Création de sites web à Crans-Montana : vitrines, e-commerce et sur mesure pour les PME du Valais et à distance en Suisse.">
   <!-- <meta property="og:image" content="https://helveclick.ch/images/og-services-sites.jpg"> -->
   <meta property="og:site_name" content="Helveclick">
   <meta property="og:locale" content="fr_CH">
@@ -31,9 +31,9 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Création de site internet en Valais | Helveclick">
+  <meta name="twitter:title" content="Création de sites web en Valais | PME & sur mesure – Helveclick">
   <meta name="twitter:description"
-    content="Création de sites internet à Crans-Montana en Valais : vitrine, e-commerce, sur mesure. SEO, performance et éco-conception.">
+    content="Création de sites web à Crans-Montana : vitrines, e-commerce et sur mesure pour les PME du Valais et à distance en Suisse.">
   <!-- <meta name="twitter:image" content="https://helveclick.ch/images/og-services-sites.jpg"> -->
 
   <!-- Geolocation Tags -->
@@ -43,105 +43,135 @@
   <!-- <meta name="geo.position" content="46.309;7.478"> -->
   <!-- <meta name="ICBM" content="46.309, 7.478"> -->
 
-  <!-- Schema.org Script (identité locale) -->
+  <!-- Données structurées : organisation, personne, service et page -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "ProfessionalService"],
-    "@id": "https://helveclick.ch/#org",
-    "name": "Helveclick",
-    "url": "https://helveclick.ch",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://helveclick.ch/public/assets/logo/logo-v8.svg"
-    },
-    "image": "https://helveclick.ch/public/assets/logo/logo-v8.svg",
-    "description": "Agence web à Crans-Montana (Valais, Suisse) : création de sites internet éco-conçus, développement d’applications mobiles et optimisation SEO.",
-    "email": "info@helveclick.ch",
-    "telephone": "+41 78 894 09 87",
-    "priceRange": "$$",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Chemin du Mont-Paisible 1",
-      "addressLocality": "Crans-Montana",
-      "addressRegion": "Valais",
-      "postalCode": "3963",
-      "addressCountry": "CH"
-    },
-    "areaServed": [
-      { "@type": "AdministrativeArea", "name": "Valais" },
-      { "@type": "City", "name": "Crans-Montana" },
-      { "@type": "Country", "name": "Switzerland" }
-    ],
-    "sameAs": [
-      "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
-    ],
-    "contactPoint": [
+    "@graph": [
       {
-        "@type": "ContactPoint",
-        "contactType": "sales",
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": "https://helveclick.ch/#org",
+        "name": "HelveClick",
+        "url": "https://helveclick.ch/",
+        "logo": "https://helveclick.ch/public/assets/logo/logo-v8.svg",
+        "description": "Agence web à Crans-Montana, en Valais : sites web, applications mobiles, SaaS, SEO/GEO et solutions écoresponsables sur mesure pour les PME.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Chemin du Mont-Paisible 1",
+          "addressLocality": "Crans-Montana",
+          "addressRegion": "VS",
+          "postalCode": "3963",
+          "addressCountry": "CH"
+        },
         "telephone": "+41 78 894 09 87",
         "email": "info@helveclick.ch",
-        "areaServed": "CH-VS",
-        "availableLanguage": ["fr-CH", "fr", "en"]
+        "priceRange": "$$",
+        "areaServed": [
+          { "@type": "City", "name": "Crans-Montana" },
+          { "@type": "AdministrativeArea", "name": "Valais" },
+          { "@type": "Country", "name": "Suisse" }
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "telephone": "+41 78 894 09 87",
+          "email": "info@helveclick.ch",
+          "availableLanguage": ["fr", "en"]
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
+        ],
+        "founder": { "@id": "https://helveclick.ch/#guillaume-dupanloup" },
+        "makesOffer": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://helveclick.ch/public/fr/prestations/site-web.html#service",
+              "name": "Création de sites web sur mesure",
+              "url": "https://helveclick.ch/public/fr/prestations/site-web.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://helveclick.ch/public/fr/prestations/application-mobile.html#service",
+              "name": "Développement d’applications mobiles",
+              "url": "https://helveclick.ch/public/fr/prestations/application-mobile.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://helveclick.ch/public/fr/prestations/seo.html#service",
+              "name": "Optimisation SEO et GEO",
+              "url": "https://helveclick.ch/public/fr/prestations/seo.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://helveclick.ch/public/fr/prestations/saas.html#service",
+              "name": "Développement de logiciel SaaS sur mesure",
+              "url": "https://helveclick.ch/public/fr/prestations/saas.html"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://helveclick.ch/#guillaume-dupanloup",
+        "name": "Guillaume Dupanloup",
+        "jobTitle": "Développeur web et mobile freelance",
+        "url": "https://helveclick.ch/public/fr/a-propos.html",
+        "worksFor": { "@id": "https://helveclick.ch/#org" },
+        "sameAs": [
+          "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://helveclick.ch/public/fr/prestations/site-web.html#service",
+        "name": "Création de sites web sur mesure",
+        "description": "Création de sites web à Crans-Montana : vitrines, e-commerce et sur mesure pour les PME du Valais et à distance en Suisse.",
+        "provider": { "@id": "https://helveclick.ch/#org" },
+        "serviceType": "Création de sites web",
+        "areaServed": [
+          { "@type": "City", "name": "Crans-Montana" },
+          { "@type": "AdministrativeArea", "name": "Valais" },
+          { "@type": "Country", "name": "Suisse" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Types de sites proposés",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Site vitrine" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Site e-commerce" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Site web sur mesure" } }
+          ]
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://helveclick.ch/public/fr/prestations/site-web.html#webpage",
+        "url": "https://helveclick.ch/public/fr/prestations/site-web.html",
+        "name": "Création de sites web en Valais | PME & sur mesure – Helveclick",
+        "description": "Création de sites web à Crans-Montana : vitrines, e-commerce et sur mesure pour les PME du Valais et à distance en Suisse.",
+        "inLanguage": "fr-CH",
+        "about": { "@id": "https://helveclick.ch/public/fr/prestations/site-web.html#service" },
+        "isPartOf": { "@id": "https://helveclick.ch/#org" },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://helveclick.ch/" },
+            { "@type": "ListItem", "position": 2, "name": "Création de sites web", "item": "https://helveclick.ch/public/fr/prestations/site-web.html" }
+          ]
+        }
       }
     ]
-  }
-  </script>
-
-  <!-- Service spécifique de la page -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": "https://helveclick.ch/public/fr/prestations/site-web.html#service",
-    "name": "Création de site internet",
-    "description": "Création de sites internet à Crans-Montana en Valais : site vitrine, e-commerce ou sur mesure. Sites rapides, éco-conçus et optimisés SEO.",
-    "provider": { "@id": "https://helveclick.ch/#org" },
-    "serviceType": "Création de site internet",
-    "areaServed": [
-      { "@type": "AdministrativeArea", "name": "Valais" },
-      { "@type": "City", "name": "Crans-Montana" },
-      { "@type": "Country", "name": "Switzerland" }
-    ],
-      "offers": {
-      "@type": "Offer",
-      "url": "https://helveclick.ch/public/fr/prestations/site-web.html",
-      "priceCurrency": "CHF",
-      "availability": "https://schema.org/InStock"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Types de sites proposés",
-      "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Site vitrine" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Site e-commerce" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Site sur mesure" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Site optimisé SEO" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Site éco-conçu" } }
-      ]
-    }
-  }
-  </script>
-
-  <!-- Données de la page + fil d'Ariane -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "@id": "https://helveclick.ch/public/fr/prestations/site-web.html#webpage",
-    "url": "https://helveclick.ch/public/fr/prestations/site-web.html",
-    "name": "Création de site internet en Valais – Helveclick",
-    "inLanguage": "fr-CH",
-    "about": { "@id": "https://helveclick.ch/public/fr/prestations/site-web.html#service" },
-    "isPartOf": { "@id": "https://helveclick.ch/#org" },
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://helveclick.ch/" },
-        { "@type": "ListItem", "position": 2, "name": "Création de site internet", "item": "https://helveclick.ch/public/fr/prestations/site-web.html" }
-      ]
-    }
   }
   </script>
 
@@ -158,39 +188,63 @@
 
 <body>
   <div class="page-container">
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
     <header>
       <!-- Navbar will be mounted here by React -->
       <div id="RC-navbar"></div>
     </header>
 
     <div id="RC-link-top-page"></div>
-    <main>
+    <main id="main-content" tabindex="-1">
       <!-- Part B: Hero Section -->
       <section class="flex-column-start-center hero-wrapper">
-        <img class="hero-logo" src="/assets/logo/helveclick-dark-ok.png " alt="Logo helveclick">
+        <img class="hero-logo" src="/assets/logo/helveclick-dark-ok.png" alt="Helveclick">
         <div class="flex-column-end-center hero-container">
-      
-          <img src="/assets/images/page-site-web/img-1-hero-web.webp"
-            alt="Création de site internet à Crans-Montana en Valais">
-      
-          <img src="/assets/images/page-site-web/img-2-hero-web.webp"
-            alt="Agence web à Crans-Montana spécialisée en création de sites internet">
-      
+
+          <img src="/assets/images/page-site-web/img-1-hero-web.webp" alt="">
+
+          <img src="/assets/images/page-site-web/img-2-hero-web.webp" alt="">
+
           <div class="hero-container-title">
             <h1>
-              Création de site internet
+              Création de sites web
             </h1>
-      
+
             <h2 class="hero-subtitle">
               <strong>
-                Sites vitrines, e-commerce et sur mesure<br>pour les entreprises valaisannes
+                Sites vitrines, e-commerce et sur mesure<br>pour les PME du Valais
               </strong>
             </h2>
           </div>
-      
+
         </div>
       </section>
 
+      <section class="website-intro" aria-labelledby="website-intro-title">
+        <div class="website-intro-content">
+          <h2 id="website-intro-title">Un site web <strong>pensé pour votre activité</strong></h2>
+          <p>
+            Je conçois des <strong>sites web</strong> pour les PME de tous secteurs : une présence en ligne claire,
+            adaptée à vos objectifs
+            et facile à faire évoluer. Les projets sont menés dans le <strong>canton du Valais</strong>, ainsi que dans
+            toute la suisse.
+
+          </p>
+          <p>
+            Selon votre besoin, le projet peut prendre la forme d’un <strong>site vitrine, d’une boutique e-commerce ou
+              d’un site
+              sur mesure</strong>.Lorsqu’un outil métier ou une expérience mobile est nécessaire, il peut aussi être
+            complété par une
+            <a href="/public/fr/prestations/saas.html">solution SaaS sur mesure</a> ou le
+            <a href="/public/fr/prestations/application-mobile.html">développement d’une application mobile</a>.
+          </p>
+          <p>
+            Chaque projet débute par l’identification des usages prioritaires, des contenus utiles et des parcours qui
+            facilitent la prise de contact ou la demande de devis. <a data-link="link-contact"
+              href="/public/fr/contact.html">Parlons de votre projet</a>.
+          </p>
+        </div>
+      </section>
 
 
       <!-- Part C: Website Types Cards -->
@@ -206,15 +260,16 @@
                   <img src="/assets/images/page-site-web/img-card-show.webp" alt="Site vitrine" loading="lazy">
                 </div>
                 <div class="card-content">
-                  <p>Un <strong>site vitrine</strong> est la solution idéale pour présenter votre entreprise, vos
-                    services ou vos produits sur internet. Il s'agit d'une <strong>carte de visite digitale</strong>
-                    professionnelle qui met en valeur votre activité et vous permet d'établir une <strong>présence en
-                      ligne</strong> crédible.</p>
-                  <p>Ces sites sont conçus pour être <strong>élégants</strong>, <strong>informatifs</strong> et
-                    <strong>faciles à naviguer</strong>, offrant à vos visiteurs toutes les informations dont ils ont
-                    besoin pour vous contacter ou en savoir plus sur votre entreprise.
+                  <p>Un <strong>site vitrine</strong> présente clairement votre entreprise, vos services et vos points
+                    forts. Il constitue une <strong>présence en ligne professionnelle</strong> pour aider vos prospects
+                    à comprendre votre activité et à vous contacter.
                   </p>
-                  <a href="../contact.html" class="btn btn-secondary"><span class="btn-secondary-small">Besoin
+                  <p>Le contenu, les appels à l’action et la navigation sont organisés autour de vos priorités : gagner
+                    en crédibilité, faciliter une prise de rendez-vous ou obtenir une demande de devis. Le site reste
+                    adapté à vos contenus et à l’évolution de votre activité.
+                  </p>
+                  <a href="/public/fr/contact.html" class="btn btn-secondary"
+                    aria-label="Demander un devis pour un site vitrine"><span class="btn-secondary-small">Besoin
                       d'un site vitrine&nbsp;?</span> <br />
                     Contactez-moi&nbsp;!</a>
                 </div>
@@ -229,22 +284,17 @@
                   <img src="/assets/images/page-site-web/img-card-marchand.webp" alt="Site e-commerce" loading="lazy">
                 </div>
                 <div class="card-content">
-                  <p>
-                    Un <strong>site e-commerce</strong> vous permet de vendre vos produits ou services en ligne, de
-                    manière simple et
-                    sécurisée. Je conçois des <strong>boutiques intuitives</strong>, <strong>fiables</strong> et
-                    optimisées pour une
-                    <strong>expérience d’achat fluide</strong>.
+                  <p>Un <strong>site e-commerce</strong> permet de présenter et vendre vos produits ou services en
+                    ligne. La boutique est conçue pour rendre le parcours d’achat compréhensible, sur mobile comme sur
+                    ordinateur, de la découverte du produit jusqu’au paiement.
                   </p>
-                  <p>
-                    Chaque site inclut les fonctionnalités essentielles : <strong>catalogue produits</strong>,
-                    <strong>panier</strong>,
-                    <strong>paiement sécurisé</strong>, <strong>gestion des stocks</strong>, et une
-                    <strong>compatibilité mobile</strong>
-                    complète pour vendre partout, à tout moment.
+                  <p>Les fonctionnalités sont définies selon votre activité : <strong>catalogue produits</strong>,
+                    panier, paiement, gestion des stocks, livraison ou retrait. Elles sont priorisées avec vous afin
+                    de construire une solution utile, maintenable et adaptée à votre organisation.
                   </p>
 
-                  <a href="../contact.html" class="btn btn-secondary"><span class="btn-secondary-small">Besoin
+                  <a href="/public/fr/contact.html" class="btn btn-secondary"
+                    aria-label="Demander un devis pour un site e-commerce"><span class="btn-secondary-small">Besoin
                       d'un site e&#8209;commerce&nbsp;?</span> <br />
                     Contactez-moi&nbsp;!</a>
                 </div>
@@ -260,19 +310,16 @@
                   <img src="/assets/images/page-site-web/img-card-custom.webp" alt="Site sur mesure" loading="lazy">
                 </div>
                 <div class="card-content">
-                  <p>Un <strong>site sur mesure</strong> est développé spécifiquement pour répondre à vos besoins
-                    uniques.
-                    Si vous avez besoin de <strong>fonctionnalités spécifiques</strong> ou d'une <strong>solution web
-                      personnalisée</strong> qui ne correspond pas aux modèles standards, c'est l'option idéale pour
-                    vous.
+                  <p>Un <strong>site sur mesure</strong> répond à un besoin qui ne se limite pas à un modèle standard :
+                    parcours métier, espace client, connexion à un outil existant ou fonctionnalité spécifique.
                   </p>
-                  <p>Je travaille en étroite collaboration avec vous pour comprendre vos exigences et créer une
-                    <strong>solution web sur mesure</strong> qui répond parfaitement à vos objectifs. Ces sites peuvent
-                    inclure des <strong>systèmes de gestion de contenu personnalisés</strong>, des <strong>intégrations
-                      avec d'autres systèmes</strong>, des <strong>fonctionnalités avancées</strong>, et bien plus
-                    encore.
+                  <p>Le projet commence par l’analyse de vos usages, puis les fonctionnalités sont définies et
+                    priorisées avant le développement. La solution peut inclure une gestion de contenu personnalisée,
+                    des intégrations avec vos systèmes ou des fonctionnalités avancées, uniquement lorsqu’elles servent
+                    vos objectifs.
                   </p>
-                  <a href="/public/fr/contact.html" class="btn btn-secondary"><span class="btn-secondary-small">Besoin
+                  <a href="/public/fr/contact.html" class="btn btn-secondary"
+                    aria-label="Demander un devis pour un site web sur mesure"><span class="btn-secondary-small">Besoin
                       d'un site&nbsp;sur&nbsp;mesure&nbsp;?</span> <br />
                     Contactez-moi&nbsp;!</a>
                 </div>
@@ -295,100 +342,83 @@
               web
             </h2>
           </div>
-          <p>Tous mes sites sont développés selon les principes de l'<strong>éco&#8209;conception</strong>, visant à
-            réduire leur impact environnemental tout en améliorant leurs performances :</p>
-          <ul class="flex-column-start-center design-list">
+          <p>
+            L’<strong>éco&#8209;conception</strong> est intégrée dès le cadrage du projet. Elle consiste à choisir une
+            réponse utile et proportionnée au besoin, puis à <strong>limiter les ressources</strong> nécessaires à son
+            fonctionnement.
+            Ces quelques critères guident le design et le développement; leur application concrète est définie dans le
+            périmètre du projet.
+          </p>
+          <ul class="flex-column-start-center eco-list">
             <li>
-              <strong>Réduire la consommation d'énergie</strong> Code optimisé, suppression du code inutile, réduction
-              des
-              requêtes et scripts allégés pour limiter l'utilisation des ressources côté client et serveur.
+              <strong>Partir du besoin essentiel</strong> Les fonctionnalités sont priorisées selon leur utilité réelle
+              pour vos utilisateurs et votre activité, afin d’éviter les développements inutiles.
             </li>
             <li>
-              <strong>Réduire le poids des pages</strong> Images compressées et formats modernes (comme WebP ou AVIF)
-              pour
-              accélérer l'affichage et limiter le transfert de données.
+              <strong>Simplifier les parcours</strong> Les actions fréquentes, comme une demande de devis ou une prise
+              de contact, sont rendues claires et directes pour limiter les étapes superflues.
             </li>
             <li>
-              <strong>Hébergement vert</strong> Alimenté par des énergies renouvelables et/ou certifié pour son faible
-              impact
-              environnemental.
+              <strong>Concevoir mobile d’abord</strong> Les usages sur petit écran et les connexions contraintes sont
+              pris en compte dès la conception, puis adaptés aux écrans plus larges.
             </li>
             <li>
-              <strong>Temps de chargement rapide</strong> Structure légère, lazy loading, mise en cache et réduction des
-              ressources externes pour améliorer l'expérience utilisateur et le référencement.
+              <strong>Privilégier une interface sobre et accessible</strong> Le design favorise une information lisible,
+              une navigation compréhensible et des éléments graphiques utiles.
             </li>
             <li>
-              <strong>Conception durable</strong> Pensée pour évoluer dans le temps sans refonte complète, avec une
-              architecture
-              modulaire qui facilite la maintenance.
+              <strong>Limiter les animations</strong> Les animations ne sont utilisées que lorsqu’elles aident à la
+              compréhension, avec une préférence pour des effets légers et respectueux des préférences utilisateur.
             </li>
             <li>
-              <strong>Design minimaliste</strong> Priorité à l’essentiel, limitation des effets lourds ou décoratifs
-              pour réduire
-              l'empreinte carbone et favoriser l'efficacité.
+              <strong>Choisir une technologie proportionnée</strong> L’architecture, les fonctionnalités et les
+              dépendances sont choisies selon le besoin réel du projet, sans surdimensionnement.
             </li>
             <li>
-              <strong>Accessibilité intégrée</strong> Navigation fluide, contraste lisible et structure claire pour
-              garantir une
-              utilisation inclusive, tout en respectant les principes d'éco-conception.
+              <strong>Réduire les ressources inutiles</strong> Les bibliothèques, scripts et ressources externes sont
+              limités à ce qui est nécessaire au fonctionnement et à l’expérience attendue.
+            </li>
+            <li>
+              <strong>Optimiser les images</strong> Les formats, dimensions et niveaux de compression sont adaptés au
+              visuel et à son affichage afin de limiter les transferts de données.
+            </li>
+            <li>
+              <strong>Différer les ressources non prioritaires</strong> Les médias et composants non visibles au premier
+              affichage peuvent être chargés plus tard, lorsque cela ne dégrade pas l’usage.
+            </li>
+            <li>
+              <strong>Configurer le cache HTTP</strong> Les ressources stables peuvent être mises en cache afin d’éviter
+              des téléchargements inutiles lors des visites suivantes.
             </li>
           </ul>
-
-
-          <p>Un site éco-conçu est non seulement meilleur pour l'environnement, mais il offre également une
-            <strong>meilleure expérience utilisateur.
+          <p>
+            Ces pratiques s’appuient notamment sur le <a href="https://rweb.greenit.fr/fr/fiches" target="_blank"
+              rel="noopener noreferrer">référentiel de bonnes pratiques d’écoconception web RWEB</a>. Elles visent à
+            améliorer la sobriété du service sans promettre un niveau d’impact ou de performance identique pour tous les
+            projets.
+          </p>
+          <p>
+            Les sites sont hébergés chez <a href="https://www.planethoster.ch/fr/Hebergement-Vert" target="_blank"
+              rel="noopener noreferrer">PlanetHoster</a>. Pour son infrastructure suisse, l’hébergeur publie un facteur
+            d’énergie renouvelable de 100 %, un PUE de 1,37 et un WUE de 1,22. Ces indicateurs décrivent
+            l’infrastructure
+            de l’hébergeur ; ils ne mesurent pas, à eux seuls, l’empreinte environnementale globale d’un projet web.
           </p>
         </div>
       </section>
 
-      <section class="seo-section">
-        <div class="content-wrapper">
-
-          <div class="seo-title-container">
-            <img class="icon-seo" src="/assets/images/icons/setting.png" alt="Optimisation SEO" loading="lazy">
-            <h2 id="seo" class="item-menu-side" data-hero="SEO">Optimisation <strong>SEO</strong></h2>
-          </div>
-          <p>Tous mes sites sont <strong>optimisés pour les moteurs de recherche</strong> dès leur conception :
+      <section class="website-seo-foundations" aria-labelledby="seo-foundations-title">
+        <div class="website-seo-foundations-content">
+          <h2 id="seo-foundations-title">Des fondations techniques pour votre <strong>visibilité</strong></h2>
+          <p>
+            La <strong>création d’un site</strong> inclut des fondations utiles à son indexation : structure HTML claire, pages adaptées
+            aux mobiles, performance, métadonnées essentielles et liens internes cohérents. Ces éléments facilitent la
+            compréhension du site par les moteurs de recherche, sans garantir une position, un trafic ou une conversion.
           </p>
-          <ul class="flex-column-row-center seo-list">
-            <li>
-              <strong>Structure technique</strong> Avec des balises sémantiques bien choisies et une structure HTML
-              claire, je
-              facilite la compréhension du site par les crawlers et améliore son indexation.
-            </li>
-            <li>
-              <strong>Vitesse de chargement</strong> La rapidité est essentielle pour Google. Compression, mise en cache
-              et
-              réduction des ressources permettent d’offrir un chargement plus rapide.
-            </li>
-            <li>
-              <strong>Structure des métadonnées</strong> Pour une meilleure interprétation par les moteurs de recherche
-              et une
-              visibilité renforcée sur les réseaux sociaux.
-            </li>
-            <li>
-              <strong>Responsive design</strong> Pour garantir une expérience fluide sur tous les appareils, avec un
-              impact direct
-              sur le référencement mobile-first de Google.
-            </li>
-            <li>
-              <strong>Stratégie de contenu</strong> Pour améliorer votre visibilité, le contenu rédactionnel doit
-              répondre aux
-              intentions de recherche des utilisateurs. Une sur-optimisation des mots-clés ou un contenu redondant avec
-              peu de
-              valeur ajoutée nuit au référencement et peut être pénalisé par les moteurs de recherche.
-            </li>
-
-            <li>
-              <strong>Accessibilité</strong> Offrir un site accessible aux utilisateurs en situation de handicap est une
-              priorité.
-              Un web plus inclusif bénéficie à tous.
-            </li>
-          </ul>
-
-
-          <p>Un site bien optimisé vous aide à <strong>attirer plus de visiteurs qualifiés</strong> et à
-            <strong>convertir plus de clients</strong>.
+          <p>
+            Pour une <strong>stratégie de contenu</strong>, le référencement local, les données structurées et la visibilité dans les
+            moteurs de recherche et assistants IA, découvrez l’<a href="/public/fr/prestations/seo.html">accompagnement
+              SEO et GEO</a> dédié.
           </p>
         </div>
       </section>
@@ -408,160 +438,223 @@
         </div>
         <ul class="flex-column-start-center faq-grid">
           <li class="faq-item">
-            <h3>Combien coûte la création d'un site web&nbsp;?</h3>
-            <p>
-              Le coût de création d’un <strong>site web</strong> dépend de sa complexité, des
-              <strong>fonctionnalités</strong>
-              souhaitées et du <strong>design</strong>. Un <strong>site vitrine simple</strong> démarre à partir de
-              <strong>CHF&nbsp;1’500</strong>,(4 à 6 pages) tandis qu’un <strong>site e-commerce</strong> ou une
-              <strong>application
-                web
-                personnalisée</strong> représente un investissement plus important.
-              Un <strong>devis détaillé</strong> vous est toujours proposé après avoir échangé sur vos besoins
-              spécifiques.
-            </p>
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-price" type="button" aria-expanded="false"
+                aria-controls="faq-answer-price">Combien coûte la création d'un site web&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-price" role="region" aria-labelledby="faq-question-price">
+              <p>
+                Le coût de création d’un <strong>site web</strong> dépend de sa complexité, des
+                <strong>fonctionnalités</strong>
+                souhaitées et du <strong>design</strong>. Un <strong>site vitrine simple</strong> démarre à partir de
+                <strong>CHF&nbsp;1’500</strong>,(4 à 6 pages) tandis qu’un <strong>site e-commerce</strong> ou une
+                <strong>application
+                  web
+                  personnalisée</strong> représente un investissement plus important.
+                Un <strong>devis détaillé</strong> vous est toujours proposé après avoir échangé sur vos besoins
+                spécifiques.
+              </p>
+            </div>
 
           </li>
 
           <li class="faq-item">
-            <h3>Combien de pages faut-il à un site web&nbsp;?</h3>
-            
-            <p>
-              Le nombre de pages dépend principalement de vos objectifs, de votre activité et de votre stratégie digitale.
-            <br>
-              Pour un <strong>site vitrine classique</strong>, <strong>5 à 6 pages</strong> sont généralement recommandées :
-              accueil, services, à propos, contact, mentions légales et politique de confidentialité.
-              Cette structure permet d'organiser clairement le contenu et d’optimiser chaque page pour des mots-clés spécifiques.
-            <br>
-              Il existe également des <strong>sites monopage (one-page)</strong>, où toutes les sections
-              (présentation, services, témoignages, contact…) sont regroupées sur une seule page.
-              Ce format est particulièrement adapté aux <strong>lancements d’activité</strong>, aux <strong>campagnes
-                marketing</strong>
-              ou aux projets simples.
-            </p>
-            
-            <p>
-              <strong>Du point de vue SEO</strong>, un site monopage peut être efficace pour une requête principale,
-              mais il reste plus limité pour se positionner sur plusieurs mots-clés ou sur des recherches locales variées.
-              Un site structuré en plusieurs pages offre généralement de meilleures performances en référencement,
-              car chaque page peut cibler une intention de recherche précise.
-            <br>
-              Le choix entre un site monopage et un site multipage dépend donc de votre stratégie :
-              visibilité maximale sur Google, génération de leads, ou simple présence en ligne.
-            </p>
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-pages" type="button" aria-expanded="false"
+                aria-controls="faq-answer-pages">Combien de pages faut-il à un site web&nbsp;?</button>
+            </h3>
+
+            <div class="faq-answer" id="faq-answer-pages" role="region" aria-labelledby="faq-question-pages">
+              <p>
+                Le nombre de pages dépend principalement de vos objectifs, de votre activité et de votre stratégie
+                digitale.
+                <br>
+                Pour un <strong>site vitrine classique</strong>, <strong>5 à 6 pages</strong> sont généralement
+                recommandées :
+                accueil, services, à propos, contact, mentions légales et politique de confidentialité.
+                Cette structure permet d'organiser clairement le contenu et d’optimiser chaque page pour des mots-clés
+                spécifiques.
+                <br>
+                Il existe également des <strong>sites monopage (one-page)</strong>, où toutes les sections
+                (présentation, services, témoignages, contact…) sont regroupées sur une seule page.
+                Ce format est particulièrement adapté aux <strong>lancements d’activité</strong>, aux <strong>campagnes
+                  marketing</strong>
+                ou aux projets simples.
+              </p>
+
+              <p>
+                <strong>Du point de vue SEO</strong>, un site monopage peut être efficace pour une requête principale,
+                mais il reste plus limité pour se positionner sur plusieurs mots-clés ou sur des recherches locales
+                variées.
+                Un site structuré en plusieurs pages offre généralement de meilleures performances en référencement,
+                car chaque page peut cibler une intention de recherche précise.
+                <br>
+                Le choix entre un site monopage et un site multipage dépend donc de votre stratégie :
+                visibilité maximale sur Google, génération de leads, ou simple présence en ligne.
+              </p>
+            </div>
 
           </li>
 
 
           <li class="faq-item">
-            <h3>Combien de temps faut-il pour développer un site web&nbsp;?</h3>
-            
-            <p>
-              Le délai dépend principalement de la <strong>complexité du projet</strong>, des fonctionnalités demandées
-              et du niveau de personnalisation souhaité.
-            <br>
-              En moyenne, un <strong>site vitrine professionnel</strong> nécessite <strong>4 à 6 semaines</strong>,
-              incluant la phase de stratégie, design, développement, optimisation SEO et tests.
-            <br>
-              Un <strong>site e-commerce</strong> demande généralement <strong>8 à 12 semaines</strong>,
-              en raison de l’intégration des paiements, de la gestion des produits, de la logistique
-              et des aspects liés à la sécurité.
-            <br>
-              Un <strong>site monopage (one-page)</strong>, notamment lorsqu’il est conçu avec des outils assistés par
-              <strong>intelligence artificielle</strong>, peut être réalisé beaucoup plus rapidement :
-              <strong>quelques jours à 2 semaines</strong> selon le niveau de personnalisation et d’optimisation SEO.
-            <br>
-              À noter : après l’achat d’un <strong>nom de domaine</strong>, un délai technique de propagation DNS
-              (généralement de <strong>4 à 24 heures</strong>) peut être nécessaire avant que le site soit
-              accessible partout.
-            <br>
-              Chaque projet étant unique, un <strong>planning détaillé et réaliste</strong> est toujours établi
-              au lancement afin de garantir un développement fluide et maîtrisé.
-            </p>
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-timeline" type="button" aria-expanded="false"
+                aria-controls="faq-answer-timeline">Combien de temps faut-il pour développer un site web&nbsp;?</button>
+            </h3>
+
+            <div class="faq-answer" id="faq-answer-timeline" role="region" aria-labelledby="faq-question-timeline">
+              <p>
+                Le délai dépend principalement de la <strong>complexité du projet</strong>, des fonctionnalités
+                demandées
+                et du niveau de personnalisation souhaité.
+                <br>
+                En moyenne, un <strong>site vitrine professionnel</strong> nécessite <strong>4 à 6 semaines</strong>,
+                incluant la phase de stratégie, design, développement, optimisation SEO et tests.
+                <br>
+                Un <strong>site e-commerce</strong> demande généralement <strong>8 à 12 semaines</strong>,
+                en raison de l’intégration des paiements, de la gestion des produits, de la logistique
+                et des aspects liés à la sécurité.
+                <br>
+                Un <strong>site monopage (one-page)</strong>, notamment lorsqu’il est conçu avec des outils assistés par
+                <strong>intelligence artificielle</strong>, peut être réalisé beaucoup plus rapidement :
+                <strong>quelques jours à 2 semaines</strong> selon le niveau de personnalisation et d’optimisation SEO.
+                <br>
+                À noter : après l’achat d’un <strong>nom de domaine</strong>, un délai technique de propagation DNS
+                (généralement de <strong>4 à 24 heures</strong>) peut être nécessaire avant que le site soit
+                accessible partout.
+                <br>
+                Chaque projet étant unique, un <strong>planning détaillé et réaliste</strong> est toujours établi
+                au lancement afin de garantir un développement fluide et maîtrisé.
+              </p>
+            </div>
 
           </li>
 
           <li class="faq-item">
-            <h3>Quels types de sites pouvez-vous créer&nbsp;?</h3>
-            <p>
-              Je conçois tous types de sites web : <strong>vitrines</strong>, <strong>e-commerce</strong>,
-              <strong>blogs</strong>,
-              <strong>portfolios</strong>, <strong>applications web</strong>, <strong>intranets</strong> et
-              <strong>solutions sur
-                mesure</strong>. Quelle que soit votre activité, je développe un site adapté à vos besoins.
-            </p>
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-types" type="button" aria-expanded="false"
+                aria-controls="faq-answer-types">Quels types de sites pouvez-vous créer&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-types" role="region" aria-labelledby="faq-question-types">
+              <p>
+                Je conçois tous types de sites web : <strong>vitrines</strong>, <strong>e-commerce</strong>,
+                <strong>blogs</strong>,
+                <strong>portfolios</strong>, <strong>applications web</strong>, <strong>intranets</strong> et
+                <strong>solutions sur
+                  mesure</strong>. Quelle que soit votre activité, je développe un site adapté à vos besoins.
+              </p>
+            </div>
           </li>
 
           <li class="faq-item">
-            <h3>Proposez-vous des services de maintenance une fois le site en ligne&nbsp;?</h3>
-            <p>
-              Oui, je propose plusieurs <strong>formules de maintenance</strong> incluant : <strong>mises à
-                jour</strong>,
-              <strong>corrections de bugs</strong> et <strong>améliorations
-                légères</strong>. Cela vous permet de rester concentré sur votre activité pendant que je veille à la
-              stabilité de
-              votre site.
-            </p>
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-maintenance" type="button" aria-expanded="false"
+                aria-controls="faq-answer-maintenance">Proposez-vous des services de maintenance une fois le site en
+                ligne&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-maintenance" role="region"
+              aria-labelledby="faq-question-maintenance">
+              <p>
+                Oui, je propose plusieurs <strong>formules de maintenance</strong> incluant : <strong>mises à
+                  jour</strong>,
+                <strong>corrections de bugs</strong> et <strong>améliorations
+                  légères</strong>. Cela vous permet de rester concentré sur votre activité pendant que je veille à la
+                stabilité de
+                votre site.
+              </p>
+            </div>
           </li>
 
           <li class="faq-item">
-            <h3>Le site sera-t-il optimisé pour le référencement (SEO)&nbsp;?</h3>
-            <p>
-              Absolument. Tous mes sites sont conçus avec une <strong>structure SEO-friendly</strong> : code propre et
-              sémantique,
-              <strong>chargement rapide</strong>, <strong>compatibilité mobile</strong> et balises bien configurées. Je
-              vous
-              accompagne également pour <strong>optimiser votre contenu</strong> et renforcer votre visibilité.
-            </p>
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-seo" type="button" aria-expanded="false"
+                aria-controls="faq-answer-seo">Le site sera-t-il optimisé pour le référencement (SEO)&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-seo" role="region" aria-labelledby="faq-question-seo">
+              <p>
+                Absolument. Tous mes sites sont conçus avec une <strong>structure SEO-friendly</strong> : code propre et
+                sémantique,
+                <strong>chargement rapide</strong>, <strong>compatibilité mobile</strong> et balises bien configurées.
+                Je
+                vous
+                accompagne également pour <strong>optimiser votre contenu</strong> et renforcer votre visibilité.
+              </p>
+            </div>
           </li>
 
           <li class="faq-item">
-            <h3>Le site sera-t-il compatible avec les mobiles et tablettes&nbsp;?</h3>
-            <p>
-              Oui, j’adopte une approche <strong>mobile-first</strong> et un <strong>design responsive</strong>,
-              garantissant une
-              expérience fluide sur tous les appareils : smartphones, tablettes et ordinateurs.
-            </p>
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-quote" type="button" aria-expanded="false"
+                aria-controls="faq-answer-quote">Que comprend un devis de création de site web&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-quote" role="region" aria-labelledby="faq-question-quote">
+              <p>
+                Chaque <strong>devis</strong> est adapté à votre projet. Il précise le périmètre retenu : objectifs,
+                pages, fonctionnalités, conception, développement et éléments nécessaires à la mise en ligne.
+                Les éventuels coûts récurrents, tels que le <strong>nom de domaine</strong>,
+                l’<strong>hébergement</strong>,
+                la maintenance ou des services tiers, sont distingués avant validation afin de vous permettre de décider
+                en connaissance de cause.
+              </p>
+            </div>
           </li>
 
           <li class="faq-item">
-            <h3>Pourrai-je mettre à jour le contenu moi-même&nbsp;?</h3>
-            <p>
-              Je n’utilise pas de CMS (comme WordPress), car ces outils sont souvent <strong>lourds,
-                énergivores</strong> et peu
-              adaptés à l’<strong>éco-conception</strong> d’un site vitrine ou de petite taille.
-              À la place, je développe des <strong>sites optimisés sur mesure</strong>, plus légers, plus rapides et
-              respectueux de
-              l’environnement.
-              Si vous avez besoin de publier régulièrement des contenus (articles, actualités, etc.), je peux créer un
-              <strong>tableau de bord personnalisé</strong> qui vous permettra de gérer facilement ces éléments, sans
-              avoir à
-              modifier le reste du site.
-            </p>
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-content" type="button" aria-expanded="false"
+                aria-controls="faq-answer-content">Pourrai-je mettre à jour le contenu moi-même&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-content" role="region" aria-labelledby="faq-question-content">
+              <p>
+                Je n’utilise pas de CMS (comme WordPress), car ces outils sont souvent <strong>lourds,
+                  énergivores</strong> et peu
+                adaptés à l’<strong>éco-conception</strong> d’un site vitrine ou de petite taille.
+                À la place, je développe des <strong>sites optimisés sur mesure</strong>, plus légers, plus rapides et
+                respectueux de
+                l’environnement.
+                Si vous avez besoin de publier régulièrement des contenus (articles, actualités, etc.), je peux créer un
+                <strong>tableau de bord personnalisé</strong> qui vous permettra de gérer facilement ces éléments, sans
+                avoir à
+                modifier le reste du site.
+              </p>
+            </div>
 
 
           </li>
 
           <li class="faq-item">
-            <h3>Comment est mesurée la performance du site une fois qu’il est en ligne&nbsp;?</h3>
-            <p>
-              Je peux intégrer des <strong>outils d’analyse</strong> (comme Google Analytics) pour suivre les
-              <strong>indicateurs
-                clés</strong> : trafic, comportement des utilisateurs, taux de conversion, etc. Je vous propose
-              également des
-              <strong>rapports réguliers</strong> et des <strong>recommandations d’amélioration</strong>.
-            </p>
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-ownership" type="button" aria-expanded="false"
+                aria-controls="faq-answer-ownership">Le nom de domaine, l’hébergement et le site
+                m’appartiennent-ils&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-ownership" role="region" aria-labelledby="faq-question-ownership">
+              <p>
+                Le devis précise les éléments importants : le titulaire du <strong>nom de domaine</strong>, les accès à
+                l’<strong>hébergement</strong>, les livrables et les droits d’utilisation du site. Ces modalités sont
+                clarifiées avant le lancement afin d’éviter toute dépendance imprévue et de faciliter l’évolution du
+                site
+                dans le temps.
+              </p>
+            </div>
           </li>
 
           <li class="faq-item">
-            <h3>Que faire si j’ai besoin de nouvelles fonctionnalités plus tard&nbsp;?</h3>
-            <p>
-              Mes sites sont conçus pour être <strong>évolutifs</strong>. Vous pouvez me solliciter à tout moment pour
-              ajouter des
-              fonctionnalités. Je vous fournirai un <strong>devis clair</strong> et m’assurerai que les ajouts
-              s’intègrent
-              parfaitement à votre site existant.
-            </p>
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-evolution" type="button" aria-expanded="false"
+                aria-controls="faq-answer-evolution">Que faire si j’ai besoin de nouvelles fonctionnalités plus
+                tard&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-evolution" role="region" aria-labelledby="faq-question-evolution">
+              <p>
+                Mes sites sont conçus pour être <strong>évolutifs</strong>. Vous pouvez me solliciter à tout moment pour
+                ajouter des
+                fonctionnalités. Je vous fournirai un <strong>devis clair</strong> et m’assurerai que les ajouts
+                s’intègrent
+                parfaitement à votre site existant.
+              </p>
+            </div>
           </li>
 
         </ul>

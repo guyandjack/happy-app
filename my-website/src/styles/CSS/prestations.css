@@ -104,7 +104,6 @@
 .website-types {
   position: relative;
   padding: 80px 20px;
-  background: #f2f0fe;
 }
 .website-types > h2 {
   text-align: center;
@@ -302,7 +301,7 @@
   }
 }
 .website-types .website-cards .website-card-container .website-card .card-content p {
-  color: rgba(23, 23, 23, 0.85);
+  color: rgba(26, 22, 39, 0.8);
   line-height: 1.7;
   margin-bottom: 25px;
   font-size: 1rem;
@@ -313,7 +312,7 @@
   }
 }
 .website-types .website-cards .website-card-container .website-card .card-content p strong {
-  color: rgb(0, 161.12, 193.8);
+  color: #00d4ff;
   font-weight: 600;
 }
 .website-types .website-cards .website-card-container .website-card .card-content .btn {
@@ -324,7 +323,7 @@
   padding: 12px 30px;
   border-radius: 30px;
   background: #04b6d4;
-  border: 2px solid #fefefd;
+  border: 2px solid transparent;
   color: #fefefd;
   text-decoration: none;
   text-align: center;
@@ -336,6 +335,8 @@
 }
 .website-types .website-cards .website-card-container .website-card .card-content .btn:hover {
   background-color: #cffafe;
+  border: 2px solid #04b6d4;
+  color: #04b6d4;
   -webkit-transform: translateY(-2px);
       -ms-transform: translateY(-2px);
           transform: translateY(-2px);
@@ -361,18 +362,103 @@
   }
 }
 
+.website-intro,
+.website-seo-foundations {
+  padding: 80px 20px;
+  color: rgba(26, 22, 39, 0.8);
+}
+.website-intro .website-intro-content,
+.website-intro .website-seo-foundations-content,
+.website-seo-foundations .website-intro-content,
+.website-seo-foundations .website-seo-foundations-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.website-intro h2,
+.website-seo-foundations h2 {
+  margin-bottom: 32px;
+  color: #1a1627;
+  font-size: 1.8rem;
+}
+.website-intro h2 strong,
+.website-seo-foundations h2 strong {
+  color: #00d4ff;
+}
+.website-intro p,
+.website-seo-foundations p {
+  max-width: 850px;
+  margin: 0 0 20px;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.website-intro p > a,
+.website-seo-foundations p > a {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  color: #1a1627;
+}
+.website-intro p > a::before,
+.website-seo-foundations p > a::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0px;
+  width: 100%;
+  height: 1px;
+  bottom: 0px;
+  background: #1a1627;
+  -webkit-transition: height 0.2s linear;
+  transition: height 0.2s linear;
+}
+.website-intro p > a:hover::before,
+.website-seo-foundations p > a:hover::before {
+  background: #04b6d4;
+  opacity: 0.9;
+  height: 6px;
+  bottom: 60%;
+  -webkit-transition: height 0.2s linear;
+  transition: height 0.2s linear;
+}
+.website-intro p > a[data-link=link-contact]:hover::before,
+.website-seo-foundations p > a[data-link=link-contact]:hover::before {
+  background: #a855f7;
+}
+@media screen and (min-width: 992px) {
+  .website-intro h2,
+  .website-seo-foundations h2 {
+    font-size: 2.3rem;
+  }
+  .website-intro p,
+  .website-seo-foundations p {
+    font-size: 1.1rem;
+  }
+}
+
+.website-intro {
+  padding-bottom: 0;
+}
+
+.website-seo-foundations {
+  background-color: #f4f5f8;
+}
+.website-seo-foundations .website-seo-foundations-content p a {
+  z-index: 0;
+  isolation: isolate;
+}
+
 /*******************************************************************
-************* section eco et seo ****************************************
+************* section eco  ****************************************
 ***** start***************************************************************/
 .eco-section,
-.seo-section {
+.website-seo-foundations {
   position: relative;
   width: 100%;
   padding: 80px 20px;
-  color: #fefefd;
+  color: rgba(26, 22, 39, 0.8);
 }
 .eco-section .content-wrapper,
-.seo-section .content-wrapper {
+.website-seo-foundations .content-wrapper {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 30px;
@@ -381,8 +467,8 @@
 }
 .eco-section .eco-title-container,
 .eco-section .seo-title-container,
-.seo-section .eco-title-container,
-.seo-section .seo-title-container {
+.website-seo-foundations .eco-title-container,
+.website-seo-foundations .seo-title-container {
   position: relative;
   margin-bottom: 40px;
   width: -webkit-fit-content;
@@ -390,20 +476,20 @@
   width: fit-content;
 }
 .eco-section h2,
-.seo-section h2 {
+.website-seo-foundations h2 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   font-size: 1.8rem;
   position: relative;
-  color: #fefefd;
+  color: #1a1627;
 }
 .eco-section h2 strong,
-.seo-section h2 strong {
+.website-seo-foundations h2 strong {
   position: relative;
 }
 .eco-section h2 strong::after,
-.seo-section h2 strong::after {
+.website-seo-foundations h2 strong::after {
   content: "";
   position: absolute;
   bottom: -8px;
@@ -414,7 +500,7 @@
   color: rgb(0, 169.6, 204);
 }
 .eco-section ul,
-.seo-section ul {
+.website-seo-foundations ul {
   list-style: none;
   padding: 0;
   margin: 40px 0;
@@ -423,10 +509,9 @@
   gap: 30px;
 }
 .eco-section ul li,
-.seo-section ul li {
+.website-seo-foundations ul li {
   position: relative;
   padding: 20px 30px;
-  background: rgba(23, 23, 23, 0.5);
   border-radius: 15px;
   -webkit-transition: -webkit-transform 0.3s ease;
   transition: -webkit-transform 0.3s ease;
@@ -436,7 +521,7 @@
           box-shadow: 0 0px 10px rgba(23, 23, 23, 0.3);
 }
 .eco-section ul li::before,
-.seo-section ul li::before {
+.website-seo-foundations ul li::before {
   content: "→";
   position: absolute;
   left: 10px;
@@ -444,29 +529,61 @@
   color: rgb(0, 169.6, 204);
 }
 .eco-section ul li strong,
-.seo-section ul li strong {
+.website-seo-foundations ul li strong {
   display: block;
   margin-bottom: 8px;
   font-size: 1.1rem;
   color: rgb(0, 169.6, 204);
 }
 .eco-section p,
-.seo-section p {
+.website-seo-foundations p {
   font-size: 1.2rem;
   line-height: 1.8;
   opacity: 0.9;
-  max-width: 800px;
+  max-width: 1300px;
 }
 .eco-section p strong,
-.seo-section p strong {
-  font-weight: 600;
+.website-seo-foundations p strong {
+  color: #00d4ff;
+}
+.eco-section p a,
+.website-seo-foundations p a {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  color: #1a1627;
+}
+.eco-section p a::before,
+.website-seo-foundations p a::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0px;
+  width: 100%;
+  height: 1px;
+  bottom: 0px;
+  background: #1a1627;
+  -webkit-transition: height 0.2s linear;
+  transition: height 0.2s linear;
+}
+.eco-section p a:hover::before,
+.website-seo-foundations p a:hover::before {
+  background: #04b6d4;
+  opacity: 0.9;
+  height: 6px;
+  bottom: 60%;
+  -webkit-transition: height 0.2s linear;
+  transition: height 0.2s linear;
+}
+.eco-section p a[data-link=link-contact]:hover::before,
+.website-seo-foundations p a[data-link=link-contact]:hover::before {
+  background: #a855f7;
 }
 
 .eco-section {
   /* background: linear-gradient(135deg,
       rgba(map-get($colors-rule, second-color), 0.03),
       rgba(map-get($colors-rule, third-color), 0.02)); */
-  background-color: #3f2f58;
 }
 .eco-section .eco-title-container .eco-image {
   display: none;
@@ -474,22 +591,22 @@
   height: 100px;
 }
 .eco-section h2 strong {
-  color: #00d4ff;
+  color: #00bdb6;
 }
 .eco-section h2 strong::after {
-  background: #00d4ff;
+  background: #00bdb6;
 }
 .eco-section ul li {
   border: 1px solid rgba(26, 22, 39, 0.1);
 }
 .eco-section ul li::before {
-  color: rgb(0, 169.6, 204);
+  color: #00bdb6;
 }
 .eco-section ul li strong {
-  color: rgb(0, 169.6, 204);
+  color: #00bdb6;
 }
 .eco-section p strong {
-  color: rgb(0, 169.6, 204);
+  color: #00bdb6;
 }
 
 @-webkit-keyframes rotate-right {
@@ -686,14 +803,21 @@
     clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
   }
 }
-.page-container.dark-mode .website-types {
-  background: #1a1627;
-}
-.page-container.dark-mode .eco-seo {
-  background: #1a1627;
-}
-.page-container.dark-mode .eco-seo .eco-design-section::before, .page-container.dark-mode .eco-seo .eco-design-section::after,
-.page-container.dark-mode .eco-seo .seo-section::before,
-.page-container.dark-mode .eco-seo .seo-section::after {
-  background: rgba(26, 22, 39, 0.8);
-}
+/* .page-container.dark-mode {
+  .website-types {
+    background: map-get($colors-rule, first-color);
+  }
+
+  .eco-seo {
+    background: map-get($colors-rule, first-color);
+
+    .eco-design-section,
+    .seo-section {
+
+      &::before,
+      &::after {
+        background: rgba(map-get($colors-rule, first-color), 0.8);
+      }
+    }
+  }
+} */

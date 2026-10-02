@@ -413,6 +413,7 @@ main {
   padding: 0px 20px 100px 20px;
   width: 100%;
   margin: 0 auto;
+  gap: 120px;
 }
 .faq-section .faq-container-title {
   height: auto;
@@ -507,9 +508,12 @@ main {
 .faq-section .faq-grid .faq-item .faq-question {
   display: block;
   width: 90%;
+  border: 0;
+  background: transparent;
   font-size: 1rem;
+  font-family: inherit;
   margin-bottom: 0;
-  color: #1a1627;
+  color: #171717;
   position: relative;
   padding-left: 35px;
   cursor: pointer;
@@ -579,10 +583,7 @@ main {
   transition: max-height 0.25s ease;
 }
 .faq-section .faq-grid .faq-item .faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  -webkit-transition: max-height 0.2s ease;
-  transition: max-height 0.2s ease;
+  margin-top: 20px;
 }
 .faq-section .faq-grid .faq-item .faq-answer p,
 .faq-section .faq-grid .faq-item .faq-answer ul {
@@ -591,7 +592,14 @@ main {
   -webkit-transition: none;
   transition: none;
 }
-.faq-section .faq-grid .faq-item .faq-answer.expanded {
+html.js-enabled .faq-section .faq-grid .faq-item .faq-answer {
+  max-height: 0;
+  margin-top: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 0.2s ease;
+  transition: max-height 0.2s ease;
+}
+html.js-enabled .faq-section .faq-grid .faq-item .faq-answer.expanded {
   max-height: 1000px;
   margin-top: 20px;
   -webkit-transition: max-height 0.25s ease;
@@ -599,7 +607,7 @@ main {
 }
 .faq-section .faq-grid .faq-item .faq-answer a {
   position: relative;
-  display: inline block;
+  display: inline-block;
   z-index: 1;
   color: #1a1627;
 }

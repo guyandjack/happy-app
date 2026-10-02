@@ -14,9 +14,9 @@
 
     transform: translate(-5px, 0px) rotateZ(0deg);
   }
-  
-  100%{
-    
+
+  100% {
+
     transform: translate(-0px, 0px) rotateZ(5deg);
   }
 
@@ -37,8 +37,8 @@
 .website-types {
   position: relative;
   padding: 80px 20px;
-  background: rgba(map-get($colors-rule, bg-page-shade-light-4),1);
 
+  //color: rgba(map-get($colors-rule, first-color), 0.8);
   &>h2 {
     text-align: center;
     font-size: 1.8rem;
@@ -81,12 +81,12 @@
     margin: 0px auto;
     padding: 50px 20px;
     //border: 2px solid red;
-    
-    
+
+
     .website-card-container {
       //border: 2px solid red;
       border-radius: 15px;
-      background-color: rgba(map-get($colors-rule, sixth-color),0.9);
+      background-color: rgba(map-get($colors-rule, sixth-color), 0.9);
       position: relative;
       width: 100%;
       max-width: 600px;
@@ -164,7 +164,7 @@
 
 
       .website-card {
-        
+
         position: relative;
         width: 100%;
         min-height: 400px;
@@ -236,7 +236,7 @@
           }
 
           p {
-            color: rgba(map-get($colors-rule, fifth-color), 0.85);
+            color: rgba(map-get($colors-rule, first-color), 0.8);
             line-height: 1.7;
             margin-bottom: 25px;
             font-size: 1rem;
@@ -246,7 +246,7 @@
             }
 
             strong {
-              color: darken(map-get($colors-rule, second-color), 12%);
+              color: map-get($colors-rule, second-color);
               //color: map-get($colors-rule, second-color);
               font-weight: 600;
             }
@@ -260,7 +260,7 @@
             padding: 12px 30px;
             border-radius: 30px;
             background: map-get($colors-rule, link-color);
-            border: 2px solid map-get($colors-rule, sixth-color);
+            border: 2px solid transparent;
             color: map-get($colors-rule, sixth-color);
             text-decoration: none;
             text-align: center;
@@ -270,8 +270,8 @@
 
             &:hover {
               background-color: map-get($colors-rule, link-color-hover);
-              //border: 2px solid map-get($colors-rule, first-color);
-              //color: map-get($colors-rule, first-color);
+              border: 2px solid map-get($colors-rule, link-color);
+              color: map-get($colors-rule, link-color);
               transform: translateY(-2px);
               transition: all 0.3s ease;
             }
@@ -315,18 +315,110 @@
 
 }
 
+.website-intro,
+.website-seo-foundations {
+  padding: 80px 20px;
+  color: rgba(map-get($colors-rule, first-color), 0.8);
+
+  .website-intro-content,
+  .website-seo-foundations-content {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    margin-bottom: 32px;
+    color: map-get($colors-rule, first-color);
+    font-size: 1.8rem;
+
+    strong {
+      color: map-get($colors-rule, second-color);
+    }
+  }
+
+  p {
+    max-width: 850px;
+    margin: 0 0 20px;
+    font-size: 1rem;
+    line-height: 1.7;
+    //color: red;
+
+
+  &>a {
+
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+    color: map-get($colors-rule, first-color);
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: 0px;
+      width: 100%;
+      height: 1px;
+      bottom: 0px;
+      background: map-get($colors-rule, first-color);
+      transition: height 0.2s linear;
+    }
+
+
+    &:hover::before {
+      background: map-get($colors-rule, link-color);
+      opacity: 0.9;
+      height: 6px;
+      bottom: 60%;
+      transition: height 0.2s linear;
+
+    }
+
+    &[data-link="link-contact"]:hover::before {
+      background: map-get($colors-rule, contact-link-color);
+    }
+
+
+
+  }
+}
+
+  @media screen and (min-width: 992px) {
+    h2 {
+      font-size: 2.3rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.website-intro {
+  padding-bottom: 0;
+}
+
+.website-seo-foundations {
+  background-color: map-get($colors-rule, background-page-color-soft);
+
+  .website-seo-foundations-content p a {
+    // Keeps the existing ::before hover effect above the section background.
+    z-index: 0;
+    isolation: isolate;
+  }
+}
+
 /*******************************************************************
-************* section eco et seo ****************************************
+************* section eco  ****************************************
 ***** start***************************************************************/
 
 
 // Shared styles for both sections
 .eco-section,
-.seo-section {
+.website-seo-foundations {
   position: relative;
   width: 100%;
   padding: 80px 20px;
-  color: map-get($colors-rule, sixth-color);
+  color: rgba(map-get($colors-rule, first-color), 0.8);
 
 
 
@@ -353,7 +445,7 @@
     //border: 2px solid blue;
     font-size: 1.8rem;
     position: relative;
-    color: map-get($colors-rule, sixth-color);
+    color: map-get($colors-rule, first-color);
 
     strong {
       position: relative;
@@ -383,7 +475,7 @@
     li {
       position: relative;
       padding: 20px 30px;
-      background: rgba(map-get($colors-rule, fifth-color), 0.5);
+      //background: rgba(map-get($colors-rule, fifth-color), 0.5);
       border-radius: 15px;
       //backdrop-filter: blur(10px);
       transition: transform 0.3s ease;
@@ -403,7 +495,7 @@
         display: block;
         margin-bottom: 8px;
         font-size: 1.1rem;
-        color: darken(map-get($colors-rule, second-color),10%);
+        color: darken(map-get($colors-rule, second-color), 10%);
       }
     }
   }
@@ -412,10 +504,44 @@
     font-size: 1.2rem;
     line-height: 1.8;
     opacity: 0.9;
-    max-width: 800px;
+    max-width: 1300px;
 
     strong {
-      font-weight: 600;
+      color: map-get($colors-rule, second-color);
+    }
+
+    a {
+
+      position: relative;
+      display: inline-block;
+      z-index: 1;
+      color: map-get($colors-rule, first-color);
+
+      &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 0px;
+        width: 100%;
+        height: 1px;
+        bottom: 0px;
+        background: map-get($colors-rule, first-color);
+        transition: height 0.2s linear;
+      }
+
+
+      &:hover::before {
+        background: map-get($colors-rule, link-color);
+        opacity: 0.9;
+        height: 6px;
+        bottom: 60%;
+        transition: height 0.2s linear;
+
+      }
+
+      &[data-link="link-contact"]:hover::before {
+        background: map-get($colors-rule, contact-link-color);
+      }
     }
   }
 }
@@ -427,7 +553,7 @@
   /* background: linear-gradient(135deg,
       rgba(map-get($colors-rule, second-color), 0.03),
       rgba(map-get($colors-rule, third-color), 0.02)); */
-      background-color: rgba(map-get($colors-rule, bg-page-shade-light-2),1);
+  //background-color: rgba(map-get($colors-rule, bg-page-shade-light-2),1);
 
   .eco-title-container {
 
@@ -445,10 +571,10 @@
 
 
   h2 strong {
-    color: map-get($colors-rule, second-color);
+    color: map-get($colors-rule, third-color);
 
     &::after {
-      background: map-get($colors-rule, second-color);
+      background: map-get($colors-rule, third-color);
     }
   }
 
@@ -456,16 +582,16 @@
     border: 1px solid rgba(map-get($colors-rule, first-color), 0.1);
 
     &::before {
-      color: darken(map-get($colors-rule, second-color), 10%);
+      color: map-get($colors-rule, third-color);
     }
 
     strong {
-    color: darken(map-get($colors-rule, second-color), 10%);
+      color: map-get($colors-rule, third-color);
     }
   }
 
   p strong {
-  color: darken(map-get($colors-rule, second-color), 10%);
+    color: map-get($colors-rule, third-color);
   }
 }
 
@@ -524,7 +650,7 @@
   /* background: linear-gradient(135deg,
     rgba(map-get($colors-rule, fourth-color), 0.03),
     rgba(map-get($colors-rule, third-color), 0.02)); */
-    background-color: rgba(map-get($colors-rule, bg-page-shade-light-2),1);
+  background-color: rgba(map-get($colors-rule, bg-page-shade-light-2), 1);
 
 
 
@@ -569,7 +695,7 @@
     border: 1px solid rgba(map-get($colors-rule, first-color), 0.1);
 
     &::before {
-    color: darken(map-get($colors-rule, second-color), 10%);
+      color: darken(map-get($colors-rule, second-color), 10%);
     }
 
     strong {
@@ -658,7 +784,7 @@
 
 
 //gestion du dark mode
-.page-container.dark-mode {
+/* .page-container.dark-mode {
   .website-types {
     background: map-get($colors-rule, first-color);
   }
@@ -675,4 +801,4 @@
       }
     }
   }
-}
+} */

@@ -19,12 +19,12 @@ function CtaSection() {
     <div className="cta-section">
       <h3>{ctaSectionContent[lang][pageName].title}</h3>
       <p>{ctaSectionContent[lang][pageName].text}</p>
-      <a
+      {/* <a
         className="btn btn-primary"
         href={lang === "fr" ? "/public/fr/contact.html" : "/public/en/contact.html"}
       >
         {ctaSectionContent[lang][pageName].btn_text}
-      </a>
+      </a> */}
     </div>
   );
 }
