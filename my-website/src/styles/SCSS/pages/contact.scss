@@ -1,15 +1,66 @@
 @use "../../utils/color-rule/color-rule" as *;
 
 
+.intro-contact{
+    margin: 50px auto;
+    width: 100%;
+    max-width: 800px;
+    color: rgba(map-get($colors-rule, first-color),0.8);
+
+    & p {
+        line-height: 1.8;
+        font-size: 1.1rem;
+    }
+    & p strong
+     {
+        color: map-get($colors-rule, first-color);
+
+    }
+
+    & p a {
+    
+        position: relative;
+        display: inline block;
+        z-index: 1;
+        color: rgba(map-get($colors-rule, first-color), 1);
+    
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            left: 0px;
+            width: 100%;
+            height: 1px;
+            bottom: 0px;
+            background: map-get($colors-rule, first-color);
+            transition: height 0.2s linear;
+        }
+    
+    
+        &:hover::before {
+            background: map-get($colors-rule, link-color);
+            opacity: 0.9;
+            height: 6px;
+            bottom: 60%;
+            transition: height 0.2s linear;
+    
+        }
+    
+    
+    
+    }
+
+}
+
 // Contact content section
 .contact-content {
 
-    background-color: map-get($colors-rule, bg-page-shade-light-4);
+    //background-color: map-get($colors-rule, bg-page-shade-light-4);
 
     .contact-subtitle {
 
         font-size: 1.8rem;
-        color: map-get($colors-rule, fifth-color);
+        color: map-get($colors-rule, first-color);
         margin-bottom: 30px;
         position: relative;
         padding-bottom: 15px;
@@ -74,7 +125,7 @@
     .contact-form-container {
         background-color: map-get($colors-rule, background-page-color);
         border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 0px 20px rgba(map-get($colors-rule, first-color),0.3);
         padding: 40px;
         position: relative;
         border: none;
@@ -97,12 +148,41 @@
 
         .form-disclaimer {
             //font-size: 0.8rem;
-            //color: map-get($colors-rule, first-color);
+            color: rgba(map-get($colors-rule, first-color),0.8);
             margin-top: 20px;
 
             a {
-                text-decoration: none;
-            }
+            
+                    position: relative;
+                    display: inline block;
+                    z-index: 1;
+                    color: rgba(map-get($colors-rule, first-color), 1);
+            
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        z-index: -1;
+                        left: 0px;
+                        width: 100%;
+                        height: 1px;
+                        bottom: 0px;
+                        background: map-get($colors-rule, first-color);
+                        transition: height 0.2s linear;
+                    }
+            
+            
+                    &:hover::before {
+                        background: map-get($colors-rule, link-color);
+                        opacity: 0.9;
+                        height: 6px;
+                        bottom: 60%;
+                        transition: height 0.2s linear;
+            
+                    }
+            
+            
+            
+                }
 
 
         }
@@ -174,11 +254,41 @@
                 color: #666;
                 line-height: 1.5;
                 margin: 0;
-
+                
+                
                 a {
-                    text-decoration: none;
-
-                }
+                
+                        position: relative;
+                        display: inline-block;
+                        z-index: 1;
+                        color: map-get($colors-rule, first-color);
+                
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            z-index: -1;
+                            left: 0px;
+                            width: 100%;
+                            height: 1px;
+                            bottom: 0px;
+                            background: map-get($colors-rule, first-color);
+                            transition: height 0.2s linear;
+                        }
+                
+                
+                        &:hover::before {
+                            background: map-get($colors-rule, link-color);
+                            opacity: 0.9;
+                            height: 6px;
+                            bottom: 60%;
+                            transition: height 0.2s linear;
+                
+                        }
+                
+                        &[data-link="link-contact"]:hover::before {
+                            background: map-get($colors-rule, contact-link-color);
+                        }
+                    }
             }
         }
 
@@ -235,7 +345,7 @@
 
 //gestion du dark mode
 
-.page-container.dark-mode {
+/* .page-container.dark-mode {
 
 
     .contact-content {
@@ -278,4 +388,4 @@
     }
 
 
-}
+} */

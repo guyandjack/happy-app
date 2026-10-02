@@ -82,6 +82,7 @@
   min-width: 400px;
   margin: 0 auto;
   background-color: #fbfbfc;
+  overflow-x: hidden;
 }
 
 .dark-mode {

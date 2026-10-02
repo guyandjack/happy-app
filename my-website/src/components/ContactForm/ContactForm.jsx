@@ -16,6 +16,54 @@ import "@styles/SCSS/components/loginform.scss";
 
 function ContactForm() {
   const { url, urlApi, mode } = localOrProd();
+  const isEnglish = document.documentElement.lang.startsWith("en");
+  const text = isEnglish
+    ? {
+        captcha: "Please complete the reCAPTCHA",
+        offline: "Please check your internet connection",
+        sent: "Message sent successfully",
+        sendError: "An error occurred while sending the message",
+        retry: "An error occurred. Please try again later.",
+        connectionError: "Connection error. Please try again later.",
+        sending: "Sending...",
+        name: "Last name",
+        firstName: "First name",
+        email: "Email",
+        message: "Message",
+        required: "This field is required",
+        minTwo: "Minimum 2 characters",
+        maxFifty: "Maximum 50 characters",
+        maxEighty: "Maximum 80 characters",
+        emailInvalid: "Invalid email address",
+        minTen: "Minimum 10 characters",
+        maxThousand: "Maximum 1000 characters",
+        namePattern: "Letters only; spaces, hyphens and apostrophes are allowed.",
+        messagePattern: "Letters, numbers, spaces and standard punctuation are allowed.",
+        submit: "Send",
+      }
+    : {
+        captcha: "Veuillez compléter le reCAPTCHA",
+        offline: "Veuillez vérifier votre connexion internet",
+        sent: "Message envoyé avec succès",
+        sendError: "Erreur lors de l'envoi du message",
+        retry: "Une erreur est survenue. Veuillez réessayer plus tard.",
+        connectionError: "Erreur de connexion, veuillez réessayer plus tard",
+        sending: "Envoi en cours...",
+        name: "Nom",
+        firstName: "Prénom",
+        email: "Email",
+        message: "Message",
+        required: "Ce champ est requis",
+        minTwo: "Min 2 caractères",
+        maxFifty: "Max 50 caractères",
+        maxEighty: "Max 80 caractères",
+        emailInvalid: "Adresse email invalide",
+        minTen: "Min 10 caractères",
+        maxThousand: "Max 1000 caractères",
+        namePattern: "Lettres uniquement, sans chiffres. Espaces, tirets et apostrophes autorisés.",
+        messagePattern: "Lettres, chiffres, espaces et ponctuation courante autorisés.",
+        submit: "Envoyer",
+      };
   const [httpError, setHttpError] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toast, setToast] = useState({ show: false, message: "", type: "" });
@@ -62,7 +110,7 @@ function ContactForm() {
   //fetch api recaptcha
   async function handleSubmitCaptcha(recaptchaToken) {
     if (!recaptchaToken) {
-      alert("Please complete the reCAPTCHA");
+      alert(text.captcha);
       return;
     }
 
@@ -97,8 +145,8 @@ function ContactForm() {
   const onSubmit = async (data) => {
     try {
       if (!window.navigator.onLine) {
-        setHttpError("Veuillez vérifier votre connexion internet");
-        showToast("Veuillez vérifier votre connexion internet", "offline");
+        setHttpError(text.offline);
+        showToast(text.offline, "offline");
         console.log("data formulaire: ", data);
         //sauvegade des entrees utilisateur
         localStorage.setItem("contactFormData", JSON.stringify(data));
@@ -130,7 +178,7 @@ function ContactForm() {
 
       if (response.data.status === "success") {
         // Show success toast
-        showToast("Message envoyé avec succès", "success");
+        showToast(text.sent, "success");
 
         // Reset form
         formValueRef.current = {};
@@ -144,15 +192,15 @@ function ContactForm() {
         //sauvegade des entrees utilisateur
         localStorage.setItem("contactFormData", JSON.stringify(data));
         // Handle error response
-        setHttpError("Erreur lors de l'envoi du message");
-        showToast("Erreur lors de l'envoi du message", "error");
+        setHttpError(text.sendError);
+        showToast(text.sendError, "error");
       }
     } catch (error) {
       //sauvegade des entrees utilisateur
       localStorage.setItem("contactFormData", JSON.stringify(data));
       // Show HTTP error
-      setHttpError("Une erreur est survenue. Veuillez réessayer plus tard.");
-      showToast("Erreur de connexion, veuillez réessayer plus tard", "error");
+      setHttpError(text.retry);
+      showToast(text.connectionError, "error");
       console.error("Contact form error:", error);
     } finally {
       setIsSubmitting(false);
@@ -192,7 +240,7 @@ function ContactForm() {
               ariaLabel="three-dots-loading"
               visible={true}
             />
-            <p className="loader-text">Envoi en cours...</p>
+            <p className="loader-text">{text.sending}</p>
           </div>
         </div>
       )}
@@ -205,7 +253,7 @@ function ContactForm() {
         {/* Name Input */}
         <div className="form-group">
           <label htmlFor="name" className="form-label">
-            Nom
+            {text.name}
           </label>
           <div className="input-container">
             <input
@@ -213,15 +261,14 @@ function ContactForm() {
               type="text"
               className={`form-input ${errors.name ? "input-error" : ""}`}
               {...register("name", {
-                required: "Ce champ est requis",
-                minLength: { value: 2, message: "Min 2 caractères" },
-                maxLength: { value: 50, message: "Max 50 caractères" },
+                required: text.required,
+                minLength: { value: 2, message: text.minTwo },
+                maxLength: { value: 50, message: text.maxFifty },
                 value: formValueRef?.current?.name,
 
                 pattern: {
                   value: /^[\w\-'. ]{1,49}$/u,
-                  message:
-                    "Lettres uniquement, sans chiffres. Espaces, tirets, apostrophes autorisés.",
+                  message: text.namePattern,
                 },
               })}
             />
@@ -234,7 +281,7 @@ function ContactForm() {
         {/* First Name Input */}
         <div className="form-group">
           <label htmlFor="firstName" className="form-label">
-            Prénom
+            {text.firstName}
           </label>
           <div className="input-container">
             <input
@@ -242,14 +289,13 @@ function ContactForm() {
               type="text"
               className={`form-input ${errors.firstName ? "input-error" : ""}`}
               {...register("firstName", {
-                required: "Ce champ est requis",
-                minLength: { value: 2, message: "Min 2 caractères" },
-                maxLength: { value: 50, message: "Max 50 caractères" },
+                required: text.required,
+                minLength: { value: 2, message: text.minTwo },
+                maxLength: { value: 50, message: text.maxFifty },
                 value: formValueRef?.current?.firstName,
                 pattern: {
                   value: /^[\w\-'. ]{1,49}$/u,
-                  message:
-                    "Lettres uniquement, sans chiffres. Espaces, tirets, apostrophes autorisés.",
+                  message: text.namePattern,
                 },
               })}
             />
@@ -264,7 +310,7 @@ function ContactForm() {
         {/* Email Input */}
         <div className="form-group">
           <label htmlFor="email" className="form-label">
-            Email
+            {text.email}
           </label>
           <div className="input-container">
             <input
@@ -272,13 +318,13 @@ function ContactForm() {
               type="email"
               className={`form-input ${errors.email ? "input-error" : ""}`}
               {...register("email", {
-                required: "Ce champ est requis",
-                minLength: { value: 2, message: "Min 2 caractères" },
-                maxLength: { value: 80, message: "Max 80 caractères" },
+                required: text.required,
+                minLength: { value: 2, message: text.minTwo },
+                maxLength: { value: 80, message: text.maxEighty },
                 value: formValueRef?.current?.email,
                 pattern: {
                   value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,100}$/,
-                  message: "Adresse email invalide",
+                  message: text.emailInvalid,
                 },
               })}
             />
@@ -293,7 +339,7 @@ function ContactForm() {
         {/* Message Input */}
         <div className="form-group">
           <label htmlFor="message" className="form-label">
-            Message
+            {text.message}
           </label>
           <div className="input-container">
             <textarea
@@ -301,14 +347,13 @@ function ContactForm() {
               rows={10}
               className={`form-input ${errors.message ? "input-error" : ""}`}
               {...register("message", {
-                required: "Ce champ est requis",
-                minLength: { value: 10, message: "Min 10 caractères" },
-                maxLength: { value: 1000, message: "Max 1000 caractères" },
+                required: text.required,
+                minLength: { value: 10, message: text.minTen },
+                maxLength: { value: 1000, message: text.maxThousand },
                 value: formValueRef?.current?.message,
                 pattern: {
                   value: /^[\w\-'.,!?:; ]{10,1000}$/,
-                  message:
-                    "Lettres et chiffres.Espaces, tirets, apostrophes, virgules, points, points- virgules, signes de ponctuation autorisés.",
+                  message: text.messagePattern,
                 },
               })}
             />
@@ -342,7 +387,7 @@ function ContactForm() {
             className="btn btn-primary"
             disabled={isSubmitting || !isValid || !isCaptchaValid}
           >
-            {isSubmitting ? "Envoi en cours..." : "Envoyer"}
+            {isSubmitting ? text.sending : text.submit}
           </button>
         </div>
       </form>

@@ -451,14 +451,16 @@
 ************* section eco  ****************************************
 ***** start***************************************************************/
 .eco-section,
-.website-seo-foundations {
+.website-seo-foundations,
+.suivi-continu {
   position: relative;
   width: 100%;
   padding: 80px 20px;
   color: rgba(26, 22, 39, 0.8);
 }
 .eco-section .content-wrapper,
-.website-seo-foundations .content-wrapper {
+.website-seo-foundations .content-wrapper,
+.suivi-continu .content-wrapper {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 30px;
@@ -468,7 +470,9 @@
 .eco-section .eco-title-container,
 .eco-section .seo-title-container,
 .website-seo-foundations .eco-title-container,
-.website-seo-foundations .seo-title-container {
+.website-seo-foundations .seo-title-container,
+.suivi-continu .eco-title-container,
+.suivi-continu .seo-title-container {
   position: relative;
   margin-bottom: 40px;
   width: -webkit-fit-content;
@@ -476,7 +480,8 @@
   width: fit-content;
 }
 .eco-section h2,
-.website-seo-foundations h2 {
+.website-seo-foundations h2,
+.suivi-continu h2 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -485,11 +490,13 @@
   color: #1a1627;
 }
 .eco-section h2 strong,
-.website-seo-foundations h2 strong {
+.website-seo-foundations h2 strong,
+.suivi-continu h2 strong {
   position: relative;
 }
 .eco-section h2 strong::after,
-.website-seo-foundations h2 strong::after {
+.website-seo-foundations h2 strong::after,
+.suivi-continu h2 strong::after {
   content: "";
   position: absolute;
   bottom: -8px;
@@ -500,7 +507,8 @@
   color: rgb(0, 169.6, 204);
 }
 .eco-section ul,
-.website-seo-foundations ul {
+.website-seo-foundations ul,
+.suivi-continu ul {
   list-style: none;
   padding: 0;
   margin: 40px 0;
@@ -509,7 +517,8 @@
   gap: 30px;
 }
 .eco-section ul li,
-.website-seo-foundations ul li {
+.website-seo-foundations ul li,
+.suivi-continu ul li {
   position: relative;
   padding: 20px 30px;
   border-radius: 15px;
@@ -521,7 +530,8 @@
           box-shadow: 0 0px 10px rgba(23, 23, 23, 0.3);
 }
 .eco-section ul li::before,
-.website-seo-foundations ul li::before {
+.website-seo-foundations ul li::before,
+.suivi-continu ul li::before {
   content: "→";
   position: absolute;
   left: 10px;
@@ -529,32 +539,37 @@
   color: rgb(0, 169.6, 204);
 }
 .eco-section ul li strong,
-.website-seo-foundations ul li strong {
+.website-seo-foundations ul li strong,
+.suivi-continu ul li strong {
   display: block;
   margin-bottom: 8px;
   font-size: 1.1rem;
   color: rgb(0, 169.6, 204);
 }
 .eco-section p,
-.website-seo-foundations p {
+.website-seo-foundations p,
+.suivi-continu p {
   font-size: 1.2rem;
   line-height: 1.8;
   opacity: 0.9;
   max-width: 1300px;
 }
 .eco-section p strong,
-.website-seo-foundations p strong {
+.website-seo-foundations p strong,
+.suivi-continu p strong {
   color: #00d4ff;
 }
 .eco-section p a,
-.website-seo-foundations p a {
+.website-seo-foundations p a,
+.suivi-continu p a {
   position: relative;
   display: inline-block;
   z-index: 1;
   color: #1a1627;
 }
 .eco-section p a::before,
-.website-seo-foundations p a::before {
+.website-seo-foundations p a::before,
+.suivi-continu p a::before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -567,7 +582,8 @@
   transition: height 0.2s linear;
 }
 .eco-section p a:hover::before,
-.website-seo-foundations p a:hover::before {
+.website-seo-foundations p a:hover::before,
+.suivi-continu p a:hover::before {
   background: #04b6d4;
   opacity: 0.9;
   height: 6px;
@@ -576,8 +592,21 @@
   transition: height 0.2s linear;
 }
 .eco-section p a[data-link=link-contact]:hover::before,
-.website-seo-foundations p a[data-link=link-contact]:hover::before {
+.website-seo-foundations p a[data-link=link-contact]:hover::before,
+.suivi-continu p a[data-link=link-contact]:hover::before {
   background: #a855f7;
+}
+
+.suivi-continu {
+  background-color: #f4f5f8;
+}
+.suivi-continu h2 {
+  margin-bottom: 32px;
+  color: #1a1627;
+  font-size: 1.8rem;
+}
+.suivi-continu h2 strong {
+  color: #00d4ff;
 }
 
 .eco-section {
@@ -780,44 +809,31 @@
   .seo-section h2 {
     font-size: 2.8rem;
   }
-  .eco-section::before,
+  .suivi-continu h2 {
+    font-size: 1.8rem;
+  }
+  /* .eco-section::before,
   .seo-section::before {
-    content: "";
+
+    content: '';
     position: absolute;
     top: -80px;
     left: 0;
     width: 100%;
     height: 160px;
-    background: #fbfbfc;
+    background: map-get($colors-rule, background-page-color);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 70%);
   }
+
   .eco-section::after,
   .seo-section::after {
-    content: "";
+    content: '';
     position: absolute;
     bottom: -80px;
     left: 0;
     width: 100%;
     height: 160px;
-    background: #fbfbfc;
+    background: map-get($colors-rule, background-page-color);
     clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
-  }
+  } */
 }
-/* .page-container.dark-mode {
-  .website-types {
-    background: map-get($colors-rule, first-color);
-  }
-
-  .eco-seo {
-    background: map-get($colors-rule, first-color);
-
-    .eco-design-section,
-    .seo-section {
-
-      &::before,
-      &::after {
-        background: rgba(map-get($colors-rule, first-color), 0.8);
-      }
-    }
-  }
-} */

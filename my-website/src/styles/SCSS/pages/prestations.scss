@@ -414,7 +414,9 @@
 
 // Shared styles for both sections
 .eco-section,
-.website-seo-foundations {
+.website-seo-foundations,
+.suivi-continu
+ {
   position: relative;
   width: 100%;
   padding: 80px 20px;
@@ -544,6 +546,19 @@
       }
     }
   }
+}
+
+.suivi-continu{
+  background-color: map-get($colors-rule, background-page-color-soft);
+  h2 {
+      margin-bottom: 32px;
+      color: map-get($colors-rule, first-color);
+      font-size: 1.8rem;
+  
+      strong {
+        color: map-get($colors-rule, second-color);
+      }
+    }
 }
 
 
@@ -748,13 +763,20 @@
 @media screen and (min-width: 992px) {
 
   .eco-section,
-  .seo-section {
+  .seo-section
+   {
     h2 {
       font-size: 2.8rem;
     }
   }
 
-  .eco-section::before,
+  .suivi-continu{
+    h2{
+      font-size: 1.8rem;
+    }
+  }
+
+  /* .eco-section::before,
   .seo-section::before {
 
     content: '';
@@ -777,28 +799,9 @@
     height: 160px;
     background: map-get($colors-rule, background-page-color);
     clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
-  }
+  } */
 }
 
 
 
 
-//gestion du dark mode
-/* .page-container.dark-mode {
-  .website-types {
-    background: map-get($colors-rule, first-color);
-  }
-
-  .eco-seo {
-    background: map-get($colors-rule, first-color);
-
-    .eco-design-section,
-    .seo-section {
-
-      &::before,
-      &::after {
-        background: rgba(map-get($colors-rule, first-color), 0.8);
-      }
-    }
-  }
-} */

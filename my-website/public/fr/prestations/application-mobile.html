@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr-CH">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO Meta Tags -->
-  <title>Développement d’applications mobiles en Valais | Crans-Montana – Helveclick</title>
+  <title>Développement d’applications mobiles en Valais | Helveclick</title>
   <meta name="description"
-    content="Développement d’applications mobiles iOS/Android (natives, hybrides, PWA) à Crans-Montana en Valais. Solutions sur mesure, UX soignée, approche éco-responsable.">
+    content="Applications mobiles iOS, Android et PWA sur mesure à Crans-Montana : cadrage, développement, tests et accompagnement pour les PME du Valais.">
   <meta name="robots" content="index, follow">
 
   <!-- Canonical and Alternate Links -->
@@ -21,19 +21,19 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://helveclick.ch/public/fr/prestations/application-mobile.html">
-  <meta property="og:title" content="Applications mobiles à Crans-Montana (Valais) | Helveclick">
+  <meta property="og:title" content="Développement d’applications mobiles en Valais | Helveclick">
   <meta property="og:description"
-    content="Création d’applications mobiles iOS/Android : native, hybride ou PWA. Développées à Crans-Montana en Valais, performantes, éco-conçues et orientées résultats.">
+    content="Applications mobiles iOS, Android et PWA sur mesure à Crans-Montana : cadrage, développement, tests et accompagnement pour les PME du Valais.">
   <!-- <meta property="og:image" content="https://helveclick.ch/images/og-apps.jpg"> -->
   <meta property="og:site_name" content="Helveclick">
   <meta property="og:locale" content="fr_CH">
-  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:locale:alternate" content="en_CH">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Applications mobiles en Valais | Crans-Montana – Helveclick">
+  <meta name="twitter:title" content="Développement d’applications mobiles en Valais | Helveclick">
   <meta name="twitter:description"
-    content="Développement d’applications mobiles iOS/Android (native, hybride, PWA) à Crans-Montana en Valais. Sur mesure, UX soignée, SEO & performance.">
+    content="Applications mobiles iOS, Android et PWA sur mesure à Crans-Montana : cadrage, développement, tests et accompagnement pour les PME du Valais.">
   <!-- <meta name="twitter:image" content="https://helveclick.ch/images/og-apps.jpg"> -->
 
   <!-- Geolocation Tags -->
@@ -43,102 +43,90 @@
   <!-- <meta name="geo.position" content="46.309;7.478"> -->
   <!-- <meta name="ICBM" content="46.309, 7.478"> -->
 
-  <!-- Schema.org Script (organisation locale) -->
+  <!-- Données structurées : organisation, personne, service et page -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "ProfessionalService"],
-    "@id": "https://helveclick.ch/#org",
-    "name": "Helveclick",
-    "url": "https://helveclick.ch",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://helveclick.ch/public/assets/logo/logo-v8.svg"
-    },
-    "image": "https://helveclick.ch/public/assets/logo/logo-v8.svg",
-    "description": "Agence web à Crans-Montana (Valais, Suisse) : création de sites internet, développement d’applications mobiles et optimisation SEO avec une approche éco-responsable.",
-    "email": "info@helveclick.ch",
-    "telephone": "+41 78 894 09 87",
-    "priceRange": "$$",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Chemin du Mont-Paisible 1",
-      "addressLocality": "Crans-Montana",
-      "addressRegion": "Valais",
-      "postalCode": "3963",
-      "addressCountry": "CH"
-    },
-    "areaServed": [
-      { "@type": "AdministrativeArea", "name": "Valais" },
-      { "@type": "Country", "name": "Switzerland" }
-    ],
-    "sameAs": [
-      "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
-    ],
-    "contactPoint": [
+    "@graph": [
       {
-        "@type": "ContactPoint",
-        "contactType": "sales",
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": "https://helveclick.ch/#org",
+        "name": "HelveClick",
+        "url": "https://helveclick.ch/",
+        "logo": "https://helveclick.ch/public/assets/logo/logo-v8.svg",
+        "description": "Agence web à Crans-Montana, en Valais : sites web, applications mobiles, SaaS, SEO/GEO et solutions écoresponsables sur mesure pour les PME.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Chemin du Mont-Paisible 1",
+          "addressLocality": "Crans-Montana",
+          "addressRegion": "VS",
+          "postalCode": "3963",
+          "addressCountry": "CH"
+        },
         "telephone": "+41 78 894 09 87",
         "email": "info@helveclick.ch",
-        "areaServed": "CH-VS",
-        "availableLanguage": ["fr-CH", "fr", "en"]
+        "priceRange": "$$",
+        "areaServed": [
+          { "@type": "City", "name": "Crans-Montana" },
+          { "@type": "AdministrativeArea", "name": "Valais" },
+          { "@type": "Country", "name": "Suisse" }
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "telephone": "+41 78 894 09 87",
+          "email": "info@helveclick.ch",
+          "availableLanguage": ["fr", "en"]
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
+        ],
+        "founder": { "@id": "https://helveclick.ch/#guillaume-dupanloup" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://helveclick.ch/#guillaume-dupanloup",
+        "name": "Guillaume Dupanloup",
+        "jobTitle": "Développeur web et mobile freelance",
+        "url": "https://helveclick.ch/public/fr/a-propos.html",
+        "worksFor": { "@id": "https://helveclick.ch/#org" },
+        "sameAs": [
+          "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://helveclick.ch/public/fr/prestations/application-mobile.html#service",
+        "name": "Développement d’applications mobiles sur mesure",
+        "description": "Applications mobiles iOS, Android et PWA sur mesure à Crans-Montana : cadrage, développement, tests et accompagnement pour les PME du Valais.",
+        "provider": { "@id": "https://helveclick.ch/#org" },
+        "serviceType": "Développement d’applications mobiles",
+        "areaServed": [
+          { "@type": "City", "name": "Crans-Montana" },
+          { "@type": "AdministrativeArea", "name": "Valais" },
+          { "@type": "Country", "name": "Suisse" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Types d’applications mobiles proposés",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Application native iOS et Android avec Swift et Kotlin" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Application mobile React Native" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Progressive Web App (PWA)" } }
+          ]
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://helveclick.ch/public/fr/prestations/application-mobile.html#webpage",
+        "url": "https://helveclick.ch/public/fr/prestations/application-mobile.html",
+        "name": "Développement d’applications mobiles en Valais | Helveclick",
+        "description": "Applications mobiles iOS, Android et PWA sur mesure à Crans-Montana : cadrage, développement, tests et accompagnement pour les PME du Valais.",
+        "inLanguage": "fr-CH",
+        "about": { "@id": "https://helveclick.ch/public/fr/prestations/application-mobile.html#service" },
+        "isPartOf": { "@id": "https://helveclick.ch/#org" }
       }
     ]
-  }
-  </script>
-
-  <!-- Service spécifique de la page -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": "https://helveclick.ch/public/fr/prestations/application-mobile.html#service",
-    "name": "Développement d’application mobile",
-    "description": "Développement d’applications mobiles iOS/Android (natives, hybrides ou PWA) à Crans-Montana en Valais : sur mesure, performantes et éco-conçues.",
-    "provider": { "@id": "https://helveclick.ch/#org" },
-    "serviceType": "Développement d’application mobile",
-    "areaServed": [
-      { "@type": "AdministrativeArea", "name": "Valais" },
-      { "@type": "City", "name": "Crans-Montana" },
-      { "@type": "Country", "name": "Switzerland" }
-    ],
-    "offers": {
-      "@type": "Offer",
-      "url": "https://helveclick.ch/public/fr/prestations/application-mobile.html",
-      "priceCurrency": "CHF",
-      "availability": "https://schema.org/InStock"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Types d’applications mobiles",
-      "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Application native iOS/Android" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Application hybride" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Progressive Web App (PWA)" } }
-      ]
-    }
-  }
-  </script>
-
-  <!-- Données de la page + fil d'Ariane -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "@id": "https://helveclick.ch/public/fr/prestations/application-mobile.html#webpage",
-    "url": "https://helveclick.ch/public/fr/prestations/application-mobile.html",
-    "name": "Développement d’applications mobiles en Valais – Helveclick",
-    "inLanguage": "fr-CH",
-    "about": { "@id": "https://helveclick.ch/public/fr/prestations/application-mobile.html#service" },
-    "isPartOf": { "@id": "https://helveclick.ch/#org" },
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://helveclick.ch/" },
-        { "@type": "ListItem", "position": 2, "name": "Applications mobiles", "item": "https://helveclick.ch/public/fr/prestations/application-mobile.html" }
-      ]
-    }
   }
   </script>
 
@@ -155,15 +143,16 @@
 
 <body>
   <div class="page-container">
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
     <header>
       <div id="RC-navbar"></div>
     </header>
 
     <div id="RC-link-top-page"></div>
-    <main>
+    <main id="main-content" tabindex="-1">
       <!-- Part B: Hero Section -->
       <section class="flex-column-start-center hero-wrapper">
-        <img class="hero-logo" src="/assets/logo/helveclick-dark-ok.png " alt="Logo helveclick">
+        <img class="hero-logo" src="/assets/logo/helveclick-dark-ok.png" alt="Helveclick">
         <div class="flex-column-end-center hero-container">
       
           <img src="/assets/images/page-app/img-hero-1-app.webp"
@@ -174,20 +163,48 @@
       
           <div class="hero-container-title">
             <h1>
-              Applications mobiles
+              Développement d’applications mobiles
             </h1>
       
-            <h2 class="hero-subtitle">
+            <p class="hero-subtitle">
               <strong>
-                Applications iOS & Android sur mesure : native, hybride ou PWA<br> pour les entreprises valaisannes
+                Applications iOS, Android et PWA sur mesure<br> pour les PME du Valais
               </strong>
-            </h2>
+            </p>
           </div>
       
         </div>
       </section>
 
 
+
+      <section class="website-intro" aria-labelledby="mobile-intro-title">
+        <div class="website-intro-content">
+          <h2 id="mobile-intro-title">Une application pensée <strong>pour vos usages</strong></h2>
+          <p>
+            J’accompagne les PME qui ont besoin d’un service mobile clair, d’un outil métier ou d’un parcours plus
+            accessible à leurs clients. Les projets sont menés en <strong>Valais</strong>, avec un accompagnement à
+            distance possible dans le reste de la Suisse selon vos besoins.
+          </p>
+          <p>
+            Selon vos objectifs, l’application peut être développée nativement pour iOS et Android avec
+            <strong>Swift</strong> et <strong>Kotlin</strong>, avec <strong>React Native</strong>, ou sous la forme
+            d’une <strong>PWA</strong>.
+          </p>
+          <!-- <h3>Un projet cadré avant le développement</h3>
+          <ol>
+            <li>Identifier les utilisateurs, les parcours prioritaires et les contraintes du projet.</li>
+            <li>Choisir l’approche technique adaptée, puis définir les fonctionnalités et les données nécessaires.</li>
+            <li>Développer, tester, préparer la publication sur les stores et organiser les mises à jour utiles.</li>
+          </ol> -->
+          <p>
+            Une PWA ou le site associé peut aussi nécessiter une <a href="/public/fr/prestations/site-web.html">présence
+              web</a> et un <a href="/public/fr/prestations/seo.html">accompagnement SEO et GEO</a> dédiés. Ces sujets
+            sont traités selon les objectifs du projet, sans garantir de téléchargement, d’usage ou de conversion.
+            <a data-link="link-contact" href="/public/fr/contact.html">Parlons de votre projet mobile</a>.
+          </p>
+        </div>
+      </section>
 
       <!-- Services Section - using website-types structure -->
       <section class="website-types">
@@ -200,60 +217,52 @@
                   Natives</strong></h2>
               <div class="website-card">
                 <div class="card-image card-anim-1">
-                  <img src="/assets/images/page-app/img-card-native.webp" alt="Application native" loading="lazy">
+                  <img src="/assets/images/page-app/img-card-native.webp" alt="" loading="lazy" decoding="async">
                 </div>
                 <div class="card-content">
                   <p>
-                    Les <strong>applications natives</strong> sont conçues spécifiquement pour chaque plateforme&nbsp;:
-                    <strong>iOS</strong>
-                    (avec Swift) ou <strong>Android</strong> (avec Kotlin ou Java). Elles offrent les <strong>meilleures
-                      performances</strong> et une <strong>expérience utilisateur optimale</strong>, en exploitant
-                    pleinement les
-                    capacités de l’appareil.
+                    Les <strong>applications natives</strong> sont développées pour chaque plateforme :
+                    <strong>iOS</strong> avec Swift et <strong>Android</strong> avec Kotlin. Elles sont adaptées lorsque
+                    le projet nécessite une intégration poussée avec l’appareil, les fonctionnalités système ou des
+                    exigences de performance qui doivent être évaluées et testées sur les appareils ciblés.
                   </p>
                   <p>
-                    Elles sont idéales pour les projets <strong>complexes et exigeants</strong>, nécessitant une
-                    <strong>grande
-                      fluidité</strong>, un <strong>accès direct aux capteurs</strong> (caméra, GPS, accéléromètre,
-                    etc.) ou des
-                    interactions avancées avec le système.
+                    Cette approche permet de concevoir des parcours propres à chaque système, avec accès aux capteurs
+                    ou services nécessaires, par exemple la caméra, la géolocalisation ou les notifications. Elle
+                    implique aussi de cadrer les différences entre iOS et Android, les tests et la maintenance de chaque
+                    version.
                   </p>
 
-                  <a href="/fr/contact.html" class="btn btn-secondary"><span class="btn-secondary-small">Besoin
-                      d'une application&nbsp;native&nbsp;?</span> <br>
-                    Contactez-moi&nbsp;!</a>
+                  <a href="/public/fr/contact.html" class="btn btn-secondary"><span
+                      class="btn-secondary-small">Étudier une application<br>native</span> <br>
+                    Parlons de votre projet</a>
                 </div>
               </div>
             </div>
 
             <div class="website-card-container" id="website-card-container-2">
-              <h2 id="hybrid" class="item-menu-side" data-hero="Applications Hybrides"><strong>Applications
-                  Hybrides</strong></h2>
+              <h2 id="react-native" class="item-menu-side" data-hero="Applications React Native"><strong>Applications
+                  React Native</strong></h2>
               <div class="website-card">
                 <div class="card-image card-anim-2">
-                  <img src="/assets/images/page-app/img-card-hybrid.webp" alt="Application hybride" loading="lazy">
+                  <img src="/assets/images/page-app/img-card-hybrid.webp" alt="" loading="lazy" decoding="async">
                 </div>
                 <div class="card-content">
                   <p>
-                    Les <strong>applications hybrides</strong> combinent des technologies web et natives pour
-                    fonctionner sur plusieurs
-                    plateformes à partir d’un <strong>code source unique</strong>.Développées avec des frameworks comme
-                    <strong>React
-                      Native</strong> ou <strong>Flutter</strong>, elles offrent un excellent <strong>équilibre entre
-                      coût, rapidité de
-                      développement et performance</strong>.
+                    Une application <strong>React Native</strong> permet de partager une partie importante du code entre
+                    iOS et Android, tout en s’intégrant aux fonctionnalités natives lorsque le projet le requiert. Cette
+                    approche est étudiée lorsque les parcours, les intégrations et les contraintes de maintenance sont
+                    compatibles avec une base commune.
                   </p>
                   <p>
-                    Ce type d’application est particulièrement adapté aux <strong>startups</strong> et
-                    <strong>PME</strong> qui souhaitent
-                    <strong>lancer rapidement</strong> une application sur <strong>iOS et Android</strong> avec un
-                    <strong>budget
-                      maîtrisé</strong>, tout en garantissant une <strong>expérience utilisateur de qualité</strong>.
+                    Le cadrage précise les composants natifs éventuels, les appareils à prendre en charge, les tests et
+                    les mises à jour à prévoir. Le choix de React Native se fait en fonction de l’usage et du budget du
+                    projet, sans supposer qu’il convient à tous les besoins mobiles.
                   </p>
 
-                  <a href="/fr/contact.html" class="btn btn-secondary"><span class="btn-secondary-small">Besoin
-                      d'une application&nbsp;hybride&nbsp;?</span> <br>
-                    Contactez-moi&nbsp;!</a>
+                  <a href="/public/fr/contact.html" class="btn btn-secondary"><span
+                      class="btn-secondary-small">Étudier React Native<br>pour votre projet</span> <br>
+                    Parlons de vos besoins</a>
                 </div>
               </div>
             </div>
@@ -263,27 +272,24 @@
                   (PWA)</strong></h2>
               <div class="website-card">
                 <div class="card-image card-anim-1">
-                  <img src="/assets/images/page-app/img-card-pwa.webp" alt="Progressive Web App" loading="lazy">
+                  <img src="/assets/images/page-app/img-card-pwa.webp" alt="" loading="lazy" decoding="async">
                 </div>
                 <div class="card-content">
                   <p>
-                    Les <strong>PWA</strong> (Progressive Web Apps) sont des applications web qui offrent une expérience
-                    proche des
-                    <strong>applications natives</strong>&nbsp;: <strong>installation sur l’écran d’accueil</strong>,
-                    <strong>fonctionnement
-                      hors ligne</strong>, et <strong>notifications push</strong>. Elles combinent les <strong>atouts du
-                      web</strong>
-                    (accessibilité, référencement) et les fonctionnalités avancées du mobile.
+                    Les <strong>PWA</strong> (Progressive Web Apps) sont des applications web accessibles dans le
+                    navigateur. Selon les appareils et navigateurs pris en charge, elles peuvent proposer une
+                    installation, certaines fonctions hors ligne ou des notifications. Elles restent liées aux capacités
+                    du web et ne remplacent pas systématiquement une application distribuée sur les stores.
                   </p>
                   <p>
-                    Elles sont idéales pour les entreprises à la recherche d’une <strong>solution universelle et
-                      économique</strong>,
-                    accessible sur tous les appareils, sans passer par les <strong>stores d’applications</strong>.
+                    Une PWA est pertinente lorsque l’accessibilité web, la simplicité de diffusion et la cohérence avec
+                    un site existant priment. Le périmètre précise les navigateurs ciblés, les parcours hors ligne, les
+                    éventuelles fonctionnalités mobiles et la stratégie de visibilité web associée.
                   </p>
 
-                  <a href="/fr/contact.html" class="btn btn-secondary"><span class="btn-secondary-small">Besoin
-                      d'une&nbsp;PWA&nbsp;?</span> <br>
-                    Contactez-moi&nbsp;!</a>
+                  <a href="/public/fr/contact.html" class="btn btn-secondary"><span
+                      class="btn-secondary-small">Comparer PWA et<br>application mobile</span> <br>
+                    Échangeons ensemble</a>
                 </div>
               </div>
             </div>
@@ -296,53 +302,69 @@
         <div class="content-wrapper">
 
           <div class="eco-title-container">
-            <img class="eco-image" src="/assets/images/component/pommier-2.webp" alt="Éco-conception" loading="lazy">
+            <img class="eco-image" src="/assets/images/component/pommier-2.webp" alt="" loading="lazy" decoding="async">
             <h2 class="item-menu-side" data-hero="Applications éco-responsables">Applications
               <strong>éco&#8209;responsables</strong>
             </h2>
           </div>
           <p>
-            Je développe des applications mobiles en suivant les principes de <strong>l'éco&#8209;conception</strong>,
-            visant à réduire leur impact environnemental tout en améliorant leurs performances :
+            L’<strong>éco&#8209;conception</strong> consiste à adapter l’application aux usages réellement nécessaires et
+            à limiter les ressources inutiles. Elle guide les choix de fonctionnalités, de données et de médias, sans
+            constituer une certification ni garantir à elle seule un résultat environnemental ou technique.
           </p>
 
           <ul>
-            <li><strong>Optimisation des ressources.</strong> Pour réduire la consommation de batterie.</li>
-            <li><strong>Gestion efficace des données.</strong> Pour limiter les transferts réseau.</li>
-            <li><strong>Compression des médias.</strong> Pour réduire le poids de l'application.</li>
-            <li><strong>Code optimisé.</strong> Pour des performances maximales avec un minimum de ressources.</li>
-            <li><strong>Fonctionnement hors ligne.</strong> Quand c'est possible pour réduire la consommation de
-              données.</li>
+            <li><strong>Fonctionnalités utiles.</strong> Le périmètre privilégie les parcours qui apportent une valeur
+              réelle aux utilisateurs.</li>
+            <li><strong>Données et transferts maîtrisés.</strong> Les appels réseau, stockages et synchronisations sont
+              adaptés aux besoins du service.</li>
+            <li><strong>Médias adaptés.</strong> Les images, vidéos et ressources embarquées sont dimensionnées selon les
+              appareils et les connexions ciblés.</li>
+            <li><strong>Dépendances proportionnées.</strong> Les bibliothèques et services externes sont évalués au regard
+              de leur utilité, de leur maintenance et de leurs effets sur l’application.</li>
+            <li><strong>Hors ligne lorsque pertinent.</strong> Le cache ou certains parcours hors connexion sont étudiés
+              lorsqu’ils répondent à un besoin concret.</li>
           </ul>
-          <p>Une application éco-conçue est non seulement meilleure pour l'environnement, mais elle offre aussi
-            une
-            <strong>meilleure expérience utilisateur</strong> et une <strong>durée de vie de batterie
-              prolongée</strong>.
+          <p>
+            Les pratiques retenues dépendent du produit, des appareils supportés, du budget et des contraintes du
+            projet. Elles contribuent à une application plus sobre et plus maintenable, sans promettre une autonomie,
+            une performance ou une expérience utilisateur donnée.
           </p>
         </div>
       </section>
 
-      <section class="seo-section">
+      <section class="flex-column-start-center suivi-continu">
         <div class="content-wrapper">
           <div class="seo-title-container">
-            <img class="icon-seo" src="/assets/images/icons/setting.png" alt="Performance" loading="lazy">
             <h2 class="item-menu-side" data-hero="Performance et Expérience Utilisateur">Expérience Utilisateur et
               <strong>Performance</strong>
             </h2>
           </div>
-          <p>La performance est au cœur de mes développements mobiles&nbsp;:</p>
+          <p>
+            L’expérience utilisateur et la performance sont définies à partir des parcours prioritaires, des appareils
+            supportés et des contraintes de connexion. Elles sont vérifiées par des tests adaptés au projet, plutôt que
+            supposées à partir d’un seul indicateur.
+          </p>
           <ul>
-            <li><strong>Temps de démarrage rapide.</strong> Pour captiver l'utilisateur dès le lancement.</li>
-            <li><strong>Interfaces fluides.</strong> Sans latence ni saccades.</li>
-            <li><strong>Design intuitif.</strong> Suivant les guidelines de chaque plateforme.</li>
-            <li><strong>Optimisation des animations.</strong> Pour une expérience visuelle agréable.</li>
-            <li><strong>Tests rigoureux.</strong> Réalisés sur différents appareils et versions d'OS.</li>
-            <li><strong>Analyse des comportements utilisateurs.</strong> Pour améliorer continuellement
-              l'expérience.
+            <li><strong>Parcours clairs et accessibles.</strong> Les interfaces sont conçues autour des actions les plus
+              utiles, avec une attention portée à la lisibilité et aux retours d’état.</li>
+            <li><strong>Compatibilité ciblée.</strong> Les appareils, versions d’iOS et d’Android, navigateurs et tailles
+              d’écran à prendre en charge sont définis au cadrage.</li>
+            <li><strong>Temps de réponse observés.</strong> Les démarrages, chargements et interactions prioritaires sont
+              mesurés afin d’identifier les améliorations utiles.</li>
+            <li><strong>Réseau et erreurs gérés.</strong> Les états de chargement, erreurs et indisponibilités sont pris
+              en compte dans les parcours essentiels.</li>
+            <li><strong>Tests adaptés.</strong> Les fonctionnalités sont vérifiées sur des configurations représentatives
+              du périmètre défini avant publication ou mise à jour.</li>
+            <li><strong>Améliorations priorisées.</strong> Les retours et mesures disponibles servent à ajuster le produit
+              lorsque cela est prévu dans l’accompagnement.
             </li>
           </ul>
-          <p>Une application performante fidélise vos utilisateurs et <strong>améliore votre taux de
-              conversion</strong>.</p>
+          <p>
+            La qualité perçue dépend aussi du contenu, du service rendu et du contexte d’usage. Les optimisations
+            techniques facilitent les parcours, sans garantir à elles seules l’adoption, la fidélisation ou la
+            conversion.
+          </p>
         </div>
 
 
@@ -356,13 +378,17 @@
       <section class="flex-column-start-center faq-section">
 
         <div class="flex-row-center-center faq-container-title">
-          <img class="img-faq-personna" src="/assets/images/component/faq-personna.webp" alt="FAQ" loading="lazy">
+          <img class="img-faq-personna" src="/assets/images/component/faq-personna.webp" alt="" loading="lazy" decoding="async">
           <h2 id="faq" class="item-menu-side" data-hero="FAQ">Questions<strong> Fréquentes</strong></h2>
         </div>
         <ul class="flex-column-start-center faq-grid">
           <li class="faq-item">
-            <h3>Combien coûte le développement d'une application mobile&nbsp;?</h3>
-            <p>
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-prix" type="button" aria-expanded="false"
+                aria-controls="faq-answer-prix">Combien coûte le développement d'une application mobile&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-prix" role="region" aria-labelledby="faq-question-prix">
+              <p>
               Le tarif dépend de la <strong>complexité du projet</strong>, des <strong>fonctionnalités
                 souhaitées</strong> et du
               type de développement (natif, hybride, PWA). Une application simple démarre à partir de
@@ -370,46 +396,81 @@
               représenter un
               investissement de <strong>CHF&nbsp;20’000 ou plus</strong>. Je vous propose toujours un <strong>devis
                 détaillé</strong> après étude de vos besoins.
+              Ces montants constituent des ordres de grandeur indicatifs : le devis validé définit le périmètre, les
+              livrables, les coûts récurrents éventuels et le prix de référence du projet.
             </p>
+            </div>
           </li>
 
           <li class="faq-item">
-            <h3>Combien de temps faut-il pour développer une application mobile&nbsp;?</h3>
-            <p>
-              Le délai varie selon la complexité du projet. Une application simple peut être livrée en <strong>2 à 3
-                mois</strong>, une application de complexité moyenne en <strong>3 à 6 mois</strong>, et une application
-              complexe
-              peut prendre <strong>6 mois ou plus</strong>. Je vous fournis un <strong>calendrier réaliste</strong> avec
-              des
-              jalons clairs pour suivre l’avancement.
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-delais" type="button" aria-expanded="false"
+                aria-controls="faq-answer-delais">Combien de temps faut-il pour développer une application mobile&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-delais" role="region" aria-labelledby="faq-question-delais">
+              <p>
+              Les délais dépendent des fonctionnalités, des plateformes, du backend, des intégrations, des tests et des
+              validations sur les stores. À titre indicatif, une application simple peut demander environ
+              <strong>2 à 3 mois</strong>, un projet de complexité moyenne <strong>3 à 6 mois</strong> et un projet plus
+              complexe <strong>6 mois ou davantage</strong>. Ces fourchettes ne constituent pas un engagement : le
+              calendrier et les jalons de référence sont précisés dans le devis validé.
             </p>
+            </div>
           </li>
 
           <li class="faq-item">
-            <h3>Développez-vous pour iOS et Android&nbsp;?</h3>
-            <p>
-              Oui, je développe des applications pour <strong>iOS</strong> (iPhone, iPad) et <strong>Android</strong>.
-              Selon vos
-              objectifs, je peux proposer un <strong>développement natif</strong> pour chaque plateforme ou un
-              <strong>développement hybride</strong> (React Native, Flutter) pour mutualiser les coûts et accélérer les
-              délais.
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-plateformes" type="button" aria-expanded="false"
+                aria-controls="faq-answer-plateformes">Quelle technologie choisir entre une application native, React Native et une PWA&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-plateformes" role="region" aria-labelledby="faq-question-plateformes">
+              <p>
+              Le choix dépend des usages, des appareils visés, des intégrations et de la maintenance attendue. Une
+              application <strong>native</strong> utilise Swift pour iOS et Kotlin pour Android ; elle peut convenir
+              lorsque les capacités propres à chaque plateforme sont déterminantes. <strong>React Native</strong> permet
+              d’étudier un socle partagé pour iOS et Android. Une <strong>PWA</strong> est une application web
+              installable, dont les possibilités varient selon les navigateurs et les appareils. Le choix est arrêté
+              au cadrage du projet.
             </p>
+            </div>
           </li>
 
           <li class="faq-item">
-            <h3>Proposez-vous des services de maintenance après le lancement&nbsp;?</h3>
-            <p>
-              Oui, je propose plusieurs <strong>formules de maintenance</strong> pour assurer la
-              <strong>pérennité</strong> de
-              votre application : mises à jour pour les nouvelles versions iOS/Android, <strong>corrections de
-                bugs</strong>,
-              <strong>améliorations de performance</strong> et <strong>ajouts de petites fonctionnalités</strong>.
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-zone" type="button" aria-expanded="false"
+                aria-controls="faq-answer-zone">Accompagnez-vous les entreprises en Valais et dans le reste de la Suisse&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-zone" role="region" aria-labelledby="faq-question-zone">
+              <p>
+              Oui. J’accompagne les entreprises et organisations en <strong>Valais</strong>, notamment en proximité à
+              Crans-Montana, ainsi qu’à distance dans le reste de la <strong>Suisse</strong>. Le cadrage, les échanges,
+              les validations et le suivi sont adaptés à l’organisation du projet.
             </p>
+            </div>
           </li>
 
           <li class="faq-item">
-            <h3>Comment monétiser mon application mobile&nbsp;?</h3>
-            <p>
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-maintenance" type="button" aria-expanded="false"
+                aria-controls="faq-answer-maintenance">Proposez-vous des services de maintenance après le lancement&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-maintenance" role="region" aria-labelledby="faq-question-maintenance">
+              <p>
+              Oui, selon le périmètre défini. La maintenance peut couvrir les mises à jour liées aux nouvelles versions
+              d’iOS et d’Android, les corrections, l’évolution de dépendances, la publication de nouvelles versions sur
+              les stores et les améliorations priorisées. Les modalités, délais d’intervention et responsabilités sont
+              définis dans l’accord de maintenance ou le devis.
+            </p>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-monetisation" type="button" aria-expanded="false"
+                aria-controls="faq-answer-monetisation">Comment monétiser mon application mobile&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-monetisation" role="region" aria-labelledby="faq-question-monetisation">
+              <p>
               Plusieurs options sont possibles : <strong>achat initial</strong> (application payante), <strong>achats
                 intégrés</strong> (freemium), <strong>abonnement</strong> (SaaS), <strong>publicité</strong>, ou
               <strong>modèle
@@ -417,48 +478,63 @@
               <strong>stratégie la
                 plus adaptée</strong> à votre cible et à votre modèle économique.
             </p>
+            </div>
           </li>
 
           <li class="faq-item">
-            <h3>Comment se déroule la publication sur les stores ?</h3>
-            <p>
-              Je vous accompagne dans la <strong>publication sur l’App Store</strong> (iOS) et le <strong>Google Play
-                Store</strong> (Android). Cela comprend la préparation des visuels, la rédaction des fiches produits, la
-              configuration des paramètres, ainsi que la <strong>gestion des validations</strong>. L'application peut
-              être
-              publiée sous votre compte développeur ou je peux vous guider pour le créer.
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-stores" type="button" aria-expanded="false"
+                aria-controls="faq-answer-stores">Comment se déroule la publication sur les stores&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-stores" role="region" aria-labelledby="faq-question-stores">
+              <p>
+              Je vous accompagne dans la préparation et la publication sur l’<strong>App Store</strong> et le
+              <strong>Google Play Store</strong> : compte développeur du client, éléments de fiche, visuels,
+              paramétrage, versions et informations demandées par les plateformes. Apple et Google restent responsables
+              de leur processus de validation ; leur acceptation et leurs délais ne peuvent pas être garantis.
             </p>
+            </div>
           </li>
 
           <li class="faq-item">
-            <h3>Mon application aura-t-elle besoin d’un backend&nbsp;?</h3>
-            <p>
-              Cela dépend de ses fonctionnalités. Si votre application nécessite de <strong>stocker des
-                données</strong>, gérer
-              des <strong>comptes utilisateurs</strong>, des <strong>paiements</strong> ou une
-              <strong>synchronisation</strong>
-              entre appareils, un <strong>backend</strong> sera nécessaire. Je conçois des <strong>backends sécurisés et
-                sur
-                mesure</strong>, adaptés à vos besoins.
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-backend" type="button" aria-expanded="false"
+                aria-controls="faq-answer-backend">Mon application aura-t-elle besoin d’un backend&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-backend" role="region" aria-labelledby="faq-question-backend">
+              <p>
+              Cela dépend des fonctionnalités. Un backend peut être nécessaire pour stocker des données, gérer des
+              comptes utilisateurs, des paiements, des droits d’accès ou une synchronisation entre appareils. Son
+              architecture, son hébergement, ses coûts récurrents, ses accès et ses mesures de sécurité sont définis au
+              cadrage, en lien avec les besoins métier.
             </p>
+            </div>
           </li>
 
           <li class="faq-item">
-            <h3>Comment garantissez-vous la sécurité des données&nbsp;?</h3>
-            <p>
-              La <strong>sécurité</strong> est intégrée à chaque étape du développement. J’applique les
-              <strong>meilleures
-                pratiques</strong> : chiffrement des données sensibles, authentification sécurisée, protection contre
-              les
-              vulnérabilités, conformité RGPD, et <strong>tests de sécurité réguliers</strong>. Je vous conseille
-              également sur
-              la rédaction de la politique de confidentialité.
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-securite" type="button" aria-expanded="false"
+                aria-controls="faq-answer-securite">Comment la sécurité et la protection des données sont-elles prises en compte&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-securite" role="region" aria-labelledby="faq-question-securite">
+              <p>
+              La <strong>sécurité</strong> et la protection des données sont prises en compte dès le cadrage : données
+              minimisées, droits d’accès, authentification, chiffrement lorsque pertinent, dépendances maintenues et
+              tests adaptés au niveau de risque. La conformité dépend du traitement, des rôles et des marchés concernés.
+              Pour la Suisse, le projet doit notamment tenir compte de la <strong>Loi fédérale sur la protection des
+                données (LPD)</strong> ; le <strong>RGPD</strong> peut aussi s’appliquer selon le contexte. Une analyse
+              juridique spécifique reste de la responsabilité du client et de ses conseils.
             </p>
+            </div>
           </li>
 
           <li class="faq-item">
-            <h3>Pouvez-vous intégrer des fonctionnalités avancées&nbsp;?</h3>
-            <p>
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-fonctionnalites" type="button" aria-expanded="false"
+                aria-controls="faq-answer-fonctionnalites">Pouvez-vous intégrer des paiements, des notifications, de la géolocalisation ou un mode hors ligne&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-fonctionnalites" role="region" aria-labelledby="faq-question-fonctionnalites">
+              <p>
               Oui, je peux intégrer des fonctionnalités telles que : <strong>géolocalisation</strong>,
               <strong>notifications
                 push</strong>, <strong>paiements in-app</strong>, <strong>réalité augmentée</strong>,
@@ -466,31 +542,37 @@
                 d’image</strong>, <strong>messagerie</strong>, <strong>mode hors ligne</strong>, et bien plus. Chaque
               fonctionnalité est développée selon les <strong>standards des plateformes</strong>.
             </p>
+            </div>
           </li>
 
           <li class="faq-item">
-            <h3>Comment mesurez-vous le succès de l’application&nbsp;?</h3>
-            <p>
-              J’intègre des <strong>outils d’analyse</strong> (Firebase, Mixpanel, etc.) pour suivre les
-              <strong>indicateurs
-                clés</strong> : nombre d’utilisateurs actifs, taux de rétention, durée des sessions, parcours
-              utilisateurs,
-              conversions… Vous recevez des <strong>rapports réguliers</strong> accompagnés de recommandations pour
-              améliorer
-              l’application.
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-mesure" type="button" aria-expanded="false"
+                aria-controls="faq-answer-mesure">Comment mesurez-vous le succès de l’application&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-mesure" role="region" aria-labelledby="faq-question-mesure">
+              <p>
+              Les indicateurs sont définis selon les objectifs du produit : activation, parcours prioritaires,
+              stabilité, demandes de contact ou conversions, lorsque leur mesure est utile et configurée de manière
+              conforme. Les outils, données collectées, durées de conservation et modalités de suivi sont précisés dans
+              le périmètre du projet.
             </p>
+            </div>
           </li>
 
           <li class="faq-item">
-            <h3>Pourrai-je faire évoluer mon application plus tard&nbsp;?</h3>
-            <p>
-              Oui, toutes mes applications sont conçues pour être <strong>évolutives</strong>. Vous pouvez me contacter
-              à tout
-              moment pour <strong>ajouter de nouvelles fonctionnalités</strong> ou adapter l'application à de nouveaux
-              besoins.
-              Un devis vous sera proposé, et les mises à jour seront planifiées pour limiter l'impact sur vos
-              utilisateurs.
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-evolution" type="button" aria-expanded="false"
+                aria-controls="faq-answer-evolution">Pourrai-je faire évoluer mon application plus tard&nbsp;?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-evolution" role="region" aria-labelledby="faq-question-evolution">
+              <p>
+              L’architecture est pensée pour permettre les évolutions prévues au cadrage. De nouvelles fonctionnalités,
+              plateformes ou intégrations restent possibles après analyse de leur impact sur le code, les données, les
+              stores et les utilisateurs. Chaque évolution fait l’objet d’un périmètre, d’un devis et d’une planification
+              adaptés.
             </p>
+            </div>
           </li>
         </ul>
 
