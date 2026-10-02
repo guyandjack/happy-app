@@ -16,7 +16,7 @@
     display: none;
   }
 
- /*  main {
+  /*  main {
     background: var(--bg);
   } */
 
@@ -74,7 +74,7 @@
 
 
   /* Section 1: intro */
- /*  .about-text {
+  /*  .about-text {
 
     background-color: rgba(map-get($colors-rule, bg-page-shade-light-4), 1);
   } */
@@ -82,43 +82,53 @@
   .wrapper-about-text {
     gap: 1rem;
     max-width: 72ch;
-    //color: rgba(map-get($colors-rule, first-color), 0.8);
+    color: rgba(map-get($colors-rule, first-color), 0.8);
+
+    & p {
+
+      line-height: 2;
+    }
+
+    & strong {
+
+      color: map-get($colors-rule, first-color);
+    }
 
     & a {
-    
-        position: relative;
-        display: inline block;
-        z-index: 1;
-        color: rgba(map-get($colors-rule, first-color),1);
-    
-        &::before {
-          content: "";
-          position: absolute;
-          z-index: -1;
-          left: 0px;
-          width: 100%;
-          height: 1px;
-          bottom: 0px;
-          background: map-get($colors-rule, first-color);
-          transition: height 0.2s linear;
-        }
-    
-    
-        &:hover::before {
-          background: map-get($colors-rule, link-color);
-          opacity: 0.9;
-          height: 6px;
-          bottom: 60%;
-          transition: height 0.2s linear;
-    
-        }
-    
-    
-    
+
+      position: relative;
+      display: inline block;
+      z-index: 1;
+      color: rgba(map-get($colors-rule, first-color), 1);
+
+      &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 0px;
+        width: 100%;
+        height: 1px;
+        bottom: 0px;
+        background: map-get($colors-rule, first-color);
+        transition: height 0.2s linear;
       }
-    
-      
-    
+
+
+      &:hover::before {
+        background: map-get($colors-rule, link-color);
+        opacity: 0.9;
+        height: 6px;
+        bottom: 60%;
+        transition: height 0.2s linear;
+
+      }
+
+
+
+    }
+
+
+
   }
 
   .about-image {
@@ -131,8 +141,23 @@
 
   /* Section 2: charte */
   .about-charte {
+    color: rgba(map-get($colors-rule, first-color), 0.8);
 
-    //background-color: map-get($colors-rule, bg-page-shade-light-4);
+    h2 strong{
+
+      color: map-get($colors-rule, second-color);
+
+    }
+
+    & p {
+
+      line-height: 2;
+    }
+
+    & strong {
+
+      color: map-get($colors-rule, first-color);
+    }
 
     a {
 
@@ -210,37 +235,37 @@
     .diagram-description:nth-child(1) {
       grid-column: 3 / span 2;
       grid-row: 1;
-      border-left: 4px solid rgba(map-get($colors-rule, third-color), 0.9);
+      border-left: 6px solid rgba(map-get($colors-rule, fourth-color), 0.9);
     }
 
     .diagram-description:nth-child(2) {
       grid-column: 2 / span 2;
       grid-row: 2;
-      border-left: 4px solid rgba(map-get($colors-rule, second-color), 0.9);
+      border-left: 6px solid rgba(map-get($colors-rule, second-color), 0.9);
     }
 
     .diagram-description:nth-child(3) {
       grid-column: 4 / span 2;
       grid-row: 2;
-      border-left: 4px solid rgba(map-get($colors-rule, second-color), 0.9);
+      border-left: 6px solid rgba(map-get($colors-rule, second-color), 0.9);
     }
 
     .diagram-description:nth-child(4) {
       grid-column: 1 / span 2;
       grid-row: 3;
-      border-left: 4px solid rgba(map-get($colors-rule, first-color), 0.9);
+      border-left: 6px solid rgba(map-get($colors-rule, third-color), 0.9);
     }
 
     .diagram-description:nth-child(5) {
       grid-column: 3 / span 2;
       grid-row: 3;
-      border-left: 4px solid rgba(map-get($colors-rule, first-color), 0.9);
+      border-left: 6px solid rgba(map-get($colors-rule, third-color), 0.9);
     }
 
     .diagram-description:nth-child(6) {
       grid-column: 5 / span 2;
       grid-row: 3;
-      border-left: 4px solid rgba(map-get($colors-rule, first-color), 0.9);
+      border-left: 6px solid rgba(map-get($colors-rule, third-color), 0.9);
     }
   }
 
@@ -282,7 +307,7 @@
   }
 
   /* Section 3: process */
- /*  .about-process {
+  /*  .about-process {
 
     background-color: map-get($colors-rule, bg-page-shade-light-4);
   } */
@@ -300,6 +325,13 @@
     grid-column: 1 / -1;
     max-width: 86ch;
     margin-bottom: 0.25rem;
+    color: rgba(map-get($colors-rule, first-color), 0.8);
+    line-height: 2;
+    & strong{
+    color: map-get($colors-rule, first-color);
+
+    }
+
   }
 
   /* Desktop: max 3 colonnes, puis 2 cartes réparties sur la largeur (5 étapes) */
@@ -331,7 +363,7 @@
       border-color 200ms ease;
   }
 
-  
+
 
 
 
@@ -345,15 +377,15 @@
     pointer-events: none;
   }
 
-    .process-icon {
-      position: absolute;
-      right: 0.8rem;
-      top: 0.8rem;
-      width: 300px;
-      height: 300px;
-      fill: rgba(23, 23, 23, 0.32);
-      opacity: 0.15;
-    }
+  .process-icon {
+    position: absolute;
+    right: 0.8rem;
+    top: 0.8rem;
+    width: 300px;
+    height: 300px;
+    fill: rgba(23, 23, 23, 0.32);
+    opacity: 0.15;
+  }
 
   .step-number {
     position: absolute;
@@ -385,8 +417,13 @@
   }
 
   .process-step p {
-    //color: rgba(23, 23, 23, 0.72);
     line-height: 1.75;
+    color: rgba(map-get($colors-rule, first-color),0.8);
+    & strong{
+      
+      color: rgba(map-get($colors-rule, first-color),1);
+
+    }
   }
 
 

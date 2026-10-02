@@ -66,8 +66,8 @@
 }
 .page-container {
   /*  main {
-     background: var(--bg);
-   } */
+    background: var(--bg);
+  } */
   /* Container commun aux sections */
 }
 .page-container .about-text,
@@ -118,12 +118,19 @@
   /* Section 1: intro */
   /*  .about-text {
 
-     background-color: rgba(map-get($colors-rule, bg-page-shade-light-4), 1);
-   } */
+    background-color: rgba(map-get($colors-rule, bg-page-shade-light-4), 1);
+  } */
 }
 .page-container .wrapper-about-text {
   gap: 1rem;
   max-width: 72ch;
+  color: rgba(26, 22, 39, 0.8);
+}
+.page-container .wrapper-about-text p {
+  line-height: 2;
+}
+.page-container .wrapper-about-text strong {
+  color: #1a1627;
 }
 .page-container .wrapper-about-text a {
   position: relative;
@@ -158,6 +165,18 @@
 }
 .page-container {
   /* Section 2: charte */
+}
+.page-container .about-charte {
+  color: rgba(26, 22, 39, 0.8);
+}
+.page-container .about-charte h2 strong {
+  color: #00d4ff;
+}
+.page-container .about-charte p {
+  line-height: 2;
+}
+.page-container .about-charte strong {
+  color: #1a1627;
 }
 .page-container .about-charte a {
   position: relative;
@@ -223,32 +242,32 @@
   .page-container .diagram-description:nth-child(1) {
     grid-column: 3/span 2;
     grid-row: 1;
-    border-left: 4px solid rgba(0, 189, 182, 0.9);
+    border-left: 6px solid rgba(249, 110, 70, 0.9);
   }
   .page-container .diagram-description:nth-child(2) {
     grid-column: 2/span 2;
     grid-row: 2;
-    border-left: 4px solid rgba(0, 212, 255, 0.9);
+    border-left: 6px solid rgba(0, 212, 255, 0.9);
   }
   .page-container .diagram-description:nth-child(3) {
     grid-column: 4/span 2;
     grid-row: 2;
-    border-left: 4px solid rgba(0, 212, 255, 0.9);
+    border-left: 6px solid rgba(0, 212, 255, 0.9);
   }
   .page-container .diagram-description:nth-child(4) {
     grid-column: 1/span 2;
     grid-row: 3;
-    border-left: 4px solid rgba(26, 22, 39, 0.9);
+    border-left: 6px solid rgba(0, 189, 182, 0.9);
   }
   .page-container .diagram-description:nth-child(5) {
     grid-column: 3/span 2;
     grid-row: 3;
-    border-left: 4px solid rgba(26, 22, 39, 0.9);
+    border-left: 6px solid rgba(0, 189, 182, 0.9);
   }
   .page-container .diagram-description:nth-child(6) {
     grid-column: 5/span 2;
     grid-row: 3;
-    border-left: 4px solid rgba(26, 22, 39, 0.9);
+    border-left: 6px solid rgba(0, 189, 182, 0.9);
   }
 }
 .page-container .diagram-description {
@@ -290,8 +309,8 @@
   /* Section 3: process */
   /*  .about-process {
 
-     background-color: map-get($colors-rule, bg-page-shade-light-4);
-   } */
+    background-color: map-get($colors-rule, bg-page-shade-light-4);
+  } */
 }
 .page-container .process-steps {
   display: grid;
@@ -305,6 +324,11 @@
   grid-column: 1/-1;
   max-width: 86ch;
   margin-bottom: 0.25rem;
+  color: rgba(26, 22, 39, 0.8);
+  line-height: 2;
+}
+.page-container .process-steps > p strong {
+  color: #1a1627;
 }
 .page-container {
   /* Desktop: max 3 colonnes, puis 2 cartes réparties sur la largeur (5 étapes) */
@@ -386,6 +410,10 @@
 }
 .page-container .process-step p {
   line-height: 1.75;
+  color: rgba(26, 22, 39, 0.8);
+}
+.page-container .process-step p strong {
+  color: #1a1627;
 }
 @media (prefers-reduced-motion: reduce) {
   .page-container .process-step,
