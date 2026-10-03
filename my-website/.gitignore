@@ -38,4 +38,5 @@ backend/public.key
 .map
 public/fr/articles
 public/en/articles
+public/assets/articles
 

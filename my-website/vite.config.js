@@ -186,12 +186,60 @@ function publishGeneratedArticlePages() {
   };
 }
 
+/**
+ * Articles created from the local dashboard are runtime content, not frontend
+ * source code. Do not publish them with a frontend build: production articles
+ * are written later by the production API into its configured document root.
+ *
+ * This intentionally cleans only `dist`, never `public`, so local test
+ * articles and their images remain available to developers.
+ */
+function excludeLocalArticleDrafts() {
+  return {
+    name: "exclude-local-article-drafts",
+    apply: "build",
+    closeBundle() {
+      const outputDirectory = path.resolve(__dirname, "./dist");
+      const articleDirectories = [
+        path.join(outputDirectory, "assets", "articles"),
+        path.join(outputDirectory, "fr", "articles"),
+        path.join(outputDirectory, "en", "articles"),
+      ];
+      articleDirectories.forEach((directory) => {
+        rmSync(directory, { recursive: true, force: true });
+      });
+
+      const staticListPattern =
+        /(<!--\s*STATIC_ARTICLE_LINKS_START\b[^>]*-->[\s\S]*?<ul[^>]*\bstatic-article-links-list\b[^>]*>)[\s\S]*?(<\/ul>\s*<!--\s*STATIC_ARTICLE_LINKS_END\s*-->)/;
+      ["fr", "en"].forEach((language) => {
+        const listPath = path.join(outputDirectory, language, "articles-list.html");
+        if (!existsSync(listPath)) return;
+
+        const source = readFileSync(listPath, "utf8");
+        const cleaned = source.replace(staticListPattern, "$1\n            $2");
+        writeFileSync(listPath, cleaned, "utf8");
+      });
+
+      const sitemapPath = path.join(outputDirectory, "sitemap.xml");
+      if (existsSync(sitemapPath)) {
+        const source = readFileSync(sitemapPath, "utf8");
+        const cleaned = source.replace(
+          /\s*<url>\s*<loc>https:\/\/helveclick\.ch\/(?:fr|en)\/articles\/[^<]+<\/loc>[\s\S]*?<\/url>/g,
+          ""
+        );
+        writeFileSync(sitemapPath, cleaned, "utf8");
+      }
+    },
+  };
+}
+
 export default defineConfig({
   plugins: [
     react(),
     transformPublicHtmlInDevelopment(),
     publishSeoFiles(),
     publishGeneratedArticlePages(),
+    excludeLocalArticleDrafts(),
   ],
   resolve: {
     alias: {
