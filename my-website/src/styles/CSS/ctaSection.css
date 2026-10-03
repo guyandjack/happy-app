@@ -166,7 +166,7 @@
 }
 .cta-section .text-link-cta {
   position: relative;
-  display: inline block;
+  display: inline-block;
   z-index: 1;
   color: rgba(254, 254, 253, 0.9);
   -webkit-transition: color 0.2s linear;

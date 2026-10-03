@@ -73,12 +73,15 @@
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   background-color: #fefefd;
   margin: 20px;
-}
-.card-link:hover .card-content .card-button {
-  opacity: 1;
-  -webkit-transform: translateY(50px);
-      -ms-transform: translateY(50px);
+  /*  .card-content {
+
+      .card-button {
+
+          opacity: 1;
           transform: translateY(50px);
+          //background-color: map-get($colors-rule, link-color-hover);
+      }
+  } */
 }
 
 .card-image-container {
@@ -99,20 +102,21 @@
 }
 .card-image-container {
   /*  .card-overlay {
-       position: absolute;
-       top: 0;
-       left: 0;
-       right: 0;
-       bottom: 0;
-       background: linear-gradient(to left, rgba(map-get($colors-rule, second-color), 1) 0%, rgba(map-get($colors-rule, second-color), 0.3) 100%);
-       opacity: 0.5;
-       transition: opacity 0.3s ease;
-   } */
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to left, rgba(map-get($colors-rule, second-color), 1) 0%, rgba(map-get($colors-rule, second-color), 0.3) 100%);
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+  } */
 }
 
 .card-content {
   padding: 24px;
   height: 320px;
+  position: relative;
 }
 .card-content .card-title {
   margin-bottom: 12px;
@@ -128,8 +132,7 @@
 }
 .card-content .card-button {
   position: absolute;
-  z-index: -1;
-  top: 150px;
+  top: 0px;
   left: 10px;
   background-color: #04b6d4;
   color: #fefefd;
@@ -139,13 +142,15 @@
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  opacity: 0;
   /*  width: 120px;
-   height: 120px; */
+  height: 120px; */
   text-align: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
   -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
   transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -161,13 +166,14 @@
   z-index: 1;
   width: 50%;
   max-width: 200px;
-  padding: 12px 24px;
+  padding: 8px 16px;
   margin-left: 24px;
   background-color: #a855f7;
   color: #fefefd;
   border: 2px solid transparent;
   border-radius: 6px;
-  font-weight: 800;
+  font-weight: 600;
+  font-size: 1rem;
   text-transform: uppercase;
   text-align: center;
   cursor: pointer;
@@ -201,19 +207,23 @@
   }
   .card-link:hover {
     /*  .card-overlay {
-         opacity: 1;
-     } */
+        opacity: 1;
+    } */
   }
-  /* .card-content {
-      .card-button {
-          &:hover {
-              background-color: transparent;
-              color: rgba(map-get($colors-rule, first-color), 0.9);
-              border: 2px solid rgba(map-get($colors-rule, first-color), 0.9);
-              transform: translateY(-2px);
-          }
-      }
-  }  */
+  .card-link .card-content .card-button {
+    opacity: 0;
+    -webkit-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+  .card-link:hover .card-content .card-button {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+            transform: translateY(0%);
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+  }
   .card-button-contact:hover {
     color: #9333ea;
     border: 2px solid #9333ea;

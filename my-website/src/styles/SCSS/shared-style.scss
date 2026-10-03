@@ -490,7 +490,7 @@ main {
         //border: 1px solid blue;
         // The illustration can be hidden depending on the viewport; avoid reserving empty space above the title.
         height: auto;
-        margin-bottom: 50px;
+        //margin-bottom: 50px;
         gap: 50px;
 
 
@@ -595,15 +595,11 @@ main {
 
             .faq-question {
                 display: block;
-                width: 90%;
-                border: 0;
-                background: transparent;
-                font-size: 1rem;
-                font-family: inherit;
+                width: 80%;
                 margin-bottom: 0;
-                color: map-get($colors-rule, fifth-color);
+                color: rgba(map-get($colors-rule, first-color),0.8);
                 position: relative;
-                padding-left: 35px;
+                padding-left: 0px;
                 cursor: pointer;
                 user-select: none;
                 text-align: left;
@@ -625,7 +621,7 @@ main {
                 &:hover,
                 &.expanded {
                     //color: darken(map-get($colors-rule, second-color),15%);
-                    color: map-get($colors-rule, third-color);
+                    color: map-get($colors-rule, actif-link-color);
                 }
 
                 &:focus-visible {
@@ -665,9 +661,6 @@ main {
                 height: fit-content;
                 margin-top: 20px;
                 transition: max-height 0.25s ease;
-
-
-
 
             }
 

@@ -98,18 +98,19 @@
   .index-cards-wrapper {
     .card-container {
       .cards-list {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 500px);
+        //border: 2px solid blue;
       }
     }
   }
 }
 
-@media (min-width: 1800px) {
+ @media (min-width: 1300px) {
   .index-cards-wrapper {
     .card-container {
       .cards-list {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 700px);
       }
     }
   }
-}
+} 

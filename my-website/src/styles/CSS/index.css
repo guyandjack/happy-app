@@ -503,6 +503,20 @@
   position: relative;
   width: 100%;
   padding: 20px;
+  margin: 50px 0px;
+  border-radius: 1rem;
+}
+.why-green-click .why-choose #why-choose-card-wrapper-1 {
+  background-color: rgba(0, 212, 255, 0.8);
+}
+.why-green-click .why-choose #why-choose-card-wrapper-2 {
+  background-color: rgba(249, 110, 70, 0.8);
+}
+.why-green-click .why-choose #why-choose-card-wrapper-3 {
+  background-color: rgba(0, 189, 182, 0.8);
+}
+.why-green-click .why-choose #why-choose-card-wrapper-4 {
+  background-color: rgba(253, 197, 0, 0.8);
 }
 .why-green-click .why-choose h3 {
   position: relative;
@@ -524,24 +538,31 @@
   height: 2px;
   background-color: #fefefd;
 }
-.why-green-click .why-choose #why-choose-card-1 {
-  color: #f96e46;
-}
+.why-green-click .why-choose #why-choose-card-1,
+.why-green-click .why-choose #why-choose-card-2,
+.why-green-click .why-choose #why-choose-card-2,
 .why-green-click .why-choose #why-choose-card-2 {
-  color: #00d4ff;
+  color: #fefefd;
 }
-.why-green-click .why-choose #why-choose-card-3 {
-  color: #edd83d;
-}
-.why-green-click .why-choose #why-choose-card-4 {
-  color: #00bdb6;
+.why-green-click .why-choose {
+  /* #why-choose-card-2 {
+    color: map-get($colors-rule, fourth-color);
+  }
+
+  #why-choose-card-3 {
+    color: map-get($colors-rule, third-color);
+  }
+
+  #why-choose-card-4 {
+    color: map-get($colors-rule, height-color);
+  } */
 }
 .why-green-click .why-choose p {
   font-size: 1rem;
   line-height: 1.8;
   position: relative;
   padding: 20px 30px;
-  background-color: rgba(26, 22, 39, 0.8);
+  color: rgba(26, 22, 39, 0.8);
   border-radius: 15px;
   -webkit-transition: -webkit-transform 0.3s ease;
   transition: -webkit-transform 0.3s ease;
@@ -569,31 +590,34 @@
   -webkit-transition: height 0.2s linear;
   transition: height 0.2s linear;
 }
-.why-green-click .why-choose p a:hover::before {
-  background: #04b6d4;
-  opacity: 0.9;
-  height: 6px;
-  bottom: 60%;
-  -webkit-transition: height 0.2s linear;
-  transition: height 0.2s linear;
-}
 .why-green-click .why-choose #why-choose-card-1-p,
 .why-green-click .why-choose #why-choose-card-2-p,
 .why-green-click .why-choose #why-choose-card-3-p,
 .why-green-click .why-choose #why-choose-card-4-p {
-  color: #1a1627;
+  color: rgba(26, 22, 39, 0.9);
 }
-.why-green-click .why-choose #why-choose-card-1-p {
-  background-color: rgba(249, 110, 70, 0.05);
+.why-green-click .why-choose #why-choose-card-1-p strong,
+.why-green-click .why-choose #why-choose-card-2-p strong,
+.why-green-click .why-choose #why-choose-card-3-p strong,
+.why-green-click .why-choose #why-choose-card-4-p strong {
+  color: #fefefd;
 }
-.why-green-click .why-choose #why-choose-card-2-p {
-  background-color: rgba(0, 212, 255, 0.05);
-}
-.why-green-click .why-choose #why-choose-card-3-p {
-  background-color: rgba(237, 216, 61, 0.05);
-}
-.why-green-click .why-choose #why-choose-card-4-p {
-  background-color: rgba(0, 189, 182, 0.05);
+.why-green-click .why-choose {
+  /* #why-choose-card-1-p {
+    background-color: rgba(map-get($colors-rule, second-color), 0.2);
+  }
+
+  #why-choose-card-2-p {
+    background-color: rgba(map-get($colors-rule, fourth-color), 0.2);
+  }
+
+  #why-choose-card-3-p {
+    background-color: rgba(map-get($colors-rule, third-color), 0.2);
+  }
+
+  #why-choose-card-4-p {
+    background-color: rgba(map-get($colors-rule, height-color), 0.2);
+  } */
 }
 .why-green-click .why-choose .img-why-card {
   display: none;
@@ -635,6 +659,12 @@
             align-items: flex-start;
     height: 600px;
   }
+  .why-green-click .why-choose #why-choose-card-wrapper-1,
+  .why-green-click .why-choose #why-choose-card-wrapper-2,
+  .why-green-click .why-choose #why-choose-card-wrapper-3,
+  .why-green-click .why-choose #why-choose-card-wrapper-4 {
+    background-color: transparent;
+  }
   .why-green-click .why-choose h3 {
     position: absolute;
     top: 0%;
@@ -643,15 +673,18 @@
     width: 40%;
     margin: 0px;
     z-index: 15;
+    border-radius: 1rem;
   }
   .why-green-click .why-choose h3::before {
     display: none;
   }
-  .why-green-click .why-choose #why-choose-card-1,
-  .why-green-click .why-choose #why-choose-card-2,
-  .why-green-click .why-choose #why-choose-card-3,
-  .why-green-click .why-choose #why-choose-card-4 {
-    color: #fefefd;
+  .why-green-click .why-choose {
+    /* #why-choose-card-1,
+    #why-choose-card-2,
+    #why-choose-card-3,
+    #why-choose-card-4 {
+      color: map-get($colors-rule, sixth-color);
+    } */
   }
   .why-green-click .why-choose #why-choose-card-1 {
     background: #00d4ff;
@@ -660,10 +693,10 @@
     background: #f96e46;
   }
   .why-green-click .why-choose #why-choose-card-3 {
-    background: #edd83d;
+    background: #00bdb6;
   }
   .why-green-click .why-choose #why-choose-card-4 {
-    background: #00bdb6;
+    background: #fdc500;
   }
   .why-green-click .why-choose p {
     position: absolute;
@@ -694,12 +727,19 @@
     width: 8px;
     height: 50px;
   }
-  .why-green-click .why-choose #why-choose-card-1-p,
-  .why-green-click .why-choose #why-choose-card-2-p,
-  .why-green-click .why-choose #why-choose-card-3-p,
-  .why-green-click .why-choose #why-choose-card-4-p {
-    background-color: rgba(26, 22, 39, 0);
-    color: rgba(26, 22, 39, 0.9);
+  .why-green-click .why-choose p a:hover::before {
+    background: #04b6d4;
+    opacity: 0.9;
+    height: 6px;
+    bottom: 60%;
+    -webkit-transition: height 0.2s linear;
+    transition: height 0.2s linear;
+  }
+  .why-green-click .why-choose #why-choose-card-1-p strong,
+  .why-green-click .why-choose #why-choose-card-2-p strong,
+  .why-green-click .why-choose #why-choose-card-3-p strong,
+  .why-green-click .why-choose #why-choose-card-4-p strong {
+    color: #00d4ff;
   }
   .why-green-click .why-choose #why-choose-card-1-p::after, .why-green-click .why-choose #why-choose-card-1-p::before {
     background: #00d4ff;
@@ -708,10 +748,10 @@
     background: #f96e46;
   }
   .why-green-click .why-choose #why-choose-card-3-p::after, .why-green-click .why-choose #why-choose-card-3-p::before {
-    background: #edd83d;
+    background: #00bdb6;
   }
   .why-green-click .why-choose #why-choose-card-4-p::after, .why-green-click .why-choose #why-choose-card-4-p::before {
-    background: #00bdb6;
+    background: #fdc500;
   }
   .why-green-click .why-choose .img-why-card {
     display: block;
@@ -739,14 +779,14 @@
     transform: rotate(-20deg); */
   }
   .why-green-click .why-choose #img-why-card-3 {
-    background-image: url("/assets/images/page-index/why-choose-img-card-3.webp");
+    background-image: url("/assets/images/page-index/why-choose-img-card-4.webp");
     /* left: 20%;
     top: 40%; */
     /* border-left: 12px solid map-get($colors-rule, third-color);
     border-radius: 50%; */
   }
   .why-green-click .why-choose #img-why-card-4 {
-    background-image: url("/assets/images/page-index/why-choose-img-card-4.webp");
+    background-image: url("/assets/images/page-index/why-choose-img-card-3.webp");
     /* left: 20%;
     top: 30%; */
   }
@@ -789,8 +829,8 @@
 .creations .list-creation a:hover::before {
   background-color: #cb04a5;
   /*   opacity: 0.9;
-  height: 6px;
-  bottom: 60%; */
+    height: 6px;
+    bottom: 60%; */
   -webkit-transition: background-color 0.2s linear;
   transition: background-color 0.2s linear;
 }
@@ -800,32 +840,34 @@
 
 #RC-cta-section {
   width: 100%;
-  padding: 120px 15px clamp(5rem, 9vw, 7.5rem);
 }
 #RC-cta-section .cta-section {
   margin: 0 auto;
-}
-#RC-cta-section .cta-section > h2 {
-  margin-bottom: clamp(2rem, 4vw, 3.75rem);
-}
-
-.faq-section {
-  padding: 120px 20px clamp(5rem, 9vw, 7.5rem);
-}
-.faq-section .faq-container-title {
-  margin-bottom: 120px;
+  /*&>h2 {
+     // margin-bottom: $index-title-content-space;
+    }
+  }*/
 }
 
-@media (min-width: 768px) {
+/*.faq-section {
+  //padding: $index-section-title-offset 20px $index-section-space;
+
+   .faq-container-title {
+    margin-bottom: 120px;
+  } 
+}*/
+/*@media (min-width: 768px) {
   #RC-cta-section {
     padding-inline: 30px;
   }
+
   .faq-section {
     padding-inline: 50px;
   }
 }
+
 @media (min-width: 992px) {
   #RC-cta-section {
     padding-inline: 50px;
   }
-}
+}*/

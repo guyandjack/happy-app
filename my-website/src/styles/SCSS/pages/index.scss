@@ -74,8 +74,8 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
 
   .hero-index-title-h1 {
-    
-    
+
+
     font-family: 'Madimi', sans-serif;
     font-size: clamp(1.9rem, 7vw, 3.2rem);
     font-weight: 800;
@@ -131,18 +131,21 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
   }
 
   // Keeps the hero links' existing spacing without using heading elements as layout containers.
-   #hero-index-service-item-1 {
+  #hero-index-service-item-1 {
     margin-left: -40px;
-  } 
-   #hero-index-service-item-2 {
+  }
+
+  #hero-index-service-item-2 {
     margin-left: 40px;
-  } 
-   #hero-index-service-item-3 {
+  }
+
+  #hero-index-service-item-3 {
     margin-left: -40px;
-  } 
-   #hero-index-service-item-4 {
+  }
+
+  #hero-index-service-item-4 {
     margin-left: 40px;
-  } 
+  }
 
   .hero-index-link {
     position: relative;
@@ -304,13 +307,13 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
     flex-direction: row;
     justify-content: space-evenly;
     //border: 2px solid red;
-    
+
     gap: 3rem;
-    
+
     .hero-index-wrapper {
       //border: 2px solid blue;
       height: 50%;
-      
+
     }
 
 
@@ -544,7 +547,25 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
       width: 100%;
       padding: 20px;
       //border: 1px solid green;
+      margin: 50px 0px;
+      border-radius: 1rem;
 
+    }
+
+    #why-choose-card-wrapper-1 {
+      background-color: rgba(map-get($colors-rule, second-color), 0.8);
+    }
+
+    #why-choose-card-wrapper-2 {
+      background-color: rgba(map-get($colors-rule, fourth-color), 0.8);
+    }
+
+    #why-choose-card-wrapper-3 {
+      background-color: rgba(map-get($colors-rule, third-color), 0.8);
+    }
+
+    #why-choose-card-wrapper-4 {
+      background-color: rgba(map-get($colors-rule, height-color), 0.8);
     }
 
     h3 {
@@ -579,21 +600,27 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
     }
 
-    #why-choose-card-1 {
+    //titre h3
+    #why-choose-card-1,
+    #why-choose-card-2,
+    #why-choose-card-2,
+    #why-choose-card-2 {
+
+      color: map-get($colors-rule, sixth-color);
+    }
+
+
+    /* #why-choose-card-2 {
       color: map-get($colors-rule, fourth-color);
     }
 
-    #why-choose-card-2 {
-      color: map-get($colors-rule, second-color);
-    }
-
     #why-choose-card-3 {
-      color: map-get($colors-rule, height-color);
+      color: map-get($colors-rule, third-color);
     }
 
     #why-choose-card-4 {
-      color: map-get($colors-rule, third-color);
-    }
+      color: map-get($colors-rule, height-color);
+    } */
 
 
 
@@ -603,7 +630,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
       position: relative;
       //z-index: -1;
       padding: 20px 30px;
-      background-color: rgba(map-get($colors-rule, first-color), 0.8);
+      color: rgba(map-get($colors-rule, first-color), 0.8);
       border-radius: 15px;
       //backdrop-filter: blur(10px);
       transition: transform 0.3s ease;
@@ -615,7 +642,6 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
       }
 
       a {
-
         position: relative;
         display: inline block;
         z-index: 1;
@@ -632,44 +658,37 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
           background: map-get($colors-rule, first-color);
           transition: height 0.2s linear;
         }
-
-
-        &:hover::before {
-          background: map-get($colors-rule, link-color);
-          opacity: 0.9;
-          height: 6px;
-          bottom: 60%;
-          transition: height 0.2s linear;
-
-        }
-
-
-
       }
+
+
     }
 
     #why-choose-card-1-p,
     #why-choose-card-2-p,
     #why-choose-card-3-p,
     #why-choose-card-4-p {
-      color: map-get($colors-rule, first-color);
+      color: rgba(map-get($colors-rule, first-color), 0.9);
+
+      & strong {
+        color: map-get($colors-rule, sixth-color);
+      }
     }
 
-    #why-choose-card-1-p {
-      background-color: rgba(map-get($colors-rule, fourth-color), 0.05);
+    /* #why-choose-card-1-p {
+      background-color: rgba(map-get($colors-rule, second-color), 0.2);
     }
 
     #why-choose-card-2-p {
-      background-color: rgba(map-get($colors-rule, second-color), 0.05);
+      background-color: rgba(map-get($colors-rule, fourth-color), 0.2);
     }
 
     #why-choose-card-3-p {
-      background-color: rgba(map-get($colors-rule, height-color), 0.05);
+      background-color: rgba(map-get($colors-rule, third-color), 0.2);
     }
 
     #why-choose-card-4-p {
-      background-color: rgba(map-get($colors-rule, third-color), 0.05);
-    }
+      background-color: rgba(map-get($colors-rule, height-color), 0.2);
+    } */
 
     .img-why-card {
       display: none;
@@ -723,45 +742,54 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
         //border: 1px solid red;
       }
 
+      #why-choose-card-wrapper-1,
+      #why-choose-card-wrapper-2,
+      #why-choose-card-wrapper-3,
+      #why-choose-card-wrapper-4 {
+        background-color: transparent;
+      }
+
+
+
       h3 {
         position: absolute;
         top: 0%;
         left: 0px;
         padding: 50px 60px 50px 20px;
         width: 40%;
-        margin:0px;
+        margin: 0px;
         //color: map-get($colors-rule, sixth-color);
         //border: 1px solid blue;
         z-index: 15;
-        //border-bottom-right-radius: 1rem;
+        border-radius: 1rem;
 
         &::before {
           display: none;
         }
       }
 
-      #why-choose-card-1,
+      /* #why-choose-card-1,
       #why-choose-card-2,
       #why-choose-card-3,
       #why-choose-card-4 {
         color: map-get($colors-rule, sixth-color);
-      }
+      } */
 
       #why-choose-card-1 {
-        background: rgba(map-get($colors-rule, second-color),1);
+        background: rgba(map-get($colors-rule, second-color), 1);
 
       }
 
       #why-choose-card-2 {
-        background: rgba(map-get($colors-rule, fourth-color),1);
+        background: rgba(map-get($colors-rule, fourth-color), 1);
       }
 
       #why-choose-card-3 {
-        background: rgba(map-get($colors-rule, height-color),1);
+        background: rgba(map-get($colors-rule, third-color), 1);
       }
 
       #why-choose-card-4 {
-        background: rgba(map-get($colors-rule, third-color),1);
+        background: rgba(map-get($colors-rule, height-color), 1);
       }
 
 
@@ -802,15 +830,36 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
           height: 50px;
 
         }
+
+        a {
+
+          
+
+
+          &:hover::before {
+            background: map-get($colors-rule, link-color);
+            opacity: 0.9;
+            height: 6px;
+            bottom: 60%;
+            transition: height 0.2s linear;
+
+          }
+
+
+
+        }
       }
 
       #why-choose-card-1-p,
       #why-choose-card-2-p,
       #why-choose-card-3-p,
       #why-choose-card-4-p {
-        background-color: rgba(map-get($colors-rule, first-color), 0);
-        color: rgba(map-get($colors-rule, first-color), 0.9);
+
+
+        & strong {
+          color: map-get($colors-rule, second-color);
         }
+      }
 
 
       #why-choose-card-1-p {
@@ -833,7 +882,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
         &::after,
         &::before {
-          background: map-get($colors-rule, height-color);
+          background: map-get($colors-rule, third-color);
         }
       }
 
@@ -841,7 +890,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
         &::after,
         &::before {
-          background: map-get($colors-rule, third-color);
+          background: map-get($colors-rule, height-color);
         }
       }
 
@@ -879,7 +928,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
       }
 
       #img-why-card-3 {
-        background-image: url("/assets/images/page-index/why-choose-img-card-3.webp");
+        background-image: url("/assets/images/page-index/why-choose-img-card-4.webp");
         /* left: 20%;
         top: 40%; */
 
@@ -890,7 +939,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
       }
 
       #img-why-card-4 {
-        background-image: url("/assets/images/page-index/why-choose-img-card-4.webp");
+        background-image: url("/assets/images/page-index/why-choose-img-card-3.webp");
         /* left: 20%;
         top: 30%; */
 
@@ -915,72 +964,76 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
     line-height: 1.6;
     text-align: center;
 
-    
+
   }
-  .list-creation{
+
+  .list-creation {
     margin-bottom: 50px;
-    gap:1rem;
+    gap: 1rem;
 
     a {
-    
-        position: relative;
-        display: inline block;
-        z-index: 1;
-        color: map-get($colors-rule, first-color);
-        transition: color 0.2s linear;
-        
-        &::before {
-          content: "";
-          position: absolute;
-          z-index: -1;
-          left: 0px;
-          width: 100%;
-          height: 1px;
-          bottom: 0px;
-          background-color: map-get($colors-rule, first-color);
-          transition: background-color 0.2s linear;
-        }
-        
-        
-        &:hover::before {
-          background-color: map-get($colors-rule, created-link-color-hover);
-          /*   opacity: 0.9;
+
+      position: relative;
+      display: inline block;
+      z-index: 1;
+      color: map-get($colors-rule, first-color);
+      transition: color 0.2s linear;
+
+      &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 0px;
+        width: 100%;
+        height: 1px;
+        bottom: 0px;
+        background-color: map-get($colors-rule, first-color);
+        transition: background-color 0.2s linear;
+      }
+
+
+      &:hover::before {
+        background-color: map-get($colors-rule, created-link-color-hover);
+        /*   opacity: 0.9;
           height: 6px;
           bottom: 60%; */
-          transition: background-color 0.2s linear;
-          
-        }
-        &:hover{
-          color: map-get($colors-rule, created-link-color-hover);
-          
-        }
+        transition: background-color 0.2s linear;
+
       }
+
+      &:hover {
+        color: map-get($colors-rule, created-link-color-hover);
+
+      }
+    }
   }
 }
 
 // Page-specific alignment for sections styled by shared components.
 #RC-cta-section {
   width: 100%;
-  padding: $index-section-title-offset 15px $index-section-space;
+  //padding: $index-section-title-offset 15px $index-section-space;
 
   .cta-section {
     margin: 0 auto;
 
-    &>h2 {
-      margin-bottom: $index-title-content-space;
+    /*&>h2 {
+     // margin-bottom: $index-title-content-space;
     }
-  }
+  }*/
+}
 }
 
-.faq-section {
-  padding: $index-section-title-offset 20px $index-section-space;
 
-  .faq-container-title {
+/*.faq-section {
+  //padding: $index-section-title-offset 20px $index-section-space;
+
+   .faq-container-title {
     margin-bottom: 120px;
-  }
-}
+  } 
+}*/
 
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
   #RC-cta-section {
     padding-inline: 30px;
   }
@@ -994,4 +1047,4 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
   #RC-cta-section {
     padding-inline: 50px;
   }
-}
+}*/
