@@ -16,10 +16,10 @@ router.get("/dashboard", articleController.getArticlesDashboard);
 router.get("/filter", articleController.getArticleByCategory);
 router.get("/categories", articleController.getCategories);
 router.get("/search", articleController.searchArticles);
+router.get("/score/:id", articleController.getScore);
 router.get("/:id", articleController.getArticle);
 //router.get("/:id/previous", articleController.getPreviousArticle);
 //router.get("/:id/next", articleController.getNextArticle);
-router.get("/score/:id", articleController.getScore);
 
 // Create article -upload middleware here-
 router.post(

@@ -190,61 +190,59 @@ function Navbar() {
   const menuItems = {
     fr: [
       { path: `/`, text: "Accueil" },
-      { path: `/public/fr/a-propos.html`, text: "A propos" },
+      { path: `/fr/a-propos.html`, text: "A propos" },
       {
         text: "Prestations",
         submenu: [
           {
-            path: `/public/fr/prestations/site-web.html`,
+            path: `/fr/prestations/site-web.html`,
             text: "Site Web",
           },
           {
-            path: `/public/fr/prestations/seo.html`,
+            path: `/fr/prestations/seo.html`,
             text: "Référencement SEO",
           },
           {
-            path: `/public/fr/prestations/application-mobile.html`,
+            path: `/fr/prestations/application-mobile.html`,
             text: "Application Mobile",
           },
-          { path: `/public/fr/prestations/saas.html`, text: "Solutions SaaS" },
+          { path: `/fr/prestations/saas.html`, text: "Solutions SaaS" },
         ],
       },
-      { path: `/public/fr/contact.html`, text: "Contact" },
-      { path: `/public/fr/articles-list.html`, text: "Articles" },
-      { path: `/public/fr/article.html`, text: "" },
+      { path: `/fr/contact.html`, text: "Contact" },
+      { path: `/fr/articles-list.html`, text: "Articles" },
       {
-        path: `/public/fr/legal/mentions-legales.html`,
+        path: `/fr/legal/mentions-legales.html`,
         text: "",
       },
       {
-        path: `/public/fr/legal/politique-de-confidentialite.html`,
+        path: `/fr/legal/politique-de-confidentialite.html`,
         text: "",
       },
     ],
     en: [
-      { path: `/public/en/home.html`, text: "Home" },
-      { path: `/public/en/about.html`, text: "About me" },
+      { path: `/en/home.html`, text: "Home" },
+      { path: `/en/about.html`, text: "About me" },
       {
         text: "Services",
         submenu: [
           {
-            path: `/public/en/services/website.html`,
+            path: `/en/services/website.html`,
             text: "Website",
           },
-          { path: `/public/en/services/seo.html`, text: "SEO & GEO" },
+          { path: `/en/services/seo.html`, text: "SEO & GEO" },
           {
-            path: `/public/en/services/mobile-application.html`,
+            path: `/en/services/mobile-application.html`,
             text: "Mobile App",
           },
-          { path: `/public/en/services/saas.html`, text: "SaaS Solutions" },
+          { path: `/en/services/saas.html`, text: "SaaS Solutions" },
         ],
       },
-      { path: `/public/en/contact.html`, text: "Contact" },
-      { path: `/public/en/articles-list.html`, text: "Articles" },
-      { path: `/public/en/article.html`, text: "" },
-      { path: `/public/en/legal/legal-notice.html`, text: "" },
+      { path: `/en/contact.html`, text: "Contact" },
+      { path: `/en/articles-list.html`, text: "Articles" },
+      { path: `/en/legal/legal-notice.html`, text: "" },
       {
-        path: `/public/en/legal/privacy-policy.html`,
+        path: `/en/legal/privacy-policy.html`,
         text: "",
       },
     ],
@@ -258,11 +256,11 @@ function Navbar() {
 
     // Cas spécifique pour la page d'accueil
     if (currentPath === "/" && lang === "en") {
-      window.location.href = "/public/en/home.html";
+      window.location.href = "/en/home.html";
       return;
     }
 
-    if (currentPath.includes("en/home.html") && lang === "fr") {
+    if (currentPath.includes("/en/home.html") && lang === "fr") {
       window.location.href = "/";
       return;
     }
@@ -314,6 +312,11 @@ function Navbar() {
       currentPath.includes("articles-list") ||
       currentPath.includes("article")
     ) {
+      const alternateArticleUrl = document.documentElement.dataset.alternateUrl;
+      if (alternateArticleUrl) {
+        window.location.href = alternateArticleUrl;
+        return;
+      }
       window.location.href = menuItems[lang][4].path;
     }
   };

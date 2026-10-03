@@ -1,4 +1,5 @@
 @use "../../utils/color-rule/color-rule" as *;
+@use "../components/ArticleCard";
 
 .page-container {
     position: relative;
@@ -14,4 +15,25 @@
     padding: 50px 20px;
     //border: 1px solid green;
 
+}
+
+.static-article-links {
+    width: min(100%, 960px);
+    margin: 0 auto 2rem;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    background: rgba(map-get($colors-rule, bg-page-shade-light-4), 0.65);
+
+    h2 {
+        margin-top: 0;
+    }
+}
+
+.static-article-links-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
 }

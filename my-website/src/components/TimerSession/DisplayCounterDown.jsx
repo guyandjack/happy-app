@@ -9,7 +9,7 @@ function DisplayCounterDown({ timeRemaining }) {
     return null;
   }
 
-  if (timeRemaining < 0) {
+  if (timeRemaining <= 0) {
     return (
       <div className="flex-column-center-center counter-down">
         <div>{"La session a expiré"}</div>

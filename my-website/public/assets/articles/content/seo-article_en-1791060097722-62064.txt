@@ -1,0 +1,182 @@
+<article class="article-wrapper">
+    <header class="article-header">
+        <img src="/public/assets/images/page-seo/img-hero-1-seo.webp" class="article-img-title"
+            alt="Image d'introduction au SEO">
+        <h1 class="article-title">Introduction to Organic Search Engine Optimization: What Is SEO?</h1>
+        <p class="article-meta">
+                    <span class="article-author">Author: <span class="article-author-name">Helveclick</span></span> |
+                    
+<time class="article-date" datetime="2025-04-26">                        Updated on:
+                        
+                    
+                <span class="article-date-update"></span></time></p>
+    </header>
+
+    <div class="article-introduction">
+        <p class="article-text">SEO (Search Engine Optimization) encompasses all techniques aimed at improving a website’s ranking in search engine results. The goal is clear: to generate qualified, sustainable, and free traffic by optimizing a site’s content, technical aspects, and brand awareness. Understanding and mastering SEO means investing in the long-term visibility of your online presence.</p>
+    </div>
+
+    <section class="article-main-section">
+        <div class="flex-column-center-center article-img-subtitle-wrapper">
+            <img src="" class="article-img-subtitle"
+                alt="Bases du SEO">
+            <h2 class="article-subtitle-h2 item-menu-side">The Basics of SEO: Understanding the Fundamentals of
+                Organic Search Engine Optimisation
+                
+            </h2>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">How Do Search Engines Work?</h3>
+            <p class="article-text">Search engines like Google use complex algorithms to crawl, index, and then rank web pages. Web crawlers regularly scan websites to understand their content. This content is then indexed in a massive database. When a user performs a search, Google displays the pages deemed most relevant based on hundreds of criteria.</p>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">The Two Main Categories of SEO: On-Page SEO and Off-Page SEO
+            </h3>
+            <p class="article-text"><strong>On-Page SEO</strong> refers to all internal optimizations of your site: content, HTML structure, performance, tags, etc. <strong>Off-Page SEO</strong>, on the other hand, relies on external factors such as backlinks, social signals, and the site’s overall reputation. An effective SEO strategy intelligently combines these two aspects.</p>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">Difference Between SEO (Organic Search) and SEM (Search Engine
+                Marketing)
+            </h3>
+            <p class="article-text"><strong>SEO</strong> is an organic strategy: you don’t pay to appear in search results. In contrast, <strong>SEM</strong> (Search Engine Marketing) encompasses all paid efforts (such as Google Ads) aimed at achieving immediate visibility. Ideally, SEO and SEM complement each other.</p>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">The Importance of Content and Keywords in SEO</h3>
+            <p class="article-text"><strong>Keywords</strong> are at the heart of any SEO strategy. They reflect users’ search intent. By incorporating them naturally into your content, you help search engines better understand what your site is about. Be careful not to overuse them, however: relevance and quality always come first.</p>
+        </div>
+    </section>
+
+    <section class="article-main-section">
+        <div class="flex-column-center-center article-img-subtitle-wrapper">
+            <img src="" class="article-img-subtitle" alt="SEO On-Page">
+            <h2 class="article-subtitle-h2 item-menu-side">On-Page SEO: Optimizing Your Website for
+                Search Engines
+                
+            </h2>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">Keyword Research: How to Find the Right Keywords for
+                Your
+                Business?</h3>
+            <p class="article-text">Understanding what your audience is searching for is essential. <strong>Keyword</strong> research helps you identify the search queries most frequently used by your prospects. Tools like <strong>Ubersuggest</strong>, <strong>AnswerThePublic</strong>, or <strong>SEMrush</strong> can help you find high-potential opportunities based on search volume and competition.</p>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">Optimizing HTML Tags: Titles, Meta Descriptions, and
+                Header Tags
+                Each page must have a unique, descriptive Title tag containing your main keywords. The Meta Description, although not directly factored into rankings, strongly influences the click-through rate. Also use H1 tags.
+            </h3>
+            <p class="article-text">Each page must have a unique, descriptive <strong>Title tag</strong> that includes your primary keywords. The <strong>Meta Description</strong>, although not directly factored into rankings, strongly influences the click-through rate. Also use <strong>H1 through H6</strong> tags to logically structure your content.</p>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">The Importance of Quality Content and Its Structure for SEO
+            </h3>
+            <p class="article-text">Good SEO content is rich, clear, and well-structured. It addresses a specific search intent. Use <strong>hierarchical headings</strong>, bulleted lists, short paragraphs, and accessible vocabulary. Everything should remain natural and user-focused.</p>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">Optimizing Images and Site Load Speed</h3>
+            <p class="article-text">A well-optimized image improves both UX and SEO. Use descriptive file names, add descriptive <strong>alt tags</strong>, and compress your images to speed up load times. A fast, responsive site ranks higher on Google.</p>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">Mobile Optimization and Google’s Mobile-First Indexing</h3>
+            <p class="article-text">With <strong>mobile-first indexing</strong>, Google evaluates the mobile version of your site first. A responsive, fast, and user-friendly site on smartphones is essential today. If your site is difficult to use on mobile, your SEO will suffer.</p>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">White Hat SEO vs. Black Hat SEO</h3>
+            <p class="article-text"><strong>White Hat SEO</strong> follows search engine guidelines and prioritizes best practices: high-quality content, natural backlinks, and an accessible website. <strong>Black Hat SEO</strong>, on the other hand, relies on risky and often penalizable techniques (cloaking, link spam, keyword stuffing). Results may come quickly, but they’re never long-lasting.</p>
+        </div>
+    </section>
+
+    <section class="article-main-section">
+        <div class="flex-column-center-center article-img-subtitle-wrapper">
+            <img src="image-off-page.jpg" class="article-img-subtitle" alt="SEO Off-Page">
+            <h2 class="article-subtitle-h2 item-menu-side">Off-Page SEO: Strategies to Earn Backlinks
+                and
+                Improve
+                the Authority
+                of
+                Your Website</h2>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">What Is a Backlink and Why Is It Essential for Your SEO?
+                ?
+            </h3>
+            <p class="article-text">A <strong>backlink</strong> is an external link pointing to your site. Google views them as a vote of confidence. The more backlinks you have—and the more relevant they are and the more they come from authoritative sites—the better your search rankings will be.</p>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">Link-building techniques to improve your backlink profile
+                
+            </h3>
+            <p class="article-text"><strong>Link</strong> <strong>building</strong> encompasses strategies for obtaining inbound links. These include <strong>guest blogging</strong>, partnerships, press releases, and creating viral content. Effective link building is based on quality, not quantity.</p>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">The Importance of Social Media Mentions in SEO</h3>
+            <p class="article-text">Although social signals are not a direct ranking factor, a strong <strong>social</strong> media presence can drive traffic, generate engagement, and naturally attract backlinks. It’s an excellent way to boost your overall visibility.</p>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">How Do Authority Sites Influence SEO?</h3>
+            <p class="article-text">Getting a link from a high-authority site (such as a well-known media outlet, a university, or a government agency) is extremely valuable. It boosts your site’s credibility and significantly improves your SEO rankings.</p>
+        </div>
+    </section>
+
+    <section class="article-resume-section">
+        <h2 class="article-subtitle-h2 item-menu-side">Key Points</h2>
+        <ul class="article-list-resume">
+            <li>
+                <p class="article-text">Organic SEO is a medium- to long-term investment;
+                    you shouldn’t expect to see results within the first few weeks.</p>
+            </li>
+            <li>
+                <p class="article-text"><strong>On-Page SEO</strong> involves optimizing a website’s internal elements,
+                    such as content, the
+                    structure, and
+                    HTML tags, to improve visibility on search engines.</p>
+            </li>
+            <li>
+                <p class="article-text"><strong>Off-Page SEO</strong> relies on external actions,
+                    such as acquiring
+                    backlinks,
+                    which
+                    help increase a website’s authority and credibility.</p>
+            </li>
+            <li>
+                <p class="article-text">A solid SEO strategy requires <strong>technical</strong> optimization,
+<strong>                        high-quality content</strong>,
+                    and a well-thought-out architecture to meet the expectations
+                    of
+                    users and search engines.
+                </p>
+            </li>
+            <li>
+                <p class="article-text"><strong>White Hat SEO</strong> prioritizes ethical and
+                    sustainable practices, whereas
+                    Black<strong> Hat SEO</strong> relies on risky techniques that can result in penalties from search engines.
+                </p>
+            </li>
+            <li>
+                <p class="article-text">An effective SEO strategy rests on three pillars: <strong>technical</strong> optimization, the creation of <strong>relevant content</strong>, and the development of<strong> external authority</strong> (backlinks).</p>
+            </li>
+        </ul>
+    </section>
+
+    <section class="article-conclusion-section">
+        <h2 class="article-subtitle-h2 item-menu-side">The Importance of Quality SEO</h2>
+        <p class="article-conclusion-text"><strong>Good SEO</strong> isn’t about tricking search engines, but about providing the best possible answer to users. It’s a thorough, methodical, and constantly evolving process. Search engines are constantly improving their algorithms to prioritize relevance, user experience, and content reliability.</p>
+        <p class="article-conclusion-text">If an agency or service provider promises you the top spot on Google in record time, proceed with caution. <strong>No one can guarantee a specific ranking</strong> without knowing your industry, your competition, and your resources.</p>
+        <p class="article-conclusion-text">Focus on your visitors’ <strong>search</strong> intent, and create content that precisely addresses it. Google favors sites that provide value.</p>
+        <p class="article-conclusion-text">The real key isn’t just attracting more visitors, but attracting the right visitors: those who have a genuine interest in your services, products, or expertise.</p>
+    </section>
+</article>

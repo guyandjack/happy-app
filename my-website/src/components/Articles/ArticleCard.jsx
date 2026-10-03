@@ -51,17 +51,12 @@ function ArticleCard({ article }) {
     setSlug(lang.current === "fr" ? article.slug : article.slug_en);
   }, [article]);
 
-  //use effect qui genere l' url du lien
-   useEffect(() => {
-    
-    let href =
-        lang.current === "fr"
-          ? "/public/fr/article.html?article_title=" + slug
-          : "/public/en/article.html?article_title=" + slug;
-        
-        setHrefLink(href);
-    
-   }, []); 
+  // Each card targets its crawlable, language-specific static page. The URL
+  // is recalculated when the article data arrives instead of using a stale slug.
+  useEffect(() => {
+    if (!slug) return;
+    setHrefLink(`/${lang.current}/articles/${slug}.html`);
+  }, [slug]);
   
   /**
    *
@@ -69,10 +64,7 @@ function ArticleCard({ article }) {
    * @param {*} e
    */
   const handleClick = (e) => {
-    e.preventDefault();
-    window.localStorage.setItem("article", JSON.stringify(article));
-    window.location.href = hrefLink;
-
+    if (!hrefLink) e.preventDefault();
   }
 
 

@@ -18,6 +18,10 @@ const {
 } = require("./utils/function/scheduler.js");
 const logger = require("./logger.js");
 const testNotif = require("./utils/function/testNotification.js");
+const {
+  sitePublicRoot,
+  siteDistributionRoot,
+} = require("./utils/function/sitePublicPaths.js");
 
 // Import routes
 const authRoutes = require("./routes/auth.routes.js");
@@ -71,7 +75,14 @@ app.use(
 );
 
 // Static global (sert tout ./public à la racine → /images/... , /articles/...)
+// The built frontend takes priority when present: it contains the compiled
+// React entry points required by the Navbar and Footer on static article pages.
+app.use(express.static(siteDistributionRoot));
 app.use(express.static(path.join(__dirname, "public")));
+// Dedicated article pages and their media are written to the frontend public
+// directory so Vite can publish them in the next site build. Serving it here
+// also makes the URLs available when the API is the static-file server.
+app.use(express.static(sitePublicRoot));
 
 // ✅ Fallback image (en cas de 404, on renvoie une WebP → pas d'HTML ⇒ pas d'ORB)
 /* app.use("/images/landingPage", (req, res, next) => {

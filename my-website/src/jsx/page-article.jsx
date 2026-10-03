@@ -1,188 +1,42 @@
-//import du style
 import "@styles/SCSS/normalise.scss";
 import "@styles/SCSS/shared-style.scss";
 import "@styles/SCSS/pages/article.scss";
 
-//import des hooks
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 
-//import des librairies
-import axios from "axios";
-
-//import des composants enfants
 import { Navbar } from "@components/Navbar/Navbar.jsx";
 import { Footer } from "@components/Footer/Footer.jsx";
 import { LinkTopPage } from "@components/linkTopPage/linkTopPage.jsx";
 import { ArticleFooter } from "@components/Articles/ArticleFooter.jsx";
 
-//import des fonctions
-import { handleAxiosError } from "@utils/fonction/handleAxiosError.js";
-import { setArticlePageHeader } from "@utils/fonction/setArticlePageHeader.js";
-import { endpointStaticFile } from "@utils/fonction/endpointStaticFile.js";
-import { getLanguage } from "@utils/fonction/getLanguage.js";
+function getEmbeddedArticle() {
+  const payload = document.getElementById("article-runtime-data");
+  if (!payload) return null;
 
-//variable globale
-//get article from local storage
-const article = JSON.parse(localStorage.getItem("article"));
-const { endPoint } = endpointStaticFile();
-
-/****************************************************
- * ************* code principal *******
- *  * ************************************************/
-
-async function displayArticle() {
-  //detection de la langue de la page
-  const lang = getLanguage();
-  let articleText;
   try {
-    if (lang === "fr") {
-      articleText = await axios.get(endPoint + article.content, {
-        validateStatus: function (status) {
-          return status < 500;
-        },
-      });
-    } else {
-      articleText = await axios.get(endPoint + article.content_en, {
-        validateStatus: function (status) {
-          return status < 500;
-        },
-      });
-    }
-    if (!articleText) {
-      console.log("impossible de recuperer le contenu de l' article");
-      return;
-    }
-
-    //insere le contenu de l'article dans la page
-    const articleContent = document.querySelector(".article-content");
-    if (articleContent) {
-      articleContent.innerHTML = articleText.data;
-    }
-
-    //set dynamic page header
-    setArticlePageHeader(article);
-
-    //Insere le nom de l'auteur dans le contenu de l'article
-    const spanAuthorName = document.querySelector(".article-author-name");
-
-    if (spanAuthorName) {
-      spanAuthorName.textContent = article.author;
-    }
-
-    //Insere la date de mise à jour dans le contenu de l'article
-    const spanDateUpdate = document.querySelector(".article-date-update");
-    if (spanDateUpdate) {
-      const rawDate = article.updatedAt;
-      const date = new Date(rawDate);
-
-      const formatted = date.toLocaleDateString("fr-FR", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      });
-      spanDateUpdate.textContent = formatted || "Date non disponible";
-    }
-
-    //recuperation de l'image principale
-    const imageTitle = document.querySelector(".article-img-title");
-    console.log("imageTitle: ", imageTitle);
-    if (imageTitle) {
-      const fullUrl = `${endPoint}${article.mainImage}`;
-      console.log("✅ Image URL construite :", fullUrl);
-      imageTitle.src = fullUrl;
-      imageTitle.alt = article.slug;
-    }
-
-    //recuperation des images secondaires
-    const articleImgSubtitles = document.querySelectorAll(
-      ".article-img-subtitle"
-    );
-    console.log("tableau des articleImgSubtitles: ", articleImgSubtitles);
-    if (articleImgSubtitles) {
-      articleImgSubtitles.forEach((subtitle, index) => {
-        if (window.location.hostname.includes("localhost")) {
-          const fullUrl = `${endPoint}${article.additionalImages[index]}`;
-          console.log("✅ Image URL construite :", fullUrl);
-          subtitle.src = fullUrl;
-          subtitle.alt = article.slug;
-        } else {
-          let arrayImages = JSON.parse(article.additionalImages);
-          console.log("arrayImages: ", arrayImages);
-          const fullUrl = `${endPoint}${arrayImages[index]}`;
-          console.log("✅ Image URL construite :", fullUrl);
-          subtitle.src = fullUrl;
-          subtitle.alt = article.slug;
-        }
-      });
-    }
+    return JSON.parse(payload.textContent);
   } catch (error) {
-    handleAxiosError(error);
+    console.error("Invalid embedded article data", error);
+    return null;
   }
 }
 
-// Mount Navbar
-try {
-  const navbarContainer = document.getElementById("RC-navbar");
-  if (navbarContainer) {
-    ReactDOM.createRoot(navbarContainer).render(
-      <React.StrictMode>
-        <Navbar />
-      </React.StrictMode>
-    );
-  } else {
-    console.error("no container navbar found");
-  }
-} catch (error) {
-  console.error("Error mounting Navbar:", error);
+function mount(component, containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  ReactDOM.createRoot(container).render(
+    <React.StrictMode>{component}</React.StrictMode>
+  );
 }
 
-//mount article-footer
-try {
-  const articleFooterContainer = document.getElementById("RC-article-footer");
-  if (articleFooterContainer) {
-    ReactDOM.createRoot(articleFooterContainer).render(
-      <React.StrictMode>
-        <ArticleFooter article={article} />
-      </React.StrictMode>
-    );
-  } else {
-    console.error("no container link top page found");
-  }
-} catch (error) {
-  console.error("Error mounting Link Top Page:", error);
-}
+const article = getEmbeddedArticle();
 
-//mount link top page
-try {
-  const linkTopPageContainer = document.getElementById("RC-link-top-page");
-  if (linkTopPageContainer) {
-    ReactDOM.createRoot(linkTopPageContainer).render(
-      <React.StrictMode>
-        <LinkTopPage />
-      </React.StrictMode>
-    );
-  } else {
-    console.error("no container link top page found");
-  }
-} catch (error) {
-  console.error("Error mounting Link Top Page:", error);
-}
+mount(<Navbar />, "RC-navbar");
+mount(<LinkTopPage />, "RC-link-top-page");
+mount(<Footer />, "RC-footer");
 
-// Mount Footer
-try {
-  const footerContainer = document.getElementById("RC-footer");
-  if (footerContainer) {
-    ReactDOM.createRoot(footerContainer).render(
-      <React.StrictMode>
-        <Footer />
-      </React.StrictMode>
-    );
-  } else {
-    console.error("no container footer found");
-  }
-} catch (error) {
-  console.error("Error mounting Footer:", error);
+if (article) {
+  mount(<ArticleFooter article={article} />, "RC-article-footer");
 }
-
-displayArticle();

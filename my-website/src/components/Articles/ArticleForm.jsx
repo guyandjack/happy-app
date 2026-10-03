@@ -382,7 +382,7 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
         withCredentials: true,
       });
 
-      if (response.status === "success") {
+      if (response.status === 201 && response.data.status === "success") {
         showToast("Article créé avec succès", "success");
 
         // Reset form
@@ -391,7 +391,12 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
         }
         setIsSubmitting(false);
         setShow(false);
+        return;
       }
+
+      const message = response.data?.message || "La publication de l'article a échoué";
+      setHttpError(message);
+      showToast(message, "error");
     } catch (error) {
       console.error("Error creating article:", error);
 

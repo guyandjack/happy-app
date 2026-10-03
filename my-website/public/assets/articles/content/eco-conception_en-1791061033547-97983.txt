@@ -1,0 +1,161 @@
+<article class="article-wrapper">
+
+    <header class="article-header">
+        <img src="/public/assets/images/page-seo/img-hero-green-web.webp" class="article-img-title" alt="Développement web éco-responsable">
+        <h1 class="article-title">Eco-Friendly Web Development: Creating Simpler, Faster, and More Useful Websites</h1>
+        <p class="article-meta">
+            <span class="article-author">Author: <span class="article-author-name">Helveclick</span></span> |
+            
+<time class="article-date" datetime="2025-10-10">                Updated on:
+                
+            
+        <span class="article-date-update"></span></time></p>
+    </header>
+
+    <div class="article-introduction">
+        <p class="article-text">Eco-friendly web development aims to reduce a website’s environmental footprint while improving the user experience. In practice, this involves reducing page size, optimizing code, limiting requests, and choosing a more energy-efficient infrastructure. The result: faster load times, better search engine rankings, and controlled hosting costs—without sacrificing quality.</p>
+    </div>
+
+    <section class="article-main-section">
+        <div class="flex-column-center-center article-img-subtitle-wrapper">
+            <img src="" class="article-img-subtitle" alt="Mesurer pour agir">
+            <h2 class="article-subtitle-h2 item-menu-side">1. Measure the impact and set goals</h2>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">Establish a baseline</h3>
+            <p class="article-text">You can only improve what you measure. Before starting any optimization project, measure current performance (total page weight, requests, load times, estimated energy consumption) and set quantifiable goals (e.g., a 40% reduction in page weight).</p>
+            <ul class="article-list-text">
+                <li>Audit your key pages (homepage, services, blog): file size (KB/MB), number of requests, LCP/CLS/INP.</li>
+                <li>Identify the “biggest culprits” (images, videos, third-party scripts) and prioritize them based on benefit-to-effort ratio.</li>
+                <li>Set target thresholds (e.g., &lt; 800 KB per page, &lt; 50 requests, LCP &lt; 2.5 seconds on 4G).</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="article-main-section">
+        <div class="flex-column-center-center article-img-subtitle-wrapper">
+            <img src="" class="article-img-subtitle" alt="Concevoir sobre et utile">
+            <h2 class="article-subtitle-h2 item-menu-side">2. Design with simplicity in mind: less is more</h2>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">Minimalist UX and useful content</h3>
+            <p class="article-text">The best optimization comes from removing unnecessary elements. A clear content architecture, short user journeys, and relevant media naturally reduce the page’s footprint while increasing conversion rates.</p>
+            <ul class="article-list-text">
+                <li>Simplify navigation: 3–5 main entries, effective internal search, logical linking.</li>
+                <li>Streamline media: avoid heavy carousels; prioritize a single, optimized image.</li>
+                <li>Choose system fonts or 1–2 web fonts in <em>subsets</em> (WOFF2); <em>preload</em> if necessary.</li>
+            </ul>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">High-Performance Design</h3>
+            <p class="article-text">A minimalist design is not a poor design. Use reusable components, high-contrast colors, and lightweight layouts that load quickly and remain accessible.</p>
+            <ul class="article-list-text">
+                <li>Limit heavy effects (background videos, non-essential animations).</li>
+                <li>Adopt a design system (tokens, components) to reduce redundant CSS.</li>
+                <li>Prepare “low-bandwidth” variants (smaller images, disable autoplay videos).</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="article-main-section">
+        <div class="flex-column-center-center article-img-subtitle-wrapper">
+            <img src="" class="article-img-subtitle" alt="Développer léger et efficace">
+            <h2 class="article-subtitle-h2 item-menu-side">3. Develop Lightweight: Optimize Code, Media, and Dependencies</h2>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">Code &amp; Dependencies</h3>
+            <p class="article-text">JavaScript/CSS size and the proliferation of libraries come at an energy cost. Load only what’s necessary, at the right time.</p>
+            <ul class="article-list-text">
+                <li>Enable <em>code splitting</em>, <em>tree-shaking,</em> and minification (JS/CSS/HTML).</li>
+                <li>Replace heavy frameworks with alternatives or vanilla JS whenever possible.</li>
+                <li>Load third-party scripts using <em>`async`</em> or <em>`defer`</em> and remove non-essential ones (redundant trackers).</li>
+            </ul>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">Images &amp; Videos</h3>
+            <p class="article-text">Media often accounts for 60–90% of a page’s size. Optimizing it has the fastest impact.</p>
+            <ul class="article-list-text">
+                <li>Serve images in WebP/AVIF formats, with appropriate sizes (srcset/sizes), and use native <em>lazy loading</em>.</li>
+                <li>Compress during the build process (target quality 70–85%) and remove unnecessary metadata.</li>
+                <li>Use a clickable thumbnail instead of autoplaying video; serve streams via an optimized player.</li>
+            </ul>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">Accessible and Minimalist HTML/CSS</h3>
+            <p class="article-text">Accessibility and minimalism go hand in hand: semantic markup, sufficient contrast, readable font sizes, and keyboard navigation.</p>
+            <ul class="article-list-text">
+                <li>Use semantic HTML (nav, main, header, footer, aria-labels) and modular CSS.</li>
+                <li>Reduce global CSS; remove unused classes during the build.</li>
+                <li>Test for keyboard and screen reader compatibility, and correct errors in heading hierarchy.</li>
+            </ul>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">GreenIT: Toward Structured Digital Simplicity</h3>
+            <p class="article-text">The <strong>GreenIT.fr</strong> collective plays a vital role in raising awareness and promoting best practices in responsible digital technology. Their approach encourages companies to design digital services that are more sustainable, accessible, and resource-efficient. To learn more, visit their official website: <a href="https://www.greenit.fr" target="_blank" rel="noopener noreferrer">www.greenit.fr</a>.</p>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">CMSs and Their Role in an Eco-Responsible Web</h3>
+            <p class="article-text">CMS platforms such as WordPress, Joomla, or Drupal can be allies in creating a more sustainable web, provided they are used with care. A well-configured CMS allows you to pool resources, use lightweight themes, and take advantage of powerful optimization tools.</p>
+            <ul class="article-list-text">
+                <li>Choose a clean, well-coded theme without unnecessary dependencies.</li>
+                <li>Disable non-essential plugins and enable page caching.</li>
+                <li>Optimize the database regularly (by removing revisions and unused media).</li>
+                <li>Serve images through an automatic compression plugin and enable CDN caching.</li>
+            </ul>
+            <p class="article-text">A well-managed CMS can thus provide a solid, scalable foundation while minimizing your website’s carbon footprint.</p>
+        </div>
+    </section>
+
+    <section class="article-main-section">
+        <div class="flex-column-center-center article-img-subtitle-wrapper">
+            <img src="" class="article-img-subtitle" alt="Hébergement et exploitation sobres">
+            <h2 class="article-subtitle-h2 item-menu-side">4. Host and Operate Responsibly</h2>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">Infrastructure &amp; Caching</h3>
+            <p class="article-text">A well-designed architecture reduces unnecessary traffic and improves latency, especially on mobile devices.</p>
+            <ul class="article-list-text">
+                <li>Serve static content via a CDN close to users and enable HTTP/2 or HTTP/3.</li>
+                <li>Cache intelligently (appropriate TTLs, ETag/Last-Modified, preconnect/dns-prefetch).</li>
+                <li>Automate optimization at delivery (Brotli/Gzip compression, on-the-fly image resizing if necessary).</li>
+            </ul>
+        </div>
+
+        <div class="article-section">
+            <h3 class="article-subtitle-h3">Choosing a Hosting Provider and Monitoring</h3>
+            <p class="article-text">Prioritize providers that are transparent about their energy mix and track your savings over time.</p>
+            <ul class="article-list-text">
+                <li>Choose a committed hosting provider (renewable energy, low PUE, data centers close to your audience).</li>
+                <li>Monitor key metrics (average page weight, 4G load time, error rate, uptime).</li>
+                <li>Schedule quarterly reviews to remove obsolete modules, pages, and media.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="article-resume-section">
+        <h2 class="article-subtitle-h2 item-menu-side">Key Points</h2>
+        <ul class="article-list-resume">
+            <li><p class="article-text">First, measure (page weight, requests, Core Web Vitals), then set concrete goals.</p></li>
+            <li><p class="article-text">Keep it simple: useful content, straightforward navigation, and relevant media.</p></li>
+            <li><p class="article-text">Optimize code and CMS, and limit third-party dependencies and scripts.</p></li>
+            <li><p class="article-text">Prioritize image and video optimization: modern formats, appropriate sizes, and lazy loading.</p></li>
+            <li><p class="article-text">Choose an efficient infrastructure (CDN, cache, committed hosting provider) and track your performance gains.</p></li>
+            <li><p class="article-text">Draw inspiration from the resources and guides offered by <a href="https://www.greenit.fr" target="_blank" rel="noopener noreferrer">GreenIT.fr</a>.</p></li>
+        </ul>
+    </section>
+
+    <section class="article-conclusion-section">
+        <h2 class="article-subtitle-h2 item-menu-side">Conclusion: meaningful simplicity = sustainable performance</h2>
+        <p class="article-conclusion-text">Adopting eco-responsible web development means balancing reduced environmental impact, high performance, and a better user experience. By gradually implementing these best practices—measuring, designing with simplicity in mind, optimizing code and media, and then operating efficiently—you’ll create faster, more accessible, and more responsible websites that benefit both your users and your brand.</p>
+    </section>
+
+</article>

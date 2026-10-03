@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 //import { localOrProd } from "@utils/fonction/testEnvironement.js";
 
 //import des images
@@ -81,15 +81,7 @@ const menuItems = {
   },
 };
 function Footer() {
-  const [displayBadge, setDisplayBadge] = useState(true);
   const currentLang = getLanguage();
-
-  //use effect qui gere le display du badge eco index
-  useEffect(() => {
-    if (window.location.pathname.includes("/article.html")) {
-      setDisplayBadge(false);
-    }
-  }, []);
 
   return (
     <footer className="flex-column-start-center footer">
@@ -163,18 +155,16 @@ function Footer() {
             : "We act for a responsible design."}
           <span>{<RiDoubleQuotesR className="footer-quote-icon" />}</span>
         </p>
-        {displayBadge && (
-          <a
-            className="flex-row-center-center"
-            href={`https://bff.ecoindex.fr/redirect/?url=${urlFull}`}
-            target="_blank"
-          >
-            <img
-              src={`https://bff.ecoindex.fr/badge/?theme=${theme}&url=${urlFull}`}
-              alt="Ecoindex Badge"
-            />
-          </a>
-        )}
+        <a
+          className="flex-row-center-center"
+          href={`https://bff.ecoindex.fr/redirect/?url=${urlFull}`}
+          target="_blank"
+        >
+          <img
+            src={`https://bff.ecoindex.fr/badge/?theme=${theme}&url=${urlFull}`}
+            alt="Ecoindex Badge"
+          />
+        </a>
       </div>
       <div className="footer-bottom">
         <p>

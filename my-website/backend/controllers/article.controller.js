@@ -12,6 +12,14 @@ const checkParams = require("../utils/function/checkParams");
 const translateArticle = require("../utils/function/translateArticle");
 const fileToString = require("../utils/function/fileToString");
 const { formatArticleImage } = require("../utils/function/formatArticleImage");
+const {
+  articleAssetDirectory,
+  publicUrlToPath,
+} = require("../utils/function/sitePublicPaths");
+const {
+  publishArticlePages,
+  removeArticlePages,
+} = require("../utils/function/articlePagePublisher");
 
 // helper
 const toArray = (f) => (Array.isArray(f) ? f : [f]);
@@ -677,7 +685,7 @@ exports.getNextArticle = async (req, res) => {
 // clé unique très simple: timestamp + nombre aléatoire
 const uniqueKey = () => `${Date.now()}-${Math.floor(Math.random() * 100000)}`;
 
-exports.createArticle = async (req, res) => {
+const legacyCreateArticle = async (req, res) => {
   logger.info("[L3] ➡️ Requête reçue - Création article");
   let connection;
 
@@ -898,11 +906,200 @@ exports.createArticle = async (req, res) => {
  * ************ create article *****************
  **** end **************************************/
 
+/**
+ * Publishes the content, media and the two crawlable article pages as one
+ * operation. The legacy implementation above is retained temporarily for
+ * reference only; this is the route handler exported to Express.
+ */
+exports.createArticle = async (req, res) => {
+  let connection;
+  let articleId;
+  let frenchSlug;
+  let englishSlug;
+  const createdFiles = [];
+
+  try {
+    connection = await getConnection();
+    const { category, tags } = req.body;
+    if (!category || !tags || !req.files?.mainImage || !req.files?.contentArticle) {
+      return res.status(400).json({
+        status: "error",
+        message: "Category, tags, main image and article content are required",
+      });
+    }
+
+    const formattedImages = await formatArticleImage(req);
+    if (!formattedImages?.mainImg) {
+      return res.status(400).json({
+        status: "error",
+        message: "The main image could not be processed",
+      });
+    }
+
+    const contentFile = Array.isArray(req.files.contentArticle)
+      ? req.files.contentArticle[0]
+      : req.files.contentArticle;
+    const sourceHtml = await fileToString(contentFile);
+    const french = await extractFromFile(sourceHtml);
+    if (french.status === "error") {
+      return res.status(400).json({ status: "error", message: `${french.message} (FR)` });
+    }
+
+    let translatedHtml;
+    try {
+      translatedHtml = await translateArticle(sourceHtml, {
+        sourceLang: "FR",
+        targetLang: "EN",
+        free: true,
+        ignoreTags: ["code", "pre", "script", "style"],
+      });
+    } catch (error) {
+      logger.warn(`[articles] English translation failed: ${error.message}`);
+      return res.status(502).json({
+        status: "error",
+        message: "An English translation is required to publish both article pages",
+      });
+    }
+
+    const english = await extractFromFile(translatedHtml);
+    if (english.status === "error") {
+      return res.status(400).json({ status: "error", message: `${english.message} (EN)` });
+    }
+
+    frenchSlug = french.slug;
+    englishSlug = english.slug;
+    const [duplicates] = await connection.execute(
+      "SELECT id FROM articles WHERE slug = ? OR slug_en = ? LIMIT 1",
+      [frenchSlug, englishSlug]
+    );
+    if (duplicates.length > 0) {
+      return res.status(409).json({
+        status: "error",
+        message: "An article with the same French or English URL already exists",
+      });
+    }
+
+    const fileBaseName = path.parse(contentFile.name.toLowerCase().trim()).name;
+    const sourceContentUrl = `/${articleAssetDirectory}/content/${fileBaseName}-${uniqueKey()}.txt`;
+    const englishContentUrl = `/${articleAssetDirectory}/content/${fileBaseName}_en-${uniqueKey()}.txt`;
+    const mainImageUrl = `/${articleAssetDirectory}/images/${formattedImages.mainImg.filename}`;
+    const additionalImageUrls = formattedImages.additionalImgs.map(
+      (image) => `/${articleAssetDirectory}/images/${image.filename}`
+    );
+
+    const writePublicFile = async (url, content) => {
+      const destination = publicUrlToPath(url);
+      await fsPromises.mkdir(path.dirname(destination), { recursive: true });
+      await fsPromises.writeFile(destination, content);
+      createdFiles.push(destination);
+    };
+
+    await writePublicFile(sourceContentUrl, sourceHtml);
+    await writePublicFile(englishContentUrl, translatedHtml);
+    await writePublicFile(mainImageUrl, formattedImages.mainImg.buffer);
+    for (let index = 0; index < formattedImages.additionalImgs.length; index += 1) {
+      await writePublicFile(additionalImageUrls[index], formattedImages.additionalImgs[index].buffer);
+    }
+
+    const author = "Helveclick";
+    const now = new Date();
+    const [result] = await connection.execute(
+      `INSERT INTO articles (
+        title, slug, content, excerpt, mainImage, category, tags, author,
+        createdAt, updatedAt, additionalImages, content_en, title_en, slug_en, excerpt_en
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        french.title,
+        frenchSlug,
+        sourceContentUrl,
+        french.excerpt,
+        mainImageUrl,
+        category,
+        tags,
+        author,
+        now,
+        now,
+        JSON.stringify(additionalImageUrls),
+        englishContentUrl,
+        english.title,
+        englishSlug,
+        english.excerpt,
+      ]
+    );
+    articleId = result.insertId;
+
+    await publishArticlePages({
+      frenchArticle: {
+        id: articleId,
+        title: french.title,
+        slug: frenchSlug,
+        excerpt: french.excerpt,
+        contentHtml: sourceHtml,
+        mainImage: mainImageUrl,
+        additionalImages: additionalImageUrls,
+        author,
+        createdAt: now,
+        updatedAt: now,
+      },
+      englishArticle: {
+        id: articleId,
+        title: english.title,
+        slug: englishSlug,
+        excerpt: english.excerpt,
+        contentHtml: translatedHtml,
+        mainImage: mainImageUrl,
+        additionalImages: additionalImageUrls,
+        author,
+        createdAt: now,
+        updatedAt: now,
+      },
+    });
+
+    return res.status(201).json({
+      status: "success",
+      data: {
+        article: {
+          id: articleId,
+          title: french.title,
+          slug: frenchSlug,
+          excerpt: french.excerpt,
+          content: sourceContentUrl,
+          category,
+          tags,
+          mainImage: mainImageUrl,
+          additionalImages: additionalImageUrls,
+          content_en: englishContentUrl,
+          title_en: english.title,
+          slug_en: englishSlug,
+          excerpt_en: english.excerpt,
+          url: `/fr/articles/${frenchSlug}.html`,
+          url_en: `/en/articles/${englishSlug}.html`,
+        },
+        message: "Article created and published successfully",
+      },
+    });
+  } catch (error) {
+    logger.error("[articles] createArticle error", error);
+    if (articleId && connection) {
+      try {
+        await connection.execute("DELETE FROM articles WHERE id = ?", [articleId]);
+        await removeArticlePages({ slug: frenchSlug, slugEn: englishSlug });
+      } catch (cleanupError) {
+        logger.error("[articles] createArticle database cleanup failed", cleanupError);
+      }
+    }
+    await Promise.all(createdFiles.map((file) => fsPromises.rm(file, { force: true })));
+    return res.status(500).json({ status: "error", message: "The article could not be published" });
+  } finally {
+    if (connection) releaseConnection(connection);
+  }
+};
+
 /************************************************
  * ************ delete article ******************
  **** start **************************************/
 
-exports.deleteArticle = async (req, res) => {
+const legacyDeleteArticle = async (req, res) => {
   let connection;
 
   try {
@@ -1087,3 +1284,78 @@ exports.deleteArticle = async (req, res) => {
 /************************************************
  * ************ delete article ******************
  **** end **************************************/
+
+/** Removes the generated FR/EN pages and every article-owned public asset. */
+exports.deleteArticle = async (req, res) => {
+  let connection;
+
+  try {
+    const articleId = Number.parseInt(req.params.id, 10);
+    if (!Number.isInteger(articleId) || articleId <= 0) {
+      return res.status(400).json({ status: "error", message: "A valid article ID is required" });
+    }
+
+    connection = await getConnection();
+    const [rows] = await connection.execute(
+      `SELECT slug, slug_en, content, content_en, mainImage, additionalImages
+       FROM articles WHERE id = ?`,
+      [articleId]
+    );
+    if (rows.length === 0) {
+      return res.status(404).json({ status: "error", message: "Article not found" });
+    }
+
+    const article = rows[0];
+    let additionalImages = [];
+    if (article.additionalImages) {
+      try {
+        additionalImages = Array.isArray(article.additionalImages)
+          ? article.additionalImages
+          : JSON.parse(article.additionalImages);
+      } catch (error) {
+        logger.warn(`[articles] Invalid additionalImages for article ${articleId}: ${error.message}`);
+      }
+    }
+
+    // Only files created by the dedicated-page workflow are deleted here. This
+    // prevents a malformed database value from removing arbitrary public files.
+    const legacyPublicRoot = path.resolve(__dirname, "../public");
+    const resolveLegacyPublicFile = (fileUrl) => {
+      const relativePath = path.posix.normalize(fileUrl).replace(/^\/+/, "");
+      const destination = path.resolve(legacyPublicRoot, relativePath);
+      if (
+        relativePath.startsWith("..") ||
+        !destination.startsWith(`${legacyPublicRoot}${path.sep}`)
+      ) {
+        throw new Error("Invalid legacy article asset path");
+      }
+      return destination;
+    };
+    const articleFiles = [
+      article.content,
+      article.content_en,
+      article.mainImage,
+      ...additionalImages,
+    ].filter((fileUrl) => typeof fileUrl === "string");
+
+    await Promise.all(articleFiles.map(async (fileUrl) => {
+      const filePath = fileUrl.startsWith(`/${articleAssetDirectory}/`)
+        ? publicUrlToPath(fileUrl)
+        : resolveLegacyPublicFile(fileUrl);
+      await fsPromises.rm(filePath, { force: true });
+    }));
+    await removeArticlePages({ slug: article.slug, slugEn: article.slug_en });
+
+    const [result] = await connection.execute("DELETE FROM articles WHERE id = ?", [articleId]);
+    if (result.affectedRows !== 1) {
+      throw new Error("The article database record could not be deleted");
+    }
+
+    return res.status(200).json({ status: "success", message: "Article deleted successfully" });
+  } catch (error) {
+    logger.error("[articles] deleteArticle error", error);
+    return res.status(500).json({ status: "error", message: "The article could not be deleted" });
+  } finally {
+    if (connection) releaseConnection(connection);
+  }
+};

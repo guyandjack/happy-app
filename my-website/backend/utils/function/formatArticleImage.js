@@ -61,8 +61,9 @@ const formatArticleImage = async (req) => {
       }
     }
 
-    return formattedImages;
   }
+
+  return formattedImages;
 };
 
 module.exports = { formatArticleImage };
