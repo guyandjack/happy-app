@@ -41,7 +41,7 @@ const Dashboard = () => {
       console.log("Dashboard - Token found:", !!token);
 
       if (!token) {
-        clearLocalStorageInfoSession("public/fr/connexion.html");
+        clearLocalStorageInfoSession("/fr/connexion.html");
         return;
       }
 
@@ -58,7 +58,7 @@ const Dashboard = () => {
         const message = handleAxiosError(error);
         toast.error(message);
         setTimeout(() => {
-          clearLocalStorageInfoSession("public/fr/connexion.html");
+          clearLocalStorageInfoSession("/fr/connexion.html");
         }, 3000);
       }
     };

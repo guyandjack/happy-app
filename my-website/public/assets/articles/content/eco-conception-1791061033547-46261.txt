@@ -1,7 +1,7 @@
 <article class="article-wrapper">
 
     <header class="article-header">
-        <img src="/public/assets/images/page-seo/img-hero-green-web.webp" class="article-img-title" alt="Développement web éco-responsable">
+        <img src="/assets/images/page-seo/img-hero-green-web.webp" class="article-img-title" alt="Développement web éco-responsable">
         <h1 class="article-title">Développement web éco-responsable : créer des sites plus sobres, rapides et utiles</h1>
         <p class="article-meta">
             <span class="article-author">Auteur: <span class="article-author-name">Helveclick</span></span> |

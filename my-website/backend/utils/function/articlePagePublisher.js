@@ -1,7 +1,12 @@
 const fs = require("fs/promises");
+const fsSync = require("fs");
 const path = require("path");
 const { parse } = require("node-html-parser");
-const { publicUrlToPath } = require("./sitePublicPaths");
+const {
+  publicUrlToPath,
+  sitePublicRoot,
+  assertArticlePublishingRoot,
+} = require("./sitePublicPaths");
 
 const SITE_URL = (process.env.SITE_URL || "https://helveclick.ch").replace(/\/$/, "");
 const DISALLOWED_ELEMENTS = [
@@ -115,6 +120,32 @@ function buildStructuredData(article, language, url) {
   };
 }
 
+function getArticleRuntimeMarkup() {
+  const manifestPath = path.join(sitePublicRoot, ".vite", "manifest.json");
+  if (fsSync.existsSync(manifestPath)) {
+    const manifest = JSON.parse(fsSync.readFileSync(manifestPath, "utf8"));
+    const runtime = Object.values(manifest).find(
+      (entry) => entry.src === "src/jsx/page-article.jsx"
+    );
+    if (!runtime?.file) {
+      throw new Error("The article React runtime is missing from the published Vite manifest");
+    }
+
+    const styles = (runtime.css || [])
+      .map((file) => `  <link rel="stylesheet" href="/${escapeHtml(file)}">`)
+      .join("\n");
+    return `${styles}${styles ? "\n" : ""}  <script type="module" crossorigin src="/${escapeHtml(runtime.file)}"></script>`;
+  }
+
+  if (process.env.NODE_ENV === "production") {
+    throw new Error(
+      "The published Vite manifest is missing. SITE_PUBLIC_ROOT must point to the frontend dist directory."
+    );
+  }
+
+  return '  <script type="module" src="/src/jsx/page-article.jsx" data-article-runtime></script>';
+}
+
 function buildArticleDocument({ article, language, alternateUrl }) {
   const url = `${SITE_URL}/${language}/articles/${article.slug}.html`;
   const locale = language === "fr" ? "fr_CH" : "en_CH";
@@ -164,7 +195,7 @@ function buildArticleDocument({ article, language, alternateUrl }) {
   <script type="application/ld+json">${structuredData}</script>
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
-  <script type="module" src="/src/jsx/page-article.jsx" data-article-runtime></script>
+${getArticleRuntimeMarkup()}
 </head>
 <body>
   <div class="page-container">
@@ -262,6 +293,7 @@ async function restoreStaticArticleLinkLists(lists) {
 }
 
 async function publishArticlePages({ frenchArticle, englishArticle }) {
+  assertArticlePublishingRoot();
   const frenchUrl = `${SITE_URL}/fr/articles/${frenchArticle.slug}.html`;
   const englishUrl = `${SITE_URL}/en/articles/${englishArticle.slug}.html`;
   const french = await writeArticlePage(
@@ -293,23 +325,20 @@ async function publishArticlePages({ frenchArticle, englishArticle }) {
 }
 
 async function removeArticlePages({ slug, slugEn }) {
+  assertArticlePublishingRoot();
   const pages = [
     `/fr/articles/${slug}.html`,
     `/en/articles/${slugEn}.html`,
   ];
-  await Promise.all(
-    pages.map(async (url) => {
-      try {
-        await fs.rm(publicUrlToPath(url), { force: true });
-      } catch (error) {
-        if (error.code !== "ENOENT") throw error;
-      }
-    })
-  );
-  await Promise.all([
-    updateStaticArticleLinkList({ slug }, "fr", true),
-    updateStaticArticleLinkList({ slug: slugEn }, "en", true),
-  ]);
+  const previousLists = [];
+  try {
+    previousLists.push(await updateStaticArticleLinkList({ slug }, "fr", true));
+    previousLists.push(await updateStaticArticleLinkList({ slug: slugEn }, "en", true));
+    await Promise.all(pages.map((url) => fs.rm(publicUrlToPath(url), { force: true })));
+  } catch (error) {
+    await restoreStaticArticleLinkLists(previousLists);
+    throw error;
+  }
 }
 
 module.exports = {

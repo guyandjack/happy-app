@@ -51,7 +51,7 @@ $navbar-height: map-get($sizes, navbar-height);
             height: 50px;
             border-radius: 50%;
             background-color: map-get($colors-rule, link-color);
-            background-image: url(../../../../public/assets/images/icons/arrow-output.svg);
+            background-image: url(/assets/images/icons/arrow-output.svg);
             background-repeat: no-repeat;
             background-position: center;
             

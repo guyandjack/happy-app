@@ -30,7 +30,8 @@ try {
   console.error("Error mounting Navbar:", error);
 }
 
-//mount articles list
+// The visitor-facing list is fetched and rendered by React. The equivalent
+// static cards remain hidden in the HTML for search-engine crawling.
 try {
   const articlesListContainer = document.getElementById("RC-articles-list");
   if (articlesListContainer) {
@@ -39,8 +40,6 @@ try {
         <AdminArticleList />
       </React.StrictMode>
     );
-  } else {
-    console.error("no container articles list found");
   }
 } catch (error) {
   console.error("Error mounting Articles List:", error);

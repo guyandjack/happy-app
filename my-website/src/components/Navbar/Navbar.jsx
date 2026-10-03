@@ -8,7 +8,7 @@ import { TimerSession } from "@components/TimerSession/timerSession.jsx";
 import { MenuSide } from "@components/Navbar/MenuSide.jsx";
 
 //import des icons
-//import burgerIcon from '../../../public/images/icons/menu-burger.svg';
+//import burgerIcon from '../../../images/icons/menu-burger.svg';
 import flagEN from "@assetsJSX/icons/flag-en.png";
 import flagFR from "@assetsJSX/icons/flag-fr.png";
 import { CiMenuKebab } from "react-icons/ci";
@@ -349,7 +349,7 @@ function Navbar() {
         ) : null}
         <div className="flex-row-end-center navbar-brand">
           {/*  <a
-            href={currentLang === "fr" ? "/" : "/public/en/home.html"}
+            href={currentLang === "fr" ? "/" : "/en/home.html"}
             aria-label={currentLang === "fr" ? "Accueil" : "Home"}
             className="logo"
           >

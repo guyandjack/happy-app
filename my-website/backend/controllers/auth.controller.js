@@ -130,7 +130,8 @@ exports.refreshToken = async (req, res, next) => {
  * Logout user
  */
 exports.logout = (req, res) => {
-  res.clearCookie("token");
+  const { maxAge, ...cookieOptions } = setCookieOptionsObject();
+  res.clearCookie("tokenRefresh", cookieOptions);
   res.status(200).json({ status: "success" });
 };
 

@@ -93,7 +93,7 @@ function LoginForm() {
           clearLocalStorageInfoSession("fr/connexion.html");
         } else {
           //redirection vers le dashboard
-          window.location.href = "/public/fr/dashboard.html";
+          window.location.href = "/fr/dashboard.html";
           return;
         }
       }

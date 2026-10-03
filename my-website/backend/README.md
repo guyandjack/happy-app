@@ -57,4 +57,18 @@ This is the backend API for the My Web Dev Company website.
 
 ## Environment Variables
 
-See the `.env.example` file for required environment variables. 
+See the `.env.example` file for required environment variables.
+
+### Article publication in production
+
+`SITE_PUBLIC_ROOT` must be the absolute filesystem path of the frontend build
+directory served by `https://helveclick.ch` (normally the deployed `dist`
+directory). It must contain `fr/articles-list.html` and
+`en/articles-list.html`, be writable by the API process, and persist after an
+API restart. `public` is a source/build directory name; it is never part of a
+public URL.
+
+If the API and frontend are deployed on different hosts without a shared,
+persistent volume, an API process cannot write SEO pages into the frontend
+deployment. In that architecture, use a shared volume or a deployment/storage
+publication step before enabling runtime article publication.

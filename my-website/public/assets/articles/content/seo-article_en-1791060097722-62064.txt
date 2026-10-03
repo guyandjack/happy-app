@@ -1,6 +1,6 @@
 <article class="article-wrapper">
     <header class="article-header">
-        <img src="/public/assets/images/page-seo/img-hero-1-seo.webp" class="article-img-title"
+        <img src="/assets/images/page-seo/img-hero-1-seo.webp" class="article-img-title"
             alt="Image d'introduction au SEO">
         <h1 class="article-title">Introduction to Organic Search Engine Optimization: What Is SEO?</h1>
         <p class="article-meta">

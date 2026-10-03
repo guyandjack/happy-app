@@ -44,7 +44,7 @@ const Card = ({ card }) => {
       </a>
       <a
         href={
-          lang === "fr" ? "/public/fr/contact.html" : "/public/en/contact.html"
+          lang === "fr" ? "/fr/contact.html" : "/en/contact.html"
         }
         className="card-button-contact"
       >

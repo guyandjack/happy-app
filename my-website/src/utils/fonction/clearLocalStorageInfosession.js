@@ -9,11 +9,11 @@ function clearLocalStorageInfoSession(url) {
   localStorage.removeItem("tokenExpiration");
 
   if (url) {
-    window.location.href = `/${url}`;
+    window.location.href = url.startsWith("/") ? url : `/${url}`;
     return;
   }
   if (adminPage) {
-    window.location.href = "/public/fr/connexion.html";
+    window.location.href = "/fr/connexion.html";
     return;
   }
 }

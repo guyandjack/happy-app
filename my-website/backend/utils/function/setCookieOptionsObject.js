@@ -1,42 +1,16 @@
-//import des fonctions nécessaires
-const localOrProd = require("./localOrProd");
-
-//fonction pour définir les options de cookie
-const setCookieOptionsObject = () => {
-  const { mode, url, url_api } = localOrProd();
-  console.log("url:", url);
-  console.log("url_api:", url_api);
-  console.log("mode:", mode);
-  switch (mode) {
-    case "prod":
-      return {
-        domain: url,
-        httpOnly: true,
-        secure: true,
-        maxAge: 60 * 60 * 1000,
-        samesite: "none",
-      };
-
-    case "dev":
-      return {
-        //domain: "undefined",
-        httpOnly: true,
-        secure: false,
-        maxAge: 60 * 60 * 1000,
-        //samesite: "none",
-      };
-
-    case "render":
-      return {
-        domain: ".onrender.com",
-        httpOnly: true,
-        secure: true,
-        maxAge: 60 * 60 * 1000,
-        samesite: "none",
-      };
-    default:
-      return {};
-  }
-};
+/**
+ * Returns the refresh-token cookie options.
+ *
+ * Do not set `domain` here. The API is served from api.helveclick.ch, so a
+ * host-only cookie is sufficient for API requests and is more restrictive
+ * than a cookie shared with every helveclick.ch subdomain.
+ */
+const setCookieOptionsObject = () => ({
+  httpOnly: true,
+  // Only an explicitly configured local development environment may use HTTP.
+  secure: process.env.NODE_ENV !== "development",
+  sameSite: "lax",
+  maxAge: 60 * 60 * 1000,
+});
 
 module.exports = setCookieOptionsObject;

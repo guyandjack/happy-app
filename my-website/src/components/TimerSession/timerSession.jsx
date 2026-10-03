@@ -210,7 +210,7 @@ function TimerSession() {
           <DisplayCounterDown timeRemaining={timeRemaining} />
         </li>
         <li>
-          <a id="timer-session-link" href="/public/fr/dashboard.html">
+          <a id="timer-session-link" href="/fr/dashboard.html">
             Dashboard
           </a>
         </li>

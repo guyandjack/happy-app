@@ -16,20 +16,20 @@ const IndexCards = () => {
   const lang = getLanguage();
   const uriPrestaWeb =
     lang === "fr"
-      ? "/public/fr/prestations/site-web.html"
-      : "/public/en/services/website.html";
+      ? "/fr/prestations/site-web.html"
+      : "/en/services/website.html";
   const uriPrestaApp =
     lang === "fr"
-      ? "/public/fr/prestations/application-mobile.html"
-      : "/public/en/services/mobile-application.html";
+      ? "/fr/prestations/application-mobile.html"
+      : "/en/services/mobile-application.html";
   const uriPrestaSeo =
     lang === "fr"
-      ? "/public/fr/prestations/seo.html"
-      : "/public/en/services/seo.html";
+      ? "/fr/prestations/seo.html"
+      : "/en/services/seo.html";
   const uriPrestaSaas =
     lang === "fr"
-      ? "/public/fr/prestations/saas.html"
-      : "/public/en/services/saas.html";
+      ? "/fr/prestations/saas.html"
+      : "/en/services/saas.html";
 
   const descriptionPrestaWeb =
     lang === "fr"

@@ -101,7 +101,7 @@
   height: 50px;
   border-radius: 50%;
   background-color: #04b6d4;
-  background-image: url(../../../../public/assets/images/icons/arrow-output.svg);
+  background-image: url(/assets/images/icons/arrow-output.svg);
   background-repeat: no-repeat;
   background-position: center;
 }

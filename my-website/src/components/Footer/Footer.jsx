@@ -21,60 +21,60 @@ const menuItems = {
   fr: {
     main: [
       { path: `/`, text: "Accueil" },
-      { path: `/public/fr/a-propos.html`, text: "A propos" },
-      { path: `/public/fr/contact.html`, text: "Contact" },
-      { path: `/public/fr/articles-list.html`, text: "Articles" },
+      { path: `/fr/a-propos.html`, text: "A propos" },
+      { path: `/fr/contact.html`, text: "Contact" },
+      { path: `/fr/articles-list.html`, text: "Articles" },
     ],
     services: [
       {
-        path: `/public/fr/prestations/site-web.html`,
+        path: `/fr/prestations/site-web.html`,
         text: "Site Web",
       },
       {
-        path: `/public/fr/prestations/seo.html`,
+        path: `/fr/prestations/seo.html`,
         text: "Référencement",
       },
       {
-        path: `/public/fr/prestations/application-mobile.html`,
+        path: `/fr/prestations/application-mobile.html`,
         text: "Application Mobile",
       },
-      { path: `/public/fr/prestations/saas.html`, text: "Solutions SaaS" },
+      { path: `/fr/prestations/saas.html`, text: "Solutions SaaS" },
     ],
     legal: [
       {
-        path: `/public/fr/legal/mentions-legales.html`,
+        path: `/fr/legal/mentions-legales.html`,
         text: "Mentions légales",
       },
       {
-        path: `/public/fr/legal/politique-de-confidentialite.html`,
+        path: `/fr/legal/politique-de-confidentialite.html`,
         text: "Politique de confidentialité",
       },
-      { path: `/public/fr/connexion.html`, text: "Connexion" },
+      { path: `/fr/connexion.html`, text: "Connexion" },
     ],
   },
   en: {
     main: [
-      { path: `/public/en/home.html`, text: "Home" },
-      { path: `/public/en/about.html`, text: "About me" },
-      { path: `/public/en/contact.html`, text: "Contact" },
-      { path: `/public/en/articles-list.html`, text: "Articles" },
+      { path: `/en/home.html`, text: "Home" },
+      { path: `/en/about.html`, text: "About me" },
+      { path: `/en/contact.html`, text: "Contact" },
+      { path: `/en/articles-list.html`, text: "Articles" },
     ],
     services: [
-      { path: `/public/en/services/website.html`, text: "Website" },
-      { path: `/public/en/services/seo.html`, text: "SEO" },
+      { path: `/en/services/website.html`, text: "Website" },
+      { path: `/en/services/seo.html`, text: "SEO" },
       {
-        path: `/public/en/services/mobile-application.html`,
+        path: `/en/services/mobile-application.html`,
         text: "Mobile App",
       },
-      { path: `/public/en/services/saas.html`, text: "SaaS Solutions" },
+      { path: `/en/services/saas.html`, text: "SaaS Solutions" },
     ],
     legal: [
       {
-        path: `/public/en/legal/legal-notice.html`,
+        path: `/en/legal/legal-notice.html`,
         text: "Legal Notice",
       },
       {
-        path: `/public/en/legal/privacy-policy.html`,
+        path: `/en/legal/privacy-policy.html`,
         text: "Privacy Policy",
       },
     ],
@@ -88,7 +88,7 @@ function Footer() {
       <div className="flex-column-start-start footer-content">
         <div className="flex-column-start-start footer-brand">
           <a
-            href={currentLang === "fr" ? "/" : "/public/en/home.html"}
+            href={currentLang === "fr" ? "/" : "/en/home.html"}
             aria-label={currentLang === "fr" ? "Accueil" : "Home"}
             className="footer-logo"
           >
@@ -102,8 +102,8 @@ function Footer() {
           <a
             href={
               currentLang === "fr"
-                ? "/public/fr/contact.html"
-                : "/public/en/contact.html"
+                ? "/fr/contact.html"
+                : "/en/contact.html"
             }
             className="footer-cta"
           >

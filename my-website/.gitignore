@@ -36,4 +36,6 @@ backend/public.key
 #gitignore
 .gitignore
 .map
+public/fr/articles
+public/en/articles
 

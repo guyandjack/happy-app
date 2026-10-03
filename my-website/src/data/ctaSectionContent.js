@@ -1,8 +1,8 @@
 //Contenu de la section cta
 const cta_link_fr =
-  '<p><a href="/public/fr/contact.html"class="text-link-cta">utilisez le formulaire de contact</a>&nbsp;ou appelez le <a href="tel:+41788940987"class="text-link-cta">+41&nbsp;78&nbsp;894&nbsp;09&nbsp;87</a>.</p>';
+  '<p><a href="/fr/contact.html"class="text-link-cta">utilisez le formulaire de contact</a>&nbsp;ou appelez le <a href="tel:+41788940987"class="text-link-cta">+41&nbsp;78&nbsp;894&nbsp;09&nbsp;87</a>.</p>';
 const cta_link_en =
-  '<p>Pour demander un devis ou convenir d’un rendez-vous,<br> <a href="/public/fr/contact.html"class="text-link-cta">utilisez le formulaire de contact</a>&nbsp;ou appelez le <a href="tel:+41788940987"class="text-link-cta">+41&nbsp;78&nbsp;894&nbsp;09&nbsp;87</a>.</p>';
+  '<p>Pour demander un devis ou convenir d’un rendez-vous,<br> <a href="/fr/contact.html"class="text-link-cta">utilisez le formulaire de contact</a>&nbsp;ou appelez le <a href="tel:+41788940987"class="text-link-cta">+41&nbsp;78&nbsp;894&nbsp;09&nbsp;87</a>.</p>';
 
 let ctaSectionContent = {
   fr: {

@@ -15,6 +15,7 @@ const { formatArticleImage } = require("../utils/function/formatArticleImage");
 const {
   articleAssetDirectory,
   publicUrlToPath,
+  assertArticlePublishingRoot,
 } = require("../utils/function/sitePublicPaths");
 const {
   publishArticlePages,
@@ -919,6 +920,16 @@ exports.createArticle = async (req, res) => {
   const createdFiles = [];
 
   try {
+    try {
+      assertArticlePublishingRoot();
+    } catch (error) {
+      logger.error("[articles] createArticle publishing configuration error", error);
+      return res.status(503).json({
+        status: "error",
+        message: "Article publication is unavailable: the published site directory is not configured.",
+      });
+    }
+
     connection = await getConnection();
     const { category, tags } = req.body;
     if (!category || !tags || !req.files?.mainImage || !req.files?.contentArticle) {
