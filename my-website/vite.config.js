@@ -117,6 +117,30 @@ function publishCompiledHtmlRoutes(outputDirectory) {
   rmSync(emittedPublicDirectory, { recursive: true, force: true });
 }
 
+function getRuntimeMarkup(manifest, runtime) {
+  const styles = new Set();
+  const imports = new Set();
+  const visited = new Set();
+  const collectAssets = (entry) => {
+    if (!entry?.file || visited.has(entry.file)) return;
+    visited.add(entry.file);
+    (entry.css || []).forEach((file) => styles.add(file));
+    (entry.imports || []).forEach((key) => {
+      const dependency = manifest[key];
+      if (!dependency?.file) return;
+      imports.add(dependency.file);
+      collectAssets(dependency);
+    });
+  };
+  collectAssets(runtime);
+
+  return [
+    ...[...styles].map((file) => `<link rel="stylesheet" href="/${file}">`),
+    ...[...imports].map((file) => `<link rel="modulepreload" crossorigin href="/${file}">`),
+    `<script type="module" crossorigin src="/${runtime.file}"></script>`,
+  ].join("\n  ");
+}
+
 function publishGeneratedArticlePages() {
   return {
     name: "publish-generated-article-pages",
@@ -133,10 +157,7 @@ function publishGeneratedArticlePages() {
         throw new Error("An article runtime entry was not found in the Vite manifest");
       }
 
-      const articleAssets = [
-        ...(articleRuntime.css || []).map((file) => `<link rel="stylesheet" href="/${file}">`),
-        `<script type="module" crossorigin src="/${articleRuntime.file}"></script>`,
-      ].join("\n  ");
+      const articleAssets = getRuntimeMarkup(manifest, articleRuntime);
       const runtimeScript = /<script type="module" src="\/src\/jsx\/page-article\.jsx" data-article-runtime><\/script>/g;
       const articleDirectories = [
         path.join(outputDirectory, "fr", "articles"),

@@ -30,6 +30,12 @@ const siteDistributionRoot = process.env.SITE_DISTRIBUTION_ROOT
   : path.basename(sitePublicRoot) === "dist"
     ? sitePublicRoot
     : path.resolve(sitePublicRoot, "../dist");
+const siblingSitemapPath = path.resolve(sitePublicRoot, "../sitemap.xml");
+const siteSitemapPath = process.env.SITE_SITEMAP_PATH
+  ? path.resolve(process.env.SITE_SITEMAP_PATH)
+  : fs.existsSync(path.join(sitePublicRoot, "sitemap.xml"))
+    ? path.join(sitePublicRoot, "sitemap.xml")
+    : siblingSitemapPath;
 
 function publicUrlToPath(publicUrl) {
   if (typeof publicUrl !== "string" || !publicUrl.startsWith("/")) {
@@ -67,6 +73,7 @@ function assertArticlePublishingRoot() {
 module.exports = {
   sitePublicRoot,
   siteDistributionRoot,
+  siteSitemapPath,
   articleAssetDirectory,
   publicUrlToPath,
   assertArticlePublishingRoot,

@@ -68,6 +68,11 @@ directory). It must contain `fr/articles-list.html` and
 API restart. `public` is a source/build directory name; it is never part of a
 public URL.
 
+The runtime rebuilds article entries in `sitemap.xml` from the HTML files in
+`fr/articles` and `en/articles` after every article creation or deletion. The
+sitemap is expected in `SITE_PUBLIC_ROOT`; set `SITE_SITEMAP_PATH` only when it
+is stored elsewhere.
+
 If the API and frontend are deployed on different hosts without a shared,
 persistent volume, an API process cannot write SEO pages into the frontend
 deployment. In that architecture, use a shared volume or a deployment/storage

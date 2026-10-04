@@ -2,9 +2,11 @@ const fs = require("fs/promises");
 const fsSync = require("fs");
 const path = require("path");
 const { parse } = require("node-html-parser");
+const logger = require("../../logger");
 const {
   publicUrlToPath,
   sitePublicRoot,
+  siteSitemapPath,
   assertArticlePublishingRoot,
 } = require("./sitePublicPaths");
 
@@ -131,10 +133,31 @@ function getArticleRuntimeMarkup() {
       throw new Error("The article React runtime is missing from the published Vite manifest");
     }
 
-    const styles = (runtime.css || [])
+    const styles = new Set();
+    const imports = new Set();
+    const visited = new Set();
+    const collectRuntimeAssets = (entry) => {
+      if (!entry || visited.has(entry.file)) return;
+      visited.add(entry.file);
+      (entry.css || []).forEach((file) => styles.add(file));
+      (entry.imports || []).forEach((key) => {
+        const dependency = manifest[key];
+        if (!dependency?.file) return;
+        imports.add(dependency.file);
+        collectRuntimeAssets(dependency);
+      });
+    };
+    collectRuntimeAssets(runtime);
+
+    const styleMarkup = [...styles]
       .map((file) => `  <link rel="stylesheet" href="/${escapeHtml(file)}">`)
       .join("\n");
-    return `${styles}${styles ? "\n" : ""}  <script type="module" crossorigin src="/${escapeHtml(runtime.file)}"></script>`;
+    const preloadMarkup = [...imports]
+      .map((file) => `  <link rel="modulepreload" crossorigin href="/${escapeHtml(file)}">`)
+      .join("\n");
+    return [styleMarkup, preloadMarkup, `  <script type="module" crossorigin src="/${escapeHtml(runtime.file)}"></script>`]
+      .filter(Boolean)
+      .join("\n");
   }
 
   if (process.env.NODE_ENV === "production") {
@@ -292,6 +315,126 @@ async function restoreStaticArticleLinkLists(lists) {
   await Promise.all(lists.map(({ path: listPath, original }) => fs.writeFile(listPath, original, "utf8")));
 }
 
+function escapeXml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
+function getArticleAlternateUrl(source, language) {
+  const match = source.match(
+    new RegExp(`<link rel="alternate" hreflang="${language}" href="([^"]+)">`)
+  );
+  return match?.[1] || null;
+}
+
+async function readArticleSitemapEntries(language) {
+  const directory = publicUrlToPath(`/${language}/articles`);
+  let files;
+  try {
+    files = await fs.readdir(directory, { withFileTypes: true });
+  } catch (error) {
+    if (error.code === "ENOENT") return [];
+    throw error;
+  }
+
+  const expectedPrefix = `${SITE_URL}/${language}/articles/`;
+  const entries = await Promise.all(files
+    .filter((file) => file.isFile() && file.name.endsWith(".html"))
+    .map(async (file) => {
+      const filePath = path.join(directory, file.name);
+      const [source, stats] = await Promise.all([
+        fs.readFile(filePath, "utf8"),
+        fs.stat(filePath),
+      ]);
+      const canonicalUrl = source.match(/<link rel="canonical" href="([^"]+)">/)?.[1];
+      if (!canonicalUrl || !canonicalUrl.startsWith(expectedPrefix)) return null;
+
+      const modifiedAt = source.match(/"dateModified":"([^"]+)"/)?.[1];
+      const parsedModifiedAt = modifiedAt ? new Date(modifiedAt) : stats.mtime;
+      const lastModified = Number.isNaN(parsedModifiedAt.getTime())
+        ? stats.mtime.toISOString().slice(0, 10)
+        : parsedModifiedAt.toISOString().slice(0, 10);
+
+      return {
+        canonicalUrl,
+        lastModified,
+        frenchUrl: getArticleAlternateUrl(source, "fr-CH"),
+        englishUrl: getArticleAlternateUrl(source, "en-CH"),
+        defaultUrl: getArticleAlternateUrl(source, "x-default"),
+      };
+    }));
+
+  return entries.filter(Boolean);
+}
+
+function buildArticleSitemapEntry(entry) {
+  const alternateLinks = [
+    ["fr-CH", entry.frenchUrl],
+    ["en-CH", entry.englishUrl],
+    ["x-default", entry.defaultUrl],
+  ]
+    .filter(([, url]) => Boolean(url))
+    .map(([language, url]) => `    <xhtml:link rel="alternate" hreflang="${language}" href="${escapeXml(url)}"/>`)
+    .join("\n");
+
+  return `  <url>
+    <loc>${escapeXml(entry.canonicalUrl)}</loc>
+    <lastmod>${entry.lastModified}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>${alternateLinks ? `\n${alternateLinks}` : ""}
+  </url>`;
+}
+
+async function writeFileAtomically(destination, content) {
+  const temporaryPath = `${destination}.${process.pid}.${Date.now()}.tmp`;
+  await fs.writeFile(temporaryPath, content, "utf8");
+  await fs.rename(temporaryPath, destination);
+}
+
+/** Rebuilds only article URLs from the HTML files that currently exist on disk. */
+async function updateArticleSitemap() {
+  try {
+    const [frenchEntries, englishEntries] = await Promise.all([
+      readArticleSitemapEntries("fr"),
+      readArticleSitemapEntries("en"),
+    ]);
+    const articleEntries = [...frenchEntries, ...englishEntries]
+      .sort((first, second) => first.canonicalUrl.localeCompare(second.canonicalUrl));
+
+    const source = await fs.readFile(siteSitemapPath, "utf8");
+    const withoutArticles = source.replace(
+      /\s*<url>\s*<loc>[^<]*\/(?:fr|en)\/articles\/[^<]+<\/loc>[\s\S]*?<\/url>/g,
+      ""
+    );
+    if (!withoutArticles.includes("</urlset>")) {
+      throw new Error(`Invalid sitemap XML: ${siteSitemapPath}`);
+    }
+
+    const articleXml = articleEntries.map(buildArticleSitemapEntry).join("\n");
+    const updated = withoutArticles.replace(
+      "</urlset>",
+      `${articleXml ? `\n${articleXml}\n` : "\n"}</urlset>`
+    );
+    await writeFileAtomically(siteSitemapPath, updated);
+    logger.info("[articles] sitemap updated", {
+      sitemapPath: siteSitemapPath,
+      frenchArticlePages: frenchEntries.length,
+      englishArticlePages: englishEntries.length,
+    });
+  } catch (error) {
+    logger.error("[articles] sitemap update failed", {
+      sitemapPath: siteSitemapPath,
+      message: error.message,
+      stack: error.stack,
+    });
+    throw error;
+  }
+}
+
 async function publishArticlePages({ frenchArticle, englishArticle }) {
   assertArticlePublishingRoot();
   const frenchUrl = `${SITE_URL}/fr/articles/${frenchArticle.slug}.html`;
@@ -302,22 +445,19 @@ async function publishArticlePages({ frenchArticle, englishArticle }) {
     buildArticleDocument({ article: frenchArticle, language: "fr", alternateUrl: englishUrl })
   );
   let english;
+  const previousLists = [];
   try {
     english = await writeArticlePage(
       "en",
       englishArticle.slug,
       buildArticleDocument({ article: englishArticle, language: "en", alternateUrl: frenchUrl })
     );
-    let previousLists = [];
-    try {
-      previousLists.push(await updateStaticArticleLinkList(frenchArticle, "fr"));
-      previousLists.push(await updateStaticArticleLinkList(englishArticle, "en"));
-    } catch (error) {
-      await restoreStaticArticleLinkLists(previousLists);
-      throw error;
-    }
+    previousLists.push(await updateStaticArticleLinkList(frenchArticle, "fr"));
+    previousLists.push(await updateStaticArticleLinkList(englishArticle, "en"));
+    await updateArticleSitemap();
     return { french, english };
   } catch (error) {
+    await restoreStaticArticleLinkLists(previousLists);
     await fs.rm(french.path, { force: true });
     if (english) await fs.rm(english.path, { force: true });
     throw error;
@@ -330,12 +470,26 @@ async function removeArticlePages({ slug, slugEn }) {
     `/fr/articles/${slug}.html`,
     `/en/articles/${slugEn}.html`,
   ];
+  const pageSnapshots = await Promise.all(pages.map(async (url) => {
+    const filePath = publicUrlToPath(url);
+    try {
+      return { filePath, content: await fs.readFile(filePath) };
+    } catch (error) {
+      if (error.code === "ENOENT") return null;
+      throw error;
+    }
+  }));
   const previousLists = [];
   try {
     previousLists.push(await updateStaticArticleLinkList({ slug }, "fr", true));
     previousLists.push(await updateStaticArticleLinkList({ slug: slugEn }, "en", true));
     await Promise.all(pages.map((url) => fs.rm(publicUrlToPath(url), { force: true })));
+    await updateArticleSitemap();
   } catch (error) {
+    await Promise.all(pageSnapshots.filter(Boolean).map(async ({ filePath, content }) => {
+      await fs.mkdir(path.dirname(filePath), { recursive: true });
+      await fs.writeFile(filePath, content);
+    }));
     await restoreStaticArticleLinkLists(previousLists);
     throw error;
   }
@@ -344,4 +498,5 @@ async function removeArticlePages({ slug, slugEn }) {
 module.exports = {
   publishArticlePages,
   removeArticlePages,
+  updateArticleSitemap,
 };
