@@ -5,11 +5,16 @@
 
   <link rel="preconnect" href="https://api.helveclick.ch" crossorigin>
   <link rel="dns-prefetch" href="//api.helveclick.ch">
-  <link rel="preload" as="image" href="https://api.helveclick.ch/images/landingPage/1500.webp" type="image/webp"
-    crossorigin imagesrcset="
-          https://api.helveclick.ch/images/landingPage/500.webp 500w,
-          https://api.helveclick.ch/images/landingPage/1000.webp 1000w,
-          https://api.helveclick.ch/images/landingPage/1500.webp 1500w,
+  <!-- The preload mirrors the <picture> art direction to avoid downloading
+       both the portrait and landscape hero images. -->
+  <link rel="preload" as="image" href="https://api.helveclick.ch/images/landingPage/800.webp" type="image/webp"
+    crossorigin media="(max-width: 767px)" imagesrcset="
+          https://api.helveclick.ch/images/landingPage/700.webp 700w,
+          https://api.helveclick.ch/images/landingPage/800.webp 800w" imagesizes="100vw">
+  <link rel="preload" as="image" href="https://api.helveclick.ch/images/landingPage/1000.webp" type="image/webp"
+    crossorigin media="(min-width: 768px)" imagesrcset="
+          https://api.helveclick.ch/images/landingPage/1000.webp 1024w,
+          https://api.helveclick.ch/images/landingPage/1500.webp 1536w,
           https://api.helveclick.ch/images/landingPage/2000.webp 2000w" imagesizes="100vw">
 
   <!-- Encodage & Affichage -->
@@ -229,13 +234,20 @@
 
           </ul>
         </div>
-
-        <img class="hero-index-img" src="https://api.helveclick.ch/images/landingPage/1500.webp" srcset="
-            https://api.helveclick.ch/images/landingPage/500.webp 500w,
-            https://api.helveclick.ch/images/landingPage/1000.webp 1000w,
-            https://api.helveclick.ch/images/landingPage/1500.webp 1500w,
-            https://api.helveclick.ch/images/landingPage/2000.webp 2000w" sizes="100vw" fetchpriority="high"
-          loading="eager" crossorigin="anonymous" alt="">
+        <picture>
+          <!-- Portrait assets preserve the composition on phones. -->
+          <source media="(max-width: 767px)" type="image/webp" srcset="
+            https://api.helveclick.ch/images/landingPage/700.webp 700w,
+            https://api.helveclick.ch/images/landingPage/800.webp 800w" sizes="100vw">
+          <!-- The browser selects the smallest landscape asset appropriate for
+               the viewport and device-pixel ratio. -->
+          <source type="image/webp" srcset="
+            https://api.helveclick.ch/images/landingPage/1000.webp 1024w,
+            https://api.helveclick.ch/images/landingPage/1500.webp 1536w,
+            https://api.helveclick.ch/images/landingPage/2000.webp 2000w" sizes="100vw">
+          <img class="hero-index-img" src="https://api.helveclick.ch/images/landingPage/1000.webp" loading="eager"
+            fetchpriority="high" decoding="async" crossorigin="anonymous" alt="">
+        </picture>
 
         <div class="hero-index-overlay"></div>
 

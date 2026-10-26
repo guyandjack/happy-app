@@ -16,6 +16,7 @@ const {
   secondsUntilNextSeason,
   startScheduler,
 } = require("./utils/function/scheduler.js");
+const LANDING_PAGE_CACHE_MAX_AGE_SECONDS = 30 * 24 * 60 * 60;
 const logger = require("./logger.js");
 const testNotif = require("./utils/function/testNotification.js");
 const {
@@ -64,7 +65,12 @@ app.use(
     etag: true,
     lastModified: true,
     setHeaders(res, filePath) {
-      const maxAge = secondsUntilNextSeason();
+      // Cache the current hero image for up to 30 days. Its URL is stable but
+      // its content changes by season, so never cache beyond the next switch.
+      const maxAge = Math.min(
+        LANDING_PAGE_CACHE_MAX_AGE_SECONDS,
+        secondsUntilNextSeason()
+      );
       res.setHeader("Cache-Control", `public, max-age=${maxAge}, must-revalidate`);
       res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
       if (filePath && filePath.endsWith(".webp")) {

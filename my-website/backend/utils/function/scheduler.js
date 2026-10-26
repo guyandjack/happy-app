@@ -9,16 +9,53 @@ const PUBLIC_ROOT = path.join(PROJECT_ROOT, "public");
 const LP_DIR = path.join(PUBLIC_ROOT, "images", "landingPage"); // ./public/images/landingPage
 const TIMEZONE = "Europe/Zurich";
 
+const zonedDateFormatter = new Intl.DateTimeFormat("en-GB", {
+  timeZone: TIMEZONE,
+  year: "numeric",
+  month: "numeric",
+  day: "numeric",
+  hour: "numeric",
+  minute: "numeric",
+  second: "numeric",
+  hourCycle: "h23",
+});
+
+function zonedDateParts(date) {
+  return Object.fromEntries(
+    zonedDateFormatter
+      .formatToParts(date)
+      .filter(({ type }) => type !== "literal")
+      .map(({ type, value }) => [type, Number(value)])
+  );
+}
+
+// Converts a wall-clock date in Europe/Zurich to its UTC timestamp. Seasonal
+// boundaries are at midnight, on dates outside of DST transitions.
+function zurichMidnightUtc(year, month, day) {
+  const intendedTimestamp = Date.UTC(year, month - 1, day);
+  const displayedParts = zonedDateParts(new Date(intendedTimestamp));
+  const displayedTimestamp = Date.UTC(
+    displayedParts.year,
+    displayedParts.month - 1,
+    displayedParts.day,
+    displayedParts.hour,
+    displayedParts.minute,
+    displayedParts.second
+  );
+
+  return intendedTimestamp + (intendedTimestamp - displayedTimestamp);
+}
+
 // The public image URLs remain stable during a season. Browsers can therefore
 // cache them until the next switch without serving a stale seasonal visual.
 function secondsUntilNextSeason(date = new Date()) {
-  const year = date.getUTCFullYear();
+  const { year } = zonedDateParts(date);
   const seasonStarts = [
-    Date.UTC(year, 2, 21),
-    Date.UTC(year, 5, 21),
-    Date.UTC(year, 8, 21),
-    Date.UTC(year, 11, 21),
-    Date.UTC(year + 1, 2, 21),
+    zurichMidnightUtc(year, 3, 21),
+    zurichMidnightUtc(year, 6, 21),
+    zurichMidnightUtc(year, 9, 21),
+    zurichMidnightUtc(year, 12, 21),
+    zurichMidnightUtc(year + 1, 3, 21),
   ];
   const nextStart = seasonStarts.find((start) => start > date.getTime());
 
@@ -26,35 +63,23 @@ function secondsUntilNextSeason(date = new Date()) {
 }
 
 // Mapping URL -> fichiers saison
-const WIDTH_MAP = [
-  { urlName: "500", pxName: "700px" }, // 500 -> 700px
-  { urlName: "1000", pxName: "1000px" },
-  { urlName: "1500", pxName: "1500px" },
-  { urlName: "2000", pxName: "2000px" },
+const IMAGE_VARIANTS = [
+  { urlName: "700", sourceName: "700px", orientation: "portrait" },
+  { urlName: "800", sourceName: "800px", orientation: "portrait" },
+  { urlName: "1000", sourceName: "1000px", orientation: "landscape" },
+  { urlName: "1500", sourceName: "1500px", orientation: "landscape" },
+  { urlName: "2000", sourceName: "2000px", orientation: "landscape" },
 ];
 const SEASONS = ["winter", "spring", "summer", "autumn"];
 
 // Détermine la saison à partir de la date (bornes fixes)
 function seasonFor(date = new Date()) {
-  const y = date.getUTCFullYear();
-  const utc = (m, d) => Date.UTC(y, m - 1, d, 0, 0, 0);
-  const now = Date.UTC(
-    date.getUTCFullYear(),
-    date.getUTCMonth(),
-    date.getUTCDate(),
-    0,
-    0,
-    0
-  );
+  const { month, day } = zonedDateParts(date);
+  const monthDay = month * 100 + day;
 
-  const D21 = utc(12, 21);
-  const M21 = utc(3, 21);
-  const J21 = utc(6, 21);
-  const S21 = utc(9, 21);
-
-  if (now >= D21 || now < M21) return "winter";
-  if (now >= M21 && now < J21) return "spring";
-  if (now >= J21 && now < S21) return "summer";
+  if (monthDay >= 1221 || monthDay < 321) return "winter";
+  if (monthDay < 621) return "spring";
+  if (monthDay < 921) return "summer";
   return "autumn";
 }
 
@@ -76,8 +101,8 @@ function fallbackSeasonOrder(requestedSeason) {
 async function hasCompleteSeasonAssets(season) {
   try {
     await Promise.all(
-      WIDTH_MAP.map(({ pxName }) =>
-        fs.access(path.join(LP_DIR, `index-${season}-${pxName}.webp`))
+      IMAGE_VARIANTS.map(({ sourceName }) =>
+        fs.access(path.join(LP_DIR, `index-${season}-${sourceName}.webp`))
       )
     );
     return true;
@@ -147,8 +172,8 @@ async function pointLandingPageToSeason(season) {
   // S'assure que le dossier existe
   await fs.mkdir(LP_DIR, { recursive: true });
 
-  const tasks = WIDTH_MAP.map(async ({ urlName, pxName }) => {
-    const target = path.join(LP_DIR, `index-${season}-${pxName}.webp`);
+  const tasks = IMAGE_VARIANTS.map(async ({ urlName, sourceName }) => {
+    const target = path.join(LP_DIR, `index-${season}-${sourceName}.webp`);
     const link = path.join(LP_DIR, `${urlName}.webp`);
     await atomicPoint(link, target);
   });
@@ -210,7 +235,7 @@ async function startScheduler() {
   }
 
   // Tentative dédiée aux changements de saison (jour 21 de chaque mois)
-  scheduleSeasonJob("0 0 21 * *", "season-switch");
+  scheduleSeasonJob("5 0 21 3,6,9,12 *", "season-switch");
 
   // Garde-fou quotidien à 02:00 pour rattraper les assets ajoutés/après coup
   scheduleSeasonJob("0 2 * * *", "daily-guard");
@@ -218,6 +243,7 @@ async function startScheduler() {
 
 module.exports = {
   LP_DIR,
+  IMAGE_VARIANTS,
   seasonFor,
   secondsUntilNextSeason,
   fallbackSeasonOrder,
