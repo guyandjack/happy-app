@@ -6,6 +6,7 @@
     width: 100%;
     max-width: 800px;
     color: rgba(map-get($colors-rule, first-color),0.8);
+    padding: 0 1rem;
 
     & p {
         line-height: 1.8;
@@ -338,7 +339,8 @@
 
         .contact-form-container,
         .contact-info {
-            padding: 25px;
+            padding: 1rem;
+            
         }
     }
 }

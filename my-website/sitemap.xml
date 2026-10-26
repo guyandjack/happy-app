@@ -1,236 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml"
->
-  <!-- HOME (x-default + FR-CH + EN-CH) -->
-  <url>
-    <loc>https://helveclick.ch/</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/home.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/"/>
-  </url>
-
-  <url>
-    <loc>https://helveclick.ch/en/home.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/home.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/"/>
-  </url>
-
-  <!-- CONTACT -->
-  <url>
-    <loc>https://helveclick.ch/fr/contact.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/contact.html"/>
-  </url>
-
-  <url>
-    <loc>https://helveclick.ch/en/contact.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/contact.html"/>
-  </url>
-
-  <!-- ARTICLES LIST -->
-  <url>
-    <loc>https://helveclick.ch/fr/articles-list.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/articles-list.html"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/articles-list.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/articles-list.html"/>
-  </url>
-
-  <url>
-    <loc>https://helveclick.ch/en/articles-list.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/articles-list.html"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/articles-list.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/articles-list.html"/>
-  </url>
-
-  <!-- ABOUT -->
-  <url>
-    <loc>https://helveclick.ch/fr/a-propos.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/a-propos.html"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/about.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/a-propos.html"/>
-  </url>
-
-  <url>
-    <loc>https://helveclick.ch/en/about.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/a-propos.html"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/about.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/a-propos.html"/>
-  </url>
-
-  <!-- SERVICES: WEBSITE -->
-  <url>
-    <loc>https://helveclick.ch/fr/prestations/site-web.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/prestations/site-web.html"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/services/website.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/prestations/site-web.html"/>
-  </url>
-
-  <url>
-    <loc>https://helveclick.ch/en/services/website.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/prestations/site-web.html"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/services/website.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/prestations/site-web.html"/>
-  </url>
-
-  <!-- SERVICES: SEO -->
-  <url>
-    <loc>https://helveclick.ch/fr/prestations/seo.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/prestations/seo.html"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/services/seo.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/prestations/seo.html"/>
-  </url>
-
-  <url>
-    <loc>https://helveclick.ch/en/services/seo.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/prestations/seo.html"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/services/seo.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/prestations/seo.html"/>
-  </url>
-
-  <!-- SERVICES: MOBILE APPLICATION -->
-  <url>
-    <loc>https://helveclick.ch/fr/prestations/application-mobile.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/prestations/application-mobile.html"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/services/mobile-application.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/prestations/application-mobile.html"/>
-  </url>
-
-  <url>
-    <loc>https://helveclick.ch/en/services/mobile-application.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/prestations/application-mobile.html"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/services/mobile-application.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/prestations/application-mobile.html"/>
-  </url>
-
-  <!-- SERVICES: SAAS -->
-  <url>
-    <loc>https://helveclick.ch/fr/prestations/saas.html</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/prestations/saas.html"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/services/saas.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/prestations/saas.html"/>
-  </url>
-
-  <url>
-    <loc>https://helveclick.ch/en/services/saas.html</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/prestations/saas.html"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/services/saas.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/prestations/saas.html"/>
-  </url>
-
-  <!-- LEGAL: PRIVACY POLICY -->
-  <url>
-    <loc>https://helveclick.ch/fr/legal/politique-de-confidentialite.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/legal/politique-de-confidentialite.html"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/legal/privacy-policy.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/legal/politique-de-confidentialite.html"/>
-  </url>
-
-  <url>
-    <loc>https://helveclick.ch/en/legal/privacy-policy.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/legal/politique-de-confidentialite.html"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/legal/privacy-policy.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/legal/politique-de-confidentialite.html"/>
-  </url>
-
-  <!-- LEGAL: LEGAL NOTICE -->
-  <url>
-    <loc>https://helveclick.ch/fr/legal/mentions-legales.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/legal/mentions-legales.html"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/legal/legal-notice.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/legal/mentions-legales.html"/>
-  </url>
-
-  <url>
-    <loc>https://helveclick.ch/en/legal/legal-notice.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/legal/mentions-legales.html"/>
-    <xhtml:link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/legal/legal-notice.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/legal/mentions-legales.html"/>
-  </url>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+	<url>
+		<loc>https://helveclick.ch/en/home.html</loc>
+		<priority>1.00</priority>
+		<changefreq>weekly</changefreq>
+		<lastmod>2026-01-28</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/</loc>
+		<priority>1.00</priority>
+		<changefreq>weekly</changefreq>
+		<lastmod>2026-01-28</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/en/articles-list.html</loc>
+		<priority>0.70</priority>
+		<changefreq>weekly</changefreq>
+		<lastmod>2026-10-04</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/fr/articles-list.html</loc>
+		<priority>0.70</priority>
+		<changefreq>weekly</changefreq>
+		<lastmod>2026-10-04</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/en/about.html</loc>
+		<priority>0.60</priority>
+		<changefreq>yearly</changefreq>
+		<lastmod>2026-01-28</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/fr/a-propos.html</loc>
+		<priority>0.60</priority>
+		<changefreq>yearly</changefreq>
+		<lastmod>2026-01-28</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/en/contact.html</loc>
+		<priority>0.60</priority>
+		<changefreq>yearly</changefreq>
+		<lastmod>2026-01-28</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/fr/contact.html</loc>
+		<priority>0.60</priority>
+		<changefreq>yearly</changefreq>
+		<lastmod>2026-10-26</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/en/services/saas.html</loc>
+		<priority>0.50</priority>
+		<changefreq>yearly</changefreq>
+		<lastmod>2026-10-26</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/fr/prestations/saas.html</loc>
+		<priority>0.50</priority>
+		<changefreq>yearly</changefreq>
+		<lastmod>2026-10-26</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/en/services/mobile-application.html</loc>
+		<priority>0.50</priority>
+		<changefreq>yearly</changefreq>
+		<lastmod>2026-10-26</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/fr/prestations/application-mobile.html</loc>
+		<priority>0.50</priority>
+		<changefreq>yearly</changefreq>
+		<lastmod>2026-10-26</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/en/services/seo.html</loc>
+		<priority>0.50</priority>
+		<changefreq>yearly</changefreq>
+		<lastmod>2026-10-26</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/fr/prestations/seo.html</loc>
+		<priority>0.50</priority>
+		<changefreq>yearly</changefreq>
+		<lastmod>2026-10-26</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/en/services/website.html</loc>
+		<priority>0.50</priority>
+		<changefreq>yearly</changefreq>
+		<lastmod>2026-10-26</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/fr/prestations/site-web.html</loc>
+		<priority>0.50</priority>
+		<changefreq>yearly</changefreq>
+		<lastmod>2026-10-26</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/en/legal/legal-notice.html</loc>
+		<priority>0.20</priority>
+		<changefreq>yearly</changefreq>
+		<lastmod>2026-01-28</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/fr/legal/mentions-legales.html</loc>
+		<priority>0.20</priority>
+		<changefreq>yearly</changefreq>
+		<lastmod>2026-01-28</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/en/legal/privacy-policy.html</loc>
+		<priority>0.20</priority>
+		<changefreq>yearly</changefreq>
+		<lastmod>2026-01-28</lastmod>
+	</url>
+	<url>
+		<loc>https://helveclick.ch/fr/legal/politique-de-confidentialite.html</loc>
+		<priority>0.20</priority>
+		<changefreq>yearly</changefreq>
+		<lastmod>2026-01-28</lastmod>
+	</url>
 </urlset>

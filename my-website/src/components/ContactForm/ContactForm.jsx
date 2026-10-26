@@ -366,7 +366,7 @@ function ContactForm() {
         </div>
 
         {/* ReCAPTCHA */}
-        <div className="form-group">
+        <div className="form-group recaptcha">
           <div className="input-container">
             <ReCAPTCHA
               // eslint-disable-next-line no-undef
