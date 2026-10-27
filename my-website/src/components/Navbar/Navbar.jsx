@@ -291,7 +291,7 @@ function Navbar() {
       currentPath.includes("mentions-legales") ||
       currentPath.includes("legal-notice")
     ) {
-      window.location.href = menuItems[lang][6].path;
+      window.location.href = menuItems[lang][5].path;
     }
 
     //pages politique de confidentialite
@@ -299,7 +299,7 @@ function Navbar() {
       currentPath.includes("politique") ||
       currentPath.includes("privacy-policy")
     ) {
-      window.location.href = menuItems[lang][7].path;
+      window.location.href = menuItems[lang][6].path;
     }
 
     //pages apropos et about

@@ -13,9 +13,23 @@ import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
 //import des fonctions
 import { getLanguage } from "@utils/fonction/getLanguage.js";
 
+//import des bages ecoindex
+import { ecoindexBageList } from "@data/ecoindex-badge";
+
 //constante
 const theme = "light";
-const urlFull = window.location.href;
+
+
+function getEcoindexBadge() {
+  const currentUrl = window.location.pathname.toLowerCase();
+  console.log("curent url: ", currentUrl);
+  const matchingBadge = ecoindexBageList.find(({ keyword }) =>
+    keyword.some((word) => currentUrl.includes(word.toLowerCase()))
+  );
+
+  // React renders null without adding an empty wrapper when no badge applies.
+  return matchingBadge?.eco_badge ?? null;
+}
 
 const menuItems = {
   fr: {
@@ -155,16 +169,7 @@ function Footer() {
             : "We act for a responsible design."}
           <span>{<RiDoubleQuotesR className="footer-quote-icon" />}</span>
         </p>
-        <a
-          className="flex-row-center-center"
-          href={`https://bff.ecoindex.fr/redirect/?url=${urlFull}`}
-          target="_blank"
-        >
-          <img
-            src={`https://bff.ecoindex.fr/badge/?theme=${theme}&url=${urlFull}`}
-            alt="Ecoindex Badge"
-          />
-        </a>
+        {getEcoindexBadge()}
       </div>
       <div className="footer-bottom">
         <p>

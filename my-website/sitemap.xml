@@ -51,13 +51,13 @@
 	<url>
 		<loc>https://helveclick.ch/en/services/saas.html</loc>
 		<priority>0.50</priority>
-		<changefreq>yearly</changefreq>
+		<changefreq>weekly</changefreq>
 		<lastmod>2026-10-26</lastmod>
 	</url>
 	<url>
 		<loc>https://helveclick.ch/fr/prestations/saas.html</loc>
 		<priority>0.50</priority>
-		<changefreq>yearly</changefreq>
+		<changefreq>weekly</changefreq>
 		<lastmod>2026-10-26</lastmod>
 	</url>
 	<url>
