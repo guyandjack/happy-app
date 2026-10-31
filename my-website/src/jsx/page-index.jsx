@@ -69,14 +69,14 @@ if (typedTarget && !prefersReducedMotion) {
 //Logique collapse faq
 initFaq();
 
-//effet parallaxe
+/* //effet parallaxe
 const elementImg = document.querySelector(".hero-index-img");
 if (elementImg) {
   window.addEventListener("scroll", () => {
     let scrolled = window.scrollY;
     elementImg.style.transform = "translateY(" + scrolled * 0.6 + "px)";
   });
-}
+} */
 
 // Mount Navbar
 try {

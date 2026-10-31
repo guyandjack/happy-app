@@ -1,4 +1,33 @@
-//Charte de couleur de l' "App"
+@use "sass:color";
+@use "sass:meta";
+@use "sass:string";
+
+// Charte de couleur de l'application.
+// Les couleurs sont stockées en OKLCH afin que les variations de luminosité
+// correspondent mieux à la perception humaine.
+
+@function rgba($color-or-red, $green-or-alpha: null, $blue: null, $alpha: null) {
+    // Forme rgba(couleur, alpha) : compatible avec les couleurs OKLCH.
+    @if $blue == null and $alpha == null {
+        @if meta.type-of($color-or-red) == "color" {
+            @return color.change($color-or-red, $alpha: $green-or-alpha);
+        }
+
+        // Préserve les appels CSS dynamiques, par exemple rgba(var(...), 0.3).
+        @return string.unquote("rgba(#{$color-or-red}, #{$green-or-alpha})");
+    }
+
+    // Forme rgba(rouge, vert, bleu, alpha) : conservée pour les couleurs brutes.
+    @return string.unquote("rgba(#{$color-or-red}, #{$green-or-alpha}, #{$blue}, #{$alpha})");
+}
+
+@function lighten($color-value, $amount) {
+    @return color.adjust($color-value, $lightness: $amount, $space: oklch);
+}
+
+@function darken($color-value, $amount) {
+    @return color.adjust($color-value, $lightness: -$amount, $space: oklch);
+}
 
 
 /* $colors-rule: (
@@ -58,49 +87,81 @@ $colors-rule: (
     // =========================
     // 1) Couleurs de base
     // =========================
-    first-color: #1a1627,
+    first-color: oklch(21.371% 0.03332 294.21),
 
-    second-color: #00d4ff,
+    second-color: oklch(80.425% 0.14594 219.52),
 
-    third-color: #00bdb6,
+    third-color: oklch(72.042% 0.12437 190.07),
 
-    fourth-color: #f96e46,
+    fourth-color: oklch(70.133% 0.17946 36.76),
     
-    fifth-color: #171717,
+    fifth-color: oklch(20.463% 0.00000 89.88),
     
-    sixth-color: #fefefd,
+    sixth-color: oklch(99.675% 0.00132 106.42),
     
-    seventh-color: #551133,
+    seventh-color: oklch(30.894% 0.10444 354.62),
     
-    //height-color: #edd83d,
-    height-color: #fdc500,
+    height-color: oklch(84.965% 0.17369 87.81),
+
+    nine-color: oklch(87.402% 0.16520 101.26),
+
+    ten-color: oklch(59.673% 0.22636 286.55),
 
 
-    footer-color: #1a1627,
-    nav-bar-color: #141627,
-    //link-color: #7c5cfc,
-    //link-color-hover:#957fee,
+    footer-color: oklch(21.371% 0.03332 294.21),
+    nav-bar-color: oklch(20.730% 0.03385 277.88),
+    //link-color: oklch(59.673% 0.22636 286.55),
+    //link-color-hover:oklch(66.574% 0.16055 290.47),
 
     //lien interne
-    link-color-hover: #cffafe,
-    link-color:#04b6d4,
-    text-link-color-hover: #0891b2,
-    text-link-color: #fefefd,
+    /* link-color-hover: oklch(95.626% 0.04433 203.39),
+    link-color:oklch(71.473% 0.12593 215.19),
+    text-link-color-hover: oklch(60.891% 0.11094 221.72),
+    text-link-color: oklch(99.675% 0.00132 106.42), */
+    
+    link-color: oklch(87.402% 0.16520 101.26),
+    link-color-hover:oklch(84.965% 0.17369 87.81),
+    text-link-color-hover: oklch(78.675% 0.00132 106.42),
+    text-link-color: oklch(99.675% 0.00132 106.42),
 
     //lien realisation
-    created-link-color:#f433ab,
-    created-link-color-hover:#cb04a5,
-    created-link-text-color:#551133,
-    created-link-text-color-hover:#fefefd,
-
+    /* created-link-color:oklch(65.890% 0.24676 348.31),
+    created-link-color-hover:oklch(57.040% 0.24700 339.39),
+    created-link-text-color:oklch(30.894% 0.10444 354.62),
+    created-link-text-color-hover:oklch(99.675% 0.00132 106.42),
+     */
+    created-link-color:oklch(87.402% 0.16520 101.26),
+    created-link-color-hover: oklch(84.965% 0.17369 87.81),
+    //created-link-text-color:oklch(30.894% 0.10444 354.62),
+    //created-link-text-color-hover:oklch(99.675% 0.00132 106.42),
     //lien vers la page contact
-    contact-link-color-hover:#f3e8ff,
-    contact-link-color:#a855f7,
-    contact-link-text-color-hover:#9333ea,
-    contact-link-text-color:#fefefd,
+  /*   contact-link-color-hover:oklch(94.643% 0.03274 307.17),
+    contact-link-color:oklch(62.685% 0.23254 303.90),
+    contact-link-text-color-hover:oklch(55.754% 0.25249 302.32),
+    contact-link-text-color:oklch(99.675% 0.00132 106.42), */
     
     //lien actif
-    actif-link-color:#0891b2,
+   // actif-link-color:oklch(60.891% 0.11094 221.72),
+    actif-link-color:oklch(90.402% 0.17369 87.81),
+
+    //lien cta
+    cta-link-hover: oklch(84.965% 0.17369 87.81),
+
+    /********* degrade de base *****************/
+    gradient-primary-bg: radial-gradient(circle farthest-corner at 10% 20%,
+        oklch(0.45 0.25025 326.60) 0%,
+        oklch(0.30 0.20577 290.71) 90%),
+
+
+    gradient-primary-btn: radial-gradient(circle farthest-corner at 10% 20%,
+    oklch(0.30 0.20577 290.71) 0%,
+    oklch(0.45 0.25025 326.60) 90%),
+
+    gradient-primary-btn-hover: radial-gradient(circle farthest-corner at 10% 20%,
+    oklch(0.40 0.20577 290.71) 0%,
+    oklch(0.55 0.25025 326.60) 90%),
+
+
    
    
 
@@ -108,114 +169,114 @@ $colors-rule: (
     // =========================
     // 2) Variantes de first-color
     // =========================
-    first-color-900: #0f0c18,
+    first-color-900: oklch(16.471% 0.02515 294.98),
     // très foncé
-    first-color-800: #141120,
-    first-color-700: #1a1627,
+    first-color-800: oklch(18.934% 0.03021 292.45),
+    first-color-700: oklch(21.371% 0.03332 294.21),
     // base
-    first-color-600: #221d33,
-    first-color-500: #2c2642,
-    first-color-400: #3d335b,
-    first-color-300: #574983,
-    first-color-200: #7e6fae,
-    first-color-100: #b7aed8,
+    first-color-600: oklch(24.762% 0.04146 293.58),
+    first-color-500: oklch(28.906% 0.05066 292.79),
+    first-color-400: oklch(35.107% 0.06883 294.07),
+    first-color-300: oklch(44.644% 0.09363 293.34),
+    first-color-200: oklch(58.127% 0.09604 294.15),
+    first-color-100: oklch(77.235% 0.05999 294.78),
     // clair
 
     // Variantes bleu nuit / indigo proches
-    first-color-indigo-700: #1c1f3a,
-    first-color-indigo-600: #24284a,
-    first-color-indigo-500: #2e3561,
-    first-color-blue-700: #16213e,
-    first-color-blue-600: #1d2b53,
-    first-color-blue-500: #25356b,
+    first-color-indigo-700: oklch(25.116% 0.05102 277.26),
+    first-color-indigo-600: oklch(29.132% 0.06190 276.76),
+    first-color-indigo-500: oklch(34.574% 0.07709 274.82),
+    first-color-blue-700: oklch(25.428% 0.05708 266.71),
+    first-color-blue-600: oklch(29.973% 0.07485 267.29),
+    first-color-blue-500: oklch(34.651% 0.09603 268.60),
 
     // =========================
     // 3) Couleurs d’interaction / alerte
     // =========================
-    disabled-color: #9ca3af,
-    alert-color: #ff5a36,
-    dark-mode-color: #373737,
-    success-color: #14b87a,
-    warning-color: #f4b740,
-    info-color: #3ba8ff,
+    disabled-color: oklch(71.366% 0.01918 261.32),
+    alert-color: oklch(68.394% 0.20692 33.86),
+    dark-mode-color: oklch(33.680% 0.00000 89.88),
+    success-color: oklch(69.199% 0.15331 159.90),
+    warning-color: oklch(81.581% 0.14721 80.20),
+    info-color: oklch(71.035% 0.16000 247.03),
 
     // =========================
     // 4) Arrière-plans simples
     // =========================
-    background-page-color: #fbfbfc,
-    background-page-color-soft: #f4f5f8,
-    background-page-color-alt: #eef1f7,
+    background-page-color: oklch(98.837% 0.00132 286.38),
+    background-page-color-soft: oklch(97.024% 0.00413 271.37),
+    background-page-color-alt: oklch(95.758% 0.00866 264.52),
 
-    bg-page-shade-light-1: #3d335b,
+    bg-page-shade-light-1: oklch(35.107% 0.06883 294.07),
     // Prune-violet désaturé : surface de contraste distincte du lavande des services et du dégradé de la FAQ.
-    bg-page-shade-light-2: #3f2f58,
-    bg-page-shade-light-3: #7e6fae,
-    bg-page-shade-light-4: #f2f0fe,
+    bg-page-shade-light-2: oklch(34.295% 0.07195 300.67),
+    bg-page-shade-light-3: oklch(58.127% 0.09604 294.15),
+    bg-page-shade-light-4: oklch(96.074% 0.01875 292.61),
 
-    bg-page-shade-dark-1: #141120,
-    bg-page-shade-dark-2: #1a1627,
-    bg-page-shade-dark-3: #24203a,
+    bg-page-shade-dark-1: oklch(18.934% 0.03021 292.45),
+    bg-page-shade-dark-2: oklch(21.371% 0.03332 294.21),
+    bg-page-shade-dark-3: oklch(26.145% 0.04804 289.71),
 
     // =========================
     // 5) Gradients clairs
     // =========================
     bg-page-gradient-light-1: linear-gradient(135deg,
-        #f7f8fc 0%,
-        #ece9f6 45%,
-        #d8d0ee 100%),
+        oklch(97.950% 0.00541 274.97) 0%,
+        oklch(94.013% 0.01766 296.63) 45%,
+        oklch(87.328% 0.04179 297.73) 100%),
 
     bg-page-gradient-light-2: linear-gradient(135deg,
-        #f8fbff 0%,
-        #e9f7fb 40%,
-        #d6f4ff 100%),
+        oklch(98.695% 0.00621 255.47) 0%,
+        oklch(96.690% 0.01575 216.67) 40%,
+        oklch(94.886% 0.03466 221.88) 100%),
 
     bg-page-gradient-light-3: linear-gradient(135deg,
-        #f6f3ff 0%,
-        #e7def8 35%,
-        #cfc2ee 100%),
+        oklch(96.991% 0.01621 297.53) 0%,
+        oklch(91.554% 0.03625 301.42) 35%,
+        oklch(83.897% 0.06217 298.57) 100%),
 
     // =========================
     // 6) Gradients foncés
     // =========================
     bg-page-gradient-dark-1: linear-gradient(135deg,
-        #0f0c18 0%,
-        #1a1627 45%,
-        #2c2642 100%),
+        oklch(16.471% 0.02515 294.98) 0%,
+        oklch(21.371% 0.03332 294.21) 45%,
+        oklch(28.906% 0.05066 292.79) 100%),
 
     bg-page-gradient-dark-2: linear-gradient(135deg,
-        #141627 0%,
-        #1c1f3a 40%,
-        #25356b 100%),
+        oklch(20.730% 0.03385 277.88) 0%,
+        oklch(25.116% 0.05102 277.26) 40%,
+        oklch(34.651% 0.09603 268.60) 100%),
 
     bg-page-gradient-dark-3: linear-gradient(135deg,
-        #1a1627 0%,
-        #24284a 35%,
-        #00bdb6 100%),
+        oklch(21.371% 0.03332 294.21) 0%,
+        oklch(29.132% 0.06190 276.76) 35%,
+        oklch(72.042% 0.12437 190.07) 100%),
 
     // =========================
     // 7) Gradients premium / brand
     // =========================
     brand-gradient-primary: linear-gradient(135deg,
-        #1a1627 0%,
-        #3d335b 25%,
-        #7e6fae 100%),
+        oklch(21.371% 0.03332 294.21) 0%,
+        oklch(35.107% 0.06883 294.07) 25%,
+        oklch(58.127% 0.09604 294.15) 100%),
 
     brand-gradient-secondary: linear-gradient(135deg,
-        #1a1627 0%,
-        #16213e 50%,
-        #00d4ff 100%),
+        oklch(21.371% 0.03332 294.21) 0%,
+        oklch(25.428% 0.05708 266.71) 50%,
+        oklch(80.425% 0.14594 219.52) 100%),
 
     brand-gradient-third: linear-gradient(135deg,
-        #7e6fae 0%,
-        #1a1627 100%,
+        oklch(58.127% 0.09604 294.15) 0%,
+        oklch(21.371% 0.03332 294.21) 100%,
     ),
 
     brand-gradient-accent: linear-gradient(135deg,
-        #00bdb6 0%,
-        #00d4ff 100%),
+        oklch(72.042% 0.12437 190.07) 0%,
+        oklch(80.425% 0.14594 219.52) 100%),
 
     brand-gradient-premium: linear-gradient(135deg,
-        #1a1627 0%,
-        #3d335b 50%,
-        #b7950b 100%)
+        oklch(21.371% 0.03332 294.21) 0%,
+        oklch(35.107% 0.06883 294.07) 50%,
+        oklch(68.155% 0.13737 92.18) 100%)
 );

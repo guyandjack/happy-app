@@ -37,10 +37,11 @@ $navbar-height: map-get($sizes, navbar-height);
     position: relative;
     width: 100%;
     max-width: 2000px;
-    min-width: 400px;
+    min-width: 350px;
     margin: 0 auto;
     background-color: map-get($colors-rule, background-page-color);
     overflow-x: hidden;
+    //border: 2px solid red;
 
 }
 

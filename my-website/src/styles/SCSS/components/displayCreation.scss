@@ -13,8 +13,8 @@
 }
 
 .creation-wrapper {
-    width: min(100%, 500px);
-    
+  width: min(100%, 500px);
+
   margin: 0 auto;
   //padding: 20px 12px 60px;
   display: flex;
@@ -22,45 +22,114 @@
   align-items: center;
   gap: 24px;
 
-  
+  .carousel {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 2rem;
+    box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.2);
+    padding: 20px;
+    border-radius: 1.5rem;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+
+    .slide {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+    }
+  }
+
+  .carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 50px;
+  }
+
+  .carousel-control {
+    display:flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    color: map-get($colors-rule, sixth-color);
+    background: map-get($colors-rule, brand-gradient-accent);
+    border: 1px solid rgba(map-get($colors-rule, sixth-color), 0.35);
+    border-radius: 50%;
+    box-shadow: 0 8px 18px rgba(map-get($colors-rule, first-color), 0.2);
+    cursor: pointer;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 12px 24px rgba(map-get($colors-rule, first-color), 0.3);
+      transform: translateY(-2px);
+    }
+
+    &:focus-visible {
+      outline: 3px solid map-get($colors-rule, fourth-color);
+      outline-offset: 4px;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.45;
+      transform: none;
+    }
+  }
+
+
+
+
   .card {
-      position:relative;
-      width: 100%;
-      max-width: 900px;
-      border-radius: 22px;
-      background: linear-gradient(140deg,
-      rgba(map-get($colors-rule, sixth-color), 0.98) 0%,
-      rgba(map-get($colors-rule, sixth-color), 0.93) 100%);
-      border: 1px solid rgba(map-get($colors-rule, second-color), 0.16);
-      box-shadow: 0 14px 36px rgba(map-get($colors-rule, fifth-color), 0.11);
-      overflow: hidden;
-      animation: creation-fade-up 0.6s ease both;
-    }
-    
-    .overlay{
-        display:none;
-      position: absolute;
-      width:100%;
-      height: 100%;
-      z-index: 2;
-      background-color: rgba(0,0,0,0.6);
-    }
-        .overlay-visible {
-            display: block;
-        }
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 22px;
+    background: linear-gradient(140deg,
+        rgba(map-get($colors-rule, sixth-color), 0.98) 0%,
+        rgba(map-get($colors-rule, sixth-color), 0.93) 100%);
+    border: 1px solid rgba(map-get($colors-rule, second-color), 0.16);
+    box-shadow: 0 14px 36px rgba(map-get($colors-rule, fifth-color), 0.11);
+    overflow: hidden;
+    animation: creation-fade-up 0.6s ease both;
+  }
+
+  .overlay {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .overlay-visible {
+    display: block;
+  }
+
   .card-head {
     width: 100%;
     min-height: 140px;
     padding: 22px 16px;
     gap: 1.5em;
-   /*  background: linear-gradient(130deg,
+    /*  background: linear-gradient(130deg,
         rgba(map-get($colors-rule, first-color), 0.92) 20%,
         rgba(map-get($colors-rule, second-color), 0.88) 100%); */
-      background: linear-gradient(180deg, 
-      rgba(map-get($colors-rule, second-color), 0.5)20%,
-      rgba(map-get($colors-rule, second-color), 1));
-      
-      
+    background: linear-gradient(180deg,
+        rgba(map-get($colors-rule, second-color), 0.5)20%,
+        rgba(map-get($colors-rule, second-color), 1));
+
+
 
     .card-title {
       margin: 0;
@@ -85,56 +154,56 @@
       box-shadow: 0 8px 18px rgba(map-get($colors-rule, fifth-color), 0.2);
     }
 
-     .card-creation-link{
-        color: map-get($colors-rule, sixth-color);
-        gap:1rem;
-        cursor: pointer;
-        padding: 0.5rem 0.8rem;
-        //border: 2px solid rgba(map-get($colors-rule, sixth-color),1);
-        //background-color: rgba(map-get($colors-rule, link-color),0.9);
-        background-color: map-get($colors-rule, created-link-color);
-        border-radius: 8px;
-        transition: all 0.25s linear;
-        
-        &:hover{
-          //color: map-get($colors-rule, first-color);
-          //border: 2px solid rgba(map-get($colors-rule, first-color), 0.9);
-            background-color: map-get($colors-rule, created-link-color-hover);
-            transform: translateY(-2px);
-        }
-        
-        &:hover span{
-            //color: map-get($colors-rule, first-color);
+    .card-creation-link {
+      color: map-get($colors-rule, text-link-color);
+      gap: 1rem;
+      cursor: pointer;
+      padding: 0.5rem 0.8rem;
+      //border: 2px solid rgba(map-get($colors-rule, sixth-color),1);
+      //background-color: rgba(map-get($colors-rule, link-color),0.9);
+      background-color: map-get($colors-rule, created-link-color);
+      border-radius: 8px;
+      transition: all 0.25s linear;
 
-            transition: all 0.25s linear;
-        }
-        
-        /* &:hover .card-icon-arrow{
+      &:hover {
+        //color: map-get($colors-rule, first-color);
+        //border: 2px solid rgba(map-get($colors-rule, first-color), 0.9);
+        background-color: map-get($colors-rule, created-link-color-hover);
+        transform: translateY(-2px);
+      }
+
+      &:hover span {
+        //color: map-get($colors-rule, first-color);
+
+        transition: all 0.25s linear;
+      }
+
+      /* &:hover .card-icon-arrow{
             fill: map-get($colors-rule, first-color);
             transition: all 0.25s linear;
         } */
     }
 
-    .card-icon-arrow{
-        fill:map-get($colors-rule, sixth-color);
-        width: 35px;
-        height: 35px;
+    .card-icon-arrow {
+      fill: map-get($colors-rule, text-link-color);
+      width: 35px;
+      height: 35px;
 
     }
 
-    .card-text-error{
-        position: relative;
-        z-index:10;
-        color: map-get($colors-rule, alert-color);
-        font-size: 1.5rem;
+    .card-text-error {
+      position: relative;
+      z-index: 10;
+      color: map-get($colors-rule, alert-color);
+      font-size: 1.5rem;
     }
 
-    
-    
+
+
   }
 
   .card-body {
-    
+
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -142,7 +211,7 @@
     gap: 20px;
     padding: 20px 14px 22px;
 
-  /*   .mobile>div,
+    /*   .mobile>div,
     .desktop>div {
       position: relative;
       display: flex;
@@ -166,9 +235,9 @@
       max-width: 200px;
     } */
 
-    .card-wrapper-mockup{
-        gap:1rem;
-        justify-content: space-evenly;
+    .card-wrapper-mockup {
+      gap: 1rem;
+      justify-content: space-evenly;
     }
 
     .card-screenshot {
@@ -220,6 +289,7 @@
   .creation-wrapper {
     width: 100%;
     max-width: 900px;
+
     .card {
       display: grid;
       grid-template-columns: 240px 1fr;

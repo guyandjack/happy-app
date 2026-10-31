@@ -316,7 +316,7 @@ margin-top: 1rem;
                 }
 
                 &:hover::after {
-                    background: map-get($colors-rule, link-color);
+                    background: map-get($colors-rule, link-color-hover);
                     height: 8px;
                     transition: height 0.2s linear;
                 }

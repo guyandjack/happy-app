@@ -40,7 +40,7 @@ let ctaSectionContent = {
     },
     site: {
       title: "Créez un site web qui convertit dès aujourd'hui",
-      text: "Envie d’un site performant qui booste vos ventes ? Contactez-moi pour en discuter !.",
+      text: "Envie d’un site performant qui booste votre visibilité ? Contactez-moi pour en discuter !.",
       btn_text: cta_link_fr,
     },
     realisations: {

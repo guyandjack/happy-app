@@ -42,14 +42,14 @@ const Card = ({ card }) => {
           }
         </div>
       </a>
-      <a
+      {/* <a
         href={
           lang === "fr" ? "/fr/contact.html" : "/en/contact.html"
         }
         className="card-button-contact"
       >
         {lang === "fr" ? "Contactez-moi" : "Contact me"}
-      </a>
+      </a> */}
     </div>
   );
 };

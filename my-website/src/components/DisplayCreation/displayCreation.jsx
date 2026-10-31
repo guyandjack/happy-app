@@ -1,20 +1,87 @@
-//import { reactSVG } from "react-svg";
-
+import { useCallback, useEffect, useRef, useState } from "react";
 import { AndroidTabMockup, IPhoneMockup } from "react-device-mockup";
 import "@/styles/SCSS/components/displayCreation.scss";
 import { getLanguage } from "@utils/fonction/getLanguage";
 
-//import des images
-import iconArrow from "@/assets/icons/arrow-circle-right.svg";
-
-//import des data
 import { creationContent } from "@/data/creationContent.js";
-//console.log("content: ", creationContent);
+
+//import des icon
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
 
 function DisplayCreation() {
+  const carouselRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const updateScrollControls = useCallback(() => {
+    const carousel = carouselRef.current;
+
+    if (!carousel) return;
+
+    const maximumScrollLeft = Math.max(0, carousel.scrollWidth - carousel.clientWidth);
+    const firstSlide = carousel.querySelector(".slide");
+    const minimumScrollLeft = firstSlide
+      ? Math.max(0, firstSlide.offsetLeft - carousel.clientLeft)
+      : 0;
+    // Les positions de scroll peuvent être fractionnaires avec le scroll snapping.
+    const tolerance = 8;
+
+    setCanScrollLeft(carousel.scrollLeft > minimumScrollLeft + tolerance);
+    setCanScrollRight(carousel.scrollLeft < maximumScrollLeft - tolerance);
+  }, []);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+
+    if (!carousel) return undefined;
+
+    updateScrollControls();
+    carousel.addEventListener("scroll", updateScrollControls, { passive: true });
+    carousel.addEventListener("scrollend", updateScrollControls);
+    window.addEventListener("resize", updateScrollControls);
+
+    const resizeObserver = typeof ResizeObserver === "undefined"
+      ? null
+      : new ResizeObserver(updateScrollControls);
+
+    resizeObserver?.observe(carousel);
+
+    return () => {
+      carousel.removeEventListener("scroll", updateScrollControls);
+      carousel.removeEventListener("scrollend", updateScrollControls);
+      window.removeEventListener("resize", updateScrollControls);
+      resizeObserver?.disconnect();
+    };
+  }, [updateScrollControls]);
+
+  const scrollCarousel = (direction) => {
+    const carousel = carouselRef.current;
+
+    if (!carousel) return;
+
+    const maximumScrollLeft = Math.max(0, carousel.scrollWidth - carousel.clientWidth);
+    const targetScrollLeft = Math.min(
+      maximumScrollLeft,
+      Math.max(0, carousel.scrollLeft + carousel.clientWidth * direction),
+    );
+    const supportsSmoothScroll = "scrollBehavior" in document.documentElement.style;
+
+    if (supportsSmoothScroll && typeof carousel.scrollTo === "function") {
+      carousel.scrollTo({ left: targetScrollLeft, behavior: "smooth" });
+      return;
+    }
+
+    // Repli pour les navigateurs qui ne prennent pas en charge le défilement fluide.
+    carousel.scrollLeft = targetScrollLeft;
+    updateScrollControls();
+  };
+
   if (creationContent.length === 0) return null;
 
   const lang = getLanguage();
+  const previousLabel = lang === "fr" ? "Voir la création précédente" : "View previous creation";
+  const nextLabel = lang === "fr" ? "Voir la création suivante" : "View next creation";
 
   return (
     <div className="flex-row-start-center creation-wrapper">
@@ -24,8 +91,11 @@ function DisplayCreation() {
         </symbol>
       </svg>
 
+      <div className="carousel" id="creation-carousel" ref={carouselRef}>
+        
+      
       {creationContent.map((card, index) => (
-        <div key={index} className="flex-row-start-center card">
+        <div key={index} className="flex-row-start-center card slide">
           <div
             className={`overlay ${!card.status ? "overlay-visible" : null}`}
           ></div>
@@ -112,6 +182,34 @@ function DisplayCreation() {
           </div>
         </div>
       ))}
+      </div>
+
+      <div
+        className="carousel-controls"
+        role="group"
+        aria-label={lang === "fr" ? "Navigation du carrousel" : "Carousel navigation"}
+      >
+        <button
+          className="carousel-control"
+          type="button"
+          aria-controls="creation-carousel"
+          aria-label={previousLabel}
+          disabled={!canScrollLeft}
+          onClick={() => scrollCarousel(-1)}
+        >
+          <FaChevronLeft/>
+        </button>
+        <button
+          className="carousel-control"
+          type="button"
+          aria-controls="creation-carousel"
+          aria-label={nextLabel}
+          disabled={!canScrollRight}
+          onClick={() => scrollCarousel(1)}
+        >
+          <FaChevronRight />
+        </button>
+      </div>
     </div>
   );
 }
