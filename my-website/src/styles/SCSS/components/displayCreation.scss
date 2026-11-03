@@ -126,8 +126,8 @@
         rgba(map-get($colors-rule, first-color), 0.92) 20%,
         rgba(map-get($colors-rule, second-color), 0.88) 100%); */
     background: linear-gradient(180deg,
-        rgba(map-get($colors-rule, second-color), 0.5)20%,
-        rgba(map-get($colors-rule, second-color), 1));
+    rgba(map-get($colors-rule, second-color), 0.5)20%,
+    rgba(map-get($colors-rule, second-color), 1));
 
 
 
@@ -155,13 +155,11 @@
     }
 
     .card-creation-link {
-      color: map-get($colors-rule, text-link-color);
+      
       gap: 1rem;
       cursor: pointer;
       padding: 0.5rem 0.8rem;
-      //border: 2px solid rgba(map-get($colors-rule, sixth-color),1);
-      //background-color: rgba(map-get($colors-rule, link-color),0.9);
-      background-color: map-get($colors-rule, created-link-color);
+      background-color: map-get($colors-rule, link-color-hover);
       border-radius: 8px;
       transition: all 0.25s linear;
 
@@ -178,14 +176,14 @@
         transition: all 0.25s linear;
       }
 
-      /* &:hover .card-icon-arrow{
-            fill: map-get($colors-rule, first-color);
-            transition: all 0.25s linear;
-        } */
+      & > span{
+          //color: map-get($colors-rule, sixth-color);
+          color: white;
+        }
     }
 
     .card-icon-arrow {
-      fill: map-get($colors-rule, text-link-color);
+      fill: map-get($colors-rule, sixth-color);
       width: 35px;
       height: 35px;
 

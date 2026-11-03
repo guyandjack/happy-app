@@ -3,19 +3,6 @@
 
 <head>
 
-  <link rel="preconnect" href="https://api.helveclick.ch" crossorigin>
-  <link rel="dns-prefetch" href="//api.helveclick.ch">
-  <!-- The preload mirrors the <picture> art direction to avoid downloading
-       both the portrait and landscape hero images. -->
-  <link rel="preload" as="image" href="https://api.helveclick.ch/images/landingPage/800.webp" type="image/webp"
-    crossorigin media="(max-width: 767px)" imagesrcset="
-          https://api.helveclick.ch/images/landingPage/700.webp 700w,
-          https://api.helveclick.ch/images/landingPage/800.webp 800w" imagesizes="100vw">
-  <link rel="preload" as="image" href="https://api.helveclick.ch/images/landingPage/1000.webp" type="image/webp"
-    crossorigin media="(min-width: 768px)" imagesrcset="
-          https://api.helveclick.ch/images/landingPage/1000.webp 1024w,
-          https://api.helveclick.ch/images/landingPage/1500.webp 1536w,
-          https://api.helveclick.ch/images/landingPage/2000.webp 2000w" imagesizes="100vw">
 
   <!-- Encodage & Affichage -->
   <meta charset="UTF-8">
@@ -197,8 +184,10 @@
 
       <!-- Hero section -->
       <section class="flex-column-space_evenly-center hero-index">
+        <img class="index-design" id="id-map" src="/assets/images/page-index/map-valais.svg" alt="">
 
         <img class="image-logo" src="/assets/logo/helveclick-light-ok.png" alt="Helveclick">
+
 
         <div class="flex-column-center-center hero-index-wrapper">
           <h1 class=" hero-index-title-h1">
@@ -211,143 +200,127 @@
         </div>
         <div class="flex-column-space_evenly-center hero-index-wrapper">
 
-          
-          <ul class="flex-column-space_evenly-center container">
-            <li id="hero-index-service-item-1">
+
+          <ul class="flex-column-space_evenly-center hero-index-list-link">
+            <li class="hero-index-list-link-li">
               <a class="hero-index-link" href="/fr/prestations/site-web.html">Sites internet</a>
             </li>
-            <li id="hero-index-service-item-2">
+            <li class="hero-index-list-link-li">
               <a class="hero-index-link" href="/fr/prestations/saas.html">Solutions SaaS</a>
             </li>
-            <li id="hero-index-service-item-3">
+            <li class="hero-index-list-link-li">
               <a class="hero-index-link" href="/fr/prestations/application-mobile.html">Applications
                 mobiles</a>
             </li>
-            <li id="hero-index-service-item-4">
+            <li class="hero-index-list-link-li">
               <a class="hero-index-link" href="/fr/prestations/seo.html">Référencement SEO</a>
             </li>
 
 
           </ul>
         </div>
-        <!-- <picture>
-         
-          <source media="(max-width: 767px)" type="image/webp" srcset="
-                    https://api.helveclick.ch/images/landingPage/700.webp 700w,
-                    https://api.helveclick.ch/images/landingPage/800.webp 800w" sizes="100vw">
-          
-          <source type="image/webp" srcset="
-                    https://api.helveclick.ch/images/landingPage/1000.webp 1024w,
-                    https://api.helveclick.ch/images/landingPage/1500.webp 1536w,
-                    https://api.helveclick.ch/images/landingPage/2000.webp 2000w" sizes="100vw">
-          <img class="hero-index-img" src="https://api.helveclick.ch/images/landingPage/1000.webp" loading="eager"
-            fetchpriority="high" decoding="async" crossorigin="anonymous" alt="">
-        </picture> -->
-        
 
-        
-        
+
       </section>
-      
-      
+
+
       <!-- Services section -->
       <section class="flex-column-start-center services">
         <img class="index-design" id="id-montain" src="/assets/images/page-index/montain.svg"></img>
         <h2 class="item-menu-side">Mes <strong>services</strong></h2>
         <p class="services-intro">J’accompagne les PME de tous secteurs en Valais <br> ainsi que dans les
           autres cantons suisses.</p>
-        <div id="RC-card-services">
-          <div class="index-cards-wrapper">
-            <section class="flex-column-start-center card-container">
-              <ul class="flex-row-center-center cards-list" style="gap: 50px" role="list">
-                <li class="card-item">
-                  <div class="card-web">
-                    <a class="flex-column-start-center card-link" style="width: 350px; height: 500px"
-                      href="/fr/prestations/site-web.html">
-                      <div class="card-image-container">
-                        <img src="/src/assets/images/page-index/card-index/service-web-img.webp"
-                          alt="Aperçu d’un site web sur mesure" class="card-image" loading="lazy" decoding="async">
-                      </div>
-                      <div class="flex-column-space_evenly-center card-content">
-                        <h3 class="card-title">Conception de sites web</h3>
-                        <p class="card-description">Des <strong>sites web uniques</strong> et <strong>performants</strong>, conçus pour répondre
-                          exactement à vos objectifs commerciaux et à l'<strong>expérience utilisateur</strong> que vous souhaitez
-                          offrir.</p>
-                        <div class="flex-column-center-center card-button">Découvrir</div>
-                      </div>
-                    </a>
-                   <!--  <a href="/fr/contact.html" class="card-button-contact">Contactez-moi</a> -->
-                  </div>
-                </li>
-                <li class="card-item">
-                  <div class="card-seo">
-                    <a class="flex-column-start-center card-link" style="width: 350px; height: 500px"
-                      href="/fr/prestations/seo.html">
-                      <div class="card-image-container">
-                        <img src="/src/assets/images/page-index/card-index/service-seo-img.webp"
-                          alt="Aperçu d’un accompagnement SEO et GEO" class="card-image" loading="lazy"
-                          decoding="async">
-                      </div>
-                      <div class="flex-column-space_evenly-center card-content">
-                        <h3 class="card-title">Optimisation SEO &amp; GEO</h3>
-                        <p class="card-description">Gagnez en <strong>visibilité sur Google</strong> et dans les réponses générées par
-                          l’IA grâce à des contenus structurés, fiables et utiles à vos clients.</p>
-                        <div class="flex-column-center-center card-button">Découvrir</div>
-                      </div>
-                    </a>
-                    <!-- <a href="/fr/contact.html" class="card-button-contact">Contactez-moi</a> -->
-                  </div>
-                </li>
-                <li class="card-item">
-                  <div class="card-app">
-                    <a class="flex-column-start-center card-link" style="width: 350px; height: 500px"
-                      href="/fr/prestations/application-mobile.html">
-                      <div class="card-image-container">
-                        <img src="/src/assets/images/page-index/card-index/service-app-img.webp"
-                          alt="Aperçu d’une application mobile" class="card-image" loading="lazy" decoding="async">
-                      </div>
-                      <div class="flex-column-space_evenly-center card-content">
-                        <h3 class="card-title">Développement<br>d'applications mobiles</h3>
-                        <p class="card-description">Des <strong>applications mobiles intuitives</strong> et réactives pour iOS et
-                          Android, qui permettent à vos clients d'interagir avec votre entreprise où qu'ils soient.</p>
-                        <div class="flex-column-center-center card-button">Découvrir</div>
-                      </div>
-                    </a>
-                    <!-- <a href="/fr/contact.html" class="card-button-contact">Contactez-moi</a> -->
-                  </div>
-                </li>
-                <li class="card-item">
-                  <div class="card-saas">
-                    <a class="flex-column-start-center card-link" style="width: 350px; height: 500px"
-                      href="/fr/prestations/saas.html">
-                      <div class="card-image-container">
-                        <img src="/src/assets/images/page-index/card-index/service-saas-img.webp"
-                          alt="Aperçu d’une solution SaaS" class="card-image" loading="lazy" decoding="async">
-                      </div>
-                      <div class="flex-column-space_evenly-center card-content">
-                        <h3 class="card-title">Solutions SaaS<br>sur mesure</h3>
-                        <p class="card-description">Concevez un <strong>logiciel en ligne</strong> accessible par abonnement : un outil
-                          sécurisé, évolutif et pensé pour simplifier le travail de vos utilisateurs.</p>
-                        <div class="flex-column-center-center card-button">Découvrir</div>
-                      </div>
-                    </a>
-                    <!-- <a href="/fr/contact.html" class="card-button-contact">Contactez-moi</a> -->
-                  </div>
-                </li>
-              </ul>
-            </section>
-          </div>
-        </div>
+
+
+        <ul class="cards-list" role="list">
+          <li class="card-item">
+            
+              <a class="flex-column-start-center card-link" style="width: 350px; height: 500px"
+                href="/fr/prestations/site-web.html">
+                <div class="card-image-container">
+                  <img src="/src/assets/images/page-index/card-index/service-web-img.webp"
+                    alt="Aperçu d’un site web sur mesure" class="card-image" loading="lazy" decoding="async">
+                </div>
+                <div class="flex-column-space_evenly-center card-content">
+                  <h3 class="card-title">Conception de sites web</h3>
+                  <p class="card-description">Des <strong>sites web uniques</strong> et <strong>performants</strong>,
+                    conçus pour répondre
+                    exactement à vos objectifs commerciaux et à l'<strong>expérience utilisateur</strong> que vous
+                    souhaitez
+                    offrir.</p>
+                  <div class="flex-column-center-center card-button">Découvrir</div>
+                </div>
+              </a>
+              
+            
+          </li>
+          <li class="card-item">
+              <a class="flex-column-start-center card-link" style="width: 350px; height: 500px"
+                href="/fr/prestations/seo.html">
+                <div class="card-image-container">
+                  <img src="/src/assets/images/page-index/card-index/service-seo-img.webp"
+                    alt="Aperçu d’un accompagnement SEO et GEO" class="card-image" loading="lazy" decoding="async">
+                </div>
+                <div class="flex-column-space_evenly-center card-content">
+                  <h3 class="card-title">Optimisation SEO &amp; GEO</h3>
+                  <p class="card-description">Gagnez en <strong>visibilité sur Google</strong> et dans les réponses
+                    générées par
+                    l’IA grâce à des contenus structurés, fiables et utiles à vos clients.</p>
+                  <div class="flex-column-center-center card-button">Découvrir</div>
+                </div>
+              </a>
+              
+          </li>
+          <li class="card-item">
+              <a class="flex-column-start-center card-link" style="width: 350px; height: 500px"
+                href="/fr/prestations/application-mobile.html">
+                <div class="card-image-container">
+                  <img src="/src/assets/images/page-index/card-index/service-app-img.webp"
+                    alt="Aperçu d’une application mobile" class="card-image" loading="lazy" decoding="async">
+                </div>
+                <div class="flex-column-space_evenly-center card-content">
+                  <h3 class="card-title">Développement<br>d'applications mobiles</h3>
+                  <p class="card-description">Des <strong>applications mobiles intuitives</strong> et réactives pour iOS
+                    et
+                    Android, qui permettent à vos clients d'interagir avec votre entreprise où qu'ils soient.</p>
+                  <div class="flex-column-center-center card-button">Découvrir</div>
+                </div>
+              </a>
+              
+          </li>
+          <li class="card-item">
+              <a class="flex-column-start-center card-link" style="width: 350px; height: 500px"
+                href="/fr/prestations/saas.html">
+                <div class="card-image-container">
+                  <img src="/src/assets/images/page-index/card-index/service-saas-img.webp"
+                    alt="Aperçu d’une solution SaaS" class="card-image" loading="lazy" decoding="async">
+                </div>
+                <div class="flex-column-space_evenly-center card-content">
+                  <h3 class="card-title">Solutions SaaS<br>sur mesure</h3>
+                  <p class="card-description">Concevez un <strong>logiciel en ligne</strong> accessible par abonnement :
+                    un outil
+                    sécurisé, évolutif et pensé pour simplifier le travail de vos utilisateurs.</p>
+                  <div class="flex-column-center-center card-button">Découvrir</div>
+                </div>
+              </a>
+             
+          </li>
+        </ul>
+
+          <a class="cta-services" href="/fr/contact.html">
+            Parlons de votre projet
+          </a>
+
       </section>
 
 
 
       <!-- section pourquoi choisir helveclick-->
       <section class="flex-column-start-center why-green-click">
-       
+
         <div class="flex-column-start-center why-choose">
           <h2 class="item-menu-side">Faire le choix <strong>Helveclick</strong>
-          <img class="index-design" id="id-thumb" src="/assets/images/page-index/thumb-up.svg"></img>
+            <img class="index-design" id="id-thumb" src="/assets/images/page-index/thumb-up.svg"></img>
           </h2>
 
           <div id="why-choose-card-wrapper-1" class="flex-column-start-start why-choose-card">
@@ -435,7 +408,9 @@
               class="text-link-cta">utilisez le formulaire de contact</a>&nbsp;ou appelez le <a href="tel:+41788940987"
               class="text-link-cta">+41&nbsp;78&nbsp;894&nbsp;09&nbsp;87</a>.</p>
           <!-- <a class="btn btn-primary" href="/fr/contact.html">Contacter moi</a> -->
+           <img class="index-design" id="id-megaphone" src="/assets/images/page-index/megaphone.svg" alt="">
         </section>
+        
       </div>
 
       <!-- creation section -->
@@ -451,7 +426,7 @@
             un simulateur de rentabilité locative.</li>
         </ul> -->
 
-        
+
         <div id="RC-creation">
           <div class="flex-row-start-center creation-wrapper">
             <article class="flex-row-start-center card">
@@ -654,7 +629,8 @@
                 aria-controls="faq-answer-7">Comment demander un devis ou convenir d’un rendez-vous&nbsp;?</button></h3>
             <div id="faq-answer-7" class="faq-answer">
               <p>
-                Utilisez le <a id="link-contact" href="/fr/contact.html">formulaire de contact</a>, l’e-mail ou le téléphone pour
+                Utilisez le <a id="link-contact" href="/fr/contact.html">formulaire de contact</a>, l’e-mail ou le
+                téléphone pour
                 présenter votre besoin. Indiquez si possible votre activité, vos objectifs, les fonctionnalités
                 attendues et votre échéance : ces éléments permettent de préparer un devis adapté.
                 <br />

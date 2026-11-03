@@ -1,7 +1,10 @@
 @use "../../utils/color-rule/color-rule" as *;
 
+
+
 /* Page: a-propos (qui-suis-je.css est importé uniquement par page-a-propos.jsx) */
 .page-container {
+
   --bg: #{map-get($colors-rule, background-page-color)};
   --panel: rgba(255, 255, 255, 0.9);
   --ink: #{map-get($colors-rule, fifth-color)};
@@ -9,6 +12,17 @@
   --brand: #{map-get($colors-rule, first-color)};
   --accent: #{map-get($colors-rule, second-color)};
   --highlight: #{map-get($colors-rule, fourth-color)};
+
+/* #about-img-hero{
+  object-fit: contain;
+  object-position: right;
+  width:300px;
+  height:300px;
+  top:0;
+  right:0;
+
+  border:2px solid red;
+} */
 
   //background: var(--bg);
 
@@ -38,8 +52,9 @@
   }
 
   .about-section-inner {
-    width: min(1100px, 100%);
+    width: min(1300px, 100%);
     margin: 0 auto;
+    
   }
 
   /* Titres (override des styles génériques) */
@@ -141,9 +156,10 @@
 
   /* Section 2: charte */
   .about-charte {
+
     color: rgba(map-get($colors-rule, first-color), 0.8);
 
-    h2 strong{
+    h2 strong {
 
       color: map-get($colors-rule, second-color);
 
@@ -189,7 +205,6 @@
       }
 
 
-
     }
   }
 
@@ -197,106 +212,149 @@
     max-width: 86ch;
   }
 
+  .wrapper-picture{
+    display:flex;
+    flex-flow:row;
+    justify-content:center;
+    align-items: center;
+    position: relative;
+    border-radius: 2rem;
+      overflow: hidden;
+      //border:2px solid red;
+      margin-top: clamp(1.25rem, 2.4vw, 2rem);
 
-
-  .diagram-wrapper {
-    margin-top: clamp(1.25rem, 2.4vw, 2rem);
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(3, minmax(240px, 1fr));
+      & picture{
+      max-height: 0px;
+      }
   }
 
-  @media (max-width: 900px) {
+  .diagram-wrapper {
+    position:relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    
+    justify-items: center;
+
+    padding:1rem;
+    //border: 2px solid yellow;
+   
+  }
+
+  .diagram-wrapper-img{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+  }
+
+
+  
+
+  @media (min-width: 768px) {
     .diagram-wrapper {
       grid-template-columns: repeat(2, minmax(220px, 1fr));
     }
   }
 
-  @media (max-width: 600px) {
-    .diagram-wrapper {
-      grid-template-columns: 1fr;
-    }
-  }
 
   /* > 1300px : disposition pyramidale (1 / 2 / 3) */
-  @media (min-width: 1301px) {
+  @media (min-width: 1280px) {
     .diagram-wrapper {
       grid-template-columns: repeat(6, minmax(0, 1fr));
       grid-template-rows: auto auto auto;
       gap: 1.1rem;
     }
 
-    .diagram-description {
+    .diagram-item {
       justify-self: center;
     }
 
     /* Ordre actuel (DOM) :
        1) sommet, 2-3) ligne intermédiaire, 4-6) base */
-    .diagram-description:nth-child(1) {
+    .diagram-item:nth-child(1) {
       grid-column: 3 / span 2;
       grid-row: 1;
-      border-left: 6px solid rgba(map-get($colors-rule, fourth-color), 0.9);
+      //border-left: 6px solid rgba(map-get($colors-rule, fourth-color), 0.9);
     }
 
-    .diagram-description:nth-child(2) {
+    .diagram-item:nth-child(2) {
       grid-column: 2 / span 2;
       grid-row: 2;
-      border-left: 6px solid rgba(map-get($colors-rule, second-color), 0.9);
+      //border-left: 6px solid rgba(map-get($colors-rule, second-color), 0.9);
     }
 
-    .diagram-description:nth-child(3) {
+    .diagram-item:nth-child(3) {
       grid-column: 4 / span 2;
       grid-row: 2;
-      border-left: 6px solid rgba(map-get($colors-rule, second-color), 0.9);
+      //border-left: 6px solid rgba(map-get($colors-rule, second-color), 0.9);
     }
 
-    .diagram-description:nth-child(4) {
+    .diagram-item:nth-child(4) {
       grid-column: 1 / span 2;
       grid-row: 3;
-      border-left: 6px solid rgba(map-get($colors-rule, third-color), 0.9);
+      //border-left: 6px solid rgba(map-get($colors-rule, third-color), 0.9);
     }
 
-    .diagram-description:nth-child(5) {
+    .diagram-item:nth-child(5) {
       grid-column: 3 / span 2;
       grid-row: 3;
-      border-left: 6px solid rgba(map-get($colors-rule, third-color), 0.9);
+      //border-left: 6px solid rgba(map-get($colors-rule, third-color), 0.9);
     }
 
-    .diagram-description:nth-child(6) {
+    .diagram-item:nth-child(6) {
       grid-column: 5 / span 2;
       grid-row: 3;
-      border-left: 6px solid rgba(map-get($colors-rule, third-color), 0.9);
+      //border-left: 6px solid rgba(map-get($colors-rule, third-color), 0.9);
     }
   }
 
-  .diagram-description {
-    padding: 1rem 1rem 1rem 0.95rem;
+  .diagram-item {
+    position:relative;
+    width:100%;
+    max-width:400px;
+    height:100%;
+    max-height: 250px;
+    padding: 1rem;
     border-radius: 16px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    background: var(--panel);
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
-    border-left: 4px solid rgba(map-get($colors-rule, second-color), 0.9);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255,2555, 255, 0.1);
+    box-shadow: inset 0 12px 25px rgba(0, 0, 0, 0.05);
+    //border-left: 4px solid rgba(map-get($colors-rule, second-color), 0.9);
+    backdrop-filter: blur(8px) ;
+    color: white;
+    overflow: hidden;
 
-    >.flex-row-start-center {
+    .diagram-item-title {
       gap: 0.6rem;
       margin-bottom: 0.6rem;
     }
 
-    >.flex-row-start-center span:last-child {
-      color: var(--ink);
+        
+
+    .diagram-item-title span:first-child {
+      color: map-get($colors-rule, second-color );
       font-weight: 800;
-      letter-spacing: -0.01em;
       font-size: 1.05rem;
     }
+
+    .diagram-item-title span:last-child {
+      position: absolute;
+      right:0;
+      top:50%;
+      transform: translate(30%, -50%);
+      font-size: 10rem;
+      color: rgba(255, 255, 255, 0.1)
+
+    }
+
+
   }
 
-  .description-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 999px;
-    background: linear-gradient(180deg, var(--highlight), var(--accent));
-    box-shadow: 0 0 0 4px rgba(map-get($colors-rule, second-color), 0.18);
-  }
+ 
 
   .about-charte-conclusion {
     margin-top: clamp(1.25rem, 2.4vw, 2rem);
@@ -306,125 +364,9 @@
     color: rgba(23, 23, 23, 0.8);
   }
 
-  /* Section 3: process */
-  /*  .about-process {
+  
 
-    background-color: map-get($colors-rule, bg-page-shade-light-4);
-  } */
-
-  .process-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1rem;
-    align-items: stretch;
-  }
-
-
-
-  .process-steps>p {
-    grid-column: 1 / -1;
-    max-width: 86ch;
-    margin-bottom: 0.25rem;
-    color: rgba(map-get($colors-rule, first-color), 0.8);
-    line-height: 2;
-    & strong{
-    color: map-get($colors-rule, first-color);
-
-    }
-
-  }
-
-  /* Desktop: max 3 colonnes, puis 2 cartes réparties sur la largeur (5 étapes) */
-  @media (min-width: 900px) {
-    .process-steps {
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-    }
-
-    .process-steps>.process-step {
-      grid-column: span 2;
-      /* 3 cartes sur la première ligne */
-    }
-
-    .process-steps>.process-step:nth-last-of-type(-n + 2) {
-      grid-column: span 3;
-      /* 2 cartes sur la seconde ligne */
-    }
-  }
-
-  .process-step {
-    position: relative;
-    overflow: hidden;
-    padding: 1.2rem 1.1rem;
-    border-radius: 18px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    background: var(--panel);
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
-    transition: transform 200ms ease, box-shadow 200ms ease,
-      border-color 200ms ease;
-  }
-
-
-
-
-
-  .process-step::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 15% 15%,
-        rgba(map-get($colors-rule, second-color), 0.12),
-        transparent 55%);
-    pointer-events: none;
-  }
-
-  .process-icon {
-    position: absolute;
-    right: 0.8rem;
-    top: 0.8rem;
-    width: 300px;
-    height: 300px;
-    fill: rgba(23, 23, 23, 0.32);
-    opacity: 0.15;
-  }
-
-  .step-number {
-    position: absolute;
-    bottom: 0.8rem;
-    right: 0.8rem;
-    width: 34px;
-    height: 34px;
-    display: grid;
-    place-items: center;
-    border-radius: 999px;
-    background: linear-gradient(180deg, var(--highlight), var(--accent));
-    color: #ffffff;
-    font-weight: 800;
-    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.18);
-  }
-
-  .step-content {
-    position: relative;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 0.75rem;
-    text-align: left;
-  }
-
-  .process-step h3 {
-    font-size: 1.15rem;
-    color: var(--ink);
-    letter-spacing: -0.01em;
-  }
-
-  .process-step p {
-    line-height: 1.75;
-    color: rgba(map-get($colors-rule, first-color),0.8);
-    & strong{
-      
-      color: rgba(map-get($colors-rule, first-color),1);
-
-    }
-  }
+  
 
 
 

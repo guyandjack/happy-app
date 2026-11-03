@@ -8,7 +8,7 @@ import { getPageName } from "@utils/fonction/getPageName.js";
 import { ctaSectionContent } from "@data/ctaSectionContent.js";
 
 //feuille de style
-import "@styles/SCSS/components/ctaSection.scss";
+// shared-style
 
 function CtaSection() {
   let lang = getLanguage();
@@ -23,6 +23,7 @@ function CtaSection() {
       <p dangerouslySetInnerHTML={{ __html: ctaSectionContent[lang][pageName].btn_text }}>
         
       </p>
+       <img class="index-design" id="id-megaphone" src="/assets/images/page-index/megaphone.svg" alt=""></img>
     </div>
   );
 }

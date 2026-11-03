@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+/* import PropTypes from "prop-types";
 import React from "react";
 import "@styles/SCSS/components/CardContainer.scss";
 import { Card } from "./Card";
@@ -54,3 +54,4 @@ CardContainer.propTypes = {
 
 export { CardContainer };
 
+ */

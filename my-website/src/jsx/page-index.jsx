@@ -9,7 +9,7 @@ import ReactDOM from "react-dom/client";
 //import des composants enfants
 import { Navbar } from "@components/Navbar/Navbar.jsx";
 import { LinkTopPage } from "@components/linkTopPage/linkTopPage.jsx";
-import { IndexCards } from "@components/Card/IndexCards.jsx";
+//import { IndexCards } from "@components/Card/IndexCards.jsx";
 import { CtaSection } from "@components/CtaSection/CtaSection.jsx";
 import { DisplayCreation } from "@components/DisplayCreation/displayCreation.jsx";
 import { Footer } from "@components/Footer/Footer.jsx";
@@ -143,7 +143,7 @@ try {
 }
 
 //mount card services
-try {
+/* try {
   const CardServicesContainer = document.getElementById("RC-card-services");
   if (CardServicesContainer && !CardServicesContainer.hasChildNodes()) {
     ReactDOM.createRoot(CardServicesContainer).render(
@@ -156,7 +156,7 @@ try {
   }
 } catch (error) {
   console.error("Error mounting Card Services:", error);
-}
+} */
 
 //mount display creation
 try {

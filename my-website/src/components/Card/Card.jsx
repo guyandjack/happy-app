@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+/* import PropTypes from "prop-types";
 import React from "react";
 import "@styles/SCSS/components/Card.scss";
 
@@ -42,14 +42,14 @@ const Card = ({ card }) => {
           }
         </div>
       </a>
-      {/* <a
+      { <a
         href={
           lang === "fr" ? "/fr/contact.html" : "/en/contact.html"
         }
         className="card-button-contact"
       >
         {lang === "fr" ? "Contactez-moi" : "Contact me"}
-      </a> */}
+      </a> }
     </div>
   );
 };
@@ -67,3 +67,4 @@ Card.propTypes = {
 };
 
 export { Card };
+ */

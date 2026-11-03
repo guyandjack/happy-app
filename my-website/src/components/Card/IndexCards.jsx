@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 import { CardContainer } from "./CardContainer";
 import "@styles/SCSS/components/IndexCards.scss";
 import { localOrProd } from "@utils/fonction/testEnvironement";
@@ -115,3 +115,4 @@ const IndexCards = () => {
 };
 
 export { IndexCards };
+ */
