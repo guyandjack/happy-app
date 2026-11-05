@@ -225,7 +225,7 @@ const AdminArticleList = ({ setModifyForm }) => {
   };
 
   if (loading === 0) {
-    return <div className="loading">Chargement des articles...</div>;
+    return <div className="loading-articles">Chargement des articles...</div>;
   }
 
   if (message) {
@@ -233,52 +233,53 @@ const AdminArticleList = ({ setModifyForm }) => {
   }
 
   if (error) {
-    return <div className="error">{error}</div>;
+    return <div className="error-load-articles">{error}</div>;
   }
 
   return (
     <div className="admin-article-list-container">
-      <div className="flex-column-start-center filters">
-        {isPageDashboard && (
-          <div className="language-filter">
-            <button
-              type="button"
-              onClick={() => getAllLanguageArticles()}
-              className="flex-row-start-center language-filter-button"
-            >
-              <FaLanguage className="language-filter-icon" />
-              <span>Afficher l'ensemble des articles</span>
-            </button>
+      {!loading && !error && !message ?
+        <div className="flex-column-start-center filters">
+          {isPageDashboard && (
+            <div className="language-filter">
+              <button
+                type="button"
+                onClick={() => getAllLanguageArticles()}
+                className="flex-row-start-center language-filter-button"
+              >
+                <FaLanguage className="language-filter-icon" />
+                <span>Afficher l'ensemble des articles</span>
+              </button>
+            </div>
+          )}
+          <div className="flex-row-start-center search-box">
+            <div className="flex-row-center-center search-icon-wrapper">
+              <FaSearch className="search-icon" />
+            </div>
+            <input
+              type="text"
+              placeholder="Rechercher des articles..."
+              value={searchValue}
+              onChange={(e) => {
+                handleSearch(e);
+              }}
+            />
           </div>
-        )}
-        <div className="flex-row-start-center search-box">
-          <div className="flex-row-center-center search-icon-wrapper">
-            <FaSearch className="search-icon" />
+          <div className="flex-row-start-center category-filter">
+            <div className="flex-row-center-center filter-icon-wrapper">
+              <IoFilterSharp className="filter-icon" />
+            </div>
+            <select value={selectedCategory} onChange={handleCategoryChange}>
+              <option value="">Toutes les catégories</option>
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category.charAt(0).toUpperCase() +
+                    category.slice(1).replace("-", " ")}
+                </option>
+              ))}
+            </select>
           </div>
-          <input
-            type="text"
-            placeholder="Rechercher des articles..."
-            value={searchValue}
-            onChange={(e) => {
-              handleSearch(e);
-            }}
-          />
-        </div>
-        <div className="flex-row-start-center category-filter">
-          <div className="flex-row-center-center filter-icon-wrapper">
-            <IoFilterSharp className="filter-icon" />
-          </div>
-          <select value={selectedCategory} onChange={handleCategoryChange}>
-            <option value="">Toutes les catégories</option>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category.charAt(0).toUpperCase() +
-                  category.slice(1).replace("-", " ")}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
+        </div> : null}
 
       {filteredArticles.length === 0 ? (
         <div className="no-articles">

@@ -1,6 +1,24 @@
 @use "../../utils/color-rule/color-rule" as *;
 
 
+//error case
+.loading-articles,
+.error-load-articles {
+  border-radius:1rem;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  font-size: 1.2rem;
+  margin: 0 auto;
+  width:80%;
+  max-width: 300px;
+}
+
+.error-load-articles {
+  background: map-get($colors-rule, alert-color);
+  color: map-get($colors-rule, sixth-color );
+}
+
+
 .admin-article-list-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -176,16 +194,7 @@
     }
   } */
 
-  .loading,
-  .error {
-    text-align: center;
-    padding: 3rem;
-    font-size: 1.2rem;
-  }
-
-  .error {
-    color: #ff4d4f;
-  }
+  
 }
 
 //admin ccs style for admin control in AdminArticle

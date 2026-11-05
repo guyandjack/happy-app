@@ -26,6 +26,7 @@ $navbar-height: map-get($sizes, navbar-height);
     font-weight: 500;
     font-family: 'nunito', sans-serif;
     line-height: 1.5;
+    scroll-behavior: smooth;
 }
 
 
@@ -324,6 +325,51 @@ main {
 /*******************************************************************
 **************** element de design low-poly du site ************
 ************************************************************ end****/
+//lien dans un paragraphe
+.text-link{
+    position: relative;
+        display: inline-block;
+        z-index: 1;
+        color: map-get($colors-rule, first-color);
+    
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            left: 0px;
+            width: 100%;
+            height: 1px;
+            bottom: 0px;
+            background: map-get($colors-rule, first-color);
+           
+        }
+    
+    
+        &:hover::before {
+            background: map-get($colors-rule, link-color-hover);
+            //opacity: 0.9;
+            height: 6px;
+            bottom: 60%;
+            transition: height 0.2s linear;
+    
+        }
+
+        
+    
+    }
+
+        @media screen and (min-width:1024px) {
+    
+    
+            .text-link.tel-link {
+                cursor:auto;
+                &::before{
+                    display: none
+                }
+
+            }
+    
+        }
 
 
 //bouton cta
@@ -335,7 +381,7 @@ main {
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    margin-top: clamp(5rem, 4vw, 6rem);
+    margin-top: clamp(2rem, 4vw, 4rem);
     padding: 0.9rem 3rem;
     color: map-get($colors-rule, sixth-color);
     border-radius: 999px;
@@ -730,47 +776,23 @@ main {
         //opacity: 0.9;
     }
 
-
-
-    .text-link-cta {
-
-
-        position: relative;
-        display: inline-block;
-        z-index: 1;
-        color: rgba(map-get($colors-rule, text-link-color), 0.9);
-        transition: color 0.2s linear;
-
-        &::before {
-            content: "";
-            position: absolute;
-            z-index: -1;
-            left: 0px;
-            width: 100%;
-            height: 1px;
-            bottom: 0px;
-            background-color: rgba(map-get($colors-rule, text-link-color), 0.9);
-            transition: background-color 0.2s linear;
-        }
-
-
-
-
-        &:hover::before {
-            //opacity: 0.7;
-            background: map-get($colors-rule, cta-link-hover);
-            height: 6px;
-            //width:2rem;
-            /*border-radius: 50%; */
-            /*  bottom: 0%; */
-            transition: all 0.2s linear;
-
-        }
-
-
-
+    & .text-link    {
+        color: map-get($colors-rule, sixth-color );
+    }
+    
+     & .text-link::before {
+        background: map-get($colors-rule, sixth-color);
 
     }
+    
+        & .text-link:hover::before {
+            background: map-get($colors-rule, link-color-hover);
+           
+        }
+
+
+
+   
 
 
 }
@@ -1023,43 +1045,7 @@ main {
                         transition: max-height 0.25s ease;
                     }
                 }
-                & a {
                 
-                    position: relative;
-                    display: inline-block;
-                    z-index: 1;
-                    color: map-get($colors-rule, first-color);
-                
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        z-index: -1;
-                        left: 0px;
-                        width: 100%;
-                        height: 1px;
-                        bottom: 0px;
-                        background: map-get($colors-rule, first-color);
-                        transition: height 0.2s linear;
-                    }
-                
-                
-                    &:hover::before {
-                        background: map-get($colors-rule, link-color);
-                        opacity: 0.9;
-                        height: 6px;
-                        bottom: 60%;
-                        transition: height 0.2s linear;
-                
-                    }
-                    &#link-contact:hover::before {
-                        background: map-get($colors-rule, contact-link-color);
-                        opacity: 0.9;
-                        height: 6px;
-                        bottom: 60%;
-                        transition: height 0.2s linear;
-                
-                    }
-                }
             }
 
             &.expanded {

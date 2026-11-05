@@ -22,7 +22,6 @@ const theme = "light";
 
 function getEcoindexBadge() {
   const currentUrl = window.location.pathname.toLowerCase();
-  console.log("curent url: ", currentUrl);
   const matchingBadge = ecoindexBageList.find(({ keyword }) =>
     keyword.some((word) => currentUrl.includes(word.toLowerCase()))
   );
@@ -169,7 +168,10 @@ function Footer() {
             : "We act for a responsible design."}
           <span>{<RiDoubleQuotesR className="footer-quote-icon" />}</span>
         </p>
+        <div className="eco-badge-container">
         {getEcoindexBadge()}
+
+        </div>
       </div>
       <div className="footer-bottom">
         <p>

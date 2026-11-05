@@ -18,38 +18,7 @@
 
     }
 
-    & p a {
     
-        position: relative;
-        display: inline block;
-        z-index: 1;
-        color: rgba(map-get($colors-rule, first-color), 1);
-    
-        &::before {
-            content: "";
-            position: absolute;
-            z-index: -1;
-            left: 0px;
-            width: 100%;
-            height: 1px;
-            bottom: 0px;
-            background: map-get($colors-rule, first-color);
-            transition: height 0.2s linear;
-        }
-    
-    
-        &:hover::before {
-            background: map-get($colors-rule, link-color);
-            opacity: 0.9;
-            height: 6px;
-            bottom: 60%;
-            transition: height 0.2s linear;
-    
-        }
-    
-    
-    
-    }
 
 }
 
@@ -152,38 +121,7 @@
             color: rgba(map-get($colors-rule, first-color),0.8);
             margin-top: 20px;
 
-            a {
             
-                    position: relative;
-                    display: inline block;
-                    z-index: 1;
-                    color: rgba(map-get($colors-rule, first-color), 1);
-            
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        z-index: -1;
-                        left: 0px;
-                        width: 100%;
-                        height: 1px;
-                        bottom: 0px;
-                        background: map-get($colors-rule, first-color);
-                        transition: height 0.2s linear;
-                    }
-            
-            
-                    &:hover::before {
-                        background: map-get($colors-rule, link-color);
-                        opacity: 0.9;
-                        height: 6px;
-                        bottom: 60%;
-                        transition: height 0.2s linear;
-            
-                    }
-            
-            
-            
-                }
 
 
         }
@@ -257,39 +195,7 @@
                 margin: 0;
                 
                 
-                a {
                 
-                        position: relative;
-                        display: inline-block;
-                        z-index: 1;
-                        color: map-get($colors-rule, first-color);
-                
-                        &::before {
-                            content: "";
-                            position: absolute;
-                            z-index: -1;
-                            left: 0px;
-                            width: 100%;
-                            height: 1px;
-                            bottom: 0px;
-                            background: map-get($colors-rule, first-color);
-                            transition: height 0.2s linear;
-                        }
-                
-                
-                        &:hover::before {
-                            background: map-get($colors-rule, link-color);
-                            opacity: 0.9;
-                            height: 6px;
-                            bottom: 60%;
-                            transition: height 0.2s linear;
-                
-                        }
-                
-                        &[data-link="link-contact"]:hover::before {
-                            background: map-get($colors-rule, contact-link-color);
-                        }
-                    }
             }
         }
 
@@ -345,49 +251,4 @@
     }
 }
 
-//gestion du dark mode
 
-/* .page-container.dark-mode {
-
-
-    .contact-content {
-
-        .contact-form-container,
-        .contact-info {
-            background-color: lighten(map-get($colors-rule, first-color), 5%);
-
-            .h2 {
-                color: map-get($colors-rule, sixth-color);
-            }
-
-            .info-item {
-
-                &:nth-child(2)::before,
-                &:nth-child(3)::before,
-                &:nth-child(4)::before,
-                &:nth-child(5)::before {
-                    fill: map-get($colors-rule, fourth-color);
-                }
-
-                h3,
-                p {
-                    color: map-get($colors-rule, sixth-color);
-
-                }
-
-                a {
-                    color: map-get($colors-rule, second-color);
-                }
-
-            }
-
-            .icon-contact {
-                fill: map-get($colors-rule, sixth-color);
-            }
-
-
-        }
-    }
-
-
-} */

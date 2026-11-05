@@ -74,7 +74,7 @@ $navbar-height:map-get($sizes, navbar-height);
 
                 width: 25px;
                 height: 2px;
-                background: lighten(map-get($colors-rule, sixth-color), 30%);
+                background: map-get($colors-rule, background-page-color);
                 transition: all 0.3s ease;
                 transform-origin: center;
 
@@ -105,7 +105,7 @@ $navbar-height:map-get($sizes, navbar-height);
             }
 
             &:hover span {
-                background: map-get($colors-rule, second-color);
+                background: map-get($colors-rule, link-color-hover);
             }
             /* @media screen and (min-width:"992px") {
                 gap: 6px;

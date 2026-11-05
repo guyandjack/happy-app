@@ -1,6 +1,6 @@
 @use "../../utils/color-rule/color-rule" as *;
 
-@keyframes card-anim {
+/* @keyframes card-anim {
   0% {
     transform: translate(0px, 0px) rotateZ(0deg);
   }
@@ -32,7 +32,7 @@
   @media screen and (min-width: 992px) {
     animation: card-anim 10s linear 2s infinite alternate;
   }
-}
+} */
 
 .website-types {
   position: relative;
@@ -109,6 +109,11 @@
         font-weight: 800;
         box-shadow: 0 0px 20px rgba(map-get($colors-rule, fifth-color), 0.2);
 
+      }
+
+      & h3{
+        margin: 1rem 0;
+        font-size: 1.3rem;
       }
 
       @media screen and (min-width: 768px) {
@@ -223,7 +228,6 @@
           position: relative;
           z-index: 1;
           padding: 30px;
-          background: transparent;
           width: 100%;
           max-width: 600px;
           //border-radius: 15px;
@@ -238,7 +242,7 @@
           p {
             color: rgba(map-get($colors-rule, first-color), 0.8);
             line-height: 1.7;
-            margin-bottom: 25px;
+            //margin-bottom: 25px;
             font-size: 1rem;
 
             @media screen and (min-width:992px) {
@@ -252,7 +256,7 @@
             }
           }
 
-          .btn {
+          /* .btn {
             position: relative;
             display: block;
             margin: 0 auto;
@@ -275,7 +279,7 @@
               transform: translateY(-2px);
               transition: all 0.3s ease;
             }
-          }
+          } */
         }
       }
 
@@ -316,14 +320,17 @@
 }
 
 .website-intro,
-.website-seo-foundations {
+.foundations {
   padding: 80px 20px;
   color: rgba(map-get($colors-rule, first-color), 0.8);
+  position:relative;
+  //border: 2px solid red;
 
   .website-intro-content,
-  .website-seo-foundations-content {
+  .foundations-content {
     max-width: 1000px;
     margin: 0 auto;
+    //border: 2px solid blue;
   }
 
   h2 {
@@ -344,42 +351,7 @@
     //color: red;
 
 
-  &>a {
-
-    position: relative;
-    display: inline-block;
-    z-index: 1;
-    color: map-get($colors-rule, first-color);
-
-    &::before {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      left: 0px;
-      width: 100%;
-      height: 1px;
-      bottom: 0px;
-      background: map-get($colors-rule, first-color);
-      transition: height 0.2s linear;
-    }
-
-
-    &:hover::before {
-      background: map-get($colors-rule, link-color);
-      opacity: 0.9;
-      height: 6px;
-      bottom: 60%;
-      transition: height 0.2s linear;
-
-    }
-
-    &[data-link="link-contact"]:hover::before {
-      background: map-get($colors-rule, contact-link-color);
-    }
-
-
-
-  }
+  
 }
 
   @media screen and (min-width: 992px) {
@@ -397,15 +369,69 @@
   padding-bottom: 0;
 }
 
-.website-seo-foundations {
-  background-color: map-get($colors-rule, background-page-color-soft);
+.foundations {
+  //background-color: map-get($colors-rule, second-color);
+  z-index:1;
+  h2{
+    padding: 1rem;
+    background-color: map-get($colors-rule, background-page-color);
+    border-radius: 1.5rem;
+  }
 
-  .website-seo-foundations-content p a {
+  .foundations-content p a {
     // Keeps the existing ::before hover effect above the section background.
     z-index: 0;
     isolation: isolate;
   }
+
+  &::before{
+    content:"";
+    position:absolute;
+    z-index: -1;
+    top:0;
+    left:0;
+    width:50%;
+    height:100%;
+   
+    transform: skewX(45deg);
+
+  }
 }
+
+.foundations.web{
+  h2 strong{
+    color: map-get($colors-rule, second-color);
+  }
+  &::before{
+    background: linear-gradient(map-get($colors-rule, second-color), transparent);
+  }
+}
+.foundations.seo{
+  h2 strong{
+    color: map-get($colors-rule, height-color);
+  }
+  &::before{
+    background: linear-gradient(map-get($colors-rule, height-color), transparent);
+  }
+}
+.foundations.app{
+  h2 strong{
+    color: map-get($colors-rule, third-color);
+  }
+  &::before{
+    background: linear-gradient(map-get($colors-rule, third-color), transparent);
+  }
+}
+.foundations.saas{
+  h2 strong{
+    color: map-get($colors-rule, fourth-color);
+  }
+  &::before{
+    background: linear-gradient(map-get($colors-rule, fourth-color), transparent);
+  }
+}
+
+
 
 /*******************************************************************
 ************* section eco  ****************************************
@@ -512,39 +538,7 @@
       color: map-get($colors-rule, second-color);
     }
 
-    a {
-
-      position: relative;
-      display: inline-block;
-      z-index: 1;
-      color: map-get($colors-rule, first-color);
-
-      &::before {
-        content: "";
-        position: absolute;
-        z-index: -1;
-        left: 0px;
-        width: 100%;
-        height: 1px;
-        bottom: 0px;
-        background: map-get($colors-rule, first-color);
-        transition: height 0.2s linear;
-      }
-
-
-      &:hover::before {
-        background: map-get($colors-rule, link-color);
-        opacity: 0.9;
-        height: 6px;
-        bottom: 60%;
-        transition: height 0.2s linear;
-
-      }
-
-      &[data-link="link-contact"]:hover::before {
-        background: map-get($colors-rule, contact-link-color);
-      }
-    }
+    
   }
 }
 
@@ -564,10 +558,10 @@
 
 
 // Specific styles for eco-design section
-.eco-section {
+/* .eco-section {
   /* background: linear-gradient(135deg,
       rgba(map-get($colors-rule, second-color), 0.03),
-      rgba(map-get($colors-rule, third-color), 0.02)); */
+      rgba(map-get($colors-rule, third-color), 0.02)); 
   //background-color: rgba(map-get($colors-rule, bg-page-shade-light-2),1);
 
   .eco-title-container {
@@ -608,7 +602,7 @@
   p strong {
     color: map-get($colors-rule, third-color);
   }
-}
+} */
 
 // Specific styles for seo section
 .seo-section {

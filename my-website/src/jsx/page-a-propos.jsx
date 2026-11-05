@@ -1,7 +1,7 @@
 //import du style
 import "@styles/SCSS/normalise.scss";
 import "@styles/SCSS/shared-style.scss";
-import "@styles/SCSS/pages/qui-suis-je.scss";
+import "@styles/SCSS/pages/about.scss";
 
 //import des hooks
 import React from "react";
