@@ -1,414 +1,599 @@
 <!DOCTYPE html>
-<html lang="en-CH">
+<!DOCTYPE html><html lang="en-CH"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SEO Meta Tags -->
+  <title>Development of mobile applications in Valais | Helveclick</title>
+  <meta name="description" content="Customized iOS, Android and PWA mobile applications in Crans-Montana: framing, development, testing and support for SMEs in Valais.">
+  <meta name="robots" content="index, follow">
 
-    <!-- SEO Meta Tags -->
-    <title>Mobile App Development in Valais | Helveclick</title>
-    <meta name="description"
-        content="Custom iOS, Android and PWA applications in Crans-Montana: discovery, development, testing and support for SMEs in Valais.">
-    <meta name="robots" content="index, follow">
+  <!-- Canonical and Alternate Links -->
+  <link rel="canonical" href="https://helveclick.ch/en/services/mobile-application.html">
 
-    <!-- Canonical and Alternate Links -->
-    <link rel="canonical" href="https://helveclick.ch/en/services/mobile-application.html">
+  <link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/prestations/application-mobile.html">
+  <link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/services/mobile-application.html">
+  <link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/prestations/application-mobile.html">
 
-    <link rel="alternate" hreflang="fr-CH" href="https://helveclick.ch/fr/prestations/application-mobile.html">
-    <link rel="alternate" hreflang="en-CH" href="https://helveclick.ch/en/services/mobile-application.html">
-    <link rel="alternate" hreflang="x-default" href="https://helveclick.ch/fr/prestations/application-mobile.html">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://helveclick.ch/en/services/mobile-application.html">
+  <meta property="og:title" content="Development of mobile applications in Valais | Helveclick">
+  <meta property="og:description" content="Customized iOS, Android and PWA mobile applications in Crans-Montana: framing, development, testing and support for SMEs in Valais.">
+  <!-- <meta property="og:image" content="https://helveclick.ch/images/og-apps.jpg"> -->
+  <meta property="og:site_name" content="Helveclick">
+  <meta property="og:locale" content="fr_CH">
+  <meta property="og:locale:alternate" content="en_CH">
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://helveclick.ch/en/services/mobile-application.html">
-    <meta property="og:title" content="Mobile App Development in Valais | Helveclick">
-    <meta property="og:description"
-        content="Custom iOS, Android and PWA applications in Crans-Montana: discovery, development, testing and support for SMEs in Valais.">
-    <!-- <meta property="og:image" content="https://helveclick.ch/images/og-apps.jpg"> -->
-    <meta property="og:site_name" content="Helveclick">
-    <meta property="og:locale" content="en_CH">
-    <meta property="og:locale:alternate" content="fr_CH">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Development of mobile applications in Valais | Helveclick">
+  <meta name="twitter:description" content="Customized iOS, Android and PWA mobile applications in Crans-Montana: framing, development, testing and support for SMEs in Valais.">
+  <!-- <meta name="twitter:image" content="https://helveclick.ch/images/og-apps.jpg"> -->
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mobile App Development in Valais | Helveclick">
-    <meta name="twitter:description"
-        content="Custom iOS, Android and PWA applications in Crans-Montana: discovery, development, testing and support for SMEs in Valais.">
-    <!-- <meta name="twitter:image" content="https://helveclick.ch/images/og-apps.jpg"> -->
+  <!-- Geolocation Tags -->
+  <meta name="geo.region" content="CH-VS">
+  <meta name="geo.placename" content="Crans-Montana">
+  <!-- Optionnel -->
+  <!-- <meta name="geo.position" content="46.309;7.478"> -->
+  <!-- <meta name="ICBM" content="46.309, 7.478"> -->
 
-    <!-- Geolocation Tags -->
-    <meta name="geo.region" content="CH-VS">
-    <meta name="geo.placename" content="Crans-Montana">
-
-    <!-- Schema.org Script (local organisation) -->
-    <script type="application/ld+json">
+  <!-- Données structurées : organisation, personne, service et page -->
+  <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "ProfessionalService"],
-    "@id": "https://helveclick.ch/#org",
-    "name": "Helveclick",
-    "url": "https://helveclick.ch",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://helveclick.ch/assets/logo/logo-v8.svg"
-    },
-    "image": "https://helveclick.ch/assets/logo/logo-v8.svg",
-    "description": "Web agency in Crans-Montana (Valais, Switzerland): website creation, mobile application development, and SEO optimization with an eco-responsible approach.",
-    "email": "info@helveclick.ch",
-    "telephone": "+41 78 894 09 87",
-    "priceRange": "$$",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Chemin du Mont-Paisible 1",
-      "addressLocality": "Crans-Montana",
-      "addressRegion": "Valais",
-      "postalCode": "3963",
-      "addressCountry": "CH"
-    },
-    "areaServed": [
-      { "@type": "AdministrativeArea", "name": "Valais" },
-      { "@type": "Country", "name": "Switzerland" }
-    ],
-    "sameAs": [
-      "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
-    ],
-    "contactPoint": [
-      {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "LocalBusiness",
+        "ProfessionalService"
+      ],
+      "@id": "https://helveclick.ch/#org",
+      "name": "HelveClick",
+      "url": "https://helveclick.ch/",
+      "logo": "https://helveclick.ch/assets/logo/logo-v8.svg",
+      "description": "Web agency in Crans-Montana, in Valais: websites, mobile applications, SaaS, SEO/GEO and tailor-made eco-responsible solutions for PME.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Chemin du Mont-Paisible 1",
+        "addressLocality": "Crans-Montana",
+        "addressRegion": "VS",
+        "postalCode": "3963",
+        "addressCountry": "CH"
+      },
+      "telephone": "+41 78 894 09 87",
+      "email": "info@helveclick.ch",
+      "priceRange": "$$",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Crans-Montana"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Valais"
+        },
+        {
+          "@type": "Country",
+          "name": "Switzerland"
+        }
+      ],
+      "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "sales",
         "telephone": "+41 78 894 09 87",
         "email": "info@helveclick.ch",
-        "areaServed": "CH-VS",
-        "availableLanguage": ["fr-CH", "fr", "en"]
+        "availableLanguage": [
+          "fr",
+          "en"
+        ]
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
+      ],
+      "founder": {
+        "@id": "https://helveclick.ch/#guillaume-dupanloup"
       }
-    ]
-  }
-  </script>
-
-    <!-- Page-specific service -->
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": "https://helveclick.ch/en/services/mobile-application.html#service",
-    "name": "Mobile Application Development",
-    "description": "iOS and Android mobile application development (native, hybrid, or PWA) in Crans-Montana, Valais: custom-built, high-performance, and eco-designed.",
-    "provider": { "@id": "https://helveclick.ch/#org" },
-    "serviceType": "Mobile application development",
-    "areaServed": [
-      { "@type": "AdministrativeArea", "name": "Valais" },
-      { "@type": "City", "name": "Crans-Montana" },
-      { "@type": "Country", "name": "Switzerland" }
-    ],
-    "offers": {
-      "@type": "Offer",
-      "url": "https://helveclick.ch/en/services/mobile-application.html",
-      "priceCurrency": "CHF",
-      "availability": "https://schema.org/InStock"
     },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Mobile application types",
-      "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Native iOS / Android application" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hybrid application" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Progressive Web App (PWA)" } }
+    {
+      "@type": "Person",
+      "@id": "https://helveclick.ch/#guillaume-dupanloup",
+      "name": "Guillaume Dupanloup",
+      "jobTitle": "Web and mobile developer freelance",
+      "url": "https://helveclick.ch/en/about.html",
+      "worksFor": {
+        "@id": "https://helveclick.ch/#org"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/guillaume-dupanloup-developpeur-web/"
       ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://helveclick.ch/en/services/mobile-application.html#service",
+      "name": "Development of tailor-made mobile applications",
+      "description": "Customized iOS, Android and PWA mobile applications in Crans-Montana: framing, development, testing and support for SMEs in Valais.",
+      "provider": {
+        "@id": "https://helveclick.ch/#org"
+      },
+      "serviceType": "Application development mobiles",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Crans-Montana"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Valais"
+        },
+        {
+          "@type": "Country",
+          "name": "Switzerland"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Types of mobile applications offered",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Native iOS and Android app with Swift and Kotlin"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "React mobile app Native"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Progressive Web App (PWA)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://helveclick.ch/en/services/mobile-application.html#webpage",
+      "url": "https://helveclick.ch/en/services/mobile-application.html",
+      "name": "Development of mobile applications in Valais | Helveclick",
+      "description": "Customized iOS, Android and PWA mobile applications in Crans-Montana: framing, development, testing and support for SMEs in Valais.",
+      "inLanguage": "fr-CH",
+      "about": {
+        "@id": "https://helveclick.ch/en/services/mobile-application.html#service"
+      },
+      "isPartOf": {
+        "@id": "https://helveclick.ch/#org"
+      }
     }
-  }
+  ]
+}
   </script>
 
-    <!-- Page data + breadcrumb -->
-    <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "@id": "https://helveclick.ch/en/services/mobile-application.html#webpage",
-    "url": "https://helveclick.ch/en/services/mobile-application.html",
-    "name": "Mobile Application Development in Valais – Helveclick",
-    "inLanguage": "en-CH",
-    "about": { "@id": "https://helveclick.ch/en/services/mobile-application.html#service" },
-    "isPartOf": { "@id": "https://helveclick.ch/#org" },
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://helveclick.ch/" },
-        { "@type": "ListItem", "position": 2, "name": "Mobile applications", "item": "https://helveclick.ch/en/services/mobile-application.html" }
-      ]
-    }
-  }
-  </script>
+  <!-- favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/favicons/site.webmanifest">
 
-    <!-- favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
-    <link rel="manifest" href="/assets/favicons/site.webmanifest">
-
-    <!-- Scripts in head -->
-    <script type="module" src="../../../src/jsx/page-prestations.jsx"></script>
+  <!-- Scripts in head -->
+  <script type="module" src="../../../src/jsx/page-prestations.jsx"></script>
 </head>
 
 
 <body>
-    <div class="page-container">
-        <a class="skip-link" href="#main-content">Skip to main content</a>
-        <header>
-            <div id="RC-navbar"></div>
-        </header>
+  <div class="page-container">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header>
+      <div id="RC-navbar"></div>
+    </header>
 
-        <div id="RC-link-top-page"></div>
-        <main id="main-content" tabindex="-1">
-            <!-- Part B: Hero Section -->
-            <!-- Part B: Hero Section -->
-            <section class="flex-column-start-center hero-wrapper">
-                <img class="hero-logo" src="/assets/logo/helveclick-dark-ok.png" alt="Helveclick">
-                <div class="flex-column-end-center hero-container">
-            
-                    <img src="/assets/images/page-app/img-hero-1-app.webp" alt="Mobile app development in Crans-Montana, Valais">
-            
-                    <img src="/assets/images/page-app/img-hero-2-app.webp"
-                        alt="Web agency in Crans-Montana: iOS and Android app development">
-            
-                    <div class="hero-container-title">
-                        <h1>Mobile App Development</h1>
-            
-                        <p class="hero-subtitle">
-                            <strong>
-                                Custom iOS, Android and PWA applications for businesses and organisations.
-                            </strong>
-                        </p>
-                    </div>
-            
+    <div id="RC-link-top-page"></div>
+    <main id="main-content" tabindex="-1">
+      <!-- Part B: Hero Section -->
+      <section class="flex-column-start-center hero-wrapper">
+        <img class="hero-logo" src="/assets/logo/helveclick-dark-ok.png" alt="Helveclick">
+        <div class="flex-column-end-center hero-container">
+
+          <img src="/assets/images/page-app/app.webp" alt="">
+          <img src="/assets/images/page-app/phone.svg" alt="">
+
+
+          <div class="hero-container-title">
+            <h1>
+              Mobile application development
+            </h1>
+
+            <p class="hero-subtitle">
+              <strong>
+                Tailor-made iOS, Android and PWA applications<br> for SMEs in Valais
+              </strong>
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+
+
+      <section class="website-intro" aria-labelledby="mobile-intro-title">
+        <div class="website-intro-content">
+          <h2 id="mobile-intro-title">
+            An application designed <strong>for your uses</strong>
+          </h2>
+
+          <p>
+            I develop <strong>mobile applications for SMEs</strong>,
+            adapted to their needs: business tools, customer services
+            or solutions to simplify the work of employees.
+          </p>
+
+          <div class="large-screen-content">
+            <p>
+              Depending on your project, I propose <strong>native development</strong>
+              for iOS and Android with Swift and Kotlin, applications
+              cross-platform with <strong>React Native</strong>
+              or <strong>PWA (Progressive Web Apps)</strong>,
+              accessible from a browser.
+            </p>
+
+            <p>
+              For publicly accessible web applications,
+              <a class="text-link" href="/en/services/seo.html">SEO and GEO support</a>
+              can also be considered in order to improve their visibility
+              on search engines and AI assistants.
+            </p>
+
+            <p>
+              I support companies in <strong>canton of Valais</strong>
+              and all <strong>Switzerland</strong>.
+            </p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Services Section - using website-types structure -->
+      <section class="website-types">
+        <div class="container">
+
+          <div class="website-cards">
+            <!-- First card with container -->
+            <div class="website-card-container" id="website-card-container-1">
+              <h2 id="native" class="item-menu-side" data-hero="Applications Natives"><strong>Applications
+                  Natives</strong></h2>
+              <div class="website-card">
+                <div class="card-image card-anim-1">
+                  <img src="/assets/images/page-app/icon-language-native.webp" alt="" loading="lazy" decoding="async">
                 </div>
-            </section>
-
-            <section class="website-intro" aria-labelledby="mobile-intro-title">
-                <div class="website-intro-content">
-                    <h2 id="mobile-intro-title">An app designed for <strong>your needs</strong></h2>
-                    
-                    <p>
-                        I work with small and medium-sized businesses that need a user-friendly mobile service, a business tool, or a more
-                        accessible customer experience. Projects are carried out in <strong>Valais</strong>, with the option of
-                        remote support throughout the rest of Switzerland, depending on your needs.
-                    </p>
-                    <div class="large-screen-content">
-                        <p>
-                            Depending on your goals, the app can be developed natively for iOS and Android using
-                            <strong>Swift</strong> and <strong>Kotlin</strong>, with <strong>React Native</strong>, or as
-                            a <strong>PWA</strong>.
-                        </p>
-                    
-                        <p>
-                            A PWA or the associated website may also require a <a href="/en/services/website.html">web presence
-                            </a> and dedicated <a href="/en/services/seo.html">SEO and GEO support</a>. These topics
-                            are addressed based on the project’s objectives, without guaranteeing downloads, usage, or conversions.
-                            <a data-link=“link-contact” href="/en/contact.html">Let’s discuss your mobile project</a>.
-                        </p>
-                    </div>
-                    
-                    
-                </div>
-            </section>
-
-
-
-            <!-- Services Section - using website-types structure -->
-            <section class="website-types">
-                <div class="container">
-
-                    <div class="website-cards">
-                        <!-- First card with container -->
-                        <div class="website-card-container" id="website-card-container-1">
-                            <h2 id="native" class="item-menu-side" data-hero="Native Applications"><strong>Native
-                                    Applications</strong></h2>
-                            <div class="website-card">
-                                <div class="card-image card-anim-1">
-                                    <img src="/assets/images/page-app/img-card-native.webp" alt="" loading="lazy" decoding="async">
-                                </div>
-                                <div class="card-content">
-                                    <p>
-                                        <strong>Native applications</strong> are specifically designed for each
-                                        platform:
-                                        <strong>iOS</strong>
-                                        (with Swift) or <strong>Android</strong> (with Kotlin). They are considered
-                                        when platform integrations, offline constraints or a platform-specific
-                                        experience are important to the project.
-                                    </p>
-                                    <p>
-                                        They are ideal for <strong>complex and demanding</strong> projects, requiring
-                                        <strong>great
-                                            fluidity</strong>, <strong>direct access to sensors</strong> (camera, GPS,
-                                        accelerometer,
-                                        etc.) or
-                                        advanced interactions with the system.
-                                    </p>
-
-                                    <a href="/en/contact.html" class="cta-btn"><span
-                                            class="btn-secondary-small">Need
-                                            a native&nbsp;application&nbsp;?</span> <br>
-                                        Contact&nbsp;me!</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="website-card-container" id="website-card-container-2">
-                            <h2 id="react-native" class="item-menu-side" data-hero="React Native Applications"><strong>React Native
-                                    Applications</strong></h2>
-                            <div class="website-card">
-                                <div class="card-image card-anim-2">
-                                    <img src="/assets/images/page-app/img-card-hybrid.webp" alt="" loading="lazy" decoding="async">
-                                </div>
-                                <div class="card-content">
-                                    <p>
-                                        <strong>Hybrid applications</strong> combine web and native technologies to
-                                        work on multiple
-                                        platforms from a <strong>single source code</strong>. Developed with frameworks
-                                        with <strong>React Native</strong>. It can suit projects whose required native
-                                        integrations and supported devices are compatible with this approach.
-                                    </p>
-                                    <p>
-                                        This type of application is particularly suitable for <strong>startups</strong>
-                                        and
-                                        <strong>SMEs</strong> who want to
-                                        launch on <strong>iOS and Android</strong> from a shared codebase. The
-                                        maintenance, platform requirements and technical limits are assessed during
-                                        discovery.
+                <div class="card-content">
+                  <p>
+                    What is a native app? <br>
+                    A <strong>native mobile application</strong> is software developed specifically for an operating system with a dedicated programming language: iOS with Swift
+                    for Apple and Android devices with Kotlin.
+                  </p>
+                  <p>
+                    Why create a native app?<br>
+                  A native application is particularly suitable for projects requiring <strong>high performance</strong>, use
+                  intensive use of the smartphone or advanced access to device features: <strong>camera, GPS, sensors</strong> and notifications.
                                     </p>
 
-                                    <a href="/en/contact.html" class="btn"><span class="btn-secondary-small">Compare React Native and PWA</span> <br>
-                                        Contact&nbsp;me</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="website-card-container" id="website-card-container-3">
-                            <h2 id="pwa" class="item-menu-side" data-hero="Progressive Web Apps (PWA)">
-                                <strong>Progressive Web Apps</strong>
-                            </h2>
-                            <div class="website-card">
-                                <div class="card-image card-anim-1">
-                                    <img src="/assets/images/page-app/img-card-pwa.webp" alt="" loading="lazy" decoding="async">
-                                </div>
-                                <div class="card-content">
-                                    <p>
-                                        <strong>PWAs</strong> (Progressive Web Apps) are web applications that offer an
-                                        experience
-                                        close to
-                                        <strong>native applications</strong>: <strong>installation on the home
-                                            screen</strong>,
-                                        <strong>offline
-                                            operation</strong>, and <strong>push notifications</strong>. They combine
-                                        the <strong>advantages of
-                                            the web</strong>
-                                        (accessibility, referencing) and advanced mobile features.
-                                    </p>
-                                    <p>
-                                        They are ideal for companies looking for a <strong>universal and economical
-                                            solution</strong>,
-                                        accessible on all devices, without going through <strong>application
-                                            stores</strong>.
-                                    </p>
-
-                                    <a href="/en/contact.html" class="cta-btn"><span
-                                            class="btn-secondary-small">Need
-                                            a PWA&nbsp;?</span> <br>
-                                        Contact&nbsp;me!</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  <a href="/en/contact.html" class="cta-btn"><span class="btn-secondary-small">A
+                      native application ?</span> </a>
                 </div>
-            </section>
+              </div>
+            </div>
 
-            <!-- Eco-design Section -->
-            <section class="eco-section">
-                <div class="content-wrapper">
-
-                    <div class="eco-title-container">
-                        <img class="eco-image" src="/assets/images/component/pommier-2.webp" alt="" loading="lazy" decoding="async">
-                        <h2 class="item-menu-side" data-hero="Eco-responsible applications">
-                            Apps and
-                            <strong>durability</strong>
-                        </h2>
-                    </div>
-                    <p>
-                        I develop mobile applications following <strong>eco&#8209;design</strong> principles,
-                        aiming to reduce their environmental impact while improving their performance:
-                    </p>
-
-                    <ul>
-                        <li><strong>Resource optimization.</strong> To reduce battery consumption.</li>
-                        <li><strong>Efficient data management.</strong> To limit network transfers.</li>
-                        <li><strong>Media compression.</strong> To reduce the application's weight.</li>
-                        <li><strong>Optimized code.</strong> For maximum performance with minimal resources.</li>
-                        <li><strong>Offline operation.</strong> When possible to reduce data consumption.</li>
-                    </ul>
-                    <p>Eco-design is adapted to actual use, the data processed and the project constraints.</p>
+            <div class="website-card-container" id="website-card-container-2">
+              <h2 id="react-native" class="item-menu-side" data-hero="Applications React Native"><strong>Applications
+                  React Native</strong></h2>
+              <div class="website-card">
+                <div class="card-image card-anim-2">
+                  <img src="/assets/images/page-app/icon-react.webp" alt="" loading="lazy" decoding="async">
                 </div>
-            </section>
+                <div class="card-content">
+                  <p>
+                    What is React Native?<br>React Native is a mobile development framework that allows you to create applications for iOS and Android from
+                    of a common programming language, using JavaScript or TypeScript. It also provides access to functionalities
+                    native to the smartphone, such as the camera, GPS or notifications.
+                  </p>
+                  <p>
+                    Why use React Native for a mobile application?<br>
 
-            <section class="flex-column-start-center suivi-continu">
-                <div class="content-wrapper">
-                    <div class="seo-title-container">
-                        <h2 class="item-menu-side" data-hero="Performance and User Experience">
-                            User Experience and
-                            <strong>Performance</strong>
-                        </h2>
-                    </div>
-                    <p>Performance is at the heart of my mobile developments&nbsp;:</p>
-                    <ul>
-                        <li><strong>Fast startup time.</strong> To captivate the user from launch.</li>
-                        <li><strong>Smooth interfaces.</strong> Without latency or stuttering.</li>
-                        <li><strong>Intuitive design.</strong> Following each platform's guidelines.</li>
-                        <li><strong>Animation optimization.</strong> For a pleasant visual experience.</li>
-                        <li><strong>Rigorous testing.</strong> Conducted on different devices and OS versions.</li>
-                        <li><strong>User behavior analysis.</strong> To continuously improve
-                            the experience.
-                        </li>
-                    </ul>
-                    <p>Quality is addressed through supported-device definitions, priority-journey tests, error handling,
-                        accessibility, response-time measurements where relevant and user feedback when available.</p>
+                    <strong>React Native</strong> helps reduce costs and development times by sharing a large part of the code between
+                    iOS and Android. He<strong>also facilitates application maintenance</strong> and updates. This is a solution
+                    particularly suitable for projects that wish to target both platforms with a controlled budget.
+                  </p>
+
+                  <a href="/en/contact.html" class="cta-btn"><span class="btn-secondary-small">A React app?</span></a>
                 </div>
+              </div>
+            </div>
 
-
-
-            </section>
-
-            <!-- CTA Section -->
-            <div id="RC-cta-section"></div>
-
-            <!-- FAQ Section -->
-            <section class="flex-column-start-center faq-section">
-
-                <div class="flex-row-center-center faq-container-title">
-                    <img class="img-faq-personna" src="/assets/images/component/faq-personna.webp" alt="" loading="lazy" decoding="async">
-                    <h2 id="faq" class="item-menu-side" data-hero="FAQ"><strong>FAQ</strong></h2>
+            <div class="website-card-container" id="website-card-container-3">
+              <h2 id="pwa" class="item-menu-side" data-hero="Progressive Web Apps (PWA)"><strong>Progressive Web Apps
+                  (PWA)</strong></h2>
+              <div class="website-card">
+                <div class="card-image card-anim-1">
+                  <img src="/assets/images/page-app/pwa.webp" alt="" loading="lazy" decoding="async">
                 </div>
-                <ul class="flex-column-start-center faq-grid">
-                    <li class="faq-item"><h3 class="faq-question-heading"><button class="faq-question" id="faq-question-price" type="button" aria-expanded="false" aria-controls="faq-answer-price">How much does mobile app development cost?</button></h3><div class="faq-answer" id="faq-answer-price" role="region" aria-labelledby="faq-question-price"><p>The cost depends on complexity, features and the approach selected. A simple app may start at CHF 5,000, while a complex project with a custom backend may represent CHF 20,000 or more. These are indicative ranges only; the approved quote defines scope, deliverables, possible recurring costs and the reference price.</p></div></li>
-                    <li class="faq-item"><h3 class="faq-question-heading"><button class="faq-question" id="faq-question-timeline" type="button" aria-expanded="false" aria-controls="faq-answer-timeline">How long does it take to develop a mobile app?</button></h3><div class="faq-answer" id="faq-answer-timeline" role="region" aria-labelledby="faq-question-timeline"><p>Timelines depend on features, platforms, backend, integrations, testing and store approvals. As an indication, a simple app may take two to three months, a medium-complexity project three to six months and a more complex project six months or longer. The approved quote defines the schedule and milestones.</p></div></li>
-                    <li class="faq-item"><h3 class="faq-question-heading"><button class="faq-question" id="faq-question-platforms" type="button" aria-expanded="false" aria-controls="faq-answer-platforms">Which technology should I choose: native, React Native or a PWA?</button></h3><div class="faq-answer" id="faq-answer-platforms" role="region" aria-labelledby="faq-question-platforms"><p>Native applications use Swift for iOS and Kotlin for Android. React Native can provide a shared base for iOS and Android. A PWA is an installable web application whose capabilities vary by browser and device. The choice is made during discovery based on the product, devices and maintenance needs.</p></div></li>
-                    <li class="faq-item"><h3 class="faq-question-heading"><button class="faq-question" id="faq-question-area" type="button" aria-expanded="false" aria-controls="faq-answer-area">Do you work with companies in Valais and across Switzerland?</button></h3><div class="faq-answer" id="faq-answer-area" role="region" aria-labelledby="faq-question-area"><p>Yes. I support companies and organisations in Valais, including locally in Crans-Montana, and remotely across Switzerland. Discovery, validation and follow-up are adapted to the project.</p></div></li>
-                    <li class="faq-item"><h3 class="faq-question-heading"><button class="faq-question" id="faq-question-maintenance" type="button" aria-expanded="false" aria-controls="faq-answer-maintenance">Do you provide maintenance after launch?</button></h3><div class="faq-answer" id="faq-answer-maintenance" role="region" aria-labelledby="faq-question-maintenance"><p>Yes, according to the agreed scope. Maintenance can cover iOS and Android updates, fixes, dependency updates, store releases and prioritised improvements. Responsibilities and response times are defined in the maintenance agreement or quote.</p></div></li>
-                    <li class="faq-item"><h3 class="faq-question-heading"><button class="faq-question" id="faq-question-monetisation" type="button" aria-expanded="false" aria-controls="faq-answer-monetisation">How can I monetise my mobile app?</button></h3><div class="faq-answer" id="faq-answer-monetisation" role="region" aria-labelledby="faq-question-monetisation"><p>Options include an initial purchase, in-app purchases, subscriptions, advertising or a tool supporting a main business activity. The relevant approach depends on the target audience and business model.</p></div></li>
-                    <li class="faq-item"><h3 class="faq-question-heading"><button class="faq-question" id="faq-question-stores" type="button" aria-expanded="false" aria-controls="faq-answer-stores">How does publishing to app stores work?</button></h3><div class="faq-answer" id="faq-answer-stores" role="region" aria-labelledby="faq-question-stores"><p>I support preparation and publication on the App Store and Google Play: the client developer account, listing information, visuals, settings and versions. Apple and Google control their validation process, so approval and timings cannot be guaranteed.</p></div></li>
-                    <li class="faq-item"><h3 class="faq-question-heading"><button class="faq-question" id="faq-question-backend" type="button" aria-expanded="false" aria-controls="faq-answer-backend">Will my app need a backend?</button></h3><div class="faq-answer" id="faq-answer-backend" role="region" aria-labelledby="faq-question-backend"><p>It depends on the features. A backend may be needed for data, user accounts, payments, access rights or synchronisation. Architecture, hosting, recurring costs, access and security measures are defined during discovery.</p></div></li>
-                    <li class="faq-item"><h3 class="faq-question-heading"><button class="faq-question" id="faq-question-security" type="button" aria-expanded="false" aria-controls="faq-answer-security">How are security and data protection addressed?</button></h3><div class="faq-answer" id="faq-answer-security" role="region" aria-labelledby="faq-question-security"><p>Security and data protection are addressed from discovery: data minimisation, access rights, authentication, encryption where relevant, maintained dependencies and testing appropriate to the level of risk. Swiss data protection law and the GDPR may apply depending on the context; legal analysis remains the client’s responsibility with their advisers.</p></div></li>
-                    <li class="faq-item"><h3 class="faq-question-heading"><button class="faq-question" id="faq-question-features" type="button" aria-expanded="false" aria-controls="faq-answer-features">Can you integrate payments, notifications, geolocation or offline use?</button></h3><div class="faq-answer" id="faq-answer-features" role="region" aria-labelledby="faq-question-features"><p>Features can include geolocation, push notifications, in-app payments, augmented reality, image recognition, messaging and offline use. Their feasibility is assessed against platform rules, security and the project scope.</p></div></li>
-                    <li class="faq-item"><h3 class="faq-question-heading"><button class="faq-question" id="faq-question-measurement" type="button" aria-expanded="false" aria-controls="faq-answer-measurement">How is app success measured?</button></h3><div class="faq-answer" id="faq-answer-measurement" role="region" aria-labelledby="faq-question-measurement"><p>Indicators are defined from product goals: activation, priority journeys, stability, contact requests or conversions, where their measurement is useful and set up appropriately. Tools, data collected and retention are defined in the project scope.</p></div></li>
-                    <li class="faq-item"><h3 class="faq-question-heading"><button class="faq-question" id="faq-question-evolution" type="button" aria-expanded="false" aria-controls="faq-answer-evolution">Can my app evolve later?</button></h3><div class="faq-answer" id="faq-answer-evolution" role="region" aria-labelledby="faq-question-evolution"><p>The architecture is designed to support planned changes. New features, platforms or integrations can be considered after assessing their impact on code, data, stores and users. Each change has its own scope, quote and schedule.</p></div></li>
-                </ul>
+                <div class="card-content">
+                  <p>
+                    What is a PWA?<br>
 
-            </section>
+                    A <strong>PWA (Progressive Web App)</strong> is a web application accessible from a browser, which can also be installed
+                    on a smartphone or computer. It offers an experience close to a classic application, with certain
+                    features like notifications, offline access or sensor usage, depending on devices and
+                    compatible browsers.
+                  </p>
+                  <p>
+                    Why use a PWA?<br>
+
+                    A PWA allows you to create a<strong>application compatible</strong> with several platforms, without developing a specific version
+                    for iOS and Android. It reduces development and maintenance costs, facilitates updates and remains accessible directly from a URL, <strong>without having to go through the stores</strong>.
+                  </p>
+
+                  <a href="/en/contact.html" class="cta-btn"><span class="btn-secondary-small">A PWA application?</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
 
-        </main>
+      <section class="foundations app">
+        <div class="foundations-content">
+          <h2 id="mobile-foundations-title">
+            The right technology for <strong>your mobile project</strong>
+          </h2>
 
-        <div id="RC-footer"></div>
+          <p>
+            The choice between a <strong>native application</strong>,
+            <strong>React Native</strong> and an <strong>PWA</strong>
+            depends above all on your needs: functionalities,
+            performance, targeted devices and conditions of use.
+            Each approach has its advantages and limitations.
+          </p>
 
-    </div>
-</body>
+          <p>
+            Before development, I evaluate these criteria with you
+            to choose a <strong>solution adapted to your uses
+              and your budget</strong>. The objective is to create
+            a simple to use, easy to maintain application
+            and able to evolve with your business.
+          </p>
+        </div>
+      </section>
 
-</html>
+
+      <!-- CTA Section -->
+      <div id="RC-cta-section"></div>
+
+      <!-- FAQ Section -->
+      <section class="flex-column-start-center faq-section">
+
+        <div class="flex-row-center-center faq-container-title">
+          <img class="img-faq-personna" src="/assets/images/component/faq-personna.webp" alt="" loading="lazy" decoding="async">
+          <h2 id="faq" class="item-menu-side" data-hero="FAQ">Frequently asked <strong>questions</strong></h2>
+        </div>
+        <ul class="flex-column-start-center faq-grid">
+          <li class="faq-item">
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-prix" type="button" aria-expanded="false" aria-controls="faq-answer-prix">How much does it cost to develop a mobile app?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-prix" role="region" aria-labelledby="faq-question-prix">
+              <p>
+                The price depends on the <strong>complexity of the project</strong>, <strong>features
+                  desired</strong> and
+                type of development (native, hybrid, PWA). A simple application starts from
+                <strong>CHF 5’000</strong>, while a complex application with custom backend can
+                represent a
+                investment of <strong>CHF 20,000 or more</strong>. I always offer you a <strong>quote
+                  detailed</strong> after studying your needs.
+                These amounts constitute indicative orders of magnitude: the validated estimate defines the scope, the
+                deliverables, possible recurring costs and the reference price of the project.
+              </p>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-delais" type="button" aria-expanded="false" aria-controls="faq-answer-delais">How long does it take to develop an app
+                mobile?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-delais" role="region" aria-labelledby="faq-question-delais">
+              <p>
+                Lead times depend on features, platforms, backend, integrations, testing and
+                of
+                validations on the stores. As a guide, a simple application may require approximately
+                <strong>2 to 3 months</strong>, a medium complexity project <strong>3 to 6 months</strong> and a project
+                more
+                complex <strong>6 months or more</strong>. These ranges do not constitute a commitment: the
+                calendar and reference milestones are specified in the validated quote.
+              </p>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-plateformes" type="button" aria-expanded="false" aria-controls="faq-answer-plateformes">Which technology to choose between a native application, React
+                Native and a PWA?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-plateformes" role="region" aria-labelledby="faq-question-plateformes">
+              <p>
+                The choice depends on the uses, the targeted devices, the integrations and the expected maintenance. A
+                <strong>native</strong> app uses Swift for iOS and Kotlin for Android; it may be suitable
+                when the capabilities specific to each platform are decisive. <strong>React Native</strong>
+                allows
+                to study a shared base for iOS and Android. A <strong>PWA</strong> is a web application
+                installable, the possibilities of which vary depending on browsers and devices. The choice is made
+                to the framing of the project.</p>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-zone" type="button" aria-expanded="false" aria-controls="faq-answer-zone">Support businesses in Valais and the rest of the region
+                Switzerland?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-zone" role="region" aria-labelledby="faq-question-zone">
+              <p>
+                Yes. I support companies and organizations in <strong>Valais</strong>, particularly in proximity to
+                Crans-Montana, as well as remotely in the rest of the <strong>Suisse</strong>. The framing, the
+                exchanges,
+                validations and monitoring are adapted to the organization of the project.
+              </p>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-maintenance" type="button" aria-expanded="false" aria-controls="faq-answer-maintenance">Do you offer maintenance services after
+                launching?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-maintenance" role="region" aria-labelledby="faq-question-maintenance">
+              <p>
+                Yes, according to the defined perimeter. Maintenance can cover updates related to news
+                versions
+                of iOS and Android, corrections, evolution of dependencies, publication of new versions
+                on
+                blinds and prioritized improvements. The modalities, response times and responsibilities are
+                defined in the maintenance agreement or quote.
+              </p>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-monetisation" type="button" aria-expanded="false" aria-controls="faq-answer-monetisation">How do I monetize my mobile app?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-monetisation" role="region" aria-labelledby="faq-question-monetisation">
+              <p>
+                Several options are possible: <strong>initial purchase</strong> (paid application), <strong>purchases
+                  integrated</strong> (freemium), <strong>subscription</strong> (SaaS), <strong>advertising</strong>, or
+                <strong>model
+                  indirect</strong> (support tool for your main activity). I help you define the
+                <strong>strategy
+                  more adapted</strong> to your target and your business model.
+              </p>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-stores" type="button" aria-expanded="false" aria-controls="faq-answer-stores">How does publishing work on the stores?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-stores" role="region" aria-labelledby="faq-question-stores">
+              <p>
+                I will support you in the preparation and publication on the <strong>App Store</strong> and the
+                <strong>Google Play Store</strong>: client developer account, file elements, visuals,
+                configuration, versions and information requested by the platforms. Apple and Google remain
+                responsible
+                their validation process; their acceptance and deadlines cannot be guaranteed.
+              </p>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-backend" type="button" aria-expanded="false" aria-controls="faq-answer-backend">Will my app need a backend?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-backend" role="region" aria-labelledby="faq-question-backend">
+              <p>It depends on the features. A backend may be necessary to store data, manage
+                user accounts, payments, access rights or synchronization between devices. Sound
+                architecture, its hosting, its recurring costs, its access and its security measures are defined
+                at
+                framing, linked to business needs.
+              </p>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-securite" type="button" aria-expanded="false" aria-controls="faq-answer-securite">How is security and data protection taken care of
+                taken into account?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-securite" role="region" aria-labelledby="faq-question-securite">
+              <p>
+                <strong>security</strong> and data protection are taken into account from the framing: data
+                minimized, access rights, authentication, encryption where relevant, dependencies maintained and
+                tests adapted to the level of risk. Compliance depends on processing, roles and markets
+                concerned.
+                For Switzerland, the project must in particular take into account the <strong>Federal Law on the Protection of
+                  data (LPD)</strong> ; <strong>RGPD</strong> can also be applied depending on the context. A
+                analysis
+                specific legal remains the responsibility of the client and his advisors.
+              </p>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-fonctionnalites" type="button" aria-expanded="false" aria-controls="faq-answer-fonctionnalites">Can you integrate payments, notifications,
+                geolocation or offline mode?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-fonctionnalites" role="region" aria-labelledby="faq-question-fonctionnalites">
+              <p>
+                Yes, I can integrate features such as: <strong>geolocation</strong>,
+                <strong>notifications
+                  push</strong>, <strong>in-app payments</strong>, <strong>augmented reality</strong>,
+                <strong>recognition
+                  image</strong>, <strong>messaging</strong>, <strong>offline mode</strong>, and much more. Each
+                functionality is developed according to <strong>platform standards</strong>.
+              </p>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-mesure" type="button" aria-expanded="false" aria-controls="faq-answer-mesure">How do you measure the success of the application?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-mesure" role="region" aria-labelledby="faq-question-mesure">
+              <p>
+                The indicators are defined according to the product objectives: activation, priority pathways,
+                stability, contact requests or conversions, when their measurement is useful and configured in a way
+                compliant. The tools, data collected, retention periods and monitoring methods are specified
+                in
+                the scope of the project.
+              </p>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <h3 class="faq-question-heading">
+              <button class="faq-question" id="faq-question-evolution" type="button" aria-expanded="false" aria-controls="faq-answer-evolution">Will I be able to upgrade my application later?</button>
+            </h3>
+            <div class="faq-answer" id="faq-answer-evolution" role="region" aria-labelledby="faq-question-evolution">
+              <p>The architecture is designed to allow the developments planned in the framework. News
+                features,
+                platforms or integrations remain possible after analysis of their impact on the code, data,
+                stores and users. Each development is subject to a scope, a quote and a
+                planning
+                adapted.
+              </p>
+            </div>
+          </li>
+        </ul>
+
+      </section>
+
+
+
+    </main>
+
+    <div id="RC-footer"></div>
+
+  </div>
+
+
+
+</body></html>
