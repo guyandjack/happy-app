@@ -3,11 +3,7 @@
     "logs/*",
     "logs/**/*",
     "*.log",
-    "logs/app.log",
-    "public/images/landingPage/*",
-    "public/images/landingPage/**/*",
-    "public/images/landingPage/version.json",
-    "public/images/landingPage/version.txt"
+    "logs/app.log"
   ],
   "watch": [
     "*.js",

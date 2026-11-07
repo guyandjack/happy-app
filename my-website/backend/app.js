@@ -8,15 +8,7 @@ const compression = require("compression");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
-const fs = require("fs"); // <-- pour le fallback
-
 // import des fonctions
-const {
-  LP_DIR,
-  secondsUntilNextSeason,
-  startScheduler,
-} = require("./utils/function/scheduler.js");
-const LANDING_PAGE_CACHE_MAX_AGE_SECONDS = 30 * 24 * 60 * 60;
 const logger = require("./logger.js");
 const testNotif = require("./utils/function/testNotification.js");
 const {
@@ -55,31 +47,6 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// Images saisonnières : déclarées avant le statique global afin que leur
-// politique de cache spécifique ne soit pas contournée.
-app.use(
-  "/images/landingPage",
-  express.static(LP_DIR, {
-    extensions: ["webp"],
-    redirect: false,
-    etag: true,
-    lastModified: true,
-    setHeaders(res, filePath) {
-      // Cache the current hero image for up to 30 days. Its URL is stable but
-      // its content changes by season, so never cache beyond the next switch.
-      const maxAge = Math.min(
-        LANDING_PAGE_CACHE_MAX_AGE_SECONDS,
-        secondsUntilNextSeason()
-      );
-      res.setHeader("Cache-Control", `public, max-age=${maxAge}, must-revalidate`);
-      res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
-      if (filePath && filePath.endsWith(".webp")) {
-        res.setHeader("Content-Type", "image/webp");
-      }
-    },
-  }),
-);
-
 // Static global (sert tout ./public à la racine → /images/... , /articles/...)
 // The built frontend takes priority when present: it contains the compiled
 // React entry points required by the Navbar and Footer on static article pages.
@@ -89,23 +56,6 @@ app.use(express.static(path.join(__dirname, "public")));
 // directory so Vite can publish them in the next site build. Serving it here
 // also makes the URLs available when the API is the static-file server.
 app.use(express.static(sitePublicRoot));
-
-// ✅ Fallback image (en cas de 404, on renvoie une WebP → pas d'HTML ⇒ pas d'ORB)
-/* app.use("/images/landingPage", (req, res, next) => {
-  if (res.headersSent) return next();
-  const placeholder = path.join(LP_DIR, "placeholder-1x1.webp");
-  fs.readFile(placeholder, (err, buf) => {
-    if (err) return next(err);
-    res
-      .status(404)
-      .set({
-        "Content-Type": "image/webp",
-        "Cache-Control": "no-store",
-        "Cross-Origin-Resource-Policy": "cross-origin",
-      })
-      .end(buf);
-  });
-}); */
 
 // ✅ Body parsers
 app.use(express.json({ limit: "5mb" }));
@@ -154,9 +104,6 @@ app.post("/api/test", (req, res) => {
 });
 
 logger.info("🚀 app listening ");
-
-// ✅ Scheduler saisonnier (démarrage + planification quotidienne)
-startScheduler();
 
 // ✅ Middleware global d'erreurs
 app.use((err, req, res, next) => {

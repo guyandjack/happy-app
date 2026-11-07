@@ -82,6 +82,34 @@ function DisplayCreation() {
   const lang = getLanguage();
   const previousLabel = lang === "fr" ? "Voir la création précédente" : "View previous creation";
   const nextLabel = lang === "fr" ? "Voir la création suivante" : "View next creation";
+  const renderCarouselControls = (variant) => (
+    <div
+      className={`carousel-controls ${variant}`}
+      role="group"
+      aria-label={lang === "fr" ? "Navigation du carrousel" : "Carousel navigation"}
+    >
+      <button
+        className="carousel-control"
+        type="button"
+        aria-controls="creation-carousel"
+        aria-label={previousLabel}
+        disabled={!canScrollLeft}
+        onClick={() => scrollCarousel(-1)}
+      >
+        <FaChevronLeft />
+      </button>
+      <button
+        className="carousel-control"
+        type="button"
+        aria-controls="creation-carousel"
+        aria-label={nextLabel}
+        disabled={!canScrollRight}
+        onClick={() => scrollCarousel(1)}
+      >
+        <FaChevronRight />
+      </button>
+    </div>
+  );
 
   return (
     <div className="flex-row-start-center creation-wrapper">
@@ -172,6 +200,7 @@ function DisplayCreation() {
                   </div>
                 ))}
             </div>
+            {renderCarouselControls("carousel-controls-inline")}
             <div
               className="card-description"
               dangerouslySetInnerHTML={{
@@ -184,32 +213,7 @@ function DisplayCreation() {
       ))}
       </div>
 
-      <div
-        className="carousel-controls"
-        role="group"
-        aria-label={lang === "fr" ? "Navigation du carrousel" : "Carousel navigation"}
-      >
-        <button
-          className="carousel-control"
-          type="button"
-          aria-controls="creation-carousel"
-          aria-label={previousLabel}
-          disabled={!canScrollLeft}
-          onClick={() => scrollCarousel(-1)}
-        >
-          <FaChevronLeft/>
-        </button>
-        <button
-          className="carousel-control"
-          type="button"
-          aria-controls="creation-carousel"
-          aria-label={nextLabel}
-          disabled={!canScrollRight}
-          onClick={() => scrollCarousel(1)}
-        >
-          <FaChevronRight />
-        </button>
-      </div>
+      {renderCarouselControls("carousel-controls-external")}
     </div>
   );
 }

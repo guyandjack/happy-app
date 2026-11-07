@@ -895,7 +895,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
     }
 
     #why-choose-card-wrapper-4 {
-      background-color: rgba(map-get($colors-rule, height-color), 0.8);
+      background-color: rgba(map-get($colors-rule, ten-color), 0.8);
     }
 
     h3 {
@@ -1220,6 +1220,14 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
 
 .creations {
+  // `#RC-creation` is a flex item. Without an explicit width it uses the
+  // carousel's intrinsic desktop width and can overflow narrow viewports.
+  #RC-creation {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
   &>h2 {
     margin-bottom: 120px;
   }
