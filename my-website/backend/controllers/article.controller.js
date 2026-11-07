@@ -47,6 +47,12 @@ exports.getArticlesDashboard = async (req, res) => {
     });
   } catch (error) {
     console.error("Error getting connection:", error);
+    return res.status(500).json({
+      status: "error",
+      message: "An error occurred while fetching dashboard articles",
+    });
+  } finally {
+    if (connection) releaseConnection(connection);
   }
 };
 
@@ -289,32 +295,36 @@ exports.getAllArticles = async (req, res) => {
   let connection;
   try {
     connection = await getConnection();
-    //test si la bdd est vide
-    const [test] = await connection.execute("SELECT COUNT(*) FROM articles");
-    if (test[0]["COUNT(*)"] === 0) {
+    const [[count]] = await connection.execute(
+      "SELECT COUNT(*) AS total FROM articles"
+    );
+    if (count.total === 0) {
       return res.status(200).json({
         status: "success",
         message: "No article found in the database",
+        articlesNumber: 0,
         data: [],
       });
     }
 
-    if (test[0]["COUNT(*)"] > 0) {
-      const sql = `SELECT * FROM articles ORDER BY createdAt DESC LIMIT ${connection.escape(
-        limit
-      )} OFFSET ${connection.escape(page)}`;
-      const [articles] = await connection.query(sql);
+    if (count.total > 0) {
+      const [articles] = await connection.execute(
+        `SELECT * FROM articles ORDER BY createdAt DESC LIMIT ${connection.escape(
+          limit
+        )} OFFSET ${connection.escape(page)}`
+      );
 
       if (articles.length === 0) {
-        return res.status(404).json({
-          status: "error",
-          message: "No articles founded",
+        return res.status(200).json({
+          status: "success",
+          articlesNumber: count.total,
+          data: [],
         });
       }
 
       return res.status(200).json({
         status: "success",
-        articlesNumber: articles.length,
+        articlesNumber: count.total,
         data: articles,
       });
     }
@@ -355,6 +365,18 @@ exports.getArticleByCategory = async (req, res) => {
   try {
     connection = await getConnection();
 
+    const [[count]] = await connection.execute(
+      "SELECT COUNT(*) AS total FROM articles WHERE category = ?",
+      [category]
+    );
+    if (count.total === 0) {
+      return res.status(200).json({
+        status: "success",
+        articlesNumber: 0,
+        data: [],
+      });
+    }
+
     const [articles] = await connection.execute(
       `SELECT * FROM articles WHERE category = ? ORDER BY createdAt DESC LIMIT ${connection.escape(
         limit
@@ -362,16 +384,16 @@ exports.getArticleByCategory = async (req, res) => {
       [category]
     );
     if (articles.length === 0) {
-      return res.status(404).json({
-        status: "error",
-        message: "Article not found",
+      return res.status(200).json({
+        status: "success",
+        articlesNumber: count.total,
+        data: [],
       });
     }
 
-    console.log("articles par categorie: ", articles);
-
     return res.status(200).json({
       status: "success",
+      articlesNumber: count.total,
       data: articles,
     });
   } catch (error) {
@@ -414,23 +436,41 @@ exports.searchArticles = async (req, res) => {
   let connection;
   try {
     connection = await getConnection();
+    const searchPattern = `%${search}%`;
+    const [[count]] = await connection.execute(
+      "SELECT COUNT(*) AS total FROM articles WHERE title LIKE ? OR excerpt LIKE ?",
+      [searchPattern, searchPattern]
+    );
+
+    if (count.total === 0) {
+      return res.status(200).json({
+        status: "success",
+        results: 0,
+        articlesNumber: 0,
+        data: [],
+      });
+    }
+
     const [articles] = await connection.execute(
       `SELECT * FROM articles WHERE title LIKE ? OR excerpt LIKE ? ORDER BY createdAt DESC LIMIT ${connection.escape(
         limit
       )} OFFSET ${connection.escape(page)}`,
-      [`%${search}%`, `%${search}%`]
+      [searchPattern, searchPattern]
     );
 
     if (articles.length === 0) {
-      return res.status(404).json({
-        status: "error",
-        message: "Article not found",
+      return res.status(200).json({
+        status: "success",
+        results: 0,
+        articlesNumber: count.total,
+        data: [],
       });
     }
 
     return res.status(200).json({
       status: "success",
       results: articles.length,
+      articlesNumber: count.total,
       data: articles,
     });
   } catch (error) {

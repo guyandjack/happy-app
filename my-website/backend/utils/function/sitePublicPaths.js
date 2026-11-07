@@ -57,6 +57,12 @@ function publicUrlToPath(publicUrl) {
 
 /** Ensures article publication targets the live document root before writes. */
 function assertArticlePublishingRoot() {
+  if (process.env.NODE_ENV === "production" && !process.env.SITE_PUBLIC_ROOT) {
+    throw new Error(
+      "SITE_PUBLIC_ROOT must be explicitly configured in production before publishing articles."
+    );
+  }
+
   const missingFiles = articleListUrls
     .map((url) => publicUrlToPath(url))
     .filter((filePath) => !fs.existsSync(filePath));

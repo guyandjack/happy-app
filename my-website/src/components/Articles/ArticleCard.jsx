@@ -1,95 +1,47 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 
-import { localOrProd } from "@utils/fonction/testEnvironement";
 import { getLanguage } from "@utils/fonction/getLanguage.js";
 import { endpointStaticFile } from "@utils/fonction/endpointStaticFile.js";
 
 import "@styles/SCSS/components/ArticleCard.scss";
 
+/**
+ * Article data is already available when the list renders. Deriving the card
+ * directly from its props avoids a second post-paint state update per card.
+ */
 function ArticleCard({ article }) {
-  const [imageUrl, setImageUrl] = useState("");
-  const [excerpt, setExcerpt] = useState("");
-  const [isFocused, setIsFocused] = useState(false);
-  const [title, setTitle] = useState("");
-  const [formattedDate, setFormattedDate] = useState("");
-  const [category, setCategory] = useState("");
-  const [slug, setSlug] = useState("");
-  const [hrefLink, setHrefLink] = useState("");
-  
-  
-  
-   
-  const lang = useRef(getLanguage());
-  
+  const language = getLanguage();
+  const { endPoint } = endpointStaticFile();
+  const title = language === "fr" ? article?.title : article?.title_en || article?.title;
+  const excerpt = language === "fr" ? article?.excerpt : article?.excerpt_en || article?.excerpt;
+  const slug = language === "fr" ? article?.slug : article?.slug_en || article?.slug;
+  const imageUrl = article?.mainImage ? `${endPoint}${article.mainImage}` : "";
+  const date = article?.updatedAt || article?.createdAt;
+  const parsedDate = date ? new Date(date) : null;
+  const formattedDate = parsedDate && !Number.isNaN(parsedDate.getTime())
+    ? new Intl.DateTimeFormat(language === "fr" ? "fr-CH" : "en-CH").format(parsedDate)
+    : "";
+  const hrefLink = slug ? `/${language}/articles/${slug}.html` : "";
 
-  //useEffect qui genere l' url de l'image
-  useEffect(() => {
-    if (!article?.mainImage) return;
-
-    const { endPoint } = endpointStaticFile();
-
-    const fullUrl = `${endPoint}${article.mainImage}`;
-    console.log("✅ Image URL construite :", fullUrl);
-
-    setImageUrl(fullUrl);
-  }, [article.mainImage]);
-
-  //useEffect qui genere le titre, le resume, la date, la categorie et le slug de l'article
-  useEffect(() => {
-    if (!article) return;
-
-    setTitle(lang.current === "fr" ? article.title : article.title_en);
-
-    const resume = lang.current === "fr" ? article.excerpt : article.excerpt_en;
-
-    setExcerpt(resume);
-
-    const formattedDate = new Date(article.createdAt).toLocaleDateString();
-    setFormattedDate(formattedDate);
-
-    setCategory(article.category);
-    setSlug(lang.current === "fr" ? article.slug : article.slug_en);
-  }, [article]);
-
-  // Each card targets its crawlable, language-specific static page. The URL
-  // is recalculated when the article data arrives instead of using a stale slug.
-  useEffect(() => {
-    if (!slug) return;
-    setHrefLink(`/${lang.current}/articles/${slug}.html`);
-  }, [slug]);
-  
-  /**
-   *
-   *
-   * @param {*} e
-   */
-  const handleClick = (e) => {
-    if (!hrefLink) e.preventDefault();
-  }
-
-
-  
+  const handleClick = (event) => {
+    if (!hrefLink) event.preventDefault();
+  };
 
   return (
-    <a
-      className={`article-card ${isFocused ? "focused" : ""}`}
-      tabIndex="0"
-      onClick={(e)=>handleClick(e)}
-      href={hrefLink}
-    >
+    <a className="article-card" tabIndex="0" onClick={handleClick} href={hrefLink}>
       <div className="flex-column-start-center article-card-image">
-        <img src={imageUrl} alt={title} loading="lazy" />
+        {imageUrl && <img src={imageUrl} alt={title || ""} loading="lazy" />}
         <p className="article-meta">
-          {lang.current === "en" ? "Updated on" : "Mis à jour le: "} {formattedDate}{" "}
-          <br></br>
-          {lang.current === "en" ? "Category:" : "Catégorie: "} {category}
+          {language === "en" ? "Updated on" : "Mis à jour le: "} {formattedDate}
+          <br />
+          {language === "en" ? "Category:" : "Catégorie: "} {article?.category}
         </p>
       </div>
       <div className="flex-column-space_evenly-center article-card-content">
         <h3 className="article-title">{title}</h3>
         <p className="article-card-excerpt">{excerpt}</p>
         <span className="article-card-read-more-link">
-          {lang.current === "fr" ? "Lire la suite" : "Read more"}
+          {language === "fr" ? "Lire la suite" : "Read more"}
         </span>
       </div>
     </a>

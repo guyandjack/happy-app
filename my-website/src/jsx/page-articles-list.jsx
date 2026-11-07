@@ -30,14 +30,18 @@ try {
   console.error("Error mounting Navbar:", error);
 }
 
-// The visitor-facing list is fetched and rendered by React. The equivalent
-// static cards remain hidden in the HTML for search-engine crawling.
+// Keep the server-published cards visible until React has received a valid
+// response. This is progressive replacement, not React hydration: the static
+// markup is an SEO fallback and is not a React SSR tree.
 try {
   const articlesListContainer = document.getElementById("RC-articles-list");
+  const staticArticlesList = document.querySelector(".static-article-links");
   if (articlesListContainer) {
     ReactDOM.createRoot(articlesListContainer).render(
       <React.StrictMode>
-        <AdminArticleList />
+        <AdminArticleList
+          onInitialLoad={() => staticArticlesList?.setAttribute("hidden", "")}
+        />
       </React.StrictMode>
     );
   }
