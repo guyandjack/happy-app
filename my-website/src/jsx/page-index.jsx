@@ -6,6 +6,8 @@ import "@styles/SCSS/pages/index.scss";
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+
+
 //import des composants enfants
 import { Navbar } from "@components/Navbar/Navbar.jsx";
 import { LinkTopPage } from "@components/linkTopPage/linkTopPage.jsx";
@@ -18,11 +20,14 @@ import { Footer } from "@components/Footer/Footer.jsx";
 import { initFaq } from "@scripts/page-services.js";
 
 //import des librairie d'animation
-import Typed from "typed.js";
+//import Typed from "typed.js";
 
 //import des fonctions
-import { getLanguage } from "@utils/fonction/getLanguage.js"
+//import { getLanguage } from "@utils/fonction/getLanguage.js"
 import { scrollToTarget } from "@utils/fonction/scrollTotarget";
+
+
+
 
 //variable et contante globales
 const fr_content_title = [
@@ -49,7 +54,7 @@ const en_content_title = [
 scrollToTarget();
 
 //animation h1
-const lang = getLanguage();
+/* const lang = getLanguage();
 
 const typedTarget = document.querySelector(".anim-h1");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -63,7 +68,7 @@ if (typedTarget && !prefersReducedMotion) {
     loopCount: Infinity,
     backDelay: 1500,
   });
-}
+} */
 
 
 //Logique collapse faq

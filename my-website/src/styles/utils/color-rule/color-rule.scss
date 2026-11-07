@@ -7,9 +7,10 @@
 // correspondent mieux à la perception humaine.
 
 @function rgba($color-or-red, $green-or-alpha: null, $blue: null, $alpha: null) {
+
     // Forme rgba(couleur, alpha) : compatible avec les couleurs OKLCH.
-    @if $blue == null and $alpha == null {
-        @if meta.type-of($color-or-red) == "color" {
+    @if $blue ==null and $alpha ==null {
+        @if meta.type-of($color-or-red)=="color" {
             @return color.change($color-or-red, $alpha: $green-or-alpha);
         }
 
@@ -92,20 +93,23 @@ $colors-rule: (
     second-color: oklch(80.425% 0.14594 219.52),
 
     third-color: oklch(72.043% 0.12439 190.11),
+    //third-color: #024947,
 
-    fourth-color: rgb(249, 110, 70),
-    
+    fourth-color: #f96e46,
+
     fifth-color: oklch(20.463% 0.00000 89.88),
-    
+
     sixth-color: oklch(99.675% 0.00132 106.42),
-    
+
     seventh-color: oklch(30.894% 0.10444 354.62),
-    
+
     height-color: oklch(84.965% 0.17369 87.81),
 
     nine-color: oklch(87.402% 0.16520 101.26),
 
     ten-color: oklch(59.674% 0.22647 286.554),
+
+    eleven-color: oklch(34.674% 0.22647 286.554),
 
 
     footer-color: oklch(21.371% 0.03332 294.21),
@@ -118,7 +122,7 @@ $colors-rule: (
     link-color:oklch(71.473% 0.12593 215.19),
     text-link-color-hover: oklch(60.891% 0.11094 221.72),
     text-link-color: oklch(99.675% 0.00132 106.42), */
-    
+
     link-color: oklch(87.402% 0.16520 101.26),
     link-color-hover:oklch(84.965% 0.17369 87.81),
     text-link-color-hover: oklch(78.675% 0.00132 106.42),
@@ -136,13 +140,13 @@ $colors-rule: (
     //created-link-text-color:oklch(30.894% 0.10444 354.62),
     //created-link-text-color-hover:oklch(99.675% 0.00132 106.42),
     //lien vers la page contact
-  /*   contact-link-color-hover:oklch(94.643% 0.03274 307.17),
+    /*   contact-link-color-hover:oklch(94.643% 0.03274 307.17),
     contact-link-color:oklch(62.685% 0.23254 303.90),
     contact-link-text-color-hover:oklch(55.754% 0.25249 302.32),
     contact-link-text-color:oklch(99.675% 0.00132 106.42), */
-    
+
     //lien actif
-   // actif-link-color:oklch(60.891% 0.11094 221.72),
+    // actif-link-color:oklch(60.891% 0.11094 221.72),
     actif-link-color:oklch(84.965% 0.17369 87.81),
 
     //lien cta
@@ -155,16 +159,22 @@ $colors-rule: (
 
 
     gradient-primary-btn: radial-gradient(circle farthest-corner at 10% 20%,
-    oklch(0.30 0.20577 290.71) 0%,
-    oklch(0.45 0.25025 326.60) 90%),
+        oklch(0.30 0.20577 290.71) 0%,
+        oklch(0.45 0.25025 326.60) 90%),
 
     gradient-primary-btn-hover: radial-gradient(circle farthest-corner at 10% 20%,
-    oklch(0.40 0.20577 290.71) 0%,
-    oklch(0.55 0.25025 326.60) 90%),
+        oklch(0.40 0.20577 290.71) 0%,
+        oklch(0.55 0.25025 326.60) 90%),
 
 
-   
-   
+    /* gradient-primaray-index:conic-gradient(from 225deg in oklch, oklch(30.31% 0.1502 291.09) 0.0%, oklch(31.23% 0.1548 291.60) 3.2%, oklch(32.54% 0.1613 292.31) 6.5%, oklch(34.05% 0.1688 293.13) 9.7%, oklch(35.59% 0.1762 293.94) 12.9%, oklch(37.05% 0.1830 294.67) 16.1%, oklch(38.54% 0.1900 295.39) 19.4%, oklch(40.07% 0.1970 296.10) 22.6%, oklch(41.61% 0.2034 296.82) 25.8%, oklch(43.13% 0.2088 297.54) 29.0%, oklch(44.71% 0.2132 298.28) 32.3%, oklch(46.32% 0.2170 299.03) 35.5%, oklch(47.86% 0.2199 299.76) 38.7%, oklch(49.25% 0.2216 300.43) 41.9%, oklch(50.54% 0.2217 301.07) 45.2%, oklch(51.91% 0.2201 301.79) 48.4%, oklch(53.06% 0.2176 302.41) 51.6%, oklch(53.65% 0.2150 302.75) 54.8%, oklch(53.34% 0.2132 302.62) 58.1%, oklch(51.95% 0.2126 301.89) 61.3%, oklch(49.83% 0.2124 300.78) 64.5%, oklch(47.43% 0.2115 299.59) 67.7%, oklch(45.17% 0.2087 298.60) 71.0%, oklch(43.16% 0.2031 298.00) 74.2%, oklch(41.11% 0.1952 297.62) 77.4%, oklch(39.09% 0.1863 297.28) 80.6%, oklch(37.20% 0.1778 296.79) 83.9%, oklch(35.52% 0.1707 295.97) 87.1%, oklch(33.90% 0.1640 294.72) 90.3%, oklch(32.43% 0.1578 293.30) 93.5%, oklch(31.19% 0.1526 291.99) 96.8%, oklch(30.31% 0.1488 291.09) 100.0%), */
+
+    /* gradient-primaray-index: linear-gradient(180deg in oklch, oklch(16.14% 0.0606 274.92) 0.0%, oklch(16.67% 0.0635 275.44) 3.2%, oklch(17.27% 0.0670 276.03) 6.5%, oklch(17.95% 0.0711 276.69) 9.7%, oklch(18.70% 0.0756 277.43) 12.9%, oklch(19.51% 0.0805 278.23) 16.1%, oklch(20.39% 0.0858 279.09) 19.4%, oklch(21.33% 0.0913 280.01) 22.6%, oklch(22.33% 0.0971 280.98) 25.8%, oklch(23.37% 0.1030 282.01) 29.0%, oklch(24.46% 0.1089 283.09) 32.3%, oklch(25.59% 0.1150 284.21) 35.5%, oklch(26.76% 0.1209 285.37) 38.7%, oklch(27.97% 0.1268 286.57) 41.9%, oklch(29.20% 0.1325 287.80) 45.2%, oklch(30.46% 0.1379 289.07) 48.4%, oklch(31.77% 0.1432 290.39) 51.6%, oklch(33.22% 0.1486 291.86) 54.8%, oklch(34.82% 0.1543 293.48) 58.1%, oklch(36.53% 0.1602 295.23) 61.3%, oklch(38.33% 0.1661 297.07) 64.5%, oklch(40.18% 0.1722 298.97) 67.7%, oklch(42.07% 0.1781 300.90) 71.0%, oklch(43.97% 0.1841 302.84) 74.2%, oklch(45.84% 0.1898 304.76) 77.4%, oklch(47.66% 0.1953 306.62) 80.6%, oklch(49.39% 0.2006 308.40) 83.9%, oklch(51.02% 0.2055 310.07) 87.1%, oklch(52.52% 0.2100 311.61) 90.3%, oklch(53.85% 0.2141 312.97) 93.5%, oklch(54.99% 0.2176 314.14) 96.8%, oklch(55.91% 0.2205 315.08) 100.0%), */
+
+    gradient-primaray-index: linear-gradient(-135deg in oklch, oklch(27.56% 0.0744 260.86) 0.0%, oklch(27.89% 0.0790 260.40) 3.2%, oklch(28.24% 0.0857 259.82) 6.5%, oklch(28.78% 0.0933 259.07) 9.7%, oklch(29.70% 0.1007 258.10) 12.9%, oklch(31.18% 0.1067 256.87) 16.1%, oklch(33.44% 0.1107 255.21) 19.4%, oklch(36.46% 0.1128 253.11) 22.6%, oklch(39.88% 0.1152 250.74) 25.8%, oklch(43.39% 0.1176 248.42) 29.0%, oklch(46.66% 0.1202 246.55) 32.3%, oklch(49.57% 0.1236 245.19) 35.5%, oklch(52.53% 0.1274 243.97) 38.7%, oklch(55.40% 0.1315 243.03) 41.9%, oklch(57.93% 0.1360 242.51) 45.2%, oklch(59.91% 0.1408 242.59) 48.4%, oklch(61.16% 0.1460 243.41) 51.6%, oklch(61.80% 0.1521 245.00) 54.8%, oklch(61.92% 0.1586 247.18) 58.1%, oklch(61.59% 0.1652 249.78) 61.3%, oklch(60.89% 0.1713 252.60) 64.5%, oklch(59.83% 0.1768 255.47) 67.7%, oklch(58.09% 0.1823 258.31) 71.0%, oklch(55.84% 0.1877 261.31) 74.2%, oklch(53.42% 0.1924 264.68) 77.4%, oklch(51.14% 0.1957 268.62) 80.6%, oklch(49.35% 0.1971 273.35) 83.9%, oklch(47.91% 0.1958 279.71) 87.1%, oklch(46.65% 0.1925 287.27) 90.3%, oklch(45.59% 0.1884 294.94) 93.5%, oklch(44.74% 0.1844 301.64) 96.8%, oklch(44.09% 0.1819 306.30) 100.0%),
+    
+
+
 
 
     // =========================

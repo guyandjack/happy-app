@@ -18,22 +18,12 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 }
 
 
-@keyframes opacity-img {
-  from {
-    opacity: 0.1;
 
-  }
-
-  100% {
-    opacity: 0.7;
-
-  }
-}
 
 @keyframes hero-fade-up {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(50px);
   }
 
   to {
@@ -69,7 +59,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
     width: 100%;
     height: calc(100% + 200px);
     opacity: 1;
-    background: map-get($colors-rule, gradient-primary-bg);
+    background: map-get($colors-rule, gradient-primaray-index);
 
   }
 
@@ -94,7 +84,8 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
   .hero-index-title-h1 {
 
-
+    position:relative;
+    z-index:5;
     font-family: 'Madimi', sans-serif;
     font-size: clamp(1.9rem, 7vw, 3.2rem);
     font-weight: 800;
@@ -125,22 +116,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
   }
 
-  .anim-h1-wrapper {
-    position: relative;
-    z-index: 5;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: start;
-    align-items: center;
-
-    border-radius: 1rem;
-    padding: 0.2rem;
-    background-color: rgba(map-get($colors-rule, first-color), 0.8);
-    border: 2px solid rgba(map-get($colors-rule, first-color), 1);
-    color: white;
-
-
-  }
+  
 
   .hero-index-wrapper {
     width: 100%;
@@ -323,16 +299,16 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
 //HERO section responsive
 
-@media screen and (min-width:640px) {
+ @media screen and (min-width:640px) {
   .hero-index {
     .hero-index-list-link {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      place-items: center;
+    & .hero-index-list-link-li:nth-child(even) {
+        transform: translateX(50px);
+      }
       //border: 2px solid red;
     }
   }
-}
+} 
 
 
 @media screen and (min-width: 768px) {
@@ -357,7 +333,6 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 @media screen and (min-width: 992px) {
   .hero-index {
 
-    //height: calc(100vh - 92px);
 
 
 
@@ -395,30 +370,14 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
         width: 300px;
         // border: 2px solid blue;
       }
+      
+      
+            
     }
 
 
   }
 }
-
-@media screen and (max-width:1024px) {
-
-  .hero-index::before {
-    height: 100%;
-  }
-
-  .hero-index::after {
-    display: none;
-
-  }
-
-
-
-
-
-}
-
-
 
 
 
@@ -460,15 +419,6 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
 }
 
-@media screen and (min-width: 1440px) {
-  .hero-index {
-    .hero-index-list-link {
-       .hero-index-list-link-li:nth-child(even) {
-        transform: translateX(50px);
-      }
-    }
-  }
-}
 
 @media screen and (min-width: 1900px) {
   .hero-index {

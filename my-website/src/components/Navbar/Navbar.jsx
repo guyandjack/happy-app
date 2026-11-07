@@ -39,9 +39,56 @@ function Navbar() {
 
   const menuSideRef = useRef(null);
 
+  const menuBar = useRef(null);
+
+
   const showToast = (message, type) => {
     setToast({ show: true, message, type });
   };
+
+    
+  
+  //detecte la position du scroll utilisateur pour rendre visible le memu bar
+  useEffect(() => {
+    const path = window.location.pathname;
+    if (path !== "/" && path !== "/en/home.html" || !path) {
+      menuBar.current.classList.remove("index-zone-hero");
+      return;
+    }
+
+    function getScroll() {
+      const path = window.location.pathname;
+
+      
+
+      const screenWidth = window.innerWidth;
+      if (screenWidth < 1300 || !screenWidth) return;
+
+      const scrollValue = window.scrollY;
+
+      console.log("path page: ", path);
+      console.log("s width: ", screenWidth);
+      console.log("scroll y: ", scrollValue);
+
+      if (scrollValue < 300) {
+        menuBar.current.classList.add("index-zone-hero");
+      }
+      if (scrollValue >= 300) {
+        menuBar.current.classList.remove("index-zone-hero");
+      }
+    }
+    const handleScrollEnd = () => {
+      setTimeout(() => {
+        getScroll();
+      }, 200);
+    };
+
+    window.addEventListener("scrollend", handleScrollEnd);
+
+    return () => {
+      window.removeEventListener("scrollend", handleScrollEnd);
+    };
+  }, []);
 
   // gestion de la navigation avec keyTab dans le sous menu
   // Ouvre le sous menu des que le bouton à le focus
@@ -139,7 +186,7 @@ function Navbar() {
 
   //usEeffect qui detecte un scroll du user
   useEffect(() => {
-    let isStart = true;
+   
     document.addEventListener("scroll", () => {
       handleUserScroll(true);
     });
@@ -322,7 +369,7 @@ function Navbar() {
   };
 
   const handleClickMenuSide = () => {
-    console.log("icon kebab clické!");
+    
     if (!menuSideRef.current) {
       console.log("le composant menu side n' est pas detecté...");
     }
@@ -354,7 +401,7 @@ function Navbar() {
             className="logo"
           >
             <img src={logos} alt="Logo helveclick" className="logo-image" />
-          </a> */ }
+          </a> */}
 
           <button
             className={`burger-menu ${isOpen ? "open" : ""}`}
@@ -368,7 +415,10 @@ function Navbar() {
           </button>
         </div>
 
-        <ul className={`navbar-menu ${isOpen ? "open" : ""}`}>
+        <ul
+          ref={menuBar}
+          className={`navbar-menu index-zone-hero ${isOpen ? "open" : ""}`}
+        >
           {menuItems[currentLang].map((item, index) =>
             item.submenu ? (
               <li
@@ -431,6 +481,7 @@ function Navbar() {
 
           {iconMenuSide ? (
             <li
+              className="flex-row-center-center"
               onClick={() => {
                 handleClickMenuSide();
               }}
