@@ -1,35 +1,28 @@
-//stoke le token dans le local storage et relance le compte a rebour de session
 /**
- *
- * @param {*} responseData reponse de la requete
- * @param {*} jwtDecode fonction de decodage du token
- * @returns boolean
+ * Stores only non-sensitive session metadata for the UI. Authentication tokens
+ * are deliberately kept in HttpOnly cookies and must never enter web storage.
  */
-function storeToken(responseData, jwtDecode) {
+function storeSession(responseData) {
   try {
-    // Stocker le token
-    localStorage.setItem("token", responseData.accessToken);
+    const user = responseData?.data?.user;
+    const accessExpiresAt = Number(responseData?.session?.accessExpiresAt);
 
-    // Stocker l'utilisateur (en JSON)
-    localStorage.setItem("user", JSON.stringify(responseData.data));
-
-    // Décoder le token
-    const decodedToken = jwtDecode(responseData.accessToken);
-    const expirationTime = decodedToken.exp; // en secondes
-    const currentTime = Math.floor(Date.now() / 1000); // en secondes
-
-    const timeRemaining = expirationTime - currentTime;
-
-    if (timeRemaining > 0) {
-      localStorage.setItem("tokenExpiration", expirationTime.toString());
-      return true;
+    if (!user || !Number.isFinite(accessExpiresAt) || accessExpiresAt <= Date.now()) {
+      return false;
     }
 
-    return false; // token déjà expiré
+    // Remove data left by the previous bearer-token implementation.
+    localStorage.removeItem("token");
+    localStorage.removeItem("tokenExpiration");
+    localStorage.removeItem("user");
+
+    sessionStorage.setItem("user", JSON.stringify(user));
+    sessionStorage.setItem("accessExpiresAt", accessExpiresAt.toString());
+    return true;
   } catch (error) {
-    console.error("Error storing token:", error);
+    console.error("Error storing session metadata:", error);
     return false;
   }
 }
 
-export { storeToken };
+export { storeSession };

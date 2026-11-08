@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL UNIQUE,
-  role ENUM('user', 'admin') DEFAULT 'user',
+  role ENUM('admin', 'redacteur') NOT NULL DEFAULT 'redacteur',
   password VARCHAR(100) NOT NULL,
   passwordChangedAt DATETIME,
   createdAt DATETIME NOT NULL
@@ -42,4 +42,4 @@ CREATE TABLE IF NOT EXISTS article_images (
   display_order INT DEFAULT 0,
   created_at DATETIME NOT NULL,
   FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE
-); 
+);

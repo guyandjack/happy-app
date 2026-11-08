@@ -84,7 +84,9 @@ class User {
     let connection;
     try {
       connection = await getConnection();
-      
+      const role = ["admin", "redacteur"].includes(userData.role)
+        ? userData.role
+        : "redacteur";
       const hashedPassword = await bcrypt.hash(userData.password, 12);
       
       const [result] = await connection.execute(
@@ -92,7 +94,7 @@ class User {
         [
           userData.name,
           userData.email,
-          userData.role || 'user',
+          role,
           hashedPassword,
           new Date()
         ]
@@ -112,4 +114,4 @@ class User {
   }
 }
 
-module.exports = User; 
+module.exports = User;

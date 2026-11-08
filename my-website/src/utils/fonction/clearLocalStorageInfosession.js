@@ -7,6 +7,8 @@ function clearLocalStorageInfoSession(url) {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
   localStorage.removeItem("tokenExpiration");
+  sessionStorage.removeItem("user");
+  sessionStorage.removeItem("accessExpiresAt");
 
   if (url) {
     window.location.href = url.startsWith("/") ? url : `/${url}`;

@@ -30,7 +30,13 @@ dist
 backend/uploads/*
 backend/public/*
 backend/.env
+backend/.env.*
 .env
+.env.*
+!backend/.env.example
+!backend/.env.*.example
+!.env.example
+!.env.*.example
 backend/private.key
 backend/public.key
 #gitignore

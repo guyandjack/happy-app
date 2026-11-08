@@ -12,6 +12,8 @@ import { ThreeDots } from 'react-loader-spinner';
 import "@styles/SCSS/components/loginform.scss";
 
 import { localOrProd } from '@utils/fonction/testEnvironement';
+import { storeSession } from "@utils/fonction/storeToken";
+import { withSessionRefresh } from "@utils/fonction/authSession";
 
 
 
@@ -163,7 +165,7 @@ const PasswordChange = ({ user }) => {
 
       
 
-      const response = await axios.patch(
+      const response = await withSessionRefresh(urlApi, () => axios.patch(
 
         `${urlApi}/auth/update-password`,
 
@@ -175,17 +177,9 @@ const PasswordChange = ({ user }) => {
 
         },
 
-        {
+        { withCredentials: true, timeout: 10000 }
 
-          headers: {
-
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-
-          }
-
-        }
-
-      );
+      ));
 
 
 
@@ -203,13 +197,7 @@ const PasswordChange = ({ user }) => {
 
         
 
-        // Update token if a new one was returned
-
-        if (response.data.token) {
-
-          localStorage.setItem('token', response.data.token);
-
-        }
+        storeSession(response.data);
 
       }
 
@@ -437,17 +425,17 @@ const PasswordChange = ({ user }) => {
 
                 minLength: {
 
-                  value: 8,
+                  value: 12,
 
-                  message: "Le mot de passe doit contenir au moins 8 caractères"
+                  message: "Le mot de passe doit contenir au moins 12 caractères"
 
                 },
 
-                pattern: {
+                maxLength: {
 
-                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                  value: 128,
 
-                  message: "Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial"
+                  message: "Le mot de passe ne peut pas dépasser 128 caractères"
 
                 }
 

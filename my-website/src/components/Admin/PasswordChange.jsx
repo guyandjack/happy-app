@@ -5,6 +5,8 @@ import { toast } from "react-toastify";
 import { ThreeDots } from "react-loader-spinner";
 import "@styles/SCSS/components/Dashboard.scss";
 import { localOrProd } from "@utils/fonction/testEnvironement";
+import { storeSession } from "@utils/fonction/storeToken";
+import { withSessionRefresh } from "@utils/fonction/authSession";
 
 // Import icons for password visibility
 import eyeClosed from "@assetsJSX/icons/eye-closed.png";
@@ -80,17 +82,15 @@ const PasswordChange = ({ user }) => {
       setHttpError(null);
       setAuthError(null);
 
-      const response = await axios.patch(
-        `${urlApi}/auth/update-password`,
-        {
-          currentPassword: data.currentPassword,
-          newPassword: data.newPassword,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+      const response = await withSessionRefresh(urlApi, () =>
+        axios.patch(
+          `${urlApi}/auth/update-password`,
+          {
+            currentPassword: data.currentPassword,
+            newPassword: data.newPassword,
           },
-        }
+          { withCredentials: true, timeout: 10000 }
+        )
       );
 
       if (response.data.status === "success") {
@@ -100,10 +100,7 @@ const PasswordChange = ({ user }) => {
         // Reset form
         reset();
 
-        // Update token if a new one was returned
-        if (response.data.token) {
-          localStorage.setItem("token", response.data.token);
-        }
+        storeSession(response.data);
       }
     } catch (error) {
       console.error("Error updating password:", error);
@@ -222,15 +219,13 @@ const PasswordChange = ({ user }) => {
               {...register("newPassword", {
                 required: "Le nouveau mot de passe est requis",
                 minLength: {
-                  value: 8,
+                  value: 12,
                   message:
-                    "Le mot de passe doit contenir au moins 8 caractères",
+                    "Le mot de passe doit contenir au moins 12 caractères",
                 },
-                pattern: {
-                  value:
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                  message:
-                    "Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial",
+                maxLength: {
+                  value: 128,
+                  message: "Le mot de passe ne peut pas dépasser 128 caractères",
                 },
               })}
               className={errors.newPassword ? "error" : ""}

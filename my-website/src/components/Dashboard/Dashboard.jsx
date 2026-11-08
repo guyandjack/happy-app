@@ -23,12 +23,14 @@ import ArticleForm from "@components/Articles/ArticleForm";
 import { localOrProd } from "@utils/fonction/testEnvironement";
 import { handleAxiosError } from "@utils/fonction/handleAxiosError";
 import { clearLocalStorageInfoSession } from "@utils/fonction/clearLocalStorageInfosession";
+import { storeSession } from "@utils/fonction/storeToken";
+import { withSessionRefresh } from "@utils/fonction/authSession";
 
 //feuilles de style
 import "@styles/SCSS/components/Dashboard.scss";
 
 const Dashboard = () => {
-  const { urlApi, url, mode } = localOrProd();
+  const { urlApi } = localOrProd();
   const [activeTab, setActiveTab] = useState("articles");
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -37,21 +39,14 @@ const Dashboard = () => {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const token = localStorage.getItem("token");
-      console.log("Dashboard - Token found:", !!token);
-
-      if (!token) {
-        clearLocalStorageInfoSession("/fr/connexion.html");
-        return;
-      }
-
       try {
-        const response = await axios.get(`${urlApi}/auth/me`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          timeout: 10000,
-        });
+        const response = await withSessionRefresh(urlApi, () =>
+          axios.get(`${urlApi}/auth/me`, {
+            withCredentials: true,
+            timeout: 10000,
+          })
+        );
+        storeSession(response.data);
         setUser(response.data.data.user);
         setLoading(false);
       } catch (error) {
@@ -64,13 +59,23 @@ const Dashboard = () => {
     };
 
     checkAuth();
-  }, []);
+  }, [urlApi]);
 
-  const handleLogout = () => {
-    toast.success("Déconnexion réussie");
-    setTimeout(() => {
+  const handleLogout = async () => {
+    try {
+      await axios.post(
+        `${urlApi}/auth/logout`,
+        {},
+        { withCredentials: true, timeout: 10000 }
+      );
+      toast.success("Déconnexion réussie");
+    } catch (error) {
+      // Local cleanup is still necessary if the network is interrupted.
+      console.error("Logout request failed:", error);
+      toast.info("Session locale fermée. Vérifiez votre connexion si nécessaire.");
+    } finally {
       clearLocalStorageInfoSession("/");
-    }, 3000);
+    }
   };
 
   //gere la logique d' affichage des differents formulaires

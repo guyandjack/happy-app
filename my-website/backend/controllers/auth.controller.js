@@ -1,209 +1,274 @@
-//import des librairies nécessaires
+const crypto = require("crypto");
+const fs = require("fs");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const fs = require("fs");
-const dotenv = require("dotenv");
 
-//import du fichier .env pour les variables d'environnement
-dotenv.config();
-
-//import des models et de la configuration de la base de données
 const User = require("../models/user.model");
-
-//import des fonctions pour la connexion et la déconnexion à la base de données
+const AuthSession = require("../models/authSession.model");
 const { getConnection, releaseConnection } = require("../config/database");
+const {
+  REFRESH_TOKEN_COOKIE,
+  clearAuthCookies,
+  setAuthCookies,
+} = require("../utils/function/authCookies");
 
-//import des fonctions pour les cookies
-const setCookieOptionsObject = require("../utils/function/setCookieOptionsObject");
+const JWT_ISSUER = process.env.JWT_ISSUER || "helveclick-api";
+const JWT_AUDIENCE = process.env.JWT_AUDIENCE || "helveclick-dashboard";
+const REFRESH_REUSE_GRACE_PERIOD_MS = 5_000;
 
-/**
- * Sign JWT accesstoken
- */
-const signAccessToken = (id) => {
-  const privateKey = fs.readFileSync(process.env.PRIVATE_KEY_PATH, "utf8");
-  return jwt.sign({ id }, privateKey, {
+const getPrivateKey = () =>
+  fs.readFileSync(process.env.PRIVATE_KEY_PATH, "utf8");
+
+const getPublicKey = () =>
+  fs.readFileSync(process.env.PUBLIC_KEY_PATH, "utf8");
+
+const getTokenExpirationDate = (token) => {
+  const { exp } = jwt.decode(token) || {};
+  if (!Number.isInteger(exp)) throw new Error("The signed token has no expiration.");
+  return new Date(exp * 1000);
+};
+
+const signAccessToken = (userId) =>
+  jwt.sign({ id: userId, tokenUse: "access" }, getPrivateKey(), {
+    algorithm: "RS256",
+    audience: JWT_AUDIENCE,
     expiresIn: process.env.JWT_ACCESS_EXPIRES_IN,
-    algorithm: "RS256",
+    issuer: JWT_ISSUER,
+    jwtid: crypto.randomUUID(),
+    subject: String(userId),
   });
-};
 
-/**
- * Sign JWT refreshToken
- */
-const signRefreshToken = (id) => {
-  const privateKey = fs.readFileSync(process.env.PRIVATE_KEY_PATH, "utf8");
-  return jwt.sign({ id }, privateKey, {
+const signRefreshToken = (userId, sessionId) =>
+  jwt.sign({ id: userId, tokenUse: "refresh" }, getPrivateKey(), {
+    algorithm: "RS256",
+    audience: JWT_AUDIENCE,
     expiresIn: process.env.JWT_REFRESH_EXPIRES_IN,
-    algorithm: "RS256",
+    issuer: JWT_ISSUER,
+    jwtid: sessionId,
+    subject: String(userId),
+  });
+
+const verifyRefreshToken = (token) => {
+  const decoded = jwt.verify(token, getPublicKey(), {
+    algorithms: ["RS256"],
+    audience: JWT_AUDIENCE,
+    issuer: JWT_ISSUER,
+  });
+
+  if (decoded.tokenUse !== "refresh") {
+    throw new Error("An access token cannot be used to refresh a session.");
+  }
+
+  return decoded;
+};
+
+const toSafeUser = (user) => ({
+  id: user.id,
+  name: user.name,
+  email: user.email,
+  role: user.role,
+});
+
+const issueSession = async (connection, user) => {
+  const sessionId = crypto.randomUUID();
+  const accessToken = signAccessToken(user.id);
+  const refreshToken = signRefreshToken(user.id, sessionId);
+
+  await AuthSession.create(connection, {
+    id: sessionId,
+    userId: user.id,
+    tokenHash: AuthSession.hashRefreshToken(refreshToken),
+    expiresAt: getTokenExpirationDate(refreshToken),
+  });
+
+  return {
+    accessToken,
+    accessExpiresAt: getTokenExpirationDate(accessToken).getTime(),
+    refreshToken,
+  };
+};
+
+const sendAuthenticatedResponse = (res, statusCode, user, session) => {
+  setAuthCookies(res, session);
+  res.set("Cache-Control", "no-store");
+  return res.status(statusCode).json({
+    status: "success",
+    data: { user: toSafeUser(user) },
+    session: { accessExpiresAt: session.accessExpiresAt },
   });
 };
 
-/**
- * Login user
- */
+const invalidateCurrentSession = (res, statusCode = 401) => {
+  clearAuthCookies(res);
+  res.set("Cache-Control", "no-store");
+  return res.status(statusCode).json({
+    status: "error",
+    message: "Your session is no longer valid. Please log in again.",
+  });
+};
+
 exports.login = async (req, res, next) => {
+  let connection;
+
   try {
     const { email, password } = req.body;
-
-    // Check if email and password exist
-    if (!email || !password) {
-      return res.status(400).json({
-        status: "error",
-        message: "Please provide email and password",
-      });
-    }
-
-    // Check if user exists && password is correct
-    const user = await User.findOne({
-      email: email,
-      password: password, // Will trigger password verification
-    });
+    const user = await User.findOne({ email, password });
 
     if (!user) {
-      // Either email wasn't found or password didn't match
       return res.status(401).json({
         status: "error",
-        message: "Incorrect email or password",
+        message: "Incorrect email or password.",
       });
     }
 
-    // If everything ok, send token and cookie to client
-    const accessToken = signAccessToken(user.id);
-    const refreshToken = signRefreshToken(user.id);
-    const options = setCookieOptionsObject();
-    res.cookie("tokenRefresh", refreshToken, options);
-    res.status(200).json({
-      status: "success",
-      accessToken,
-      data: user.name,
-    });
+    connection = await getConnection();
+    await connection.beginTransaction();
+    const session = await issueSession(connection, user);
+    await connection.commit();
+
+    return sendAuthenticatedResponse(res, 200, user, session);
   } catch (error) {
-    next(error);
+    if (connection) await connection.rollback();
+    return next(error);
+  } finally {
+    releaseConnection(connection);
   }
 };
 
-/**
- * Refresh token
- */
 exports.refreshToken = async (req, res, next) => {
-  const refreshToken = req.cookies.tokenRefresh;
-  if (!refreshToken) {
-    return res.status(401).json({
-      status: "error",
-      message: "No refresh token provided",
-    });
+  let connection;
+
+  try {
+    const refreshToken = req.cookies[REFRESH_TOKEN_COOKIE];
+    if (!refreshToken) return invalidateCurrentSession(res);
+
+    let decoded;
+    try {
+      decoded = verifyRefreshToken(refreshToken);
+    } catch (_error) {
+      return invalidateCurrentSession(res);
+    }
+
+    connection = await getConnection();
+    await connection.beginTransaction();
+
+    const session = await AuthSession.findByTokenHash(
+      connection,
+      AuthSession.hashRefreshToken(refreshToken)
+    );
+    const sessionExpired = !session || new Date(session.expires_at).getTime() <= Date.now();
+    const sessionDoesNotMatchToken =
+      !session ||
+      session.id !== decoded.jti ||
+      String(session.user_id) !== String(decoded.id);
+
+    if (sessionExpired || sessionDoesNotMatchToken) {
+      if (session) await AuthSession.revoke(connection, session.id);
+      await connection.commit();
+      return invalidateCurrentSession(res);
+    }
+
+    if (session.revoked_at) {
+      const replacedAt = session.replaced_at
+        ? new Date(session.replaced_at).getTime()
+        : 0;
+      const wasJustRotated =
+        replacedAt > 0 && Date.now() - replacedAt <= REFRESH_REUSE_GRACE_PERIOD_MS;
+
+      if (!wasJustRotated) await AuthSession.revokeAllForUser(connection, session.user_id);
+      await connection.commit();
+      return invalidateCurrentSession(res);
+    }
+
+    const user = await User.findById(decoded.id);
+    if (!user || user.changedPasswordAfter(decoded.iat)) {
+      await AuthSession.revokeAllForUser(connection, decoded.id);
+      await connection.commit();
+      return invalidateCurrentSession(res);
+    }
+
+    const nextSession = await issueSession(connection, user);
+    const replacementId = jwt.decode(nextSession.refreshToken).jti;
+    await AuthSession.revoke(connection, session.id, replacementId);
+    await connection.commit();
+
+    return sendAuthenticatedResponse(res, 200, user, nextSession);
+  } catch (error) {
+    if (connection) await connection.rollback();
+    return next(error);
+  } finally {
+    releaseConnection(connection);
   }
-
-  const privateKey = fs.readFileSync(process.env.PRIVATE_KEY_PATH, "utf8");
-
-  // Check if refresh token is valid
-  const decoded = jwt.verify(refreshToken, privateKey);
-
-  // Check if user exists
-  const user = await User.findById(decoded.id);
-
-  if (!user) {
-    return res.status(401).json({
-      status: "error",
-      message: "User not found",
-    });
-  }
-
-  // Check if user changed password after the token was issued
-  if (user.changedPasswordAfter(decoded.iat)) {
-    return res.status(401).json({
-      status: "error",
-      message: "User recently changed password. Please log in again.",
-    });
-  }
-
-  // Create and send new access token
-  const accessToken = signAccessToken(user.id);
-  res.status(200).json({
-    status: "success",
-    accessToken,
-    data: user.name,
-  });
 };
 
-/**
- * Logout user
- */
-exports.logout = (req, res) => {
-  const { maxAge, ...cookieOptions } = setCookieOptionsObject();
-  res.clearCookie("tokenRefresh", cookieOptions);
-  res.status(200).json({ status: "success" });
+exports.logout = async (req, res, next) => {
+  let connection;
+
+  try {
+    const refreshToken = req.cookies[REFRESH_TOKEN_COOKIE];
+    if (refreshToken) {
+      connection = await getConnection();
+      const session = await AuthSession.findByTokenHash(
+        connection,
+        AuthSession.hashRefreshToken(refreshToken)
+      );
+      if (session) await AuthSession.revoke(connection, session.id);
+    }
+
+    clearAuthCookies(res);
+    res.set("Cache-Control", "no-store");
+    return res.status(200).json({ status: "success" });
+  } catch (error) {
+    return next(error);
+  } finally {
+    releaseConnection(connection);
+  }
 };
 
-/**
- * Get current user
- */
 exports.getCurrentUser = (req, res) => {
-  res.status(200).json({
+  res.set("Cache-Control", "no-store");
+  return res.status(200).json({
     status: "success",
-    data: {
-      user: req.user,
-    },
+    data: { user: toSafeUser(req.user) },
+    session: { accessExpiresAt: req.auth.exp * 1000 },
   });
 };
 
-/**
- * Update password
- */
 exports.updatePassword = async (req, res, next) => {
+  let connection;
+
   try {
     const { currentPassword, newPassword } = req.body;
-
-    // Check if passwords are provided
-    if (!currentPassword || !newPassword) {
-      return res.status(400).json({
-        status: "error",
-        message: "Please provide current and new password",
-      });
-    }
-
-    // Get user from database
     const user = await User.findById(req.user.id);
-
-    // Check if current password is correct
-    const isPasswordCorrect = await user.correctPassword(
-      currentPassword,
-      user.password
-    );
+    const isPasswordCorrect =
+      user && (await user.correctPassword(currentPassword, user.password));
 
     if (!isPasswordCorrect) {
       return res.status(401).json({
         status: "error",
-        message: "Your current password is incorrect",
+        message: "The current password is incorrect.",
       });
     }
 
-    // Update password in database
-    let connection;
-    try {
-      connection = await getConnection();
+    const hashedPassword = await bcrypt.hash(newPassword, 12);
+    connection = await getConnection();
+    await connection.beginTransaction();
+    await connection.execute(
+      "UPDATE users SET password = ?, passwordChangedAt = NOW() WHERE id = ?",
+      [hashedPassword, user.id]
+    );
+    await AuthSession.revokeAllForUser(connection, user.id);
+    const session = await issueSession(connection, user);
+    await connection.commit();
 
-      // Hash the new password
-      const hashedPassword = await bcrypt.hash(newPassword, 12);
-
-      // Update the password in the database
-      await connection.execute(
-        "UPDATE users SET password = ?, passwordChangedAt = ? WHERE id = ?",
-        [hashedPassword, new Date(), user.id]
-      );
-
-      // Create and send new token
-      createSendToken(user, 200, res);
-    } catch (error) {
-      throw error;
-    } finally {
-      releaseConnection(connection);
-    }
+    return sendAuthenticatedResponse(res, 200, user, session);
   } catch (error) {
-    next(error);
+    if (connection) await connection.rollback();
+    return next(error);
+  } finally {
+    releaseConnection(connection);
   }
 };
 
-// Re-export middleware from auth.middleware.js
 exports.protect = require("../middleware/auth.middleware").protect;
 exports.restrictTo = require("../middleware/auth.middleware").restrictTo;

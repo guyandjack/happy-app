@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 //import des librairies
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import DOMPurify from "dompurify";
 
 //import des icons
 import { FaTrash, FaUpload } from "react-icons/fa";
@@ -19,6 +20,7 @@ import "@styles/SCSS/pages/article.scss";
 
 //import des fonctions
 import { localOrProd } from "@utils/fonction/testEnvironement";
+import { withSessionRefresh } from "@utils/fonction/authSession";
 
 const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
   const { urlApi } = localOrProd();
@@ -126,7 +128,7 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
       const reader = new FileReader();
       reader.onload = (event) => {
         const rawText = event.target?.result || "";
-        setArticlePreviewHtml(convertTextToHtml(rawText));
+        setArticlePreviewHtml(DOMPurify.sanitize(convertTextToHtml(rawText)));
       };
       reader.onerror = () => {
         setArticlePreviewHtml("");
@@ -367,20 +369,12 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
         });
       }
 
-      // Add token to headers
-      const token = localStorage.getItem("token");
-
-      // Send request to API
-      const response = await axios.post(`${urlApi}/articles/create`, formData, {
-        headers: {
-          //"Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`,
-        },
-        validateStatus: function (status) {
-          return status < 599; // Accept only 200-303 status codes
-        },
-        withCredentials: true,
-      });
+      const response = await withSessionRefresh(urlApi, () =>
+        axios.post(`${urlApi}/articles/create`, formData, {
+          withCredentials: true,
+          timeout: 30000,
+        })
+      );
 
       if (response.status === 201 && response.data.status === "success") {
         showToast("Article créé avec succès", "success");

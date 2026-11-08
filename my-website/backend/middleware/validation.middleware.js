@@ -26,18 +26,29 @@ exports.loginValidation = [
     .isLength({ min: 8, max: 50 })
     .withMessage("Email must be between 8 and 50 characters"),
   body("password")
-    .isLength({ min: 8, max: 50 })
-    .withMessage("Password must be at least 8 characters long")
     .isString()
     .withMessage("Password must be a string")
-    .isStrongPassword()
-    .withMessage(
-      "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character"
-    )
-    .matches(/^[^<>/%=&]+$/)
-    .withMessage(
-      "Password must not contain any of the following characters: <, >, %, &, ="
-    ),
+    // Login verifies an existing secret. Do not apply a password-creation
+    // policy here, otherwise valid legacy passwords can lock their user out.
+    .isLength({ min: 1, max: 128 })
+    .withMessage("Password must be between 1 and 128 characters"),
+];
+
+/**
+ * Policy used only when a password is created or changed. A long password or
+ * passphrase is less brittle than a small, client-only character whitelist.
+ */
+exports.updatePasswordValidation = [
+  body("currentPassword")
+    .isString()
+    .withMessage("Current password must be a string")
+    .isLength({ min: 1, max: 128 })
+    .withMessage("Current password must be between 1 and 128 characters"),
+  body("newPassword")
+    .isString()
+    .withMessage("New password must be a string")
+    .isLength({ min: 12, max: 128 })
+    .withMessage("New password must be between 12 and 128 characters"),
 ];
 
 /**

@@ -1,26 +1,23 @@
+const fs = require("fs");
 const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
-const User = require("../models/user.model");
-const fs = require("fs");
-const dotenv = require("dotenv");
 
-dotenv.config();
+const User = require("../models/user.model");
+const { ACCESS_TOKEN_COOKIE } = require("../utils/function/authCookies");
+
+const JWT_ISSUER = process.env.JWT_ISSUER || "helveclick-api";
+const JWT_AUDIENCE = process.env.JWT_AUDIENCE || "helveclick-dashboard";
+
+const getPublicKey = () =>
+  fs.readFileSync(process.env.PUBLIC_KEY_PATH, "utf8");
 
 /**
- * Middleware to protect routes that require authentication
+ * Protects API routes with the HttpOnly access-token cookie. Tokens are never
+ * read from browser storage or accepted from arbitrary Authorization headers.
  */
 exports.protect = async (req, res, next) => {
   try {
-    // 1) Get token from Authorization header
-    let token;
-    const publicKey = fs.readFileSync(process.env.PUBLIC_KEY_PATH, "utf8");
-    if (
-      req.headers.authorization &&
-      req.headers.authorization.startsWith("Bearer")
-    ) {
-      token = req.headers.authorization.split(" ")[1];
-    }
-
+    const token = req.cookies?.[ACCESS_TOKEN_COOKIE];
     if (!token) {
       return res.status(401).json({
         status: "error",
@@ -28,50 +25,45 @@ exports.protect = async (req, res, next) => {
       });
     }
 
-    // 2) Verify token
-    const decoded = await promisify(jwt.verify)(token, publicKey, {
+    const decoded = await promisify(jwt.verify)(token, getPublicKey(), {
       algorithms: ["RS256"],
+      audience: JWT_AUDIENCE,
+      issuer: JWT_ISSUER,
     });
 
-    // 3) Check if user still exists
+    if (decoded.tokenUse !== "access") {
+      return res.status(401).json({
+        status: "error",
+        message: "Your session is no longer valid. Please log in again.",
+      });
+    }
+
     const currentUser = await User.findById(decoded.id);
-    if (!currentUser) {
+    if (!currentUser || currentUser.changedPasswordAfter(decoded.iat)) {
       return res.status(401).json({
         status: "error",
-        message: "The user belonging to this token no longer exists.",
+        message: "Your session is no longer valid. Please log in again.",
       });
     }
 
-    // 4) Check if user changed password after the token was issued
-    if (currentUser.changedPasswordAfter(decoded.iat)) {
-      return res.status(401).json({
-        status: "error",
-        message: "User recently changed password. Please log in again.",
-      });
-    }
-
-    // Grant access to protected route
+    req.auth = decoded;
     req.user = currentUser;
-    next();
-  } catch (error) {
+    return next();
+  } catch (_error) {
     return res.status(401).json({
       status: "error",
-      message: "Invalid token. Please log in again.",
+      message: "Your session is no longer valid. Please log in again.",
     });
   }
 };
 
-/**
- * Middleware to restrict access to certain roles
- */
-exports.restrictTo = (...roles) => {
-  return (req, res, next) => {
-    if (!roles.includes(req.user.role)) {
-      return res.status(403).json({
-        status: "error",
-        message: "You do not have permission to perform this action",
-      });
-    }
-    next();
-  };
+exports.restrictTo = (...roles) => (req, res, next) => {
+  if (!roles.includes(req.user.role)) {
+    return res.status(403).json({
+      status: "error",
+      message: "You do not have permission to perform this action.",
+    });
+  }
+
+  return next();
 };

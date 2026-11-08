@@ -74,6 +74,7 @@ if (typedTarget && !prefersReducedMotion) {
 //Logique collapse faq
 initFaq();
 
+
 /* //effet parallaxe
 const elementImg = document.querySelector(".hero-index-img");
 if (elementImg) {

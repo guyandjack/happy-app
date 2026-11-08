@@ -9,6 +9,7 @@ $index-section-space: clamp(5rem, 9vw, 7.5rem);
 $index-section-title-offset: 120px;
 $index-title-content-space: clamp(2rem, 4vw, 3.75rem);
 $index-content-space: clamp(2.5rem, 5vw, 4rem);
+$index-section-heading-size: clamp(2rem, 4vw, 3rem);
 
 
 @font-face {
@@ -49,7 +50,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
   padding: $navbar-height 10px 0px 10px;
   //overflow: hidden;
   //gap: 50px;
-  //border: 2px solid green;
+  //border: 10px solid green;
 
   &::before {
     content: "";
@@ -84,8 +85,8 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
   .hero-index-title-h1 {
 
-    position:relative;
-    z-index:5;
+    position: relative;
+    z-index: 5;
     font-family: 'Madimi', sans-serif;
     font-size: clamp(1.9rem, 7vw, 3.2rem);
     font-weight: 800;
@@ -116,7 +117,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
   }
 
-  
+
 
   .hero-index-wrapper {
     width: 100%;
@@ -157,7 +158,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
     &:hover::before {
       bottom: 0px;
-      
+
     }
 
 
@@ -177,15 +178,15 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
     &:hover::after {
       top: 0px;
-      
+
     }
 
     &:hover::before,
-    &:hover::after{
+    &:hover::after {
       height: 55%;
-        width: 95%;
-        border-radius: 30px;
-        transition-delay: 0.2s;
+      width: 95%;
+      border-radius: 30px;
+      transition-delay: 0.2s;
     }
 
     &:nth-child(1)::before,
@@ -299,16 +300,34 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
 //HERO section responsive
 
- @media screen and (min-width:640px) {
+@media screen and (max-width:640px) {
+
+
+  .hero-index {
+    &::before {
+
+      height: 100%;
+    }
+
+    &::after {
+      display: none;
+    }
+
+  }
+
+}
+
+@media screen and (min-width:640px) {
   .hero-index {
     .hero-index-list-link {
-    & .hero-index-list-link-li:nth-child(even) {
+      & .hero-index-list-link-li:nth-child(even) {
         transform: translateX(50px);
       }
+
       //border: 2px solid red;
     }
   }
-} 
+}
 
 
 @media screen and (min-width: 768px) {
@@ -370,9 +389,9 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
         width: 300px;
         // border: 2px solid blue;
       }
-      
-      
-            
+
+
+
     }
 
 
@@ -437,7 +456,8 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 .creations {
   //border: 2px solid red;
   width: 100%;
-  padding: $index-section-title-offset 15px $index-section-space;
+  //padding: $index-section-title-offset 15px $index-section-space;
+  padding: 50px 0px;
   /* background: linear-gradient(135deg,
       rgba(map-get($colors-rule, second-color), 0.03) 5%,
       rgba(map-get($colors-rule, footer-color), 0.05) 20%,
@@ -445,6 +465,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
       rgba(map-get($colors-rule, second-color), 0.05) 100%); */
   //background-color: map-get($colors-rule, sixth-color);
   position: relative;
+  z-index:10;
   //overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -455,7 +476,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
   h2 {
     font-size: 2rem;
     color: rgba(map-get($colors-rule, fifth-color), 0.9);
-    margin: 0 0 $index-title-content-space;
+    //margin: 0 0 $index-title-content-space;
     text-align: center;
     position: relative;
     z-index: 10;
@@ -514,36 +535,39 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
     width: 100%;
 
     &:nth-child(1) .card-link::after {
-        border: 1px solid map-get($colors-rule, second-color);
-      }
-    
-      &:nth-child(2) .card-link::after {
-        border: 1px solid map-get($colors-rule, fourth-color);
-      }
-    
-      &:nth-child(3) .card-link::after {
-        border: 1px solid map-get($colors-rule, third-color);
-      }
-    
-      &:nth-child(4) .card-link::after {
-        border: 1px solid map-get($colors-rule, height-color);
-      }
+      border: 1px solid map-get($colors-rule, second-color);
+    }
+
+    &:nth-child(2) .card-link::after {
+      border: 1px solid map-get($colors-rule, fourth-color);
+    }
+
+    &:nth-child(3) .card-link::after {
+      border: 1px solid map-get($colors-rule, third-color);
+    }
+
+    &:nth-child(4) .card-link::after {
+      border: 1px solid map-get($colors-rule, height-color);
+    }
   }
 
-    .card-item:nth-child(1) .card-link .card-button {
-      background-color: map-get($colors-rule, second-color);
-    }
-    .card-item:nth-child(2) .card-link .card-button {
-      background-color: map-get($colors-rule, fourth-color);
-    }
-    .card-item:nth-child(3) .card-link .card-button {
-      background-color: map-get($colors-rule, third-color);
-    }
-    .card-item:nth-child(4) .card-link .card-button {
-      background-color: map-get($colors-rule, height-color);
-    }
+  .card-item:nth-child(1) .card-link .card-button {
+    background-color: map-get($colors-rule, second-color);
+  }
 
-  
+  .card-item:nth-child(2) .card-link .card-button {
+    background-color: map-get($colors-rule, fourth-color);
+  }
+
+  .card-item:nth-child(3) .card-link .card-button {
+    background-color: map-get($colors-rule, third-color);
+  }
+
+  .card-item:nth-child(4) .card-link .card-button {
+    background-color: map-get($colors-rule, height-color);
+  }
+
+
 
 
 
@@ -588,8 +612,8 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
       inset: 1rem -1rem -1rem 1rem;
       transition: all 0.3s linear;
     }
-    
-    
+
+
 
     >* {
       position: relative;
@@ -597,7 +621,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
     }
   }
 
-    
+
   .card-image-container {
     position: relative;
     height: 180px;
@@ -664,10 +688,9 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
     }
   }
 
-  
+
 
   
-
 
 
   // Responsive adjustments
@@ -712,31 +735,34 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
   @media (min-width: 1280px) {
 
-    .card-link:hover::after    {
+    .card-link:hover::after {
       transform: translate(-0.6rem, -0.6rem);
       transition: all 0.3s linear;
 
     }
 
-    .card-item:nth-child(1) .card-link:hover::after{
-     
-          background-color: map-get($colors-rule, second-color);
-        
+    .card-item:nth-child(1) .card-link:hover::after {
+
+      background-color: map-get($colors-rule, second-color);
+
     }
-    .card-item:nth-child(2) .card-link:hover::after{
-     
-          background-color: map-get($colors-rule, fourth-color);
-        
+
+    .card-item:nth-child(2) .card-link:hover::after {
+
+      background-color: map-get($colors-rule, fourth-color);
+
     }
-    .card-item:nth-child(3) .card-link:hover::after{
-     
-          background-color: map-get($colors-rule, third-color);
-        
+
+    .card-item:nth-child(3) .card-link:hover::after {
+
+      background-color: map-get($colors-rule, third-color);
+
     }
-    .card-item:nth-child(4) .card-link:hover::after{
-     
-          background-color: map-get($colors-rule, height-color);
-        
+
+    .card-item:nth-child(4) .card-link:hover::after {
+
+      background-color: map-get($colors-rule, height-color);
+
     }
 
     .card-link {
@@ -746,7 +772,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
       }
 
-      
+
 
       .card-content {
         .card-button {
@@ -774,6 +800,12 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
 }
 
+@media screen and (min-width: 640px) {
+
+  .services  {
+    margin-top: 80px;
+  }
+}
 
 
 
@@ -796,7 +828,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
     margin-bottom: $index-title-content-space;
   }
 
-  
+
 
 
 }
@@ -809,7 +841,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
 
 
-  
+
 
   .services .section-title h2 {
     font-size: 2.2rem;
@@ -833,7 +865,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 .why-green-click {
   position: relative;
   width: 100%;
-  padding: $index-section-title-offset 15px $index-section-space;
+  //padding: $index-section-title-offset 15px $index-section-space;
 
   color: map-get($colors-rule, sixth-color);
   //border: 2px solid red;
@@ -872,30 +904,71 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
     .why-choose-card {
       position: relative;
+      z-index: 2;
       width: 100%;
       padding: 20px;
-      //border: 1px solid green;
-      margin: 50px 0px;
-      border-radius: 1rem;
+      //border: 10px solid green;
+      margin: 25px 0px;
+      border-radius: 1.5rem;
+      overflow: hidden;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0;
+        width: 100%;
+        height: 80%;
+        transform: skewY(30deg);
+
+
+      }
+
+      &::after {
+        width: 100%;
+        transform: none;
+        z-index: -2;
+        height: 100%;
+      }
+
+
 
     }
 
 
 
-    #why-choose-card-wrapper-1 {
-      background-color: rgba(map-get($colors-rule, second-color), 0.8);
+    #why-choose-card-wrapper-1::before {
+      background: rgba(map-get($colors-rule, second-color), 0.9);
     }
 
-    #why-choose-card-wrapper-2 {
-      background-color: rgba(map-get($colors-rule, fourth-color), 0.8);
+    #why-choose-card-wrapper-2::before {
+      background: rgba(map-get($colors-rule, fourth-color), 0.9);
     }
 
-    #why-choose-card-wrapper-3 {
-      background-color: rgba(map-get($colors-rule, third-color), 0.8);
+    #why-choose-card-wrapper-3::before {
+      background: rgba(map-get($colors-rule, third-color), 0.9);
     }
 
-    #why-choose-card-wrapper-4 {
-      background-color: rgba(map-get($colors-rule, ten-color), 0.8);
+    #why-choose-card-wrapper-4::before {
+      background: rgba(map-get($colors-rule, ten-color), 0.9);
+    }
+
+
+    #why-choose-card-wrapper-1::after {
+      background: linear-gradient(rgba(map-get($colors-rule, second-color), 0.8), rgba(map-get($colors-rule, second-color), 0.3) 100%);
+    }
+
+    #why-choose-card-wrapper-2::after {
+      background: linear-gradient(rgba(map-get($colors-rule, fourth-color), 0.8), rgba(map-get($colors-rule, fourth-color), 0.3) 100%);
+    }
+
+    #why-choose-card-wrapper-3::after {
+      background: linear-gradient(rgba(map-get($colors-rule, third-color), 0.8), rgba(map-get($colors-rule, third-color), 0.3) 100%);
+    }
+
+    #why-choose-card-wrapper-4::after {
+      background: linear-gradient(rgba(map-get($colors-rule, ten-color), 0.8), rgba(map-get($colors-rule, ten-color), 0.3) 100%);
     }
 
     h3 {
@@ -940,7 +1013,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
     }
 
 
-    
+
     p {
       font-size: 1rem;
       line-height: 1.8;
@@ -958,7 +1031,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
         color: darken(map-get($colors-rule, second-color), 10%);
       }
 
-     
+
 
 
     }
@@ -974,7 +1047,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
       }
     }
 
-    
+
 
     .img-why-card {
       display: none;
@@ -988,13 +1061,16 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 @media screen and (max-width: 1024px) {
   .why-choose-card {
     max-width: 700px;
+
+
   }
+
 }
 
 
 @media (min-width: 768px) {
   .why-green-click {
-    padding: $index-section-title-offset 30px $index-section-space;
+    //padding: $index-section-title-offset 30px $index-section-space;
 
     .why-choose {
       h2 {
@@ -1032,7 +1108,13 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
         justify-content: flex-end;
         align-items: flex-start;
         height: 600px;
-        //border: 1px solid red;
+        //border: 5px solid red;
+        border-radius: 0px;
+
+        &::before,
+        &::after {
+          display: none;
+        }
       }
 
       #why-choose-card-wrapper-1,
@@ -1061,7 +1143,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
         }
       }
 
-      
+
       #why-choose-card-1 {
         background: rgba(map-get($colors-rule, second-color), 1);
 
@@ -1091,7 +1173,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
         padding: 40px 20px 40px 70px;
         text-align: left;
         border-bottom-right-radius: 0;
-       
+
 
 
         &::after {
@@ -1115,7 +1197,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
         }
 
-        
+
       }
 
       #why-choose-card-1-p,
@@ -1220,6 +1302,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 
 
 .creations {
+
   // `#RC-creation` is a flex item. Without an explicit width it uses the
   // carousel's intrinsic desktop width and can overflow narrow viewports.
   #RC-creation {
@@ -1229,7 +1312,7 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
   }
 
   &>h2 {
-    margin-bottom: 120px;
+    margin-bottom: 50px;
   }
 
   .creations-intro {
@@ -1284,12 +1367,20 @@ $index-content-space: clamp(2.5rem, 5vw, 4rem);
 }
 
 // Page-specific alignment for sections styled by shared components.
-#RC-cta-section {
-  width: 100%;
 
-  .cta-section {
-    margin: 0 auto;
+// A home-page section heading must retain the same visual scale regardless of
+// the component that renders it. This intentionally overrides the generic CTA
+// and FAQ heading sizes imported from shared-style.scss.
+.services > h2,
+.why-green-click .why-choose > h2,
+#RC-cta-section .cta-section > h2,
+.creations > h2,
+.faq-section .faq-container-title > h2 {
+  font-size: $index-section-heading-size;
+}
 
-
+@media screen and (min-width:1024px) {
+  #RC-creation{
+    margin-top: 50px;
   }
 }

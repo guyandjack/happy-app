@@ -1,7 +1,6 @@
 //import des hook
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 
 //import des composants enfants
@@ -9,7 +8,8 @@ import { ThreeDots } from "react-loader-spinner";
 
 //import dse fonctions
 import { localOrProd } from "@utils/fonction/testEnvironement";
-import { storeToken } from "@utils/fonction/storeToken";
+import { storeSession } from "@utils/fonction/storeToken";
+import { clearLocalStorageInfoSession } from "@utils/fonction/clearLocalStorageInfosession";
 import { handleAxiosError } from "@utils/fonction/handleAxiosError";
 
 //import des icons
@@ -20,7 +20,8 @@ import eyeOpened from "@assetsJSX/icons/eye-opened.png";
 import "@styles/SCSS/components/loginform.scss";
 
 function LoginForm() {
-  const { url, urlApi, mode } = localOrProd();
+  const { urlApi } = localOrProd();
+  console.log("urlapi: ", urlApi);
   const [httpError, setHttpError] = useState(null);
   const [authError, setAuthError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
@@ -43,20 +44,6 @@ function LoginForm() {
     }
     return () => clearTimeout(toastTimer);
   }, [toast]);
-
-  //lance la fonction handleSubmit en pressant la touche enter
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      handleSubmit(onSubmit)();
-    }
-  };
-  //ajout d'un écouteur de touche pour la connexion
-  useEffect(() => {
-    document.addEventListener("keydown", (event) => handleKeyDown(event));
-    return () => {
-      document.removeEventListener("keydown", (event) => handleKeyDown(event));
-    };
-  }, [handleKeyDown]);
 
   const showToast = (message, type = "info") => {
     setToast({ show: true, message, type });
@@ -87,9 +74,10 @@ function LoginForm() {
         // Show success toast
         showToast("Connexion réussie", "success");
 
-        // Store token
-        let isTokenRefreshed = storeToken(response.data, jwtDecode);
-        if (!isTokenRefreshed) {
+        // Tokens are HttpOnly cookies; only non-sensitive session metadata is
+        // stored for the interface.
+        const sessionStored = storeSession(response.data);
+        if (!sessionStored) {
           clearLocalStorageInfoSession("fr/connexion.html");
         } else {
           //redirection vers le dashboard
@@ -142,7 +130,7 @@ function LoginForm() {
         </div>
       )}
 
-      <form className="login-form">
+      <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
         {httpError && (
           <div className="error-message http-error">{httpError}</div>
         )}
@@ -159,6 +147,7 @@ function LoginForm() {
             <input
               id="email"
               type="email"
+              autoComplete="username"
               autoFocus
               className={`form-input ${errors.email ? "input-error" : ""}`}
               {...register("email", {
@@ -185,13 +174,13 @@ function LoginForm() {
             <input
               id="password"
               type={showPassword ? "text" : "password"}
+              autoComplete="current-password"
               className={`form-input ${errors.password ? "input-error" : ""}`}
               {...register("password", {
                 required: "Le mot de passe est requis",
-                pattern: {
-                  value:
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                  message: "Mot de passe invalide",
+                maxLength: {
+                  value: 128,
+                  message: "Le mot de passe est trop long",
                 },
               })}
             />
@@ -221,8 +210,7 @@ function LoginForm() {
         </div>
         <div className="input-container">
           <button
-            type="button"
-            onClick={handleSubmit(onSubmit)}
+            type="submit"
             className="btn btn-primary login-btn"
             disabled={isButtonDisabled}
           >

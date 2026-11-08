@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { ArticleCard } from "@components/Articles/ArticleCard";
 import { getLanguage } from "@utils/fonction/getLanguage";
 import { localOrProd } from "@utils/fonction/testEnvironement";
+import { withSessionRefresh } from "@utils/fonction/authSession";
 
 import "@styles/SCSS/components/AdminArticleList.scss";
 
@@ -143,14 +144,12 @@ const AdminArticleList = ({ setModifyForm, onInitialLoad }) => {
     }
 
     try {
-      const token = localStorage.getItem("token");
-      if (!token) throw new Error("Token not found");
-
-      await axios.delete(`${urlApi}/articles/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-        withCredentials: true,
-        timeout: REQUEST_TIMEOUT_MS,
-      });
+      await withSessionRefresh(urlApi, () =>
+        axios.delete(`${urlApi}/articles/${id}`, {
+          withCredentials: true,
+          timeout: REQUEST_TIMEOUT_MS,
+        })
+      );
 
       toast.success("Article supprimé avec succès");
       setArticles((currentArticles) =>
@@ -186,10 +185,12 @@ const AdminArticleList = ({ setModifyForm, onInitialLoad }) => {
 
   const getAllLanguageArticles = async () => {
     try {
-      const response = await axios.get(`${urlApi}/articles/dashboard`, {
-        timeout: REQUEST_TIMEOUT_MS,
-        validateStatus: (status) => status < 500,
-      });
+      const response = await withSessionRefresh(urlApi, () =>
+        axios.get(`${urlApi}/articles/dashboard`, {
+          withCredentials: true,
+          timeout: REQUEST_TIMEOUT_MS,
+        })
+      );
       if (response.data?.status === "success") {
         const nextArticles = Array.isArray(response.data.data)
           ? response.data.data

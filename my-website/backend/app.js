@@ -3,7 +3,6 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
-const rateLimit = require("express-rate-limit");
 const compression = require("compression");
 const path = require("path");
 const cookieParser = require("cookie-parser");
@@ -11,6 +10,8 @@ const fileUpload = require("express-fileupload");
 // import des fonctions
 const logger = require("./logger.js");
 const testNotif = require("./utils/function/testNotification.js");
+const { isAllowedOrigin } = require("./config/security");
+const { redactLogData } = require("./utils/function/redactLogData");
 const {
   sitePublicRoot,
   siteDistributionRoot,
@@ -24,23 +25,40 @@ const recaptchaRoutes = require("./routes/recaptcha.routes.js");
 
 const app = express();
 
-// ✅ CORS
+app.disable("x-powered-by");
+
+if (process.env.TRUST_PROXY) {
+  app.set("trust proxy", process.env.TRUST_PROXY);
+}
+
+app.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: "same-site" },
+    contentSecurityPolicy: {
+      useDefaults: true,
+      directives: {
+        "frame-src": ["'self'", "https://www.google.com"],
+        "img-src": ["'self'", "data:", "https:"],
+        "script-src": ["'self'", "https://www.google.com", "https://www.gstatic.com"],
+        "upgrade-insecure-requests":
+          process.env.NODE_ENV === "production" ? [] : null,
+      },
+    },
+  })
+);
+
+// CORS is a browser policy, not an authorization mechanism. Sensitive routes
+// additionally check the Origin header and their authenticated session.
 const corsOptions = {
   origin: function (origin, callback) {
-    const allowedOrigins = [
-      "https://helveclick.ch",
-      "http://localhost:5173",
-      "http://localhost:4173",
-    ];
     if (!origin) callback(null, true);
-    else if (allowedOrigins.includes(origin)) callback(null, true);
+    else if (isAllowedOrigin(origin)) callback(null, true);
     else callback(new Error("CORS error: origin not allowed"));
   },
   credentials: true,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: [
     "Content-Type",
-    "Authorization",
     "Accept",
     "X-Requested-With",
   ],
@@ -73,14 +91,6 @@ app.use(
 app.use(fileUpload());
 app.use(cookieParser());
 
-// ✅ Rate limit sur /api
-/* const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-  message: "Too many requests from this IP, please try again after 15 minutes",
-});
-app.use("/api/", limiter); */
-
 // ✅ Routes API
 app.use("/api/auth", authRoutes);
 app.use("/api/articles", articleRoutes);
@@ -112,14 +122,18 @@ app.use((err, req, res, next) => {
     path: req.path,
     method: req.method,
     status: err.status || 500,
-    body: req.body,
-    query: req.query,
+    body: redactLogData(req.body),
+    query: redactLogData(req.query),
   });
 
-  res.status(err.status || 500).json({
+  const status = Number.isInteger(err.status) ? err.status : 500;
+  res.status(status).json({
     error: true,
-    message: err.message || "Erreur serveur",
-    status: err.status || 500,
+    message:
+      status >= 500
+        ? "An unexpected server error occurred."
+        : "The request could not be processed.",
+    status,
   });
 });
 

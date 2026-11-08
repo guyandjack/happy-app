@@ -2,6 +2,7 @@ const express = require("express");
 const articleController = require("../controllers/article.controller");
 const authMiddleware = require("../middleware/auth.middleware");
 const validationFileUpload = require("../middleware/validationFileUpload");
+const { requireTrustedOrigin } = require("../middleware/trustedOrigin.middleware");
 
 const {
   voteValidation,
@@ -12,7 +13,12 @@ const router = express.Router();
 
 // Public routes
 router.get("/", articleController.getAllArticles);
-router.get("/dashboard", articleController.getArticlesDashboard);
+router.get(
+  "/dashboard",
+  authMiddleware.protect,
+  authMiddleware.restrictTo("admin", "redacteur"),
+  articleController.getArticlesDashboard
+);
 router.get("/filter", articleController.getArticleByCategory);
 router.get("/categories", articleController.getCategories);
 router.get("/search", articleController.searchArticles);
@@ -25,6 +31,8 @@ router.get("/:id", articleController.getArticle);
 router.post(
   "/create",
   authMiddleware.protect,
+  authMiddleware.restrictTo("admin", "redacteur"),
+  requireTrustedOrigin,
   validationFileUpload,
   articleValidation,
   validate,
@@ -38,6 +46,8 @@ router.delete(
   "/:id",
 
   authMiddleware.protect,
+  authMiddleware.restrictTo("admin"),
+  requireTrustedOrigin,
   articleController.deleteArticle
 );
 

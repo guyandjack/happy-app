@@ -24,8 +24,9 @@ This is the backend API for the My Web Dev Company website.
 1. Clone the repository
 2. Navigate to the backend directory: `cd my-website/backend`
 3. Install dependencies: `npm install`
-4. Create a `.env` file based on the `.env.example` file
-5. Start the server:
+4. Configure the required environment variables in `.env` (never commit this file)
+5. For an existing database, execute `config/migrations/001_auth_sessions_and_roles.sql` **once** before deploying this version. It creates the refresh-session table and converts the legacy `user` role to `redacteur`.
+6. Start the server:
    - Development mode: `npm run dev`
    - Production mode: `npm start`
 
@@ -36,6 +37,21 @@ This is the backend API for the My Web Dev Company website.
 - `POST /api/auth/login` - Login user
 - `POST /api/auth/logout` - Logout user
 - `GET /api/auth/me` - Get current user
+
+Authentication uses `HttpOnly` access and refresh cookies. Browser clients must
+send requests with credentials and may not expect a bearer token in the JSON
+response. State-changing authentication and administration requests must come
+from an allowed `Origin`.
+
+### Dashboard authorization
+
+- `admin`: can list, create and delete articles.
+- `redacteur`: can list and create articles. The current API exposes no update
+  route; if one is added, protect it with `protect`, `restrictTo("admin", "redacteur")`
+  and the trusted-origin middleware.
+
+The single dashboard account should be assigned the `admin` role if deletion is
+required.
 
 ### Articles
 
@@ -57,7 +73,22 @@ This is the backend API for the My Web Dev Company website.
 
 ## Environment Variables
 
-See the `.env.example` file for required environment variables.
+The deployment must provide the following security settings in addition to the
+database configuration:
+
+- `NODE_ENV=production` for every public deployment. This makes authentication
+  cookies `Secure`.
+- `JWT_ACCESS_EXPIRES_IN` and `JWT_REFRESH_EXPIRES_IN` with explicit units,
+  for example `15m` and `1h`.
+- `JWT_ISSUER` and `JWT_AUDIENCE` (stable deployment-specific values). Defaults
+  exist for local compatibility, but explicit production values are preferred.
+- `FRONTEND_URL=https://…` and optionally `CORS_ALLOWED_ORIGINS` as a
+  comma-separated allowlist for additional frontends.
+- `TRUST_PROXY` only when its value exactly matches the reverse proxy topology;
+  do not set it to an unrestricted value blindly.
+
+Run `npm test` before deployment. The suite covers the secret-redaction,
+trusted-origin and role-authorization middleware.
 
 ### Article publication in production
 

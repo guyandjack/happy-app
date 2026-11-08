@@ -8,3 +8,10 @@ services:
     envVars:
       - key: PORT
         value: 3000 # Render choisit automatiquement un port mais tu peux le fixer ici
+      # Required for Secure authentication cookies in public environments.
+      - key: NODE_ENV
+        value: production
+      # Render places one managed proxy in front of this web service. This lets
+      # the authentication rate limiter use the client IP instead of the proxy IP.
+      - key: TRUST_PROXY
+        value: 1

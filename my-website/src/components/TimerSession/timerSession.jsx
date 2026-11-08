@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 
 //import des librairies
 import axios from "axios";
-import { jwtDecode } from "jwt-decode";
 
 //import des composants enfants
 import { DisplayCounterDown } from "@components/TimerSession/DisplayCounterDown.jsx";
@@ -11,9 +10,9 @@ import { DisplayCounterDown } from "@components/TimerSession/DisplayCounterDown.
 //import des fonctions
 import { clearLocalStorageInfoSession } from "@utils/fonction/clearLocalStorageInfosession";
 import { initCounterDown } from "@utils/fonction/initCounterDown";
-import { storeToken } from "@utils/fonction/storeToken";
 import { localOrProd } from "@utils/fonction/testEnvironement.js";
 import { handleAxiosError } from "@utils/fonction/handleAxiosError";
+import { refreshSession } from "@utils/fonction/authSession";
 
 //feuilles de style
 import "@styles/SCSS/components/Timersession.scss";
@@ -22,7 +21,7 @@ import "@styles/SCSS/components/Timersession.scss";
 import { FaUser } from "react-icons/fa";
 
 function TimerSession() {
-  const { urlApi, mode } = localOrProd();
+  const { urlApi } = localOrProd();
 
   //state qui contient la valeur du compteur
   const [timeRemaining, setTimeRemaining] = useState(initCounterDown());
@@ -53,15 +52,15 @@ function TimerSession() {
       counter.current = null;
     }
     counter.current = setInterval(() => {
-      const hasToken = !!localStorage.getItem("token");
+      const hasSession = !!sessionStorage.getItem("accessExpiresAt");
       const remaining = initCounterDown();
-      if (remaining > 0 && hasToken) {
+      if (remaining > 0 && hasSession) {
         // Recalcule en fonction de l'heure système pour éviter les décalages
         setTimeRemaining(remaining);
       } else {
         clearInterval(counter.current);
         counter.current = null;
-        deleteSession();
+        refreshToken();
       }
     }, 1000);
   };
@@ -69,8 +68,8 @@ function TimerSession() {
   //fonction qui vérifie si la session est active et valide
   const checkSession = () => {
     let tokenExpiration =
-      parseInt(localStorage.getItem("tokenExpiration")) || 0;
-    let currentTime = Math.floor(Date.now() / 1000);
+      Number(sessionStorage.getItem("accessExpiresAt")) || 0;
+    let currentTime = Date.now();
     if (currentTime >= tokenExpiration) {
       return false;
     }
@@ -78,18 +77,28 @@ function TimerSession() {
   };
 
   //fonction qui supprime la session
-  const deleteSession = () => {
+  const deleteSession = async () => {
     setTimeRemaining(initCounterDown());
     setIsSessionActive(false);
-    clearLocalStorageInfoSession();
+    try {
+      await axios.post(
+        `${urlApi}/auth/logout`,
+        {},
+        { withCredentials: true, timeout: 10000 }
+      );
+    } catch (error) {
+      console.error("Logout request failed:", error);
+    } finally {
+      clearLocalStorageInfoSession();
+    }
   };
 
   //fonction qui lance la session
   const startSession = () => {
     setIsSessionActive(true);
-    if (localStorage.getItem("user")) {
-      const userName = JSON.parse(localStorage.getItem("user"));
-      setUser(userName);
+    if (sessionStorage.getItem("user")) {
+      const userMetadata = JSON.parse(sessionStorage.getItem("user"));
+      setUser(userMetadata.name);
     }
     setTimeRemaining(initCounterDown());
     setStartCounterDown(true);
@@ -154,28 +163,14 @@ function TimerSession() {
   //fetch to refresh token
   const refreshToken = async () => {
     try {
-      const response = await axios.post(
-        `${urlApi}/auth/refresh-token`,
-        {},
-        {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "application/json",
-          },
-          timeout: 10000,
-        }
-      );
+      const response = await refreshSession(urlApi);
 
       if (response.data.status === "success") {
         //stop le count down actuel
         clearInterval(counter.current);
         setStartCounterDown(false);
 
-        //store the new accesstoken
-        const isTokenRefreshed = storeToken(response.data, jwtDecode);
-        if (!isTokenRefreshed) {
-          return "Impossible de stoker le token dans le localStorage ou le token n'est pas valide";
-        }
+        setUser(response.data.data.user.name);
 
         //reinitialise le compteur
         setTimeRemaining(initCounterDown());
@@ -185,6 +180,8 @@ function TimerSession() {
       }
     } catch (error) {
       handleAxiosError(error);
+      setIsSessionActive(false);
+      clearLocalStorageInfoSession();
     }
   };
 

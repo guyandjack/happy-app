@@ -5,8 +5,8 @@ const baseDevUrl = import.meta.env.VITE_BASE_DEV_URL;
 const apiDevUrl = import.meta.env.VITE_API_DEV_URL;
 
 //render
-const baseRenderUrl = import.meta.env.VITE_BASE_RENDER_URL;
-const apiRenderUrl = import.meta.env.VITE_API_RENDER_URL;
+//const baseRenderUrl = import.meta.env.VITE_BASE_RENDER_URL;
+//const apiRenderUrl = import.meta.env.VITE_API_RENDER_URL;
 
 //prod
 const baseProdUrl = import.meta.env.VITE_BASE_PROD_URL;
@@ -21,9 +21,9 @@ function validateEnvVariables() {
     !baseProdUrl ||
     !apiDevUrl ||
     !apiProdUrl ||
-    !mode ||
-    !baseRenderUrl ||
-    !apiRenderUrl
+    !mode
+    //!baseRenderUrl ||
+    //!apiRenderUrl
   ) {
     throw new Error(
       "Une ou plusieurs variables d'environnement sont manquantes."
@@ -41,7 +41,7 @@ function localOrProd() {
     window.location.hostname === "localhost" ||
     window.location.hostname === "127.0.0.1";
 
-  const isRender = window.location.hostname === "happy-app.onrender.com";
+  //const isRender = window.location.hostname === "happy-app.onrender.com";
 
   if (isLocalhost) {
     return {
@@ -49,12 +49,12 @@ function localOrProd() {
       urlApi: apiDevUrl,
       mode: mode,
     };
-  } else if (isRender) {
+   /* else if (isRender) {
     return {
       url: baseRenderUrl,
       urlApi: apiRenderUrl,
       mode: mode,
-    };
+    }; */
   } else {
     return {
       url: baseProdUrl,
