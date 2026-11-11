@@ -10,6 +10,7 @@ import axios from "axios";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 
 const siteKey = import.meta.env.VITE_SITE_KEY_RECAPTCHA;
+console.log("sitekey:", siteKey);
 
 // Import same SCSS file as LoginForm
 import "@styles/SCSS/components/loginform.scss";

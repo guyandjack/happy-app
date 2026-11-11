@@ -120,29 +120,32 @@
 
           li {
             margin-bottom: 12px;
+            
+           
 
             a {
               color: map-get($colors-rule, sixth-color);
               text-decoration: none;
-              //opacity: 0.8;
               transition: all 0.3s ease;
-              position: relative;
+              position:relative;
+             
 
               &::after {
                 content: '';
                 position: absolute;
-                bottom: -2px;
-                left: 0;
-                width: 0;
-                height: 1px;
+                bottom: 70%;
+                right: -10px;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
                 background: map-get($colors-rule, link-color-hover);
                 transition: width 0.3s ease;
+                opacity: 0;
               }
 
               &:hover {
-
                 &::after {
-                  width: 100%;
+                  opacity: 1;
                 }
               }
             }

@@ -237,7 +237,6 @@ function Navbar() {
   const menuItems = {
     fr: [
       { path: `/`, text: "Accueil" },
-      { path: `/fr/a-propos.html`, text: "A propos" },
       {
         text: "Prestations",
         submenu: [
@@ -257,6 +256,7 @@ function Navbar() {
         ],
       },
       { path: `/fr/contact.html`, text: "Contact" },
+      { path: `/fr/a-propos.html`, text: "A propos" },
       { path: `/fr/articles-list.html`, text: "Articles" },
       {
         path: `/fr/legal/mentions-legales.html`,
@@ -269,7 +269,6 @@ function Navbar() {
     ],
     en: [
       { path: `/en/home.html`, text: "Home" },
-      { path: `/en/about.html`, text: "About me" },
       {
         text: "Services",
         submenu: [
@@ -286,6 +285,7 @@ function Navbar() {
         ],
       },
       { path: `/en/contact.html`, text: "Contact" },
+      { path: `/en/about.html`, text: "About me" },
       { path: `/en/articles-list.html`, text: "Articles" },
       { path: `/en/legal/legal-notice.html`, text: "" },
       {

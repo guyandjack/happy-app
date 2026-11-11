@@ -220,7 +220,7 @@
             object-fit: cover;
             //filter: saturate(0.95); // Slightly reduce saturation for eco-design
             transition: transform 0.3s ease;
-            opacity: 0.8;
+            opacity: 0.9;
           }
         }
 
@@ -371,6 +371,7 @@
 
 .foundations {
   //background-color: map-get($colors-rule, second-color);
+  margin-bottom: 130px;
   z-index:1;
   h2{
     padding: 1rem;
