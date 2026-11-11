@@ -368,3 +368,10 @@
     }
   }
 }
+
+@media screen and (max-width: 1023px) {
+  .creation-wrapper {
+    width: 100%;
+    max-width: none;
+  }
+}

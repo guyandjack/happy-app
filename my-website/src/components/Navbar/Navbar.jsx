@@ -369,10 +369,10 @@ function Navbar() {
   };
 
   const handleClickMenuSide = () => {
-    
     if (!menuSideRef.current) {
-      console.log("le composant menu side n' est pas detecté...");
+      return;
     }
+
     menuSideRef.current.classList.toggle("show-menu-side");
   };
 
@@ -490,7 +490,7 @@ function Navbar() {
             </li>
           ) : null}
 
-          <li className="language-switcher">
+          <li className="flex-row-start-center language-switcher">
             {currentLang === "en" && (
               <button
                 className="flag-btn"

@@ -1,149 +1,225 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import "@styles/SCSS/components/MenuSide.scss";
-import { getLanguage } from "@utils/fonction/getLanguage.js";
 import { IoMdCloseCircle } from "react-icons/io";
 
-const MenuSide = ({ classContainer, titleType, reference}) => {
+const MENU_SIDE_MIN_VIEWPORT_WIDTH = 1300;
+const NAVIGATION_SCROLL_OFFSET = 90;
+
+const MenuSide = ({ classContainer, titleType, reference }) => {
   const [headings, setHeadings] = useState([]);
   const [activeHeading, setActiveHeading] = useState("");
-  const [isMenuSide, setIsMenuSide] = useState(false);
-  const [isMenuSideCreated, setIsMenuSideCreated] = useState(false);
+  const pendingNavigationRef = useRef(null);
+  const [isDesktop, setIsDesktop] = useState(
+    () => window.innerWidth >= MENU_SIDE_MIN_VIEWPORT_WIDTH,
+  );
 
-  let title = "";
-
-  const language = getLanguage();
-  if (language === "fr") {
-    title = "Sur cette page";
-  } else {
-    title = "On this page";
-  }
-
-   const handlerSize = () => {
-    console.log("dépendance useEffect menu side modifiée");
-    setIsMenuSide((actualValue) => {
-      console.log("NOUVELLE VALEUR de ismenuside: ", !actualValue);
-      return !actualValue;
-    });
-  }; 
-
-  //Creation du menu side
   useEffect(() => {
-    //controle des erreurs  montage du composant
-    //  si la taille de l' ecran est insufisante on ne cre pas le menuside
-    if (window.innerWidth < 1300) {
-      //console.log("Error: 3 --- pas de menu Side:  écran trop petit...");
+    const headingContainer = document.querySelector(classContainer);
+
+    if (!headingContainer) {
+      setHeadings([]);
       return;
     }
 
-    // si le menu side est déjà créé on ne crée pas un nouveau menu side
-    if (isMenuSideCreated) {
-      //console.log("Error: 4 --- menu side déjà existant.");
+    const headingData = Array.from(
+      headingContainer.querySelectorAll(titleType),
+    ).map((heading, index) => {
+      if (!heading.id) {
+        heading.id = `heading-${index}`;
+      }
+
+      return {
+        id: heading.id,
+        text: heading.textContent,
+      };
+    });
+
+    setHeadings(headingData);
+  }, [classContainer, titleType]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= MENU_SIDE_MIN_VIEWPORT_WIDTH);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const updateActiveHeading = useCallback(() => {
+    if (headings.length === 0) {
       return;
     }
 
-    //console.log("useEffect menu side lancé");
-
-    // Find all H2 headings in the page
-    const h2TitleContainer = document.querySelector(classContainer);
-    if (h2TitleContainer) {
-      const h2Elements = h2TitleContainer.querySelectorAll(titleType);
-
-      // Create an array of heading objects with id and text
-      const headingsData = Array.from(h2Elements).map((heading, index) => {
-        // Add IDs to headings if they don't have one
-        if (!heading.id) {
-          heading.id = `heading-${index}`;
-        }
-        return {
-          id: heading.id,
-          text: heading.textContent,
-        };
-      }) || ["bug"];
-      setHeadings(headingsData);
-      setIsMenuSideCreated(true);
+    const pendingNavigation = pendingNavigationRef.current;
+    if (
+      pendingNavigation &&
+      Math.abs(window.scrollY - pendingNavigation.targetTop) > 2
+    ) {
+      setActiveHeading(pendingNavigation.id);
+      return;
     }
 
-    // Set up intersection observer to highlight active section
-    const observerOptions = {
-      rootMargin: "-100px 0px -60% 0px",
-      threshold: 0,
-    };
+    pendingNavigationRef.current = null;
+    const viewportCenter = window.innerHeight / 2;
+    let nextActiveHeading = "";
 
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveHeading(entry.target.id);
-        }
-      });
-    };
+    // The active section is the latest heading that has passed the viewport
+    // center. This prevents ambiguous updates when multiple headings are visible.
+    headings.forEach((heading) => {
+      const element = document.getElementById(heading.id);
 
-    const observer = new IntersectionObserver(
-      observerCallback,
-      observerOptions
+      if (!element) {
+        return;
+      }
+
+      const bounds = element.getBoundingClientRect();
+      const headingCenter = bounds.top + bounds.height / 2;
+
+      if (headingCenter <= viewportCenter) {
+        nextActiveHeading = heading.id;
+      }
+    });
+
+    setActiveHeading((currentHeading) =>
+      currentHeading === nextActiveHeading ? currentHeading : nextActiveHeading,
     );
+  }, [headings]);
 
-    // Observe all h2 elements
-    document.querySelectorAll(titleType).forEach((title) => {
-      observer.observe(title);
-    });
+  useEffect(() => {
+    if (!isDesktop || headings.length === 0) {
+      return;
+    }
 
-    return () => {
-      // Clean up observer
-      observer.disconnect();
-    };
-  }, [isMenuSide]);
+    let animationFrameId = null;
+    let scrollEndTimeoutId = null;
+    const scheduleActiveHeadingUpdate = () => {
+      if (animationFrameId !== null) {
+        return;
+      }
 
-  //Declenche la construction du menu side lorsque la taille de l'ecran change
-   useEffect(() => {
-    window.addEventListener("resize", () => {
-      handlerSize();
-    });
-    return () => {
-      removeEventListener("resize", () => {
-        handlerSize();
+      animationFrameId = window.requestAnimationFrame(() => {
+        animationFrameId = null;
+        updateActiveHeading();
       });
     };
-   }, []); 
-  
-  
+
+    const releasePendingNavigation = () => {
+      if (!pendingNavigationRef.current) {
+        return;
+      }
+
+      pendingNavigationRef.current = null;
+      scheduleActiveHeadingUpdate();
+    };
+
+    const handleScroll = () => {
+      scheduleActiveHeadingUpdate();
+
+      if (!pendingNavigationRef.current) {
+        return;
+      }
+
+      if (scrollEndTimeoutId !== null) {
+        window.clearTimeout(scrollEndTimeoutId);
+      }
+
+      // Fallback for browsers without the scrollend event and for an
+      // interrupted smooth scroll.
+      scrollEndTimeoutId = window.setTimeout(releasePendingNavigation, 150);
+    };
+
+    const handleScrollEnd = () => {
+      if (scrollEndTimeoutId !== null) {
+        window.clearTimeout(scrollEndTimeoutId);
+      }
+
+      releasePendingNavigation();
+    };
+
+    updateActiveHeading();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scrollend", handleScrollEnd);
+    window.addEventListener("resize", scheduleActiveHeadingUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scrollend", handleScrollEnd);
+      window.removeEventListener("resize", scheduleActiveHeadingUpdate);
+
+      if (animationFrameId !== null) {
+        window.cancelAnimationFrame(animationFrameId);
+      }
+
+      if (scrollEndTimeoutId !== null) {
+        window.clearTimeout(scrollEndTimeoutId);
+      }
+    };
+  }, [headings.length, isDesktop, updateActiveHeading]);
 
   const scrollToHeading = (id) => {
     const element = document.getElementById(id);
-    let rect = element.getBoundingClientRect();
-    if (element) {
-      // Scroll smoothly to the heading
-      window.scrollTo({
-        behavior: "smooth",
-        top: rect.top + window.scrollY - 90 ,
-        left: rect.left + window.scrollX,
-      });
+
+    if (!element) {
+      return;
     }
+
+    const prefersReducedMotion = window.matchMedia?.(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const requestedTop = Math.max(
+      0,
+      element.getBoundingClientRect().top +
+        window.scrollY -
+        NAVIGATION_SCROLL_OFFSET,
+    );
+    const maximumScrollTop = Math.max(
+      0,
+      document.documentElement.scrollHeight - window.innerHeight,
+    );
+    const targetTop = Math.min(requestedTop, maximumScrollTop);
+
+    pendingNavigationRef.current = { id, targetTop };
+    setActiveHeading(id);
+    window.scrollTo({
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+      top: targetTop,
+    });
+    window.requestAnimationFrame(updateActiveHeading);
   };
 
-  // Don't render if there are no headings or on small screens
-  if (headings.length === 0 || window.innerWidth <= 1300) {
+  const handleCloseMenu = () => {
+    if (!reference.current) {
+      return;
+    }
+
+    reference.current.classList.remove("show-menu-side");
+  };
+
+  if (!isDesktop || headings.length === 0) {
     return null;
   }
 
-  //permet de cacher/ferner le menu side
-  const handleCloseMenu = () => {
-    if (!reference.current) return;
-    reference.current.classList.remove("show-menu-side");
-  }
-
-  
-
   return (
     <div ref={reference} className="menu-side">
-      <IoMdCloseCircle className="menu-side-icon-close" onClick={()=>handleCloseMenu()}></IoMdCloseCircle>
+      <IoMdCloseCircle
+        className="menu-side-icon-close"
+        onClick={handleCloseMenu}
+      />
       <ul className="flex-column-start-center menu-side-list" role="menu">
         {headings.map((heading) => (
           <li
             key={heading.id}
             className={activeHeading === heading.id ? "active" : ""}
-            role="menuitem"
+            role="none"
           >
             <button
+              type="button"
+              role="menuitem"
               onClick={() => scrollToHeading(heading.id)}
               className="menu-side-link"
             >
