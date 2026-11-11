@@ -66,10 +66,6 @@ function Navbar() {
 
       const scrollValue = window.scrollY;
 
-      console.log("path page: ", path);
-      console.log("s width: ", screenWidth);
-      console.log("scroll y: ", scrollValue);
-
       if (scrollValue < 300) {
         menuBar.current.classList.add("index-zone-hero");
       }
@@ -227,7 +223,6 @@ function Navbar() {
 
   const isActiveV2 = (itemtext) => {
     if (window.location.pathname.includes(itemtext.toLowerCase())) {
-      console.log("itemtext", itemtext);
       return "active";
     }
     return "";

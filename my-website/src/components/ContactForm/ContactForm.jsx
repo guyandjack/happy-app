@@ -10,7 +10,7 @@ import axios from "axios";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 
 const siteKey = import.meta.env.VITE_SITE_KEY_RECAPTCHA;
-console.log("sitekey:", siteKey);
+
 
 // Import same SCSS file as LoginForm
 import "@styles/SCSS/components/loginform.scss";
@@ -83,7 +83,6 @@ function ContactForm() {
 
   if (localStorage.getItem("contactFormData")) {
     let data = JSON.parse(localStorage.getItem("contactFormData"));
-    console.log("data: ", data);
     formValueRef.current["name"] = data["name"];
     formValueRef.current["firstName"] = data["firstName"];
     formValueRef.current["email"] = data["email"];
@@ -148,7 +147,6 @@ function ContactForm() {
       if (!window.navigator.onLine) {
         setHttpError(text.offline);
         showToast(text.offline, "offline");
-        console.log("data formulaire: ", data);
         //sauvegade des entrees utilisateur
         localStorage.setItem("contactFormData", JSON.stringify(data));
 
@@ -165,8 +163,6 @@ function ContactForm() {
         ...data,
         //recaptchaToken: recaptchaValue,
       });
-
-      console.log("response du serveur: ", response);
 
       // Check if server returned a valid HTTP status
       if (!response) {

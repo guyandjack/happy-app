@@ -36,7 +36,6 @@ function ToggleSwitch() {
       className="flex-row-center-center toggle-switch-container"
       onClick={() => {
         toggleDarkMode();
-        console.log("isModecliked", isDarkMode);
       }}
     >
       {isDarkMode ? (

@@ -13,7 +13,6 @@ import { ctaSectionContent } from "@data/ctaSectionContent.js";
 function CtaSection() {
   let lang = getLanguage();
   let pageName = getPageName(lang);
-  console.log("pageName", pageName);
   
 
   return (

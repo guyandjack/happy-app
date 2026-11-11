@@ -101,13 +101,10 @@ function ArticleFooter({ article }) {
         );
 
         if (response.data.status === "success") {
-          console.log("response data:", response.data);
           setArticleScore({
             scoreUp: response.data.scoreUp,
             scoreDown: response.data.scoreDown,
           });
-        } else {
-          console.log(response.data);
         }
       } catch (error) {
         console.error(
@@ -139,7 +136,6 @@ function ArticleFooter({ article }) {
   };
 
   const handleEvaluation = async (note) => {
-    console.log("evaluation: ", note);
     const result = await vote(article.id, note);
     if (result.status === "success") {
       setStatusMessage({ message: result.message, status: "success" });

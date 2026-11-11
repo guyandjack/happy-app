@@ -21,7 +21,7 @@ import "@styles/SCSS/components/loginform.scss";
 
 function LoginForm() {
   const { urlApi } = localOrProd();
-  console.log("urlapi: ", urlApi);
+ 
   const [httpError, setHttpError] = useState(null);
   const [authError, setAuthError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);

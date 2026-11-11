@@ -115,9 +115,7 @@ function TimerSession() {
     //  on la lance un check session toutes les secondes
     if (!checkSession() && !isSessionActive) {
       intervalSearchSession = setInterval(() => {
-        console.log("pas de session active");
         if (checkSession()) {
-          console.log("session active");
           startSession();
           clearInterval(intervalSearchSession); //stop la recherche d'une session
         }

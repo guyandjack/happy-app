@@ -1,5 +1,5 @@
 //import des hooks
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 
 //import des icons
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -67,23 +67,11 @@ function Slider({ width, height, nbrItems, gap }) {
     });
   };
 
-  const getPages = () => {
-    return Math.ceil(sliderRef.current.children.length / nbrItems);
-  };
-
   const getCurrentPage = () => {
     return Math.ceil(
       sliderRef.current.scrollLeft / sliderRef.current.offsetWidth
     );
   };
-
-  //recupere le nbr de pages du carrousel
-  useEffect(() => {
-    const pages = getPages();
-    console.log("nbr de pages : ", pages);
-    const currentPage = getCurrentPage();
-    console.log("page actuelle: ", currentPage);
-  }, []);
 
   return (
     <div

@@ -327,7 +327,7 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
       }
       //transform en base 64 le resume
       const b64 = btoa(data.excerpt); // Les espaces restent des " " classiques
-      console.log("b64: ", b64); */
+      */
 
       //sanitize toutes les données
       //const cleenLanguage = data.language.replace(/[^a-zA-Z0-9]/g, "").trim();
@@ -359,7 +359,6 @@ const ArticleForm = ({ onSuccess, onCancel, setShow }) => {
       }
 
       if (articleContent) {
-        console.log("articleContent: ", articleContent);
         formData.append("contentArticle", articleContent);
       }
 
