@@ -87,6 +87,25 @@ database configuration:
 - `TRUST_PROXY` only when its value exactly matches the reverse proxy topology;
   do not set it to an unrestricted value blindly.
 
+### Contact email
+
+For production, configure the SMTP mailbox with:
+
+- `MAILBOX_PROD_HOST`
+- `MAILBOX_PROD_PORT` (`465` by default; use `587` when required by the
+  provider)
+- `MAILBOX_PROD_ADDRESS`
+- `MAILBOX_PROD_PASSWORD`
+
+`MAILBOX_PROD_ADRESS` (the legacy misspelling) remains supported temporarily,
+but should be renamed to `MAILBOX_PROD_ADDRESS` in every deployment secret.
+For local development, use `MAILBOX_DEV_ADDRESS` and
+`MAILBOX_DEV_PASSWORD`; `MAILBOX_DEV_ADRESS` is also accepted temporarily.
+The SMTP transport is selected exclusively through `NODE_ENV=production`, not
+from the request host name. Local Gmail development temporarily accepts the
+certificate injected by Avast Mail Shield; production SMTP always validates
+the certificate.
+
 Run `npm test` before deployment. The suite covers the secret-redaction,
 trusted-origin and role-authorization middleware.
 

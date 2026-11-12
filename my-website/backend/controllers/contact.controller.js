@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 const axios = require("axios");
-const localOrProd = require("../utils/function/localOrProd");
+const { getContactEmailConfiguration } = require("../config/mail");
 
 const TELEGRAM_API_BASE = process.env.TELEGRAM_BOT_TOKEN
   ? `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`
@@ -106,46 +106,16 @@ const sendTelegramNotification = async (payload) => {
   }
 };
 
-exports.sendContactEmail = async (req, res, next) => {
-  const { mode } = localOrProd();
-  console.log("mode:", mode);
-  let emailTo = "";
-  let transporter;
-
+exports.sendContactEmail = async (req, res) => {
   try {
     const { name, firstName, email, subject, message } = req.body;
-
-    if (mode === "prod" && req.hostname.includes("helveclick.ch")) {
-      transporter = nodemailer.createTransport({
-        host: process.env.MAILBOX_PROD_HOST,
-        port: 465, // ou 587 selon ton host
-        secure: true,
-        auth: {
-          user: process.env.MAILBOX_PROD_ADRESS,
-          pass: process.env.MAILBOX_PROD_PASSWORD,
-        },
-        tls: {
-          rejectUnauthorized: false,
-        },
-      });
-      emailTo = process.env.MAILBOX_PROD_ADRESS;
-    } else {
-      transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: process.env.MAILBOX_DEV_ADRESS,
-          pass: process.env.MAILBOX_DEV_PASSWORD,
-        },
-        tls: {
-          rejectUnauthorized: false,
-        },
-      });
-      emailTo = process.env.MAILBOX_DEV_ADRESS;
-    }
+    const { senderAddress, transporterOptions } =
+      getContactEmailConfiguration();
+    const transporter = nodemailer.createTransport(transporterOptions);
 
     const mailOptions = {
-      from: `"${name}" <${emailTo}>`,
-      to: emailTo,
+      from: `"${name}" <${senderAddress}>`,
+      to: senderAddress,
       replyTo: email, // pour que le destinataire puisse répondre directement
       subject: `Contact Form: ${subject}`,
       html: `
@@ -183,10 +153,15 @@ exports.sendContactEmail = async (req, res, next) => {
       message: "Email sent successfully",
     });
   } catch (error) {
-    console.error("Email sending error:", error);
+    console.error("Email sending error:", {
+      name: error.name,
+      code: error.code,
+      command: error.command,
+      message: error.message,
+    });
     res.status(500).json({
       status: "error",
-      message: `Email sending error: ${error.message}`,
+      message: "Unable to send your message at this time.",
     });
   }
 };
