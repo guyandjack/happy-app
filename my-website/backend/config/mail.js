@@ -1,3 +1,5 @@
+const logger = require("../logger");
+
 const getConfiguredValue = (environment, ...names) =>
   names
     .map((name) => environment[name])
@@ -13,6 +15,38 @@ const getSmtpPort = (value) => {
   }
 
   return port;
+};
+
+const getSafeMailConfigurationForLog = (configuration) => {
+  if (!configuration) {
+    return null;
+  }
+
+  const { senderAddress, transporterOptions } = configuration;
+
+  return {
+    senderAddress,
+    transporterOptions: {
+      host: transporterOptions.host,
+      port: transporterOptions.port,
+      secure: transporterOptions.secure,
+      requireTLS: transporterOptions.requireTLS,
+      service: transporterOptions.service,
+      tls: transporterOptions.tls,
+      auth: {
+        user: transporterOptions.auth.user,
+        pass: "[REDACTED]",
+      },
+    },
+  };
+};
+
+const logProductionTransportConfiguration = (configuration) => {
+  logger.info(
+    `[mail] Production SMTP transport configuration: ${JSON.stringify(
+      getSafeMailConfigurationForLog(configuration)
+    )}`
+  );
 };
 
 const getContactEmailConfiguration = (environment = process.env) => {
@@ -67,7 +101,7 @@ const getContactEmailConfiguration = (environment = process.env) => {
 
   const port = getSmtpPort(environment.MAILBOX_PROD_PORT);
 
-  return {
+  const configuration = {
     senderAddress,
     transporterOptions: {
       host,
@@ -80,6 +114,10 @@ const getContactEmailConfiguration = (environment = process.env) => {
       },
     },
   };
+
+  logProductionTransportConfiguration(configuration);
+
+  return configuration;
 };
 
-module.exports = { getContactEmailConfiguration };
+module.exports = { getContactEmailConfiguration, getSafeMailConfigurationForLog };

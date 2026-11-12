@@ -1,6 +1,9 @@
 const assert = require("node:assert/strict");
 const test = require("node:test");
-const { getContactEmailConfiguration } = require("../config/mail");
+const {
+  getContactEmailConfiguration,
+  getSafeMailConfigurationForLog,
+} = require("../config/mail");
 
 test("uses the canonical production SMTP variables", () => {
   const configuration = getContactEmailConfiguration({
@@ -46,6 +49,31 @@ test("allows the local Gmail transport to work with the Avast development certif
 
   assert.deepEqual(configuration.transporterOptions.tls, {
     rejectUnauthorized: false,
+  });
+});
+
+test("redacts the SMTP password before writing the configuration to a log", () => {
+  const configuration = getContactEmailConfiguration({
+    NODE_ENV: "production",
+    MAILBOX_PROD_HOST: "smtp.example.test",
+    MAILBOX_PROD_ADDRESS: "contact@example.test",
+    MAILBOX_PROD_PASSWORD: "secret-password",
+  });
+
+  assert.deepEqual(getSafeMailConfigurationForLog(configuration), {
+    senderAddress: "contact@example.test",
+    transporterOptions: {
+      host: "smtp.example.test",
+      port: 465,
+      secure: true,
+      requireTLS: false,
+      service: undefined,
+      tls: undefined,
+      auth: {
+        user: "contact@example.test",
+        pass: "[REDACTED]",
+      },
+    },
   });
 });
 

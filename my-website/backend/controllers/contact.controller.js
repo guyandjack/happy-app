@@ -1,6 +1,9 @@
 const nodemailer = require("nodemailer");
 const axios = require("axios");
-const { getContactEmailConfiguration } = require("../config/mail");
+const {
+  getContactEmailConfiguration,
+  getSafeMailConfigurationForLog,
+} = require("../config/mail");
 
 const TELEGRAM_API_BASE = process.env.TELEGRAM_BOT_TOKEN
   ? `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`
@@ -107,10 +110,12 @@ const sendTelegramNotification = async (payload) => {
 };
 
 exports.sendContactEmail = async (req, res) => {
+  let configuration;
+
   try {
     const { name, firstName, email, subject, message } = req.body;
-    const { senderAddress, transporterOptions } =
-      getContactEmailConfiguration();
+    configuration = getContactEmailConfiguration();
+    const { senderAddress, transporterOptions } = configuration;
     const transporter = nodemailer.createTransport(transporterOptions);
 
     const mailOptions = {
@@ -158,6 +163,7 @@ exports.sendContactEmail = async (req, res) => {
       code: error.code,
       command: error.command,
       message: error.message,
+      configuration: getSafeMailConfigurationForLog(configuration),
     });
     res.status(500).json({
       status: "error",
