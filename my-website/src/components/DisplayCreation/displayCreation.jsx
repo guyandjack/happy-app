@@ -151,6 +151,7 @@ function DisplayCreation() {
                 <svg className="card-icon-arrow">
                   <use href="#arrow-circle" />
                 </svg>
+                <span className="shine"></span>
               </a>
             ) : (
               <span className="card-text-error">

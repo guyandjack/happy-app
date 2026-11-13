@@ -3,7 +3,7 @@
 .footer {
   gap: 20px;
   //background: darken(map-get($colors-rule, footer-color), 25%);
-  background:map-get($colors-rule, first-color-indigo-700);
+  background: map-get($colors-rule, first-color-indigo-700);
   color: map-get($colors-rule, sixth-color);
   padding: 60px 20px 20px 20px;
   width: 100%;
@@ -43,7 +43,7 @@
 
       .footer-cta {
         position: relative;
-        z-index:2;
+        z-index: 2;
         display: inline-block;
         padding: 12px 24px;
         //border: 2px solid map-get($colors-rule, link-color-hover);
@@ -55,36 +55,36 @@
         overflow: hidden;
 
         &::before,
-        &::after{
-          content:"";
+        &::after {
+          content: "";
           position: absolute;
-          width:100%;
-          height:100%;
-          top:0;
-          left:0;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
         }
 
-        &::before{
-          z-index:-2;
-          background: map-get($colors-rule, gradient-primary-btn );
+        &::before {
+          z-index: -2;
+          background: map-get($colors-rule, gradient-primary-btn);
         }
-        
-        &::after{
-          z-index:-1;
-          left:50%;
+
+        &::after {
+          z-index: -1;
+          left: 50%;
           transform: translate(-50%, -100%);
-          background: map-get($colors-rule, link-color-hover );
-          border-radius:50%;
+          background: map-get($colors-rule, link-color-hover);
+          border-radius: 50%;
           width: 120%;
           transition: all 0.2s linear;
         }
-        
-        
-        
+
+
+
         &:hover::after {
           transform: translate(-50%, -80%);
           transition: all 0.2s linear;
-          
+
         }
       }
     }
@@ -120,15 +120,15 @@
 
           li {
             margin-bottom: 12px;
-            
-           
+
+
 
             a {
               color: map-get($colors-rule, sixth-color);
               text-decoration: none;
               transition: all 0.3s ease;
-              position:relative;
-             
+              position: relative;
+
 
               &::after {
                 content: '';
@@ -204,33 +204,28 @@
 
     }
 
-    .eco-badge-container{
-       position: relative;
-      width: 120px;
-      height:2.5rem;
-      border-radius: 1rem;
+    .eco-badge-container {
 
-       a,
-      a img{
-        border-radius: 999px;
-        position:absolute;
-        top:0;
-        left:0;
-        width:100%;
-        height:100%;
+      //border:2px solid red;
+      //padding: 1rem;
 
+
+      a {
+        line-height: 0;
+        border-radius: 1rem;
+        transition: all 0.3s linear;
       }
 
-       
-    
-       a:hover {
-       box-shadow: 0 0 15px map-get($colors-rule, ten-color);
-       //border:2px solid red;
+      a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px map-get($colors-rule, ten-color);
+        transition: all 0.3s linear;
       }
 
-    
+    }
 
-  }
+
+
 
   }
 }

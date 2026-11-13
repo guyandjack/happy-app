@@ -15,7 +15,7 @@
     button {
         background-color: map-get($colors-rule, first-color);
         color: map-get($colors-rule, background-page-color);
-        border: 2px solid map-get($colors-rule, background-page-color);
+        //border: 2px solid map-get($colors-rule, background-page-color);
         padding: 5px;
         border-radius: 50%;
         width: 35px;
@@ -25,8 +25,8 @@
         transition: all 0.3s ease;
 
         &:hover {
-            border: 2px solid map-get($colors-rule, link-color-hover);
-            color: map-get($colors-rule, link-color-hover);
+           // border: 2px solid map-get($colors-rule, second-color);
+            color: map-get($colors-rule, second-color);
         }
     }
 }

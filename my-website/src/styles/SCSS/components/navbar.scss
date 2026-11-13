@@ -104,7 +104,7 @@ $navbar-height: map-get($sizes, navbar-height);
             }
 
             &:hover span {
-                background: map-get($colors-rule, link-color-hover);
+                background: map-get($colors-rule, second-color);
             }
 
             /* @media screen and (min-width:"992px") {

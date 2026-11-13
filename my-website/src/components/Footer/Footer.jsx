@@ -168,7 +168,7 @@ function Footer() {
             : "We act for a responsible design."}
           <span>{<RiDoubleQuotesR className="footer-quote-icon" />}</span>
         </p>
-        <div className="eco-badge-container">
+        <div className="flex-row-center-center eco-badge-container">
         {getEcoindexBadge()}
 
         </div>
