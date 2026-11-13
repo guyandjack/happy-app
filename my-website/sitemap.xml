@@ -34,7 +34,7 @@
 		<loc>https://helveclick.ch/fr/a-propos.html</loc>
 		<priority>0.60</priority>
 		<changefreq>yearly</changefreq>
-		<lastmod>2026-11-09</lastmod>
+		<lastmod>2026-11-13</lastmod>
 	</url>
 	<url>
 		<loc>https://helveclick.ch/en/contact.html</loc>
@@ -58,7 +58,7 @@
 		<loc>https://helveclick.ch/fr/prestations/saas.html</loc>
 		<priority>0.50</priority>
 		<changefreq>weekly</changefreq>
-		<lastmod>2026-11-04</lastmod>
+		<lastmod>2026-11-13</lastmod>
 	</url>
 	<url>
 		<loc>https://helveclick.ch/en/services/mobile-application.html</loc>
@@ -70,7 +70,7 @@
 		<loc>https://helveclick.ch/fr/prestations/application-mobile.html</loc>
 		<priority>0.50</priority>
 		<changefreq>yearly</changefreq>
-		<lastmod>2026-11-05</lastmod>
+		<lastmod>2026-11-13</lastmod>
 	</url>
 	<url>
 		<loc>https://helveclick.ch/en/services/seo.html</loc>
@@ -82,7 +82,7 @@
 		<loc>https://helveclick.ch/fr/prestations/seo.html</loc>
 		<priority>0.50</priority>
 		<changefreq>yearly</changefreq>
-		<lastmod>2026-11-05</lastmod>
+		<lastmod>2026-11-13</lastmod>
 	</url>
 	<url>
 		<loc>https://helveclick.ch/en/services/website.html</loc>
@@ -94,7 +94,7 @@
 		<loc>https://helveclick.ch/fr/prestations/site-web.html</loc>
 		<priority>0.50</priority>
 		<changefreq>yearly</changefreq>
-		<lastmod>2026-11-09</lastmod>
+		<lastmod>2026-11-13</lastmod>
 	</url>
 	<url>
 		<loc>https://helveclick.ch/en/legal/legal-notice.html</loc>
