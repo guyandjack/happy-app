@@ -196,9 +196,9 @@ function LoginForm() {
               }
             >
               {showPassword ? (
-                <img className="eye-icon eye-closed" src={eyeClosed}></img>
+                <img className="eye-icon eye-closed" src={eyeClosed} alt=""></img>
               ) : (
-                <img className="eye-icon" src={eyeOpened}></img>
+                <img className="eye-icon" src={eyeOpened} alt=""></img>
               )}
             </button>
           </div>

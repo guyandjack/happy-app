@@ -9,8 +9,8 @@ $navbar-height: map-get($sizes, navbar-height);
 ******** personal reset 
 ****************************************/
 @font-face {
-    font-family: 'nunito';
-    src: url("/assets/font/Nunito-VariableFont_wght.ttf") format('truetype');
+    font-family: 'Quicksand';
+    src: url("/assets/font/Quicksand-VariableFont_wght.ttf") format('truetype');
     font-display: swap;
 }
 
@@ -24,7 +24,7 @@ $navbar-height: map-get($sizes, navbar-height);
 
     font-size: 1em;
     font-weight: 500;
-    font-family: 'nunito', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     line-height: 1.5;
     scroll-behavior: smooth;
 }
@@ -59,19 +59,19 @@ $navbar-height: map-get($sizes, navbar-height);
 
 .skip-link {
     position: fixed;
-    top: 0.75rem;
-    left: 0.75rem;
+    top: 1rem;
+    left: 50%;
     z-index: 1100;
-    padding: 0.7rem 1rem;
+    padding: 1rem;
     color: map-get($colors-rule, sixth-color);
-    background-color: map-get($colors-rule, first-color);
-    border: 2px solid map-get($colors-rule, second-color);
-    border-radius: 0.35rem;
-    transform: translateY(-200%);
+    background-color: map-get($colors-rule, fifth-color);
+    //border: 2px solid map-get($colors-rule, second-color);
+    border-radius: 1rem;
+    transform: translate(-50%, -200%);
     transition: transform 0.2s ease;
 
     &:focus {
-        transform: translateY(0);
+    transform: translate(-50%, 0%);
     }
 }
 

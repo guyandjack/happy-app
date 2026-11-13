@@ -101,7 +101,7 @@ try {
 }
 
 //mount cta section
-try {
+/* try {
   const ctaSectionContainer = document.getElementById("RC-cta-section");
   if (ctaSectionContainer && !ctaSectionContainer.hasChildNodes()) {
     ReactDOM.createRoot(ctaSectionContainer).render(
@@ -114,7 +114,7 @@ try {
   }
 } catch (error) {
   console.error("Error mounting Cta Section:", error);
-}
+} */
 
 //mount link top page
 try {
